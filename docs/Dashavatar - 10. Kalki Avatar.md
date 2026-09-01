@@ -1,0 +1,5 @@
+# Kalki Avatar
+
+Many good men walked the earth after Buddha, but insignificant was the effect they had against the growing supremacy of evil and evil ones on earth. With the advance of scientific knowledge, the longevity of man has increased, but with the advance in technology, man's life has become a nightmare of hypertensions and pollution. But not all hope is lost. 
+
+"For when the age reaches its nadir and its worst forces have well nigh spent themselves, Vishnu will appear amongst mortals in his sattvic form as Kalki. Riding his celestial white horse, with a blazing sword in hand, he will exterminate, by the millions, corrupt robbers who bear high positions in life and will reinforce moral sense and humanitarian views in all good people, till town and countryside will again enjoy peace and security. Then will begin a new cycle of Yugas with Satya (Truth) at its head, whose human generations will be imbued with great moral, intellectual, and physical strength, possessing all immaculate attributes."

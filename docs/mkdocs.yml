@@ -1,0 +1,5 @@
+site_name: Amar Chitra Katha
+theme:
+  name: material # A beautiful theme with built-in instant search
+plugins:
+  - search
