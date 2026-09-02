@@ -432,6 +432,32 @@ $$\rho_{\text{Choi}} = \vert{}00\rangle\langle00\vert{} + \vert{}11\rangle\langl
 
 Notice that the initial pure entangled state has been reduced to a separable, classical mixed state.
 
+#### Choi-Jamiołkowski isomorphism
+
+This isomorphism is useful when, given a state in one subsystem, we want to recover the "partner" state in the other subsystem. What do we mean by "partner" state? Consider a global state $\vert{}\phi^*\rangle_{AB}$, which is maximally entangled (often defined as $\sum\vert{}i\rangle_A\vert{}i\rangle_B$). Because it is maximally entangled, it acts as a perfect quantum conduit. Projecting a vector into subsystem $B$ forces subsystem $A$ to assume a steered relative state that is perfectly equivalent to mathematically applying the matrix operator to that vector. 
+
+If we are given a state in $B$, the Choi-Jamiołkowski isomorphism allows us to recover the corresponding "partner" state in $A$. This can be done by taking a partial inner product between the full $\vert{}\phi^*\rangle_{AB}$ state with the state of the subspace for which we want to recover the partner. Loosely speaking, we are taking the component of the combined state vector onto a state vector in $B$, which gives us the operator components in the surviving subsystem $A$.
+
+Let the unnormalized bipartite state be expressed in an orthonormal basis as:
+
+$$\vert{}\phi^*\rangle_{AB}=\sum_{i,j}c_{ij}^*\vert{}i\rangle_A\otimes\vert{}j\rangle_B$$
+
+Let the arbitrary input state in $\mathcal{H}_B$ be:
+
+$$\vert{}\chi^*\rangle_B=\sum_kd_k^*\vert{}k\rangle_B$$
+
+Taking the Hermitian conjugate to form the bra removes the complex conjugate from the coefficients:
+
+$$_B\langle\chi^*\vert{}=\sum_kd_k{_B}\langle k\vert{}$$
+
+Now, apply the partial inner product. The bra $_B\langle k\vert{}$ only interacts with the $\mathcal{H}_B$ portion of the tensor product, enforcing the orthogonality condition $\langle k\vert{}j\rangle=\delta_{kj}$:
+
+$$_B\langle\chi^*\vert{}\phi^*\rangle_{AB}=\left(\sum_kd_k{_B}\langle k\vert{}\right)\left(\sum_{i,j}c_{ij}^*\vert{}i\rangle_A\otimes\vert{}j\rangle_B\right)$$
+
+$$_B\langle\chi^*\vert{}\phi^*\rangle_{AB}=\sum_{i,j}d_jc_{ij}^*\vert{}i\rangle_A$$
+
+The $\mathcal{H}_B$ subspace is completely traced out (eaten). The resulting object is strictly a linear superposition of $\vert{}i\rangle_A$ basis vectors. It is a pure state living entirely in the surviving subsystem $\mathcal{H}_A$.
+
 ### What Drives Environmental Interference
 
 Having seen how measurement can be modelled as a quantum channel, we can use this framework to intuitively understand how the environment decoheres a quantum system. Environmental interference occurs when the environment builds a correlation with the principal system's states, effectively becoming entangled with them. 
