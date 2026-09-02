@@ -472,6 +472,24 @@ In quantum statistical mechanics, the thermal equilibrium state of a qubit inter
 
 A symmetric contraction (called the depolarizing channel) is the exact mathematical model for a qubit submerged in a thermal bath at infinite temperature. The environment is so chaotic that it completely scrambles the qubit's orientation, destroying both its quantum coherence (the $x$ and $y$ axes) and its classical bit value (the $z$ axis) uniformly.
 
+### Evaluating a Channel via the Bloch Ball
+
+As an example, consider the initial state $\rho=\frac{1}{2}(\vert{}0\rangle\langle0\vert{}+\vert{}+\rangle\langle+\vert{})$. If we apply an $X$ operation to this, we can calculate the final state with $X\rho X$. However, we can also use the Bloch ball.
+
+We consider $\rho$ as a weighted addition of two vectors on the Bloch sphere, one pointing to the North Pole (for $\vert{}0\rangle\langle0\vert{}$) and the other along the positive x-axis (for $\vert{}+\rangle\langle+\vert{}$). The probabilistic sum of these is angled at $45^\circ$ between the x and z axes. Applying an $X$ gate is the same as rotating by $180^\circ$ around the x-axis, and so the new state will be $\frac{1}{2}(\vert{}1\rangle\langle1\vert{}+\vert{}+\rangle\langle+\vert{})$.
+
+More concretely, the Bloch vector $\vec{r}$ of a density matrix is simply the probabilistically weighted sum of the constituent pure state vectors. $\vert{}0\rangle\langle0\vert{}$ sits at the North Pole: $(0,0,1)$ and $\vert{}+\rangle\langle+\vert{}$ sits on the positive x-axis: $(1,0,0)$.
+
+Taking the weighted sum yields the vector angled at $45^\circ$ in the x-z plane: $\vec{r}=\frac{1}{2}(0,0,1)+\frac{1}{2}(1,0,0)=(0.5,0,0.5)$. Applying the $X$ gate keeps the x-coordinate unchanged and flips the y- and z-coordinates to give us the output Bloch vector $(0.5,0,-0.5)=\frac{1}{2}(0,0,-1)+\frac{1}{2}(1,0,0)$, which is $\frac{1}{2}(\vert{}1\rangle\langle1\vert{}+\vert{}+\rangle\langle+\vert{})$.
+
+We can also use the Bloch vector to calculate the expectation value of the observable. The expectation value is given by $\text{Tr}(X\rho)$. If $\rho=\frac{1}{2}(I+r_xX+r_yY+r_zZ)$, and noting that the trace of all non-identity Pauli matrices is $0$, we get
+
+$$\text{Tr}[X\rho]=\text{Tr}\left[\frac{1}{2}(X+r_xI+r_yiZ-r_ziY)\right]$$
+
+$$\text{Tr}[X\rho]=\frac{1}{2}(0+2r_x+0-0)=r_x$$
+
+The ultimate shortcut is that the expectation value of a Pauli observable is exactly equal to its corresponding coordinate on the Bloch vector.
+
 ### Types of Channels
 **Bit Flip ($\Delta$):** This is represented by the Pauli $X$ or NOT gate:
 
