@@ -14,13 +14,13 @@ The primary states encountered are $\vert{}0\rangle$, $\vert{}1\rangle$, $\vert{
     
 -   **Hadamard (H gate):** Converts $\vert{}0\rangle$ to $\vert{}+\rangle$ and $\vert{}1\rangle$ to $\vert{}-\rangle$ and vice versa. Creates equal superpositions from the basis states. $H\vert{}0\rangle = \frac{1}{\sqrt{2}}(\vert{}0\rangle + \vert{}1\rangle) = \vert{}+\rangle$ and $H\vert{}1\rangle = \frac{1}{\sqrt{2}}(\vert{}0\rangle - \vert{}1\rangle) = \vert{}-\rangle$. This is essential for quantum parallelism and algorithms. It is represented by the matrix:
 
-```math
+
 $$H = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}$$
-```
+
 - The general phase gate is defined by the matrix:
-```math
+
 $$\begin{bmatrix} 1 & 0 \\ 0 & e^{i\theta} \end{bmatrix}$$
-```
+
 
 If we set $\theta = \pi$, we get a $-1$ in the bottom right and the phase gate becomes the Pauli $Z$ matrix. If we set $\theta = \pi/2$, we get what is known as the $S$ gate, with an $i$ in the bottom right.
 
@@ -87,7 +87,7 @@ Here is the classical text-based schematic of the teleportation circuit, designe
 
 Plaintext
 
-```
+
                       Alice's Operations                         Bob's Corrections
                                                                
  α|0⟩+β|1⟩      ────────■───────[ H ]───────[ M ]═════════════════════════════════╗══
@@ -99,7 +99,7 @@ Plaintext
  │                                            ║            V                      V
  └─ |Φ⁺⟩_Bob    ──────────────────────────────╫──────────[ X ]──────────────────[ Z ]────── α|0⟩+β|1⟩
 
-```
+
 
 ### Legend
 
@@ -475,9 +475,9 @@ A symmetric contraction (called the depolarizing channel) is the exact mathemati
 ### Types of Channels
 **Bit Flip ($\Delta$):** This is represented by the Pauli $X$ or NOT gate:
 
-```math
+
 $$X = \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}$$
-```
+
 
 It flips $\vert{}0\rangle$ to $\vert{}1\rangle$ and vice versa. It leaves the $\vert{}+\rangle$ state unaffected and changes $\vert{}-\rangle$ to $-\vert{}-\rangle$ because these are the eigenstates of $X$ with eigenvalues $1$ and $-1$ respectively. However, because this $-1$ is a global phase, the density matrix for $\vert{}-\rangle$ remains completely unaffected ($\vert{}-\rangle\langle-\vert{} \to \vert{}-\rangle\langle-\vert{}$). 
 
@@ -503,9 +503,9 @@ The Bloch ball contracts towards the $x$-axis. Geometrically, the sphere deforms
 
 **Phase Flip ($\Lambda$):** This is represented by the Pauli $Z$ matrix:
 
-```math
+
 $$Z = \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}$$
-```
+
 
 It changes $\vert{}1\rangle$ to $-\vert{}1\rangle$ and leaves $\vert{}0\rangle$ unchanged, once again because these are the eigenstates of $Z$ with eigenvalues $-1$ and $1$, respectively.
 
@@ -525,15 +525,15 @@ The Bloch ball contracts towards the $z$-axis. This represents a phase-damping o
 
 When completely dephased, a superposition $\vert{}\psi\rangle = \alpha\vert{}0\rangle + \beta\vert{}1\rangle$, initially represented by the density matrix:
 
-```math
+
 $$\begin{bmatrix} \vert{}\alpha\vert{}^2 & \alpha\beta^* \\ \alpha^*\beta & \vert{}\beta\vert{}^2 \end{bmatrix}$$
-```
+
 
 becomes the diagonal matrix:
 
-```math
+
 $$\begin{bmatrix} \vert{}\alpha\vert{}^2 & 0 \\ 0 & \vert{}\beta\vert{}^2 \end{bmatrix}$$
-```
+
 
 This aligns precisely with what occurs when a projective measurement is made along the $z$-axis; the off-diagonal coherence is lost, and the system collapses into a classical distribution of $\vert{}0\rangle$ and $\vert{}1\rangle$ with probabilities $\vert{}\alpha\vert{}^2$ and $\vert{}\beta\vert{}^2$, respectively.
 
@@ -547,9 +547,9 @@ $$J(\Delta) = \vert{}0\rangle\langle 0\vert{} \otimes \vert{}0\rangle\langle 0\v
 
 As a block matrix, the tensor product expansion is written as:
 
-```math
+
 $$J(\Delta) = \begin{pmatrix} \Delta\begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} & \Delta\begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} \\ \Delta\begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} & \Delta\begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} \end{pmatrix} = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix}$$
-```
+
 
 **Depolarizing Channel:** This channel contracts the input state towards the completely mixed state. Consider a channel where $p$ is the probability of replacing the input state with the maximally mixed state $I/2$. The state of the system after passing through this channel is:
 
@@ -570,14 +570,14 @@ $$\Gamma(\rho) = (1-p)\rho + \frac{p}{3}(X \rho X + Y\rho Y + Z\rho Z)$$
 In this parameterization, the channel applies one of the three Pauli errors symmetrically (each with probability $p/3$). Because the Pauli operations anti-commute, applying them with equal probability isotropically contracts the Bloch vector in all three spatial directions, drawing it directly toward the center point (the maximally mixed state). Note that the probability $p$ here and the probability $p$ in the previous parametrization are not equal; if $p_1$ is the probability of replacement with the mixed state and $p_2$ is the probability of a Pauli error, they are related by $p_1 = \frac{4}{3}p_2$.
 
 The Choi representation of this channel is given by:
-```math
+
 $$\begin{aligned} J(\Omega) &= \sum_{a,b=0}^{1} \vert{}a\rangle\langle b\vert{} \otimes \Omega(\vert{}a\rangle\langle b\vert{}) \\ &= \vert{}0\rangle\langle 0\vert{} \otimes \frac{\mathbb{1}}{2} + \vert{}1\rangle\langle 1\vert{} \otimes \frac{\mathbb{1}}{2} \\ &= \frac{1}{2} \mathbb{1} \otimes \mathbb{1} \end{aligned}$$
-```
+
 
 As a block matrix:
-```math
+
 $$J(\Omega) = \begin{pmatrix} \Omega\begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} & \Omega\begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} \\ \Omega\begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} & \Omega\begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} \end{pmatrix} = \begin{pmatrix} \frac{1}{2} & 0 & 0 & 0 \\ 0 & \frac{1}{2} & 0 & 0 \\ 0 & 0 & \frac{1}{2} & 0 \\ 0 & 0 & 0 & \frac{1}{2} \end{pmatrix}$$
-```
+
 
 **Aside:** You can also write the channel's Bloch ball parametrization in the falling way:
 
