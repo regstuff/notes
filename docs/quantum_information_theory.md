@@ -310,9 +310,31 @@ $$= A \cdot\sum_k \langle e_k \vert{} B \vert{} e_k \rangle$$
 
 The environment component $\sum_k(\langle e_k \vert{} B \vert{} e_k \rangle)$ is the trace of $B$ and evaluates to a simple scalar value, leaving only the operator $A$ acting on the system space. This explicitly defines the partial trace.
 
+Note that mathematically, we can define the Stinespring isometry $V$ as:
+
+$$V=U(I_S\otimes\vert{}e_0\rangle)$$
+
+If we take the Hermitian conjugate, we get:
+
+$$V^\dagger=(I_S\otimes\langle e_0\vert{})U^\dagger$$
+
+When we construct the density matrix evolution using the unitary operator, the inner term is:
+
+$$U(\rho_S\otimes\vert{}e_0\rangle\langle e_0\vert{})U^\dagger$$
+
+Because $\rho_S\otimes\vert{}e_0\rangle\langle e_0\vert{}=(I_S\otimes\vert{}e_0\rangle)\rho_S(I_S\otimes\langle e_0\vert{})$, we can substitute our definitions of $V$ and $V^\dagger$ directly into this expression:
+
+$$V\rho_SV^\dagger=U(\rho_S\otimes\vert{}e_0\rangle\langle e_0\vert{})U^\dagger$$
+
 ### Kraus Operators
 
 From the Stinespring Dilation, if we define the operators $E_k = (I_s \otimes \langle e_k \vert{}) U (I_s \otimes \vert{} e_0 \rangle)$, then their Hermitian adjoints are $E_k^\dagger = (I_s \otimes \langle e_0\vert{}) U^\dagger (I_s \otimes \vert{} e_k \rangle)$. These represent the effective operators acting on the principal system for each measurement outcome $k$ of the environment.
+
+In terms of the Stinespring isometry $V$, a Kraus operator is simply the isometry projected onto a specific basis vector of the output environment:
+
+$$K_k=(I_S\otimes\langle e_k\vert{})V$$
+
+$$K_k^\dagger=V^\dagger(I_S\otimes\vert{}e_k\rangle)$$
 
 We can therefore write the final reduced system state as:
 
