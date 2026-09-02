@@ -318,6 +318,8 @@ If we take the Hermitian conjugate, we get:
 
 $$V^\dagger=(I_S\otimes\langle e_0\vert{})U^\dagger$$
 
+$V$ is essentially the operator that applies $U$ only to the initial state of the environment, absorbing it directly into the transformation matrix, while ignoring the principal system of interest.
+
 When we construct the density matrix evolution using the unitary operator, the inner term is:
 
 $$U(\rho_S\otimes\vert{}e_0\rangle\langle e_0\vert{})U^\dagger$$
