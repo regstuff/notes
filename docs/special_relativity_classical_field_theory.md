@@ -460,7 +460,17 @@ The Lorentz transformation naturally maps to hyperbolic geometry, satisfying the
 
 $$\begin{bmatrix}ct'\\x'\end{bmatrix}=\begin{bmatrix}\cosh\phi&-\sinh\phi\\-\sinh\phi&\cosh\phi\end{bmatrix}\begin{bmatrix}ct\\x\end{bmatrix}$$
 
-Here, $\phi$ is the rapidity, defined by the relation $\tanh\phi=v/c=\beta$. This hyperbolic formulation allows relative velocities to be calculated via the simple addition of rapidities: $\phi_{AC}=\phi_{AB}+\phi_{BC}$, bypassing the non-linear velocity addition formula given by:
+Here, $\phi$ is the rapidity, defined by the relation $\tanh\phi=v/c=\beta$. This hyperbolic formulation allows relative velocities to be calculated via the simple addition of rapidities: $\phi_{AC}=\phi_{AB}+\phi_{BC}$
+
+To see why this is so, just multiply the two Lorentz boost matrices, one for each rapidity that we want to add up. We end up with terms that can be replaced by hyperbolic identities $\cosh(\phi_1-\phi_2)=\cosh\phi_1\cosh\phi_2-\sinh\phi_1\sinh\phi_2$ and $\sinh(\phi_1-\phi_2)=\sinh\phi_1\cosh\phi_2-\cosh\phi_1\sinh\phi_2$:
+
+$$\Lambda(\phi_1)\Lambda(\phi_2)=\begin{bmatrix}\cosh\phi_1&\sinh\phi_1\\\sinh\phi_1&\cosh\phi_1\end{bmatrix}\begin{bmatrix}\cosh\phi_2&\sinh\phi_2\\\sinh\phi_2&\cosh\phi_2\end{bmatrix}$$
+
+$$\Lambda(\phi_1)\Lambda(\phi_2)=\begin{bmatrix}\cosh\phi_1\cosh\phi_2+\sinh\phi_1\sinh\phi_2&\cosh\phi_1\sinh\phi_2+\sinh\phi_1\cosh\phi_2\\\sinh\phi_1\cosh\phi_2+\cosh\phi_1\sinh\phi_2&\sinh\phi_1\sinh\phi_2+\cosh\phi_1\cosh\phi_2\end{bmatrix}$$
+
+$$\Lambda(\phi_1)\Lambda(\phi_2)=\begin{bmatrix}\cosh(\phi_1+\phi_2)&\sinh(\phi_1+\phi_2)\\\sinh(\phi_1+\phi_2)&\cosh(\phi_1+\phi_2)\end{bmatrix}=\Lambda(\phi_1+\phi_2)$$
+
+If we do not use the hyperbolic formulation, we must resort to the non-linear velocity addition formula given by:
 
 $$v=\frac{v_1+v_2}{1+\frac{v_1v_2}{c^2}}$$
 
