@@ -460,7 +460,7 @@ The Lorentz transformation naturally maps to hyperbolic geometry, satisfying the
 
 $$\begin{bmatrix}ct'\\x'\end{bmatrix}=\begin{bmatrix}\cosh\phi&-\sinh\phi\\-\sinh\phi&\cosh\phi\end{bmatrix}\begin{bmatrix}ct\\x\end{bmatrix}$$
 
-Here, $\phi$ is the rapidity, defined by the relation $\tanh\phi=v/c=\beta$. This hyperbolic formulation allows relative velocities to be calculated via the simple addition of rapidities: $\phi_{AC}=\phi_{AB}+\phi_{BC}$
+Here, $\phi$ is the rapidity, defined by the relation $\tanh\phi=v/c=\beta$. Note that $\gamma=\cosh\phi$ and $\gamma\frac{v}{c}=\sinh\phi$. This hyperbolic formulation allows relative velocities to be calculated via the simple addition of rapidities: $\phi_{AC}=\phi_{AB}+\phi_{BC}$
 
 To see why this is so, just multiply the two Lorentz boost matrices, one for each rapidity that we want to add up. We end up with terms that can be replaced by hyperbolic identities $\cosh(\phi_1-\phi_2)=\cosh\phi_1\cosh\phi_2-\sinh\phi_1\sinh\phi_2$ and $\sinh(\phi_1-\phi_2)=\sinh\phi_1\cosh\phi_2-\cosh\phi_1\sinh\phi_2$:
 
@@ -474,7 +474,21 @@ If we do not use the hyperbolic formulation, we must resort to the non-linear ve
 
 $$v=\frac{v_1+v_2}{1+\frac{v_1v_2}{c^2}}$$
 
-This formulation also means that under constant proper acceleration $a$, the rapidity $\phi$ changes linearly with respect to proper time $\tau$ according to $d\phi/d\tau=a/c$. Thus, the worldline of an object under constant proper acceleration (the acceleration measured by an accelerometer in the object's rest frame) can be evaluated by integrating the 4-velocity vector. This integration yields a worldline where the Lorentz transformation is applicable at every individual point to map to a Momentarily Comoving Inertial Frame (MCIF), but the global worldline traces a hyperbola.
+This formulation also means that under constant proper acceleration $a$, the rapidity $\phi$ changes linearly with respect to proper time $\tau$ according to $d\phi/d\tau=a/c$. To derive this, note that
+
+$$U^\mu=\left(c\cosh\phi,c\sinh\phi,0,0\right)$$
+
+$$A^\mu=\frac{dU^\mu}{d\tau}=\left(c\sinh\phi\frac{d\phi}{d\tau},c\cosh\phi\frac{d\phi}{d\tau},0,0\right)$$
+
+Since the scalar magnitude of acceleration in invariant: $a^2=\eta_{\mu\nu}A^\mu A^\nu=-(A^0)^2+(A^1)^2$, and:
+
+$$a^2=-\left(c\sinh\phi\frac{d\phi}{d\tau}\right)^2+\left(c\cosh\phi\frac{d\phi}{d\tau}\right)^2$$
+
+$$a^2=c^2\left(\frac{d\phi}{d\tau}\right)^2(\cosh^2\phi-\sinh^2\phi) = c^2\left(\frac{d\phi}{d\tau}\right)^2(1)$$
+
+$$\frac{d\phi}{d\tau}=\frac{a}{c}$$
+
+The worldline of an object under constant proper acceleration (the acceleration measured by an accelerometer in the object's rest frame) can be evaluated by integrating the 4-velocity vector. This integration yields a worldline where the Lorentz transformation is applicable at every individual point to map to a Momentarily Comoving Inertial Frame (MCIF), but the global worldline traces a hyperbola.
 
 Let us define the hyperbola of a worldline under constant proper acceleration $a$ such that it intersects the $ct=0$ axis of an inertial frame at the spatial coordinate $x=c^2/a$ (let us define this constant distance as $D$). This worldline will asymptotically approach, but never cross, the light cone emanating from the origin. Thus, the frame's coordinate velocity approaches $c$ but never reaches it. At the same time, any light worldline originating from the origin $(0,0)$ after a certain coordinate time will never intersect the object's worldline. From the perspective of the accelerating frame, light from these regions is infinitely redshifted because the coordinate speed of light drops to zero at the horizon (where the metric component $g_{00}$ becomes zero). This is analogous to what happens at the event horizon of a black hole, where an object falling toward the black hole appears to freeze at the horizon for a distant inertial observer.
 
