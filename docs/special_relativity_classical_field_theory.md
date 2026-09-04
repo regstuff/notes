@@ -701,4 +701,5 @@ Depending on how you define the origin of the Rindler chart, the accelerating ob
 ## References
 - [Eigenchris Relativity Playlist](https://www.youtube.com/playlist?list=PLJHszsWbB6hqlw73QjgZcFh4DrkQLSCQa)
 - Ch 01 of Classical Field Theory by Joel Franklin
+- [Lecture 01](https://davidtong.org/pdfs/teaching/general-relativity/gr1.pdf) of David Tong's General Relativity Notes
 - Special Relativity and Classical Field Theory - The Theoretical Minimum by Leonard Susskind
