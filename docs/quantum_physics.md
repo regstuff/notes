@@ -66,6 +66,8 @@ Because they are projectors, they naturally satisfy orthogonality for distinct o
 
 The idempotency condition ($E_m^2 = E_m$) guarantees that we can take the square root of $E_m$ and use it to determine the state after measurement. Idempotency also means that if a projective measurement is made, immediately repeating the exact same measurement will yield the exact same result with a probability of $1$. We cannot guarantee this for a general measurement. 
 
+**Note:** For operators in general (and not just measurement operators), we cannot assume that $AB \psi = BA \psi$, as operators may not commute with each other.
+
 ### Eigenvectors & Eigenvalues
 Projective Measurements are a special case of Generalized Measurements. 
 Consider the measurement of spin along the $z$-axis. To mathematically determine the possible measurement values and their probabilities, the operator matrix for the observable must be defined.
