@@ -615,7 +615,7 @@ $$K^\mu = \gamma \left( \frac{\mathbf{F} \cdot \mathbf{v}}{c}, F_x, F_y, F_z \ri
 
 ---
 
-The relationship between the 3-Force and 3-Acceleration, the relativistic equivalent of Newton's Second Law for 3-vectors:
+The relationship between the 3-force and 3-acceleration, the relativistic equivalent of Newton's Second Law $F = ma$ (which is a low velocity approximation):
 
 $$\mathbf{F} = \gamma m\mathbf{a} + \frac{\gamma^3 m}{c^2}(\mathbf{v} \cdot \mathbf{a})\mathbf{v}$$
 
