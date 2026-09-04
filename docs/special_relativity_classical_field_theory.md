@@ -490,6 +490,30 @@ $$\frac{d\phi}{d\tau}=\frac{a}{c}$$
 
 The worldline of an object under constant proper acceleration (the acceleration measured by an accelerometer in the object's rest frame) can be evaluated by integrating the 4-velocity vector. This integration yields a worldline where the Lorentz transformation is applicable at every individual point to map to a Momentarily Comoving Inertial Frame (MCIF), but the global worldline traces a hyperbola.
 
+We can use this relationship and the equations between $\gamma, \beta, v$ and $\tau$ to find the time, velocity and position of the accelerating body as seen from some inertial frame.
+
+$$v(\tau)=c\beta=c\tanh\left(\frac{a\tau}{c}\right)$$
+
+$$\frac{dt}{d\tau}=\gamma(\tau)=\cosh\left(\frac{a\tau}{c}\right)$$
+
+Integrating this yields the coordinate time equation:
+
+$$t=\frac{c}{a}\sinh\left(\frac{a\tau}{c}\right)$$
+
+To find the position, use the chain rule:
+
+$$v(\tau)=\frac{dx}{dt}=\frac{\frac{dx}{d\tau}}{\frac{dt}{d\tau}}\implies\frac{dx}{d\tau}=c\sinh\left(\frac{a\tau}{c}\right)$$
+
+Integrating with respect to proper time yields the position equation (assuming the particle starts at $x=0$ when $t=0$ and $\tau=0$):
+
+$$x=\frac{c^2}{a}\cosh\left(\frac{a\tau}{c}\right)-\frac{c^2}{a}$$
+
+By combining the position and time equations and utilizing the hyperbolic identity $\cosh^2\theta-\sinh^2\theta=1$, we recover the invariant trajectory equation, proving that the worldline of constant proper acceleration is a hyperbola in Minkowski spacetime:
+
+$$\left(x+\frac{c^2}{a}\right)^2-c^2t^2=\frac{c^4}{a^2}$$
+
+### Bell's Paradox
+
 Let us define the hyperbola of a worldline under constant proper acceleration $a$ such that it intersects the $ct=0$ axis of an inertial frame at the spatial coordinate $x=c^2/a$ (let us define this constant distance as $D$). This worldline will asymptotically approach, but never cross, the light cone emanating from the origin. Thus, the frame's coordinate velocity approaches $c$ but never reaches it. At the same time, any light worldline originating from the origin $(0,0)$ after a certain coordinate time will never intersect the object's worldline. From the perspective of the accelerating frame, light from these regions is infinitely redshifted because the coordinate speed of light drops to zero at the horizon (where the metric component $g_{00}$ becomes zero). This is analogous to what happens at the event horizon of a black hole, where an object falling toward the black hole appears to freeze at the horizon for a distant inertial observer.
 
 The non-inertial frame's local basis vectors are $\vec{e}_t$, which is the tangent to the hyperbola at a given event (parallel to the 4-velocity), and the Minkowski orthogonal spatial vector $\vec{e}_x$. Because the global Minkowski 4-position vector $\vec{S}$ (originating from the focal center of the hyperbola) is orthogonal to the hyperbola's tangent, it is entirely parallel to the local spatial basis vector $\vec{e}_x$. Furthermore, because the 4-velocity has a strictly constant invariant magnitude, its derivative (the 4-acceleration) must be Minkowski orthogonal to it. Therefore, while the 4-velocity is aligned with $\vec{e}_t$, the 4-acceleration is entirely aligned with $\vec{e}_x$.
