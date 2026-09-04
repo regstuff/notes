@@ -118,7 +118,7 @@ $$t' = \gamma\left(t - \frac{vx}{c^2}\right)$$
 ## The Spacetime Interval
 Using the Lorentz transformation, we can see that what is called the spacetime interval squared $ds^2=(c.dt)^2-dx^2$ is the same in all reference frames. Another way of saying that is that it is invariant under coordinate transformation. Each of the coordinates in this equation is actually an infinitesimal difference between two events. This geometry is encoded in the Minkowski metric tensor. Using the $(+, -, -, -)$ signature convention, the diagonal elements are $(1, -1, -1, -1)$, and all off-diagonal elements are 0.
 
-**Note:** It is only the infinitesimal spacetime interval that is invariant in all reference frames, including non-inertial ones since we can consider any situation as inertial when taking the infinitesimal limit. If we take a macroscopic finite interval ($\Delta s^2$), it will be invariant in all inertial reference frames but not necessarily in non-inertial frames.
+**Note:** It is only the infinitesimal spacetime interval that is invariant in all reference frames, including non-inertial ones since we can consider any situation as inertial when taking the infinitesimal limit. If we take a macroscopic finite interval ($\Delta s^2$), it will be invariant in all inertial reference frames but not necessarily in non-inertial frames. If the worldline is simply straight, the infinitesimal amounts add up straightforwardly. If however we have situations where the worldline is not simply linear, like in the Twin Paradox where the spaceship turns around, or a spaceship under constant acceleration, we must integrate the infinitesimal amounts over some parameter (usually $\tau$) to arrive at the actual spacetime interval between two events.
 
 ### Proper Time & Proper Length
 Suppose we were to measure the elapsed time between two events at the same coordinates. Since $s$ is invariant in all reference frames, the measurement of elapsed time will be minimum in the rest frame of the two events because the $x^2$ term is zero for the rest frame and positive for all other moving frames. This minimum time is called the proper time $\tau$. Since it depends only on the spacetime interval and the constant $c$, it is also invariant. It plays an important role in deriving other invariants from the spacetime interval.
@@ -221,7 +221,7 @@ Multiplying $U$ by mass $m$ (which we assume is invariant) yields the 4-momentum
 
 $$P=mU=\gamma(mc, mu_x, mu_y, mu_z)=(E/c, p_x, p_y, p_z)$$
 
-where we absorb the $\gamma$ factor into the E and spatial $p$ terms. 
+where we absorb the $\gamma$ factor into the $E$ and spatial $p$ terms. 
 
 Thus the spatial momentum is actually $\gamma mv$, not $mv$, the classical Newtonian formula. The Newtonian formula is not universally correct. It is fundamentally a low-velocity approximation.
 
@@ -526,6 +526,125 @@ By algebraically rearranging this trajectory and squaring it, we can group the s
 $$\left(x(t) + \frac{c^2}{\alpha}\right)^2 - (ct)^2 = \left(\frac{c^2}{\alpha}\right)^2$$
 
 This is the standard geometric equation for a hyperbola ($X^2 - Y^2 = R^2$) in the Minkowski spacetime diagram. While a classical particle under constant force traces a parabola ($x = \frac{1}{2}at^2$), a relativistic particle under constant force traces a hyperbola, forever approaching the light cone $x = ct$ as an asymptote but never crossing it.
+
+## Useful Formulas
+$$\begin{bmatrix}ct'\\x'\end{bmatrix}=\begin{bmatrix}\gamma&-\gamma\beta\\-\gamma\beta&\gamma\end{bmatrix}\begin{bmatrix}ct\\x\end{bmatrix}$$
+
+where $\beta=\frac{v}{c}$ and $\gamma=\frac{1}{\sqrt{1-\beta^2}}$
+
+---
+
+The full Lorentz Boost is given by,
+
+$$\Lambda = \begin{bmatrix} \gamma & -\gamma\beta_x & -\gamma\beta_y & -\gamma\beta_z \\ -\gamma\beta_x & 1+(\gamma-1)\frac{\beta_x^2}{\beta^2} & (\gamma-1)\frac{\beta_x\beta_y}{\beta^2} & (\gamma-1)\frac{\beta_x\beta_z}{\beta^2} \\ -\gamma\beta_y & (\gamma-1)\frac{\beta_y\beta_x}{\beta^2} & 1+(\gamma-1)\frac{\beta_y^2}{\beta^2} & (\gamma-1)\frac{\beta_y\beta_z}{\beta^2} \\ -\gamma\beta_z & (\gamma-1)\frac{\beta_z\beta_x}{\beta^2} & (\gamma-1)\frac{\beta_z\beta_y}{\beta^2} & 1+(\gamma-1)\frac{\beta_z^2}{\beta^2} \end{bmatrix}$$
+
+---
+
+$ds^2=(cdt)^2-\sum_i dx_ix^i$ is the invariant spacetime interval in the Minkowski metric.
+
+---
+
+Doppler effect on a receding source, the observed frequency $f_e$ is redshifted by $f_e = f_0 \sqrt{\frac{1 - \beta}{1 + \beta}}$. For an approaching Source ($\beta$ becomes $-\beta$): $f_e = f_0 \sqrt{\frac{1 + \beta}{1 - \beta}}$
+
+---
+
+$$\frac{dt}{d\tau} = \frac{1}{\sqrt{1 - \frac{v^2}{c^2}}} = \gamma$$
+
+---
+
+$$U=\frac{d}{d\tau}(ct, x, y, z)= (c\frac{dt}{d\tau},\frac{dx}{dt}\frac{dt}{d\tau}, \frac{dy}{dt}\frac{dt}{d\tau}, \frac{dz}{dt}\frac{dt}{d\tau})  = \gamma(c, u_x, u_y, u_z)$$
+
+$u_x, u_y, u_z$ is the spatial velocity we are used to from classical mechanics, given by $\frac{dx}{dt}$ etc. 
+
+---
+
+$P=mU=\gamma(mc, mu_x, mu_y, mu_z)=(E/c, p_x, p_y, p_z)$, where we absorb the $\gamma$ factor into the $E$ and spatial $p$ terms. Thus the spatial momentum is actually $\gamma mv$, not $mv$, and  $\frac{E}{c} = P^0 = \gamma mc$
+
+Thus, $p$ is not the usual Newtonian $mv$. That is a low velocity approximation.
+
+---
+
+$P\cdot P$ is conserved and $P\cdot P=(E/c)^2-p^2=(mc)^2$. Rearranging this gives Einstein’s energy-momentum relation: $E^2=(mc^2)^2+(pc)^2$
+
+
+When a particle is at rest ($p=0$), the equation reduces to $E=mc^2$. For massless particles use $p=h/\lambda$) or $E=pc$.
+
+---
+
+
+$$\frac{d\gamma}{dt}=\gamma^3\frac{\mathbf{u}\cdot\mathbf{a}}{c^2}$$
+
+---
+
+$$A=\left(\gamma^4\frac{\mathbf{u}\cdot\mathbf{a}}{c}, \gamma^4\frac{\mathbf{u}\cdot\mathbf{a}}{c^2}\mathbf{u}+\gamma^2\mathbf{a}\right)$$
+
+---
+
+The magnitude of the 4-acceleration in the object's rest frame is given by:
+
+$$A^\mu A_\mu = (A^0)^2 - \vert{}\mathbf{A}\vert{}^2 = 0^2 - \vert{}\boldsymbol{\alpha}\vert{}^2 = -\vert{}\boldsymbol{\alpha}\vert{}^2$$
+
+where $\alpha$ is the proper acceleration. Since the 4-acceleration's magnitude is invariant, it means the magnitude is equal to the above value in any reference frame. 
+
+---
+
+We can also write the 4-acceleration in terms of the proper acceleration by applying a Lorentz boost from the rest frame to an arbitrary frame.
+
+$$A = \left( \gamma\frac{\mathbf{u} \cdot \boldsymbol{\alpha}}{c}, \boldsymbol{\alpha} + \frac{\gamma^2}{\gamma + 1}\frac{\mathbf{u} \cdot \boldsymbol{\alpha}}{c^2}\mathbf{u} \right)$$
+
+Equating this to the previous derivation for the 4-acceleration, we get,
+
+$$a_\parallel = \frac{\alpha_\parallel}{\gamma^3}$$
+
+$$a_\perp = \frac{\alpha_\perp}{\gamma^2}$$
+
+where $a_\parallel$ is the acceleration along the direction of movement of the moving frame, and $a_\perp$ is along a direction perpendicular to it. 
+
+---
+ The 4-force is defined as $K = m A = m\frac{dP}{d\tau}$. The invariant length of the 4-force is equal to the length of the proper force, given by $K_\mu K^\mu = -\vert{}\mathbf{F}_{proper}\vert{}^2$.
+
+---
+
+The 4-force can be expressed in terms of the laboratory-frame 3-force $\mathbf{F}$ and velocity $\mathbf{v}$. 
+
+$$K^\mu = \gamma \left( \frac{\mathbf{F} \cdot \mathbf{v}}{c}, F_x, F_y, F_z \right)$$
+
+**Longitudinal component (parallel to velocity):** $\gamma F_x = \gamma F_{proper, x} \implies F_x = F_{proper, x}$
+
+**Transverse components (perpendicular to velocity):** $\gamma F_y = F_{proper, y} \implies F_y = \frac{F_{proper, y}}{\gamma}$ and $\gamma F_z = F_{proper, z} \implies F_z = \frac{F_{proper, z}}{\gamma}$
+
+---
+
+The relationship between the 3-Force and 3-Acceleration, the relativistic equivalent of Newton's Second Law for 3-vectors:
+
+$$\mathbf{F} = \gamma m\mathbf{a} + \frac{\gamma^3 m}{c^2}(\mathbf{v} \cdot \mathbf{a})\mathbf{v}$$
+
+**Transverse Acceleration (Force perpendicular to velocity):** If the force is applied at a right angle to the motion, $\mathbf{v} \cdot \mathbf{a} = 0$. The second term vanishes, yielding: $\mathbf{F} = \gamma m\mathbf{a}$. The particle's effective inertia is $\gamma m$.
+
+**Longitudinal Acceleration (Force parallel to velocity):** If the force is applied in the exact direction of motion, $\mathbf{v}$ and $\mathbf{a}$ are parallel, so $\mathbf{v} \cdot \mathbf{a} = va$. The equation simplifies (using $\gamma^2 = 1/(1 - v^2/c^2)$) to: $\mathbf{F} = \gamma^3 m\mathbf{a}$. The particle's effective inertia is $\gamma^3 m$.
+
+---
+The Lorentz transformation naturally mapped to hyperbolic geometry:
+
+$$\begin{bmatrix}ct'\\x'\end{bmatrix}=\begin{bmatrix}\cosh\phi&-\sinh\phi\\-\sinh\phi&\cosh\phi\end{bmatrix}\begin{bmatrix}ct\\x\end{bmatrix}$$
+
+Here, $\phi$ is the rapidity, defined by the relation $\tanh\phi=v/c=\beta$. 
+
+---
+Hyperbolic formulation allows relative velocities to be calculated via the simple addition of rapidities: $\phi_{AC}=\phi_{AB}+\phi_{BC}$, bypassing the non-linear velocity addition formula.
+
+---
+
+The relationship transforming the Rindler coordinates $(T, X)$ (where the reference observer with acceleration $a$ is at $X=0$) to the global inertial coordinates $(t, x)$ is given by:
+
+$$ct=\left(X+\frac{c^2}{a}\right)\sinh\left(\frac{aT}{c}\right)$$
+
+$$x=\left(X+\frac{c^2}{a}\right)\cosh\left(\frac{aT}{c}\right)$$
+
+Depending on how you define the origin of the Rindler chart, the accelerating object is assigned a permanently fixed spatial coordinate:
+
+* **Shifted Origin:** The object is defined to sit exactly at $X=0$.
+* **Horizon Origin:** The object is defined to sit exactly at $X=c^2/a$.
 
 ## Classical Field Theory
 
