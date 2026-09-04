@@ -1,4 +1,4 @@
-# Quantum Physics
+# 2. Quantum Physics
 
 ## States and Measurement
 
