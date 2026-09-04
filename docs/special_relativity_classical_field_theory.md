@@ -460,7 +460,9 @@ The Lorentz transformation naturally maps to hyperbolic geometry, satisfying the
 
 $$\begin{bmatrix}ct'\\x'\end{bmatrix}=\begin{bmatrix}\cosh\phi&-\sinh\phi\\-\sinh\phi&\cosh\phi\end{bmatrix}\begin{bmatrix}ct\\x\end{bmatrix}$$
 
-Here, $\phi$ is the rapidity, defined by the relation $\tanh\phi=v/c=\beta$. This hyperbolic formulation allows relative velocities to be calculated via the simple addition of rapidities: $\phi_{AC}=\phi_{AB}+\phi_{BC}$, bypassing the non-linear velocity addition formula.
+Here, $\phi$ is the rapidity, defined by the relation $\tanh\phi=v/c=\beta$. This hyperbolic formulation allows relative velocities to be calculated via the simple addition of rapidities: $\phi_{AC}=\phi_{AB}+\phi_{BC}$, bypassing the non-linear velocity addition formula given by:
+
+$$v=\frac{v_1+v_2}{1+\frac{v_1v_2}{c^2}}$$
 
 This formulation also means that under constant proper acceleration $a$, the rapidity $\phi$ changes linearly with respect to proper time $\tau$ according to $d\phi/d\tau=a/c$. Thus, the worldline of an object under constant proper acceleration (the acceleration measured by an accelerometer in the object's rest frame) can be evaluated by integrating the 4-velocity vector. This integration yields a worldline where the Lorentz transformation is applicable at every individual point to map to a Momentarily Comoving Inertial Frame (MCIF), but the global worldline traces a hyperbola.
 
