@@ -1,3 +1,5 @@
+# 4. Quantum Information Theory
+
 ## Qubits
 
 A qubit (quantum bit) is a two-level quantum system that can exist in a superposition of two orthogonal basis states. These are conventionally defined in the $z$-basis as $\vert{}0\rangle$ (spin-up along the $z$-axis) and $\vert{}1\rangle$ (spin-down along the $z$-axis). One could also choose the $x$-basis, consisting of $\vert{}+\rangle$ (spin-up along $x$) and $\vert{}-\rangle$ (spin-down along $x$), but the $z$-basis (computational basis) is standard. 
