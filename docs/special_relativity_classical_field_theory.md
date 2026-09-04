@@ -643,7 +643,7 @@ $$\begin{bmatrix}ct'\\x'\end{bmatrix}=\begin{bmatrix}\cosh\phi&-\sinh\phi\\-\sin
 Here, $\phi$ is the rapidity, defined by the relation $\tanh\phi=v/c=\beta$. 
 
 ---
-Hyperbolic formulation allows relative velocities to be calculated via the simple addition of rapidities: $\phi_{AC}=\phi_{AB}+\phi_{BC}$, bypassing the non-linear velocity addition formula.
+Hyperbolic formulation allows relative velocities to be calculated via the simple addition of rapidities: $\phi_{AC}=\phi_{AB}+\phi_{BC}$, bypassing the non-linear velocity addition formula $v=\frac{v_1+v_2}{1+\frac{v_1v_2}{c^2}}$
 
 ---
 
