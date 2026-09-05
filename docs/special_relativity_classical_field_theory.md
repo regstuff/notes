@@ -895,6 +895,36 @@ $$S_1 = \int_{t_1}^{t_2} \left[ -mc^2 \sqrt{1 - \frac{\dot{\mathbf{x}}^2}{c^2}} 
 
 This is essentially the electromagnetic Action, from which the Lorentz force law can be derived.
 
+### Action with Potentials in Gravity
+
+For gravity, we do something a little different. We write the action as:
+
+$$S_2 = \int_{t_1}^{t_2} \left[ -mc^2 \sqrt{1 + \frac{2\Phi(x)}{c^2} - \frac{\dot{\mathbf{x}}^2}{c^2}} \right] dt$$
+
+If we Taylor expand the square root, assuming that $\vert{}\dot{\mathbf{x}}\vert{} \ll c$ and that $2\Phi(x) \ll c^2$, then the leading terms give:
+
+$$S_2 \approx \int_{t_1}^{t_2} \left[ -mc^2 + \frac{1}{2}m\dot{\mathbf{x}}^2 - m\Phi(x) \right] dt$$
+
+Why did we choose this action? One motivation is that the low-velocity approximation gives us a potential energy term that is proportional to $m$ ($V = m\Phi$), which is exactly the definition of Newtonian gravitational potential energy.
+
+How do we ensure this action is reparameterization invariant and preserves spacetime symmetries? The $1$ in the Taylor approximation actually originates from the time component of the flat Minkowski metric, $-\eta_{00}$. To incorporate gravity, we promote this constant to a coordinate-dependent metric component, $-g_{00}(x) = 1 + \frac{2\Phi(x)}{c^2}$.
+
+Of course, once we've done this to the time component, we are no longer in Minkowski spacetime. We use a general metric tensor $g_{\mu\nu}$. Because $g_{00}$ is dependent on the coordinates, it means that to maintain **general covariance** (invariance under arbitrary coordinate transformations, which replaces global Lorentz invariance in General Relativity), we need to ensure the spatial and off-diagonal components of the metric can also dynamically respond to spacetime curvature.
+
+Just as in the previous two situations, the fully contracted spacetime velocity terms are parameter invariant. This indicates that we can write a generalized covariant line element and place it directly inside our Lagrangian:
+
+$$S_2 = -mc \int_{\sigma_1}^{\sigma_2} \sqrt{-g_{\mu\nu}(x) \frac{dx^\mu}{d\sigma} \frac{dx^\nu}{d\sigma}} d\sigma$$
+
+This describes a particle moving in curved spacetime. The components of the metric $g_{\mu\nu}$ are deduced from the Einstein Field Equations, but even without them, we can see that modifying the $g_{00}$ term correctly reduces to Newtonian motion in the low-velocity, weak-field approximation as seen above.
+
+Applying the Euler-Lagrange equations, we see that just as the free-particle non-relativistic action yields $m\ddot{x}_i = 0$, the curved spacetime action yields free-fall along geodesics. yields the geodesic equation: 
+
+$$\frac{d^2x^\mu}{d\tau^2} + \Gamma^\mu_{\alpha\beta}\frac{dx^\alpha}{d\tau}\frac{dx^\beta}{d\tau} = 0$$
+
+where the Christoffel symbols are given by
+
+$$\Gamma^\lambda_{\mu\nu} = \frac{1}{2} g^{\lambda\rho} \left( \partial_\mu g_{\nu\rho} + \partial_\nu g_{\rho\mu} - \partial_\rho g_{\mu\nu} \right)$$
+
 ## References
 - [Eigenchris Relativity Playlist](https://www.youtube.com/playlist?list=PLJHszsWbB6hqlw73QjgZcFh4DrkQLSCQa)
 - Ch 01 of Classical Field Theory by Joel Franklin
