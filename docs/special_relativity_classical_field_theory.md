@@ -507,6 +507,13 @@ Because $\mathbf{F}$ and $\mathbf{a}$ do not scale by a single scalar constant, 
 
 The particle's effective inertia is $\gamma^3 m$. It is significantly harder to accelerate a relativistic particle along its path of motion than it is to deflect it laterally.
 
+#### 4-force is not a gradient like the 3-force
+In classical mechanics, a conservative force is simply the negative gradient of a scalar potential: $F^\alpha=-m\partial^\alpha\Phi$, where $\alpha \in \{1,2,3\}$ represents the spatial dimensions. What prevents us from just upgrading this to a 4-vector equation by letting the index cover time as well: $ma^i=-\partial^i\Phi$.
+
+Since velocity and acceleration are always orthogonal, $a^i u_i=0$. If we substitiute this into our hypothetical equation: $m(a^i u_i)=-(\partial^i\Phi)u_i$, and so $0=-u^i\partial_i\Phi$. From the chain rule, we get that $u^i\partial_i\Phi=\frac{dx^i}{d\tau}\frac{\partial\Phi}{\partial x^i} =\frac{d\Phi}{d\tau}$. This is a pretty boring and useless potential field. As the particle travels along its worldline (advancing its proper time $\tau$), the potential field $\Phi$ it experiences cannot change. The particle will never convert potential into kinetic energy.
+
+What other options do we have to construct a 4-force such that $F^i u_i=0$ without forcing the particle to stay at a constant potential? By constructing the force using an antisymmetric tensor multiplied by the 4-velocity. The canonical example is the electromagnetic Lorentz force. Because you are contracting an antisymmetric tensor ($F^{ik}$) with a symmetric product of vectors ($u_k u_i$), the sum automatically evaluates to exactly zero.
+
 ## Hyperbolic Formulation
 
 The Lorentz transformation naturally maps to hyperbolic geometry, satisfying the constant hyperbolic curve $(ct)^2-x^2=\text{constant}$:
@@ -750,6 +757,100 @@ Depending on how you define the origin of the Rindler chart, the accelerating ob
 * **Horizon Origin:** The object is defined to sit exactly at $X=c^2/a$.
 
 ## Classical Field Theory
+
+## Principle of Least Action in Special Relativity
+
+Let us start by applying the principle to a free particle (i.e. it has no forces acting on it) in non-relativistic physics. Since $L = T - V$ and $V$ can be ignored as there is no force and therefore no gradient in the potential, we can set $L = T$, which is just the kinetic energy. $L = \frac{1}{2}mv^2$, or written in component notation, $L = \frac{1}{2}m\dot{x}_i\dot{x}^i$.
+
+Applying the Euler-Lagrange equations gives us the equations of motion using $t$ as the parameter:
+
+$$\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{x}^i}\right) - \frac{\partial L}{\partial x^i} = 0$$
+
+Since $\frac{\partial L}{\partial x^i} = 0$ (there is no coordinate dependence) and $\frac{\partial L}{\partial \dot{x}^i} = m\dot{x}_i$, the equation of motion reduces to $m\ddot{x}_i = 0$.
+
+When we move to relativistic particles, we start with the spacetime interval $ds^2$. The Action is proportional to the proper time along the worldline, $S \propto \int ds$. Using a generic parameter $\sigma$ to parameterize the path, and adopting the Minkowski metric $\eta_{\mu\nu}$, we can write the Lagrangian as:
+
+$$L = -mc\sqrt{-\eta_{\mu\nu}\dot{x}^\mu\dot{x}^\nu}$$
+
+where $\dot{x}^\mu = \frac{dx^\mu}{d\sigma}$.
+
+The Action then becomes:
+
+$$S = \int_{\sigma_1}^{\sigma_2} L d\sigma = -mc \int_{\sigma_1}^{\sigma_2} \sqrt{-\eta_{\mu\nu}\frac{dx^\mu}{d\sigma}\frac{dx^\nu}{d\sigma}} d\sigma$$
+
+A few things to note about the Action:
+
+The $mc$ term is needed to ensure the Action has dimensions of energy $\times$ time.
+    
+The Action is Lorentz invariant since all the dummy indices are contracted, which means all the terms are scalars, which are naturally Lorentz invariant.    
+
+We have used $\sigma$ as the parameter of the functionals. In the non-relativistic case, we used time $t$, however with Special Relativity, coordinate time depends on the reference frame, so which $t$ should we use? One obvious choice is the proper time $\tau$ which is invariant. But it turns out that in this Action, we can choose any parameter and get away with it. The only constraint is the mathematical one that it monotonically increases along a worldline, because that is literally the job of the parameter.
+    
+
+This is because the two $d\sigma$ terms in the denominator in the square root cancel out the one on the outside. So if we chose a new parameter $\lambda$, we can rewrite all the derivatives in terms of $\lambda$, and they would cancel out the $\frac{d\lambda}{d\sigma}$ term on the outside.
+
+Why does this matter? The Action must be reparameterization invariant because when a mathematical quantity is parameter-independent, it means the final numerical value you calculate does not depend on how you choose to label or parametrize the path. The value is not an artifact of the choice of coordinate system. It must be a direct property of the geometric curve itself. It describes a real physical reality (like the actual aging of a particle or the true spacetime distance between events) rather than a mathematical illusion created by a lucky coordinate choice.
+
+Additionally, because the parameter $\sigma$ is physically meaningless, it acts as a "gauge" degree of freedom. This grants us the mathematical liberty to choose whatever parameter makes solving our differential equations the easiest for a given problem.
+
+The Action must be Lorentz invariant because the equations of Special Relativity must hold i.e. when we transform the coordinates of an inertial observer, the physics looks exactly the same, and the metric doesn't morph into a complicated, position-dependent tensor. 
+
+To see the difference between what Lorentz invariance adds to the table that reparameterization invariance doesn't, imagine we created a completely geometric, reparameterization-independent action, but deliberately broke Lorentz invariance by using a Euclidean metric $\delta_{\mu\nu} = \text{diag}(1, 1, 1, 1)$ instead of the Minkowski metric:
+
+$$S_{\text{wrong}}=\int \sqrt{\delta_{\mu\nu}\frac{dx^\mu}{d\lambda}\frac{dx^\nu}{d\lambda}} d\lambda$$
+
+This action is perfectly geometric and independent of our mathematical choices of path labeling ($\lambda$). However, it describes a universe where space and time are treated exactly the same, meaning the speed of light is not constant, there is no cosmic speed limit, and moving observers would see the laws of physics change. In a Euclidean metric, the distance between any two distinct points is strictly positive, meaning there are no null paths ($ds^2=0$) and therefore no absolute structure separating past, future, and elsewhere.
+
+### Canonical Momentum is 4-Momentum
+The invariant spacetime interval $ds^2$ is related to proper time $\tau$ by $ds^2=-c^2d\tau^2$. We can also write $ds^2$ in terms of the metric:
+
+$$-c^2d\tau^2=\eta_{\mu\nu}dx^\mu dx^\nu$$
+
+$$cd\tau=\sqrt{-\eta_{\mu\nu}dx^\mu dx^\nu}$$
+
+Now, divide both sides by the arbitrary parameter differential $d\sigma$:
+
+$$c\frac{d\tau}{d\sigma}=\sqrt{-\eta_{\mu\nu}\frac{dx^\mu}{d\sigma}\frac{dx^\nu}{d\sigma}}$$
+
+Notice that the right side of this equation is the square root term from the Lagrangian. Therefore, we can substitute this into the Lagrangian:
+
+$$L=-mc\left(c\frac{d\tau}{d\sigma}\right)=-mc^2\frac{d\tau}{d\sigma}$$
+
+$$\frac{d\tau}{d\sigma}=-\frac{L}{mc^2}$$
+
+The canonical momentum conjugate is $p_\mu=\frac{\partial L}{\partial\dot{x}^\mu}$
+
+Using the Lagrangian $L=-mc(-\eta_{\alpha\beta}\dot{x}^\alpha\dot{x}^\beta)^{1/2}$:
+
+$$p_\mu=-mc\left[\frac{1}{2}(-\eta_{\alpha\beta}\dot{x}^\alpha\dot{x}^\beta)^{-1/2}\right]\frac{\partial}{\partial\dot{x}^\mu}(-\eta_{\alpha\beta}\dot{x}^\alpha\dot{x}^\beta)$$
+
+Using the chain rule, the derivative of the term inside the parenthesis is $-2\eta_{\mu\nu}\dot{x}^\nu$. Substituting this back in:
+
+$$p_\mu=-mc\left[\frac{1}{2\sqrt{-\eta_{\alpha\beta}\dot{x}^\alpha\dot{x}^\beta}}\right](-2\eta_{\mu\nu}\dot{x}^\nu)$$
+
+$$p_\mu=\frac{mc\eta_{\mu\nu}\dot{x}^\nu}{\sqrt{-\eta_{\alpha\beta}\dot{x}^\alpha\dot{x}^\beta}}$$
+
+The denominator is equal to $c\frac{d\tau}{d\sigma}$. We substitute this into our momentum equation:
+
+$$p_\mu=\frac{mc\eta_{\mu\nu}\frac{dx^\nu}{d\sigma}}{c\frac{d\tau}{d\sigma}}$$
+
+The $c$ terms cancel, and the $d\sigma$ terms in the differentials cancel out via the chain rule ($\frac{dx^\nu}{d\sigma} \frac{d\sigma}{d\tau} = \frac{dx^\nu}{d\tau}$):
+
+$$p_\mu=m\eta_{\mu\nu}\frac{dx^\nu}{d\tau}$$
+
+This is the covariant canonical momentum (index down). To compare it to the contravariant 4-momentum $P^\mu$ (index up), we raise the index using the inverse metric tensor $\eta^{\rho\mu}$:
+
+$$p^\rho=\eta^{\rho\mu}p_\mu=m\eta^{\rho\mu}\eta_{\mu\nu}\frac{dx^\nu}{d\tau}$$
+
+Since $\eta^{\rho\mu}\eta_{\mu\nu}$ is the Kronecker delta $\delta^\rho_\nu$ (the identity matrix), it simply swaps the index from $\nu$ to $\rho$:
+
+$$p^\rho=m\frac{dx^\rho}{d\tau}$$
+
+Relabeling the dummy index $\rho$ back to $\mu$ yields:
+
+$$p^\mu=m\frac{dx^\mu}{d\tau}$$
+
+This is just the definition of 4-momentum. So, the canonical momentum derived from the action principle is physically identical to the kinematic 4-momentum: $P^\mu \equiv p^\mu$
 
 ## References
 - [Eigenchris Relativity Playlist](https://www.youtube.com/playlist?list=PLJHszsWbB6hqlw73QjgZcFh4DrkQLSCQa)
