@@ -1,0 +1,1782 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../quantum_physics/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>1. Special Relativity and Classical Field Theory - Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-special-relativity-and-classical-field-theory" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Notes" class="md-header__button md-logo" aria-label="Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1. Special Relativity and Classical Field Theory
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Notes" class="md-nav__button md-logo" aria-label="Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quantum_information_theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Quantum Information Theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quantum_physics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Quantum Physics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Special Relativity and Classical Field Theory
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Special Relativity and Classical Field Theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#special-relativity-fundamental-postulates-and-the-lorentz-transformation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Special Relativity: Fundamental Postulates and the Lorentz Transformation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Special Relativity: Fundamental Postulates and the Lorentz Transformation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deriving-the-lorentz-transformation-in-1-spatial-dimension" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deriving the Lorentz Transformation (in 1 spatial dimension)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boosts-rotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boosts &amp; Rotations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lie-algebra-of-the-lorentz-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lie Algebra of the Lorentz Group
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-spacetime-interval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Spacetime Interval
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Spacetime Interval">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proper-time-proper-length" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proper Time &amp; Proper Length
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#an-illustrative-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        An Illustrative Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connection-to-the-relativistic-doppler-effect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connection to the Relativistic Doppler Effect
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spacetime-diagrams-and-causality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spacetime Diagrams and Causality
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-vectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4-Vectors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4-Vectors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#4-velocity-4-momentum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4-Velocity &amp; 4-momentum
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4-Velocity &amp; 4-momentum">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#4-velocity-momentum-are-conserved-not-just-invariant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4-Velocity &amp; Momentum Are Conserved, Not Just Invariant
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-energy-space-momentum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time, Energy, Space &amp; Momentum
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conservation-of-momentum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conservation of Momentum
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-acceleration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4-Acceleration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4-Acceleration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-of-transforming-from-the-rest-frame-to-the-lab-frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example of Transforming From The Rest Frame to the Lab Frame
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relationship-between-4-force-and-4-acceleration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relationship Between 4-Force and 4-Acceleration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Relationship Between 4-Force and 4-Acceleration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-4-vector-relationship" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The 4-vector Relationship
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-relativistic-3-vector-relationship" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Relativistic 3-vector Relationship
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-force-is-not-a-gradient-like-the-3-force" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4-force is not a gradient like the 3-force
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hyperbolic-formulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hyperbolic Formulation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hyperbolic Formulation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bells-paradox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bell's Paradox
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rindler-coordinates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rindler Coordinates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tying-hyperbolic-motion-back-to-force-acceleration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tying Hyperbolic Motion Back to Force &amp; Acceleration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#useful-formulas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Useful Formulas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classical-field-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Classical Field Theory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#principle-of-least-action-in-special-relativity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Principle of Least Action in Special Relativity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Principle of Least Action in Special Relativity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#properties-of-a-successful-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties of a "Successful" Action
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameterization-with-proper-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameterization with Proper Time
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#canonical-momentum-is-4-momentum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canonical Momentum is 4-Momentum
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#action-with-potentials-in-electromagnetism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Action with Potentials in Electromagnetism
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#action-with-potentials-in-gravity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Action with Potentials in Gravity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#special-relativity-fundamental-postulates-and-the-lorentz-transformation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Special Relativity: Fundamental Postulates and the Lorentz Transformation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Special Relativity: Fundamental Postulates and the Lorentz Transformation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deriving-the-lorentz-transformation-in-1-spatial-dimension" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deriving the Lorentz Transformation (in 1 spatial dimension)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boosts-rotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boosts &amp; Rotations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lie-algebra-of-the-lorentz-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lie Algebra of the Lorentz Group
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-spacetime-interval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Spacetime Interval
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Spacetime Interval">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proper-time-proper-length" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proper Time &amp; Proper Length
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#an-illustrative-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        An Illustrative Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connection-to-the-relativistic-doppler-effect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connection to the Relativistic Doppler Effect
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spacetime-diagrams-and-causality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spacetime Diagrams and Causality
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-vectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4-Vectors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4-Vectors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#4-velocity-4-momentum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4-Velocity &amp; 4-momentum
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4-Velocity &amp; 4-momentum">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#4-velocity-momentum-are-conserved-not-just-invariant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4-Velocity &amp; Momentum Are Conserved, Not Just Invariant
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-energy-space-momentum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time, Energy, Space &amp; Momentum
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conservation-of-momentum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conservation of Momentum
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-acceleration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4-Acceleration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4-Acceleration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-of-transforming-from-the-rest-frame-to-the-lab-frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example of Transforming From The Rest Frame to the Lab Frame
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relationship-between-4-force-and-4-acceleration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relationship Between 4-Force and 4-Acceleration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Relationship Between 4-Force and 4-Acceleration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-4-vector-relationship" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The 4-vector Relationship
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-relativistic-3-vector-relationship" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Relativistic 3-vector Relationship
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-force-is-not-a-gradient-like-the-3-force" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4-force is not a gradient like the 3-force
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hyperbolic-formulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hyperbolic Formulation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hyperbolic Formulation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bells-paradox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bell's Paradox
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rindler-coordinates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rindler Coordinates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tying-hyperbolic-motion-back-to-force-acceleration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tying Hyperbolic Motion Back to Force &amp; Acceleration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#useful-formulas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Useful Formulas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classical-field-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Classical Field Theory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#principle-of-least-action-in-special-relativity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Principle of Least Action in Special Relativity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Principle of Least Action in Special Relativity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#properties-of-a-successful-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties of a "Successful" Action
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameterization-with-proper-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameterization with Proper Time
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#canonical-momentum-is-4-momentum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canonical Momentum is 4-Momentum
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#action-with-potentials-in-electromagnetism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Action with Potentials in Electromagnetism
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#action-with-potentials-in-gravity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Action with Potentials in Gravity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="1-special-relativity-and-classical-field-theory">1. Special Relativity and Classical Field Theory<a class="headerlink" href="#1-special-relativity-and-classical-field-theory" title="Permanent link">&para;</a></h1>
+<h2 id="special-relativity-fundamental-postulates-and-the-lorentz-transformation">Special Relativity: Fundamental Postulates and the Lorentz Transformation<a class="headerlink" href="#special-relativity-fundamental-postulates-and-the-lorentz-transformation" title="Permanent link">&para;</a></h2>
+<p>Galilean relativity assumes that every observer sees the "same" time; i.e., time is invariant across different inertial reference frames. Special Relativity, however, assumes the speed of light <span class="arithmatex">\(c\)</span> is invariant in all inertial reference frames. If we look at the equation for velocity <span class="arithmatex">\(v = \frac{\Delta l}{\Delta t}\)</span>, in Galilean relativity, since <span class="arithmatex">\(\Delta t\)</span> is fixed for everyone, it is <span class="arithmatex">\(\Delta l\)</span> and <span class="arithmatex">\(v\)</span> that are correlated. However, in Special Relativity, since the speed of light <span class="arithmatex">\(c\)</span> is fixed, <span class="arithmatex">\(\Delta l\)</span> and <span class="arithmatex">\(\Delta t\)</span> are correlated.</p>
+<p>Special Relativity also assumes that spacetime is flat and isotropic, and the laws of physics are identical everywhere, implying no reference frame is absolute or special.</p>
+<p>From these postulates, we derive the Lorentz transformation, which defines the coordinate mapping from a rest frame to a moving reference frame. For a frame moving in the <span class="arithmatex">\(x\)</span>-direction with velocity <span class="arithmatex">\(v\)</span>:</p>
+<div class="arithmatex">\[\begin{bmatrix}ct'\\x'\end{bmatrix}=\begin{bmatrix}\gamma&amp;-\gamma\beta\\-\gamma\beta&amp;\gamma\end{bmatrix}\begin{bmatrix}ct\\x\end{bmatrix}\]</div>
+<p>where <span class="arithmatex">\(\beta=\frac{v}{c}\)</span> and <span class="arithmatex">\(\gamma=\frac{1}{\sqrt{1-\beta^2}}\)</span></p>
+<p>By symmetry, the inverse transformation flips the sign of <span class="arithmatex">\(\beta\)</span>:</p>
+<div class="arithmatex">\[\begin{bmatrix}ct'\\x'\end{bmatrix}=\begin{bmatrix}\gamma&amp;+\gamma\beta\\+\gamma\beta&amp;\gamma\end{bmatrix}\begin{bmatrix}ct\\x\end{bmatrix}\]</div>
+<p>Transformations for basis vectors and components are complementary. Components transform contravariantly, while basis vectors transform covariantly. </p>
+<p>Note that since <span class="arithmatex">\(c\)</span> is now a constant, we can start talking about time in terms of distance, which is why we introduce <span class="arithmatex">\(ct\)</span>, so that all coordinates are in the dimensions of length.</p>
+<p>The above matrix is called the Lorentz boost for one spatial coordinate. The general matrix for all 3 spatial coordinates is a bit more complicated.</p>
+<p>The components of this symmetric matrix are:</p>
+<ul>
+<li>
+<p>Time-time component: <span class="arithmatex">\(\Lambda^0_{\phantom{0}0}=\gamma\)</span></p>
+</li>
+<li>
+<p>Time-space components: <span class="arithmatex">\(\Lambda^0_{\phantom{0}i}=\Lambda^i_{\phantom{i}0}=-\gamma\beta_i\)</span></p>
+</li>
+<li>
+<p>Space-space components: <span class="arithmatex">\(\Lambda^i_{\phantom{i}j}=\delta_{ij}+(\gamma-1)\frac{\beta_i\beta_j}{\beta^2}\)</span></p>
+</li>
+</ul>
+<div class="arithmatex">\[\Lambda = \begin{bmatrix} \gamma &amp; -\gamma\beta_x &amp; -\gamma\beta_y &amp; -\gamma\beta_z \\ -\gamma\beta_x &amp; 1+(\gamma-1)\frac{\beta_x^2}{\beta^2} &amp; (\gamma-1)\frac{\beta_x\beta_y}{\beta^2} &amp; (\gamma-1)\frac{\beta_x\beta_z}{\beta^2} \\ -\gamma\beta_y &amp; (\gamma-1)\frac{\beta_y\beta_x}{\beta^2} &amp; 1+(\gamma-1)\frac{\beta_y^2}{\beta^2} &amp; (\gamma-1)\frac{\beta_y\beta_z}{\beta^2} \\ -\gamma\beta_z &amp; (\gamma-1)\frac{\beta_z\beta_x}{\beta^2} &amp; (\gamma-1)\frac{\beta_z\beta_y}{\beta^2} &amp; 1+(\gamma-1)\frac{\beta_z^2}{\beta^2} \end{bmatrix}\]</div>
+<p>If we set <span class="arithmatex">\(\beta_y=0\)</span> and <span class="arithmatex">\(\beta_z=0\)</span>, the off-diagonal spatial terms vanish, and the matrix reduces to the standard one-dimensional boost along the x-axis.</p>
+<h3 id="deriving-the-lorentz-transformation-in-1-spatial-dimension">Deriving the Lorentz Transformation (in 1 spatial dimension)<a class="headerlink" href="#deriving-the-lorentz-transformation-in-1-spatial-dimension" title="Permanent link">&para;</a></h3>
+<p>Because the transformation must be linear, the equation relating position <span class="arithmatex">\(x'\)</span> in <span class="arithmatex">\(S'\)</span> to coordinates <span class="arithmatex">\((x, t)\)</span> in <span class="arithmatex">\(S\)</span> must take the form:</p>
+<div class="arithmatex">\[x' = A x + B t\]</div>
+<p>Let's look at the origin of frame <span class="arithmatex">\(S'\)</span>. By definition, its coordinate in <span class="arithmatex">\(S'\)</span> is always <span class="arithmatex">\(x'=0\)</span>. In frame <span class="arithmatex">\(S\)</span>, this origin is moving at velocity <span class="arithmatex">\(v\)</span>, so its position is <span class="arithmatex">\(x=vt\)</span>. Substituting these into the linear equation gives:</p>
+<div class="arithmatex">\[0 = A(vt) + Bt \implies B = -Av\]</div>
+<p>Substituting <span class="arithmatex">\(B\)</span> back into our linear equation, we get:</p>
+<div class="arithmatex">\[x' = A(x - vt)\]</div>
+<p>By the Principle of Relativity, neither frame is special. From the perspective of <span class="arithmatex">\(S'\)</span>, frame <span class="arithmatex">\(S\)</span> is moving in the negative <span class="arithmatex">\(x'\)</span>-direction at velocity <span class="arithmatex">\(-v\)</span>. Because space is isotropic, the scaling factor <span class="arithmatex">\(A\)</span> must be identical for both frames. We will call this constant <span class="arithmatex">\(\gamma\)</span>.</p>
+<p>This gives us a symmetric pair of transformation equations:</p>
+<div class="arithmatex">\[x' = \gamma(x - vt)\]</div>
+<div class="arithmatex">\[x = \gamma(x' + vt')\]</div>
+<p>To find <span class="arithmatex">\(\gamma\)</span>, we invoke the second postulate. Imagine a flash of light is emitted at the exact moment the origins coincide (<span class="arithmatex">\(t=t'=0\)</span>).</p>
+<p>Because the speed of light is <span class="arithmatex">\(c\)</span> in both frames, the position of the light wavefront along the <span class="arithmatex">\(x\)</span>-axis must satisfy:
+In frame <span class="arithmatex">\(S\)</span>: </p>
+<div class="arithmatex">\[x = ct\]</div>
+<p>In frame <span class="arithmatex">\(S'\)</span>: </p>
+<div class="arithmatex">\[x' = ct'\]</div>
+<p>Substitute these expressions for <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(x'\)</span> into our symmetric transformation equations:</p>
+<div class="arithmatex">\[ct' = \gamma(ct - vt) = \gamma t(c - v)\]</div>
+<div class="arithmatex">\[ct = \gamma(ct' + vt') = \gamma t'(c + v)\]</div>
+<p>Now, multiply these two equations together:</p>
+<div class="arithmatex">\[c^2 t t' = \gamma^2 t t' (c - v)(c + v)\]</div>
+<p>Divide both sides by <span class="arithmatex">\(t t'\)</span> (assuming <span class="arithmatex">\(t&gt;0\)</span>) and expand the right side:</p>
+<div class="arithmatex">\[c^2 = \gamma^2 (c^2 - v^2)\]</div>
+<p>Solve for <span class="arithmatex">\(\gamma^2\)</span>:</p>
+<div class="arithmatex">\[\gamma^2 = \frac{c^2}{c^2 - v^2} = \frac{1}{1 - v^2/c^2}\]</div>
+<p>Taking the positive root (since axes are aligned in the same direction), we obtain the Lorentz factor:</p>
+<div class="arithmatex">\[\gamma = \frac{1}{\sqrt{1 - v^2/c^2}}\]</div>
+<p>We have the spatial transformation <span class="arithmatex">\(x'\)</span> and the factor <span class="arithmatex">\(\gamma\)</span>. We now need to find how time transforms (<span class="arithmatex">\(t'\)</span>). We start with the inverse spatial equation:</p>
+<div class="arithmatex">\[x = \gamma(x' + vt')\]</div>
+<p>Substitute the expression for <span class="arithmatex">\(x'\)</span> (<span class="arithmatex">\(x' = \gamma(x - vt)\)</span>) into this equation:</p>
+<div class="arithmatex">\[x = \gamma(\gamma(x - vt) + vt')\]</div>
+<p>Expand and isolate the <span class="arithmatex">\(t'\)</span> term:</p>
+<div class="arithmatex">\[x = \gamma^2 x - \gamma^2 vt + \gamma v t'\]</div>
+<div class="arithmatex">\[\gamma v t' = x - \gamma^2 x + \gamma^2 vt\]</div>
+<div class="arithmatex">\[t' = \gamma t + \frac{x(1 - \gamma^2)}{\gamma v}\]</div>
+<p>To simplify the fraction on the right, we express <span class="arithmatex">\((1 - \gamma^2)\)</span> in terms of <span class="arithmatex">\(v\)</span> and <span class="arithmatex">\(c\)</span>:</p>
+<div class="arithmatex">\[1 - \gamma^2 = 1 - \frac{1}{1 - v^2/c^2} = \frac{1 - v^2/c^2 - 1}{1 - v^2/c^2} = \frac{-v^2/c^2}{1 - v^2/c^2} = -\frac{v^2}{c^2}\gamma^2\]</div>
+<p>Substitute this back into our equation for <span class="arithmatex">\(t'\)</span>:</p>
+<div class="arithmatex">\[t' = \gamma t + \frac{x(-\frac{v^2}{c^2}\gamma^2)}{\gamma v}\]</div>
+<div class="arithmatex">\[t' = \gamma t - \gamma \frac{vx}{c^2}\]</div>
+<div class="arithmatex">\[t' = \gamma\left(t - \frac{vx}{c^2}\right)\]</div>
+<h3 id="boosts-rotations">Boosts &amp; Rotations<a class="headerlink" href="#boosts-rotations" title="Permanent link">&para;</a></h3>
+<p>The Lorentz boost matrix is only one case of the general Lorentz transformation, which also includes pure spatial rotations. For example, a spatial rotation in the <span class="arithmatex">\(xy\)</span>-plane is represented by the following block-diagonal Lorentz matrix:</p>
+<div class="arithmatex">\[\Lambda=\begin{bmatrix}1&amp;0&amp;0&amp;0\\0&amp;\cos\theta&amp;-\sin\theta&amp;0\\0&amp;\sin\theta&amp;\cos\theta&amp;0\\0&amp;0&amp;0&amp;1\end{bmatrix}\]</div>
+<p>Together, boosts and rotations form the Lorentz group, denoted as <span class="arithmatex">\(O(1,3)\)</span>, defined universally as the set of all linear transformations (represented by <span class="arithmatex">\(4 \times 4\)</span> matrices <span class="arithmatex">\(\Lambda\)</span>) that leave the Minkowski metric <span class="arithmatex">\(\eta_{\mu\nu}\)</span> invariant. The defining equation is:</p>
+<div class="arithmatex">\[\Lambda^\mu_\rho\eta_{\mu\nu}\Lambda^\nu_\sigma=\eta_{\rho\sigma}\]</div>
+<p>In matrix notation, this is written as <span class="arithmatex">\(\Lambda^T\eta\Lambda=\eta\)</span>, where <span class="arithmatex">\(\eta\)</span> is the Minkowski metric (more on this in the next section). Any matrix that satisfies this exact condition is a valid Lorentz transformation. In other words, any transformation that leaves the spacetime interval (more on this in the next section) invariant satisfies it. </p>
+<p>Considering that boosts satisfy this relationship, it is not surprising that spatial rotations also satisfy it. Since the invariant spacetime interval is given by <span class="arithmatex">\(ds^2=-c^2dt^2+dx^2+dy^2+dz^2\)</span>, and a spatial rotation does not touch the time component while leaving the Euclidean distance <span class="arithmatex">\(dx^2+dy^2+dz^2\)</span> unchanged, the total spacetime interval <span class="arithmatex">\(ds^2\)</span> is also left unchanged. This is also conceptually as expected, since Special Relativity requires that no inertial reference frame is special, that is to say, the laws of physics should be the same in all inertial reference frames. This means that rotating into another reference frame should not change any of our equations.</p>
+<p>Like standard spatial rotations, Lorentz transformations generally do not commute with each other. You cannot multiply the matrices any which way. For example, if you apply the rotation first, you change the orientation of the spatial axes. If you then apply a boost strictly along the <span class="arithmatex">\(x\)</span>-axis, you are boosting along the original <span class="arithmatex">\(x\)</span>-axis, which now corresponds to a different physical direction relative to the rotated particle.</p>
+<p>If you apply the boost first, the particle gains velocity along the <span class="arithmatex">\(x\)</span>-axis. If you subsequently apply the rotation, you are rotating the velocity vector itself into a new direction, mixing the boosted <span class="arithmatex">\(x\)</span>-coordinates with the unboosted spatial coordinates. </p>
+<p>However, when the plane of rotation is completely orthogonal to the direction of the boost, they do commute. For example, if you apply a boost along the <span class="arithmatex">\(x\)</span>-axis, the transformation only affects the <span class="arithmatex">\(t\)</span> and <span class="arithmatex">\(x\)</span> coordinates. If you apply a spatial rotation in the <span class="arithmatex">\(yz\)</span>-plane, it only affects the <span class="arithmatex">\(y\)</span> and <span class="arithmatex">\(z\)</span> coordinates. Because the matrices operate on entirely separate, orthogonal subspaces, their matrix multiplication commutes.</p>
+<h3 id="lie-algebra-of-the-lorentz-group">Lie Algebra of the Lorentz Group<a class="headerlink" href="#lie-algebra-of-the-lorentz-group" title="Permanent link">&para;</a></h3>
+<p>In the Lie algebra of the Lorentz group, The 3 <span class="arithmatex">\(K_i\)</span> are the generators of boosts and 3 <span class="arithmatex">\(J_i\)</span> are the generators of rotations. Their commutation relations dictate how the operations interact.</p>
+<p>The commutator of two boosts in different directions generates a rotation: <span class="arithmatex">\([K_i,K_j]=-i\epsilon_{ijk}J_k\)</span>. Thus, if you apply a boost in the <span class="arithmatex">\(x\)</span>-direction followed by a boost in the <span class="arithmatex">\(y\)</span>-direction, the result is not just a single combined boost in the <span class="arithmatex">\(xy\)</span>-plane. It results in a combined boost plus an induced spatial rotation. In physics, this induced relativistic rotation is known as Thomas precession (or Wigner rotation).</p>
+<p>A Lorentz transformation matrix may represent a boost, a rotation or both. It can be generated by exponentiating a linear combination of six fundamental generators, written as:</p>
+<div class="arithmatex">\[\Lambda = \exp\left( \sum_{i=1}^3 \theta^i J_i + \sum_{i=1}^3 \phi^i K_i \right)\]</div>
+<p>To take the exponent of a matrix, we evaluate the matrix exponential, which is defined by the infinite Taylor series expansion:</p>
+<div class="arithmatex">\[\exp(M)=I+M+\frac{1}{2!}M^2+\frac{1}{3!}M^3+\dots=\sum_{n=0}^{\infty}\frac{1}{n!}M^n\]</div>
+<p>For pure rotations, the matrix argument is <span class="arithmatex">\(M=\theta J\)</span>. The rotation generators <span class="arithmatex">\(J\)</span> are anti-Hermitian matrices, which means <span class="arithmatex">\(J^2=-I\)</span>. The Taylor series gives the sequence of matrix powers with alternating signs:</p>
+<div class="arithmatex">\[\exp(\theta J)=I+\theta J-\frac{1}{2!}\theta^2 I-\frac{1}{3!}\theta^3 J+\frac{1}{4!}\theta^4 I+\dots\]</div>
+<p>Seperately grouping terms containing <span class="arithmatex">\(I\)</span> and <span class="arithmatex">\(J\)</span>:</p>
+<div class="arithmatex">\[\exp(\theta J)=I\left(1-\frac{1}{2!}\theta^2+\frac{1}{4!}\theta^4-\dots\right)+J\left(\theta-\frac{1}{3!}\theta^3+\dots\right)\]</div>
+<p>This reduces to <span class="arithmatex">\(\exp(\theta J)=I\cos\theta+J\sin\theta\)</span>.</p>
+<p>For boosts, the boost generators <span class="arithmatex">\(K\)</span> are Hermitian, so <span class="arithmatex">\(K^2=I\)</span>. The Taylor series can be written as:</p>
+<div class="arithmatex">\[\exp(\phi K)=I+\phi K+\frac{1}{2!}\phi^2 I+\frac{1}{3!}\phi^3 K+\frac{1}{4!}\phi^4 I+\dots\]</div>
+<div class="arithmatex">\[=I\left(1+\frac{1}{2!}\phi^2+\frac{1}{4!}\phi^4+\dots\right)+K\left(\phi+\frac{1}{3!}\phi^3+\dots\right)\]</div>
+<div class="arithmatex">\[\exp(\phi K)=I\cosh\phi+K\sinh\phi\]</div>
+<p>If the exponent contains both rotations and boosts simultaneously (<span class="arithmatex">\(\sum\theta^i J_i+\sum\phi^i K_i\)</span>), the expansion becomes significantly more complex.</p>
+<h2 id="the-spacetime-interval">The Spacetime Interval<a class="headerlink" href="#the-spacetime-interval" title="Permanent link">&para;</a></h2>
+<p>Using the Lorentz transformation, we can see that what is called the spacetime interval squared <span class="arithmatex">\(ds^2=(c.dt)^2-dx^2\)</span> is the same in all reference frames. Another way of saying that is that it is invariant under coordinate transformation. Each of the coordinates in this equation is actually an infinitesimal difference between two events. This geometry is encoded in the Minkowski metric tensor. Using the <span class="arithmatex">\((+, -, -, -)\)</span> signature convention, the diagonal elements are <span class="arithmatex">\((1, -1, -1, -1)\)</span>, and all off-diagonal elements are 0. <span class="arithmatex">\(ds\)</span> is also called the line element. This invariance is exactly the same thing as was discussed above in terms of Lorentz invariance.</p>
+<p><strong>Note:</strong> It is only the infinitesimal spacetime interval that is invariant in all reference frames, including non-inertial ones since we can consider any situation as inertial when taking the infinitesimal limit. If we take a macroscopic finite interval (<span class="arithmatex">\(\Delta s^2\)</span>), it will be invariant in all inertial reference frames but not necessarily in non-inertial frames. If the worldline is simply straight, the infinitesimal amounts add up straightforwardly. If however we have situations where the worldline is not simply linear, like in the Twin Paradox where the spaceship turns around, or a spaceship under constant acceleration, we must integrate the infinitesimal amounts over some parameter (usually <span class="arithmatex">\(\tau\)</span>) to arrive at the actual spacetime interval between two events.</p>
+<h3 id="proper-time-proper-length">Proper Time &amp; Proper Length<a class="headerlink" href="#proper-time-proper-length" title="Permanent link">&para;</a></h3>
+<p>Suppose we were to measure the elapsed time between two events at the same coordinates. Since <span class="arithmatex">\(s\)</span> is invariant in all reference frames, the measurement of elapsed time will be minimum in the rest frame of the two events because the <span class="arithmatex">\(x^2\)</span> term is zero for the rest frame and positive for all other moving frames. This minimum time is called the proper time <span class="arithmatex">\(\tau\)</span>. Since it depends only on the spacetime interval and the constant <span class="arithmatex">\(c\)</span>, it is also invariant. It plays an important role in deriving other invariants from the spacetime interval.</p>
+<p>Similarly, a measurement of length involves two events separated spatially. In the objects rest frame, since the object is not moving, the length can be measured by noting the coordinates of each end of the object at different points in time. However, in a moving reference frame, we must make the coordinate measurements simultaneously (<span class="arithmatex">\(t = 0\)</span>). </p>
+<p>Since <span class="arithmatex">\(s\)</span> is invariant and <span class="arithmatex">\(t^2 = 0\)</span> for all frames other than the rest frame (for which it can be positive) and positive for all other moving frames, the object's rest frame will always measure the maximum spatial length. This is called the proper length <span class="arithmatex">\(L_0\)</span>, which is also invariant under coordinate transformation.</p>
+<p>For a moving frame: <span class="arithmatex">\(\Delta s^2 = c^2\Delta t^2 - \Delta x^2 = 0 - L^2 = -L^2\)</span></p>
+<p>For the rest frame: <span class="arithmatex">\(-L^2 = c^2\Delta t'^2 - L_0^2\)</span> and so <span class="arithmatex">\(L_0^2 = L^2 + c^2\Delta t'^2\)</span>.</p>
+<p>Note that this means <span class="arithmatex">\(\Delta t'\)</span> is non-zero and so the measurement which was simultaneous in a moving frame, will not be simultaneous in the rest frame. This is called the relativity of simultaneity. If we had indeed made the measurement simultaneously in the rest frame, the two events involved are different from the two events we worked with in the moving reference frame. In this case we would get <span class="arithmatex">\(L^2 = L_0^2 + c^2\Delta t^2\)</span> where <span class="arithmatex">\(t\)</span> is the time elapsed in the moving frame. However, <span class="arithmatex">\(L\)</span> in this case is not the length, as it has not been measured simultaneously. It is just the distance between two non-simultaneous events.</p>
+<h3 id="an-illustrative-example">An Illustrative Example<a class="headerlink" href="#an-illustrative-example" title="Permanent link">&para;</a></h3>
+<p>Usually, the Lorentz transformation is derived by giving the example of a light beam shot out in the <span class="arithmatex">\(y\)</span>-direction while the spaceship is moving in the <span class="arithmatex">\(x\)</span>-direction. The distance travelled by the light beam in the spaceship frame is a "vertical" <span class="arithmatex">\(ct_{\text{sp}}\)</span> while the distance travelled by the light beam in the Earth frame is a "hypotenuse" <span class="arithmatex">\(ct_{\text{earth}}\)</span>. The horizontal component is <span class="arithmatex">\(vt_{\text{earth}}\)</span>. You can then use the Pythagorean theorem to get the relationship between the two times and distances. </p>
+<p>This example works because there is no length contraction in the direction perpendicular to the spaceship's motion. If the example had shot the light beam along the length of the ship instead, we would have to account for the length contraction of the ship as well as the fact that the ship moves forward while the light beam is itself moving towards the front of the ship, as shown below.</p>
+<p>Let <span class="arithmatex">\(S\)</span> be the Earth's frame and <span class="arithmatex">\(S'\)</span> be the spaceship's rest frame moving at velocity <span class="arithmatex">\(v = \beta c\)</span> along the <span class="arithmatex">\(+x\)</span>-axis relative to <span class="arithmatex">\(S\)</span>.</p>
+<p>In the rest frame of the rocket, the proper length is <span class="arithmatex">\(L_0\)</span>. Light travels from the back to the front at speed <span class="arithmatex">\(c\)</span>: <span class="arithmatex">\(t_s = \frac{L_0}{c} \implies L_0 = c t_s\)</span></p>
+<p>In the Earth frame, the length of the ship is contracted to <span class="arithmatex">\(L = \frac{L_0}{\gamma}\)</span>, where <span class="arithmatex">\(\gamma = \frac{1}{\sqrt{1 - \beta^2}}\)</span>.</p>
+<p>During the time <span class="arithmatex">\(t_e\)</span> it takes for the light to reach the front of the ship, the light travels a total distance <span class="arithmatex">\(d = c t_e\)</span>. Simultaneously, the front of the ship advances by <span class="arithmatex">\(v t_e\)</span>.</p>
+<p>Setting the distance traveled by light equal to the contracted length plus the displacement of the front: <span class="arithmatex">\(c t_e = L + v t_e\)</span></p>
+<p>Substitute <span class="arithmatex">\(L = \frac{L_0}{\gamma} = \frac{c t_s}{\gamma}\)</span>: <span class="arithmatex">\(c t_e = \frac{c t_s}{\gamma} + v t_e\)</span></p>
+<p>Divide through by <span class="arithmatex">\(c\)</span>: <span class="arithmatex">\(t_e (1 - \beta) = \frac{t_s}{\gamma}\)</span></p>
+<p>Solving for <span class="arithmatex">\(t_e\)</span>:</p>
+<div class="arithmatex">\[t_e = \frac{t_s}{\gamma (1 - \beta)} = \frac{t_s \sqrt{1 - \beta^2}}{1 - \beta} = t_s \sqrt{\frac{(1 - \beta)(1 + \beta)}{(1 - \beta)^2}} = t_s \sqrt{\frac{1 + \beta}{1 - \beta}}\]</div>
+<p>While this gives the correct result, we can just use the Lorentz transform to quickly arrive at the same answer. However, there is one important connection between this result and the Doppler Effect.</p>
+<h3 id="connection-to-the-relativistic-doppler-effect">Connection to the Relativistic Doppler Effect<a class="headerlink" href="#connection-to-the-relativistic-doppler-effect" title="Permanent link">&para;</a></h3>
+<p>The same <span class="arithmatex">\(\sqrt{\frac{1 + \beta}{1 - \beta}}\)</span> factor governs the Relativistic Longitudinal Doppler Shift. If the spaceship emits consecutive light pulses (or wave crests) separated by a proper period <span class="arithmatex">\(T_0 = t_s\)</span> in its rest frame:</p>
+<p>For a receding source, the time interval between received crests on Earth is scaled by: <span class="arithmatex">\(T_e = T_0 \sqrt{\frac{1 + \beta}{1 - \beta}}\)</span></p>
+<p>Since frequency <span class="arithmatex">\(f = \frac{1}{T}\)</span>, the observed frequency <span class="arithmatex">\(f_e\)</span> is redshifted by <span class="arithmatex">\(f_e = f_0 \sqrt{\frac{1 - \beta}{1 + \beta}}\)</span></p>
+<p>For an approaching Source (<span class="arithmatex">\(\beta\)</span> becomes <span class="arithmatex">\(-\beta\)</span>): <span class="arithmatex">\(f_e = f_0 \sqrt{\frac{1 + \beta}{1 - \beta}}\)</span></p>
+<p>Note that the factor <span class="arithmatex">\(\sqrt{\frac{1 + \beta}{1 - \beta}}\)</span> naturally encapsulates both the classical Doppler shift due to changing path length and the kinematic time dilation of the source's internal clock.</p>
+<h2 id="spacetime-diagrams-and-causality">Spacetime Diagrams and Causality<a class="headerlink" href="#spacetime-diagrams-and-causality" title="Permanent link">&para;</a></h2>
+<p>A coordinate frame can be visualized on a Minkowski diagram with <span class="arithmatex">\(ct\)</span> on the vertical axis and <span class="arithmatex">\(x\)</span> on the horizontal, forming a square coordinate grid. Transforming to a moving reference frame shifts these axes into a rhombus, bringing the <span class="arithmatex">\(ct'\)</span> and <span class="arithmatex">\(x'\)</span> axes closer to the 45° line like a pair of scissors.</p>
+<p>Vectors symmetric about this 45° line are Minkowski orthogonal; their slopes relative to the spatial axis are reciprocals. This geometry ensures the spacetime area of the coordinate grid remains constant under transformation, and the 45° line strictly bisects the coordinate axes. This enforces the invariance of the speed of light (1 unit of distance per 1 unit of time).</p>
+<p>The 45° line represents the light cone:</p>
+<ul>
+<li>
+<p><strong>Timelike Events:</strong> Worldlines falling strictly within the light cone (closer to the <span class="arithmatex">\(ct\)</span> axis) represent timelike intervals. These events are causally connected. An inertial reference frame exists where the two events occur at the same spatial location.</p>
+</li>
+<li>
+<p><strong>Spacelike Events:</strong> Worldlines falling outside the light cone (closer to the <span class="arithmatex">\(x\)</span> axis) represent spacelike intervals. An inertial reference frame exists where these events occur simultaneously at different spatial locations.</p>
+</li>
+</ul>
+<p>Because no worldline can cross the light cone (as nothing propagates faster than <span class="arithmatex">\(c\)</span>), a timelike, causal relationship can never become spacelike under any transformation. Cause and effect cannot be reversed. However, for spacelike intervals, changing the reference frame shifts the line of simultaneity. This means two events that are simultaneous in one frame may occur in different chronological orders in other reference frames. This relativity of simultaneity resolves seeming paradoxes, such as Bell’s spaceship paradox.</p>
+<h2 id="4-vectors">4-Vectors<a class="headerlink" href="#4-vectors" title="Permanent link">&para;</a></h2>
+<h3 id="4-velocity-4-momentum">4-Velocity &amp; 4-momentum<a class="headerlink" href="#4-velocity-4-momentum" title="Permanent link">&para;</a></h3>
+<p>Since proper time <span class="arithmatex">\(\tau\)</span> is an invariant scalar, differentiating the spacetime position 4-vector by <span class="arithmatex">\(\tau\)</span> yields another invariant. In keeping with the analog in classical mechanics, this is the 4-velocity <span class="arithmatex">\(U\)</span>:</p>
+<div class="arithmatex">\[U=\frac{d}{d\tau}(ct, x, y, z)= (c\frac{dt}{d\tau},\frac{dx}{dt}\frac{dt}{d\tau}, \frac{dy}{dt}\frac{dt}{d\tau}, \frac{dz}{dt}\frac{dt}{d\tau})  = \gamma(c, u_x, u_y, u_z)\]</div>
+<p>Note that  <span class="arithmatex">\(u_x, u_y, u_z\)</span> is the spatial velocity we are used to from classical mechanics, given by <span class="arithmatex">\(\frac{dx}{dt}\)</span> etc. </p>
+<p>Also note that <span class="arithmatex">\(\frac{dt}{d\tau} = \gamma\)</span>. To see why, we know that </p>
+<div class="arithmatex">\[ds^2 = c^2d\tau^2\]</div>
+<div class="arithmatex">\[ds^2 = c^2dt^2 - dx^2 - dy^2 - dz^2\]</div>
+<div class="arithmatex">\[c^2d\tau^2 = c^2dt^2 - (dx^2 + dy^2 + dz^2)\]</div>
+<div class="arithmatex">\[c^2d\tau^2 = c^2dt^2 \left[1 - \frac{1}{c^2}\left(\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2 + \left(\frac{dz}{dt}\right)^2\right)\right]\]</div>
+<div class="arithmatex">\[c^2d\tau^2 = c^2dt^2 \left(1 - \frac{v^2}{c^2}\right)\]</div>
+<div class="arithmatex">\[\left(\frac{dt}{d\tau}\right)^2 = \frac{1}{1 - \frac{v^2}{c^2}}\]</div>
+<div class="arithmatex">\[\frac{dt}{d\tau} = \frac{1}{\sqrt{1 - \frac{v^2}{c^2}}} = \gamma\]</div>
+<p><strong>Note:</strong> A tempting logical leap to make is that since <span class="arithmatex">\(v = \frac{dx}{dt}\)</span>, since length contracts in the moving frame and time dilates or speeds up, velocity as seen in a moving frame should reduce by a factor of <span class="arithmatex">\(\gamma^2\)</span>. This is NOT true. The time dilation and length contraction formulas are restricted special cases applicable in different situation i.e. either the clock is at rest or measurement is made simultaneously. They cannot be used together and applied as algebraic identities. For a moving particle, space and time intervals mix together. To find how velocity transforms, you cannot evaluate space and time in isolation; you must apply the full Lorentz transformation to the differential path of the particle.</p>
+<h4 id="4-velocity-momentum-are-conserved-not-just-invariant">4-Velocity &amp; Momentum Are Conserved, Not Just Invariant<a class="headerlink" href="#4-velocity-momentum-are-conserved-not-just-invariant" title="Permanent link">&para;</a></h4>
+<p>At this point, we can say that since all 4-vectors are dependant only on some other 4-vector and proper time, which are both invariant, all 4-vectors are invariant under coordinate transformation. All 4-vectors undergo coordinate transformation via the Lorentz boost i.e. the Lorentz transformation matrix given at the very beginning of the notes. Note that when we say invariant, we mean their magnitude is invariant (we can say <span class="arithmatex">\(V^\mu V_\mu\)</span> is constant). The vectors (and their components) are free to change within this constraint.</p>
+<p>However, though 4-position is invariant under coordinate change, it does vary as the world line evolves with proper time. In contrast, the 4-velocity, and therefore the 4-momentum, are conserved, which means they are unchanged for an isolated system not just under coordinate transformations, but also as the world line evolves. This can be easily seen by taking the derivative of spacetime vector with proper time in the rest frame, which just yields <span class="arithmatex">\(c\)</span>. In fact they are even conserved for non-inertial reference frames. </p>
+<p>Thus, the invariant magnitude squared of the 4-velocity is always constant: <span class="arithmatex">\(U\cdot U=c^2\)</span>. This also means, <span class="arithmatex">\(u_0^2 = 1 + \sum_i u_i^2\)</span> (ignoring the factor <span class="arithmatex">\(c\)</span> for brevity), which means the time component of velocity is never zero. Thus, no matter what the situation, the worldline of an object will always advance in time, which means time can never stop or reverse.</p>
+<p>Multiplying <span class="arithmatex">\(U\)</span> by mass <span class="arithmatex">\(m\)</span> (which we assume is invariant) yields the 4-momentum <span class="arithmatex">\(P\)</span>:</p>
+<div class="arithmatex">\[P=mU=\gamma(mc, mu_x, mu_y, mu_z)=(E/c, p_x, p_y, p_z)\]</div>
+<p>where we absorb the <span class="arithmatex">\(\gamma\)</span> factor into the <span class="arithmatex">\(E\)</span> and spatial <span class="arithmatex">\(p\)</span> terms. </p>
+<p>Thus the spatial momentum is actually <span class="arithmatex">\(\gamma mv\)</span>, not <span class="arithmatex">\(mv\)</span>, the classical Newtonian formula. The Newtonian formula is not universally correct. It is fundamentally a low-velocity approximation.</p>
+<h4 id="time-energy-space-momentum">Time, Energy, Space &amp; Momentum<a class="headerlink" href="#time-energy-space-momentum" title="Permanent link">&para;</a></h4>
+<p>Notice that we set the <span class="arithmatex">\(ct\)</span> coordinate as being related to the energy. Qualitatively, we can say that just as <span class="arithmatex">\(l = vt\)</span>,  <span class="arithmatex">\(E = vp\)</span> in terms of dimensional analysis. So we are not unjustified in relating the time coordinate of 4-momentum to energy. More rigorously,</p>
+<div class="arithmatex">\[\gamma = \left(1 - \frac{u^2}{c^2}\right)^{-1/2} \approx 1 + \frac{u^2}{2c^2} + \frac{3u^4}{8c^4} + \dots\]</div>
+<p>Substituting this expansion into the time component of 4-momentum gives:</p>
+<div class="arithmatex">\[P^0 = \gamma mc \approx mc \left(1 + \frac{u^2}{2c^2}\right) = \frac{1}{c} \left(mc^2 + \frac{1}{2}mu^2\right)\]</div>
+<p>The second term in the parenthesis, <span class="arithmatex">\(\frac{1}{2}mu^2\)</span>, is the recognizable classical kinetic energy. The first term, <span class="arithmatex">\(mc^2\)</span>, is the constant rest mass energy. Since the entire bracketed expression represents the total energy <span class="arithmatex">\(E\)</span> of the free particle, we can definitively state:</p>
+<div class="arithmatex">\[P^0 = \frac{E}{c}\]</div>
+<p>From a more advanced theoretical perspective, the grouping of energy and momentum into a single 4-vector is a direct consequence of spacetime symmetries.</p>
+<p>Just as the spacetime 4-vector <span class="arithmatex">\((ct, x, y, z)\)</span> dictates the geometry of events, Noether's theorem states that symmetries in these continuous coordinates generate conserved quantities:</p>
+<ul>
+<li>
+<p>Invariance under spatial translation (<span class="arithmatex">\(x, y, z\)</span>) yields the conservation of 3-momentum (<span class="arithmatex">\(p_x, p_y, p_z\)</span>).</p>
+</li>
+<li>
+<p>Invariance under time translation (<span class="arithmatex">\(t\)</span>) yields the conservation of energy (<span class="arithmatex">\(E\)</span>).</p>
+</li>
+</ul>
+<p>Because space and time transform into one another under Lorentz transformations, their conjugate conserved quantities (momentum and energy) must also transform into one another as a unified 4-vector <span class="arithmatex">\((E/c, p_x, p_y, p_z)\)</span>.</p>
+<h4 id="conservation-of-momentum">Conservation of Momentum<a class="headerlink" href="#conservation-of-momentum" title="Permanent link">&para;</a></h4>
+<p>From the expression for <span class="arithmatex">\(P\)</span>, as expected from its relationship with <span class="arithmatex">\(U\)</span>, we can see that the dot product <span class="arithmatex">\(P\cdot P\)</span> is conserved. Expanding this dot product yields:</p>
+<div class="arithmatex">\[P\cdot P=(E/c)^2-p^2=(mc)^2\]</div>
+<p>Rearranging this gives Einstein’s energy-momentum relation:</p>
+<div class="arithmatex">\[E^2=(mc^2)^2+(pc)^2\]</div>
+<p>You can verify that this holds for the components by substituting with <span class="arithmatex">\(E = \gamma mc^2\)</span> and <span class="arithmatex">\(p = \gamma mv\)</span> on both sides of the equation. </p>
+<p>When a particle is at rest (<span class="arithmatex">\(p=0\)</span>), the equation reduces to <span class="arithmatex">\(E=mc^2\)</span>. </p>
+<p><strong>Note 1:</strong> For massless particles traveling at <span class="arithmatex">\(c\)</span>, proper time <span class="arithmatex">\(\tau\)</span> is undefined and invariant mass <span class="arithmatex">\(m=0\)</span>, and momentum is derived via quantum relations (<span class="arithmatex">\(p=h/\lambda\)</span>) or <span class="arithmatex">\(E=pc\)</span>, and the above formula continues to hold.</p>
+<p><strong>Note 2:</strong> Since total 4-momentum <span class="arithmatex">\(P\)</span> is conserved in isolated systems and invariant mass <span class="arithmatex">\(m\)</span> is dictated by the magnitude of the total 4-momentum rather than a simple sum of scalars, the total invariant mass of a system can change during processes such as inelastic collisions, even while <span class="arithmatex">\(P\)</span> remains rigorously conserved.</p>
+<p><strong>Note 3:</strong> Since 4-momentum is conserved, it means its components are also independently conserved, including the spatial momentum and the time component or relativistic energy. <span class="arithmatex">\(\sum E_{\text{initial}} = \sum E_{\text{final}}\)</span> and <span class="arithmatex">\(\sum \mathbf{p}_{\text{initial}} = \sum \mathbf{p}_{\text{final}}\)</span>. This last equation would not hold if we used the Newtonian formula for momentum: <span class="arithmatex">\(p = m \cdot v\)</span></p>
+<h3 id="4-acceleration">4-Acceleration<a class="headerlink" href="#4-acceleration" title="Permanent link">&para;</a></h3>
+<p>Differentiating 4-momentum or 4-velocity with respect to <span class="arithmatex">\(\tau\)</span> yields 4-force and 4-acceleration, respectively. Since the magnitude of 4-velocity cannot change, we can say that 4-acceleration must always be orthogonal to 4-velocity. </p>
+<p>This means that in the objects rest frame, where the only velocity component is the time component, 4-acceleration will have no time component. This is called the proper acceleration on the object i.e. the acceleration measured by the object in its rest frame. This is a non-inertial frame. Note that the magnitude of the 4-acceleration is still invariant under change of coordinates and is equal to the magnitude of the spatial acceleration in the object's rest frame.</p>
+<p>Unlike 4-velocity and momentum, the spatial components of 4-acceleration and 4-force are not necessarily parallel to their classical 3-vector counterparts. This is due to the factor of <span class="arithmatex">\(\gamma\)</span> which is present in the 4-velocity. When we differentiate by proper time <span class="arithmatex">\(\tau\)</span>, since <span class="arithmatex">\(\gamma\)</span> depends on velocity, it contributes to the derivative in a way that changes the orientation of the components. </p>
+<p>To find <span class="arithmatex">\(\frac{d\gamma}{dt}\)</span>, we apply the chain rule to this correct definition:</p>
+<div class="arithmatex">\[\frac{d\gamma}{dt}=-\frac{1}{2}\left(1-\frac{u^2}{c^2}\right)^{-3/2}\left(-\frac{2\mathbf{u}\cdot\mathbf{a}}{c^2}\right)\]</div>
+<p>Where <span class="arithmatex">\(\mathbf{a}=\frac{d\mathbf{u}}{dt}\)</span> is the standard 3-acceleration as measured in that reference frame. Recognizing that <span class="arithmatex">\((1-u^2/c^2)^{-3/2}=\gamma^3\)</span>, this simplifies to:</p>
+<div class="arithmatex">\[\frac{d\gamma}{dt}=\gamma^3\frac{\mathbf{u}\cdot\mathbf{a}}{c^2}\]</div>
+<p>Applying the derivative operator to the time component of 4-velocity <span class="arithmatex">\(U^0=\gamma c\)</span>:</p>
+<div class="arithmatex">\[A^0=\gamma\frac{d}{dt}(\gamma c)=\gamma c\frac{d\gamma}{dt}\]</div>
+<p>Substituting the derivative of <span class="arithmatex">\(\gamma\)</span> derived above:</p>
+<div class="arithmatex">\[A^0=\gamma c\left(\gamma^3\frac{\mathbf{u}\cdot\mathbf{a}}{c^2}\right)=\gamma^4\frac{\mathbf{u}\cdot\mathbf{a}}{c}\]</div>
+<p>Applying the derivative operator to the spatial components of 4-velocity <span class="arithmatex">\(\mathbf{U}=\gamma\mathbf{u}\)</span> requires the product rule. </p>
+<div class="arithmatex">\[\mathbf{A}=\gamma\frac{d}{dt}(\gamma\mathbf{u})=\gamma\left(\frac{d\gamma}{dt}\mathbf{u}+\gamma\frac{d\mathbf{u}}{dt}\right)\]</div>
+<p>Substituting <span class="arithmatex">\(\mathbf{a}=\frac{d\mathbf{u}}{dt}\)</span> and our expression for <span class="arithmatex">\(\frac{d\gamma}{dt}\)</span>:</p>
+<div class="arithmatex">\[\mathbf{A}=\gamma\left(\left(\gamma^3\frac{\mathbf{u}\cdot\mathbf{a}}{c^2}\right)\mathbf{u}+\gamma\mathbf{a}\right)\]</div>
+<p>Distributing the outer <span class="arithmatex">\(\gamma\)</span>:</p>
+<div class="arithmatex">\[\mathbf{A}=\gamma^4\frac{\mathbf{u}\cdot\mathbf{a}}{c^2}\mathbf{u}+\gamma^2\mathbf{a}\]</div>
+<p>Combining the time and spatial components yields the full 4-acceleration vector:</p>
+<div class="arithmatex">\[A=\left(\gamma^4\frac{\mathbf{u}\cdot\mathbf{a}}{c}, \gamma^4\frac{\mathbf{u}\cdot\mathbf{a}}{c^2}\mathbf{u}+\gamma^2\mathbf{a}\right)\]</div>
+<p>We can write this out in the <span class="arithmatex">\(x, y, z\)</span> spatial coordinates as:</p>
+<div class="arithmatex">\[A_x = \gamma^4\frac{\mathbf{u}\cdot\mathbf{a}}{c^2}u_x + \gamma^2a_x\]</div>
+<div class="arithmatex">\[A_y = \gamma^4\frac{\mathbf{u}\cdot\mathbf{a}}{c^2}u_y + \gamma^2a_y\]</div>
+<div class="arithmatex">\[A_z = \gamma^4\frac{\mathbf{u}\cdot\mathbf{a}}{c^2}u_z + \gamma^2a_z\]</div>
+<p>The presence of the <span class="arithmatex">\(\mathbf{u}\)</span> term in the 4-acceleration demonstrates that <span class="arithmatex">\(\mathbf{A}\)</span> and <span class="arithmatex">\(\mathbf{a}\)</span> are only parallel in two specific physical cases: if the velocity <span class="arithmatex">\(\mathbf{u}\)</span> and classical acceleration <span class="arithmatex">\(\mathbf{a}\)</span> are either parallel or perpendicular to each other (as in centripetal acceleration).</p>
+<p>Note that the magnitude of the 4-acceleration in the object's rest frame is given by:</p>
+<div class="arithmatex">\[A^\mu A_\mu = (A^0)^2 - \vert{}\mathbf{A}\vert{}^2 = 0^2 - \vert{}\boldsymbol{\alpha}\vert{}^2 = -\vert{}\boldsymbol{\alpha}\vert{}^2\]</div>
+<p>where <span class="arithmatex">\(\alpha\)</span> is the proper acceleration. Since the 4-acceleration's magnitude is invariant, it means the magnitude is equal to the above value in any reference frame. </p>
+<p>We can also write the 4-acceleration in terms of the proper acceleration. By first applying a Lorentz boost from the rest frame to an arbitrary frame, we get,</p>
+<div class="arithmatex">\[A = \left( \gamma\frac{\mathbf{u} \cdot \boldsymbol{\alpha}}{c}, \boldsymbol{\alpha} + \frac{\gamma^2}{\gamma + 1}\frac{\mathbf{u} \cdot \boldsymbol{\alpha}}{c^2}\mathbf{u} \right)\]</div>
+<p>Equating this to the previous derivation for the 4-acceleration, we get,</p>
+<div class="arithmatex">\[a_\parallel = \frac{\alpha_\parallel}{\gamma^3}\]</div>
+<div class="arithmatex">\[a_\perp = \frac{\alpha_\perp}{\gamma^2}\]</div>
+<p>where <span class="arithmatex">\(a_\parallel\)</span> is the acceleration along the direction of movement of the moving frame, and <span class="arithmatex">\(a_\perp\)</span> is along a direction perpendicular to it. We can immediately see that the acceleration along the direction of movement is suppressed by an extra <span class="arithmatex">\(\gamma\)</span> factor compared to the perpendicular direction. This is because along the direction of motion of the reference frame, we must account for both time dilation and length contraction, while in the perpendicular direction, time dilation is all that matters.</p>
+<p>Another important point about these equations is that when the object is under constant proper acceleration, its rest frame is also constantly accelerating with respect to some arbitrary frame that is moving at constant velocity. Thus, the suppression factor of <span class="arithmatex">\(\gamma\)</span> grows larger and larger. The acceleration of the object in this constant velocity frame therefore falls drastically. Thus the velocity of the object in this frame increases by smaller and smaller amounts and never crosses <span class="arithmatex">\(c\)</span>, though it approaches <span class="arithmatex">\(c\)</span>. All of this is immaterial when it comes to the rest frame of course, where the object is always at rest. We will see in the next section on the 4-force that the magnitude of the force required to maintain a constant proper acceleration will grow as the object's relative velocity increases. </p>
+<p>### 4-Force
+The 4-force is defined as <span class="arithmatex">\(K = m A = m\frac{dP}{d\tau}\)</span>. Thus the 4-force is also always orthogonal to the 4-velocity, and in the object's rest frame, the time component of the 4-force is 0, making it essentially equal to the spatial force component acting on the object, called the proper force. The invariant length of the 4-force is equal to the length of the proper force, given by <span class="arithmatex">\(K_\mu K^\mu = -\vert{}\mathbf{F}_{proper}\vert{}^2\)</span>.</p>
+<p>The proper force represents the physical stress actually experienced by the object. If you attached a mechanical accelerometer (such as a mass on a spring) to the moving block, the reading on that accelerometer would correspond directly to the proper force.</p>
+<p>The 4-force can be expressed in terms of the laboratory-frame 3-force <span class="arithmatex">\(\mathbf{F}\)</span> and velocity <span class="arithmatex">\(\mathbf{v}\)</span>. We can replace the derivative by <span class="arithmatex">\(\tau\)</span> with <span class="arithmatex">\(dt\)</span> in the equation for 4-force to get:</p>
+<div class="arithmatex">\[K^\mu = \gamma \frac{d}{dt} \left( \frac{E}{c}, \mathbf{p} \right) = \left( \frac{\gamma}{c} \frac{dE}{dt}, \gamma \frac{d\mathbf{p}}{dt} \right)\]</div>
+<p>The relativistic 3-force <span class="arithmatex">\(\mathbf{F}\)</span> measured by an observer in the lab frame is the coordinate time derivative of the relativistic 3-momentum <span class="arithmatex">\(\mathbf{p}\)</span>:</p>
+<div class="arithmatex">\[\mathbf{F} = \frac{d\mathbf{p}}{dt}\]</div>
+<p>Substituting this directly into the spatial part of our 4-vector equation gives:</p>
+<div class="arithmatex">\[\mathbf{K} = \gamma \mathbf{F}\]</div>
+<p>For the temporal component, from the work-energy theorem, mechanical power is calculated as the dot product of the applied force and the object's velocity:</p>
+<div class="arithmatex">\[\frac{dE}{dt} = \mathbf{F} \cdot \mathbf{v}\]</div>
+<p>We can formally prove this by taking the time derivative of the invariant mass relation <span class="arithmatex">\(E^2 - (pc)^2 = (mc^2)^2\)</span>. Differentiating yields <span class="arithmatex">\(2E \frac{dE}{dt} - 2pc^2 \frac{dp}{dt} = 0\)</span>. Substituting <span class="arithmatex">\(E = \gamma mc^2\)</span>, <span class="arithmatex">\(p = \gamma mv\)</span>, and <span class="arithmatex">\(\frac{dp}{dt} = F\)</span> confirms that <span class="arithmatex">\(\frac{dE}{dt} = F v\)</span> for linear motion, generalizing to <span class="arithmatex">\(\mathbf{F} \cdot \mathbf{v}\)</span> in 3D. Thus, </p>
+<div class="arithmatex">\[K^\mu = \gamma \left( \frac{\mathbf{F} \cdot \mathbf{v}}{c}, \mathbf{F} \right)\]</div>
+<p>or</p>
+<div class="arithmatex">\[K^\mu = \gamma \left( \frac{\mathbf{F} \cdot \mathbf{v}}{c}, F_x, F_y, F_z \right)\]</div>
+<h4 id="example-of-transforming-from-the-rest-frame-to-the-lab-frame">Example of Transforming From The Rest Frame to the Lab Frame<a class="headerlink" href="#example-of-transforming-from-the-rest-frame-to-the-lab-frame" title="Permanent link">&para;</a></h4>
+<p>Let the particle's instantaneous rest frame be <span class="arithmatex">\(S'\)</span>. In this frame, the velocity is zero, so the 4-force consists only of the proper force:</p>
+<div class="arithmatex">\[K'^\mu = (0, F_{proper, x}, F_{proper, y}, F_{proper, z})\]</div>
+<p>Let the laboratory frame be <span class="arithmatex">\(S\)</span>, in which the particle is moving with velocity <span class="arithmatex">\(v\)</span> along the <span class="arithmatex">\(x\)</span>-axis. We transform the 4-force from <span class="arithmatex">\(S'\)</span> to <span class="arithmatex">\(S\)</span> using the standard Lorentz boost matrix in the <span class="arithmatex">\(x\)</span>-direction:</p>
+<div class="arithmatex">\[K^0 = \gamma \left( K'^0 + \frac{v}{c} K'^1 \right) = \gamma \left( 0 + \frac{v}{c} F_{proper, x} \right) = \gamma \frac{v}{c} F_{proper, x}\]</div>
+<div class="arithmatex">\[K^1 = \gamma \left( K'^1 + \frac{v}{c} K'^0 \right) = \gamma \left( F_{proper, x} + 0 \right) = \gamma F_{proper, x}\]</div>
+<div class="arithmatex">\[K^2 = K'^2 = F_{proper, y}\]</div>
+<div class="arithmatex">\[K^3 = K'^3 = F_{proper, z}\]</div>
+<p>By equating these Lorentz-transformed components with the spatial components extracted from the 4-Force's relationship with the 3-Force that we derived a little above, we get:</p>
+<p><strong>Longitudinal component (parallel to velocity):</strong> <span class="arithmatex">\(\gamma F_x = \gamma F_{proper, x} \implies F_x = F_{proper, x}\)</span></p>
+<p><strong>Transverse components (perpendicular to velocity):</strong> <span class="arithmatex">\(\gamma F_y = F_{proper, y} \implies F_y = \frac{F_{proper, y}}{\gamma}\)</span> and <span class="arithmatex">\(\gamma F_z = F_{proper, z} \implies F_z = \frac{F_{proper, z}}{\gamma}\)</span></p>
+<p>Therefore, a force applied parallel to the direction of motion has the same magnitude in both the lab frame and the rest frame. However, any force applied perpendicular to the direction of motion is measured to be smaller in the lab frame by a factor of <span class="arithmatex">\(\frac{1}{\gamma}\)</span>.</p>
+<p>The difference in how the forces transform stems from the fact that both longitudinally and along the transverse, time dilation is present. However, longitudinally or along the direction of movement of the frame, velocity and therefore momentum is also transformed by the factor <span class="arithmatex">\(\gamma\)</span>, which negates the time dilation factor. </p>
+<h3 id="relationship-between-4-force-and-4-acceleration">Relationship Between 4-Force and 4-Acceleration<a class="headerlink" href="#relationship-between-4-force-and-4-acceleration" title="Permanent link">&para;</a></h3>
+<p>In terms of 4 vectors, <span class="arithmatex">\(K = mA\)</span> but in terms of 3-vectors, <span class="arithmatex">\(\mathbf{F} = m\mathbf{a}\)</span> does not hold in special relativity. It is a Newtonian low velocity approximation. The more fundamental definition of force is <span class="arithmatex">\(\mathbf{F} = \frac{d\mathbf{p}}{dt}\)</span>. In relativity, as we saw, <span class="arithmatex">\(\mathbf{p} = \gamma m\mathbf{v}\)</span>. Since the Lorentz factor <span class="arithmatex">\(\gamma\)</span> depends on velocity, it is not constant during acceleration. This changes the relationship between force and acceleration from the low velocity approximation.</p>
+<p>First, we show that the <span class="arithmatex">\(K = mA\)</span> relationship holds for 4-vectors, and then derive the relationship that actually holds for 3-vectors.</p>
+<h4 id="the-4-vector-relationship">The 4-vector Relationship<a class="headerlink" href="#the-4-vector-relationship" title="Permanent link">&para;</a></h4>
+<p>We know that <span class="arithmatex">\(\mathbf{F} = \frac{d\mathbf{p}}{dt} = \frac{d}{dt}(\gamma m\mathbf{v}) = m\left(\frac{d\gamma}{dt}\mathbf{v} + \gamma\frac{d\mathbf{v}}{dt}\right)\)</span></p>
+<p>From our 4-acceleration derivation above we have,<span class="arithmatex">\(\frac{d\mathbf{v}}{dt} = \mathbf{a}\)</span> and <span class="arithmatex">\(\frac{d\gamma}{dt} = \gamma^3\frac{\mathbf{v}\cdot\mathbf{a}}{c^2}\)</span>. Substituting these in yields the explicit kinematic form of the 3-force:</p>
+<div class="arithmatex">\[\mathbf{F} = m\left(\gamma^3\frac{\mathbf{v}\cdot\mathbf{a}}{c^2}\mathbf{v} + \gamma\mathbf{a}\right)\]</div>
+<p>To construct the spatial component of the 4-force, we multiply this 3-force by <span class="arithmatex">\(\gamma\)</span>, as shown previously:</p>
+<div class="arithmatex">\[\gamma\mathbf{F} = m\left(\gamma^4\frac{\mathbf{v}\cdot\mathbf{a}}{c^2}\mathbf{v} + \gamma^2\mathbf{a}\right)\]</div>
+<p>If we distribute the mass <span class="arithmatex">\(m\)</span>, this perfectly matches the spatial component of <span class="arithmatex">\(mA^\mu\)</span>:</p>
+<div class="arithmatex">\[m\mathbf{A} = m\left(\gamma^4\frac{\mathbf{v}\cdot\mathbf{a}}{c^2}\mathbf{v} + \gamma^2\mathbf{a}\right)\]</div>
+<p>For the temporal component, 
+$<span class="arithmatex">\(\mathbf{F} \cdot \mathbf{v} = \left[ m\left(\gamma^3\frac{\mathbf{v}\cdot\mathbf{a}}{c^2}\mathbf{v} + \gamma\mathbf{a}\right) \right] \cdot \mathbf{v}\)</span>$</p>
+<p>We can factor out the common term <span class="arithmatex">\(m(\mathbf{v}\cdot\mathbf{a})\gamma\)</span>:</p>
+<div class="arithmatex">\[\mathbf{F} \cdot \mathbf{v} = m(\mathbf{v}\cdot\mathbf{a})\gamma \left(\gamma^2\frac{v^2}{c^2} + 1\right)\]</div>
+<p>To simplify the term in the parentheses, recall that <span class="arithmatex">\(\gamma^2 = \frac{1}{1 - v^2/c^2}\)</span>. Rearranging this gives the identity <span class="arithmatex">\(\gamma^2\frac{v^2}{c^2} + 1 = \gamma^2\)</span>. Substituting this identity into our equation collapses the expression:</p>
+<div class="arithmatex">\[\mathbf{F} \cdot \mathbf{v} = m(\mathbf{v}\cdot\mathbf{a})\gamma(\gamma^2) = m\gamma^3(\mathbf{v}\cdot\mathbf{a})\]</div>
+<p>Finally, we construct the temporal component of the 4-force by multiplying this result by <span class="arithmatex">\(\frac{\gamma}{c}\)</span>:</p>
+<div class="arithmatex">\[\gamma\frac{\mathbf{F} \cdot \mathbf{v}}{c} = \frac{\gamma}{c} \left[ m\gamma^3(\mathbf{v}\cdot\mathbf{a}) \right] = m\gamma^4\frac{\mathbf{v}\cdot\mathbf{a}}{c}\]</div>
+<p>This matches the temporal component of <span class="arithmatex">\(mA^\mu\)</span>:</p>
+<div class="arithmatex">\[mA^0 = m\left(\gamma^4\frac{\mathbf{v}\cdot\mathbf{a}}{c}\right)\]</div>
+<h4 id="the-relativistic-3-vector-relationship">The Relativistic 3-vector Relationship<a class="headerlink" href="#the-relativistic-3-vector-relationship" title="Permanent link">&para;</a></h4>
+<p>We apply the product rule to the time derivative of the relativistic momentum:</p>
+<div class="arithmatex">\[\mathbf{F} = \frac{d}{dt}(\gamma m\mathbf{v}) = m\left( \frac{d\gamma}{dt}\mathbf{v} + \gamma \frac{d\mathbf{v}}{dt} \right)\]</div>
+<p>Again, as shown previously, the time derivative of the Lorentz factor is <span class="arithmatex">\(\dot{\gamma} = \frac{\gamma^3}{c^2}(\mathbf{v} \cdot \mathbf{a})\)</span>. Substituting this and <span class="arithmatex">\(\mathbf{a} = \frac{d\mathbf{v}}{dt}\)</span> into the equation yields the true relativistic equivalent of Newton's Second Law for 3-vectors:</p>
+<div class="arithmatex">\[\mathbf{F} = \gamma m\mathbf{a} + \frac{\gamma^3 m}{c^2}(\mathbf{v} \cdot \mathbf{a})\mathbf{v}\]</div>
+<p>As noted however, the 4-force <span class="arithmatex">\(K^\mu\)</span>, the invariant rest mass <span class="arithmatex">\(m\)</span>, and the 4-acceleration <span class="arithmatex">\(A^\mu\)</span>, are still related by Newton's Law. The complexity of the 3-vector equation is merely an artifact of projecting the simple 4-dimensional reality down into separate 3-dimensional space and 1-dimensional coordinate time.</p>
+<p>The most significant physical consequence of this equation is that force and acceleration are generally no longer parallel.</p>
+<p>Because of the second term containing the dot product <span class="arithmatex">\((\mathbf{v} \cdot \mathbf{a})\mathbf{v}\)</span>, the force vector <span class="arithmatex">\(\mathbf{F}\)</span> possesses a component pointing in the direction of the velocity vector <span class="arithmatex">\(\mathbf{v}\)</span>. An applied force will only produce an acceleration in the exact same direction if the force is applied strictly parallel or strictly perpendicular to the particle's current velocity.</p>
+<p>Because <span class="arithmatex">\(\mathbf{F}\)</span> and <span class="arithmatex">\(\mathbf{a}\)</span> do not scale by a single scalar constant, a particle's resistance to acceleration (its inertia) depends entirely on the angle between the applied force and the particle's velocity.</p>
+<p><strong>Transverse Acceleration (Force perpendicular to velocity):</strong> If the force is applied at a right angle to the motion, <span class="arithmatex">\(\mathbf{v} \cdot \mathbf{a} = 0\)</span>. The second term vanishes, yielding: <span class="arithmatex">\(\mathbf{F} = \gamma m\mathbf{a}\)</span>. The particle's effective inertia is <span class="arithmatex">\(\gamma m\)</span>.</p>
+<p><strong>Longitudinal Acceleration (Force parallel to velocity):</strong> If the force is applied in the exact direction of motion, <span class="arithmatex">\(\mathbf{v}\)</span> and <span class="arithmatex">\(\mathbf{a}\)</span> are parallel, so <span class="arithmatex">\(\mathbf{v} \cdot \mathbf{a} = va\)</span>. The equation simplifies (using <span class="arithmatex">\(\gamma^2 = 1/(1 - v^2/c^2)\)</span>) to: <span class="arithmatex">\(\mathbf{F} = \gamma^3 m\mathbf{a}\)</span>.</p>
+<p>The particle's effective inertia is <span class="arithmatex">\(\gamma^3 m\)</span>. It is significantly harder to accelerate a relativistic particle along its path of motion than it is to deflect it laterally.</p>
+<h4 id="4-force-is-not-a-gradient-like-the-3-force">4-force is not a gradient like the 3-force<a class="headerlink" href="#4-force-is-not-a-gradient-like-the-3-force" title="Permanent link">&para;</a></h4>
+<p>In classical mechanics, a conservative force is simply the negative gradient of a scalar potential: <span class="arithmatex">\(F^\alpha=-m\partial^\alpha\Phi\)</span>, where <span class="arithmatex">\(\alpha \in \{1,2,3\}\)</span> represents the spatial dimensions. What prevents us from just upgrading this to a 4-vector equation by letting the index cover time as well: <span class="arithmatex">\(ma^i=-\partial^i\Phi\)</span>.</p>
+<p>Since velocity and acceleration are always orthogonal, <span class="arithmatex">\(a^i u_i=0\)</span>. If we substitiute this into our hypothetical equation: <span class="arithmatex">\(m(a^i u_i)=-(\partial^i\Phi)u_i\)</span>, and so <span class="arithmatex">\(0=-u^i\partial_i\Phi\)</span>. From the chain rule, we get that <span class="arithmatex">\(u^i\partial_i\Phi=\frac{dx^i}{d\tau}\frac{\partial\Phi}{\partial x^i} =\frac{d\Phi}{d\tau}\)</span>. This is a pretty boring and useless potential field. As the particle travels along its worldline (advancing its proper time <span class="arithmatex">\(\tau\)</span>), the potential field <span class="arithmatex">\(\Phi\)</span> it experiences cannot change. The particle will never convert potential into kinetic energy.</p>
+<p>What other options do we have to construct a 4-force such that <span class="arithmatex">\(F^i u_i=0\)</span> without forcing the particle to stay at a constant potential? By constructing the force using an antisymmetric tensor multiplied by the 4-velocity. The canonical example is the electromagnetic Lorentz force. Because you are contracting an antisymmetric tensor (<span class="arithmatex">\(F^{ik}\)</span>) with a symmetric product of vectors (<span class="arithmatex">\(u_k u_i\)</span>), the sum automatically evaluates to exactly zero.</p>
+<h2 id="hyperbolic-formulation">Hyperbolic Formulation<a class="headerlink" href="#hyperbolic-formulation" title="Permanent link">&para;</a></h2>
+<p>The Lorentz transformation naturally maps to hyperbolic geometry, satisfying the constant hyperbolic curve <span class="arithmatex">\((ct)^2-x^2=\text{constant}\)</span>:</p>
+<div class="arithmatex">\[\begin{bmatrix}ct'\\x'\end{bmatrix}=\begin{bmatrix}\cosh\phi&amp;-\sinh\phi\\-\sinh\phi&amp;\cosh\phi\end{bmatrix}\begin{bmatrix}ct\\x\end{bmatrix}\]</div>
+<p>Here, <span class="arithmatex">\(\phi\)</span> is the rapidity, defined by the relation <span class="arithmatex">\(\tanh\phi=v/c=\beta\)</span>. Note that <span class="arithmatex">\(\gamma=\cosh\phi\)</span> and <span class="arithmatex">\(\gamma\frac{v}{c}=\sinh\phi\)</span>. This hyperbolic formulation allows relative velocities to be calculated via the simple addition of rapidities: <span class="arithmatex">\(\phi_{AC}=\phi_{AB}+\phi_{BC}\)</span></p>
+<p>To see why this is so, just multiply the two Lorentz boost matrices, one for each rapidity that we want to add up. We end up with terms that can be replaced by hyperbolic identities <span class="arithmatex">\(\cosh(\phi_1-\phi_2)=\cosh\phi_1\cosh\phi_2-\sinh\phi_1\sinh\phi_2\)</span> and <span class="arithmatex">\(\sinh(\phi_1-\phi_2)=\sinh\phi_1\cosh\phi_2-\cosh\phi_1\sinh\phi_2\)</span>:</p>
+<div class="arithmatex">\[\Lambda(\phi_1)\Lambda(\phi_2)=\begin{bmatrix}\cosh\phi_1&amp;\sinh\phi_1\\\sinh\phi_1&amp;\cosh\phi_1\end{bmatrix}\begin{bmatrix}\cosh\phi_2&amp;\sinh\phi_2\\\sinh\phi_2&amp;\cosh\phi_2\end{bmatrix}\]</div>
+<div class="arithmatex">\[\Lambda(\phi_1)\Lambda(\phi_2)=\begin{bmatrix}\cosh\phi_1\cosh\phi_2+\sinh\phi_1\sinh\phi_2&amp;\cosh\phi_1\sinh\phi_2+\sinh\phi_1\cosh\phi_2\\\sinh\phi_1\cosh\phi_2+\cosh\phi_1\sinh\phi_2&amp;\sinh\phi_1\sinh\phi_2+\cosh\phi_1\cosh\phi_2\end{bmatrix}\]</div>
+<div class="arithmatex">\[\Lambda(\phi_1)\Lambda(\phi_2)=\begin{bmatrix}\cosh(\phi_1+\phi_2)&amp;\sinh(\phi_1+\phi_2)\\\sinh(\phi_1+\phi_2)&amp;\cosh(\phi_1+\phi_2)\end{bmatrix}=\Lambda(\phi_1+\phi_2)\]</div>
+<p>If we do not use the hyperbolic formulation, we must resort to the non-linear velocity addition formula given by:</p>
+<div class="arithmatex">\[v=\frac{v_1+v_2}{1+\frac{v_1v_2}{c^2}}\]</div>
+<p>This formulation also means that under constant proper acceleration <span class="arithmatex">\(a\)</span>, the rapidity <span class="arithmatex">\(\phi\)</span> changes linearly with respect to proper time <span class="arithmatex">\(\tau\)</span> according to <span class="arithmatex">\(d\phi/d\tau=a/c\)</span>. To derive this, note that</p>
+<div class="arithmatex">\[U^\mu=\left(c\cosh\phi,c\sinh\phi,0,0\right)\]</div>
+<div class="arithmatex">\[A^\mu=\frac{dU^\mu}{d\tau}=\left(c\sinh\phi\frac{d\phi}{d\tau},c\cosh\phi\frac{d\phi}{d\tau},0,0\right)\]</div>
+<p>Since the scalar magnitude of acceleration in invariant: <span class="arithmatex">\(a^2=\eta_{\mu\nu}A^\mu A^\nu=-(A^0)^2+(A^1)^2\)</span>, and:</p>
+<div class="arithmatex">\[a^2=-\left(c\sinh\phi\frac{d\phi}{d\tau}\right)^2+\left(c\cosh\phi\frac{d\phi}{d\tau}\right)^2\]</div>
+<div class="arithmatex">\[a^2=c^2\left(\frac{d\phi}{d\tau}\right)^2(\cosh^2\phi-\sinh^2\phi) = c^2\left(\frac{d\phi}{d\tau}\right)^2(1)\]</div>
+<div class="arithmatex">\[\frac{d\phi}{d\tau}=\frac{a}{c}\]</div>
+<p>The worldline of an object under constant proper acceleration (the acceleration measured by an accelerometer in the object's rest frame) can be evaluated by integrating the 4-velocity vector. This integration yields a worldline where the Lorentz transformation is applicable at every individual point to map to a Momentarily Comoving Inertial Frame (MCIF), but the global worldline traces a hyperbola.</p>
+<p>We can use this relationship and the equations between <span class="arithmatex">\(\gamma, \beta, v\)</span> and <span class="arithmatex">\(\tau\)</span> to find the time, velocity and position of the accelerating body as seen from some inertial frame.</p>
+<div class="arithmatex">\[v(\tau)=c\beta=c\tanh\left(\frac{a\tau}{c}\right)\]</div>
+<div class="arithmatex">\[\frac{dt}{d\tau}=\gamma(\tau)=\cosh\left(\frac{a\tau}{c}\right)\]</div>
+<p>Integrating this yields the coordinate time equation:</p>
+<div class="arithmatex">\[t=\frac{c}{a}\sinh\left(\frac{a\tau}{c}\right)\]</div>
+<p>To find the position, use the chain rule:</p>
+<div class="arithmatex">\[v(\tau)=\frac{dx}{dt}=\frac{\frac{dx}{d\tau}}{\frac{dt}{d\tau}}\implies\frac{dx}{d\tau}=c\sinh\left(\frac{a\tau}{c}\right)\]</div>
+<p>Integrating with respect to proper time yields the position equation (assuming the particle starts at <span class="arithmatex">\(x=0\)</span> when <span class="arithmatex">\(t=0\)</span> and <span class="arithmatex">\(\tau=0\)</span>):</p>
+<div class="arithmatex">\[x=\frac{c^2}{a}\cosh\left(\frac{a\tau}{c}\right)-\frac{c^2}{a}\]</div>
+<p>By combining the position and time equations and utilizing the hyperbolic identity <span class="arithmatex">\(\cosh^2\theta-\sinh^2\theta=1\)</span>, we recover the invariant trajectory equation, proving that the worldline of constant proper acceleration is a hyperbola in Minkowski spacetime:</p>
+<div class="arithmatex">\[\left(x+\frac{c^2}{a}\right)^2-c^2t^2=\frac{c^4}{a^2}\]</div>
+<h3 id="bells-paradox">Bell's Paradox<a class="headerlink" href="#bells-paradox" title="Permanent link">&para;</a></h3>
+<p>Let us define the hyperbola of a worldline under constant proper acceleration <span class="arithmatex">\(a\)</span> such that it intersects the <span class="arithmatex">\(ct=0\)</span> axis of an inertial frame at the spatial coordinate <span class="arithmatex">\(x=c^2/a\)</span> (let us define this constant distance as <span class="arithmatex">\(D\)</span>). This worldline will asymptotically approach, but never cross, the light cone emanating from the origin. Thus, the frame's coordinate velocity approaches <span class="arithmatex">\(c\)</span> but never reaches it. At the same time, any light worldline originating from the origin <span class="arithmatex">\((0,0)\)</span> after a certain coordinate time will never intersect the object's worldline. From the perspective of the accelerating frame, light from these regions is infinitely redshifted because the coordinate speed of light drops to zero at the horizon (where the metric component <span class="arithmatex">\(g_{00}\)</span> becomes zero). This is analogous to what happens at the event horizon of a black hole, where an object falling toward the black hole appears to freeze at the horizon for a distant inertial observer.</p>
+<p>The non-inertial frame's local basis vectors are <span class="arithmatex">\(\vec{e}_t\)</span>, which is the tangent to the hyperbola at a given event (parallel to the 4-velocity), and the Minkowski orthogonal spatial vector <span class="arithmatex">\(\vec{e}_x\)</span>. Because the global Minkowski 4-position vector <span class="arithmatex">\(\vec{S}\)</span> (originating from the focal center of the hyperbola) is orthogonal to the hyperbola's tangent, it is entirely parallel to the local spatial basis vector <span class="arithmatex">\(\vec{e}_x\)</span>. Furthermore, because the 4-velocity has a strictly constant invariant magnitude, its derivative (the 4-acceleration) must be Minkowski orthogonal to it. Therefore, while the 4-velocity is aligned with <span class="arithmatex">\(\vec{e}_t\)</span>, the 4-acceleration is entirely aligned with <span class="arithmatex">\(\vec{e}_x\)</span>.</p>
+<p>The non-inertial frame's local basis vectors are <span class="arithmatex">\(\vec{e}_t\)</span>, which is the tangent to the hyperbola at a given event (parallel to the 4-velocity), and the Minkowski orthogonal spatial vector <span class="arithmatex">\(\vec{e}_x\)</span>. Because the global Minkowski 4-position vector <span class="arithmatex">\(\vec{S}\)</span> (originating from the focal center of the hyperbola) is orthogonal to the hyperbola's tangent, its projection onto the local time axis is exactly zero. Consequently, from the point of view of the non-inertial frame's instantaneous basis, the position vector from the origin is given entirely by its spatial component: <span class="arithmatex">\(\vec{S}=\tilde{x}\vec{e}_x\)</span>, where <span class="arithmatex">\(\tilde{x}\)</span> is the invariant coordinate distance along the instantaneous <span class="arithmatex">\(\vec{e}_x\)</span> direction (specifically, <span class="arithmatex">\(\tilde{x}=c^2/a\)</span>). Furthermore, because the 4-velocity has a strictly constant invariant magnitude, its derivative (the 4-acceleration) must be Minkowski orthogonal to it. Therefore, while the 4-velocity is aligned with <span class="arithmatex">\(\vec{e}_t\)</span>, the 4-acceleration is entirely aligned with <span class="arithmatex">\(\vec{e}_x\)</span>.</p>
+<p>Consider a scenario where two reference frames begin accelerating at the same time and with the same proper acceleration from the perspective of an inertial frame (Bell's Spaceship Paradox). In the inertial frame, <a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOmiyAA4o1VxyzzGKzVb6ZqBtYLHOCYsoXv6ADu33c7w&amp;s=100">the coordinate distance between them remains a constant</a> <span class="arithmatex">\(L\)</span> throughout their worldlines. However, from the perspective of the rear non-inertial frame's MCIF, the proper distance between them continually grows. Because the rear frame's line of simultaneity (aligned with its <span class="arithmatex">\(\vec{e}_x\)</span> axis) tilts forward into the future as it accelerates, it intersects the forward frame's worldline at a progressively later proper time. Consequently, in the rear frame's instantaneous rest frame, the forward frame always appears to have accelerated for a longer duration, reaching a higher velocity and thus stretching the distance between them.</p>
+<h3 id="rindler-coordinates">Rindler Coordinates<a class="headerlink" href="#rindler-coordinates" title="Permanent link">&para;</a></h3>
+<p>These hyperbolic trajectories form the basis of the <a href="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Rindler_chart.svg/1280px-Rindler_chart.svg.png">Rindler coordinate system</a> <span class="arithmatex">\((T, X)\)</span>, which maps spacetime for uniformly accelerating observers. For a family of hyperbolas intersecting the inertial axis at distances <span class="arithmatex">\(D, 2D, 3D\)</span>, the associated proper accelerations are <span class="arithmatex">\(c^2/D, c^2/2D, c^2/3D\)</span>.</p>
+<p>The relationship transforming the Rindler coordinates <span class="arithmatex">\((T, X)\)</span> (where the reference observer with acceleration <span class="arithmatex">\(a\)</span> is at <span class="arithmatex">\(X=0\)</span>) to the global inertial coordinates <span class="arithmatex">\((t, x)\)</span> is given by:</p>
+<div class="arithmatex">\[ct=\left(X+\frac{c^2}{a}\right)\sinh\left(\frac{aT}{c}\right)\]</div>
+<div class="arithmatex">\[x=\left(X+\frac{c^2}{a}\right)\cosh\left(\frac{aT}{c}\right)\]</div>
+<p>In this non-inertial coordinate system, governed by the Rindler metric, inertial worldlines (straight lines in Minkowski space) map to curved trajectories, and light worldlines asymptotically approach the Rindler horizon at <span class="arithmatex">\(X=-c^2/a\)</span> as coordinate time <span class="arithmatex">\(T \to \infty\)</span>. This demonstrates geometrically how the light cone boundary acts as an absolute horizon for the accelerating observer.</p>
+<p>In the global inertial (Minkowski) frame, the accelerating object's spatial coordinate <span class="arithmatex">\(x\)</span> changes continuously with time <span class="arithmatex">\(t\)</span> as it traces its hyperbolic worldline. It is in constant motion, and its coordinate velocity <span class="arithmatex">\(dx/dt\)</span> asymptotically approaches <span class="arithmatex">\(c\)</span>.</p>
+<p>When we switch to the Rindler coordinate system <span class="arithmatex">\((T, X)\)</span>, we are mathematically forcing the coordinate grid to accelerate alongside the object. Depending on how you define the origin of the Rindler chart, the accelerating object is assigned a permanently fixed spatial coordinate:</p>
+<ul>
+<li><strong>Shifted Origin:</strong> The object is defined to sit exactly at <span class="arithmatex">\(X=0\)</span>.</li>
+<li><strong>Horizon Origin:</strong> The object is defined to sit exactly at <span class="arithmatex">\(X=c^2/a\)</span>.</li>
+</ul>
+<p>In either convention, the spatial coordinate <span class="arithmatex">\(X\)</span> of the accelerating object is a constant constant scalar.</p>
+<p>Note that since the time basis in the Rindler coordinates is the tangent of the hyperbolic curve, which also matches the velocity vector, it means the spatial velocity of the object is 0 in that coordinate system, and therefore at rest:</p>
+<div class="arithmatex">\[\frac{dX}{dT}=0\]</div>
+<p>While the object is kinematically at rest (<span class="arithmatex">\(dX/dT=0\)</span>), the system remains a non-inertial frame. The physical reality of the acceleration is transferred from the object's motion into the geometry of the spacetime metric itself.</p>
+<p>In the Rindler frame, an onboard accelerometer still measures a proper acceleration <span class="arithmatex">\(a\)</span>. However, because the object is at rest in these coordinates, this measurement is not interpreted as kinematic acceleration, but rather as the object resisting a fictitious gravitational field. The spatial dependence of the Rindler metric time component, <span class="arithmatex">\(g_{00}=(1+aX/c^2)^2\)</span>, acts mathematically identical to a uniform gravitational potential pulling everything toward the Rindler horizon. The object remains at rest at <span class="arithmatex">\(X=0\)</span> because it is "supported" against this fictitious field, much like a book resting stationary on a table in Earth's gravity.</p>
+<h3 id="tying-hyperbolic-motion-back-to-force-acceleration">Tying Hyperbolic Motion Back to Force &amp; Acceleration<a class="headerlink" href="#tying-hyperbolic-motion-back-to-force-acceleration" title="Permanent link">&para;</a></h3>
+<p>Consider a situation where we are applying a constant force F and we would like to make note of how momentum changes. As <span class="arithmatex">\(\mathbf{F} = \frac{d\mathbf{p}}{dt}\)</span>, for a constant force applied in one dimension over a coordinate time <span class="arithmatex">\(t\)</span>, the integral is:</p>
+<div class="arithmatex">\[\int_{0}^{t} F \, dt = \int_{p_0}^{p(t)} dp\]</div>
+<div class="arithmatex">\[F t = p(t) - p_0\]</div>
+<p>If the object is already moving at velocity <span class="arithmatex">\(v_0\)</span> at <span class="arithmatex">\(t = 0\)</span>, the initial momentum is <span class="arithmatex">\(p_0 = \gamma_0 m v_0\)</span>. The equation becomes:</p>
+<div class="arithmatex">\[\frac{m v}{\sqrt{1 - (v/c)^2}} - \frac{m v_0}{\sqrt{1 - (v_0/c)^2}} = F t\]</div>
+<p>If the block starts from rest (<span class="arithmatex">\(v_0 = 0\)</span>), then <span class="arithmatex">\(\frac{m v}{\sqrt{1 - (v/c)^2}} = F t\)</span> and rearranging this to solve for <span class="arithmatex">\(v(t)\)</span> yields the standard equation for relativistic hyperbolic motion.</p>
+<p>Using <span class="arithmatex">\(dx = v(t)dt\)</span> and integrating from <span class="arithmatex">\(x(0)=0\)</span>:</p>
+<div class="arithmatex">\[x(t) = \int_{0}^{t} \frac{\alpha \tau}{\sqrt{1 + \left(\frac{\alpha \tau}{c}\right)^2}} d\tau\]</div>
+<p>Evaluating this integral yields the position function:</p>
+<div class="arithmatex">\[x(t) = \frac{c^2}{\alpha} \left( \sqrt{1 + \left(\frac{\alpha t}{c}\right)^2} - 1 \right)\]</div>
+<p>By algebraically rearranging this trajectory and squaring it, we can group the space and time variables:</p>
+<div class="arithmatex">\[\left(x(t) + \frac{c^2}{\alpha}\right)^2 - (ct)^2 = \left(\frac{c^2}{\alpha}\right)^2\]</div>
+<p>This is the standard geometric equation for a hyperbola (<span class="arithmatex">\(X^2 - Y^2 = R^2\)</span>) in the Minkowski spacetime diagram. While a classical particle under constant force traces a parabola (<span class="arithmatex">\(x = \frac{1}{2}at^2\)</span>), a relativistic particle under constant force traces a hyperbola, forever approaching the light cone <span class="arithmatex">\(x = ct\)</span> as an asymptote but never crossing it.</p>
+<h2 id="useful-formulas">Useful Formulas<a class="headerlink" href="#useful-formulas" title="Permanent link">&para;</a></h2>
+<div class="arithmatex">\[\begin{bmatrix}ct'\\x'\end{bmatrix}=\begin{bmatrix}\gamma&amp;-\gamma\beta\\-\gamma\beta&amp;\gamma\end{bmatrix}\begin{bmatrix}ct\\x\end{bmatrix}\]</div>
+<p>where <span class="arithmatex">\(\beta=\frac{v}{c}\)</span> and <span class="arithmatex">\(\gamma=\frac{1}{\sqrt{1-\beta^2}}\)</span></p>
+<hr />
+<p>The full Lorentz Boost is given by,</p>
+<div class="arithmatex">\[\Lambda = \begin{bmatrix} \gamma &amp; -\gamma\beta_x &amp; -\gamma\beta_y &amp; -\gamma\beta_z \\ -\gamma\beta_x &amp; 1+(\gamma-1)\frac{\beta_x^2}{\beta^2} &amp; (\gamma-1)\frac{\beta_x\beta_y}{\beta^2} &amp; (\gamma-1)\frac{\beta_x\beta_z}{\beta^2} \\ -\gamma\beta_y &amp; (\gamma-1)\frac{\beta_y\beta_x}{\beta^2} &amp; 1+(\gamma-1)\frac{\beta_y^2}{\beta^2} &amp; (\gamma-1)\frac{\beta_y\beta_z}{\beta^2} \\ -\gamma\beta_z &amp; (\gamma-1)\frac{\beta_z\beta_x}{\beta^2} &amp; (\gamma-1)\frac{\beta_z\beta_y}{\beta^2} &amp; 1+(\gamma-1)\frac{\beta_z^2}{\beta^2} \end{bmatrix}\]</div>
+<hr />
+<p><span class="arithmatex">\(ds^2=(cdt)^2-\sum_i dx_ix^i\)</span> is the invariant spacetime interval in the Minkowski metric.</p>
+<hr />
+<p>Doppler effect on a receding source, the observed frequency <span class="arithmatex">\(f_e\)</span> is redshifted by <span class="arithmatex">\(f_e = f_0 \sqrt{\frac{1 - \beta}{1 + \beta}}\)</span>. For an approaching Source (<span class="arithmatex">\(\beta\)</span> becomes <span class="arithmatex">\(-\beta\)</span>): <span class="arithmatex">\(f_e = f_0 \sqrt{\frac{1 + \beta}{1 - \beta}}\)</span></p>
+<hr />
+<div class="arithmatex">\[\frac{dt}{d\tau} = \frac{1}{\sqrt{1 - \frac{v^2}{c^2}}} = \gamma\]</div>
+<hr />
+<div class="arithmatex">\[U=\frac{d}{d\tau}(ct, x, y, z)= (c\frac{dt}{d\tau},\frac{dx}{dt}\frac{dt}{d\tau}, \frac{dy}{dt}\frac{dt}{d\tau}, \frac{dz}{dt}\frac{dt}{d\tau})  = \gamma(c, u_x, u_y, u_z)\]</div>
+<p><span class="arithmatex">\(u_x, u_y, u_z\)</span> is the spatial velocity we are used to from classical mechanics, given by <span class="arithmatex">\(\frac{dx}{dt}\)</span> etc. </p>
+<hr />
+<p><span class="arithmatex">\(P=mU=\gamma(mc, mu_x, mu_y, mu_z)=(E/c, p_x, p_y, p_z)\)</span>, where we absorb the <span class="arithmatex">\(\gamma\)</span> factor into the <span class="arithmatex">\(E\)</span> and spatial <span class="arithmatex">\(p\)</span> terms. Thus the spatial momentum is actually <span class="arithmatex">\(\gamma mv\)</span>, not <span class="arithmatex">\(mv\)</span>, and  <span class="arithmatex">\(\frac{E}{c} = P^0 = \gamma mc\)</span></p>
+<p>Thus, <span class="arithmatex">\(p\)</span> is not the usual Newtonian <span class="arithmatex">\(mv\)</span>. That is a low velocity approximation.</p>
+<hr />
+<p><span class="arithmatex">\(P\cdot P\)</span> is conserved and <span class="arithmatex">\(P\cdot P=(E/c)^2-p^2=(mc)^2\)</span>. Rearranging this gives Einstein’s energy-momentum relation: <span class="arithmatex">\(E^2=(mc^2)^2+(pc)^2\)</span></p>
+<p>When a particle is at rest (<span class="arithmatex">\(p=0\)</span>), the equation reduces to <span class="arithmatex">\(E=mc^2\)</span>. For massless particles use <span class="arithmatex">\(p=h/\lambda\)</span>) or <span class="arithmatex">\(E=pc\)</span>.</p>
+<hr />
+<div class="arithmatex">\[\frac{d\gamma}{dt}=\gamma^3\frac{\mathbf{u}\cdot\mathbf{a}}{c^2}\]</div>
+<hr />
+<div class="arithmatex">\[A=\left(\gamma^4\frac{\mathbf{u}\cdot\mathbf{a}}{c}, \gamma^4\frac{\mathbf{u}\cdot\mathbf{a}}{c^2}\mathbf{u}+\gamma^2\mathbf{a}\right)\]</div>
+<hr />
+<p>The magnitude of the 4-acceleration in the object's rest frame is given by:</p>
+<div class="arithmatex">\[A^\mu A_\mu = (A^0)^2 - \vert{}\mathbf{A}\vert{}^2 = 0^2 - \vert{}\boldsymbol{\alpha}\vert{}^2 = -\vert{}\boldsymbol{\alpha}\vert{}^2\]</div>
+<p>where <span class="arithmatex">\(\alpha\)</span> is the proper acceleration. Since the 4-acceleration's magnitude is invariant, it means the magnitude is equal to the above value in any reference frame. </p>
+<hr />
+<p>We can also write the 4-acceleration in terms of the proper acceleration by applying a Lorentz boost from the rest frame to an arbitrary frame.</p>
+<div class="arithmatex">\[A = \left( \gamma\frac{\mathbf{u} \cdot \boldsymbol{\alpha}}{c}, \boldsymbol{\alpha} + \frac{\gamma^2}{\gamma + 1}\frac{\mathbf{u} \cdot \boldsymbol{\alpha}}{c^2}\mathbf{u} \right)\]</div>
+<p>Equating this to the previous derivation for the 4-acceleration, we get,</p>
+<div class="arithmatex">\[a_\parallel = \frac{\alpha_\parallel}{\gamma^3}\]</div>
+<div class="arithmatex">\[a_\perp = \frac{\alpha_\perp}{\gamma^2}\]</div>
+<p>where <span class="arithmatex">\(a_\parallel\)</span> is the acceleration along the direction of movement of the moving frame, and <span class="arithmatex">\(a_\perp\)</span> is along a direction perpendicular to it. </p>
+<hr />
+<p>The 4-force is defined as <span class="arithmatex">\(K = m A = m\frac{dP}{d\tau}\)</span>. The invariant length of the 4-force is equal to the length of the proper force, given by <span class="arithmatex">\(K_\mu K^\mu = -\vert{}\mathbf{F}_{proper}\vert{}^2\)</span>.</p>
+<hr />
+<p>The 4-force can be expressed in terms of the laboratory-frame 3-force <span class="arithmatex">\(\mathbf{F}\)</span> and velocity <span class="arithmatex">\(\mathbf{v}\)</span>. </p>
+<div class="arithmatex">\[K^\mu = \gamma \left( \frac{\mathbf{F} \cdot \mathbf{v}}{c}, F_x, F_y, F_z \right)\]</div>
+<p><strong>Longitudinal component (parallel to velocity):</strong> <span class="arithmatex">\(\gamma F_x = \gamma F_{proper, x} \implies F_x = F_{proper, x}\)</span></p>
+<p><strong>Transverse components (perpendicular to velocity):</strong> <span class="arithmatex">\(\gamma F_y = F_{proper, y} \implies F_y = \frac{F_{proper, y}}{\gamma}\)</span> and <span class="arithmatex">\(\gamma F_z = F_{proper, z} \implies F_z = \frac{F_{proper, z}}{\gamma}\)</span></p>
+<hr />
+<p>The relationship between the 3-force and 3-acceleration, the relativistic equivalent of Newton's Second Law <span class="arithmatex">\(F = ma\)</span> (which is a low velocity approximation):</p>
+<div class="arithmatex">\[\mathbf{F} = \gamma m\mathbf{a} + \frac{\gamma^3 m}{c^2}(\mathbf{v} \cdot \mathbf{a})\mathbf{v}\]</div>
+<p><strong>Transverse Acceleration (Force perpendicular to velocity):</strong> If the force is applied at a right angle to the motion, <span class="arithmatex">\(\mathbf{v} \cdot \mathbf{a} = 0\)</span>. The second term vanishes, yielding: <span class="arithmatex">\(\mathbf{F} = \gamma m\mathbf{a}\)</span>. The particle's effective inertia is <span class="arithmatex">\(\gamma m\)</span>.</p>
+<p><strong>Longitudinal Acceleration (Force parallel to velocity):</strong> If the force is applied in the exact direction of motion, <span class="arithmatex">\(\mathbf{v}\)</span> and <span class="arithmatex">\(\mathbf{a}\)</span> are parallel, so <span class="arithmatex">\(\mathbf{v} \cdot \mathbf{a} = va\)</span>. The equation simplifies (using <span class="arithmatex">\(\gamma^2 = 1/(1 - v^2/c^2)\)</span>) to: <span class="arithmatex">\(\mathbf{F} = \gamma^3 m\mathbf{a}\)</span>. The particle's effective inertia is <span class="arithmatex">\(\gamma^3 m\)</span>.</p>
+<hr />
+<p>The Lorentz transformation naturally mapped to hyperbolic geometry:</p>
+<div class="arithmatex">\[\begin{bmatrix}ct'\\x'\end{bmatrix}=\begin{bmatrix}\cosh\phi&amp;-\sinh\phi\\-\sinh\phi&amp;\cosh\phi\end{bmatrix}\begin{bmatrix}ct\\x\end{bmatrix}\]</div>
+<p>Here, <span class="arithmatex">\(\phi\)</span> is the rapidity, defined by the relation <span class="arithmatex">\(\tanh\phi=v/c=\beta\)</span>. </p>
+<hr />
+<p>Hyperbolic formulation allows relative velocities to be calculated via the simple addition of rapidities: <span class="arithmatex">\(\phi_{AC}=\phi_{AB}+\phi_{BC}\)</span>, bypassing the non-linear velocity addition formula <span class="arithmatex">\(v=\frac{v_1+v_2}{1+\frac{v_1v_2}{c^2}}\)</span></p>
+<hr />
+<p>The relationship transforming the Rindler coordinates <span class="arithmatex">\((T, X)\)</span> (where the reference observer with acceleration <span class="arithmatex">\(a\)</span> is at <span class="arithmatex">\(X=0\)</span>) to the global inertial coordinates <span class="arithmatex">\((t, x)\)</span> is given by:</p>
+<div class="arithmatex">\[ct=\left(X+\frac{c^2}{a}\right)\sinh\left(\frac{aT}{c}\right)\]</div>
+<div class="arithmatex">\[x=\left(X+\frac{c^2}{a}\right)\cosh\left(\frac{aT}{c}\right)\]</div>
+<p>Depending on how you define the origin of the Rindler chart, the accelerating object is assigned a permanently fixed spatial coordinate:</p>
+<ul>
+<li><strong>Shifted Origin:</strong> The object is defined to sit exactly at <span class="arithmatex">\(X=0\)</span>.</li>
+<li><strong>Horizon Origin:</strong> The object is defined to sit exactly at <span class="arithmatex">\(X=c^2/a\)</span>.</li>
+</ul>
+<h2 id="classical-field-theory">Classical Field Theory<a class="headerlink" href="#classical-field-theory" title="Permanent link">&para;</a></h2>
+<h2 id="principle-of-least-action-in-special-relativity">Principle of Least Action in Special Relativity<a class="headerlink" href="#principle-of-least-action-in-special-relativity" title="Permanent link">&para;</a></h2>
+<p>Let us start by applying the principle to a free particle (i.e. it has no forces acting on it) in non-relativistic physics. Since <span class="arithmatex">\(L = T - V\)</span> and <span class="arithmatex">\(V\)</span> can be ignored as there is no force and therefore no gradient in the potential, we can set <span class="arithmatex">\(L = T\)</span>, which is just the kinetic energy. <span class="arithmatex">\(L = \frac{1}{2}mv^2\)</span>, or written in component notation, <span class="arithmatex">\(L = \frac{1}{2}m\dot{x}_i\dot{x}^i\)</span>.</p>
+<p>Applying the Euler-Lagrange equations gives us the equations of motion using <span class="arithmatex">\(t\)</span> as the parameter:</p>
+<div class="arithmatex">\[\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{x}^i}\right) - \frac{\partial L}{\partial x^i} = 0\]</div>
+<p>Since <span class="arithmatex">\(\frac{\partial L}{\partial x^i} = 0\)</span> (there is no coordinate dependence) and <span class="arithmatex">\(\frac{\partial L}{\partial \dot{x}^i} = m\dot{x}_i\)</span>, the equation of motion reduces to <span class="arithmatex">\(m\ddot{x}_i = 0\)</span>.</p>
+<p>When we move to relativistic particles, we start with the spacetime interval <span class="arithmatex">\(ds^2\)</span>. The Action is proportional to the proper time along the worldline, <span class="arithmatex">\(S \propto \int ds\)</span>. Using a generic parameter <span class="arithmatex">\(\sigma\)</span> to parameterize the path, and adopting the Minkowski metric <span class="arithmatex">\(\eta_{\mu\nu}\)</span>, we can write the Lagrangian as:</p>
+<div class="arithmatex">\[L = -mc\sqrt{-\eta_{\mu\nu}\dot{x}^\mu\dot{x}^\nu}\]</div>
+<p>where <span class="arithmatex">\(\dot{x}^\mu = \frac{dx^\mu}{d\sigma}\)</span>.</p>
+<p>The Action then becomes:</p>
+<div class="arithmatex">\[S = \int_{\sigma_1}^{\sigma_2} L d\sigma = -mc \int_{\sigma_1}^{\sigma_2} \sqrt{-\eta_{\mu\nu}\frac{dx^\mu}{d\sigma}\frac{dx^\nu}{d\sigma}} d\sigma\]</div>
+<h3 id="properties-of-a-successful-action">Properties of a "Successful" Action<a class="headerlink" href="#properties-of-a-successful-action" title="Permanent link">&para;</a></h3>
+<p>A few things to note about the Action:</p>
+<p>The <span class="arithmatex">\(mc\)</span> term is needed to ensure the Action has dimensions of energy <span class="arithmatex">\(\times\)</span> time.</p>
+<p>The Action is Lorentz invariant since all the dummy indices are contracted, which means all the terms are scalars, which are naturally Lorentz invariant.    </p>
+<p>We have used <span class="arithmatex">\(\sigma\)</span> as the parameter of the functionals. In the non-relativistic case, we used time <span class="arithmatex">\(t\)</span>, however with Special Relativity, coordinate time depends on the reference frame, so which <span class="arithmatex">\(t\)</span> should we use? One obvious choice is the proper time <span class="arithmatex">\(\tau\)</span> which is invariant. But it turns out that in this Action, we can choose any parameter and get away with it. The only constraint is the mathematical one that it monotonically increases along a worldline, because that is literally the job of the parameter.</p>
+<p>This is because the two <span class="arithmatex">\(d\sigma\)</span> terms in the denominator in the square root cancel out the one on the outside. So if we chose a new parameter <span class="arithmatex">\(\lambda\)</span>, we can rewrite all the derivatives in terms of <span class="arithmatex">\(\lambda\)</span>, and they would cancel out the <span class="arithmatex">\(\frac{d\lambda}{d\sigma}\)</span> term on the outside.</p>
+<div class="arithmatex">\[\tilde{S} = -mc \int_{\tilde{\sigma}_1}^{\tilde{\sigma}_2} d\tilde{\sigma} \sqrt{-\eta_{\mu\nu} \frac{dx^\mu}{d\tilde{\sigma}} \frac{dx^\nu}{d\tilde{\sigma}}} = -mc \int_{\sigma_1}^{\sigma_2} d\sigma \frac{d\tilde{\sigma}}{d\sigma} \sqrt{-\eta_{\mu\nu} \frac{dx^\mu}{d\sigma} \frac{dx^\nu}{d\sigma} \left( \frac{d\sigma}{d\tilde{\sigma}} \right)^2} = S\]</div>
+<p>Why does this matter? The Action must be reparameterization invariant because when a mathematical quantity is parameter-independent, it means the final numerical value you calculate does not depend on how you choose to label or parametrize the path. The value is not an artifact of the choice of coordinate system. It must be a direct property of the geometric curve itself. It describes a real physical reality (like the actual aging of a particle or the true spacetime distance between events) rather than a mathematical illusion created by a lucky coordinate choice.</p>
+<p>Additionally, because the parameter <span class="arithmatex">\(\sigma\)</span> is physically meaningless, it acts as a "gauge" degree of freedom. This grants us the mathematical liberty to choose whatever parameter makes solving our differential equations the easiest for a given problem.</p>
+<p>The Action must be Lorentz invariant because the equations of Special Relativity must hold i.e. when we transform the coordinates of an inertial observer, the physics looks exactly the same, and the metric doesn't morph into a complicated, position-dependent tensor. </p>
+<p>To see the difference between what Lorentz invariance adds to the table that reparameterization invariance doesn't, imagine we created a completely geometric, reparameterization-independent action, but deliberately broke Lorentz invariance by using a Euclidean metric <span class="arithmatex">\(\delta_{\mu\nu} = \text{diag}(1, 1, 1, 1)\)</span> instead of the Minkowski metric:</p>
+<div class="arithmatex">\[S_{\text{wrong}}=\int \sqrt{\delta_{\mu\nu}\frac{dx^\mu}{d\lambda}\frac{dx^\nu}{d\lambda}} d\lambda\]</div>
+<p>This action is perfectly geometric and independent of our mathematical choices of path labeling (<span class="arithmatex">\(\lambda\)</span>). However, it describes a universe where space and time are treated exactly the same, meaning the speed of light is not constant, there is no cosmic speed limit, and moving observers would see the laws of physics change. In a Euclidean metric, the distance between any two distinct points is strictly positive, meaning there are no null paths (<span class="arithmatex">\(ds^2=0\)</span>) and therefore no absolute structure separating past, future, and elsewhere.</p>
+<p><strong>Aside:</strong> While we have <span class="arithmatex">\(4\)</span> spacetime coordinates and therefore can derive <span class="arithmatex">\(4\)</span> equations of motion, we actually only have <span class="arithmatex">\(3\)</span> physical degrees of freedom. All <span class="arithmatex">\(4\)</span> coordinates are not dynamically independent of each other. There is redundancy among them. This comes from the constraint of the constant magnitude of the 4-velocity which satisfies the constraint: <span class="arithmatex">\(\eta_{\mu\nu}u^\mu u^\nu = -c^2\)</span>. This binds the temporal and spatial velocities together, reducing the system by one degree of freedom. The reduction of a degree of freedom is the direct consequence of the "gauge" degree of freedom.</p>
+<hr />
+<p>One more requirement we must meet when choosing a Lagrangian or action is that it reduces to Newton's equations of motion under the low-velocity approximation. This can be seen to be true when we parameterize the action by proper time <span class="arithmatex">\(\tau\)</span>, and can be written as:</p>
+<div class="arithmatex">\[S = -mc \int \sqrt{ c^2 \left(\frac{dt}{d\tau}\right)^2 - \sum_i \left(\frac{dx^i}{dt}\frac{dt}{d\tau}\right)^2 } d\tau\]</div>
+<p>By factoring out the <span class="arithmatex">\(\left(\frac{dt}{d\tau}\right)^2\)</span> to cancel with the <span class="arithmatex">\(d\tau\)</span> integration measure, and pulling <span class="arithmatex">\(c^2\)</span> out of the square root, we get:</p>
+<div class="arithmatex">\[S = -mc^2 \int \sqrt{1 - \frac{\dot{x}^2}{c^2}} dt\]</div>
+<p>Taking the low-velocity approximation and applying the binomial Taylor series expansion (<span class="arithmatex">\(\sqrt{1 - \epsilon} \approx 1 - \frac{\epsilon}{2}\)</span>), the Action becomes:</p>
+<div class="arithmatex">\[S \approx \int \left( -mc^2 + \frac{1}{2}m\dot{x}^2 \right) dt\]</div>
+<p>Because the Euler-Lagrange equations operate via derivatives, adding or subtracting a constant to the Lagrangian does not change the resulting equations of motion. We can then ignore the constant rest mass energy term (<span class="arithmatex">\(-mc^2\)</span>), and the action reduces to the non-relativistic action we saw earlier: <span class="arithmatex">\(S_{\text{NR}} = \int \frac{1}{2}m\dot{x}^2 dt\)</span></p>
+<h3 id="parameterization-with-proper-time">Parameterization with Proper Time<a class="headerlink" href="#parameterization-with-proper-time" title="Permanent link">&para;</a></h3>
+<p>Since <span class="arithmatex">\(ds^2=-c^2d\tau^2\)</span>, if we parameterize the Action with <span class="arithmatex">\(\tau\)</span> the Action can be written as <span class="arithmatex">\(S=-mc^2\int d\tau\)</span>. This makes sense since Action is after all energy <span class="arithmatex">\(\times\)</span> time. The natural choice for energy of a free particle is its rest mass energy, while the natural choice for a free particle is to measure time in its rest frame, which is proper time. </p>
+<p>Extremizing this action means the particle will follow the path through spacetime that maximizes the proper time i.e. time in its rest frame. Note that this is <em>not</em> the same as saying the clock in a rest frame measures the least time, which is a statement about how the world line changes due to coordinate change. In contrast, extremizing the action is about an equation of motion. What path does the free particle follow in spacetime, or alternatively what is the shape/geometry of the particle's worldline when it is simply floating in space. </p>
+<p>The action principle is in fact saying that a free particle travels in a straight line in spacetime. This is a geodesic. Any curve or deviation (acceleration) decreases the elapsed proper time. This is the Twin Paradox. Imagine two twins starting at Event A and meeting again at Event B. Twin 1 floats freely through space without firing any thrusters. This is an inertial, straight-line path in spacetime. Twin 2 fires thrusters, accelerating near the speed of light, turning around, and returning to meet Twin 1 at Event B. Because Twin 2 accelerated, they underwent severe time dilation relative to the inertial frame. When they meet at Event B, Twin 2's wristwatch will have ticked significantly less than Twin 1's wristwatch.</p>
+<h3 id="canonical-momentum-is-4-momentum">Canonical Momentum is 4-Momentum<a class="headerlink" href="#canonical-momentum-is-4-momentum" title="Permanent link">&para;</a></h3>
+<p>The invariant spacetime interval <span class="arithmatex">\(ds^2\)</span> is related to proper time <span class="arithmatex">\(\tau\)</span> by <span class="arithmatex">\(ds^2=-c^2d\tau^2\)</span>. We can also write <span class="arithmatex">\(ds^2\)</span> in terms of the metric:</p>
+<div class="arithmatex">\[-c^2d\tau^2=\eta_{\mu\nu}dx^\mu dx^\nu\]</div>
+<div class="arithmatex">\[cd\tau=\sqrt{-\eta_{\mu\nu}dx^\mu dx^\nu}\]</div>
+<p>Now, divide both sides by the arbitrary parameter differential <span class="arithmatex">\(d\sigma\)</span>:</p>
+<div class="arithmatex">\[c\frac{d\tau}{d\sigma}=\sqrt{-\eta_{\mu\nu}\frac{dx^\mu}{d\sigma}\frac{dx^\nu}{d\sigma}}\]</div>
+<p>Notice that the right side of this equation is the square root term from the Lagrangian. Therefore, we can substitute this into the Lagrangian:</p>
+<div class="arithmatex">\[L=-mc\left(c\frac{d\tau}{d\sigma}\right)=-mc^2\frac{d\tau}{d\sigma}\]</div>
+<div class="arithmatex">\[\frac{d\tau}{d\sigma}=-\frac{L}{mc^2}\]</div>
+<p>The canonical momentum conjugate is <span class="arithmatex">\(p_\mu=\frac{\partial L}{\partial\dot{x}^\mu}\)</span></p>
+<p>Using the Lagrangian <span class="arithmatex">\(L=-mc(-\eta_{\alpha\beta}\dot{x}^\alpha\dot{x}^\beta)^{1/2}\)</span>:</p>
+<div class="arithmatex">\[p_\mu=-mc\left[\frac{1}{2}(-\eta_{\alpha\beta}\dot{x}^\alpha\dot{x}^\beta)^{-1/2}\right]\frac{\partial}{\partial\dot{x}^\mu}(-\eta_{\alpha\beta}\dot{x}^\alpha\dot{x}^\beta)\]</div>
+<p>Using the chain rule, the derivative of the term inside the parenthesis is <span class="arithmatex">\(-2\eta_{\mu\nu}\dot{x}^\nu\)</span>. Substituting this back in:</p>
+<div class="arithmatex">\[p_\mu=-mc\left[\frac{1}{2\sqrt{-\eta_{\alpha\beta}\dot{x}^\alpha\dot{x}^\beta}}\right](-2\eta_{\mu\nu}\dot{x}^\nu)\]</div>
+<div class="arithmatex">\[p_\mu=\frac{mc\eta_{\mu\nu}\dot{x}^\nu}{\sqrt{-\eta_{\alpha\beta}\dot{x}^\alpha\dot{x}^\beta}}\]</div>
+<p>The denominator is equal to <span class="arithmatex">\(c\frac{d\tau}{d\sigma}\)</span>. We substitute this into our momentum equation:</p>
+<div class="arithmatex">\[p_\mu=\frac{mc\eta_{\mu\nu}\frac{dx^\nu}{d\sigma}}{c\frac{d\tau}{d\sigma}}\]</div>
+<p>The <span class="arithmatex">\(c\)</span> terms cancel, and the <span class="arithmatex">\(d\sigma\)</span> terms in the differentials cancel out via the chain rule (<span class="arithmatex">\(\frac{dx^\nu}{d\sigma} \frac{d\sigma}{d\tau} = \frac{dx^\nu}{d\tau}\)</span>):</p>
+<div class="arithmatex">\[p_\mu=m\eta_{\mu\nu}\frac{dx^\nu}{d\tau}\]</div>
+<p>This is the covariant canonical momentum (index down). To compare it to the contravariant 4-momentum <span class="arithmatex">\(P^\mu\)</span> (index up), we raise the index using the inverse metric tensor <span class="arithmatex">\(\eta^{\rho\mu}\)</span>:</p>
+<div class="arithmatex">\[p^\rho=\eta^{\rho\mu}p_\mu=m\eta^{\rho\mu}\eta_{\mu\nu}\frac{dx^\nu}{d\tau}\]</div>
+<p>Since <span class="arithmatex">\(\eta^{\rho\mu}\eta_{\mu\nu}\)</span> is the Kronecker delta <span class="arithmatex">\(\delta^\rho_\nu\)</span> (the identity matrix), it simply swaps the index from <span class="arithmatex">\(\nu\)</span> to <span class="arithmatex">\(\rho\)</span>:</p>
+<div class="arithmatex">\[p^\rho=m\frac{dx^\rho}{d\tau}\]</div>
+<p>Relabeling the dummy index <span class="arithmatex">\(\rho\)</span> back to <span class="arithmatex">\(\mu\)</span> yields:</p>
+<div class="arithmatex">\[p^\mu=m\frac{dx^\mu}{d\tau}\]</div>
+<p>This is just the definition of 4-momentum. So, the canonical momentum derived from the action principle is physically identical to the kinematic 4-momentum: <span class="arithmatex">\(P^\mu \equiv p^\mu\)</span></p>
+<h3 id="action-with-potentials-in-electromagnetism">Action with Potentials in Electromagnetism<a class="headerlink" href="#action-with-potentials-in-electromagnetism" title="Permanent link">&para;</a></h3>
+<p>If we have to add a potential in order to account for forces operating on the particle (i.e., it is no longer a free particle), we need to add a <span class="arithmatex">\(V(x)\)</span> term to the Lagrangian. How do we do this while ensuring it is reparameterization and Lorentz invariant?</p>
+<p>For the first requirement, using a term that depends on <span class="arithmatex">\(\dot{x}\)</span> will do the job, as the <span class="arithmatex">\(d\sigma\)</span> in the denominator cancels out the <span class="arithmatex">\(d\sigma\)</span> integration parameter (just like we saw in the free particle case). For Lorentz invariance, we need to contract the indices. Together, we can propose an action:</p>
+<div class="arithmatex">\[S_1 = \int_{\sigma_1}^{\sigma_2} \left[ -mc \sqrt{-\eta_{\mu\nu} \frac{dx^\mu}{d\sigma} \frac{dx^\nu}{d\sigma}} + qA_\mu(x) \dot{x}^\mu \right] d\sigma\]</div>
+<p>Here <span class="arithmatex">\(q\)</span> is added as a coupling factor between <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(\dot{x}\)</span> and, as can be seen below, will turn out to be the charge in the electromagnetic equations.</p>
+<p>If we pick the worldline parameter to coincide with the time of some inertial observer, <span class="arithmatex">\(\sigma = t\)</span>, so that <span class="arithmatex">\(dx^0/d\sigma = c\)</span>. If we write the contravariant 4-potential as <span class="arithmatex">\(A^\mu(x) = (\phi(x)/c, \mathbf{A}(x))\)</span>, lowering the index gives <span class="arithmatex">\(A_\mu(x) = (-\phi(x)/c, \mathbf{A}(x))\)</span>. Contracting this with <span class="arithmatex">\(\dot{x}^\mu = (c, \dot{\mathbf{x}})\)</span> and substituting it into the integral, we find:</p>
+<div class="arithmatex">\[S_1 = \int_{t_1}^{t_2} \left[ -mc^2 \sqrt{1 - \frac{\dot{\mathbf{x}}^2}{c^2}} - q\phi(x) + q\mathbf{A}(x) \cdot \dot{\mathbf{x}} \right] dt\]</div>
+<p>This is essentially the electromagnetic Action, from which the Lorentz force law can be derived.</p>
+<h3 id="action-with-potentials-in-gravity">Action with Potentials in Gravity<a class="headerlink" href="#action-with-potentials-in-gravity" title="Permanent link">&para;</a></h3>
+<p>For gravity, we do something a little different. We write the action as:</p>
+<div class="arithmatex">\[S_2 = \int_{t_1}^{t_2} \left[ -mc^2 \sqrt{1 + \frac{2\Phi(x)}{c^2} - \frac{\dot{\mathbf{x}}^2}{c^2}} \right] dt\]</div>
+<p>If we Taylor expand the square root, assuming that <span class="arithmatex">\(\vert{}\dot{\mathbf{x}}\vert{} \ll c\)</span> and that <span class="arithmatex">\(2\Phi(x) \ll c^2\)</span>, then the leading terms give:</p>
+<div class="arithmatex">\[S_2 \approx \int_{t_1}^{t_2} \left[ -mc^2 + \frac{1}{2}m\dot{\mathbf{x}}^2 - m\Phi(x) \right] dt\]</div>
+<p>Why did we choose this action? One motivation is that the low-velocity approximation gives us a potential energy term that is proportional to <span class="arithmatex">\(m\)</span> (<span class="arithmatex">\(V = m\Phi\)</span>), which is exactly the definition of Newtonian gravitational potential energy.</p>
+<p>How do we ensure this action is reparameterization invariant and preserves spacetime symmetries? The <span class="arithmatex">\(1\)</span> in the Taylor approximation actually originates from the time component of the flat Minkowski metric, <span class="arithmatex">\(-\eta_{00}\)</span>. To incorporate gravity, we promote this constant to a coordinate-dependent metric component, <span class="arithmatex">\(-g_{00}(x) = 1 + \frac{2\Phi(x)}{c^2}\)</span>.</p>
+<p>Of course, once we've done this to the time component, we are no longer in Minkowski spacetime. We use a general metric tensor <span class="arithmatex">\(g_{\mu\nu}\)</span>. Because <span class="arithmatex">\(g_{00}\)</span> is dependent on the coordinates, it means that to maintain <strong>general covariance</strong> (invariance under arbitrary coordinate transformations, which replaces global Lorentz invariance in General Relativity), we need to ensure the spatial and off-diagonal components of the metric can also dynamically respond to spacetime curvature.</p>
+<p>Just as in the previous two situations, the fully contracted spacetime velocity terms are parameter invariant. This indicates that we can write a generalized covariant line element and place it directly inside our Lagrangian:</p>
+<div class="arithmatex">\[S_2 = -mc \int_{\sigma_1}^{\sigma_2} \sqrt{-g_{\mu\nu}(x) \frac{dx^\mu}{d\sigma} \frac{dx^\nu}{d\sigma}} d\sigma\]</div>
+<p>This describes a particle moving in curved spacetime. The components of the metric <span class="arithmatex">\(g_{\mu\nu}\)</span> are deduced from the Einstein Field Equations, but even without them, we can see that modifying the <span class="arithmatex">\(g_{00}\)</span> term correctly reduces to Newtonian motion in the low-velocity, weak-field approximation as seen above.</p>
+<p>Applying the Euler-Lagrange equations, we see that just as the free-particle non-relativistic action yields <span class="arithmatex">\(m\ddot{x}_i = 0\)</span>, the curved spacetime action yields free-fall along geodesics. yields the geodesic equation: </p>
+<div class="arithmatex">\[\frac{d^2x^\mu}{d\tau^2} + \Gamma^\mu_{\alpha\beta}\frac{dx^\alpha}{d\tau}\frac{dx^\beta}{d\tau} = 0\]</div>
+<p>where the Christoffel symbols are given by</p>
+<div class="arithmatex">\[\Gamma^\lambda_{\mu\nu} = \frac{1}{2} g^{\lambda\rho} \left( \partial_\mu g_{\nu\rho} + \partial_\nu g_{\rho\mu} - \partial_\rho g_{\mu\nu} \right)\]</div>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://www.youtube.com/playlist?list=PLJHszsWbB6hqlw73QjgZcFh4DrkQLSCQa">Eigenchris Relativity Playlist</a></li>
+<li>Ch 01 of Classical Field Theory by Joel Franklin</li>
+<li><a href="https://davidtong.org/pdfs/teaching/general-relativity/gr1.pdf">Lecture 01</a> of David Tong's General Relativity Notes</li>
+<li>Special Relativity and Classical Field Theory - The Theoretical Minimum by Leonard Susskind</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

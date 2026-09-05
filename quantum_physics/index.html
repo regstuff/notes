@@ -1,0 +1,2124 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../quantum_information_theory/">
+      
+      
+        <link rel="next" href="../special_relativity_classical_field_theory/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>2. Quantum Physics - Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2-quantum-physics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Notes" class="md-header__button md-logo" aria-label="Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2. Quantum Physics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Notes" class="md-nav__button md-logo" aria-label="Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quantum_information_theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Quantum Information Theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Quantum Physics
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Quantum Physics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#states-and-measurement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        States and Measurement
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="States and Measurement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generalized-measurement-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generalized Measurement Operators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#positive-operator-valued-measures-povm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Positive Operator-Valued Measures (POVM)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eigenvectors-eigenvalues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eigenvectors &amp; Eigenvalues
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Eigenvectors &amp; Eigenvalues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#constructing-the-pauli-matrices-for-spin-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constructing the Pauli Matrices for Spin-1/2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spin-along-an-arbitrary-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spin Along an Arbitrary Direction
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#superposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Superposition
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Superposition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spin-12-measurement-requires-3-measurements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spin-1/2 Measurement Requires 3 Measurements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#working-directly-with-kets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Working Directly With Kets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#projection-operators-of-eigenvectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Projection Operators of Eigenvectors
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-general-povms-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How General POVMs Help
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#state-change-via-unitary-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        State Change Via Unitary Operators
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="State Change Via Unitary Operators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-unitarity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Unitarity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#measurement-vs-state-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Measurement vs State Change
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unitary-operators-as-time-evolution-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unitary Operators as Time Evolution Operators
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-dependence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time Dependence
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Time Dependence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-time-dependant-schrodinger-equation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Time-dependant Schrodinger Equation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-hamiltonian" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Hamiltonian
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-evolution-of-expectation-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time Evolution of Expectation Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#symmetries-in-quantum-mechanics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Symmetries in Quantum Mechanics
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compatible-observables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compatible Observables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Compatible Observables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uncertainty-principle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Uncertainty Principle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mechanics-of-commutativity-and-simultaneous-observation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mechanics of Commutativity and Simultaneous Observation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complete-set-of-compatible-observables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete Set of Compatible Observables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Complete Set of Compatible Observables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-the-hydrogen-atom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: The Hydrogen Atom
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csco-is-minimal-p-and-h-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSCO is Minimal: \(p\) and \(H\) Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#measuring-spin-along-an-arbitrary-axis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Measuring Spin Along An Arbitrary Axis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Measuring Spin Along An Arbitrary Axis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-no-cloning-constraint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The No-Cloning Constraint
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quantum-physics-in-projection-operator-formalism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quantum Physics in Projection Operator Formalism
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entanglement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entanglement
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Entanglement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#density-matrices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Density Matrices
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pure-vs-mixed-state-shortcuts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pure vs. Mixed State Shortcuts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correlation-and-entangled-states" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correlation and Entangled States
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bell-states" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bell States
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checking-for-entanglement-the-reduced-density-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checking for Entanglement (The Reduced Density Matrix)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schmidt-decomposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schmidt Decomposition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#purification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Purification
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entanglement-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entanglement Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Entanglement Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bell-inequalities-epr-paradox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bell Inequalities &amp; EPR Paradox
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#continuous-wavefunctions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Continuous Wavefunctions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Continuous Wavefunctions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#position-and-momentum-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Position and Momentum Operators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-uncertainty-principle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Uncertainty Principle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-solving-the-hamiltonian-for-a-free-particle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: Solving the Hamiltonian for a Free Particle
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#useful-formulas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Useful Formulas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../special_relativity_classical_field_theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Special Relativity and Classical Field Theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#states-and-measurement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        States and Measurement
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="States and Measurement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generalized-measurement-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generalized Measurement Operators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#positive-operator-valued-measures-povm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Positive Operator-Valued Measures (POVM)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eigenvectors-eigenvalues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eigenvectors &amp; Eigenvalues
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Eigenvectors &amp; Eigenvalues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#constructing-the-pauli-matrices-for-spin-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constructing the Pauli Matrices for Spin-1/2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spin-along-an-arbitrary-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spin Along an Arbitrary Direction
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#superposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Superposition
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Superposition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spin-12-measurement-requires-3-measurements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spin-1/2 Measurement Requires 3 Measurements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#working-directly-with-kets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Working Directly With Kets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#projection-operators-of-eigenvectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Projection Operators of Eigenvectors
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-general-povms-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How General POVMs Help
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#state-change-via-unitary-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        State Change Via Unitary Operators
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="State Change Via Unitary Operators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-unitarity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Unitarity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#measurement-vs-state-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Measurement vs State Change
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unitary-operators-as-time-evolution-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unitary Operators as Time Evolution Operators
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-dependence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time Dependence
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Time Dependence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-time-dependant-schrodinger-equation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Time-dependant Schrodinger Equation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-hamiltonian" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Hamiltonian
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-evolution-of-expectation-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time Evolution of Expectation Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#symmetries-in-quantum-mechanics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Symmetries in Quantum Mechanics
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compatible-observables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compatible Observables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Compatible Observables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uncertainty-principle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Uncertainty Principle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mechanics-of-commutativity-and-simultaneous-observation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mechanics of Commutativity and Simultaneous Observation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complete-set-of-compatible-observables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete Set of Compatible Observables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Complete Set of Compatible Observables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-the-hydrogen-atom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: The Hydrogen Atom
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csco-is-minimal-p-and-h-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSCO is Minimal: \(p\) and \(H\) Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#measuring-spin-along-an-arbitrary-axis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Measuring Spin Along An Arbitrary Axis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Measuring Spin Along An Arbitrary Axis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-no-cloning-constraint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The No-Cloning Constraint
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quantum-physics-in-projection-operator-formalism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quantum Physics in Projection Operator Formalism
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entanglement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entanglement
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Entanglement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#density-matrices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Density Matrices
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pure-vs-mixed-state-shortcuts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pure vs. Mixed State Shortcuts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correlation-and-entangled-states" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correlation and Entangled States
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bell-states" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bell States
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checking-for-entanglement-the-reduced-density-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checking for Entanglement (The Reduced Density Matrix)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schmidt-decomposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schmidt Decomposition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#purification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Purification
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entanglement-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entanglement Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Entanglement Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bell-inequalities-epr-paradox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bell Inequalities &amp; EPR Paradox
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#continuous-wavefunctions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Continuous Wavefunctions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Continuous Wavefunctions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#position-and-momentum-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Position and Momentum Operators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-uncertainty-principle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Uncertainty Principle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-solving-the-hamiltonian-for-a-free-particle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: Solving the Hamiltonian for a Free Particle
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#useful-formulas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Useful Formulas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="2-quantum-physics">2. Quantum Physics<a class="headerlink" href="#2-quantum-physics" title="Permanent link">&para;</a></h1>
+<h2 id="states-and-measurement">States and Measurement<a class="headerlink" href="#states-and-measurement" title="Permanent link">&para;</a></h2>
+<p>A state (pure states for the moment) represents the current status of some property of an object, e.g. spin. For mathematical manipulation, states are represented by ket and bra vectors (single-column and single-row matrices over a complex vector space).</p>
+<p>To determine what state an object is in (e.g., the value of the spin), you measure an observable. Observables are represented by an operator. If the observable can only take a finite number of possible values (for instance, spin-1/2 is either <span class="arithmatex">\(+1\)</span> or <span class="arithmatex">\(-1\)</span>), it is represented in this finite-dimensional state space by a square matrix.</p>
+<p>The dimensions of the column, row, and square matrices depend on the dimension of that particular state space. For example, a spin-1/2 system is a two-dimensional state space, because the measurement can yield either <span class="arithmatex">\(+1\)</span> or <span class="arithmatex">\(-1\)</span> (ignoring the scaling factor of <span class="arithmatex">\(\hbar/2\)</span>). In this case, the state kets and bras are <span class="arithmatex">\(2 \times 1\)</span> and <span class="arithmatex">\(1 \times 2\)</span> matrices respectively, while the operators are <span class="arithmatex">\(2 \times 2\)</span> matrices. </p>
+<p>State spaces can also be infinite-dimensional, such as position, because a particle can occupy an infinite number of possible positions. In continuous bases like position, instead of discrete matrices, we work with wave functions, which are essentially functions of a continuous variable such as position <span class="arithmatex">\(x\)</span>.</p>
+<p>A measurement of a state will yield different values (such as the <span class="arithmatex">\(+1\)</span> and <span class="arithmatex">\(-1\)</span>) with different probabilities. These probabilities vary depending on how a measurement is carried out. For example, measuring spin always results in either a <span class="arithmatex">\(+1\)</span> or <span class="arithmatex">\(-1\)</span>. But when measured along the <span class="arithmatex">\(x\)</span>-axis, the probabilities of these two measurements may be different from what we would have obtained if we had made the measurement along the <span class="arithmatex">\(z\)</span>-axis.</p>
+<p>Additionally, a measurement alters the state of the system. A measurement of spin along the <span class="arithmatex">\(x\)</span>-axis that yields <span class="arithmatex">\(+1\)</span> will result in the spin state collapsing to align strictly with the positive <span class="arithmatex">\(x\)</span>-axis. This non-unitary evolution (i.e. it is not a result of continuous evolution of the state over time) is known as the collapse of the wave function.</p>
+<p>In an ideal situation, the possible measurement values, the probabilities with which those values appear, and the post-measurement states are determined by the operator's eigenvalues, the state's superposition in the operator's eigenbasis, and the corresponding eigenvectors. However, in the real world, we often cannot get perfect accuracy in measurement, or may be faced with a situation where we cannot make a definitive measurement, and so are willing to settle for some weaker definition of measurement. </p>
+<p>For eg. since <span class="arithmatex">\(+1\)</span> (spin up along z) and <span class="arithmatex">\(+\)</span> (spin up along x) are not orthonormal, we cannot measure or distinguish between the two. Let us say we were in a situation where are intial state is known to be one of these two. We cannot measure and determine which state it is with 100% confidence. But we may be happy if we could just make out that the state is not <span class="arithmatex">\(1\)</span> with some high confidence. This is where generalized measurement operations are useful.</p>
+<h3 id="generalized-measurement-operators">Generalized Measurement Operators<a class="headerlink" href="#generalized-measurement-operators" title="Permanent link">&para;</a></h3>
+<p>The process of measurement can be mathematically represented via a set of operators acting on an <span class="arithmatex">\(n\)</span>-dimensional Hilbert space. If a measurement has <span class="arithmatex">\(k\)</span> possible outcomes, we define a set of measurement operators <span class="arithmatex">\(\{M_m\}\)</span>, where <span class="arithmatex">\(m\)</span> indexes the possible results.</p>
+<p>The probability <span class="arithmatex">\(p(m)\)</span> that the result <span class="arithmatex">\(m\)</span> occurs is given by the expectation value of the operator <span class="arithmatex">\(M_m^\dagger M_m\)</span> acting on the initially prepared state <span class="arithmatex">\(\vert{}\psi\rangle\)</span>:</p>
+<div class="arithmatex">\[p(m) = \langle\psi\vert{}M_m^\dagger M_m\vert{}\psi\rangle\]</div>
+<p>If the measurement yields the outcome <span class="arithmatex">\(m\)</span>, the initial state collapses to a new, normalized post-measurement state:</p>
+<div class="arithmatex">\[\vert{}\psi'\rangle = \frac{M_m\vert{}\psi\rangle}{\sqrt{\langle\psi\vert{}M_m^\dagger M_m\vert{}\psi\rangle}}\]</div>
+<p>The denominator is needed to ensure the resulting state vector maintains a unit norm.</p>
+<p>Since every measurement must always yield some outcome or the other, the sum of the probabilities of all outcomes must equal <span class="arithmatex">\(1\)</span>:</p>
+<div class="arithmatex">\[\sum_m \langle\psi\vert{}M_m^\dagger M_m\vert{}\psi\rangle = 1\]</div>
+<p>By linearity, we can bring the summation inside the inner product:</p>
+<div class="arithmatex">\[\langle\psi\vert{}\left(\sum_m M_m^\dagger M_m\right)\vert{}\psi\rangle = 1\]</div>
+<p>Since <span class="arithmatex">\(\vert{}\psi\rangle\)</span> is an arbitrary normalized state vector (<span class="arithmatex">\(\langle\psi\vert{}\psi\rangle = 1\)</span>), this equation holds true if and only if the operators satisfy the completeness relation:</p>
+<div class="arithmatex">\[\sum_m M_m^\dagger M_m = I\]</div>
+<p>Measurements cascade sequentially. If we perform a measurement corresponding to operator <span class="arithmatex">\(M\)</span> followed immediately by a measurement corresponding to operator <span class="arithmatex">\(L\)</span>, the successive state updates are <span class="arithmatex">\(L(M\vert{}\psi\rangle)\)</span>. The combined, effective measurement operator is therefore <span class="arithmatex">\(LM\)</span>.</p>
+<h3 id="positive-operator-valued-measures-povm">Positive Operator-Valued Measures (POVM)<a class="headerlink" href="#positive-operator-valued-measures-povm" title="Permanent link">&para;</a></h3>
+<p>If we define a new operator <span class="arithmatex">\(E_m = M_m^\dagger M_m\)</span>, then <span class="arithmatex">\(E_m\)</span> is, by definition, a positive semi-definite Hermitian operator. The set of operators <span class="arithmatex">\(\{E_m\}\)</span> constitutes a Positive Operator-Valued Measure (POVM).  </p>
+<p>The probability of obtaining the measurement outcome <span class="arithmatex">\(m\)</span> can be written in terms of the POVM element (<span class="arithmatex">\(E_m\)</span>) as:</p>
+<div class="arithmatex">\[p(m) = \langle\psi\vert{}E_m\vert{}\psi\rangle\]</div>
+<p>However, the POVM element <span class="arithmatex">\(E_m\)</span> alone is insufficient to determine the post-measurement state. The resulting state still strictly depends on the specific measurement operator <span class="arithmatex">\(M_m\)</span>:</p>
+<div class="arithmatex">\[\vert{}\psi'\rangle = \frac{M_m\vert{}\psi\rangle}{\sqrt{\langle\psi\vert{}E_m\vert{}\psi\rangle}}\]</div>
+<p>There is a catch though. If <span class="arithmatex">\(M_m\)</span> forms a set <span class="arithmatex">\(E_m\)</span>, then <span class="arithmatex">\(U_m M_m\)</span> can also form the same set <span class="arithmatex">\(E_m\)</span> for any unitary operator <span class="arithmatex">\(U_m\)</span>. Therefore, given <span class="arithmatex">\(M_m\)</span> we can determine <span class="arithmatex">\(E_m\)</span>, but given <span class="arithmatex">\(E_m\)</span>, we cannot determine <span class="arithmatex">\(M_m\)</span> uniquely. Thus, POVM operators are useful primarily to calculate probabilities, and not the states resulting from a measurement operation.</p>
+<p>Projection operators bypass this ambiguity because they describe a fundamentally more restrictive physical process: the ideal von Neumann measurement. If we choose projection operators as our POVM elements <span class="arithmatex">\(E_m\)</span>, they are idempotent (provided the vectors forming the projectors are orthonormal), yielding projective (or von Neumann) measurements. </p>
+<p>Because they are projectors, they naturally satisfy orthogonality for distinct outcomes (<span class="arithmatex">\(E_m E_n = 0\)</span> for <span class="arithmatex">\(m \neq n\)</span>). These are useful for idealized situations where we work directly with the eigenvalues and eigenstates of an observable.</p>
+<p>The idempotency condition (<span class="arithmatex">\(E_m^2 = E_m\)</span>) guarantees that we can take the square root of <span class="arithmatex">\(E_m\)</span> and use it to determine the state after measurement. Idempotency also means that if a projective measurement is made, immediately repeating the exact same measurement will yield the exact same result with a probability of <span class="arithmatex">\(1\)</span>. We cannot guarantee this for a general measurement. </p>
+<p><strong>Note:</strong> For operators in general (and not just measurement operators), we cannot assume that <span class="arithmatex">\(AB \psi = BA \psi\)</span>, as operators may not commute with each other.</p>
+<h3 id="eigenvectors-eigenvalues">Eigenvectors &amp; Eigenvalues<a class="headerlink" href="#eigenvectors-eigenvalues" title="Permanent link">&para;</a></h3>
+<p>Projective Measurements are a special case of Generalized Measurements. 
+Consider the measurement of spin along the <span class="arithmatex">\(z\)</span>-axis. To mathematically determine the possible measurement values and their probabilities, the operator matrix for the observable must be defined.</p>
+<p>Measurements of physical observables must yield real numbers. Therefore, observables are represented by Hermitian matrices. A Hermitian matrix is equal to its own conjugate transpose (<span class="arithmatex">\(H = H^\dagger\)</span>) and is guaranteed to have purely real eigenvalues.</p>
+<h4 id="constructing-the-pauli-matrices-for-spin-12">Constructing the Pauli Matrices for Spin-1/2<a class="headerlink" href="#constructing-the-pauli-matrices-for-spin-12" title="Permanent link">&para;</a></h4>
+<p>For a two-dimensional spin-1/2 system, the operator matrix must be <span class="arithmatex">\(2 \times 2\)</span>. A generic <span class="arithmatex">\(2 \times 2\)</span> Hermitian matrix, where <span class="arithmatex">\(a, b, c, d\)</span> are real numbers, takes the form:</p>
+<div class="arithmatex">\[\begin{pmatrix} c &amp; a - ib \\ a + ib &amp; d \end{pmatrix}\]</div>
+<p>This matrix can be decomposed as a linear combination of four basis matrices. </p>
+<p>While one could choose a simple canonical basis of 4 matrices such as:</p>
+<div class="arithmatex">\[\begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 0 \end{pmatrix}, \begin{pmatrix} 0 &amp; 1 \\ 0 &amp; 0 \end{pmatrix}, \dots\]</div>
+<p>it is mathematically more convenient to construct a basis composed entirely of Hermitian matrices with specific trace properties -- in the case of spin-1/2, a trace that sums to 0. The reason for this is explained a little later.</p>
+<p>One immediate basis candidate is the <span class="arithmatex">\(2 \times 2\)</span> Identity matrix. Next, looking at the off-diagonal elements <span class="arithmatex">\(a - ib\)</span> and <span class="arithmatex">\(a + ib\)</span>, we can construct two separate matrices. The first isolates the real part <span class="arithmatex">\(a\)</span>, placing <span class="arithmatex">\(1\)</span> in the top-right and bottom-left elements. The second isolates the imaginary part <span class="arithmatex">\(b\)</span>, placing <span class="arithmatex">\(-i\)</span> in the top-right and <span class="arithmatex">\(i\)</span> in the bottom-left. What remains are the diagonal elements <span class="arithmatex">\(c\)</span> and <span class="arithmatex">\(d\)</span>. Because the Identity matrix already has <span class="arithmatex">\(1\)</span> in both diagonal positions, we need an orthogonal matrix to break the symmetry between <span class="arithmatex">\(c\)</span> and <span class="arithmatex">\(d\)</span>. We define a matrix with <span class="arithmatex">\(+1\)</span> in the top-left and <span class="arithmatex">\(-1\)</span> in the bottom-right.</p>
+<p>Our generic Hermitian matrix can then be explicitly written as a linear combination of these four basis matrices:</p>
+<div class="arithmatex">\[\begin{pmatrix} c &amp; a - ib \\ a + ib &amp; d \end{pmatrix} = \left( \frac{c+d}{2} \right) \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix} + a \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix} + b \begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \end{pmatrix} + \left( \frac{c-d}{2} \right) \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{pmatrix}\]</div>
+<p>The three non-identity matrices are the Pauli matrices, representing the <span class="arithmatex">\(\sigma_x\)</span>, <span class="arithmatex">\(\sigma_y\)</span>, and <span class="arithmatex">\(\sigma_z\)</span> spin operators. While an infinite set of basis matrices exists for the 2x2 Hermitian matrix space, the ones derived here are conventionally chosen because they are mutually orthogonal under the trace inner product and also have a trace of zero. A trace of zero implies that the sum of their eigenvalues (the sum of the possible measurement outcomes) is exactly zero. This suits us when measuring spin-1/2 states, where the possible values are <span class="arithmatex">\(+1\)</span> and <span class="arithmatex">\(-1\)</span>.</p>
+<p>The above matrices are written in the "<span class="arithmatex">\(z\)</span>-basis", i.e., the basis where the spin-up or <span class="arithmatex">\(+1\)</span> state when measured along the <span class="arithmatex">\(z\)</span>-axis is written as the column vector </p>
+<p>\begin{pmatrix} 1 \ 0 \end{pmatrix},</p>
+<p>while a spin-down or <span class="arithmatex">\(-1\)</span> state is written as: </p>
+<p>\begin{pmatrix} 0 \ 1 \end{pmatrix}.</p>
+<p>The states along the <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span> axes become:</p>
+<div class="arithmatex">\[\vert{}+x\rangle = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ 1 \end{pmatrix}, \quad \vert{}-x\rangle = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ -1 \end{pmatrix}\]</div>
+<div class="arithmatex">\[\vert{}+y\rangle = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ i \end{pmatrix}, \quad \vert{}-y\rangle = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ -i \end{pmatrix}\]</div>
+<p>Each of these kets along <span class="arithmatex">\(x\)</span>, <span class="arithmatex">\(y\)</span>, and <span class="arithmatex">\(z\)</span> are the eigenvectors of their corresponding Pauli matrices. Each matrix has two eigenvectors and corresponding eigenvalues (<span class="arithmatex">\(+1\)</span> and <span class="arithmatex">\(-1\)</span>).</p>
+<p>Note that we can first choose the basis column vectors (for eg. the <span class="arithmatex">\(z\)</span>-basis) and then arrive at the operator matrices above by experiment. For instance, a prepared state along <span class="arithmatex">\(z\)</span> would decompose with 50/50 probability to <span class="arithmatex">\(+1\)</span> and <span class="arithmatex">\(-1\)</span> when measured along the <span class="arithmatex">\(x\)</span>-axis. We could then construct the possible state kets via the superposition principles given below.</p>
+<h4 id="spin-along-an-arbitrary-direction">Spin Along an Arbitrary Direction<a class="headerlink" href="#spin-along-an-arbitrary-direction" title="Permanent link">&para;</a></h4>
+<p>For a spin operator along an arbitrary direction, defined by a unit spatial vector <span class="arithmatex">\(\hat{n} = (n_x, n_y, n_z)\)</span>, we construct the appropriate operator matrix by taking the dot product of the formal vector of Pauli matrices <span class="arithmatex">\(\vec{\sigma} = (\sigma_x, \sigma_y, \sigma_z)\)</span> with <span class="arithmatex">\(\hat{n}\)</span>. While <span class="arithmatex">\(\vec{\sigma}.\hat{n}\)</span> is not a standard vector inner product (since <span class="arithmatex">\(\vec{\sigma}\)</span> contains matrices), it denotes the linear combination of the Pauli matrices scaled by the spatial components of <span class="arithmatex">\(\hat{n}\)</span>.</p>
+<div class="arithmatex">\[\sigma_{\hat{n}} = \hat{n} \cdot \vec{\sigma} = n_x \sigma_x + n_y \sigma_y + n_z \sigma_z = \begin{pmatrix} n_z &amp; n_x - in_y \\ n_x + in_y &amp; -n_z \end{pmatrix}\]</div>
+<p>We can then calculate the eigenvectors and eigenvalues of this matrix to determine the state kets that result from this measurement. The eigenvalues remain <span class="arithmatex">\(+1\)</span> and <span class="arithmatex">\(-1\)</span>.</p>
+<p>Note that operators are linear, whereas eigenvalues may not be. You cannot simply add up the eigenvalues of the Pauli matrices, scaled by the spatial vector components, and claim that these are the eigenvalues of the spatial spin operator.</p>
+<p>The eigenvectors and eigenvalues are intrinsic properties of the operator and do not depend on the initial state of the system. This means the possible values read during a measurement and the states the measurement collapses to depend on the operator alone. However, the probability of collapsing to each eigenvector, as well as the expectation value (the weighted average of the eigenvalues based on measurement probabilities), depend on the initial state.</p>
+<h3 id="superposition">Superposition<a class="headerlink" href="#superposition" title="Permanent link">&para;</a></h3>
+<p>To compute the probabilities and expectation value, we <strong>decompose the initial state into a superposition of the operator's eigenvectors i.e. the possible final states</strong>. The coefficient for each eigenvector in this linear combination is the probability amplitude. The absolute square of the probability amplitude yields the probability of measuring that specific eigenvalue.</p>
+<p>For example, if an initial state is spin-up along the <span class="arithmatex">\(z\)</span>-axis (<span class="arithmatex">\(\vert{}+z\rangle\)</span>) and is measured along the <span class="arithmatex">\(x\)</span>-axis, the initial state expressed in the measurement basis is:</p>
+<p>$<span class="arithmatex">\(\vert{}+z\rangle = \frac{1}{\sqrt{2}}\vert{}+x\rangle + \frac{1}{\sqrt{2}}\vert{}-x\rangle\)</span>$</p>
+<p>The probability of measuring <span class="arithmatex">\(+1\)</span> is <span class="arithmatex">\(\vert{}\frac{1}{\sqrt{2}}\vert{}^2 = 0.5\)</span>, and the probability for <span class="arithmatex">\(-1\)</span> is also <span class="arithmatex">\(0.5\)</span>. The expectation value is <span class="arithmatex">\(0\)</span>. In general, for a spin-1/2 system, if the measurement axis is at an angle <span class="arithmatex">\(\theta\)</span> relative to the initial spin orientation, the expectation value is <span class="arithmatex">\(\cos(\theta)\)</span>. The probabilities of measuring <span class="arithmatex">\(+1\)</span> and <span class="arithmatex">\(-1\)</span> are <span class="arithmatex">\(\cos^2(\frac{\theta}{2})\)</span> and <span class="arithmatex">\(\sin^2(\frac{\theta}{2})\)</span>, respectively. This expectation value aligns with classical behavior, such as projecting a magnetic dipole moment along a magnetic field axis.</p>
+<h4 id="spin-12-measurement-requires-3-measurements">Spin-1/2 Measurement Requires 3 Measurements<a class="headerlink" href="#spin-12-measurement-requires-3-measurements" title="Permanent link">&para;</a></h4>
+<p>The spin-1/2 state can be written as a linear combination of two states: up and down. However, the scaling factors are all complex numbers, so there are 4 real scalars. But we have a constraint in terms of requiring the superposition to have unit norm, so we essentially need 3 equations to determine the 3 independent variables. This means we need to carry out 3 measurements on an arbitrarily aligned spin state, for eg. along x, y and z axes. </p>
+<p>Note that we cannot carry out all 3 measurements on a single state as these operators do not commute and are therefore not compatible i.e. making one measurement will collapse the measurement to some value and make the other two measurements pointless. We would have to have multiple copies of the object on which we can carry out several measurments and determine probabilistically what each of the spin components are.</p>
+<h4 id="working-directly-with-kets">Working Directly With Kets<a class="headerlink" href="#working-directly-with-kets" title="Permanent link">&para;</a></h4>
+<p>Abstractly, let the initial state be <span class="arithmatex">\(\vert{}\psi\rangle\)</span> and the observable operator be <span class="arithmatex">\(A\)</span>, with eigenvectors <span class="arithmatex">\(\vert{}x_+\rangle\)</span> and <span class="arithmatex">\(\vert{}x_-\rangle\)</span>. </p>
+<p>The operation <span class="arithmatex">\(A\vert{}\psi\rangle\)</span> maps the state to a new, unnormalized vector in the Hilbert space. <span class="arithmatex">\(A\vert{}\psi\rangle\)</span> has no physical significance. Mathematically speaking, <span class="arithmatex">\(A\)</span> stretches and skews <span class="arithmatex">\(\vert{}\psi\rangle\)</span> as a weighted average of the eigenvalues. If we then take the component of this stretched weighted-average along <span class="arithmatex">\(\vert{}\psi\rangle\)</span>, we get the expectation value <span class="arithmatex">\(\langle\psi\vert{}A\vert{}\psi\rangle\)</span> of a measurement <span class="arithmatex">\(A\)</span> on an initial state <span class="arithmatex">\(\vert{}\psi\rangle\)</span>.</p>
+<p>We define the projection operator for an eigenvector <span class="arithmatex">\(\vert{}x_i\rangle\)</span> as <span class="arithmatex">\(\vert{}x_i\rangle\langle x_i\vert{}\)</span>. This matrix (an outer product of a column vector and a row vector) acts on a state <span class="arithmatex">\(\psi\)</span> and projects it onto the subspace defined by <span class="arithmatex">\(\vert{}x_i\rangle\)</span> i.e. it finds the component of <span class="arithmatex">\(\psi\)</span> along <span class="arithmatex">\(\vert{}x_i\rangle\)</span>. If the basis happens to correspond to the eigenvectors, <span class="arithmatex">\(\vert{}x_i\rangle\langle x_i\vert{}\)</span> will have a single <span class="arithmatex">\(1\)</span> and the rest of the elements set to <span class="arithmatex">\(0\)</span>. The sum of the projection operators for all eigenvectors of an observable is the Identity matrix, <span class="arithmatex">\(I = \sum_i \vert{}x_i\rangle\langle x_i\vert{}\)</span>, known as the completeness relation. </p>
+<p>By inserting the Identity matrix into the expectation value expression <span class="arithmatex">\(\langle\psi\vert{}A\vert{}\psi\rangle\)</span>, we can expand it in terms of the eigenvectors:</p>
+<div class="arithmatex">\[\langle\psi\vert{}A\vert{}\psi\rangle = \langle\psi\vert{}I \cdot A \cdot I\vert{}\psi\rangle = \sum_i \sum_j \langle\psi\vert{}x_i\rangle\langle x_i\vert{}A\vert{}x_j\rangle\langle x_j\vert{}\psi\rangle\]</div>
+<p>Since <span class="arithmatex">\(\vert{}x_i\rangle\)</span> are eigenvectors of <span class="arithmatex">\(A\)</span>, the term <span class="arithmatex">\(\langle x_i\vert{}A\vert{}x_j\rangle\)</span> evaluates to the eigenvalue <span class="arithmatex">\(\lambda_i\)</span> if <span class="arithmatex">\(i=j\)</span> and <span class="arithmatex">\(0\)</span> otherwise (because <span class="arithmatex">\(\langle x_i\vert{}x_j\rangle\)</span> is zero from orthogonality). This collapses the double sum to a single sum:</p>
+<div class="arithmatex">\[\langle\psi\vert{}A\vert{}\psi\rangle = \sum_i \lambda_i \langle\psi\vert{}x_i\rangle\langle x_i\vert{}\psi\rangle = \sum_i \lambda_i \vert{}\langle x_i\vert{}\psi\rangle\vert{}^2\]</div>
+<p>Here, <span class="arithmatex">\(\lambda_i\)</span> is the measured value and <span class="arithmatex">\(\vert{}\langle x_i\vert{}\psi\rangle\vert{}^2\)</span> is the probability of that measurement occurring. </p>
+<h4 id="projection-operators-of-eigenvectors">Projection Operators of Eigenvectors<a class="headerlink" href="#projection-operators-of-eigenvectors" title="Permanent link">&para;</a></h4>
+<p>If <span class="arithmatex">\(E_n\)</span> represents the projection operator <span class="arithmatex">\(\vert{}e_n\rangle\langle e_n\vert{}\)</span>, where <span class="arithmatex">\(\vert{}e_n\rangle\)</span> is an eigenvector of the observable operator <span class="arithmatex">\(L\)</span> corresponding to the eigenvalue <span class="arithmatex">\(a_n\)</span>, then the probability amplitude of a measurement of <span class="arithmatex">\(L\)</span> yielding <span class="arithmatex">\(a_n\)</span> is the projection of the state vector <span class="arithmatex">\(\vert{}\psi\rangle\)</span> onto the eigenvector <span class="arithmatex">\(\vert{}e_n\rangle\)</span>: <span class="arithmatex">\(\langle e_n\vert{}\psi\rangle\)</span>. </p>
+<p>The probability of obtaining this measurement is the absolute square of the amplitude, <span class="arithmatex">\(\langle\psi\vert{}e_n\rangle\langle e_n\vert{}\psi\rangle\)</span>, which can be rewritten as: <span class="arithmatex">\(\langle\psi\vert{}E_n\vert{}\psi\rangle\)</span>. This demonstrates that the probability of measuring a specific eigenvalue is mathematically identical to the expectation value of its corresponding projection operator <span class="arithmatex">\(E_n\)</span> for the state <span class="arithmatex">\(\vert{}\psi\rangle\)</span>.</p>
+<p>We can also derive the overall expectation value of the observable <span class="arithmatex">\(L\)</span> for the state <span class="arithmatex">\(\vert{}\psi\rangle\)</span> from this framework. The expectation value is the sum of all possible eigenvalues weighted by their respective probabilities:</p>
+<div class="arithmatex">\[\langle L \rangle = \sum_n a_n \langle\psi\vert{}E_n\vert{}\psi\rangle\]</div>
+<p>By linearity, we can pull the scalar eigenvalues and the summation inside the inner product:</p>
+<div class="arithmatex">\[\langle L \rangle = \left\langle\psi\right\vert{} \left(\sum_n a_n E_n\right) \left\vert{}\psi\right\rangle\]</div>
+<p>Because the spectral decomposition theorem states that any Hermitian operator can be constructed from its eigenvalues and projection operators (<span class="arithmatex">\(L = \sum_n a_n E_n\)</span>), this simplifies directly to <span class="arithmatex">\(\langle L \rangle = \langle\psi\vert{}L\vert{}\psi\rangle\)</span></p>
+<p><strong>In short:</strong> 
+- Calculate the eigenvalues and eigenkets of the measurement operator. Project the initial state <span class="arithmatex">\(\psi\)</span> onto each eigenvector via <span class="arithmatex">\(\langle x_j\vert{}\psi\rangle\)</span>. Take the square of the norm to get the probability of the measurement collapsing to that eigenstate. 
+OR 
+Write the initial ket as a superposition/linear combination of the operator's eigenkets. The components squared are the probabilities. </p>
+<ul>
+<li>
+<p>The corresponding eigenvalue of each eigenket will be the measured value if the state collapses to that eigenstate. The eigenvalue is also the expectation value of a measurement along that eigenstate <span class="arithmatex">\(\langle x_i\vert{}A\vert{}x_i\rangle\)</span> (because it is the only value associated with that component state). </p>
+</li>
+<li>
+<p>To get the expectation value, get the weighted average of eigenvalues. </p>
+</li>
+</ul>
+<p><strong>Aside:</strong> <span class="arithmatex">\(\langle x_i\vert{}A\vert{}x_j\rangle\)</span> is the transfer operator and represents how much of the state <span class="arithmatex">\(\vert{}x_j\rangle\)</span> maps into the state <span class="arithmatex">\(\vert{}x_i\rangle\)</span> after the operator <span class="arithmatex">\(A\)</span> is applied. Note that we can also construct an operator that transforms an initial state <span class="arithmatex">\(\vert{}\psi\rangle\)</span> into a final state <span class="arithmatex">\(\vert{}\phi\rangle\)</span>, given by <span class="arithmatex">\(\vert{}\phi\rangle\langle\psi\vert{}\)</span>. To see why, simply apply this operator to <span class="arithmatex">\(\vert{}\psi\rangle\)</span>. This yields <span class="arithmatex">\(\vert{}\phi\rangle\langle\psi\vert{}\psi\rangle\)</span>. Assuming <span class="arithmatex">\(\vert{}\psi\rangle\)</span> is a normalized state, the inner product <span class="arithmatex">\(\langle\psi\vert{}\psi\rangle\)</span> equals <span class="arithmatex">\(1\)</span>, leaving exactly the state <span class="arithmatex">\(\vert{}\phi\rangle\)</span>.</p>
+<p>Also, unambiguously distinguishable states are represented by orthogonal kets.</p>
+<p><strong>Aside 2:</strong> Don't forget to ensure that all probabilities sum to 1. Keep all superpositions normalized. </p>
+<h3 id="how-general-povms-help">How General POVMs Help<a class="headerlink" href="#how-general-povms-help" title="Permanent link">&para;</a></h3>
+<p>Taking the example from earlier, let us say we are given a state that is either <span class="arithmatex">\(\vert{}1\rangle\)</span> (spin down along z) or <span class="arithmatex">\(\vert{}+\rangle\)</span> (spin up along x). These are not orthonormal, so we cannot measure or distinguish between the two with certainty. </p>
+<p>Let us say we used a typical orthonormal projection operator basis for measurement: <span class="arithmatex">\(\vert{}1\rangle\langle1\vert{}\)</span> and <span class="arithmatex">\(\vert{}0\rangle\langle0\vert{}\)</span>. If our measurement device shows <span class="arithmatex">\(\vert{}0\rangle\)</span>, we can be sure that we started off with <span class="arithmatex">\(\vert{}+\rangle\)</span>, since <span class="arithmatex">\(\vert{}1\rangle\)</span> is orthogonal to <span class="arithmatex">\(\vert{}0\rangle\)</span> and so the probability that it will register a measurement of <span class="arithmatex">\(\vert{}0\rangle\)</span> is <span class="arithmatex">\(0\)</span>. However, if our measurement registered <span class="arithmatex">\(\vert{}1\rangle\)</span>, we cannot say which state we started out with. This is not too bad. At least in some cases, we can say for sure that we are not wrong. Let us say the initial state has a 50/50 probability of being in <span class="arithmatex">\(\vert{}1\rangle\)</span> or <span class="arithmatex">\(\vert{}+\rangle\)</span>. Our measurement device will register a <span class="arithmatex">\(\vert{}0\rangle\)</span> only when we start with a <span class="arithmatex">\(\vert{}+\rangle\)</span>, and even then only in half those situations. So we can claim a certain outcome only 25% of the time.</p>
+<p>Turns out we can do better by using more general POVM operators. We can construct projective operators <span class="arithmatex">\(c\vert{}0\rangle\langle0\vert{}\)</span> and <span class="arithmatex">\(c\vert{}-\rangle\langle-\vert{}\)</span>, which are guaranteed to unambiguously identify <span class="arithmatex">\(\vert{}+\rangle\)</span> and <span class="arithmatex">\(\vert{}1\rangle\)</span> respectively, because they are formed by vectors that are orthogonal to the opposing states. </p>
+<p>So if the measurement shows up as <span class="arithmatex">\(\vert{}0\rangle\)</span>, we started off with <span class="arithmatex">\(\vert{}+\rangle\)</span> (since <span class="arithmatex">\(\vert{}1\rangle\)</span> will never register on the <span class="arithmatex">\(c\vert{}0\rangle\langle0\vert{}\)</span> measurement operator). Of course, since <span class="arithmatex">\(\vert{}+\rangle\)</span> is a superposition given by <span class="arithmatex">\(\frac{1}{\sqrt{2}}(\vert{}0\rangle + \vert{}1\rangle)\)</span>, the probability of measuring <span class="arithmatex">\(\vert{}0\rangle\)</span> is <span class="arithmatex">\(c/2\)</span>. Similarly, if the measurement shows up as <span class="arithmatex">\(\vert{}-\rangle\)</span>, we started off with <span class="arithmatex">\(\vert{}1\rangle\)</span>. Once again, the probability of measurement is <span class="arithmatex">\(c/2\)</span>. There will also be situations where we end up with an indecisive outcome.</p>
+<p>The catch is the scalar multiplier <span class="arithmatex">\(c\)</span> of each operator, and the fact that since these two operators are not orthogonal, we need to define a new catch-all operator <span class="arithmatex">\(I - c\vert{}0\rangle\langle0\vert{} - c\vert{}-\rangle\langle-\vert{}\)</span> to satisfy the completeness theorem, which accounts for the indecisive outcomes. If we were to calculate the percentage of time with which we can claim an outcome with absolute certainty, it works out to <span class="arithmatex">\(0.5(c/2 + c/2) = c/2\)</span>. </p>
+<p>From the completeness theorem requirement (ensuring the catch-all operator remains positive semi-definite), we can calculate <span class="arithmatex">\(c\)</span> to be <span class="arithmatex">\(\frac{\sqrt{2}}{1+\sqrt{2}}\)</span>. So the certainty here works out to approximately <span class="arithmatex">\(0.29\)</span>, which is better than the <span class="arithmatex">\(0.25\)</span> we had earlier. The downside is we cannot determine the post-measurement state when the catch-all indecisive outcome occurs.</p>
+<h2 id="state-change-via-unitary-operators">State Change Via Unitary Operators<a class="headerlink" href="#state-change-via-unitary-operators" title="Permanent link">&para;</a></h2>
+<p>In general, a superposition of states can be transformed into another superposition by applying a unitary operator <span class="arithmatex">\(U(t)\)</span>. <span class="arithmatex">\(U(t)\)</span> is unitary means:</p>
+<div class="arithmatex">\[U^\dagger U = I\]</div>
+<p>Unitary operators preserve the length of vectors (explained below), and are thus rotation operations. A unitary operator does not collapse or measure the superposition; it rigidly rotates the entire superposition structure within the Hilbert space. The complex amplitudes of the superposition states remain preserved in relation to the newly rotated basis vectors.</p>
+<p>If your initial state is a superposition of basis vectors:</p>
+<div class="arithmatex">\[\vert{}\psi\rangle=\alpha\vert{}0\rangle+\beta\vert{}1\rangle\]</div>
+<p>Applying a unitary operator <span class="arithmatex">\(U\)</span> yields:</p>
+<div class="arithmatex">\[U\vert{}\psi\rangle=U(\alpha\vert{}0\rangle+\beta\vert{}1\rangle)\]</div>
+<div class="arithmatex">\[U\vert{}\psi\rangle=\alpha U\vert{}0\rangle+\beta U\vert{}1\rangle\]</div>
+<p>Because <span class="arithmatex">\(U\)</span> preserves vector lengths, <span class="arithmatex">\(U\vert{}0\rangle\)</span> and <span class="arithmatex">\(U\vert{}1\rangle\)</span> become new, valid, normalized state vectors (let's call them <span class="arithmatex">\(\vert{}0'\rangle\)</span> and <span class="arithmatex">\(\vert{}1'\rangle\)</span>). The final state is guaranteed to be another valid superposition:</p>
+<div class="arithmatex">\[\vert{}\psi'\rangle=\alpha\vert{}0'\rangle+\beta\vert{}1'\rangle\]</div>
+<h3 id="why-unitarity">Why Unitarity<a class="headerlink" href="#why-unitarity" title="Permanent link">&para;</a></h3>
+<p>A unitary operator ensures that the sum of probabilities in the superposition is always equal to <span class="arithmatex">\(1\)</span>. To see how, first note that when a state vector is written as a superposition of the eigenvectors of an operator, the absolute squares of the probability amplitudes or the components, represent the probabilities. The sum of the absolute squares of these components is therefore <span class="arithmatex">\(1\)</span>. But this sum is also the square of the state vector's norm/length (its inner product), which must therefore also be <span class="arithmatex">\(1\)</span>. Since the total probability and thus the norm must remain <span class="arithmatex">\(1\)</span> throughout time, the operator must be such that it preserves the norm of the vector.</p>
+<p>Thus,</p>
+<div class="arithmatex">\[\langle\psi(t)\vert{}\psi(t)\rangle = \langle\psi(0)\vert{}U^\dagger U\vert{}\psi(0)\rangle = \langle\psi(0)\vert{}I\vert{}\psi(0)\rangle = \langle\psi(0)\vert{}\psi(0)\rangle\]</div>
+<p>This holds true only when <span class="arithmatex">\(U\)</span> is unitary.</p>
+<p>Another physical requirement for this operator is perfect reversibility. Time evolution must be deterministic in both directions, meaning given the state at some time <span class="arithmatex">\(t\)</span>, we can calculate the state at some past or future time. While any matrix with a non-zero determinant has an inverse, a unitary matrix guarantees that its inverse (<span class="arithmatex">\(U^\dagger\)</span>) is also a valid physical operator that preserves probability.</p>
+<p>Determinism in both directions does not mean we can determine the exact value upon measurement of the state. The measurement will still yield values according to probabilities. Unitarity instead means the probability distribution, the expectation value, and the superposition of states will evolve deterministically with time.</p>
+<h3 id="measurement-vs-state-change">Measurement vs State Change<a class="headerlink" href="#measurement-vs-state-change" title="Permanent link">&para;</a></h3>
+<p>In the case of Hermitian operators and observables, we say that multiplying the operator matrix by a state vector does not represent the physical state of the system during or after the measurement. It is just a mathematical operation.</p>
+<p>However, in the case of unitary operators and state change, the operator matrix acts as a deterministic transformation. Multiplying the matrix by a state vector i.e. <span class="arithmatex">\(U\vert{}\psi\rangle\)</span>, actively calculates the new, valid physical state of the system.</p>
+<p><strong>Example: Pauli Matrices are Hermitian &amp; Unitary</strong>
+Since the Pauli matrices fulfil both conditions, they can serve as mathematical tools for measurement, as well as unitary operators to transform a superposition into something else. </p>
+<p>Multiplying the matrix by a state vector (<span class="arithmatex">\(\sigma_i\vert{}\psi\rangle\)</span>) is used only mathematically to:</p>
+<ul>
+<li>Calculate expectation probabilities (<span class="arithmatex">\(\langle\psi\vert{}\sigma_i\vert{}\psi\rangle\)</span>).</li>
+<li>Extract the real eigenvalues (the physical measurement outcomes of <span class="arithmatex">\(+1\)</span> or <span class="arithmatex">\(-1\)</span>).</li>
+<li>Define the orthogonal eigenvectors (the localized states the system can collapse into).</li>
+</ul>
+<p>Physical measurement causes a discontinuous, probabilistic collapse into one of these eigenvectors. This collapse is calculated using projection operators, not by multiplying the state by the observable matrix.</p>
+<p>However, in the context of time evolution or quantum logic gates, the Pauli matrix represents a deterministic transformation. <span class="arithmatex">\(U\vert{}\psi\rangle\)</span> actively calculates the new, valid physical state of the system.</p>
+<p>Applying the physical equivalent of the matrix, such as exposing a spin-1/2 particle to a precisely timed external magnetic field or routing a qubit through an X-gate, deterministically rotates the initial state vector into a new superposition while perfectly preserving its total probability.</p>
+<h3 id="unitary-operators-as-time-evolution-operators">Unitary Operators as Time Evolution Operators<a class="headerlink" href="#unitary-operators-as-time-evolution-operators" title="Permanent link">&para;</a></h3>
+<p>Mathematically, any unitary operator can be interpreted as a time evolution operator, i.e. the evolution of a state with time, <span class="arithmatex">\(\vert{}\psi(t)\rangle\)</span>, can be described by the action of operator <span class="arithmatex">\(U\)</span> on the initial state <span class="arithmatex">\(\vert{}\psi(0)\rangle\)</span>. </p>
+<p>We assume that time evolution is continuous and can thus be broken into an evolution over infinitesimally small discrete steps. </p>
+<p>Since <span class="arithmatex">\(U\)</span> is a rotation operator, it can be written as $<span class="arithmatex">\(U=e^{-i\epsilon K}\)</span>$ i.e. the complex exponent (which preserves length and only rotates a vector) of some operator <span class="arithmatex">\(K\)</span>. Approximating the complex exponential allows us to write any unitary operator <span class="arithmatex">\(U\)</span>, and of current interest to us: time evolution operators, as a series of small changes from the Identity matrix: <span class="arithmatex">\(U\approx I-i\epsilon K\)</span>, for a state change from time <span class="arithmatex">\(t\)</span> to time <span class="arithmatex">\(t+\epsilon\)</span></p>
+<p><span class="arithmatex">\(K\)</span> must be Hermitian, meaning its eigenvalues are strictly real, which makes it a valid physical observable. To prove this, since <span class="arithmatex">\(U^\dagger U = I\)</span>, we can write:</p>
+<div class="arithmatex">\[U^\dagger U = \left(I + i\epsilon K^\dagger\right)\left(I - i\epsilon K\right) = I\]</div>
+<div class="arithmatex">\[I - i\epsilon K + i\epsilon K^\dagger + \epsilon^2K^\dagger K = I\]</div>
+<p>Ignoring the second-order <span class="arithmatex">\(\epsilon^2\)</span> term (as <span class="arithmatex">\(\epsilon\)</span> is infinitesimally small) and subtracting <span class="arithmatex">\(I\)</span> from both sides, we get:</p>
+<div class="arithmatex">\[i\epsilon (K^\dagger - K) = 0\]</div>
+<p>Which requires that:</p>
+<div class="arithmatex">\[K = K^\dagger\]</div>
+<h2 id="time-dependence">Time Dependence<a class="headerlink" href="#time-dependence" title="Permanent link">&para;</a></h2>
+<h3 id="the-time-dependant-schrodinger-equation">The Time-dependant Schrodinger Equation<a class="headerlink" href="#the-time-dependant-schrodinger-equation" title="Permanent link">&para;</a></h3>
+<p>Since any unitary operator can be interpreted as a time evolution operator, we can use an appropriate operator to assess how a state evolves in time. We can utilize the approximate relation <span class="arithmatex">\(U\approx I-i\epsilon K\)</span>, where we use the quantum Hamiltonian <span class="arithmatex">\(H\)</span> in place of <span class="arithmatex">\(K\)</span>. To ensure the dimensionality of units is maintained from the start (since the exponent or multiplier of a physical time step must be dimensionless), we divide by the reduced Planck constant <span class="arithmatex">\(\hbar\)</span>:</p>
+<div class="arithmatex">\[U(\epsilon) = I - \frac{i\epsilon}{\hbar}H\]</div>
+<p>(The minus sign and the imaginary unit <span class="arithmatex">\(i\)</span> are conventions that link this equation to classical Hamiltonian mechanics and ensure oscillatory solutions).</p>
+<p>Applying this operator to the state at time <span class="arithmatex">\(t\)</span>:</p>
+<div class="arithmatex">\[\vert{}\psi(t+\epsilon)\rangle = \left(I - \frac{i\epsilon}{\hbar}H\right)\vert{}\psi(t)\rangle = \vert{}\psi(t)\rangle - \frac{i\epsilon}{\hbar}H\vert{}\psi(t)\rangle\]</div>
+<p>If we take <span class="arithmatex">\(\vert{}\psi(t)\rangle\)</span> to the other side and divide by <span class="arithmatex">\(\epsilon\)</span>, we construct the difference quotient for a derivative:</p>
+<div class="arithmatex">\[\frac{\vert{}\psi(t+\epsilon)\rangle - \vert{}\psi(t)\rangle}{\epsilon} = -\frac{i}{\hbar}H\vert{}\psi(t)\rangle\]</div>
+<p>Taking the limit as <span class="arithmatex">\(\epsilon \to 0\)</span>, the left side becomes the time derivative of the state vector. Rearranging the constants yields the time-dependent Schrödinger equation:</p>
+<div class="arithmatex">\[i\hbar \frac{d}{dt}\vert{}\psi(t)\rangle = H\vert{}\psi(t)\rangle\]</div>
+<p>corresponding to the total energy of the system. <span class="arithmatex">\(H\)</span> is identified with the Hamiltonian via its analoguous behavior to classical mechanics, where the time derivative of a variable is given by its Poisson Bracket with the Hamiltonian. One can also arrive at this by looking at Noether's theorem for energy conservation. A Unitary operator can be written as the exponential of a Hermitian operator. Taking time derivatives gives a multiplicative factor of the Hermitian operator, which turns out to be <span class="arithmatex">\(H\)</span>.</p>
+<h3 id="the-hamiltonian">The Hamiltonian<a class="headerlink" href="#the-hamiltonian" title="Permanent link">&para;</a></h3>
+<p>Since <span class="arithmatex">\(H\)</span> is a Hermitian operator, it must have real eigenvalues, which represent the possible energy states. Let us denote these eigenvalues as <span class="arithmatex">\(E_j\)</span>.</p>
+<p>Thus, the eigenvalue equation is:</p>
+<div class="arithmatex">\[H\vert{}E_j\rangle = E_j\vert{}E_j\rangle\]</div>
+<p>We can now determine how the probability amplitudes of the energy values of a state evolve over time, by expanding it in the energy eigenbasis. The time-dependent Schrödinger equation is:
+ $<span class="arithmatex">\(i\hbar\frac{d}{dt}\vert{}\psi(t)\rangle = H\vert{}\psi(t)\rangle\)</span>$</p>
+<p>Write <span class="arithmatex">\(\vert{}\psi(t)\rangle\)</span> as a linear combination of the eigenstates of <span class="arithmatex">\(H\)</span>, where the probability amplitudes <span class="arithmatex">\(\alpha_j\)</span> are time-dependent:</p>
+<div class="arithmatex">\[\vert{}\psi(t)\rangle = \sum_j \alpha_j(t)\vert{}E_j\rangle\]</div>
+<p><strong>Aside:</strong> In the Schrodinger picture, <span class="arithmatex">\(\alpha_j(t)\)</span> is time dependent while <span class="arithmatex">\(E_j\)</span> and <span class="arithmatex">\(H\)</span> are time independent. The Heisenberg picture reverses this.</p>
+<p>Substituting the superposition into the Schrödinger equation yields:</p>
+<div class="arithmatex">\[i\hbar\frac{d}{dt}\left(\sum_j \alpha_j(t)\vert{}E_j\rangle\right) = H\left(\sum_j \alpha_j(t)\vert{}E_j\rangle\right)\]</div>
+<p>On the right side, the Hamiltonian acts linearly on the eigenstates, which can be replaced by their corresponding eigenvalues <span class="arithmatex">\(E_j\)</span>:</p>
+<div class="arithmatex">\[\sum_j \left(i\hbar\frac{d\alpha_j(t)}{dt}\right)\vert{}E_j\rangle = \sum_j \left(E_j\alpha_j(t)\right)\vert{}E_j\rangle\]</div>
+<p>Bringing all terms to one side gives:</p>
+<p>$<span class="arithmatex">\(\sum_j \left( i\hbar\frac{d\alpha_j(t)}{dt} - E_j\alpha_j(t) \right) \vert{}E_j\rangle = 0\)</span>$
+Because the eigenvectors <span class="arithmatex">\(\vert{}E_j\rangle\)</span> form an orthonormal basis, they are linearly independent. For this sum to equal the zero vector, the coefficient for each <span class="arithmatex">\(\vert{}E_j\rangle\)</span> must independently be zero. This yields a set of decoupled, first-order differential equations for each amplitude:</p>
+<div class="arithmatex">\[i\hbar\frac{d\alpha_j(t)}{dt} = E_j\alpha_j(t)\]</div>
+<p>Solving this differential equation for <span class="arithmatex">\(\alpha_j(t)\)</span> gives the complex phase <span class="arithmatex">\(e^{-iE_jt/\hbar}\)</span> that represents time evolution:</p>
+<div class="arithmatex">\[\alpha_j(t) = \alpha_j(0)e^{-iE_jt/\hbar}\]</div>
+<p><strong>In short:</strong> To determine how a quantum state evolves over time:
+Determine the state ket at the initial time, <span class="arithmatex">\(\vert{}\psi(0)\rangle\)</span>. </p>
+<p>Define the system's Hamiltonian <span class="arithmatex">\(H\)</span> and determine its energy eigenvalues <span class="arithmatex">\(E_j\)</span> and eigenstates <span class="arithmatex">\(\vert{}E_j\rangle\)</span>.</p>
+<p>Decompose the initial state into the energy eigenbasis by calculating the initial probability amplitude for each component: <span class="arithmatex">\(\alpha_j(0) = \langle E_j\vert{}\psi(0)\rangle\)</span>.</p>
+<p>Determine the state <span class="arithmatex">\(\vert{}\psi(t)\rangle\)</span> at a future time <span class="arithmatex">\(t\)</span> by multiplying each initial amplitude by its corresponding time-evolution phase factor, <span class="arithmatex">\(e^{-iE_jt/\hbar}\)</span>, and summing the resulting components:
+    $<span class="arithmatex">\(\vert{}\psi(t)\rangle = \sum_j \alpha_j(0)e^{-iE_jt/\hbar}\vert{}E_j\rangle\)</span>$</p>
+<p><strong>Note:</strong> If we utilize the Schrodinger equation to evaluate time evolution, we are in a sense looking at continuous time evolution over infinitesimal changes in <span class="arithmatex">\(t\)</span>. If we instead directly apply the unitary operator on a state ket, we are in a way looking at time evolution discretely i.e. as a jump from <span class="arithmatex">\(t_i\)</span> to <span class="arithmatex">\(t_f\)</span>.  </p>
+<h3 id="time-evolution-of-expectation-values">Time Evolution of Expectation Values<a class="headerlink" href="#time-evolution-of-expectation-values" title="Permanent link">&para;</a></h3>
+<p>The expectation value <span class="arithmatex">\(\langle\psi\vert{}L\vert{}\psi\rangle\)</span>, denoted as <span class="arithmatex">\(\langle L \rangle\)</span>, can be evaluated dynamically to determine how the center of a measurement's probability distribution evolves over time. In the derivation below, the operator <span class="arithmatex">\(L\)</span> is assumed to be time-independent, consistent with the Schrödinger picture.</p>
+<p>Applying the product rule to the inner product yields:</p>
+<div class="arithmatex">\[\frac{d}{dt}\langle L \rangle = \frac{d}{dt}\langle\psi(t)\vert{}L\vert{}\psi(t)\rangle = \left(\frac{d}{dt}\langle\psi(t)\vert{}\right)L\vert{}\psi(t)\rangle + \langle\psi(t)\vert{}L\left(\frac{d}{dt}\vert{}\psi(t)\rangle\right)\]</div>
+<p>Recall the time-dependent Schrödinger equation and its conjugate transpose (since <span class="arithmatex">\(H\)</span> is Hermitian, <span class="arithmatex">\(H^\dagger = H\)</span>):</p>
+<div class="arithmatex">\[\frac{d}{dt}\vert{}\psi(t)\rangle = -\frac{i}{\hbar}H\vert{}\psi(t)\rangle\]</div>
+<div class="arithmatex">\[\frac{d}{dt}\langle\psi(t)\vert{} = \frac{i}{\hbar}\langle\psi(t)\vert{}H\]</div>
+<p>Substituting these relations into the expanded derivative gives:</p>
+<div class="arithmatex">\[\frac{d}{dt}\langle L \rangle = \left(\frac{i}{\hbar}\langle\psi(t)\vert{}H\right) L \vert{}\psi(t)\rangle + \langle\psi(t)\vert{} L \left(-\frac{i}{\hbar}H\vert{}\psi(t)\rangle\right)\]</div>
+<p>Factoring out the constants:</p>
+<div class="arithmatex">\[\frac{d}{dt}\langle L \rangle = \frac{i}{\hbar}\langle\psi(t)\vert{}(HL - LH)\vert{}\psi(t)\rangle\]</div>
+<p>Using standard commutator notation, <span class="arithmatex">\([A, B] = AB - BA\)</span>, this simplifies to a statement of Ehrenfest's theorem:</p>
+<div class="arithmatex">\[\frac{d}{dt}\langle L \rangle = \frac{i}{\hbar}\langle\psi(t)\vert{}[H, L]\vert{}\psi(t)\rangle = -\frac{i}{\hbar}\langle\psi(t)\vert{}[L, H]\vert{}\psi(t)\rangle\]</div>
+<p>This formulation is structurally analogous to classical mechanics, where the time derivative of a classical dynamical variable relies on its Poisson bracket with the classical Hamiltonian.</p>
+<p>Consequently, if an observable operator <span class="arithmatex">\(L\)</span> does not commute with <span class="arithmatex">\(H\)</span> (i.e., <span class="arithmatex">\([L, H] \neq 0\)</span>), its expectation value is not conserved. Conversely, if it does commute with <span class="arithmatex">\(H\)</span>, its expectation value is a constant of the motion. If <span class="arithmatex">\(L\)</span> commutes with <span class="arithmatex">\(H\)</span>, every function of <span class="arithmatex">\(L\)</span> is also conserved (e.g., <span class="arithmatex">\(L^n\)</span>). The most trivial candidate for commutation is <span class="arithmatex">\(H\)</span> itself, which physically implies the conservation of energy. </p>
+<h3 id="symmetries-in-quantum-mechanics">Symmetries in Quantum Mechanics<a class="headerlink" href="#symmetries-in-quantum-mechanics" title="Permanent link">&para;</a></h3>
+<p>We can arrive at this commutation relation from another line of reasoning. In general, a symmetry operation is considered a transformation that does not change the physical predictions (the measurable observations) of the system. In quantum mechanics, these observable values are probabilities, which correspond to the absolute square of the transition probability amplitudes between states. Thus, a symmetry operation must leave <span class="arithmatex">\(\vert{}\langle\psi\vert{}\phi\rangle\vert{}^2\)</span> unchanged for any two states <span class="arithmatex">\(\vert{}\psi\rangle\)</span> and <span class="arithmatex">\(\vert{}\phi\rangle\)</span> before and after the transformation.</p>
+<p>According to Wigner's theorem, this strict conservation of probability is mathematically possible if and only if the transformation is represented by an operator that is either linear and unitary, where:</p>
+<div class="arithmatex">\[\langle\psi'\vert{}\phi'\rangle = \langle\psi\vert{}\phi\rangle\]</div>
+<p>or antilinear and anti-unitary, where the inner product converts to its complex conjugate:</p>
+<div class="arithmatex">\[\langle\psi'\vert{}\phi'\rangle = \langle\psi\vert{}\phi\rangle^* = \langle\phi\vert{}\psi\rangle\]</div>
+<p>However, for continuous symmetries (such as spatial translations or rotations), the transformation must remain valid even when the applied shift is infinitesimally small. This requires the symmetry operator to continuously tend toward the Identity operator as the transformation parameter approaches zero. Because the Identity operator is strictly linear and unitary, continuous symmetries can only be represented by unitary operators. However, anti-unitary operators become mathematically essential for discrete symmetries that involve sudden flips and cannot be built from infinitesimal steps, most notably time reversal.</p>
+<p>We can also impose a dynamical requirement on a continuous symmetry: applying a symmetry transformation to a state followed by time evolution should yield the same physical state as time-evolving the state first and then applying the symmetry. If we denote the unitary symmetry operator as <span class="arithmatex">\(U_R\)</span> and the time-evolution operator as <span class="arithmatex">\(U_t\)</span>, this requires:</p>
+<div class="arithmatex">\[U_R U_t\vert{}\psi\rangle = U_t U_R\vert{}\psi\rangle\]</div>
+<p>Because this must hold for all states <span class="arithmatex">\(\vert{}\psi\rangle\)</span>, the two operators must commute: <span class="arithmatex">\([U_R, U_t] = 0\)</span>.</p>
+<p>Since the Hamiltonian is the infinitesimal generator of time evolution, and if we define a Hermitian observable <span class="arithmatex">\(L\)</span> as the infinitesimal generator of the symmetry (<span class="arithmatex">\(U_R = e^{-i\lambda L/\hbar}\)</span>), then both <span class="arithmatex">\([L, H] = 0\)</span> and <span class="arithmatex">\([U_R, H] = 0\)</span>.</p>
+<h2 id="compatible-observables">Compatible Observables<a class="headerlink" href="#compatible-observables" title="Permanent link">&para;</a></h2>
+<h3 id="uncertainty-principle">Uncertainty Principle<a class="headerlink" href="#uncertainty-principle" title="Permanent link">&para;</a></h3>
+<p>Given two operators, <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span>, the generalized uncertainty principle states that the product of the standard deviations (uncertainties) of their measurements, <span class="arithmatex">\(\sigma_A\)</span> and <span class="arithmatex">\(\sigma_B\)</span>, is strictly bounded by the expectation value of their commutator: <span class="arithmatex">\(\sigma_A \sigma_B \geq \frac{1}{2} \vert{}\langle[A, B]\rangle\vert{}\)</span> where the uncertainty of a given observable is statistically defined as its standard deviation: <span class="arithmatex">\(\sigma_A = \sqrt{\langle A^2 \rangle - \langle A \rangle^2}\)</span>.</p>
+<h3 id="mechanics-of-commutativity-and-simultaneous-observation">Mechanics of Commutativity and Simultaneous Observation<a class="headerlink" href="#mechanics-of-commutativity-and-simultaneous-observation" title="Permanent link">&para;</a></h3>
+<p>If two operators commute, they are compatible, i.e. both observables can be measured simultaneously without any mutual uncertainty in their values.</p>
+<p>Two operators commute if and only if they share a simultaneous basis of eigenvectors. Too see why, consider the case when two operators share a simultaneous eigenbasis. This means they can both be diagonalized simultaneously. </p>
+<p>Given the components <span class="arithmatex">\(x_i\)</span> of a column vector and diagonal components <span class="arithmatex">\(a_i\)</span> and <span class="arithmatex">\(b_i\)</span> of <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span>, both operations <span class="arithmatex">\(AB\)</span> and <span class="arithmatex">\(BA\)</span> will result in new vector components <span class="arithmatex">\(a_ib_ix_i\)</span>. Since because <span class="arithmatex">\(a_ib_i\)</span> = <span class="arithmatex">\(b_ia_i\)</span>. <span class="arithmatex">\(AB - BA\)</span> is therefore 0. </p>
+<p>However, if they do not commute, then suppose <span class="arithmatex">\(A\)</span> is diagonalized, <span class="arithmatex">\(B\)</span> will still have off-diagonal components that will mix the components of <span class="arithmatex">\(X\)</span>. This mixing will differ in magnitude for <span class="arithmatex">\(AB\)</span> and <span class="arithmatex">\(BA\)</span>, as can be seen below.</p>
+<p><strong>Operation 1: <span class="arithmatex">\(AB\vert{}\psi\rangle\)</span></strong></p>
+<p>First, <span class="arithmatex">\(B\)</span> mixes the components of the initial state vector:</p>
+<div class="arithmatex">\[B\vert{}\psi\rangle=\sum_i\left(\sum_j B_{ij}x_j\right)\vert{}i\rangle\]</div>
+<p>Next, <span class="arithmatex">\(A\)</span> scales each newly mixed component by its respective eigenvalue <span class="arithmatex">\(a_i\)</span>:</p>
+<div class="arithmatex">\[AB\vert{}\psi\rangle=\sum_{i,j} a_i B_{ij} x_j\vert{}i\rangle\]</div>
+<p><strong>Operation 2: <span class="arithmatex">\(BA\vert{}\psi\rangle\)</span></strong></p>
+<p>First, <span class="arithmatex">\(A\)</span> scales the original components of the initial state by <span class="arithmatex">\(a_j\)</span>:</p>
+<div class="arithmatex">\[A\vert{}\psi\rangle=\sum_j a_j x_j\vert{}j\rangle\]</div>
+<p>Next, <span class="arithmatex">\(B\)</span> mixes these pre-scaled components:</p>
+<div class="arithmatex">\[BA\vert{}\psi\rangle=\sum_{i,j} B_{ij} a_j x_j\vert{}i\rangle\]</div>
+<div class="arithmatex">\[(AB-BA)\vert{}\psi\rangle=\sum_{i,j} (a_i B_{ij} x_j - B_{ij} a_j x_j)\vert{}i\rangle\]</div>
+<div class="arithmatex">\[(AB-BA)\vert{}\psi\rangle=\sum_{i,j} B_{ij}(a_i-a_j)x_j\vert{}i\rangle\]</div>
+<p>This equation reveals the fundamental physical reality of the commutator: It is a measure of cross-contamination.</p>
+<p><strong>Note:</strong> The uncertainty principle does not mean that if we make a measurement of an observable, it will somehow disturb the measurement of another observable. This is not a statement of interference or wave function collapse etc. This is a statement of how the standard deviation or uncertainty of an ensemble of measurements will behave. Recall that the standard deviation is define with respect to the expecation values. So the uncertainty principle is really saying that over let's say thousand of measurements, the "spread" in the two measurements has a lower bound. If the observables commute and the lower bound is <span class="arithmatex">\(0\)</span>, it means we can always find some measurement basis that allows us to "deterministically" measure both observables without any variance. For eg., if we prepared a spin-1/2 state along some arbitrary spatial direction <span class="arithmatex">\(n\)</span>, and we wanted to measure the spin and 2 times the spin (just as an example), if we aligned our measurement apparatus along <span class="arithmatex">\(n\)</span>, we would deterministically measure <span class="arithmatex">\(+1\)</span> and <span class="arithmatex">\(+2\)</span> every time, and thus have <span class="arithmatex">\(0\)</span> variance. However, the uncertainty principle only gives a lower bound. If we were to conduct measurements along some other random spatial direction, we <em>would</em> have some variance. </p>
+<p><strong>Aside:</strong> We see commutativity as a measure of the curvature of the space time, via the Riemann tensor in General Relativity. 
+There is also a major, active branch of theoretical physics known as Noncommutative Geometry, where distorted spacetime causes the coordinates themselves to act as non-commuting operators resulting in measurement uncertainty. It enforces a fundamental Spacetime Uncertainty Principle. It dictates that you mathematically cannot measure the x-coordinate and y-coordinate of an event simultaneously with infinite precision</p>
+<h3 id="complete-set-of-compatible-observables">Complete Set of Compatible Observables<a class="headerlink" href="#complete-set-of-compatible-observables" title="Permanent link">&para;</a></h3>
+<p>Let us start with an observable <span class="arithmatex">\(A\)</span>. If <span class="arithmatex">\(A\)</span> has eigenvectors that share the same eigenvalue, the eigenvalue corresponds not to a 1D line, but to a <span class="arithmatex">\(k\)</span>-dimensional geometric subspace. When we make a measurement, we know the value of the measurement, but the state of the system is ambiguous -- it could be any of the corresponding eigenvectors. </p>
+<p>To resolve the ambiguity, we use a compatible observable <span class="arithmatex">\(B\)</span> to add extra information and reduce the k-dimensional subspace ambiguity. <span class="arithmatex">\(B\)</span> may be able to split that <span class="arithmatex">\(k\)</span>-dimensional plane into <span class="arithmatex">\(k\)</span> unique 1D lines. If not, we would like to add other mutually compatible observables until the tuple of eigenvalues for each eigenvector, <span class="arithmatex">\(x\vert{}a,b,c...\rangle\)</span>,  is unique.</p>
+<p>The size of the CSCO tells you the independent degrees of freedom in the system. Mathematically, independent degrees of freedom are constructed by taking the tensor product of smaller, fundamental Hilbert spaces.</p>
+<h4 id="example-the-hydrogen-atom">Example: The Hydrogen Atom<a class="headerlink" href="#example-the-hydrogen-atom" title="Permanent link">&para;</a></h4>
+<p>Consider the energy states of the Hydrogen atom (ignoring spin).</p>
+<p><strong>Step 1: The Hamiltonian (<span class="arithmatex">\(H\)</span>)</strong>
+Measuring just the energy yields the eigenvalue <span class="arithmatex">\(E_n\)</span>. However, there are multiple distinct electron orbitals (like the 2s and 2p orbitals) that possess the exact same energy. The state is degenerate. <span class="arithmatex">\(H\)</span> alone is not a CSCO.</p>
+<p><strong>Step 2: Adding Total Orbital Angular Momentum (<span class="arithmatex">\(L^2\)</span>)</strong>
+<span class="arithmatex">\(L^2\)</span> commutes with <span class="arithmatex">\(H\)</span>. Measuring it yields the eigenvalue quantum number <span class="arithmatex">\(l\)</span>. Now you have the tuple <span class="arithmatex">\((n, l)\)</span>. This distinguishes the 2s orbital from the 2p orbital, but the 2p orbital still has three distinct geometric orientations in space (<span class="arithmatex">\(p_x, p_y, p_z\)</span>) that share the exact same <span class="arithmatex">\(n\)</span> and <span class="arithmatex">\(l\)</span>. The set <span class="arithmatex">\(\{H, L^2\}\)</span> is still not a CSCO.</p>
+<p><strong>Step 3: Adding the Z-Component of Angular Momentum (<span class="arithmatex">\(L_z\)</span>)</strong>
+<span class="arithmatex">\(L_z\)</span> commutes with both <span class="arithmatex">\(H\)</span> and <span class="arithmatex">\(L^2\)</span>. Measuring it yields the eigenvalue quantum number <span class="arithmatex">\(m\)</span>. Now you have the tuple <span class="arithmatex">\((n, l, m)\)</span>.</p>
+<p>In the non-relativistic, spinless Hydrogen atom, there is no further degeneracy. Every possible unique spatial orbital corresponds strictly to a unique combination of <span class="arithmatex">\((n, l, m)\)</span>. Therefore, you know that <span class="arithmatex">\(\{H, L^2, L_z\}\)</span> is a Complete Set of Commuting Observables.</p>
+<h4 id="csco-is-minimal-p-and-h-example">CSCO is Minimal: <span class="arithmatex">\(p\)</span> and <span class="arithmatex">\(H\)</span> Example<a class="headerlink" href="#csco-is-minimal-p-and-h-example" title="Permanent link">&para;</a></h4>
+<p>Note that the CSCO is the <em>minimal</em> set of compatible observables needed to acquire the maximum possible information about a system. </p>
+<p>For example, for a free particle, <span class="arithmatex">\(H\)</span> represents the energy of the particle. Measuring the energy tells you the magnitude of the momentum. However, you still do not know the direction of the momentum, which means you need to measure momentum as well. <span class="arithmatex">\(H\)</span> and <span class="arithmatex">\(p\)</span> commute because <span class="arithmatex">\(H\)</span> is a power of <span class="arithmatex">\(p\)</span>. So are there 2 observables in the CSCO? </p>
+<p>Not really. Consider what would happen if we measured just <span class="arithmatex">\(p\)</span>. It will tell you both the momentum and the energy. This is where the <em>minimal</em> requirement of the CSCO comes in. If an operator can be expressed purely as a mathematical function of the other operators in the set, it adds no new physical information and is excluded from the CSCO.</p>
+<h3 id="measuring-spin-along-an-arbitrary-axis">Measuring Spin Along An Arbitrary Axis<a class="headerlink" href="#measuring-spin-along-an-arbitrary-axis" title="Permanent link">&para;</a></h3>
+<p>Since <span class="arithmatex">\(\sigma_x\)</span>, <span class="arithmatex">\(\sigma_y\)</span>, and <span class="arithmatex">\(\sigma_z\)</span> do not commute and are thus incompatible, it means we cannot have simultaneous information about all of them. This means we cannot conclusively determine the spin-1/2 state along some arbitrary spatial direction. To determine an unknown spin direction, you must be provided with an ensemble: a large number of identical particles, all prepared in the exact same unknown state <span class="arithmatex">\(\vert{}\psi\rangle\)</span>, apply measurement along <span class="arithmatex">\(x\)</span>, <span class="arithmatex">\(y\)</span> and <span class="arithmatex">\(z\)</span>, and determine via the measured expectation value, what <span class="arithmatex">\(\sigma\)</span> is.</p>
+<h4 id="the-no-cloning-constraint">The No-Cloning Constraint<a class="headerlink" href="#the-no-cloning-constraint" title="Permanent link">&para;</a></h4>
+<p>It is crucial to understand that you cannot simply take a single unknown particle and copy it to create the required ensemble yourself.</p>
+<p>The No-Cloning Theorem strictly forbids the creation of identical copies of an arbitrary, unknown quantum state. If you try to build an ensemble by copying a single particle, the copying mechanism will inherently entangle and corrupt the state. Therefore, the physical direction of a quantum state can only be known if the source that generated it provides you with a statistically significant number of identical iterations.</p>
+<h3 id="quantum-physics-in-projection-operator-formalism">Quantum Physics in Projection Operator Formalism<a class="headerlink" href="#quantum-physics-in-projection-operator-formalism" title="Permanent link">&para;</a></h3>
+<p>The mathematics of quantum mechanics can also be presented through orthonormal projection operators rather than state vectors. For example, a general density matrix state can be written as a linear combination of orthonormal projection operators:</p>
+<div class="arithmatex">\[\rho = \sum_i p_i \vert{}i\rangle\langle i\vert{}\]</div>
+<p>(For a pure state, this simplifies to <span class="arithmatex">\(\rho = \vert{}\psi\rangle\langle\psi\vert{}\)</span>). Note that the scalar multiplication factors here are the probabilities themselves, and not probability amplitudes as in the case of state vectors.</p>
+<p>In terms of matrices, if written in the same orthonormal basis <span class="arithmatex">\(\{\vert{}i\rangle\}\)</span>, each item <span class="arithmatex">\(\vert{}i\rangle\langle i\vert{}\)</span> in the summation is a matrix with a single <span class="arithmatex">\(1\)</span> in the <span class="arithmatex">\(i\)</span>-th column and row, and zero everywhere else, multiplied by the scalar <span class="arithmatex">\(p_i\)</span>. If written in some other basis, there will be off-diagonal terms.</p>
+<p>The inner product of two density matrices <span class="arithmatex">\(\rho_1\)</span> and <span class="arithmatex">\(\rho_2\)</span> is given by <span class="arithmatex">\(\text{tr}(\rho_1 \rho_2)\)</span>. In general, if <span class="arithmatex">\(\vert{}a\rangle\)</span> and <span class="arithmatex">\(\vert{}b\rangle\)</span> are two vectors, the trace of their outer product gives the reversed inner product: <span class="arithmatex">\(\text{tr}(\vert{}a\rangle\langle b\vert{}) = \langle b \vert{} a \rangle\)</span>.</p>
+<p>The probability of obtaining a specific measurement outcome, represented by the measurement operator <span class="arithmatex">\(M_m\)</span>, is given by <span class="arithmatex">\(\text{tr}(M_m^\dagger M_m \rho)\)</span>. For projective measurements, where the projector is <span class="arithmatex">\(P_m = \vert{}m\rangle\langle m\vert{}\)</span>, and using the cyclic property of the trace (<span class="arithmatex">\(\text{tr}(ABC) = \text{tr}(CAB)\)</span>), this works out to <span class="arithmatex">\(\text{tr}(\vert{}m\rangle\langle m\vert{} \rho)\)</span>.</p>
+<p>The post-measurement state is given by:</p>
+<div class="arithmatex">\[\frac{M_m \rho M_m^\dagger}{\text{tr}(M_m^\dagger M_m \rho)}\]</div>
+<p><strong>Aside:</strong> Note that traces follow the rules of linearity. Also, to understand a trace, see that each element of the matrix can be obtained in the following way: place the <span class="arithmatex">\(j\)</span>-th basis column vector <span class="arithmatex">\(\vert{}j\rangle\)</span> on the right of the matrix and perform matrix multiplication. This gives us a column vector. Then place the <span class="arithmatex">\(i\)</span>-th basis row vector <span class="arithmatex">\(\langle i\vert{}\)</span> to the left and perform matrix multiplication. This is just an inner product and gives the <span class="arithmatex">\(ij\)</span>-th element of the matrix. In Dirac notation, this is written as <span class="arithmatex">\(\langle i \vert{} M \vert{} j \rangle\)</span>. Taking the summation of the diagonal elements over all <span class="arithmatex">\(i\)</span> gives the trace.</p>
+<h2 id="entanglement">Entanglement<a class="headerlink" href="#entanglement" title="Permanent link">&para;</a></h2>
+<h3 id="density-matrices">Density Matrices<a class="headerlink" href="#density-matrices" title="Permanent link">&para;</a></h3>
+<p>Let us evaluate the expectation value of an observable <span class="arithmatex">\(L\)</span> for a system prepared in a pure state <span class="arithmatex">\(\vert{}\psi\rangle\)</span>. The trace of an operator <span class="arithmatex">\(L\)</span> is defined as the sum of its diagonal elements in any chosen orthonormal basis <span class="arithmatex">\(\vert{}i\rangle\)</span>:</p>
+<div class="arithmatex">\[\text{Tr}(L) = \sum_i \langle i\vert{}L\vert{}i\rangle\]</div>
+<p>The expectation value <span class="arithmatex">\(\langle L \rangle\)</span> is the trace of the product of the projection operator <span class="arithmatex">\(\vert{}\psi\rangle\langle\psi\vert{}\)</span> and the observable <span class="arithmatex">\(L\)</span>. </p>
+<p>To prove this, let us construct the operator <span class="arithmatex">\(\vert{}\psi\rangle\langle\psi\vert{}L\)</span> and take its trace:</p>
+<p>$<span class="arithmatex">\(\text{Tr}(\vert{}\psi\rangle\langle\psi\vert{}L) = \sum_i \langle i\vert{}\psi\rangle\langle\psi\vert{}L\vert{}i\rangle\)</span>$
+Because <span class="arithmatex">\(\langle i\vert{}\psi\rangle\)</span> and <span class="arithmatex">\(\langle\psi\vert{}L\vert{}i\rangle\)</span> are scalars, they commute and can be rearranged:</p>
+<p>$<span class="arithmatex">\(\text{Tr}(\vert{}\psi\rangle\langle\psi\vert{}L) = \sum_i \langle\psi\vert{}L\vert{}i\rangle\langle i\vert{}\psi\rangle\)</span>$
+Using the completeness relation <span class="arithmatex">\(I = \sum_i \vert{}i\rangle\langle i\vert{}\)</span>, we can factor out the basis vectors to collapse the sum:</p>
+<div class="arithmatex">\[\text{Tr}(\vert{}\psi\rangle\langle\psi\vert{}L) = \langle\psi\vert{}L \left( \sum_i \vert{}i\rangle\langle i\vert{} \right) \vert{}\psi\rangle = \langle\psi\vert{}L I \vert{}\psi\rangle = \langle\psi\vert{}L\vert{}\psi\rangle = \langle L \rangle\]</div>
+<p>We define the projection operator <span class="arithmatex">\(\vert{}\psi\rangle\langle\psi\vert{}\)</span>  as the density matrix <span class="arithmatex">\(\rho\)</span>, making <span class="arithmatex">\(\langle L \rangle = \text{Tr}(\rho L)\)</span>.</p>
+<p>To understand what is happening here, think of what the projection operator of a state vector <span class="arithmatex">\(\psi\)</span> onto another state <span class="arithmatex">\(\phi\)</span> represents. It is an extraction of the component vector of <span class="arithmatex">\(\phi\)</span> along <span class="arithmatex">\(\psi\)</span>. In an analogous fashion, by applying the projection on <span class="arithmatex">\(L\)</span>, we are extracting the specific scalar component of the operator matrix <span class="arithmatex">\(L\)</span> that acts strictly along the geometric axis defined by the state vector <span class="arithmatex">\(\vert{}\psi\rangle\)</span>.</p>
+<p>Density matrices become mathematically necessary when dealing with mixed states. A pure state is a system whose quantum state is known with total certainty, represented by a single state vector <span class="arithmatex">\(\vert{}\psi\rangle\)</span> (which itself may be a superposition of basis eigenstates). A mixed state is a statistical ensemble where classical uncertainty exists regarding which pure state the system is actually in. If a system has classical probabilities <span class="arithmatex">\(P_k\)</span> of being in various pure states <span class="arithmatex">\(\vert{}\psi_k\rangle\)</span>, the density matrix generalizes to:</p>
+<div class="arithmatex">\[\rho = \sum_k P_k \vert{}\psi_k\rangle\langle\psi_k\vert{}\]</div>
+<p>where <span class="arithmatex">\(\sum_k P_k = 1\)</span>.</p>
+<p>The formula for the expectation value however is still given by: <span class="arithmatex">\(\langle L \rangle = \text{Tr}(\rho L)\)</span>. Density matrices are Hermitian (<span class="arithmatex">\(\rho = \rho^\dagger\)</span>), positive semi-definite, and their trace is exactly <span class="arithmatex">\(1\)</span> (<span class="arithmatex">\(\text{Tr}(\rho) = 1\)</span>), since the total probability of all states must be <span class="arithmatex">\(1\)</span>. </p>
+<p>For pure states, the density matrix is idempotent (<span class="arithmatex">\(\rho^2 = \rho\)</span>), which implies <span class="arithmatex">\(\text{Tr}(\rho^2) = 1\)</span>. For mixed states, idempotency fails (<span class="arithmatex">\(\rho^2 \neq \rho\)</span>), and <span class="arithmatex">\(\text{Tr}(\rho^2) &lt; 1\)</span>. This provides a concrete mathematical test to determine whether a given state is pure or mixed.</p>
+<p>To see why this happens structurally, consider rotating the density matrix into its own eigenbasis. Because <span class="arithmatex">\(\rho\)</span> is Hermitian, it can always be diagonalized. </p>
+<p>For a pure state <span class="arithmatex">\(\rho = \vert{}\psi\rangle\langle\psi\vert{}\)</span>, the state vector <span class="arithmatex">\(\vert{}\psi\rangle\)</span> is an eigenvector of <span class="arithmatex">\(\rho\)</span> with an eigenvalue of <span class="arithmatex">\(1\)</span> (which represents the probability of <span class="arithmatex">\(\psi\)</span> in the mixed state). All other orthogonal basis vectors have eigenvalues of <span class="arithmatex">\(0\)</span>. In this basis, <span class="arithmatex">\(\rho\)</span> is a diagonal matrix with a single <span class="arithmatex">\(1\)</span> and zeroes elsewhere. Squaring this matrix yields the exact same matrix, so <span class="arithmatex">\(\rho^2 = \rho\)</span> and <span class="arithmatex">\(\text{Tr}(\rho^2) = 1\)</span>.</p>
+<p>For a mixed state, diagonalization yields the classical probabilities on the diagonal. There will be at least two non-zero eigenvalues <span class="arithmatex">\(p_k\)</span>, where <span class="arithmatex">\(0 &lt; p_k &lt; 1\)</span>. The trace is the sum of these eigenvalues, which must be total probability: <span class="arithmatex">\(\text{Tr}(\rho) = \sum p_k = 1\)</span>. However, squaring the matrix squares these eigenvalues. Since each <span class="arithmatex">\(p_k\)</span> is a positive fraction less than <span class="arithmatex">\(1\)</span>, its square is strictly less than itself (<span class="arithmatex">\(p_k^2 &lt; p_k\)</span>). Therefore, the sum of their squares is strictly less than the sum of the original probabilities:</p>
+<div class="arithmatex">\[\text{Tr}(\rho^2) = \sum_k p_k^2 &lt; \sum_k p_k = 1\]</div>
+<p>Because <span class="arithmatex">\(\text{Tr}(\rho^2) &lt; 1\)</span>, <span class="arithmatex">\(\rho^2 \neq \rho\)</span>, meaning the mixed state density matrix is not idempotent.</p>
+<h3 id="pure-vs-mixed-state-shortcuts">Pure vs. Mixed State Shortcuts<a class="headerlink" href="#pure-vs-mixed-state-shortcuts" title="Permanent link">&para;</a></h3>
+<p>There are several mathematical shortcuts to determine whether a density matrix <span class="arithmatex">\(\rho\)</span> represents a pure state or a mixed state:
+* <strong>Rank Test:</strong> A pure state density matrix has a rank of <span class="arithmatex">\(1\)</span>. This means there is only one linearly independent row or column, which corresponds to the single eigenvector associated with the eigenvalue of <span class="arithmatex">\(1\)</span> (the state vector <span class="arithmatex">\(\vert{}\psi\rangle\)</span>).
+* <strong>Determinant Test (<span class="arithmatex">\(2 \times 2\)</span> Matrices):</strong> For a <span class="arithmatex">\(2 \times 2\)</span> density matrix, if <span class="arithmatex">\(\det(\rho) = 0\)</span>, it is a pure state. This is a direct consequence of the rank condition. Because the trace is the sum of the eigenvalues (<span class="arithmatex">\(\lambda_1 + \lambda_2 = 1\)</span>) and the determinant is their product (<span class="arithmatex">\(\lambda_1 \lambda_2 = 0\)</span>), one eigenvalue must be <span class="arithmatex">\(1\)</span> and the other must be <span class="arithmatex">\(0\)</span>.
+This test does not work for <span class="arithmatex">\(N &gt; 2\)</span> because the determinant = 0 test only tells you that the matrix is not full rank i.e. it is flat in at least one dimension of the Hilbert space. For <span class="arithmatex">\(N = 2\)</span>, this is the same as a rank 1 matrix. As an example, suppose <span class="arithmatex">\(N = 3\)</span> and we prepare 3 states with probabiltiies <span class="arithmatex">\(0.5\)</span>, <span class="arithmatex">\(0.5\)</span> and <span class="arithmatex">\(0\)</span>. The determinant is 0, but the state is not pure.
+* <strong>Diagonal Element Test:</strong> If a density matrix is completely diagonal, it represents a pure state if and only if exactly one diagonal element is <span class="arithmatex">\(1\)</span> and all others are <span class="arithmatex">\(0\)</span>.
+* <strong>Off-Diagonal Constraint (Coherence):</strong> If the matrix is not diagonal, the magnitudes of the off-diagonal elements (coherences) are strictly constrained by the diagonal elements (populations). For a pure state, the condition <span class="arithmatex">\(\vert{}\rho_{ij}\vert{}^2 = \rho_{ii}\rho_{jj}\)</span> must hold for any <span class="arithmatex">\(2 \times 2\)</span> sub-matrix. This is the exact condition required to satisfy <span class="arithmatex">\(\text{Tr}(\rho^2) = 1\)</span>.</p>
+<h3 id="correlation-and-entangled-states">Correlation and Entangled States<a class="headerlink" href="#correlation-and-entangled-states" title="Permanent link">&para;</a></h3>
+<p>Consider a two-particle system. The states of this system can be represented by a tensor product of the individual vector spaces, <span class="arithmatex">\(U \otimes V\)</span>. A composite state vector is represented by <span class="arithmatex">\(\vert{}a\rangle \otimes \vert{}b\rangle\)</span> (often abbreviated as <span class="arithmatex">\(\vert{}a, b\rangle\)</span> or <span class="arithmatex">\(\vert{}ab\rangle\)</span>), where <span class="arithmatex">\(\vert{}a\rangle\)</span> is a state in vector space <span class="arithmatex">\(U\)</span> and <span class="arithmatex">\(\vert{}b\rangle\)</span> is a state in vector space <span class="arithmatex">\(V\)</span>.</p>
+<p>If we have an operator <span class="arithmatex">\(A\)</span> acting on vector space <span class="arithmatex">\(U\)</span> and an operator <span class="arithmatex">\(B\)</span> acting on vector space <span class="arithmatex">\(V\)</span>, then <span class="arithmatex">\(A\)</span> acts strictly on <span class="arithmatex">\(\vert{}a\rangle\)</span> and <span class="arithmatex">\(B\)</span> acts strictly on <span class="arithmatex">\(\vert{}b\rangle\)</span> as though the other vector space did not exist. Thus:</p>
+<div class="arithmatex">\[(A \otimes B)(\vert{}a\rangle \otimes \vert{}b\rangle) = (A\vert{}a\rangle) \otimes (B\vert{}b\rangle)\]</div>
+<p>Additionally, for a sum of non-interacting operators (such as the total Hamiltonian of two non-interacting particles):</p>
+<div class="arithmatex">\[(A \otimes I + I \otimes B)(\vert{}a\rangle \otimes \vert{}b\rangle) = (A\vert{}a\rangle) \otimes \vert{}b\rangle + \vert{}a\rangle \otimes (B\vert{}b\rangle)\]</div>
+<p>A tensor product of two 2-dimensional vector spaces yields a 4-dimensional composite vector space. Let us write an arbitrary pure state in the tensor product space of two spin-1/2 particles as a superposition of the basis states:</p>
+<div class="arithmatex">\[\vert{}\psi\rangle = c_1\vert{}uu\rangle + c_2\vert{}ud\rangle + c_3\vert{}du\rangle + c_4\vert{}dd\rangle\]</div>
+<p>The constraint on the complex coefficients <span class="arithmatex">\(c_1, c_2, c_3, c_4\)</span> is that the sum of their absolute squares must equal <span class="arithmatex">\(1\)</span> due to probability normalization: <span class="arithmatex">\(\vert{}c_1\vert{}^2 + \vert{}c_2\vert{}^2 + \vert{}c_3\vert{}^2 + \vert{}c_4\vert{}^2 = 1\)</span>.</p>
+<p>However, there is no guarantee that this arbitrary composite state can be factored back into a simple tensor product of two individual particle states, <span class="arithmatex">\((a_1\vert{}u\rangle + a_2\vert{}d\rangle) \otimes (b_1\vert{}u\rangle + b_2\vert{}d\rangle)\)</span>.</p>
+<p>If we assume the composite state <em>can</em> be written in this separable form, expanding the product yields:</p>
+<div class="arithmatex">\[(a_1 b_1)\vert{}uu\rangle + (a_1 b_2)\vert{}ud\rangle + (a_2 b_1)\vert{}du\rangle + (a_2 b_2)\vert{}dd\rangle\]</div>
+<p>Equating the coefficients to our original arbitrary state requires:</p>
+<p>$<span class="arithmatex">\(c_1 = a_1 b_1, \quad c_2 = a_1 b_2, \quad c_3 = a_2 b_1, \quad c_4 = a_2 b_2\)</span>$
+By multiplying <span class="arithmatex">\(c_1\)</span> and <span class="arithmatex">\(c_4\)</span>, and <span class="arithmatex">\(c_2\)</span> and <span class="arithmatex">\(c_3\)</span>, we find that <span class="arithmatex">\(c_1 c_4 = a_1 b_1 a_2 b_2\)</span> and <span class="arithmatex">\(c_2 c_3 = a_1 b_2 a_2 b_1\)</span>. This enforces the algebraic condition:</p>
+<div class="arithmatex">\[c_1 c_4 - c_2 c_3 = 0\]</div>
+<p>This condition is a strict algebraic constraint over and above the normalization constraint, and it is generally not true for an arbitrary set of coefficients. If <span class="arithmatex">\(c_1 c_4 - c_2 c_3 \neq 0\)</span>, the state cannot be factored into independent single-particle pure states. Such a state is defined as an <strong>entangled state</strong>, meaning the properties of the two particles are intrinsically correlated and cannot be described independently.</p>
+<h3 id="bell-states">Bell States<a class="headerlink" href="#bell-states" title="Permanent link">&para;</a></h3>
+<p>Some states are obviously correlated. For example, <span class="arithmatex">\(\frac{1}{\sqrt{2}}(\vert{}uu\rangle + \vert{}dd\rangle)\)</span> implies that measurements of the two particles will always agree (both up or both down). Similarly, <span class="arithmatex">\(\frac{1}{\sqrt{2}}(\vert{}ud\rangle - \vert{}du\rangle)\)</span> implies they will always disagree.</p>
+<p>Because a system of two spin-1/2 particles forms a 4-dimensional Hilbert space, we can construct a complete orthonormal basis of maximally entangled states by defining two additional configurations. These four states are known as the Bell states (or EPR pairs):</p>
+<div class="arithmatex">\[\vert{}\Phi^\pm\rangle = \frac{1}{\sqrt{2}}(\vert{}uu\rangle \pm \vert{}dd\rangle)$$
+$$\vert{}\Psi^\pm\rangle = \frac{1}{\sqrt{2}}(\vert{}ud\rangle \pm \vert{}du\rangle)\]</div>
+<h3 id="checking-for-entanglement-the-reduced-density-matrix">Checking for Entanglement (The Reduced Density Matrix)<a class="headerlink" href="#checking-for-entanglement-the-reduced-density-matrix" title="Permanent link">&para;</a></h3>
+<p>To mathematically verify if a bipartite (2-particle) pure state is entangled, you must calculate the <strong>reduced density matrix</strong> of one of the individual subsystems (e.g., subsystem A). This is done by taking the "partial trace" over subsystem B, which effectively averages out the degrees of freedom of particle B.</p>
+<p>The matrix elements of the reduced density matrix <span class="arithmatex">\(\rho^A\)</span> are given by:</p>
+<div class="arithmatex">\[\rho^A_{a,a'} = \sum_b \psi_{a,b} \psi^*_{a',b}\]</div>
+<p>This represents the density matrix of a single-particle state, constructed by summing over the basis states of the ignored subsystem B. It is similar to the density matrix of a single particle system, except for the summation over B.</p>
+<p>Once <span class="arithmatex">\(\rho^A\)</span> is constructed, we apply the standard idempotency test (<span class="arithmatex">\(\text{Tr}((\rho^A)^2) = 1\)</span>) to determine if subsystem A is in a pure or mixed state. If the overall composite state is pure, but the reduced density matrix <span class="arithmatex">\(\rho^A\)</span> describes a mixed state, then the original bipartite state is entangled. </p>
+<p>A mixed state where every eigenvalue of <span class="arithmatex">\(\rho^A\)</span> is equal (for a qubit, both eigenvalues are <span class="arithmatex">\(1/2\)</span>, making <span class="arithmatex">\(\rho^A\)</span> proportional to the Identity matrix) indicates a maximally entangled state, meaning all possible measurement outcomes for subsystem A are equally probable.</p>
+<p>Note that we cannot determine if a two-particle system is entangled simply by taking local measurements on one of the particles. A local observer measuring particle A cannot mathematically distinguish whether their measurement statistics such as probabilities and expectation values originate from a regular superposition in a pure state or from the classical probabilities of a mixed state.</p>
+<p>For example, measuring the spin along the <span class="arithmatex">\(x\)</span>-axis (<span class="arithmatex">\(\sigma_x\)</span>) for a pure state prepared as spin-up along the <span class="arithmatex">\(z\)</span>-axis (<span class="arithmatex">\(\vert{}+z\rangle\)</span>):</p>
+<div class="arithmatex">\[\vert{}+z\rangle = \frac{1}{\sqrt{2}}(\vert{}+x\rangle + \vert{}-x\rangle)\]</div>
+<p>yields an expectation value of <span class="arithmatex">\(\langle \sigma_x \rangle = 0\)</span>.</p>
+<p>However, you obtain the exact same expectation value from a statistically mixed state prepared with a <span class="arithmatex">\(50/50\)</span> classical probability of being strictly spin-up or spin-down. The density matrix for this mixed state is:</p>
+<div class="arithmatex">\[\rho = \frac{1}{2}(\vert{}u\rangle\langle u\vert{} + \vert{}d\rangle\langle d\vert{}) = \frac{1}{2} \left[ \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 0 \end{pmatrix} + \begin{pmatrix} 0 &amp; 0 \\ 0 &amp; 1 \end{pmatrix} \right] = \begin{pmatrix} 0.5 &amp; 0 \\ 0 &amp; 0.5 \end{pmatrix}\]</div>
+<div class="arithmatex">\[\rho \sigma_x = \begin{pmatrix} 0.5 &amp; 0 \\ 0 &amp; 0.5 \end{pmatrix} \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix} = \begin{pmatrix} 0 &amp; 0.5 \\ 0.5 &amp; 0 \end{pmatrix}\]</div>
+<p>Thus, the expectation value given by <span class="arithmatex">\(\text{Tr}(\rho \sigma_x)\)</span> is <span class="arithmatex">\(0\)</span> in this case as well.</p>
+<h3 id="schmidt-decomposition">Schmidt Decomposition<a class="headerlink" href="#schmidt-decomposition" title="Permanent link">&para;</a></h3>
+<p>Consider a pure bipartite state <span class="arithmatex">\(\vert{}\psi\rangle\)</span> in a composite tensor product Hilbert space <span class="arithmatex">\(\mathcal{H}_A \otimes \mathcal{H}_B\)</span> of dimensions <span class="arithmatex">\(d_A \times d_B\)</span>, where we assume <span class="arithmatex">\(d_A \leq d_B\)</span>.</p>
+<p>By applying Singular Value Decomposition (SVD) to the coefficient matrix of the state, it is always possible to find complete orthonormal bases <span class="arithmatex">\(\vert{}i_A\rangle\)</span> for <span class="arithmatex">\(\mathcal{H}_A\)</span> and <span class="arithmatex">\(\vert{}i_B\rangle\)</span> for <span class="arithmatex">\(\mathcal{H}_B\)</span> such that the state can be written as a single sum of exactly <span class="arithmatex">\(r\)</span> terms (where <span class="arithmatex">\(r \leq d_A\)</span>):</p>
+<div class="arithmatex">\[\vert{}\psi\rangle = \sum_{i=1}^r \sqrt{p_i} \vert{}i_A\rangle \otimes \vert{}i_B\rangle\]</div>
+<p>Here, <span class="arithmatex">\(r\)</span> is the Schmidt rank, and the positive real numbers <span class="arithmatex">\(\sqrt{p_i}\)</span> are the Schmidt coefficients, and <span class="arithmatex">\(\sum_{i=1}^r p_i = 1\)</span>.  </p>
+<p>The individual vectors in the summation are perfectly paired in <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span>. If <span class="arithmatex">\(i_A\)</span> is paired with <span class="arithmatex">\(i_B\)</span>, it will not appear with any other vector in the summation. Contrast this to a typical situation where we may see terms like <span class="arithmatex">\(\vert{}10\rangle\)</span> as well as <span class="arithmatex">\(\vert{}11\rangle\)</span> in a entangled state. Here <span class="arithmatex">\(\vert{}1\rangle_A\)</span> appears with both <span class="arithmatex">\(\vert{}0\rangle_B\)</span> and <span class="arithmatex">\(\vert{}1\rangle_B\)</span>.</p>
+<p>Tracing out either subsystem yields the reduced density matrices:</p>
+<div class="arithmatex">\[\rho_A = \sum_{i=1}^r p_i \vert{}i_A\rangle\langle i_A\vert{}, \quad \rho_B = \sum_{i=1}^r p_i \vert{}i_B\rangle\langle i_B\vert{}\]</div>
+<p>The two subsystems share the exact same non-zero eigenvalues <span class="arithmatex">\(p_i\)</span>, meaning their probability distributions match perfectly. We have mathematically decomposed the pure entangled state into a set of perfectly correlated mixed states in the local subsystems.</p>
+<p>The probability distribution <span class="arithmatex">\(p_i\)</span> is called the <strong>entanglement spectrum</strong>. The Schmidt rank <span class="arithmatex">\(r\)</span> defines the entanglement class:
+-   <strong><span class="arithmatex">\(r = 1\)</span>:</strong> Product state (completely separable, unentangled).
+-   <strong><span class="arithmatex">\(r &gt; 1\)</span>:</strong> Entangled state.
+-   <strong><span class="arithmatex">\(r = d_A\)</span> and <span class="arithmatex">\(p_i = 1/d_A\)</span> for all <span class="arithmatex">\(i\)</span>:</strong> Maximally entangled state.</p>
+<p>Note that the orthonormal bases <span class="arithmatex">\(\vert{}i_A\rangle\)</span> and <span class="arithmatex">\(\vert{}i_B\rangle\)</span> are specific to that particular entangled state <span class="arithmatex">\(\vert{}\psi\rangle\)</span> and do not constitute universal basis for decomposition of all states in the product space.</p>
+<p>Schmidt decomposition allows us to build a direct correlation map between the subsystems. If an observer measures subsystem <span class="arithmatex">\(A\)</span> in the Schmidt basis <span class="arithmatex">\(\vert{}i_A\rangle\)</span> and obtains a specific eigenstate <span class="arithmatex">\(\vert{}i_A\rangle\)</span>, the state of subsystem <span class="arithmatex">\(B\)</span> instantaneously collapses into the strictly correlated basis state <span class="arithmatex">\(\vert{}i_B\rangle\)</span>. The probability of measuring <span class="arithmatex">\(\vert{}i_A\rangle\)</span> is exactly <span class="arithmatex">\(p_i\)</span>. In this specific measurement basis, the outcomes act like a classical statistical ensemble in the sense, you will have perfectly correlated output readouts. A <span class="arithmatex">\(+1\)</span> measurement readout in <span class="arithmatex">\(A\)</span> means a <span class="arithmatex">\(+1\)</span> readout in <span class="arithmatex">\(B\)</span>. Note that we could still have some probability of <span class="arithmatex">\(+1\)</span> and <span class="arithmatex">\(-1\)</span>. We cannot say that we will always get <span class="arithmatex">\(+1\)</span>, but we do know that the readouts will be synchronized in both subspaces.</p>
+<p>However, this deterministic correlation is only guaranteed if the measurements are conducted within the specific Schmidt bases. If measurements are made in a different, rotated basis, it introduces standard quantum superposition and probability cross-terms. The subsystems remain entangled, meaning their expectation values and joint probability distributions over multiple measurements will still reflect quantum correlation, but individual paired readouts will generally no longer be <span class="arithmatex">\(1:1\)</span> identical (unless the specific entangled state possesses a continuous spatial symmetry, such as the spin-singlet state).</p>
+<h3 id="purification">Purification<a class="headerlink" href="#purification" title="Permanent link">&para;</a></h3>
+<p>Conversely to the Schmidt Decomposition, we have the concept of purification, which states that given a density matrix <span class="arithmatex">\(\rho\)</span> acting on a Hilbert space <span class="arithmatex">\(\mathcal{H}_Q\)</span>, we can always find a pure state <span class="arithmatex">\(\vert{}\psi\rangle\)</span> in an enlarged Hilbert space <span class="arithmatex">\(\mathcal{H}_Q \otimes \mathcal{H}_R\)</span> such that the partial trace over the reference system <span class="arithmatex">\(R\)</span> yields the original state: <span class="arithmatex">\(\text{Tr}_R(\vert{}\psi\rangle\langle\psi\vert{}) = \rho\)</span>. The dimension of the reference space <span class="arithmatex">\(R\)</span> must be greater than or equal to the rank of <span class="arithmatex">\(\rho\)</span>. Essentially, any mixed state on a given system can be viewed as the reduced state of a pure, entangled state in a larger composite system.</p>
+<p>A purification is never unique. If <span class="arithmatex">\(\vert{}\phi_1\rangle\)</span> is a valid purification of <span class="arithmatex">\(\sigma\)</span>, you can generate an infinite number of alternative purifications by applying any unitary operator <span class="arithmatex">\(U\)</span> strictly to the ancillary system.</p>
+<div class="arithmatex">\[\vert{}\phi_2\rangle = (I_S \otimes U_A) \vert{}\phi_1\rangle\]</div>
+<p>Because <span class="arithmatex">\(U_A\)</span> only rotates the unobservable environment, tracing it out yields the exact same principal state <span class="arithmatex">\(\sigma\)</span>.</p>
+<h2 id="entanglement-examples">Entanglement Examples<a class="headerlink" href="#entanglement-examples" title="Permanent link">&para;</a></h2>
+<h3 id="bell-inequalities-epr-paradox">Bell Inequalities &amp; EPR Paradox<a class="headerlink" href="#bell-inequalities-epr-paradox" title="Permanent link">&para;</a></h3>
+<p>Einstein, Podolsky, and Rosen (EPR) formulated a thought experiment challenging the probabilistic nature of Quantum Physics. They claimed that quantum states do not represent inherent probability, but rather classical statistical ensembles. They argued that any complete physical theory must satisfy a condition known as Local Realism, which says physical properties exist independent of measurement (realism). If you measure a particle as having spin-up, it possessed a definite spin-up property prior to the measurement; we merely lacked the complete information (hidden variables) to predict it. A measurement performed in one location cannot instantaneously affect a simultaneous measurement performed elsewhere (no faster-than-light influence or non-localism).   </p>
+<p>For example, EPR claimed that when we conduct a measurement on a Bell State and observe a <span class="arithmatex">\(50\%\)</span> chance of two spin-ups and a <span class="arithmatex">\(50\%\)</span> chance of two spin-downs, this actually indicates that there are particle pairs of two pre-existing types: half initialized as up-up and half as down-down. They argued we are dealing with a classical statistical mixture, represented by the density matrix <span class="arithmatex">\(\rho = \frac{1}{2}\vert{}00\rangle\langle00\vert{} + \frac{1}{2}\vert{}11\rangle\langle11\vert{}\)</span> or alternately as the probability vector <span class="arithmatex">\(\frac{1}{2}\vert{}00\rangle + \frac{1}{2}\vert{}11\rangle\)</span> , rather than a true quantum superposition. Similarly, if we make measurements along both the <span class="arithmatex">\(Z\)</span> and <span class="arithmatex">\(X\)</span> axes and see corresponding <span class="arithmatex">\(25\%\)</span> distributions, they would argue we simply have equal numbers of pairs belonging to four predetermined sets of two-qubit states.</p>
+<p>However, Bell proved that this classical hidden-variable assumption leads to a strict mathematical limit that Quantum Mechanics violates. To see this, we measure the entangled system along 3 distinct axes.</p>
+<p>Under local realism, each particle leaves the source with a predetermined spin (+ or -) for all three axes. This creates <span class="arithmatex">\(2^3 = 8\)</span> possible hidden-variable populations for the particles: <span class="arithmatex">\((+++), (++-), (+-+), (+--), (-++), (-+-), (--+),\)</span> and <span class="arithmatex">\((---)\)</span>. Because the Bell state dictates that the two particles must always have the same spins when measured along the same axis, a particle 1 of type <span class="arithmatex">\((++-)\)</span> strictly implies a particle 2 of type <span class="arithmatex">\((+--)\)</span>.</p>
+<p>If we randomly choose to measure particle 1 along axis <span class="arithmatex">\(A\)</span> and particle 2 along axis <span class="arithmatex">\(B\)</span>, Bell's logic dictates that the number of pairs where both yield spin-up, denoted <span class="arithmatex">\(N(A+, B+)\)</span>, must satisfy classical set theory based on those 8 types. Because <span class="arithmatex">\(N(A+, B+) = N(A+, B+, C+) + N(A+, B+, C-)\)</span>, we can derive the inequality:</p>
+<div class="arithmatex">\[N(A+, B+) + N(B+, C+) \geq N(A+, C+)\]</div>
+<p>Dividing by the total number of pairs yields Bell's Inequality for probabilities:</p>
+<div class="arithmatex">\[P(A+, B+) + P(B+, C+) \geq P(A+, C+)\]</div>
+<p>Next, let's figure out the probability of making a measurement of spin up on both systems when one measurement is along z and the other at an angle <span class="arithmatex">\(\theta\)</span> to z. Now, a spin measurement at an angle <span class="arithmatex">\(\theta\)</span> in the x-z plane corresponds to the operator <span class="arithmatex">\(\cos\theta \, \sigma_z + \sin\theta \, \sigma_x\)</span>, which gives the expected matrix: </p>
+<div class="arithmatex">\[\begin{pmatrix} \cos\theta &amp; \sin\theta \\ \sin\theta &amp; -\cos\theta \end{pmatrix}\]</div>
+<p>To find the possible states post-measurement, we find the eigenvectors. The <span class="arithmatex">\(\vert 1 \rangle\)</span> part drops out because a 0 measurement on <span class="arithmatex">\(A\)</span> collapses the shared state strictly to <span class="arithmatex">\(\vert 00\rangle\)</span>.</p>
+<p>To find the eigenvector with eigenvalue <span class="arithmatex">\(\lambda = +1\)</span>, we solve the characteristic matrix equation:</p>
+<div class="arithmatex">\[(M - \lambda I)v = 0\]</div>
+<p>Where <span class="arithmatex">\(M\)</span> is the rotated Pauli matrix, <span class="arithmatex">\(I\)</span> is the identity matrix, and <span class="arithmatex">\(v\)</span> is the eigenvector <span class="arithmatex">\(\begin{pmatrix} x \\ y \end{pmatrix}\)</span>.</p>
+<p>Set up the matrix equation:  </p>
+<p>$<span class="arithmatex">\(\begin{pmatrix} \cos\theta - 1 &amp; \sin\theta \\ \sin\theta &amp; -\cos\theta - 1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}\)</span>$</p>
+<p>Solving the first row we get:
+$<span class="arithmatex">\(\sin\left(\frac{\theta}{2}\right)x = \cos\left(\frac{\theta}{2}\right)y\)</span>$</p>
+<p>The simplest solution that balances this equation is setting <span class="arithmatex">\(x = \cos(\frac{\theta}{2})\)</span> and <span class="arithmatex">\(y = \sin(\frac{\theta}{2})\)</span>.</p>
+<p>Because <span class="arithmatex">\(\cos^2(\frac{\theta}{2}) + \sin^2(\frac{\theta}{2}) = 1\)</span>, this vector is already perfectly normalized. Written in Dirac bra-ket notation, it yields the eigenvector:</p>
+<div class="arithmatex">\[\vert{}+\rangle_\theta = \cos\left(\frac{\theta}{2}\right)\vert{}0\rangle + \sin\left(\frac{\theta}{2}\right)\vert{}1\rangle\]</div>
+<p>The probability of making a measurement of spin up is therefore <span class="arithmatex">\(\cos^2\left(\frac{\theta}{2}\right)\)</span>.</p>
+<p>Now back to the Bell inequalities, if we arrange axes <span class="arithmatex">\(A\)</span>, <span class="arithmatex">\(B\)</span>, and <span class="arithmatex">\(C\)</span> in a single plane separated by <span class="arithmatex">\(60^\circ\)</span> each (so the angle between <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(C\)</span> is <span class="arithmatex">\(120^\circ\)</span>), quantum mechanics predicts:</p>
+<div class="arithmatex">\[P(A+, B+) = \sin^2(30^\circ) = 0.25\]</div>
+<div class="arithmatex">\[P(B+, C+) = \sin^2(30^\circ) = 0.25\]</div>
+<div class="arithmatex">\[P(A+, C+) = \sin^2(60^\circ) = 0.75\]</div>
+<p>Substituting these quantum predictions into Bell's classical inequality yields:</p>
+<div class="arithmatex">\[0.25 + 0.25 \geq 0.75 \implies 0.5 \geq 0.75\]</div>
+<p>This is a mathematical impossibility. Therefore, the Local Realism framework proposed by EPR (the 8 types of predetermined particles) cannot describe reality, as it physically contradicts the predictions of quantum mechanics.</p>
+<h2 id="continuous-wavefunctions">Continuous Wavefunctions<a class="headerlink" href="#continuous-wavefunctions" title="Permanent link">&para;</a></h2>
+<p>Unlike spin-1/2, which is defined in a 2-dimensional space, observables such as position have a continuous spectrum and can take an infinite number of values. Instead of using discrete eigenstates, eigenvalues, and summations, continuous observables are represented by continuous functions with a continuum of eigenstates and eigenvalues, and using integrals in place of summations in formulas. Probabilities are also replaced by probability densities.</p>
+<p>For example, consider an arbitrary state vector <span class="arithmatex">\(\vert{}\Psi\rangle\)</span>. If the observable is position <span class="arithmatex">\(x\)</span>, the eigenbasis consists of the position kets <span class="arithmatex">\(\vert{}x\rangle\)</span>, and the possible eigenvalues are infinite and span all real numbers. </p>
+<p>The wavefunction <span class="arithmatex">\(\psi(x)\)</span> represents the state <span class="arithmatex">\(\vert{}\Psi\rangle\)</span> in the position eigenbasis, representing the complex probability amplitude of measuring the particle at position <span class="arithmatex">\(x\)</span>. Conceptually, <span class="arithmatex">\(\psi(x)\)</span> is analogous to the component of a state vector along a discrete eigenvector (like in spin), but instead of <span class="arithmatex">\(N\)</span> components as in the discrete situation, it has infinite components, and is therefore represented not by a column vector (which would have to be infinitely long) but as a "wave"-function of <span class="arithmatex">\(x\)</span>. The complex probability amplitude, which in the discrete situation was given by the <span class="arithmatex">\(c_1\)</span>, <span class="arithmatex">\(c_2\)</span>... components of the state vector, is instead given by the wavefunction:</p>
+<div class="arithmatex">\[\psi(x) = \langle x\vert{}\Psi\rangle\]</div>
+<p>This is the projection of the state vector <span class="arithmatex">\(\vert{}\Psi\rangle\)</span> onto the position eigenbasis <span class="arithmatex">\(\vert{}x\rangle\)</span>. Because the eigenbasis is continuous, projecting the state vector yields a continuum of probability amplitudes as a function of <span class="arithmatex">\(x\)</span>.</p>
+<p>The probability density of a particle being found at position <span class="arithmatex">\(x\)</span> is given by the absolute square of the wavefunction: <span class="arithmatex">\(\psi^*(x)\psi(x) = \vert{}\psi(x)\vert{}^2\)</span>. Because the total probability of finding the particle somewhere in space must be exactly <span class="arithmatex">\(1\)</span>, the probability density function, when integrated from <span class="arithmatex">\(-\infty\)</span> to <span class="arithmatex">\(+\infty\)</span>, must equal <span class="arithmatex">\(1\)</span>:</p>
+<div class="arithmatex">\[\int_{-\infty}^{\infty} \vert{}\psi(x)\vert{}^2 dx = 1\]</div>
+<p>This ensures the wavefunction is appropriately normalized.</p>
+<p>The expectation value of position, <span class="arithmatex">\(\langle x \rangle\)</span>, is the continuous analogue of the discrete weighted average:</p>
+<div class="arithmatex">\[\langle x \rangle = \int_{-\infty}^{\infty} x \vert{}\psi(x)\vert{}^2 dx = \int_{-\infty}^{\infty} \psi^*(x) x \psi(x) dx\]</div>
+<p>In writing the expectation value, we have assumed that <span class="arithmatex">\(x\)</span> (and <span class="arithmatex">\(p\)</span> below) is an operator. This will be detailed in the next section.</p>
+<p>Similarly, we can define a momentum wavefunction <span class="arithmatex">\(\phi(p)\)</span> that represents the state <span class="arithmatex">\(\vert{}\Psi\rangle\)</span> in the momentum eigenbasis <span class="arithmatex">\(\vert{}p\rangle\)</span>. Here, <span class="arithmatex">\(\phi(p) = \langle p\vert{}\Psi\rangle\)</span> is the complex probability amplitude density of measuring the momentum value <span class="arithmatex">\(p\)</span>.</p>
+<p>The expectation value of momentum, <span class="arithmatex">\(\langle p \rangle\)</span>, is:
+$<span class="arithmatex">\(\langle p \rangle = \int_{-\infty}^{\infty} \phi^*(p) p \phi(p) dp\)</span>$</p>
+<p>The position wavefunction <span class="arithmatex">\(\psi(x)\)</span> and the momentum wavefunction <span class="arithmatex">\(\phi(p)\)</span> are related by the Fourier and inverse Fourier transforms. This relationship stems from the inner product between the position and momentum eigenstates (which will be proved in the next section on operators):</p>
+<div class="arithmatex">\[\langle x\vert{}p\rangle = \frac{1}{\sqrt{2\pi\hbar}} e^{ipx/\hbar}$$
+$$\langle p\vert{}x\rangle = \frac{1}{\sqrt{2\pi\hbar}} e^{-ipx/\hbar}\]</div>
+<p>We can derive <span class="arithmatex">\(\phi(p)\)</span> by inserting the completeness relation for position, <span class="arithmatex">\(I = \int_{-\infty}^{\infty} \vert{}x\rangle\langle x\vert{} dx\)</span>, into the inner product:</p>
+<div class="arithmatex">\[\phi(p) = \langle p\vert{}\Psi\rangle = \int_{-\infty}^{\infty} \langle p\vert{}x\rangle\langle x\vert{}\Psi\rangle dx\]</div>
+<p>Substituting <span class="arithmatex">\(\langle p\vert{}x\rangle\)</span> and <span class="arithmatex">\(\psi(x) = \langle x\vert{}\Psi\rangle\)</span> yields the formal Fourier transform:</p>
+<div class="arithmatex">\[\phi(p) = \frac{1}{\sqrt{2\pi\hbar}} \int_{-\infty}^{\infty} e^{-ipx/\hbar} \psi(x) dx\]</div>
+<p>Similarly, <span class="arithmatex">\(\psi(x)\)</span> can be recovered from <span class="arithmatex">\(\phi(p)\)</span> via the inverse Fourier transform by inserting the completeness relation for momentum and switching the sign of the complex exponent:</p>
+<div class="arithmatex">\[\psi(x) = \frac{1}{\sqrt{2\pi\hbar}} \int_{-\infty}^{\infty} e^{ipx/\hbar} \phi(p) dp\]</div>
+<h3 id="position-and-momentum-operators">Position and Momentum Operators<a class="headerlink" href="#position-and-momentum-operators" title="Permanent link">&para;</a></h3>
+<p>Though position and momentum are continuous observables, they are represented by operators, denoted as <span class="arithmatex">\(\hat{X}\)</span> and <span class="arithmatex">\(\hat{P}\)</span>. Just as operators in the discrete regime act on state vectors (whose components represent complex probability amplitudes), in the continuous regime, operators act directly on the wavefunction.</p>
+<p>In their respective eigenbases, these operators act via simple scalar multiplication, because every <span class="arithmatex">\(x\)</span> is a eigenvalue of <span class="arithmatex">\(\Psi\)</span> with eigenvector (or rather eigenfunction) <span class="arithmatex">\(\psi(x)\)</span> and every <span class="arithmatex">\(p\)</span> is an eigenvalue with eigenfunction <span class="arithmatex">\(\phi(p)\)</span>:</p>
+<p><span class="arithmatex">\(\hat{X}\psi(x) = x\psi(x)\)</span> and  <span class="arithmatex">\(\hat{P}\phi(p) = p\phi(p)\)</span></p>
+<p>We can also represent the momentum operator <span class="arithmatex">\(\hat{P}\)</span> in the position basis <span class="arithmatex">\(x\)</span>. To do this, we recognize that momentum is the physical quantity that generates linear movement. Therefore, momentum is the generator of spatial translation.</p>
+<p>In quantum mechanics, symmetries and transformations are governed by Stone's Theorem. This theorem dictates that any continuous, unitary transformation <span class="arithmatex">\(T(\epsilon)\)</span> parameterized by a continuous real spatial variable <span class="arithmatex">\(\epsilon\)</span> is constructed by placing a Hermitian operator (the generator <span class="arithmatex">\(\hat{P}\)</span>) into a complex exponential. To ensure dimensional consistency, we divide by <span class="arithmatex">\(\hbar\)</span>:</p>
+<div class="arithmatex">\[T(\epsilon) = \exp\left(-\frac{i\epsilon}{\hbar}\hat{P}\right)\]</div>
+<p>When we apply an active spatial translation by a distance <span class="arithmatex">\(\epsilon\)</span> to a state, the new wavefunction evaluated at position <span class="arithmatex">\(x\)</span> is equivalent to the old wavefunction evaluated at <span class="arithmatex">\(x - \epsilon\)</span>. Thus:</p>
+<div class="arithmatex">\[T(\epsilon)\psi(x) = \psi(x - \epsilon)\]</div>
+<p>Applying Taylor's theorem to expand the right side for an infinitesimally small <span class="arithmatex">\(\epsilon\)</span>, and ignoring terms beyond the first order, we get:</p>
+<div class="arithmatex">\[\psi(x - \epsilon) = \psi(x) - \epsilon\frac{d}{dx}\psi(x)\]</div>
+<p>Now, we expand the unitary operator <span class="arithmatex">\(T(\epsilon)\)</span> on the left side to first order:</p>
+<div class="arithmatex">\[T(\epsilon)\psi(x) = \left(I - \frac{i\epsilon}{\hbar}\hat{P}\right)\psi(x) = \psi(x) - \frac{i\epsilon}{\hbar}\hat{P}\psi(x)\]</div>
+<p>Equating the two expansions gives:</p>
+<div class="arithmatex">\[\psi(x) - \epsilon\frac{d}{dx}\psi(x) = \psi(x) - \frac{i\epsilon}{\hbar}\hat{P}\psi(x)\]</div>
+<p>Subtracting <span class="arithmatex">\(\psi(x)\)</span> from both sides and dividing by <span class="arithmatex">\(-\epsilon\)</span> leaves:</p>
+<div class="arithmatex">\[\frac{d}{dx}\psi(x) = \frac{i}{\hbar}\hat{P}\psi(x)\]</div>
+<p>Solving for the operator <span class="arithmatex">\(\hat{P}\)</span> by multiplying both sides by <span class="arithmatex">\(\frac{\hbar}{i}\)</span> (which is equivalent to multiplying by <span class="arithmatex">\(-i\hbar\)</span>) yields the momentum operator in the position basis:</p>
+<div class="arithmatex">\[\hat{P}\psi(x) = -i\hbar\frac{d}{dx}\psi(x)\]</div>
+<div class="arithmatex">\[\hat{P} = -i\hbar\frac{d}{dx}\]</div>
+<p>Note that the derivative operator <span class="arithmatex">\(\frac{d}{dx}\)</span> by itself is anti-Hermitian. By multiplying it by the imaginary constant <span class="arithmatex">\(-i\)</span> (along with the real scalar <span class="arithmatex">\(\hbar\)</span>), we ensure that <span class="arithmatex">\(\hat{P}\)</span> is strictly Hermitian, which is a mandatory requirement for any physical observable.</p>
+<p><strong>Aside:</strong> The momentum operator is a differential operator over <span class="arithmatex">\(x\)</span>, which reflects its relation to symmetry via spatial translation. Similarly, the Hamiltonian is a differential operator over <span class="arithmatex">\(t\)</span>, which reflects its relation to symmetry via time invariance.</p>
+<p>We can use the momentum operator <span class="arithmatex">\(\hat{P}\)</span> to find the momentum eigenfunctions in the position basis, i.e., the wavefunctions of position <span class="arithmatex">\(x\)</span> that correspond to a state of definite momentum <span class="arithmatex">\(p\)</span>. All we need to do is apply the <span class="arithmatex">\(\hat{P}\)</span> operator to a wavefunction for some specific <span class="arithmatex">\(p\)</span>, and then integrate over the variable <span class="arithmatex">\(x\)</span>, to get a wavefunction of <span class="arithmatex">\(x\)</span> for that specific <span class="arithmatex">\(p\)</span>.</p>
+<p>The eigenvalue equation for the momentum operator is:</p>
+<div class="arithmatex">\[\hat{P}\psi_p(x) = p\psi_p(x)\]</div>
+<p>Substituting the position-basis representation of <span class="arithmatex">\(\hat{P}\)</span>:</p>
+<div class="arithmatex">\[-i\hbar\frac{d}{dx}\psi_p(x) = p\psi_p(x)\]</div>
+<p>Rearranging to solve the differential equation:</p>
+<div class="arithmatex">\[\frac{d}{dx}\psi_p(x) = \frac{ip}{\hbar}\psi_p(x)\]</div>
+<p>The solution to this first-order differential equation is:</p>
+<div class="arithmatex">\[\psi_p(x) = A e^{ipx/\hbar}\]</div>
+<p>Because this is a continuous plane wave extending over all space, the constant <span class="arithmatex">\(A\)</span> cannot be determined by standard probability normalization (<span class="arithmatex">\(\int \vert{}\psi_p(x)\vert{}^2 dx = 1\)</span>), as the integral of a constant over the entire real line diverges to infinity. Instead, continuous eigenstates are normalized using the Dirac delta function, <span class="arithmatex">\(\int \psi_p^*(x)\psi_{p'}(x) dx = \delta(p-p')\)</span>, which yields the normalization constant <span class="arithmatex">\(A = \frac{1}{\sqrt{2\pi\hbar}}\)</span>.</p>
+<p>Note that <span class="arithmatex">\(\psi_p(x)\)</span> is the same as <span class="arithmatex">\(\langle x\vert{}p\rangle\)</span>. If you were to prepare an electron such that you know its momentum is exactly <span class="arithmatex">\(p\)</span>, the quantum state of that electron is <span class="arithmatex">\(\vert{}p\rangle\)</span>, if you then ask the question, "What is the probability amplitude of the detector triggering at coordinate <span class="arithmatex">\(x\)</span>?", you project the state onto the position basis by evaluating <span class="arithmatex">\(\langle x\vert{}p\rangle\)</span>.</p>
+<p>The exact mathematical symmetric counterpart exists. It is the inner product <span class="arithmatex">\(\langle p\vert{}x\rangle\)</span> and therefore the complex conjugate of the above function.If you prepare a particle in a state of perfectly definite, exact position <span class="arithmatex">\(x\)</span> (the state <span class="arithmatex">\(\vert{}x\rangle\)</span>), the wave function that describes its momentum distribution is:
+$<span class="arithmatex">\(\phi_x(p) = \langle p\vert{}x\rangle = \frac{1}{\sqrt{2\pi\hbar}}e^{\frac{-ipx}{\hbar}}\)</span>$</p>
+<h3 id="the-uncertainty-principle">The Uncertainty Principle<a class="headerlink" href="#the-uncertainty-principle" title="Permanent link">&para;</a></h3>
+<p>To evaluate the compatibility of position and momentum, we calculate the action of their commutator <span class="arithmatex">\([\hat{X}, \hat{P}]\)</span> on an arbitrary test wavefunction <span class="arithmatex">\(\psi(x)\)</span>:</p>
+<div class="arithmatex">\[[\hat{X}, \hat{P}]\psi(x) = (\hat{X}\hat{P} - \hat{P}\hat{X})\psi(x)$$
+$$= x\left(-i\hbar\frac{d}{dx}\psi(x)\right) - \left(-i\hbar\frac{d}{dx}(x\psi(x))\right)\]</div>
+<p>Applying the product rule to the second term:</p>
+<div class="arithmatex">\[= -i\hbar x \frac{d\psi(x)}{dx} + i\hbar \left(\psi(x) + x\frac{d\psi(x)}{dx}\right)$$
+$$= -i\hbar x \frac{d\psi(x)}{dx} + i\hbar\psi(x) + i\hbar x\frac{d\psi(x)}{dx} = i\hbar\psi(x)\]</div>
+<p>Because this holds for any <span class="arithmatex">\(\psi(x)\)</span>, the operators satisfy the fundamental commutation relation:</p>
+<div class="arithmatex">\[[\hat{X}, \hat{P}] = i\hbar I\]</div>
+<p>Therefore, <span class="arithmatex">\(\hat{X}\)</span> and <span class="arithmatex">\(\hat{P}\)</span> do not commute. Applying the generalized uncertainty principle relation, <span class="arithmatex">\(\sigma_x \sigma_p \geq \frac{1}{2}\vert{}\langle[\hat{X}, \hat{P}]\rangle\vert{}\)</span>:</p>
+<div class="arithmatex">\[\Delta x \Delta p \geq \frac{1}{2} \vert{}\langle i\hbar \rangle\vert{} = \frac{\hbar}{2}\]</div>
+<p>We can observe the physical consequence of this uncertainty principle by examining a state of exact, definite momentum <span class="arithmatex">\(p\)</span> in the position basis:</p>
+<div class="arithmatex">\[\psi_p(x) = \frac{1}{\sqrt{2\pi\hbar}}e^{ipx/\hbar}\]</div>
+<p>The probability density of finding the particle at any position <span class="arithmatex">\(x\)</span> is given by the absolute square of the wavefunction:</p>
+<div class="arithmatex">\[\vert{}\psi_p(x)\vert{}^2 = \psi_p^*(x)\psi_p(x) = \left(\frac{1}{\sqrt{2\pi\hbar}}e^{-ipx/\hbar}\right)\left(\frac{1}{\sqrt{2\pi\hbar}}e^{ipx/\hbar}\right) = \frac{1}{2\pi\hbar}\]</div>
+<p>This probability density is a constant, completely independent of <span class="arithmatex">\(x\)</span>. This implies that if a particle has an exact momentum (<span class="arithmatex">\(\Delta p = 0\)</span>), its position wavefunction is smeared uniformly across the entire real line, meaning its position is completely uncertain (<span class="arithmatex">\(\Delta x = \infty\)</span>). It also means that the probability, which is an integral of the probability density over the entire real line, will be infinite, which is absurd. Such a state cannot physically exist in reality. It is strictly a mathematical idealization used as a building block.</p>
+<p><strong>In short:</strong> <span class="arithmatex">\(\psi(x)\)</span> and <span class="arithmatex">\(\phi(p)\)</span> are representations of the exact same quantum state <span class="arithmatex">\(\vert{}\Psi\rangle\)</span>, just expressed in the position <span class="arithmatex">\(x\)</span> and momentum <span class="arithmatex">\(p\)</span> bases, respectively.</p>
+<ul>
+<li>
+<p>For any arbitrary state, you can convert between these two representations using the Fourier and inverse Fourier transform relations, which is nothing more than a change of coordinate basis.  </p>
+</li>
+<li>
+<p>The time evolution of a state, as well as the system's energy eigenstates, depend entirely on the Hamiltonian. Given an initial state, the system's dynamics are found by solving the time-dependent Schrödinger equation using that specific Hamiltonian. Note that, for the initial state, you can mathematically prepare a particle in almost any initial shape you choose, provided it is square-integrable (so that it normalizes to exactly <span class="arithmatex">\(1\)</span>) and satisfies the physical boundary conditions of the system.</p>
+</li>
+</ul>
+<p>You can write and work with the Hamiltonian operator in either the <span class="arithmatex">\(x\)</span> or <span class="arithmatex">\(p\)</span> representation. The equation <span class="arithmatex">\(\hat{H}\psi(x) = E\psi(x)\)</span> and the equation <span class="arithmatex">\(\hat{H}\phi(p) = E\phi(p)\)</span> are not two different physical laws. They are the exact same abstract, basis-independent physical law:</p>
+<p>$<span class="arithmatex">\(\hat{H}\vert{}\Psi\rangle = E\vert{}\Psi\rangle\)</span>$
+The only difference is the mathematical machinery you use to solve them:</p>
+<ul>
+<li>
+<p><strong>In position space (<span class="arithmatex">\(x\)</span>):</strong> Because <span class="arithmatex">\(\hat{P} = -i\hbar\frac{d}{dx}\)</span>, the Hamiltonian usually contains spatial derivatives. <span class="arithmatex">\(\hat{H}\psi(x) = E\psi(x)\)</span> becomes a differential equation.</p>
+</li>
+<li>
+<p><strong>In momentum space (<span class="arithmatex">\(p\)</span>):</strong> Because <span class="arithmatex">\(\hat{P} = p\)</span>, kinetic energy is just an algebraic multiplier, but the position operator <span class="arithmatex">\(\hat{X} = i\hbar\frac{d}{dp}\)</span> means any spatial potential <span class="arithmatex">\(V(x)\)</span> turns into a derivative or convolution. <span class="arithmatex">\(\hat{H}\phi(p) = E\phi(p)\)</span> becomes either an integral equation or a different differential equation.    </p>
+</li>
+</ul>
+<p>Both equations will yield the exact same physical energy eigenvalues <span class="arithmatex">\(E\)</span>. If you solve for <span class="arithmatex">\(\psi_E(x)\)</span> and take its Fourier transform, you will get exactly <span class="arithmatex">\(\phi_E(p)\)</span>. The physics is identical; only the coordinate axis has changed.</p>
+<h3 id="example-solving-the-hamiltonian-for-a-free-particle">Example: Solving the Hamiltonian for a Free Particle<a class="headerlink" href="#example-solving-the-hamiltonian-for-a-free-particle" title="Permanent link">&para;</a></h3>
+<p>For a free particle, the potential energy is zero, so the Hamiltonian consists strictly of kinetic energy:</p>
+<div class="arithmatex">\[\hat{H} = \frac{\hat{P}^2}{2m}\]</div>
+<p>The time-dependent Schrödinger equation is:  </p>
+<div class="arithmatex">\[\hat{H}\Psi(x,t) = i\hbar\frac{\partial\Psi(x,t)}{\partial t}\]</div>
+<p>Substituting the momentum operator in the position basis, <span class="arithmatex">\(\hat{P} = -i\hbar\frac{\partial}{\partial x}\)</span>, we square it to find <span class="arithmatex">\(\hat{P}^2 = -\hbar^2\frac{\partial^2}{\partial x^2}\)</span>. The equation becomes:</p>
+<div class="arithmatex">\[-\frac{\hbar^2}{2m}\frac{\partial^2\Psi(x,t)}{\partial x^2} = i\hbar\frac{\partial\Psi(x,t)}{\partial t}\]</div>
+<p>A valid solution to this partial differential equation for a specific, definite momentum <span class="arithmatex">\(p\)</span> is a plane wave:</p>
+<div class="arithmatex">\[\Psi_p(x,t) = A e^{\frac{i}{\hbar}\left(px - \frac{p^2}{2m}t\right)}\]</div>
+<p>where we replaced the energy eigenvalue <span class="arithmatex">\(E\)</span> with the classical relation <span class="arithmatex">\(\frac{p^2}{2m}\)</span>.</p>
+<p>Another way of solving this is to use the time-independent Schrödinger equation to find the spatial energy eigenstates first:</p>
+<div class="arithmatex">\[\hat{H}\psi(x) = E\psi(x)\]</div>
+<div class="arithmatex">\[-\frac{\hbar^2}{2m}\frac{d^2\psi(x)}{dx^2} = E\psi(x)\]</div>
+<p>The solution to this ordinary differential equation for a definite momentum <span class="arithmatex">\(p\)</span> is:</p>
+<div class="arithmatex">\[\psi_p(x) = A e^{\frac{i}{\hbar}px}\]</div>
+<p>where <span class="arithmatex">\(E = \frac{p^2}{2m}\)</span>.</p>
+<p>This is the probability amplitude density over <span class="arithmatex">\(x\)</span> for a particular <span class="arithmatex">\(p\)</span>. Note that this represents a snapshot in time (<span class="arithmatex">\(t=0\)</span>) and has no time dependence. To get the time-dependent equation, we multiply this spatial eigenstate by the standard time-evolution phase factor <span class="arithmatex">\(e^{-iEt/\hbar}\)</span>:</p>
+<div class="arithmatex">\[\Psi_p(x,t) = \psi_p(x) e^{-i\frac{E}{\hbar}t} = A e^{\frac{i}{\hbar}\left(px - \frac{p^2}{2m}t\right)}\]</div>
+<p>This is exactly the same as what we derived by solving for <span class="arithmatex">\(t\)</span> and <span class="arithmatex">\(x\)</span> simultaneously above.</p>
+<p>This is the wavefunction over <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(t\)</span> for one particular exact momentum <span class="arithmatex">\(p\)</span>. To get the general wavefunction (a physical wave packet), we integrate these eigenstates over all possible momentum eigenvalues <span class="arithmatex">\(p\)</span>, weighted by the momentum-space probability amplitude <span class="arithmatex">\(\phi(p)\)</span>:</p>
+<div class="arithmatex">\[\Psi(x,t) = \frac{1}{\sqrt{2\pi\hbar}} \int_{-\infty}^{\infty} \phi(p) e^{\frac{i}{\hbar}\left(px - \frac{p^2}{2m}t\right)} dp\]</div>
+<p>The term <span class="arithmatex">\(\frac{1}{\sqrt{2\pi\hbar}}\)</span> is exactly the constant <span class="arithmatex">\(A\)</span> from the individual momentum eigenstate.</p>
+<h2 id="useful-formulas">Useful Formulas<a class="headerlink" href="#useful-formulas" title="Permanent link">&para;</a></h2>
+<p>From R Shankar's Book, Ch 01)</p>
+<ul>
+<li><strong>Inner Product Symmetry:</strong> <span class="arithmatex">\(\langle V \vert{} W \rangle = \langle W \vert{} V \rangle^*\)</span></li>
+<li><strong>Linearity (Ket):</strong> <span class="arithmatex">\(\langle V \vert{} aW_1 + bW_2 \rangle = a\langle V \vert{} W_1 \rangle + b\langle V \vert{} W_2 \rangle\)</span></li>
+<li><strong>Anti-linearity (Bra):</strong> <span class="arithmatex">\(\langle aV_1 + bV_2 \vert{} W \rangle = a^\*\langle V_1 \vert{} W \rangle + b^\*\langle V_2 \vert{} W \rangle\)</span></li>
+<li><strong>Gram-Schmidt Orthogonalization:</strong> Converts linearly independent vectors <span class="arithmatex">\(\vert{}v_i\rangle\)</span> into an orthonormal basis <span class="arithmatex">\(\vert{}i\rangle\)</span>.
+ <span class="arithmatex">\(\vert{}1\rangle = \frac{\vert{}v_1\rangle}{\vert{}v_1\vert{}}\)</span>
+ <span class="arithmatex">\(\vert{}2'\rangle = \vert{}v_2\rangle - \vert{}1\rangle\langle 1 \vert{} v_2 \rangle\)</span>, then normalize: <span class="arithmatex">\(\vert{}2\rangle = \frac{\vert{}2'\rangle}{\vert{}2'\vert{}}\)</span></li>
+<li><strong>Matrix Elements:</strong> <span class="arithmatex">\(\Omega_{ij} = \langle i \vert{} \Omega \vert{} j \rangle\)</span></li>
+<li><strong>Adjoint of a Product:</strong> <span class="arithmatex">\((\Omega \Lambda)^\dagger = \Lambda^\dagger \Omega^\dagger\)</span></li>
+<li><strong>Cyclic Property of Trace:</strong> <span class="arithmatex">\(\text{Tr}(\Omega\Lambda) = \text{Tr}(\Lambda\Omega)\)</span></li>
+<li><strong>Basis Independence:</strong> Both <span class="arithmatex">\(\text{Tr}(\Omega)\)</span> and <span class="arithmatex">\(\det(\Omega)\)</span> are invariant under a change of basis.</li>
+<li><strong>Anti-Hermitian Operator:</strong> <span class="arithmatex">\(\Omega^\dagger = -\Omega\)</span></li>
+<li><strong>Unitary Operator (<span class="arithmatex">\(U^\dagger U = U U^\dagger = I\)</span>):</strong> Represents physical transformations.
+Preserves the inner product (norm): <span class="arithmatex">\(\langle U V \vert{} U W \rangle = \langle V \vert{} W \rangle\)</span>.
+Eigenvalues are unimodular phase factors (<span class="arithmatex">\(u_i = e^{i\theta}\)</span>).
+Eigenvectors corresponding to distinct eigenvalues are orthogonal.</li>
+<li><strong>Commutator:</strong> <span class="arithmatex">\([\Omega, \Lambda] = \Omega\Lambda - \Lambda\Omega\)</span></li>
+<li><strong>Anti-commutator:</strong> <span class="arithmatex">\(\{\Omega, \Lambda\} = \Omega\Lambda + \Lambda\Omega\)</span></li>
+<li><strong>Commutator Identities:</strong></li>
+<li><span class="arithmatex">\([\Omega, \Lambda\Theta] = \Lambda[\Omega, \Theta] + [\Omega, \Lambda]\Theta\)</span></li>
+<li><span class="arithmatex">\([\Lambda\Omega, \Theta] = \Lambda[\Omega, \Theta] + [\Lambda, \Theta]\Omega\)</span></li>
+<li><strong>Dirac Delta Function (Orthonormality):</strong> <span class="arithmatex">\(\langle x \vert{} x' \rangle = \delta(x-x')\)</span></li>
+<li><strong>Completeness Relation (Continuous):</strong> <span class="arithmatex">\(\int \vert{}x\rangle\langle x\vert{} dx = I\)</span></li>
+<li><strong>Inner Product of Functions:</strong> <span class="arithmatex">\(\langle f \vert{} g \rangle = \int f^*(x)g(x) dx\)</span></li>
+<li><strong>Expansion of a Ket:</strong> <span class="arithmatex">\(\vert{}f\rangle = \int f(x)\vert{}x\rangle dx\)</span>, where <span class="arithmatex">\(f(x) = \langle x \vert{} f \rangle\)</span></li>
+<li><strong>Continuous Matrix Elements:</strong> <span class="arithmatex">\(\langle x \vert{} \Omega \vert{} x' \rangle = \Omega(x, x')\)</span></li>
+<li><strong>Derivative of Delta Function:</strong> <span class="arithmatex">\(\int f(x)\delta'(x-a) dx = -f'(a)\)</span> (Integrating by parts shifts the derivative to the function <span class="arithmatex">\(f(x)\)</span>).</li>
+</ul>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Quantum Mechanics: The Theoretical Minimum by Leonard Susskind</li>
+<li><a href="https://www.youtube.com/playlist?list=PLUl4u3cNGP60QlYNsy52fctVBOlk-4lYx">Quantum Physics 2, MIT 8.05 PLaylist</a></li>
+<li>Mastering Quantum Mechanics by Barton Zwiebach</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

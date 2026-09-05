@@ -1,0 +1,1859 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../quantum_physics/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>4. Quantum Information Theory - Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#4-quantum-information-theory" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Notes" class="md-header__button md-logo" aria-label="Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4. Quantum Information Theory
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Notes" class="md-nav__button md-logo" aria-label="Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Quantum Information Theory
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Quantum Information Theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#qubits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qubits
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gates
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#converting-between-standard-product-states-and-bell-states" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Converting Between Standard Product States and Bell States
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#teleportation-quantum-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teleportation &amp; Quantum Communication
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Teleportation &amp; Quantum Communication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#legend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Legend
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#density-matrices-redux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Density Matrices Redux
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Density Matrices Redux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#purity-entanglement-are-independent-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Purity &amp; Entanglement Are Independent Properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#closed-vs-open-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Closed vs Open Systems
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantum-channels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quantum Channels
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quantum Channels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stinespring-dilation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stinespring Dilation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kraus-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kraus Operators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#measurement-as-an-operator-formalism-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Measurement as an Operator Formalism Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#choi-representation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choi Representation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Choi Representation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#choi-jamiokowski-isomorphism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choi-Jamiołkowski isomorphism
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-drives-environmental-interference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Drives Environmental Interference
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-out-unitary-operators-in-basis-terms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing out Unitary Operators in Basis Terms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#channels-the-bloch-ball" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Channels &amp; the Bloch Ball
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evaluating-a-channel-via-the-bloch-ball" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evaluating a Channel via the Bloch Ball
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-channels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types of Channels
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trace-distance-fidelity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trace Distance &amp; Fidelity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trace Distance &amp; Fidelity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uhlmanns-theorem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Uhlmann's Theorem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#convexity-of-trace-distance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Convexity of Trace Distance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantum-error-correction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quantum Error Correction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quantum Error Correction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#discretization-of-quantum-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discretization of Quantum Errors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correcting-for-a-bit-flip-in-a-3-bit-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correcting for a Bit Flip in a 3-bit code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correcting-for-a-phase-flip-in-a-3-bit-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correcting for a Phase Flip in a 3-bit code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correcting-for-a-bit-phase-flip-in-a-9-bit-shor-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correcting for a Bit &amp; Phase Flip in a 9-bit Shor Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stabilizer-formalism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stabilizer Formalism
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unitary-operations-via-stabilizer-formalism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unitary Operations via Stabilizer Formalism
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#css-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSS Codes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quantum_physics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Quantum Physics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../special_relativity_classical_field_theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Special Relativity and Classical Field Theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#qubits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qubits
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gates
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#converting-between-standard-product-states-and-bell-states" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Converting Between Standard Product States and Bell States
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#teleportation-quantum-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teleportation &amp; Quantum Communication
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Teleportation &amp; Quantum Communication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#legend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Legend
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#density-matrices-redux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Density Matrices Redux
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Density Matrices Redux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#purity-entanglement-are-independent-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Purity &amp; Entanglement Are Independent Properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#closed-vs-open-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Closed vs Open Systems
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantum-channels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quantum Channels
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quantum Channels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stinespring-dilation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stinespring Dilation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kraus-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kraus Operators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#measurement-as-an-operator-formalism-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Measurement as an Operator Formalism Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#choi-representation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choi Representation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Choi Representation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#choi-jamiokowski-isomorphism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choi-Jamiołkowski isomorphism
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-drives-environmental-interference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Drives Environmental Interference
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-out-unitary-operators-in-basis-terms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing out Unitary Operators in Basis Terms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#channels-the-bloch-ball" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Channels &amp; the Bloch Ball
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evaluating-a-channel-via-the-bloch-ball" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evaluating a Channel via the Bloch Ball
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-channels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types of Channels
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trace-distance-fidelity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trace Distance &amp; Fidelity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trace Distance &amp; Fidelity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uhlmanns-theorem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Uhlmann's Theorem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#convexity-of-trace-distance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Convexity of Trace Distance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantum-error-correction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quantum Error Correction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quantum Error Correction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#discretization-of-quantum-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discretization of Quantum Errors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correcting-for-a-bit-flip-in-a-3-bit-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correcting for a Bit Flip in a 3-bit code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correcting-for-a-phase-flip-in-a-3-bit-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correcting for a Phase Flip in a 3-bit code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correcting-for-a-bit-phase-flip-in-a-9-bit-shor-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correcting for a Bit &amp; Phase Flip in a 9-bit Shor Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stabilizer-formalism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stabilizer Formalism
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unitary-operations-via-stabilizer-formalism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unitary Operations via Stabilizer Formalism
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#css-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSS Codes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="4-quantum-information-theory">4. Quantum Information Theory<a class="headerlink" href="#4-quantum-information-theory" title="Permanent link">&para;</a></h1>
+<h2 id="qubits">Qubits<a class="headerlink" href="#qubits" title="Permanent link">&para;</a></h2>
+<p>A qubit (quantum bit) is a two-level quantum system that can exist in a superposition of two orthogonal basis states. These are conventionally defined in the <span class="arithmatex">\(z\)</span>-basis as <span class="arithmatex">\(\vert{}0\rangle\)</span> (spin-up along the <span class="arithmatex">\(z\)</span>-axis) and <span class="arithmatex">\(\vert{}1\rangle\)</span> (spin-down along the <span class="arithmatex">\(z\)</span>-axis). One could also choose the <span class="arithmatex">\(x\)</span>-basis, consisting of <span class="arithmatex">\(\vert{}+\rangle\)</span> (spin-up along <span class="arithmatex">\(x\)</span>) and <span class="arithmatex">\(\vert{}-\rangle\)</span> (spin-down along <span class="arithmatex">\(x\)</span>), but the <span class="arithmatex">\(z\)</span>-basis (computational basis) is standard. </p>
+<p>Qubits can be physically implemented via various hardware, such as spin-1/2 particles or the horizontal and vertical polarization states of photons. While photons are spin-1 particles, their lack of a longitudinal polarization mode mathematically restricts their physical polarization space to two dimensions, making them isomorphic to a spin-1/2 system for computational purposes. For abstract ket operations, the hardware implementation is ignored.</p>
+<p>The primary states encountered are <span class="arithmatex">\(\vert{}0\rangle\)</span>, <span class="arithmatex">\(\vert{}1\rangle\)</span>, <span class="arithmatex">\(\vert{}+\rangle\)</span>, and <span class="arithmatex">\(\vert{}-\rangle\)</span>. These are related by standard superposition principles. Unitary operators manipulate these states, with the Pauli matrices serving as fundamental single-qubit logic gates. </p>
+<h2 id="gates">Gates<a class="headerlink" href="#gates" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p><strong>Pauli X (NOT gate):</strong> Flips the computational basis states: <span class="arithmatex">\(\sigma_x\vert{}0\rangle = \vert{}1\rangle\)</span> and <span class="arithmatex">\(\sigma_x\vert{}1\rangle = \vert{}0\rangle\)</span>.</p>
+</li>
+<li>
+<p><strong>Pauli Z (Phase gate):</strong> Leaves <span class="arithmatex">\(\vert{}0\rangle\)</span> unchanged but applies a phase shift of <span class="arithmatex">\(-1\)</span> to <span class="arithmatex">\(\vert{}1\rangle\)</span>: <span class="arithmatex">\(\sigma_z\vert{}0\rangle = \vert{}0\rangle\)</span> and <span class="arithmatex">\(\sigma_z\vert{}1\rangle = -\vert{}1\rangle\)</span>.</p>
+</li>
+<li>
+<p><strong>Hadamard (H gate):</strong> Converts <span class="arithmatex">\(\vert{}0\rangle\)</span> to <span class="arithmatex">\(\vert{}+\rangle\)</span> and <span class="arithmatex">\(\vert{}1\rangle\)</span> to <span class="arithmatex">\(\vert{}-\rangle\)</span> and vice versa. Creates equal superpositions from the basis states. <span class="arithmatex">\(H\vert{}0\rangle = \frac{1}{\sqrt{2}}(\vert{}0\rangle + \vert{}1\rangle) = \vert{}+\rangle\)</span> and <span class="arithmatex">\(H\vert{}1\rangle = \frac{1}{\sqrt{2}}(\vert{}0\rangle - \vert{}1\rangle) = \vert{}-\rangle\)</span>. This is essential for quantum parallelism and algorithms. It is represented by the matrix:</p>
+</li>
+</ul>
+<div class="arithmatex">\[H = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 &amp; 1 \\ 1 &amp; -1 \end{pmatrix}\]</div>
+<ul>
+<li>The general phase gate is defined by the matrix:</li>
+</ul>
+<div class="arithmatex">\[\begin{bmatrix} 1 &amp; 0 \\ 0 &amp; e^{i\theta} \end{bmatrix}\]</div>
+<p>If we set <span class="arithmatex">\(\theta = \pi\)</span>, we get a <span class="arithmatex">\(-1\)</span> in the bottom right and the phase gate becomes the Pauli <span class="arithmatex">\(Z\)</span> matrix. If we set <span class="arithmatex">\(\theta = \pi/2\)</span>, we get what is known as the <span class="arithmatex">\(S\)</span> gate, with an <span class="arithmatex">\(i\)</span> in the bottom right.</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(HSH\)</span> represents the square root of NOT gate (denoted <span class="arithmatex">\(\sqrt{X}\)</span>), which squares to the Pauli <span class="arithmatex">\(X\)</span> NOT gate. Any matrix that squares to <span class="arithmatex">\(X\)</span> must contain complex entries. This is because the determinant of <span class="arithmatex">\(X\)</span> is <span class="arithmatex">\(-1\)</span>; if a matrix with only real entries squared to <span class="arithmatex">\(X\)</span>, its determinant squared would need to equal <span class="arithmatex">\(-1\)</span>, which is mathematically impossible for real numbers.</p>
+</li>
+<li>
+<p><strong>SWAP gate:</strong> In a two-qubit system, we can define the SWAP gate, which switches the two inputs with each other, i.e., <span class="arithmatex">\(\vert{}\psi\phi\rangle\)</span> becomes <span class="arithmatex">\(\vert{}\phi\psi\rangle\)</span>. We can construct this gate using outer products (given by the <span class="arithmatex">\(\vert{}\text{final}\rangle\langle\text{initial}\vert{}\)</span> transition operator) and writing out the transition operators for each computational basis state combination.
+$<span class="arithmatex">\(\text{SWAP} = \vert{}00\rangle\langle00\vert{} + \vert{}10\rangle\langle01\vert{} + \vert{}01\rangle\langle10\vert{} + \vert{}11\rangle\langle11\vert{}\)</span>$</p>
+</li>
+</ul>
+<p>We can also construct the matrix for SWAP (and any other permutation operation) by remembering the following rule:</p>
+<p>Write out the input basis states in the order of their integer index (decimal equivalent), so <span class="arithmatex">\(\vert{}00\rangle\)</span> becomes <span class="arithmatex">\(0\)</span>, <span class="arithmatex">\(\vert{}01\rangle\)</span> becomes <span class="arithmatex">\(1\)</span>, <span class="arithmatex">\(\vert{}10\rangle\)</span> becomes <span class="arithmatex">\(2\)</span>, and <span class="arithmatex">\(\vert{}11\rangle\)</span> becomes <span class="arithmatex">\(3\)</span>. Then find the output of each of these as they pass through the gate and write out their corresponding indices. In the case of SWAP, the outputs for inputs <span class="arithmatex">\((0, 1, 2, 3)\)</span> become <span class="arithmatex">\(\vert{}00\rangle \to 0\)</span>, <span class="arithmatex">\(\vert{}10\rangle \to 2\)</span>, <span class="arithmatex">\(\vert{}01\rangle \to 1\)</span>, and <span class="arithmatex">\(\vert{}11\rangle \to 3\)</span>. The transformation matrix is constructed by arranging the column vectors of the <span class="arithmatex">\(4 \times 4\)</span> Identity matrix in this output order. For SWAP, the columns will be the 0th (first column), 2nd (third column), 1st (second column), and 3rd (fourth column) of the Identity. These columns are <span class="arithmatex">\(4 \times 1\)</span> vectors, reflecting the dimension of the <span class="arithmatex">\(2 \otimes 2\)</span> tensor product space.</p>
+<ul>
+<li>
+<p><strong>Controlled-NOT or CNOT gate:</strong> Takes two qubits as input: a target qubit (let's say <span class="arithmatex">\(x\)</span>) and a control qubit (let's say <span class="arithmatex">\(y\)</span>). It leaves the control qubit <span class="arithmatex">\(\vert{}y\rangle\)</span> unchanged, but transforms the target qubit <span class="arithmatex">\(\vert{}x\rangle\)</span> by XORing the two values. Mathematically, it maps the computational basis state <span class="arithmatex">\(\vert{}x, y\rangle\)</span> to <span class="arithmatex">\(\vert{}x \oplus y, y\rangle\)</span>. Thus, if the control qubit <span class="arithmatex">\(\vert{}y\rangle\)</span> is in the state <span class="arithmatex">\(\vert{}1\rangle\)</span>, the target qubit <span class="arithmatex">\(\vert{}x\rangle\)</span> is inverted (a Pauli <span class="arithmatex">\(X\)</span> operation is applied). Otherwise, if the control is <span class="arithmatex">\(\vert{}0\rangle\)</span>, it is passed through unchanged.</p>
+</li>
+<li>
+<p><strong>The Toffoli Gate (CCNOT):</strong> A three-qubit Controlled-Controlled-NOT gate. It applies a Pauli-X (NOT) operation to the third target qubit if and only if the first two control qubits are both in the <span class="arithmatex">\(\vert{}1\rangle\)</span> state. This is represented by <span class="arithmatex">\(\vert{}c_1, c_2, t\rangle \rightarrow \vert{}c_1, c_2, t \oplus (c_1 c_2)\rangle\)</span>.</p>
+</li>
+</ul>
+<p>The operator applies the identity matrix <span class="arithmatex">\(I\)</span> unless the control subspace is <span class="arithmatex">\(\vert{}11\rangle\)</span>, in which case it applies <span class="arithmatex">\(X\)</span>:</p>
+<div class="arithmatex">\[U_{\text{Toffoli}} = (\vert{}00\rangle\langle00\vert{} + \vert{}01\rangle\langle01\vert{} + \vert{}10\rangle\langle10\vert{}) \otimes I + \vert{}11\rangle\langle11\vert{} \otimes X\]</div>
+<p>It is completely universal for classical reversible computation. Any classical boolean function (including standard AND and NAND gates) can be synthesized using only Toffoli gates.    </p>
+<ul>
+<li>
+<p><strong>The Fredkin Gate (CSWAP)</strong> A three-qubit Controlled-SWAP gate. It exchanges the states of the second and third target qubits if and only if the first control qubit is in the <span class="arithmatex">\(\vert{}1\rangle\)</span> state.</p>
+<p><span class="arithmatex">\(\vert{}0, x, y\rangle \rightarrow \vert{}0, x, y\rangle\)</span></p>
+<p><span class="arithmatex">\(\vert{}1, x, y\rangle \rightarrow \vert{}1, y, x\rangle\)</span></p>
+</li>
+</ul>
+<p>The operator applies the identity matrix to the targets if the control is <span class="arithmatex">\(\vert{}0\rangle\)</span>, and applies the bipartite SWAP operator if the control is <span class="arithmatex">\(\vert{}1\rangle\)</span>:</p>
+<div class="arithmatex">\[ U_{\text{Fredkin}} = \vert{}0\rangle\langle0\vert{} \otimes I \otimes I + \vert{}1\rangle\langle1\vert{} \otimes \text{SWAP} \]</div>
+<p>It is also universal for classical reversible computation. Uniquely, the Fredkin gate strictly conserves the total number of <span class="arithmatex">\(1\)</span>s (the Hamming weight) between the input and output states. This property makes it highly valuable for quantum error correction protocols and hardware routing architectures where particle conservation is required.</p>
+<h3 id="converting-between-standard-product-states-and-bell-states">Converting Between Standard Product States and Bell States<a class="headerlink" href="#converting-between-standard-product-states-and-bell-states" title="Permanent link">&para;</a></h3>
+<p>To convert a regular two-qubit product state like <span class="arithmatex">\(\vert{}00\rangle\)</span> into a Bell state and back again, apply a Hadamard gate to the first qubit followed by a CNOT gate with the first qubit as the control bit. Start with <span class="arithmatex">\(\vert{}0\rangle \otimes \vert{}0\rangle\)</span>. Applyt H to the first qubit: <span class="arithmatex">\((H \otimes I)\vert{}00\rangle = \frac{1}{\sqrt{2}}(\vert{}00\rangle + \vert{}10\rangle)\)</span>.  Apply CNOT with the first qubit as control and the second as target: <span class="arithmatex">\(\text{CNOT} \left[\frac{1}{\sqrt{2}}(\vert{}00\rangle + \vert{}10\rangle)\right] = \frac{1}{\sqrt{2}}(\vert{}00\rangle + \vert{}11\rangle) = \vert{}\Phi^+\rangle\)</span> (the Bell state). </p>
+<p>Similarly, to convert a Bell state into a two-qubit product state, apply the above gates in reverse order. Apply a CNOT with the first qubit as the control qubit, followed by a Hadamard on the second qubit. Start with the Bell state: <span class="arithmatex">\(\vert{}\Phi^+\rangle = \frac{1}{\sqrt{2}}(\vert{}00\rangle + \vert{}11\rangle)\)</span>. Apply CNOT (since CNOT is its own inverse, <span class="arithmatex">\(\text{CNOT}^\dagger = \text{CNOT}\)</span>): <span class="arithmatex">\(\text{CNOT} \left[\frac{1}{\sqrt{2}}(\vert{}00\rangle + \vert{}11\rangle)\right] = \frac{1}{\sqrt{2}}(\vert{}00\rangle + \vert{}10\rangle)\)</span>. Apply Hadamard (H) to the first qubit (since <span class="arithmatex">\(H^\dagger = H\)</span>): <span class="arithmatex">\((H \otimes I) \left[\frac{1}{\sqrt{2}}(\vert{}00\rangle + \vert{}10\rangle)\right] = \vert{}00\rangle\)</span>, returning to the original product state. </p>
+<p><span class="arithmatex">\(\vert{}00\rangle\)</span> maps to <span class="arithmatex">\(\frac{1}{\sqrt{2}}(\vert{}00\rangle + \vert{}11\rangle)\)</span> or <span class="arithmatex">\(\vert{}\Phi^+\rangle\)</span>.</p>
+<p><span class="arithmatex">\(\vert{}01\rangle\)</span> maps to <span class="arithmatex">\(\frac{1}{\sqrt{2}}(\vert{}01\rangle + \vert{}10\rangle)\)</span> or <span class="arithmatex">\(\vert{}\Psi^+\rangle\)</span>.</p>
+<p><span class="arithmatex">\(\vert{}10\rangle\)</span> maps to <span class="arithmatex">\(\frac{1}{\sqrt{2}}(\vert{}00\rangle - \vert{}11\rangle)\)</span> or <span class="arithmatex">\(\vert{}\Phi^-\rangle\)</span>.</p>
+<p><span class="arithmatex">\(\vert{}11\rangle\)</span> maps to <span class="arithmatex">\(\frac{1}{\sqrt{2}}(\vert{}01\rangle - \vert{}10\rangle)\)</span> or <span class="arithmatex">\(\vert{}\Psi^-\rangle\)</span>.</p>
+<hr />
+<p>Note that there is nothing different going in all these gates compared to what has already been seen. The gates, such as the Pauli matrices, simply act on the column vectors as unitary operators and create new column vectors via matrix multiplication. However, care must be taken regarding phase. For example, the <span class="arithmatex">\(\sigma_x\)</span> gate acts as a NOT gate in the <span class="arithmatex">\(z\)</span>-basis, but in the <span class="arithmatex">\(x\)</span>-basis, it does <strong>not</strong> function as a bit flip on <span class="arithmatex">\(\vert{}+\rangle\)</span> and <span class="arithmatex">\(\vert{}-\rangle\)</span>. This is because these are its eigenvectors. However, since the eigenvalue of <span class="arithmatex">\(\vert{}-\rangle\)</span> is <span class="arithmatex">\(-1\)</span>, <span class="arithmatex">\(\sigma_x\)</span> keeps \vert{}+\rangle$ unchanged but converts <span class="arithmatex">\(\vert{}-\rangle\)</span> to -<span class="arithmatex">\(\vert{}-\rangle\)</span>.</p>
+<p>If <span class="arithmatex">\(\vert{}-\rangle\)</span> exists in isolation, this minus sign is a global phase and can be mathematically dropped without altering observable physics. However, when it is part of a larger superposition (a relative phase), it governs quantum interference and must be rigorously tracked.  </p>
+<p>For example, applying <span class="arithmatex">\(\sigma_x\)</span> to the superposition <span class="arithmatex">\(\frac{1}{\sqrt{2}}(\vert{}+\rangle + \vert{}-\rangle)\)</span> (which is <span class="arithmatex">\(\vert{}0\rangle\)</span>) yields:</p>
+<div class="arithmatex">\[\sigma_x \left[ \frac{1}{\sqrt{2}}(\vert{}+\rangle + \vert{}-\rangle) \right] = \frac{1}{\sqrt{2}}(\vert{}+\rangle - \vert{}-\rangle)\]</div>
+<p>This resulting state is exactly <span class="arithmatex">\(\vert{}1\rangle\)</span>, maintaining logical consistency with the standard computational basis definition of a NOT gate.</p>
+<h2 id="teleportation-quantum-communication">Teleportation &amp; Quantum Communication<a class="headerlink" href="#teleportation-quantum-communication" title="Permanent link">&para;</a></h2>
+<p>Many aspects such as quantum communication, quantum cryptography and quantum parallelism depend on entanglement. A two-qubit entangled state is called an e-bit. The idea of teleportation is to transmit a qubit from A to B by utilizing a pre-existing e-bit between the two, and by transmitting two classical bits. This way, we forego the fragile process of physically moving a qubit and instead utilize the more robust classical bit transmission to achieve the same thing.</p>
+<p>Here is the classical text-based schematic of the teleportation circuit, designed to mirror the exact operations from your images.</p>
+<p>Plaintext</p>
+<pre><code>                  Alice's Operations                         Bob's Corrections
+</code></pre>
+<p>α|0⟩+β|1⟩      ────────■───────[ H ]───────[ M ]═════════════════════════════════╗══
+                        │                     ║                                   ║
+                        │                     ║ (Classical bit 'b')               ║
+ ┌─ |Φ⁺⟩_Alice  ────────⊕───────────────────[ M ]══════════╗══════════════════════╬══
+ │                                            ║            ║                      ║
+(Entangled)                                   ║ (Bit 'a')  ║                      ║
+ │                                            ║            V                      V
+ └─ |Φ⁺⟩_Bob    ──────────────────────────────╫──────────[ X ]──────────────────[ Z ]────── α|0⟩+β|1⟩</p>
+<h3 id="legend">Legend<a class="headerlink" href="#legend" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><code>───</code> <strong>Single Line:</strong> A quantum wire carrying a coherent qubit.</p>
+</li>
+<li>
+<p><code>═══</code> <strong>Double Line:</strong> A classical wire carrying deterministic, measured classical bits (<span class="arithmatex">\(0\)</span> or <span class="arithmatex">\(1\)</span>).</p>
+</li>
+<li>
+<p><code>■</code> / <code>⊕</code> <strong>CNOT Gate:</strong> Alice's unknown input acts as the control (<code>■</code>), entangling with her half of the Bell pair acting as the target (<code>⊕</code>).</p>
+</li>
+<li>
+<p><code>[ H ]</code> <strong>Hadamard Gate:</strong> Rotates the input qubit into the superposition basis before measurement to conceal the quantum amplitudes.</p>
+</li>
+<li>
+<p><code>[ M ]</code> <strong>Measurement:</strong> The physical detectors that collapse the quantum states and output classical bits.</p>
+</li>
+<li>
+<p><code>[ X ]</code> and <code>[ Z ]</code> <strong>Conditional Pauli Gates:</strong> Bob's hardware. The classical wires physically route to these gates, triggering them to fire only if the incoming classical bit is a <span class="arithmatex">\(1\)</span>.</p>
+</li>
+</ul>
+<p>The circuit involves three qubits. The top wire is Alice's unknown input state. The middle wire is Alice's half of the entangled Bell pair, and the bottom wire is Bob's half.</p>
+<p>Alice begins by interacting her unknown qubit with her half of the Bell pair using a CNOT gate, where her unknown state acts as the control. This operation effectively entangles the unknown state into the global system. If her unknown state has a <span class="arithmatex">\(\vert{}1\rangle\)</span> component, it flips the state of her Bell half, linking the amplitude information (<span class="arithmatex">\(\alpha, \beta\)</span>) to the entangled pair.</p>
+<p>Alice then applies a Hadamard gate to her original input qubit. This rotates the qubit into the superposition basis (X-basis). This step is crucial because it ensures that when Alice measures her qubits, she extracts no information about the actual values of <span class="arithmatex">\(\alpha\)</span> and <span class="arithmatex">\(\beta\)</span>, preserving the quantum information so it can be transferred to Bob rather than destroyed by measurement.</p>
+<p>Alice measures both of her qubits in the standard basis, yielding two classical bits (00, 01, 10, or 11). This measurement collapses the global state, instantly isolating Bob's distant qubit into a specific superposition that contains <span class="arithmatex">\(\alpha\)</span> and <span class="arithmatex">\(\beta\)</span>. She then transmits these two classical bits to Bob via a standard communication channel. Note that the qubit has been destroyed and Alice no longer has it.</p>
+<p>Bob receives the classical bits and uses them to apply specific Pauli gates to his qubit. As shown in the table, depending on the classical message, his state is off by a phase (requiring a Z gate), a bit-flip (requiring an X gate), both (ZX), or neither (Identity). Applying the correct sequence perfectly recovers Alice's original state.</p>
+<p>To prove how this works, we can also calculate the state vector step-by-step. The global state is written in the order <span class="arithmatex">\(\vert{}Bob\rangle \otimes \vert{}Alice_{Bell}\rangle \otimes \vert{}Alice_{input}\rangle\)</span>. The last digit is the control qubit for the CNOT.</p>
+<p><strong>Step 0: Initial State (<span class="arithmatex">\(\vert{}\pi_0\rangle\)</span>)</strong>
+The system begins as the tensor product of Alice's state and the shared Bell state:</p>
+<div class="arithmatex">\[\vert{}\pi_0\rangle = \vert{}\Phi^+\rangle \otimes (\alpha\vert{}0\rangle + \beta\vert{}1\rangle)\]</div>
+<p>Expanding this out yields the four terms shown in the first step:</p>
+<div class="arithmatex">\[\vert{}\pi_0\rangle = \frac{\alpha\vert{}000\rangle + \alpha\vert{}110\rangle + \beta\vert{}001\rangle + \beta\vert{}111\rangle}{\sqrt{2}}\]</div>
+<p><strong>Step 1: Applying the CNOT (<span class="arithmatex">\(\vert{}\pi_1\rangle\)</span>)</strong></p>
+<p>Alice applies a CNOT controlled by the last qubit (her input) targeting the middle qubit (her Bell half).</p>
+<ul>
+<li>
+<p>Terms ending in <span class="arithmatex">\(0\)</span> are unchanged: <span class="arithmatex">\(\alpha\vert{}000\rangle\)</span> and <span class="arithmatex">\(\alpha\vert{}110\rangle\)</span> remain the same.</p>
+</li>
+<li>
+<p>Terms ending in <span class="arithmatex">\(1\)</span> flip the middle bit: <span class="arithmatex">\(\beta\vert{}001\rangle \rightarrow \beta\vert{}011\rangle\)</span> and <span class="arithmatex">\(\beta\vert{}111\rangle \rightarrow \beta\vert{}101\rangle\)</span>.</p>
+<div class="arithmatex">\[\vert{}\pi_1\rangle = \frac{\alpha\vert{}000\rangle + \alpha\vert{}110\rangle + \beta\vert{}011\rangle + \beta\vert{}101\rangle}{\sqrt{2}}\]</div>
+</li>
+</ul>
+<p><strong>Step 2: Applying the Hadamard (<span class="arithmatex">\(\vert{}\pi_2\rangle\)</span>)</strong></p>
+<p>Alice applies a Hadamard to the last qubit. This maps <span class="arithmatex">\(\vert{}0\rangle \rightarrow \vert{}+\rangle\)</span> and <span class="arithmatex">\(\vert{}1\rangle \rightarrow \vert{}-\rangle\)</span>:</p>
+<div class="arithmatex">\[\vert{}\pi_2\rangle = \frac{\alpha\vert{}00\rangle\vert{}+\rangle + \alpha\vert{}11\rangle\vert{}+\rangle + \beta\vert{}01\rangle\vert{}-\rangle + \beta\vert{}10\rangle\vert{}-\rangle}{\sqrt{2}}\]</div>
+<p><strong>Step 3: Expansion and Regrouping</strong></p>
+<p>To see what happens when Alice measures, we must expand the <span class="arithmatex">\(\vert{}+\rangle\)</span> and <span class="arithmatex">\(\vert{}-\rangle\)</span> states and regroup the entire expression based on the states of Alice's two qubits (the last two digits). Following the expansion shown in the detailed calculation:</p>
+<p>Substitute <span class="arithmatex">\(\vert{}+\rangle = \frac{\vert{}0\rangle + \vert{}1\rangle}{\sqrt{2}}\)</span> and <span class="arithmatex">\(\vert{}-\rangle = \frac{\vert{}0\rangle - \vert{}1\rangle}{\sqrt{2}}\)</span>:</p>
+<div class="arithmatex">\[= \frac{\alpha\vert{}00\rangle(\vert{}0\rangle+\vert{}1\rangle) + \alpha\vert{}11\rangle(\vert{}0\rangle+\vert{}1\rangle) + \beta\vert{}01\rangle(\vert{}0\rangle-\vert{}1\rangle) + \beta\vert{}10\rangle(\vert{}0\rangle-\vert{}1\rangle)}{2}\]</div>
+<p>Distribute the terms out fully to get eight basis states:</p>
+<div class="arithmatex">\[= \frac{\alpha\vert{}000\rangle + \alpha\vert{}001\rangle + \alpha\vert{}110\rangle + \alpha\vert{}111\rangle + \beta\vert{}010\rangle - \beta\vert{}011\rangle + \beta\vert{}100\rangle - \beta\vert{}101\rangle}{2}\]</div>
+<p>Now, factor out the four possible measurement outcomes for Alice's qubits (the last two digits: <span class="arithmatex">\(00\)</span>, <span class="arithmatex">\(01\)</span>, <span class="arithmatex">\(10\)</span>, <span class="arithmatex">\(11\)</span>) to isolate Bob's qubit (the first digit):</p>
+<div class="arithmatex">\[\vert{}\pi_2\rangle = \frac{1}{2}(\alpha\vert{}0\rangle + \beta\vert{}1\rangle)\vert{}00\rangle + \frac{1}{2}(\alpha\vert{}0\rangle - \beta\vert{}1\rangle)\vert{}01\rangle + \frac{1}{2}(\alpha\vert{}1\rangle + \beta\vert{}0\rangle)\vert{}10\rangle + \frac{1}{2}(\alpha\vert{}1\rangle - \beta\vert{}0\rangle)\vert{}11\rangle\]</div>
+<p><strong>Step 4: Measurement Collapse</strong></p>
+<p>Because the global state is now grouped by Alice's possible measurement outcomes, we can clearly read the resulting state of Bob's qubit. When Alice measures, the state collapses into one of the four branches with a probability of <span class="arithmatex">\((\frac{1}{2})^2 = \frac{1}{4}\)</span>.</p>
+<p>As detailed in the final table:</p>
+<ul>
+<li>
+<p>If Alice measures <span class="arithmatex">\(00\)</span>, Bob's state is <span class="arithmatex">\(\alpha\vert{}0\rangle + \beta\vert{}1\rangle\)</span>. He does nothing (applies Identity).</p>
+</li>
+<li>
+<p>If Alice measures <span class="arithmatex">\(01\)</span>, Bob's state is <span class="arithmatex">\(\alpha\vert{}0\rangle - \beta\vert{}1\rangle\)</span>. He applies a Pauli-Z to fix the phase.</p>
+</li>
+<li>
+<p>If Alice measures <span class="arithmatex">\(10\)</span>, Bob's state is <span class="arithmatex">\(\alpha\vert{}1\rangle + \beta\vert{}0\rangle\)</span>. He applies a Pauli-X to flip the bits.</p>
+</li>
+<li>
+<p>If Alice measures <span class="arithmatex">\(11\)</span>, Bob's state is <span class="arithmatex">\(\alpha\vert{}1\rangle - \beta\vert{}0\rangle\)</span>. He applies both Z and X (ZX).</p>
+</li>
+</ul>
+<h2 id="density-matrices-redux">Density Matrices Redux<a class="headerlink" href="#density-matrices-redux" title="Permanent link">&para;</a></h2>
+<p>We can write a qubit state using a density matrix to accommodate both pure states and the mixed states that arise in multi-qubit tensor product spaces (via partial tracing). Any <span class="arithmatex">\(2 \times 2\)</span> density matrix can be written as a linear combination of the Identity matrix and the Pauli matrices:</p>
+<div class="arithmatex">\[\rho = \frac{1}{2}(I + \vec{n} \cdot \vec{\sigma})\]</div>
+<p>where <span class="arithmatex">\(\vec{\sigma}\)</span> is the formal vector of Pauli matrices <span class="arithmatex">\((\sigma_x, \sigma_y, \sigma_z)\)</span> and <span class="arithmatex">\(\vec{n} = (n_x, n_y, n_z)\)</span> is a spatial vector of norm utmost <span class="arithmatex">\(1\)</span>, called the Bloch vector.</p>
+<p>To see why this is true, a valid density matrix must have a trace of <span class="arithmatex">\(1\)</span>. The Pauli matrices are traceless (<span class="arithmatex">\(\text{Tr}(\sigma_i) = 0\)</span>), and the <span class="arithmatex">\(2 \times 2\)</span> Identity matrix has a trace of <span class="arithmatex">\(2\)</span>. Therefore, the coefficient <span class="arithmatex">\(\frac{1}{2}\)</span> on <span class="arithmatex">\(I\)</span> guarantees that <span class="arithmatex">\(\text{Tr}(\rho) = 1\)</span>, while the traceless Pauli vector accounts for the system's specific quantum state.</p>
+<p>Expanding the dot product <span class="arithmatex">\(\vec{n} \cdot \vec{\sigma}\)</span> into a matrix yields:</p>
+<div class="arithmatex">\[\rho = \frac{1}{2} \left[ \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix} + \begin{pmatrix} n_z &amp; n_x - in_y \\ n_x + in_y &amp; -n_z \end{pmatrix} \right] = \frac{1}{2} \begin{pmatrix} 1 + n_z &amp; n_x - in_y \\ n_x + in_y &amp; 1 - n_z \end{pmatrix}\]</div>
+<p>The determinant of this density matrix is:</p>
+<div class="arithmatex">\[\det(\rho) = \frac{1}{4} \left[ (1 + n_z)(1 - n_z) - (n_x - in_y)(n_x + in_y) \right]\]</div>
+<div class="arithmatex">\[\det(\rho) = \frac{1}{4} (1 - n_z^2 - n_x^2 - n_y^2) = \frac{1}{4}(1 - \vert{}\vec{n}\vert{}^2)\]</div>
+<p>Because a physical density matrix must be positive semi-definite, its determinant must be greater than or equal to zero (<span class="arithmatex">\(\det(\rho) \geq 0\)</span>). This mathematically constrains the vector <span class="arithmatex">\(\vec{n}\)</span> to have a norm <span class="arithmatex">\(\vert{}\vec{n}\vert{} \leq 1\)</span>. The set of all valid vectors <span class="arithmatex">\(\vec{n}\)</span> forms a solid 3D sphere known as the Bloch ball. Pure states (<span class="arithmatex">\(\vert{}\vec{n}\vert{} = 1\)</span>, <span class="arithmatex">\(\det(\rho) = 0\)</span>) live on the surface (the Bloch sphere), while mixed states (<span class="arithmatex">\(\vert{}\vec{n}\vert{} &lt; 1\)</span>) reside in the interior.</p>
+<p>The points on the surface are the extreme points or extremums. Any interior point (mixed state) in the Bloch ball can be written as a linear convex combination of two extreme points. What's more, there are infinite such combinations for any such point. To see why, note that any point in the ball can be connected to any point on the sphere's surface via a line. If we extend that line back to meet the surface again (sort of like the antipode but not quite), we have a line between two extremums on which the point lives. There are infinite such lines. Thus, a mixed state density matrix can be decomposed into pure states in an infinite number of ways:</p>
+<div class="arithmatex">\[\rho = \lambda \rho_1 + (1-\lambda) \rho_2\]</div>
+<p>Every mixed state in the Bloch ball (except the maximally mixed state at the exact center) has a unique representation as a convex combination of antipodal points. This is because, for any non-central point, there is exactly one line passing through both that point and the center of the sphere. Therefore, there is only one pair of antipodal points (representing orthonormal states) that can form this combination. Representing a mixed state as a combination of antipodes provides a clear idea of just how mixed it actually is (its purity). A general representation via an arbitrary chord could be misleading because there are infinite chords for which the mixed point is the midpoint. However, a point can only be the midpoint of an <em>antipodal</em> chord (a diameter) if it is exactly at the center, meaning it is the maximally mixed state.</p>
+<p><strong>Aside:</strong> Any pure state on the surface of the Bloch sphere can be parameterized in spherical polar coordinates. If <span class="arithmatex">\(\theta\)</span> is the polar angle with the <span class="arithmatex">\(Z\)</span>-axis representing the north pole, and <span class="arithmatex">\(\phi\)</span> is the azimuthal angle from the <span class="arithmatex">\(X\)</span>-axis, then the state is given by the density matrix:</p>
+<p>Given a spin state characterized by the Bloch vector <span class="arithmatex">\(\vec{n}\)</span>, the expectation value of an observable measured along an arbitrary spatial unit vector <span class="arithmatex">\(\hat{p}\)</span> is <span class="arithmatex">\(\hat{p} \cdot \vec{n}\)</span>.</p>
+<p>We can prove this in the following way. The observable for spin along <span class="arithmatex">\(\hat{p}\)</span> is represented by the operator <span class="arithmatex">\(\hat{p} \cdot \vec{\sigma}\)</span>. The expectation value is given by the trace formula:</p>
+<div class="arithmatex">\[\langle \hat{p} \cdot \vec{\sigma} \rangle = \text{Tr}(\rho (\hat{p} \cdot \vec{\sigma}))\]</div>
+<p>Substituting the density matrix definition:</p>
+<div class="arithmatex">\[\langle \hat{p} \cdot \vec{\sigma} \rangle = \text{Tr} \left( \frac{1}{2}(I + \vec{n} \cdot \vec{\sigma})(\hat{p} \cdot \vec{\sigma}) \right)\]</div>
+<div class="arithmatex">\[= \frac{1}{2} \text{Tr}(\hat{p} \cdot \vec{\sigma}) + \frac{1}{2} \text{Tr}((\vec{n} \cdot \vec{\sigma})(\hat{p} \cdot \vec{\sigma}))\]</div>
+<p>Because the Pauli matrices are traceless, the first term vanishes (<span class="arithmatex">\(\text{Tr}(\hat{p} \cdot \vec{\sigma}) = 0\)</span>). For the second term, we apply the standard Pauli vector identity <span class="arithmatex">\((\vec{a} \cdot \vec{\sigma})(\vec{b} \cdot \vec{\sigma}) = (\vec{a} \cdot \vec{b})I + i(\vec{a} \times \vec{b}) \cdot \vec{\sigma}\)</span>:</p>
+<div class="arithmatex">\[\text{Tr}((\vec{n} \cdot \vec{\sigma})(\hat{p} \cdot \vec{\sigma})) = \text{Tr}((\vec{n} \cdot \hat{p})I + i(\vec{n} \times \hat{p}) \cdot \vec{\sigma})\]</div>
+<p>The trace is a linear operator. The trace of the cross-product term is zero because it is a linear combination of Pauli matrices. The trace of <span class="arithmatex">\((\vec{n} \cdot \hat{p})I\)</span> is <span class="arithmatex">\(2(\vec{n} \cdot \hat{p})\)</span>. Therefore:</p>
+<div class="arithmatex">\[\langle \hat{p} \cdot \vec{\sigma} \rangle = \frac{1}{2} \left[ 2(\vec{n} \cdot \hat{p}) \right] = \vec{n} \cdot \hat{p}\]</div>
+<p>This geometric proof implies that to fully determine an unknown <span class="arithmatex">\(\vec{n}\)</span> (and therefore reconstruct <span class="arithmatex">\(\rho\)</span>), one must perform expectation value measurements along three mutually orthogonal spatial axes (e.g., <span class="arithmatex">\(x, y, z\)</span>). Why do we need three measurements? Because a <span class="arithmatex">\(2 \times 2\)</span> Hermitian density matrix is characterized by exactly 4 real parameters (two for the diagonal elements, and the real/imaginary parts of the off-diagonal elements). The normalization constraint <span class="arithmatex">\(\text{Tr}(\rho) = 1\)</span> removes one degree of freedom, leaving exactly 3 independent parameters that must be determined via measurement.</p>
+<h3 id="purity-entanglement-are-independent-properties">Purity &amp; Entanglement Are Independent Properties<a class="headerlink" href="#purity-entanglement-are-independent-properties" title="Permanent link">&para;</a></h3>
+<p>Purity and entanglement are independent properties. You can have a pure entangled state (the Bell states, for example). You can have pure unentangled states (<span class="arithmatex">\(\vert{}00\rangle\)</span>, for example). You could have a statistical mixture of entangled states (<span class="arithmatex">\(\frac{1}{2}\vert{}\Phi^+\rangle\langle\Phi^+\vert{} + \frac{1}{2}\vert{}\Phi^-\rangle\langle\Phi^-\vert{}\)</span>), a mixture of unentangled states (<span class="arithmatex">\(\frac{1}{2}\vert{}11\rangle\langle11\vert{} + \frac{1}{2}\vert{}00\rangle\langle00\vert{}\)</span>), or a mixture containing both entangled and unentangled states (<span class="arithmatex">\(\frac{1}{2}\vert{}\Phi^+\rangle\langle\Phi^+\vert{} + \frac{1}{2}\vert{}00\rangle\langle00\vert{}\)</span>).</p>
+<p>The density matrix of a pure entangled state will be idempotent since it is a pure state (i.e., <span class="arithmatex">\(\rho^2 = \rho\)</span>), which means it can be written as an outer product of a single state vector. If we were to diagonalize this density matrix, it would have a single <span class="arithmatex">\(1\)</span> on the diagonal, and every other element would be <span class="arithmatex">\(0\)</span>. The reduced density matrices, however, will be mixed states and therefore not idempotent. If we were to diagonalize each of them, there would be multiple non-zero elements on the diagonal. The Schmidt rank will be strictly greater than <span class="arithmatex">\(1\)</span>, and we can write the bipartite state vector as the sum of at least two product states of orthogonal vectors in the respective subspaces.</p>
+<p>However, simply because the full density matrix is idempotent does not mean the state is entangled. It only means the state is pure (i.e., it can be written as a single state vector). It may not be entangled at all, for example: <span class="arithmatex">\(\vert{}00\rangle\)</span>. The reduced density matrices here will also be idempotent, representing pure states. The Schmidt decomposition will have a rank of <span class="arithmatex">\(1\)</span>, which means we can factor out a single state vector from each subspace such that the bipartite space is exactly their tensor product.</p>
+<p>If we find that the density matrix of the 2-qubit state is not idempotent, it means it is a mixed state. A mixed state represents a classical statistical ensemble. Because it cannot be represented by a single state vector, you cannot perform a Schmidt decomposition on this density matrix. The classical ensemble does not necessarily imply entanglement; it may include entangled states, non-entangled states, or both. </p>
+<p>For a globally mixed state, the reduced density matrices are generally mixed, but they can occasionally be pure (idempotent) if one subsystem is completely uncorrelated and locally pure while the classical uncertainty is entirely confined to the other subsystem. For eg. if we take the pure <span class="arithmatex">\(\rho_A = \vert{}0\rangle\langle0\vert{}\)</span> and the mixed <span class="arithmatex">\(\rho_B = \frac{1}{2}\vert{}0\rangle\langle0\vert{} + \frac{1}{2}\vert{}1\rangle\langle1\vert{}\)</span>, and create a bipartite state from their tensor product, and then evaluate the combined density matrix to see if it is idempotent:</p>
+<div class="arithmatex">\[\rho_{AB}^2 = (\rho_A \otimes \rho_B)^2 = \rho_A^2 \otimes \rho_B^2\]</div>
+<p>Since <span class="arithmatex">\(B\)</span> is mixed, this is obviously not equal to <span class="arithmatex">\(\rho_{AB}\)</span>.</p>
+<p>An easy way take the reduced density matrix of <span class="arithmatex">\(A\)</span> in <span class="arithmatex">\(A \otimes B\)</span> i.e. if we want to trace out <span class="arithmatex">\(B\)</span>, is: <span class="arithmatex">\(\rho_A = Tr(B) A\)</span> and <span class="arithmatex">\(\rho_B = Tr(A) B\)</span>, i.e. multiply the matrix to retain by the trace of the other matrix. For eg. given </p>
+<div class="arithmatex">\[\rho =\left (\frac{1}{2}\vert{}0\rangle\langle0\vert{} \otimes \vert{}0\rangle\langle0\vert{} + \frac{1}{2}\vert{}1\rangle\langle1\vert{} \otimes \vert{}+\rangle\langle+\vert{} \right)\]</div>
+<p>To get <span class="arithmatex">\(\rho_A\)</span>, we must trace out <span class="arithmatex">\(B\)</span>, i.e. both <span class="arithmatex">\(\vert{}0\rangle\langle0\vert\)</span> and <span class="arithmatex">\(\vert{}+\rangle\langle+\vert\)</span>. Taking the trace of an outer product is the same as calculating the inner product, which is <span class="arithmatex">\(1\)</span> for both of these. Thus, we have:
+$<span class="arithmatex">\(\rho_A = \frac{1}{2}\vert{}0\rangle\langle0\vert{} + \frac{1}{2}\vert{}1\rangle\langle1\vert{}\)</span>$</p>
+<p>Similarly, 
+$<span class="arithmatex">\(\rho_B = \frac{1}{2}\vert{}0\rangle\langle0\vert{} + \frac{1}{2}\vert{}+\rangle\langle+\vert{}\)</span>$</p>
+<h2 id="closed-vs-open-systems">Closed vs Open Systems<a class="headerlink" href="#closed-vs-open-systems" title="Permanent link">&para;</a></h2>
+<p>Quantum systems that are closed are ideal situations where there is no interference from external factors. They can be modeled as state vectors, and their evolution can be modeled via unitary operators acting upon them. However, in reality, quantum systems are open to effects from the environment. When we model open systems, we use density matrices, and their evolution is modeled through quantum channels. This modeling rests on the fact that although a quantum system may be open, the quantum system in combination with the environment is considered a closed system.</p>
+<h2 id="quantum-channels">Quantum Channels<a class="headerlink" href="#quantum-channels" title="Permanent link">&para;</a></h2>
+<p>Quantum channels are linear completely positive trace-preserving (CPTP) maps of a density matrix to a density matrix; i.e., they are more general than just a map of states to states -- they map a system to another system. For example, suppose a qubit that is in a superposition of states passes through a channel. The channel may be noisy, in the sense that it interacts with the environment such that all information about the nature of the superposition and coherence of the qubit is lost. By the time the qubit arrives at the channel output, it will be a completely mixed state—a classical ensemble.</p>
+<p>Usually, as in the above case, the output system is the same as the input system. But channels can just as well map an input system to another output system. For example, in the above case, the environment might have entangled one of its qubits with the input qubit. The output system we would then be interested in would be the input qubit combined with the one qubit from the environment.</p>
+<p>Inputs and outputs to quantum channels are represented not by state vectors (which are useful only in closed systems), but by density matrices. Moreover, the input system and the environment's initial state are considered to form a product state initially; i.e., they have no correlation and are completely decoupled to start with. </p>
+<p>The channel itself is modeled as a unitary operation on the entire closed system of the system of interest combined with the environment. The environment (or whatever part of the environment we do not care about) is then traced out of the output of this unitary operation, which leaves us with the reduced output system. </p>
+<p>There are three primary mathematical representations that can be used to model this process.</p>
+<h3 id="stinespring-dilation">Stinespring Dilation<a class="headerlink" href="#stinespring-dilation" title="Permanent link">&para;</a></h3>
+<p>This method builds out the channel, its inputs, the environment, and the output almost exactly as just described. If <span class="arithmatex">\(\rho_s\)</span> is the input density matrix, <span class="arithmatex">\(\vert{}e_0\rangle\)</span> the initialized state of the environment, <span class="arithmatex">\(\{\vert{}e_k\rangle\}\)</span> the basis vectors of the environment, and <span class="arithmatex">\(U\)</span> the unitary operation on the entire closed system, then the initial state of the joint system is given by the tensor product <span class="arithmatex">\(\rho_s \otimes \vert{}e_0\rangle\langle e_0\vert{}\)</span>.</p>
+<p>The full output of the unitary operation is given by <span class="arithmatex">\(U (\rho_s \otimes \vert{}e_0\rangle\langle e_0\vert{}) U^\dagger\)</span>.</p>
+<p>Now, to trace out the environment, we evaluate the expectation value of the full output with respect to the environment's basis vectors <span class="arithmatex">\(\{\vert{}e_k\rangle\}\)</span> and sum over them. This partial trace over the environment yields the output density matrix <span class="arithmatex">\(\rho_o\)</span>:</p>
+<div class="arithmatex">\[\rho_o = \sum_k \langle e_k \vert{} U (\rho_s \otimes \vert{}e_0\rangle\langle e_0\vert{}) U^\dagger \vert{} e_k \rangle\]</div>
+<p>Note that writing the bras and kets of the environment directly adjacent to the joint unitary operation is a shorthand. The full mathematical expression using explicit tensor products across the bipartite Hilbert space applies the identity operator <span class="arithmatex">\(I_s\)</span> to the principal system while projecting the environment:</p>
+<div class="arithmatex">\[\rho_o = \sum_k (I_s \otimes \langle e_k \vert{}) \left[ U (\rho_s \otimes \vert{}e_0\rangle\langle e_0\vert{}) U^\dagger \right] (I_s \otimes \vert{} e_k \rangle)\]</div>
+<p><strong>Aside:</strong> To see more clearly how the partial trace is being taken, assume that the full output of the unitary operation can be written as a separable term <span class="arithmatex">\(A_s \otimes B_e\)</span>. We can then write the final partial trace step as:</p>
+<div class="arithmatex">\[\sum_k(I_s \otimes \langle e_k \vert{}) (A \otimes B) (I_s \otimes \vert{} e_k \rangle)\]</div>
+<div class="arithmatex">\[= \sum_k(I_s A I_s) \cdot (\langle e_k \vert{} B \vert{} e_k \rangle)\]</div>
+<div class="arithmatex">\[= A \cdot\sum_k \langle e_k \vert{} B \vert{} e_k \rangle\]</div>
+<p>The environment component <span class="arithmatex">\(\sum_k(\langle e_k \vert{} B \vert{} e_k \rangle)\)</span> is the trace of <span class="arithmatex">\(B\)</span> and evaluates to a simple scalar value, leaving only the operator <span class="arithmatex">\(A\)</span> acting on the system space. This explicitly defines the partial trace.</p>
+<p>Note that mathematically, we can define the Stinespring isometry <span class="arithmatex">\(V\)</span> as:</p>
+<div class="arithmatex">\[V=U(I_S\otimes\vert{}e_0\rangle)\]</div>
+<p>If we take the Hermitian conjugate, we get:</p>
+<div class="arithmatex">\[V^\dagger=(I_S\otimes\langle e_0\vert{})U^\dagger\]</div>
+<p><span class="arithmatex">\(V\)</span> is essentially the operator that applies <span class="arithmatex">\(U\)</span> only to the initial state of the environment, absorbing it directly into the transformation matrix, while ignoring the principal system of interest.</p>
+<p>When we construct the density matrix evolution using the unitary operator, the inner term is:</p>
+<div class="arithmatex">\[U(\rho_S\otimes\vert{}e_0\rangle\langle e_0\vert{})U^\dagger\]</div>
+<p>Because <span class="arithmatex">\(\rho_S\otimes\vert{}e_0\rangle\langle e_0\vert{}=(I_S\otimes\vert{}e_0\rangle)\rho_S(I_S\otimes\langle e_0\vert{})\)</span>, we can substitute our definitions of <span class="arithmatex">\(V\)</span> and <span class="arithmatex">\(V^\dagger\)</span> directly into this expression:</p>
+<div class="arithmatex">\[V\rho_SV^\dagger=U(\rho_S\otimes\vert{}e_0\rangle\langle e_0\vert{})U^\dagger\]</div>
+<h3 id="kraus-operators">Kraus Operators<a class="headerlink" href="#kraus-operators" title="Permanent link">&para;</a></h3>
+<p>From the Stinespring Dilation, if we define the operators <span class="arithmatex">\(E_k = (I_s \otimes \langle e_k \vert{}) U (I_s \otimes \vert{} e_0 \rangle)\)</span>, then their Hermitian adjoints are <span class="arithmatex">\(E_k^\dagger = (I_s \otimes \langle e_0\vert{}) U^\dagger (I_s \otimes \vert{} e_k \rangle)\)</span>. These represent the effective operators acting on the principal system for each measurement outcome <span class="arithmatex">\(k\)</span> of the environment.</p>
+<p>In terms of the Stinespring isometry <span class="arithmatex">\(V\)</span>, a Kraus operator is simply the isometry projected onto a specific basis vector of the output environment:</p>
+<div class="arithmatex">\[K_k=(I_S\otimes\langle e_k\vert{})V\]</div>
+<div class="arithmatex">\[K_k^\dagger=V^\dagger(I_S\otimes\vert{}e_k\rangle)\]</div>
+<p>We can therefore write the final reduced system state as:</p>
+<div class="arithmatex">\[\rho_o = \sum_k E_k \rho_s E_k^\dagger\]</div>
+<p>However, we must ensure that <span class="arithmatex">\(\rho_o\)</span> is a valid density matrix, meaning its trace must equal <span class="arithmatex">\(1\)</span>. Thus, <span class="arithmatex">\(\text{tr}(\sum_k E_k \rho_s E_k^\dagger) = 1\)</span>. By using the linearity of the trace and its cyclic property (<span class="arithmatex">\(\text{tr}(ABC) = \text{tr}(CAB)\)</span>), we can rearrange the terms inside the trace:</p>
+<div class="arithmatex">\[\sum_k \text{tr}(E_k \rho_s E_k^\dagger) = \sum_k \text{tr}(E_k^\dagger E_k \rho_s) = \text{tr}\left(\left(\sum_k E_k^\dagger E_k\right) \rho_s\right) = 1\]</div>
+<p>Because this equation must hold true for <em>any</em> valid input density matrix <span class="arithmatex">\(\rho_s\)</span>, the operator sum multiplying <span class="arithmatex">\(\rho_s\)</span> must be the identity matrix. This gives us the completeness relation:  </p>
+<div class="arithmatex">\[\sum_k E_k^\dagger E_k = I\]</div>
+<p>The operators <span class="arithmatex">\(E_k\)</span> are the Kraus operators, and this formulation is the Kraus representation for quantum channels. Note that Kraus operators themselves need not be Hermitian, unitary, or positive-definite.</p>
+<p>Moreover, to analyze individual outcomes, we can normalize each term in the summation by dividing it by its trace (which represents the probability of that outcome):</p>
+<div class="arithmatex">\[\rho_o = \sum_k \text{tr}(E_k \rho_s E_k^\dagger) \cdot \frac{E_k \rho_s E_k^\dagger}{\text{tr}(E_k \rho_s E_k^\dagger)}\]</div>
+<p>The fraction <span class="arithmatex">\(\frac{E_k \rho_s E_k^\dagger}{\text{tr}(E_k \rho_s E_k^\dagger)}\)</span> is a valid, trace-1 density matrix, which we can call <span class="arithmatex">\(\rho_k\)</span>. It represents the post-measurement state of the system if outcome <span class="arithmatex">\(k\)</span> occurs. If we define the probability of this outcome as <span class="arithmatex">\(P_k = \text{tr}(E_k \rho_s E_k^\dagger)\)</span>, then the overall channel output is clearly a convex sum of these conditional density matrices weighted by their classical probabilities:</p>
+<div class="arithmatex">\[\rho_o = \sum_k P_k \rho_k\]</div>
+<h3 id="measurement-as-an-operator-formalism-example">Measurement as an Operator Formalism Example<a class="headerlink" href="#measurement-as-an-operator-formalism-example" title="Permanent link">&para;</a></h3>
+<p>It is not a coincidence that this maps to the conditions placed on quantum measurements. Measurements can be modeled as quantum channels. Suppose we have a system qubit that we want to measure without completely destroying it. We take an ancillary qubit from the environment, entangle it with the system qubit via a CNOT gate, and then trace out (or measure) the environment qubit.</p>
+<p>Entangling the system and environment qubits via a CNOT gate sets the system qubit as the control and the environment qubit as the target. If the environment is initialized in the state <span class="arithmatex">\(\vert{}0\rangle\)</span>, a system qubit in state <span class="arithmatex">\(\vert{}0\rangle\)</span> leaves the environment unchanged, while a system qubit in state <span class="arithmatex">\(\vert{}1\rangle\)</span> flips the environment to <span class="arithmatex">\(\vert{}1\rangle\)</span>. The environment qubit thus perfectly correlates with the system qubit in the computational basis, acting as a proxy that we can trace out.</p>
+<p>We can write this out in the Stinespring representation. Let the initial system state be a superposition <span class="arithmatex">\(\vert{}\psi\rangle = \alpha\vert{}0\rangle + \beta\vert{}1\rangle\)</span>. Its density matrix <span class="arithmatex">\(\rho_s\)</span> is:</p>
+<div class="arithmatex">\[\rho_s = \vert{}\alpha\vert{}^2\vert{}0\rangle\langle0\vert{} + \alpha\beta^\*\vert{}0\rangle\langle1\vert{} + \alpha^*\beta\vert{}1\rangle\langle0\vert{} + \vert{}\beta\vert{}^2\vert{}1\rangle\langle1\vert{}\]</div>
+<p>The combined initial state of the joint system is <span class="arithmatex">\(\rho_s \otimes \vert{}0\rangle\langle0\vert{}_e\)</span>.</p>
+<p>The unitary CNOT operation <span class="arithmatex">\(U\)</span> cannot be written via its truth table as:</p>
+<div class="arithmatex">\[U = \vert{}00\rangle\langle00\vert{} + \vert{}01\rangle\langle01\vert{} + \vert{}10\rangle\langle11\vert{} + \vert{}11\rangle\langle10\vert{}\]</div>
+<p>Applying the unitary evolution to the joint initial state <span class="arithmatex">\(U (\rho_s \otimes \vert{}0\rangle\langle0\vert{}_e) U^\dagger\)</span> yields the entangled density matrix:  </p>
+<div class="arithmatex">\[\rho_{total} = \vert{}\alpha\vert{}^2\vert{}00\rangle\langle00\vert{} + \alpha\beta^\*\vert{}00\rangle\langle11\vert{} + \alpha^\*\beta\vert{}11\rangle\langle00\vert{} + \vert{}\beta\vert{}^2\vert{}11\rangle\langle11\vert{}\]</div>
+<p>To find the output state of the system <span class="arithmatex">\(\rho_o\)</span>, we trace out the environment:</p>
+<div class="arithmatex">\[\rho_o = (I_s \otimes \langle 0 \vert{}) \rho_{total} (I_s \otimes \vert{} 0 \rangle) + (I_s \otimes \langle 1 \vert{}) \rho_{total} (I_s \otimes \vert{} 1 \rangle)\]</div>
+<p>Evaluating these partial inner products annihilates the off-diagonal cross-terms, leaving:</p>
+<div class="arithmatex">\[\rho_o = \vert{}\alpha\vert{}^2\vert{}0\rangle\langle0\vert{}_s + \vert{}\beta\vert{}^2\vert{}1\rangle\langle1\vert{}_s\]</div>
+<p>We can arrive at this same result directly using Kraus operators. For <span class="arithmatex">\(E_0\)</span>:</p>
+<div class="arithmatex">\[E_0 = (I_s \otimes \langle 0 \vert{}_e) U (I_s \otimes \vert{} 0 \rangle_e)\]</div>
+<p>Since <span class="arithmatex">\(U\)</span> applied to <span class="arithmatex">\(\vert{}0\rangle_e\)</span> yields <span class="arithmatex">\(\vert{}0\rangle_s\langle0\vert{}_s \otimes \vert{}0\rangle_e + \vert{}1\rangle_s\langle1\vert{}_s \otimes \vert{}1\rangle_e\)</span>, applying the bra <span class="arithmatex">\(\langle 0\vert{}_e\)</span> isolates the <span class="arithmatex">\(\vert{}0\rangle_s\)</span> component:  </p>
+<div class="arithmatex">\[E_0 = \vert{}0\rangle\langle0\vert{}_s\]</div>
+<p>Similarly for <span class="arithmatex">\(E_1\)</span>:</p>
+<div class="arithmatex">\[E_1 = (I_s \otimes \langle 1 \vert{}_e) U (I_s \otimes \vert{} 0 \rangle_e) = \vert{}1\rangle\langle1\vert{}_s\]</div>
+<p>Applying these Kraus operators to <span class="arithmatex">\(\rho_s\)</span> yields <span class="arithmatex">\(\rho_o = E_0\rho_sE_0^\dagger + E_1\rho_sE_1^\dagger\)</span>, which evaluates exactly to <span class="arithmatex">\(\vert{}\alpha\vert{}^2\vert{}0\rangle\langle0\vert{}_s + \vert{}\beta\vert{}^2\vert{}1\rangle\langle1\vert{}_s\)</span>.</p>
+<h3 id="choi-representation">Choi Representation<a class="headerlink" href="#choi-representation" title="Permanent link">&para;</a></h3>
+<p>The Choi representation is mathematically isomorphic to the Kraus and Stinespring representations. In essence, it maps a quantum channel to a single bipartite state by passing half of a maximally entangled state through the channel. This serves as a static matrix representation of the channel's action on all possible input states.  </p>
+<p>To construct the Choi matrix, we first define an unnormalized, maximally entangled state across two identical <span class="arithmatex">\(d\)</span>-dimensional Hilbert spaces:</p>
+<div class="arithmatex">\[\vert{}\Phi\rangle = \sum_{i=1}^d \vert{}i\rangle \otimes \vert{}i\rangle\]</div>
+<p>We then apply the channel transformation <span class="arithmatex">\(T\)</span> exclusively to the first subsystem, while applying the identity operation <span class="arithmatex">\(I\)</span> to the second subsystem.</p>
+<p>Because a general quantum channel <span class="arithmatex">\(T\)</span> might involve noise, decoherence, or measurement, the output is not guaranteed to remain a pure state. It is mathematically evaluated as a density matrix, known as the Choi matrix:  </p>
+<div class="arithmatex">\[\rho_{\text{Choi}} = (T \otimes I) (\vert{}\Phi\rangle\langle\Phi\vert{})\]</div>
+<p>The outer product of the initial state <span class="arithmatex">\(\vert{}\Phi\rangle\)</span> expands to:</p>
+<div class="arithmatex">\[\vert{}\Phi\rangle\langle\Phi\vert{} = \sum_{i=1}^d \sum_{j=1}^d (\vert{}i\rangle\langle j\vert{}_A) \otimes (\vert{}i\rangle\langle j\vert{}_B)\]</div>
+<p>Applying <span class="arithmatex">\(T \otimes I\)</span> to this expansion yields the explicit formula for the Choi matrix:</p>
+<div class="arithmatex">\[\rho_{\text{Choi}} = \sum_{i=1}^d \sum_{j=1}^d T(\vert{}i\rangle\langle j\vert{}_A) \otimes \vert{}i\rangle\langle j\vert{}_B\]</div>
+<p>The resulting <span class="arithmatex">\(\rho_{\text{Choi}}\)</span> is a <span class="arithmatex">\(d^2 \times d^2\)</span> matrix.  </p>
+<p>For the completely dephasing measurement channel discussed previously (<span class="arithmatex">\(d=2\)</span>), the channel acts by annihilating off-diagonal coherence terms. Its action on the standard basis operators is:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(T(\vert{}0\rangle\langle0\vert{}) = \vert{}0\rangle\langle0\vert{}\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(T(\vert{}1\rangle\langle1\vert{}) = \vert{}1\rangle\langle1\vert{}\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(T(\vert{}0\rangle\langle1\vert{}) = 0\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(T(\vert{}1\rangle\langle0\vert{}) = 0\)</span></p>
+</li>
+</ul>
+<p>Using the unnormalized <span class="arithmatex">\(2\)</span>-qubit state <span class="arithmatex">\(\vert{}\Phi\rangle = \vert{}00\rangle + \vert{}11\rangle\)</span>, the input matrix is:</p>
+<div class="arithmatex">\[\vert{}\Phi\rangle\langle\Phi\vert{} = \vert{}00\rangle\langle00\vert{} + \vert{}00\rangle\langle11\vert{} + \vert{}11\rangle\langle00\vert{} + \vert{}11\rangle\langle11\vert{}\]</div>
+<p>Applying <span class="arithmatex">\(T \otimes I\)</span> maps each basis term as follows:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(T(\vert{}0\rangle\langle0\vert{}) \otimes \vert{}0\rangle\langle0\vert{} = \vert{}00\rangle\langle00\vert{}\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(T(\vert{}0\rangle\langle1\vert{}) \otimes \vert{}0\rangle\langle1\vert{} = 0\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(T(\vert{}1\rangle\langle0\vert{}) \otimes \vert{}1\rangle\langle0\vert{} = 0\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(T(\vert{}1\rangle\langle1\vert{}) \otimes \vert{}1\rangle\langle1\vert{} = \vert{}11\rangle\langle11\vert{}\)</span></p>
+</li>
+</ul>
+<p>Summing the non-zero terms yields the final Choi matrix for the dephasing channel:</p>
+<div class="arithmatex">\[\rho_{\text{Choi}} = \vert{}00\rangle\langle00\vert{} + \vert{}11\rangle\langle11\vert{}\]</div>
+<p>Notice that the initial pure entangled state has been reduced to a separable, classical mixed state.</p>
+<h4 id="choi-jamiokowski-isomorphism">Choi-Jamiołkowski isomorphism<a class="headerlink" href="#choi-jamiokowski-isomorphism" title="Permanent link">&para;</a></h4>
+<p>This isomorphism is useful when, given a state in one subsystem, we want to recover the "partner" state in the other subsystem. What do we mean by "partner" state? Consider a global state <span class="arithmatex">\(\vert{}\phi^*\rangle_{AB}\)</span>, which is maximally entangled (often defined as <span class="arithmatex">\(\sum\vert{}i\rangle_A\vert{}i\rangle_B\)</span>). Because it is maximally entangled, it acts as a perfect quantum conduit. Projecting a vector into subsystem <span class="arithmatex">\(B\)</span> forces subsystem <span class="arithmatex">\(A\)</span> to assume a steered relative state that is perfectly equivalent to mathematically applying the matrix operator to that vector. </p>
+<p>If we are given a state in <span class="arithmatex">\(B\)</span>, the Choi-Jamiołkowski isomorphism allows us to recover the corresponding "partner" state in <span class="arithmatex">\(A\)</span>. This can be done by taking a partial inner product between the full <span class="arithmatex">\(\vert{}\phi^*\rangle_{AB}\)</span> state with the state of the subspace for which we want to recover the partner. Loosely speaking, we are taking the component of the combined state vector onto a state vector in <span class="arithmatex">\(B\)</span>, which gives us the operator components in the surviving subsystem <span class="arithmatex">\(A\)</span>.</p>
+<p>Let the unnormalized bipartite state be expressed in an orthonormal basis as:</p>
+<div class="arithmatex">\[\vert{}\phi^*\rangle_{AB}=\sum_{i,j}c_{ij}^*\vert{}i\rangle_A\otimes\vert{}j\rangle_B\]</div>
+<p>Let the arbitrary input state in <span class="arithmatex">\(\mathcal{H}_B\)</span> be:</p>
+<div class="arithmatex">\[\vert{}\chi^*\rangle_B=\sum_kd_k^*\vert{}k\rangle_B\]</div>
+<p>Taking the Hermitian conjugate to form the bra removes the complex conjugate from the coefficients:</p>
+<div class="arithmatex">\[_B\langle\chi^*\vert{}=\sum_kd_k{_B}\langle k\vert{}\]</div>
+<p>Now, apply the partial inner product. The bra <span class="arithmatex">\(_B\langle k\vert{}\)</span> only interacts with the <span class="arithmatex">\(\mathcal{H}_B\)</span> portion of the tensor product, enforcing the orthogonality condition <span class="arithmatex">\(\langle k\vert{}j\rangle=\delta_{kj}\)</span>:</p>
+<div class="arithmatex">\[_B\langle\chi^*\vert{}\phi^*\rangle_{AB}=\left(\sum_kd_k{_B}\langle k\vert{}\right)\left(\sum_{i,j}c_{ij}^*\vert{}i\rangle_A\otimes\vert{}j\rangle_B\right)\]</div>
+<div class="arithmatex">\[_B\langle\chi^*\vert{}\phi^*\rangle_{AB}=\sum_{i,j}d_jc_{ij}^*\vert{}i\rangle_A\]</div>
+<p>The <span class="arithmatex">\(\mathcal{H}_B\)</span> subspace is completely traced out (eaten). The resulting object is strictly a linear superposition of <span class="arithmatex">\(\vert{}i\rangle_A\)</span> basis vectors. It is a pure state living entirely in the surviving subsystem <span class="arithmatex">\(\mathcal{H}_A\)</span>.</p>
+<h3 id="what-drives-environmental-interference">What Drives Environmental Interference<a class="headerlink" href="#what-drives-environmental-interference" title="Permanent link">&para;</a></h3>
+<p>Having seen how measurement can be modelled as a quantum channel, we can use this framework to intuitively understand how the environment decoheres a quantum system. Environmental interference occurs when the environment builds a correlation with the principal system's states, effectively becoming entangled with them. </p>
+<p>Let <span class="arithmatex">\(\{\vert{}e_k\rangle\}\)</span> represent the states in the environment that become entangled with the system's orthonormal basis states. If the environment is to perfectly distinguish the system's orthonormal basis states, then the environment states <span class="arithmatex">\(\vert{}e_k\rangle\)</span> corresponding to system basis states must themselves be orthogonal. This means the environment has essentially performed a projective measurement on the system. In this limit of maximal entanglement with the environment, the quantum coherence between the system's basis states is completely destroyed. The quantum information leaks into the correlations with the environment, effectively destroying the "integrity" of the channel, and the reduced state of the system becomes a purely classical statistical mixture or ensemble.</p>
+<p>Based on this, we can also define the Kraus rank as the minimum number of Kraus operators required in any valid Kraus representation of that channel. A Kraus rank of <span class="arithmatex">\(1\)</span> indicates that the channel can be described by a single Kraus operator (which must be a unitary matrix to satisfy the completeness relation). Physically, this means the principal system and the environment remain completely separable (unentangled) throughout the interaction. The environment does not acquire any information about the system, representing an ideal closed-system unitary evolution.</p>
+<p>If the Kraus rank is equal to the dimension of the principal system <span class="arithmatex">\(d\)</span>, it represents processes like complete dephasing (which requires <span class="arithmatex">\(d\)</span> operators, such as the orthogonal projectors of the measurement basis). However, this is not the maximum possible decoherence. Maximum decoherence, such as the completely depolarizing channel, which maps any input state to the maximally mixed state <span class="arithmatex">\(I/d\)</span>, requires a Kraus rank of <span class="arithmatex">\(d^2\)</span>. The value <span class="arithmatex">\(d^2\)</span> is the absolute upper bound on the Kraus rank for any quantum channel acting on a <span class="arithmatex">\(d\)</span>-dimensional Hilbert space.</p>
+<h3 id="writing-out-unitary-operators-in-basis-terms">Writing out Unitary Operators in Basis Terms<a class="headerlink" href="#writing-out-unitary-operators-in-basis-terms" title="Permanent link">&para;</a></h3>
+<p>A unitary operation can be described in terms of basis states by writing out the truth table in terms of the sum of <span class="arithmatex">\(\vert{}finalstate\rangle\langle initialstate\vert\)</span> fir all initial states. For any computational basis state <span class="arithmatex">\(\vert{}x\rangle\)</span>, if a classical truth table dictates that the gate maps <span class="arithmatex">\(\vert{}x\rangle \to \vert{}f(x)\rangle\)</span>, the quantum operator is mathematically constructed as <span class="arithmatex">\(\sum_x \vert{}f(x)\rangle\langle x\vert{}\)</span>.</p>
+<p>For eg. the NOT operator can be written as <span class="arithmatex">\(\vert{}0\rangle\langle1\vert{} + \vert{}1\rangle\langle0\vert{}\)</span>, which is just the Pauli X matrix. </p>
+<p>As another eg. the CNOT operator with the first bit as the control can be written as:</p>
+<div class="arithmatex">\[U_{\text{CNOT}} = \vert{}00\rangle\langle00\vert{} + \vert{}01\rangle\langle01\vert{} + \vert{}11\rangle\langle10\vert{} + \vert{}10\rangle\langle11\vert{}\]</div>
+<p>Note that if we know that the target bit is in an initial state of <span class="arithmatex">\(\vert{}0\rangle\)</span>, we <em>cannot</em> simply remove the terms above that are relevant to a target bit of <span class="arithmatex">\(\vert{}1\rangle\)</span>. The unitary operator's matrix representation must remain completely independent of the data being routed through it. To restrict the operation based on known initialization parameters, the input density matrix or state vector is modified, never the channel representation itself.</p>
+<h3 id="channels-the-bloch-ball">Channels &amp; the Bloch Ball<a class="headerlink" href="#channels-the-bloch-ball" title="Permanent link">&para;</a></h3>
+<p>When a density matrix <span class="arithmatex">\(\rho\)</span> of a single qubit is represented in the Bloch Ball as <span class="arithmatex">\(1/2(I + \sigma \cdot r)\)</span>, the length of the Bloch radial vector for <span class="arithmatex">\(\rho^2\)</span> is <span class="arithmatex">\(1/2(1+|r|^2)\)</span>. Thus, the length remains <span class="arithmatex">\(1\)</span> only if it was already <span class="arithmatex">\(1\)</span> for <span class="arithmatex">\(\rho\)</span> itself i.e. it was a pure state. For every mixed state, the radius will remain less than 1. </p>
+<p>The Bloch Ball geometry can be helpful in getting an intuitive idea of what happens to a qubit when it passes through a channel. In general, for any channel, if r is the radial vector of channel input and r' is the radial vector of channel output, then the affine transformation <span class="arithmatex">\(r' = M \cdot r + c\)</span> holds true, where <span class="arithmatex">\(M = O \cdot S\)</span>, with <span class="arithmatex">\(S\)</span> a symmetric matrix representing a symmetric compression/expansion of the ball, <span class="arithmatex">\(O\)</span> a rotation of the radial vector, and <span class="arithmatex">\(c\)</span> a complex constant displacement of the ball's center. </p>
+<p><strong>Symmetric compression/expansion:</strong> When the center remains fixed (<span class="arithmatex">\(\vec{c} = 0\)</span>) but the sphere contracts asymmetrically, the channel is unital. The environment is not exchanging energy with the system or biasing it toward a specific energetic ground state. If the sphere preserves its full radius strictly along one axis (for example, the <span class="arithmatex">\(z\)</span>-axis) while contracting along the others (<span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span>), it models a process where specific classical information is immune to the noise. States containing superposition (which rely on the <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span> axes for relative phase) have their off-diagonal density matrix elements suppressed. The states do not collapse to a specific pure state. Instead, they collapse inward toward the preserved axis. A pure state like <span class="arithmatex">\(\vert{}+\rangle\)</span> on the <span class="arithmatex">\(x\)</span>-axis will shrink directly toward the origin, eventually becoming the maximally mixed state <span class="arithmatex">\(I/2\)</span>. It loses its quantum coherence (phase) but retains its underlying 50/50 classical probability distribution. This is the behaviour of a dephasing channel (described below).</p>
+<p><strong>Rotation:</strong> Pure decoherence or damping channels typically align with the coordinate axes. However, if the system-environment interaction Hamiltonian contains terms that do not commute with the system's internal Hamiltonian or the noise generator, the channel imparts an effective over-rotation or phase precession.</p>
+<p><strong>Center shift:</strong> The center of the ball does not shift for channels like bit flip or phase flip (described below), which typically represent pure noise. The environment measures or randomizes the system, but it has no directional bias. A shifting center physically represents an asymmetric energy exchange or thermal relaxation between the qubit and its environment, such as in amplitude damping channels. The environment acts as an energetic sink or a thermal bath with a preferred equilibrium state. It actively absorbs energy from (or pumps energy into) the qubit, pulling the state away from the center and toward that environmental equilibrium, regardless of the qubit's initial configuration.</p>
+<p>If the ball is moving upwards, for eg. it starts at the South pole or the excited state <span class="arithmatex">\(\vert{}1\rangle\)</span> and moves towards the center, it is losing energy to the environment. If the qubit is moving downwards, for eg. from the ground state <span class="arithmatex">\(\vert{}0\rangle\)</span>, it is absorbing energy from the environment. Thus, channels like amplitude damping result in the ball moving towards the North Pole.</p>
+<p><strong>Ball contraction:</strong> If the ball contracts symmetrically, all 3 coordinates axes are decay at the exact same rate towards the origin or the maximally mixed state. This represents total information loss or randomization. </p>
+<p>In quantum statistical mechanics, the thermal equilibrium state of a qubit interacting with a heat bath at temperature <span class="arithmatex">\(T\)</span> is governed by the Boltzmann distribution. The temperature <span class="arithmatex">\(T\)</span> dictates the ratio of populations between the ground and excited states. A zero-temperature bath (<span class="arithmatex">\(T = 0\)</span>) absorbs all energy, driving the system to <span class="arithmatex">\(\vert{}0\rangle\)</span> (a shifted sphere). An infinite-temperature bath (<span class="arithmatex">\(T \to \infty\)</span>) injects massive thermal noise, completely overpowering the energy gap between <span class="arithmatex">\(\vert{}0\rangle\)</span> and <span class="arithmatex">\(\vert{}1\rangle\)</span>. The populations equalize at 50/50.</p>
+<p>A symmetric contraction (called the depolarizing channel) is the exact mathematical model for a qubit submerged in a thermal bath at infinite temperature. The environment is so chaotic that it completely scrambles the qubit's orientation, destroying both its quantum coherence (the <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span> axes) and its classical bit value (the <span class="arithmatex">\(z\)</span> axis) uniformly.</p>
+<h3 id="evaluating-a-channel-via-the-bloch-ball">Evaluating a Channel via the Bloch Ball<a class="headerlink" href="#evaluating-a-channel-via-the-bloch-ball" title="Permanent link">&para;</a></h3>
+<p>As an example, consider the initial state <span class="arithmatex">\(\rho=\frac{1}{2}(\vert{}0\rangle\langle0\vert{}+\vert{}+\rangle\langle+\vert{})\)</span>. If we apply an <span class="arithmatex">\(X\)</span> operation to this, we can calculate the final state with <span class="arithmatex">\(X\rho X\)</span>. However, we can also use the Bloch ball.</p>
+<p>We consider <span class="arithmatex">\(\rho\)</span> as a weighted addition of two vectors on the Bloch sphere, one pointing to the North Pole (for <span class="arithmatex">\(\vert{}0\rangle\langle0\vert{}\)</span>) and the other along the positive x-axis (for <span class="arithmatex">\(\vert{}+\rangle\langle+\vert{}\)</span>). The probabilistic sum of these is angled at <span class="arithmatex">\(45^\circ\)</span> between the x and z axes. Applying an <span class="arithmatex">\(X\)</span> gate is the same as rotating by <span class="arithmatex">\(180^\circ\)</span> around the x-axis, and so the new state will be <span class="arithmatex">\(\frac{1}{2}(\vert{}1\rangle\langle1\vert{}+\vert{}+\rangle\langle+\vert{})\)</span>.</p>
+<p>More concretely, the Bloch vector <span class="arithmatex">\(\vec{r}\)</span> of a density matrix is simply the probabilistically weighted sum of the constituent pure state vectors. <span class="arithmatex">\(\vert{}0\rangle\langle0\vert{}\)</span> sits at the North Pole: <span class="arithmatex">\((0,0,1)\)</span> and <span class="arithmatex">\(\vert{}+\rangle\langle+\vert{}\)</span> sits on the positive x-axis: <span class="arithmatex">\((1,0,0)\)</span>.</p>
+<p>Taking the weighted sum yields the vector angled at <span class="arithmatex">\(45^\circ\)</span> in the x-z plane: <span class="arithmatex">\(\vec{r}=\frac{1}{2}(0,0,1)+\frac{1}{2}(1,0,0)=(0.5,0,0.5)\)</span>. Applying the <span class="arithmatex">\(X\)</span> gate keeps the x-coordinate unchanged and flips the y- and z-coordinates to give us the output Bloch vector <span class="arithmatex">\((0.5,0,-0.5)=\frac{1}{2}(0,0,-1)+\frac{1}{2}(1,0,0)\)</span>, which is <span class="arithmatex">\(\frac{1}{2}(\vert{}1\rangle\langle1\vert{}+\vert{}+\rangle\langle+\vert{})\)</span>.</p>
+<p>We can also use the Bloch vector to calculate the expectation value of the observable. The expectation value is given by <span class="arithmatex">\(\text{Tr}(X\rho)\)</span>. If <span class="arithmatex">\(\rho=\frac{1}{2}(I+r_xX+r_yY+r_zZ)\)</span>, and noting that the trace of all non-identity Pauli matrices is <span class="arithmatex">\(0\)</span>, we get</p>
+<div class="arithmatex">\[\text{Tr}[X\rho]=\text{Tr}\left[\frac{1}{2}(X+r_xI+r_yiZ-r_ziY)\right]\]</div>
+<div class="arithmatex">\[\text{Tr}[X\rho]=\frac{1}{2}(0+2r_x+0-0)=r_x\]</div>
+<p>The ultimate shortcut is that the expectation value of a Pauli observable is exactly equal to its corresponding coordinate on the Bloch vector.</p>
+<h3 id="types-of-channels">Types of Channels<a class="headerlink" href="#types-of-channels" title="Permanent link">&para;</a></h3>
+<p><strong>Bit Flip (<span class="arithmatex">\(\Delta\)</span>):</strong> This is represented by the Pauli <span class="arithmatex">\(X\)</span> or NOT gate:</p>
+<div class="arithmatex">\[X = \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{bmatrix}\]</div>
+<p>It flips <span class="arithmatex">\(\vert{}0\rangle\)</span> to <span class="arithmatex">\(\vert{}1\rangle\)</span> and vice versa. It leaves the <span class="arithmatex">\(\vert{}+\rangle\)</span> state unaffected and changes <span class="arithmatex">\(\vert{}-\rangle\)</span> to <span class="arithmatex">\(-\vert{}-\rangle\)</span> because these are the eigenstates of <span class="arithmatex">\(X\)</span> with eigenvalues <span class="arithmatex">\(1\)</span> and <span class="arithmatex">\(-1\)</span> respectively. However, because this <span class="arithmatex">\(-1\)</span> is a global phase, the density matrix for <span class="arithmatex">\(\vert{}-\rangle\)</span> remains completely unaffected (<span class="arithmatex">\(\vert{}-\rangle\langle-\vert{} \to \vert{}-\rangle\langle-\vert{}\)</span>). </p>
+<p>Consider a channel where <span class="arithmatex">\(p\)</span> is the probability of a bit flip occurring. A noisy quantum channel represents a classical statistical mixture of events, not a coherent superposition. Therefore, the channel is modeled using the Kraus operators <span class="arithmatex">\(K_0 = \sqrt{1-p}I\)</span> and <span class="arithmatex">\(K_1 = \sqrt{p}X\)</span>. Given an input density matrix <span class="arithmatex">\(\rho\)</span>, the output density matrix is:</p>
+<div class="arithmatex">\[\Delta(\rho) = K_0 \rho K_0^\dagger + K_1 \rho K_1^\dagger\]</div>
+<div class="arithmatex">\[\Delta(\rho) = (1-p)\rho + p X \rho X\]</div>
+<p>To analyze the effect on the Bloch ball, we can express the input density matrix using its Bloch vector <span class="arithmatex">\(\vec{r} = (r_x, r_y, r_z)\)</span>:</p>
+<div class="arithmatex">\[\rho = \frac{1}{2}(I + r_x X + r_y Y + r_z Z)\]</div>
+<p>Applying the bit-flip channel and using the anti-commutation relations of the Pauli matrices (<span class="arithmatex">\(XYX = -Y\)</span> and <span class="arithmatex">\(XZX = -Z\)</span>, as well as the fact that all Pauli matrices square to Identity), the <span class="arithmatex">\(X \rho X\)</span> term becomes:</p>
+<div class="arithmatex">\[X \rho X = \frac{1}{2}(I + r_x X - r_y Y - r_z Z)\]</div>
+<p>Substituting this back into the channel equation yields the final output state:</p>
+<div class="arithmatex">\[\Delta(\rho) = \frac{1}{2} \left[ I + r_x X + (1-2p)r_y Y + (1-2p)r_z Z \right]\]</div>
+<p>The Bloch ball contracts towards the <span class="arithmatex">\(x\)</span>-axis. Geometrically, the sphere deforms into a prolate ellipsoid (cigar-shaped) with the <span class="arithmatex">\(x\)</span>-axis remaining as the major axis of length 1. Since the <span class="arithmatex">\(x\)</span>-axis is unaffected, the output will tend to randomize and lose information along the <span class="arithmatex">\(y\)</span> and <span class="arithmatex">\(z\)</span> axes, but preserve information perfectly along the <span class="arithmatex">\(x\)</span>-axis.</p>
+<p><strong>Phase Flip (<span class="arithmatex">\(\Lambda\)</span>):</strong> This is represented by the Pauli <span class="arithmatex">\(Z\)</span> matrix:</p>
+<div class="arithmatex">\[Z = \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{bmatrix}\]</div>
+<p>It changes <span class="arithmatex">\(\vert{}1\rangle\)</span> to <span class="arithmatex">\(-\vert{}1\rangle\)</span> and leaves <span class="arithmatex">\(\vert{}0\rangle\)</span> unchanged, once again because these are the eigenstates of <span class="arithmatex">\(Z\)</span> with eigenvalues <span class="arithmatex">\(-1\)</span> and <span class="arithmatex">\(1\)</span>, respectively.</p>
+<p>Consider a channel where <span class="arithmatex">\(p\)</span> is the probability of a phase flip occurring. The channel is modeled using the Kraus operators <span class="arithmatex">\(K_0 = \sqrt{1-p}I\)</span> and <span class="arithmatex">\(K_1 = \sqrt{p}Z\)</span>. Given an input density matrix <span class="arithmatex">\(\rho\)</span>, the output density matrix is:</p>
+<div class="arithmatex">\[\Lambda(\rho) = (1-p)\rho + p Z \rho Z\]</div>
+<p>To analyze the effect on the Bloch ball, the <span class="arithmatex">\(Z \rho Z\)</span> term becomes:</p>
+<div class="arithmatex">\[Z \rho Z = \frac{1}{2}(I - r_x X - r_y Y + r_z Z)\]</div>
+<p>Substituting this back into the channel equation yields the final output state:</p>
+<div class="arithmatex">\[\Lambda(\rho) = \frac{1}{2} \left[ I + (1-2p)r_x X + (1-2p)r_y Y + r_z Z \right]\]</div>
+<p>The Bloch ball contracts towards the <span class="arithmatex">\(z\)</span>-axis. This represents a phase-damping or dephasing channel. If <span class="arithmatex">\(p = 1/2\)</span>, the factor <span class="arithmatex">\((1-2p)\)</span> becomes <span class="arithmatex">\(0\)</span>. This specific case is the completely dephasing channel, which entirely removes all cross terms in the density matrix, destroying quantum coherence and creating a classical statistical ensemble.</p>
+<p>When completely dephased, a superposition <span class="arithmatex">\(\vert{}\psi\rangle = \alpha\vert{}0\rangle + \beta\vert{}1\rangle\)</span>, initially represented by the density matrix:</p>
+<div class="arithmatex">\[\begin{bmatrix} \vert{}\alpha\vert{}^2 &amp; \alpha\beta^* \\ \alpha^*\beta &amp; \vert{}\beta\vert{}^2 \end{bmatrix}\]</div>
+<p>becomes the diagonal matrix:</p>
+<div class="arithmatex">\[\begin{bmatrix} \vert{}\alpha\vert{}^2 &amp; 0 \\ 0 &amp; \vert{}\beta\vert{}^2 \end{bmatrix}\]</div>
+<p>This aligns precisely with what occurs when a projective measurement is made along the <span class="arithmatex">\(z\)</span>-axis; the off-diagonal coherence is lost, and the system collapses into a classical distribution of <span class="arithmatex">\(\vert{}0\rangle\)</span> and <span class="arithmatex">\(\vert{}1\rangle\)</span> with probabilities <span class="arithmatex">\(\vert{}\alpha\vert{}^2\)</span> and <span class="arithmatex">\(\vert{}\beta\vert{}^2\)</span>, respectively.</p>
+<p>The Choi representation of this channel is given by:</p>
+<div class="arithmatex">\[J(\Delta) = \sum_{a,b=0}^{1} \vert{}a\rangle\langle b\vert{} \otimes \Delta(\vert{}a\rangle\langle b\vert{})\]</div>
+<p>Because the completely dephasing channel annihilates the off-diagonal coherence terms (<span class="arithmatex">\(\Delta(\vert{}0\rangle\langle1\vert{}) = 0\)</span> and <span class="arithmatex">\(\Delta(\vert{}1\rangle\langle0\vert{}) = 0\)</span>) while preserving the diagonals, the summation simplifies to:</p>
+<div class="arithmatex">\[J(\Delta) = \vert{}0\rangle\langle 0\vert{} \otimes \vert{}0\rangle\langle 0\vert{} + \vert{}1\rangle\langle 1\vert{} \otimes \vert{}1\rangle\langle 1\vert{}\]</div>
+<p>As a block matrix, the tensor product expansion is written as:</p>
+<div class="arithmatex">\[J(\Delta) = \begin{pmatrix} \Delta\begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 0 \end{pmatrix} &amp; \Delta\begin{pmatrix} 0 &amp; 1 \\ 0 &amp; 0 \end{pmatrix} \\ \Delta\begin{pmatrix} 0 &amp; 0 \\ 1 &amp; 0 \end{pmatrix} &amp; \Delta\begin{pmatrix} 0 &amp; 0 \\ 0 &amp; 1 \end{pmatrix} \end{pmatrix} = \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 \end{pmatrix}\]</div>
+<p><strong>Depolarizing Channel:</strong> This channel contracts the input state towards the completely mixed state. Consider a channel where <span class="arithmatex">\(p\)</span> is the probability of replacing the input state with the maximally mixed state <span class="arithmatex">\(I/2\)</span>. The state of the system after passing through this channel is:</p>
+<div class="arithmatex">\[\Gamma(\rho) = \frac{p}{2}I + (1-p)\rho\]</div>
+<p>Using the operator identity <span class="arithmatex">\(\rho + X\rho X + Y\rho Y + Z\rho Z = 2I\)</span> and substituting this for <span class="arithmatex">\(2I\)</span> (meaning <span class="arithmatex">\(I/2 = \frac{1}{4}(\rho + X\rho X + Y\rho Y + Z\rho Z)\)</span>) into the previous equation gives us:</p>
+<div class="arithmatex">\[\Gamma(\rho) = \left(1-\frac{3p}{4}\right)\rho + \frac{p}{4}(X\rho X + Y\rho Y + Z\rho Z)\]</div>
+<p>This means we have the following Kraus operators:</p>
+<p><span class="arithmatex">\(K_0 = \sqrt{1-\frac{3p}{4}}I, \quad K_1 = \frac{\sqrt{p}}{2}X, \quad K_2 = \frac{\sqrt{p}}{2}Y, \quad K_3 = \frac{\sqrt{p}}{2}Z\)</span></p>
+<p>We could have also parameterized the depolarizing channel in terms of discrete Pauli errors:</p>
+<div class="arithmatex">\[\Gamma(\rho) = (1-p)\rho + \frac{p}{3}(X \rho X + Y\rho Y + Z\rho Z)\]</div>
+<p>In this parameterization, the channel applies one of the three Pauli errors symmetrically (each with probability <span class="arithmatex">\(p/3\)</span>). Because the Pauli operations anti-commute, applying them with equal probability isotropically contracts the Bloch vector in all three spatial directions, drawing it directly toward the center point (the maximally mixed state). Note that the probability <span class="arithmatex">\(p\)</span> here and the probability <span class="arithmatex">\(p\)</span> in the previous parametrization are not equal; if <span class="arithmatex">\(p_1\)</span> is the probability of replacement with the mixed state and <span class="arithmatex">\(p_2\)</span> is the probability of a Pauli error, they are related by <span class="arithmatex">\(p_1 = \frac{4}{3}p_2\)</span>.</p>
+<p>The Choi representation of this channel is given by:</p>
+<div class="arithmatex">\[\begin{aligned} J(\Omega) &amp;= \sum_{a,b=0}^{1} \vert{}a\rangle\langle b\vert{} \otimes \Omega(\vert{}a\rangle\langle b\vert{}) \\ &amp;= \vert{}0\rangle\langle 0\vert{} \otimes \frac{\mathbb{1}}{2} + \vert{}1\rangle\langle 1\vert{} \otimes \frac{\mathbb{1}}{2} \\ &amp;= \frac{1}{2} \mathbb{1} \otimes \mathbb{1} \end{aligned}\]</div>
+<p>As a block matrix:</p>
+<div class="arithmatex">\[J(\Omega) = \begin{pmatrix} \Omega\begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 0 \end{pmatrix} &amp; \Omega\begin{pmatrix} 0 &amp; 1 \\ 0 &amp; 0 \end{pmatrix} \\ \Omega\begin{pmatrix} 0 &amp; 0 \\ 1 &amp; 0 \end{pmatrix} &amp; \Omega\begin{pmatrix} 0 &amp; 0 \\ 0 &amp; 1 \end{pmatrix} \end{pmatrix} = \begin{pmatrix} \frac{1}{2} &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; \frac{1}{2} &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; \frac{1}{2} &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; \frac{1}{2} \end{pmatrix}\]</div>
+<p><strong>Aside:</strong> You can also write the channel's Bloch ball parametrization in the falling way:</p>
+<div class="arithmatex">\[\mathcal{E}(\rho) = p\frac{I}{2} + (1-p)\left[\frac{1}{2}(I + \vec{r} \cdot \vec{\sigma})\right]$$$$\mathcal{E}(\rho) = \frac{1}{2}\left(I + (1-p)\vec{r} \cdot \vec{\sigma}\right)\]</div>
+<h2 id="trace-distance-fidelity">Trace Distance &amp; Fidelity<a class="headerlink" href="#trace-distance-fidelity" title="Permanent link">&para;</a></h2>
+<p>Having some means to measure how similar two systems are, for example, how close the output of a channel is to the input, is essential in quantum information theory. The main mechanism for this is assessing how well two systems can be distinguished by measurement. In essence, the distance between two systems corresponds to the best possible distinction one could make if given complete freedom to choose any set of measurement operators (POVMs).</p>
+<p>For classical probability distributions <span class="arithmatex">\(P\)</span> and <span class="arithmatex">\(Q\)</span> over the same index set, distinguishing between them utilizes probabilities <span class="arithmatex">\(p_i\)</span> and <span class="arithmatex">\(q_i\)</span>. The classical trace distance is given by:</p>
+<div class="arithmatex">\[D(P, Q)=\frac{1}{2}\sum_i\vert{}p_i-q_i\vert{}\]</div>
+<p>The division by two is a sort of normalizing factor that turns <span class="arithmatex">\(D\)</span> into a metric. For eg. in the worst case distance, for eg. where <span class="arithmatex">\(p = (1,0)\)</span> and <span class="arithmatex">\(q=(0,1)\)</span>, <span class="arithmatex">\(D = 1\)</span> thanks to the division by 2. </p>
+<p>The classical fidelity measures similarity rather than distance, given by:</p>
+<div class="arithmatex">\[F(P, Q)=\sum_i\sqrt{p_i q_i}\]</div>
+<p>For quantum pure states <span class="arithmatex">\(\vert{}\phi\rangle\)</span> and <span class="arithmatex">\(\vert{}\psi\rangle\)</span>, the distance and similarity metrics are evaluated using the trace norm and inner product. Note that  the below definitions are analogous to the above, keeping in mind that the components of the state vectors are the probability amplitudes or the square roots of probabilities <span class="arithmatex">\(p_i, q_i\)</span>:</p>
+<div class="arithmatex">\[D(\vert{}\phi\rangle, \vert{}\psi\rangle)=  \sqrt{1-\vert{}\langle\phi\vert{}\psi\rangle\vert{}^2}\]</div>
+<div class="arithmatex">\[F(\vert{}\phi\rangle, \vert{}\psi\rangle)=\vert{}\langle\phi\vert{}\psi\rangle\vert{} = \sum_i\sqrt {p_iq_i}\]</div>
+<p>Extending these to quantum mixed states represented by density matrices <span class="arithmatex">\(\rho\)</span> and <span class="arithmatex">\(\sigma\)</span>, the trace distance and fidelity are formulated as:</p>
+<div class="arithmatex">\[D(\rho, \sigma)=\frac{1}{2}\text{Tr}\vert{}\rho-\sigma\vert{}\]</div>
+<div class="arithmatex">\[F(\rho, \sigma)=\text{Tr}\left(\sqrt{\sqrt{\rho}\sigma\sqrt{\rho}}\right)\]</div>
+<p>When <span class="arithmatex">\([\rho, \sigma] = 0\)</span> i.e. they commute, the two matrices share the exact same eigenbasis and they can be simultaneously diagonalized. Because they commute, <span class="arithmatex">\(\rho^{1/2}\)</span> and <span class="arithmatex">\(\sigma\)</span> also commute. We can rearrange the matrix product and the fidelity simplifies to :</p>
+<div class="arithmatex">\[F(\rho, \sigma) = \text{Tr}\left(\sqrt{\rho \sigma}\right)\]</div>
+<p>Why is this formula valid only when the two matrices commute? If <span class="arithmatex">\(\rho\)</span> and <span class="arithmatex">\(\sigma\)</span> do not commute, their product <span class="arithmatex">\(\rho \sigma\)</span> is generally not a Hermitian matrix. If a matrix is not Hermitian and positive semi-definite, it does not have a standard principal square root. You cannot mathematically take <span class="arithmatex">\(\sqrt{\rho \sigma}\)</span> because the resulting eigenvalues could be complex or undefined.</p>
+<p>Physically, two quantum states commute if and only if they are classical probability distributions masquerading as density matrices. If they share an eigenbasis, there is no quantum superposition or relative phase difference between them. The trace evaluates strictly to the sum of the square roots of their multiplied probabilities (<span class="arithmatex">\(F = \sum \sqrt{p_i q_i}\)</span>), which is known in classical statistics as the Bhattacharyya coefficient.</p>
+<p>Note that the absolute value of an operator <span class="arithmatex">\(A\)</span> is defined as <span class="arithmatex">\(\vert{}A\vert{}=\sqrt{A^\dagger A}\)</span>, and to find the square root of a matrix, we can find the spectral decomposition of the matrix. The square root of the matrix can be found by taking the square roots of the eigenvalues while retaining the same eigenvectors.</p>
+<p>There is a simple formula for the fidelity between a mixed and a pure state. We can write,</p>
+<div class="arithmatex">\[\sqrt{\sigma}\rho\sqrt{\sigma} = (\vert{}\psi\rangle\langle\psi\vert{}) \rho (\vert{}\psi\rangle\langle\psi\vert{})\]</div>
+<p>Pulling the scalar expectation value out and taking the square root, and noting that any projection operator is idempotent i.e. it is its own square, we have,</p>
+<div class="arithmatex">\[\sqrt{\sqrt{\sigma}\rho\sqrt{\sigma}} = \sqrt{\langle\psi\vert{}\rho\vert{}\psi\rangle} \vert{}\psi\rangle\langle\psi\vert{}\]</div>
+<div class="arithmatex">\[F(\vert{}\psi\rangle, \rho) = \sqrt{\langle\psi\vert{}\rho\vert{}\psi\rangle} \; \text{Tr}(\vert{}\psi\rangle\langle\psi\vert{})\]</div>
+<p>Since <span class="arithmatex">\(\text{Tr}(\vert{}\psi\rangle\langle\psi\vert{}) = \langle\psi\vert{}\psi\rangle = 1\)</span>, we have, </p>
+<div class="arithmatex">\[F(\vert{}\psi\rangle, \rho) = \sqrt{\langle\psi\vert{}\rho\vert{}\psi\rangle}\]</div>
+<p>For single-qubit states, trace distance can be written in terms of their Bloch vectors <span class="arithmatex">\(\vec{r}_\rho\)</span> and <span class="arithmatex">\(\vec{r}_\sigma\)</span> as:</p>
+<div class="arithmatex">\[D(\rho, \sigma)=\frac{1}{2}\vert{}\vec{r}_\rho-\vec{r}_\sigma\vert{}\]</div>
+<p>As two systems tend towards similarity, trace distance decreases while fidelity increases. For pure states, their relationship is exactly <span class="arithmatex">\(F=\sqrt{1-D^2}\)</span>, analogous to <span class="arithmatex">\(cos \theta = \sqrt{1-sin^2 \theta}\)</span>. For general mixed states, this becomes an inequality bound (the Fuchs-van de Graaf inequalities): <span class="arithmatex">\(1-F\leq D\leq\sqrt{1-F^2}\)</span>.</p>
+<p>When comparing pure states and mixed states it is possible to make a stronger statement than (9.110) about the relationship between trace distance and fidelity. Prove that</p>
+<div class="arithmatex">\[1 - F(\vert{}\psi\rangle, \sigma)^2 \leq D(\vert{}\psi\rangle, \sigma).\]</div>
+<p>In keeping with the statement above that the distance between two systems corresponds to the best possible distinction one can make between them via POVMs, we can also write</p>
+<div class="arithmatex">\[D(\rho, \sigma) = \max_{\{E_m\}} D(p_m, q_m)$$
+$$F(\rho, \sigma) = \min_{\{E_m\}} F(p_m, q_m),\]</div>
+<p>where the maximum and minimum is over all POVMs <span class="arithmatex">\(\{E_m\}\)</span>, and <span class="arithmatex">\(p_m \equiv \text{tr}(\rho E_m)\)</span>, <span class="arithmatex">\(q_m \equiv \text{tr}(\sigma E_m)\)</span> are the probability distributions for <span class="arithmatex">\(\rho\)</span> and <span class="arithmatex">\(\sigma\)</span> corresponding to the POVM <span class="arithmatex">\(\{E_m\}\)</span>. This represents the optimal measurement strategy that provides the best possible statistical distinction between the two quantum states.</p>
+<p>Note that given two system, their trace distance cannot increase, and their fidelity cannot decrease after they pass through a system i.e. a channel will always make two systems similar. This is called contractivity of trace distance and monotonicity of fidelity.</p>
+<div class="arithmatex">\[D(\mathcal{E}(\rho), \mathcal{E}(\sigma)) \le D(\rho, \sigma)\]</div>
+<div class="arithmatex">\[F(\mathcal{E}(\rho), \mathcal{E}(\sigma)) \ge F(\rho, \sigma)\]</div>
+<h3 id="uhlmanns-theorem">Uhlmann's Theorem<a class="headerlink" href="#uhlmanns-theorem" title="Permanent link">&para;</a></h3>
+<p>Uhlmann's theorem states that for any two density matrices <span class="arithmatex">\(\rho\)</span> and <span class="arithmatex">\(\sigma\)</span> acting on a system Hilbert space <span class="arithmatex">\(\mathcal{H}_S\)</span>, the fidelity between them is equal to the maximum overlap (inner product) between their purifications in an extended composite Hilbert space <span class="arithmatex">\(\mathcal{H}_S \otimes \mathcal{H}_R\)</span>.</p>
+<div class="arithmatex">\[F(\rho, \sigma) = \max_{\vert{}\phi\rangle, \vert{}\psi\rangle} \vert{}\langle\psi\vert{}\phi\rangle\vert{}\]</div>
+<p>However, since purifications of a state are not unique and are related by unitary transformations, the process of iterating over say, all psi, involves applying unitary transformations to it, which could just as well be absorbed into the process of iterating over phi. Instead, we can fix an arbitrary purification <span class="arithmatex">\(\vert{}\psi\rangle\)</span> for <span class="arithmatex">\(\rho\)</span>. The theorem is then stated as a maximization over all possible purifications <span class="arithmatex">\(\vert{}\phi\rangle\)</span> of <span class="arithmatex">\(\sigma\)</span>:</p>
+<div class="arithmatex">\[F(\rho, \sigma) = \max_{\vert{}\phi\rangle} \vert{}\langle\psi\vert{}\phi\rangle\vert{}\]</div>
+<p>Equivalently, if we start with fixed arbitrary purifications <span class="arithmatex">\(\vert{}\psi\rangle\)</span> of <span class="arithmatex">\(\rho\)</span> and <span class="arithmatex">\(\vert{}\phi\rangle\)</span> of <span class="arithmatex">\(\sigma\)</span>, the maximization is over all unitary operators <span class="arithmatex">\(U\)</span> acting only on the reference space <span class="arithmatex">\(R\)</span>:</p>
+<div class="arithmatex">\[F(\rho, \sigma) = \max_{U} \vert{}\langle\psi\vert{} (I \otimes U) \vert{}\phi\rangle\vert{}\]</div>
+<h3 id="convexity-of-trace-distance">Convexity of Trace Distance<a class="headerlink" href="#convexity-of-trace-distance" title="Permanent link">&para;</a></h3>
+<p>Trace distance is a convex function. Mathematically, for any classical probability distribution <span class="arithmatex">\(p_i\)</span> and sets of density matrices <span class="arithmatex">\(\rho_i\)</span> and <span class="arithmatex">\(\sigma_i\)</span>, the trace distance satisfies the following inequality:</p>
+<div class="arithmatex">\[D\left(\sum_i p_i \rho_i, \sum_i p_i \sigma_i\right) \le \sum_i p_i D(\rho_i, \sigma_i)\]</div>
+<p>The left side evaluates the distinguishability of two statistical mixtures. The right side evaluates the weighted average of their individual distinguishabilities.</p>
+<p>The inequality proves that mixing states always shrinks the maximum distinguishability. If a system is subject to classical noise or random variations (meaning you do not know the exact index <span class="arithmatex">\(i\)</span>), the resulting mixed states are forced closer together. Ignorance acts as a blur, making it physically harder to tell the two ensembles apart than if you knew exactly which state <span class="arithmatex">\(i\)</span> was prepared.</p>
+<p>Similarly for fidelity, it is concave, and we have,</p>
+<div class="arithmatex">\[F\left(\sum_i p_i \rho_i, \sum_i p_i \sigma_i\right) \ge \sum_i p_i F(\rho_i, \sigma_i)\]</div>
+<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
+<p>A phase-flip (dephasing) channel that applies a <span class="arithmatex">\(Z\)</span> gate with probability <span class="arithmatex">\(p\)</span> alters a Bloch vector <span class="arithmatex">\((r_x, r_y, r_z)\)</span> to <span class="arithmatex">\(((1-2p)r_x, (1-2p)r_y, r_z)\)</span>. The trace distance between input and output is <span class="arithmatex">\(p\sqrt{r_x^2+r_y^2}\)</span>. Similarly, a bit-flip channel applying an <span class="arithmatex">\(X\)</span> gate with probability <span class="arithmatex">\(p\)</span> results in a trace distance between input and output of <span class="arithmatex">\(p\sqrt{r_y^2+r_z^2}\)</span>.</p>
+<p>This relates to the notion of fixed points—states in the Bloch ball where the channel's input and output are identical. Different channels possess different fixed points. For example, the dephasing channel's fixed points are any states on the <span class="arithmatex">\(z\)</span>-axis, represented by the Bloch vector set <span class="arithmatex">\(\{(0, 0, r_z)\}\)</span>. The bit-flip channel's fixed points are any states on the <span class="arithmatex">\(x\)</span>-axis, given by <span class="arithmatex">\(\{(r_x, 0, 0)\}\)</span>.</p>
+<h2 id="quantum-error-correction">Quantum Error Correction<a class="headerlink" href="#quantum-error-correction" title="Permanent link">&para;</a></h2>
+<h3 id="discretization-of-quantum-errors">Discretization of Quantum Errors<a class="headerlink" href="#discretization-of-quantum-errors" title="Permanent link">&para;</a></h3>
+<p>Classical bits are discrete; a bit is either 0 or 1. Qubits, however, can exist in a superposition of states. Geometrically, on the Bloch sphere, a qubit can lie at any point on the surface, not just the North and South poles.</p>
+<p>For example, utilizing the polar angle <span class="arithmatex">\(\theta\)</span> and azimuthal angle <span class="arithmatex">\(\phi\)</span>, a generic single-qubit pure state is written as the superposition:</p>
+<div class="arithmatex">\[\vert{}\psi\rangle = \cos(\theta/2)\vert{}0\rangle + e^{i\phi}\sin(\theta/2)\vert{}1\rangle\]</div>
+<p>An error on a qubit can conceptually involve a continuum of deviations in <span class="arithmatex">\(\theta\)</span> and <span class="arithmatex">\(\phi\)</span>. However, because quantum mechanics is linear, any error operation (whether a unitary evolution or a general completely positive trace-preserving map) acting on a single qubit can be expanded in the basis of the <span class="arithmatex">\(2 \times 2\)</span> Pauli matrices: <span class="arithmatex">\(I\)</span>, <span class="arithmatex">\(X\)</span>, <span class="arithmatex">\(Y\)</span>, and <span class="arithmatex">\(Z\)</span>. Since <span class="arithmatex">\(Y = iXZ\)</span> (ignoring global phase factors), an error <span class="arithmatex">\(E\)</span> is often expressed in terms of the operators <span class="arithmatex">\(I\)</span>, <span class="arithmatex">\(X\)</span>, <span class="arithmatex">\(Z\)</span>, and their product <span class="arithmatex">\(XZ\)</span>:</p>
+<div class="arithmatex">\[E = \alpha_I I + \alpha_X X + \alpha_Z Z + \alpha_{XZ} XZ\]</div>
+<p>If the error operation is unitary (<span class="arithmatex">\(E^\dagger E = I\)</span>), the complex coefficients satisfy <span class="arithmatex">\(\sum \vert{}\alpha_i\vert{}^2 = 1\)</span>. When this error operation acts on a state <span class="arithmatex">\(\vert{}\psi\rangle\)</span>, the output is a superposition of the discrete Pauli errors acting on the state:</p>
+<div class="arithmatex">\[E\vert{}\psi\rangle = \alpha_I\vert{}\psi\rangle + \alpha_X X\vert{}\psi\rangle + \alpha_Z Z\vert{}\psi\rangle + \alpha_{XZ} XZ\vert{}\psi\rangle\]</div>
+<p>This mathematical structure means that discretizing quantum errors is possible. If we perform an appropriate measurement, the superposition collapses into exactly one of these four branches. We then only need to correct for one of a finite set of discrete errors (an <span class="arithmatex">\(X\)</span> error, a <span class="arithmatex">\(Z\)</span> error, or both, i.e., <span class="arithmatex">\(XZ\)</span>). The challenge is that measuring the data qubit directly collapses its quantum state, destroying the encoded computational information.</p>
+<p>To resolve this, we do not measure the data directly. Instead, we encode the information of a single abstract "logical qubit" into a highly entangled state of multiple "physical qubits" (e.g., using a repetition code or Shor code). We then entangle these physical data qubits with additional auxiliary qubits, known as "ancilla qubits." By measuring only the ancilla qubits, we can extract the error syndrome, information about which error occurred, without disturbing the superposition of the logical qubit.</p>
+<p>For instance, a quantum repetition code relies on parity checks that function similarly to a majority vote. A 3-qubit repetition code can detect and correct an error on a single physical qubit. An 11-qubit repetition code can correct errors on up to 5 qubits.</p>
+<p>Measurements of the ancilla qubits yield a syndrome that indicates whether an <span class="arithmatex">\(X\)</span>, <span class="arithmatex">\(Z\)</span>, or <span class="arithmatex">\(XZ\)</span> error occurred and on which physical qubit. Once the specific error is identified, we apply a recovery operation. Because Pauli operators are Hermitian and unitary, they are their own inverses (<span class="arithmatex">\(P^2 = I\)</span>). If the syndrome indicates an <span class="arithmatex">\(X\)</span> error occurred on a specific physical qubit, applying the <span class="arithmatex">\(X\)</span> operator to that same qubit reverses the error: <span class="arithmatex">\(XX\vert{}\psi\rangle = \vert{}\psi\rangle\)</span>.</p>
+<h3 id="correcting-for-a-bit-flip-in-a-3-bit-code">Correcting for a Bit Flip in a 3-bit code<a class="headerlink" href="#correcting-for-a-bit-flip-in-a-3-bit-code" title="Permanent link">&para;</a></h3>
+<p>Note that qubits can undergo discrete errors, primarily represented by the Pauli matrices: bit flips (<span class="arithmatex">\(X\)</span>), phase flips (<span class="arithmatex">\(Z\)</span>), and combinations of the two (<span class="arithmatex">\(Y = iXZ\)</span>). Let us say we want to detect and correct a bit-flip error (<span class="arithmatex">\(Z\)</span>) using a 3-qubit repetition code.</p>
+<p>Mathematically, the encoding for a bit-flip code is achieved by first encoding the state into a standard bit-flip code, and then rotating the basis using Hadamard gates. We take an initial data qubit state <span class="arithmatex">\(\vert{}\psi\rangle = \alpha\vert{}0\rangle + \beta\vert{}1\rangle\)</span> and two ancillary qubits initialized to <span class="arithmatex">\(\vert{}0\rangle\)</span>.</p>
+<p>We use the data qubit as the control for two CNOT gates targeting the ancillary qubits. This generates an entangled GHZ-like state in the computational basis:</p>
+<div class="arithmatex">\[\alpha\vert{}000\rangle + \beta\vert{}111\rangle\]</div>
+<p>When this repetition code is passed through an error-prone channel which introduces, for example, a bit flip on the first qubit, we get an output from the channel of:</p>
+<div class="arithmatex">\[\alpha\vert{}100\rangle + \beta\vert{}011\rangle\]</div>
+<p>If we now just take a majority vote, we can determine the error and fix it. Note that we do not actually need to measure the individual values of the qubits, which would collapse the superposition. We assume that only one qubit has flipped. Therefore, we only need to determine which of the qubits disagrees with the other two and flip it back.</p>
+<p>To do this, we measure the parity observables <span class="arithmatex">\(Z_1 \otimes Z_2\)</span> and <span class="arithmatex">\(Z_2 \otimes Z_3\)</span>. The <span class="arithmatex">\(Z\)</span> operator leaves the state <span class="arithmatex">\(\vert{}0\rangle\)</span> unchanged (eigenvalue <span class="arithmatex">\(+1\)</span>) but applies a phase of <span class="arithmatex">\(-1\)</span> to the state <span class="arithmatex">\(\vert{}1\rangle\)</span>. If two qubits are in the same computational state (<span class="arithmatex">\(\vert{}00\rangle\)</span> or <span class="arithmatex">\(\vert{}11\rangle\)</span>), the joint observable <span class="arithmatex">\(Z \otimes Z\)</span> yields an eigenvalue of <span class="arithmatex">\(+1\)</span>. If they are different (<span class="arithmatex">\(\vert{}01\rangle\)</span> or <span class="arithmatex">\(\vert{}10\rangle\)</span>), it yields <span class="arithmatex">\(-1\)</span>.</p>
+<p>Measuring <span class="arithmatex">\(Z_1 \otimes Z_2\)</span> and <span class="arithmatex">\(Z_2 \otimes Z_3\)</span> gives us a unique error syndrome indicating which qubit differs from the rest:</p>
+<ul>
+<li>
+<p>If <span class="arithmatex">\(Z_1 \otimes Z_2\)</span> returns <span class="arithmatex">\(-1\)</span> and <span class="arithmatex">\(Z_2 \otimes Z_3\)</span> returns <span class="arithmatex">\(+1\)</span>, then qubit 1 is different (flipped).</p>
+</li>
+<li>
+<p>If <span class="arithmatex">\(Z_2 \otimes Z_3\)</span> returns <span class="arithmatex">\(-1\)</span> and <span class="arithmatex">\(Z_1 \otimes Z_2\)</span> returns <span class="arithmatex">\(+1\)</span>, then qubit 3 is different (flipped).</p>
+</li>
+<li>
+<p>If both return <span class="arithmatex">\(-1\)</span>, then qubit 2 is different (flipped).</p>
+</li>
+</ul>
+<p>To perform let us say the <span class="arithmatex">\(Z_1 \otimes Z_2\)</span> measurement without collapsing the data qubits, we initialize an ancilla qubit in the state <span class="arithmatex">\(\vert{}0\rangle_A\)</span>, pass it through a Hadamard gate to create the superposition <span class="arithmatex">\(\frac{1}{\sqrt{2}}(\vert{}0\rangle_A + \vert{}1\rangle_A)\)</span> or <span class="arithmatex">\(\vert{}+\rangle_A\)</span>, and use it as the control for a controlled-<span class="arithmatex">\((Z_1 \otimes Z_2)\)</span> operation targeting the data qubits. Due to phase kickback, the eigenvalue of the target state is kicked back to the relative phase of the control qubit.</p>
+<p>For the error state where the first qubit has flipped (<span class="arithmatex">\(\alpha\vert{}100\rangle + \beta\vert{}011\rangle\)</span>), the controlled operation yields:</p>
+<div class="arithmatex">\[C-(Z_1 \otimes Z_2) \left[ \frac{1}{\sqrt{2}}(\vert{}0\rangle_A + \vert{}1\rangle_A) \otimes (\alpha\vert{}100\rangle + \beta\vert{}011\rangle) \right]\]</div>
+<div class="arithmatex">\[= \frac{1}{\sqrt{2}} \left[ \vert{}0\rangle_A \otimes (\alpha\vert{}100\rangle + \beta\vert{}011\rangle) + \vert{}1\rangle_A \otimes (Z_1 \otimes Z_2)(\alpha\vert{}100\rangle + \beta\vert{}011\rangle) \right]\]</div>
+<p>Since both <span class="arithmatex">\(\vert{}100\rangle\)</span> and <span class="arithmatex">\(\vert{}011\rangle\)</span> are eigenstates of <span class="arithmatex">\(Z_1 \otimes Z_2\)</span> with eigenvalue <span class="arithmatex">\(-1\)</span>, this becomes:</p>
+<div class="arithmatex">\[= \frac{1}{\sqrt{2}} \left[ \vert{}0\rangle_A \otimes (\alpha\vert{}100\rangle + \beta\vert{}011\rangle) - \vert{}1\rangle_A \otimes (\alpha\vert{}100\rangle + \beta\vert{}011\rangle) \right]\]</div>
+<div class="arithmatex">\[= \frac{1}{\sqrt{2}}(\vert{}0\rangle_A - \vert{}1\rangle_A) \otimes (\alpha\vert{}100\rangle + \beta\vert{}011\rangle)\]</div>
+<div class="arithmatex">\[= \vert{}-\rangle_A \otimes (\alpha\vert{}100\rangle + \beta\vert{}011\rangle)\]</div>
+<p>Applying a final Hadamard gate to the ancilla transforms <span class="arithmatex">\(\vert{}-\rangle_A\)</span> to <span class="arithmatex">\(\vert{}1\rangle_A\)</span>. Measuring the ancilla as <span class="arithmatex">\(1\)</span> indicates the <span class="arithmatex">\(-1\)</span> eigenvalue, successfully extracting the syndrome without destroying the superposition of the data qubits.</p>
+<p>This setup works because to detect a bit flip, we depend on the <span class="arithmatex">\(Z\)</span> gate, which differentiates between <span class="arithmatex">\(\vert{}0\rangle\)</span> and <span class="arithmatex">\(\vert{}1\rangle\)</span>. A bit flip is essentially a transition between <span class="arithmatex">\(\vert{}0\rangle\)</span> and <span class="arithmatex">\(\vert{}1\rangle\)</span>. Both of these are eigenstates of <span class="arithmatex">\(Z\)</span> with different eigenvalues (<span class="arithmatex">\(+1\)</span> and <span class="arithmatex">\(-1\)</span>, respectively). The fact that they are eigenstates of <span class="arithmatex">\(Z\)</span> is what allows phase kickback to function without entangling the data with the ancilla. The fact that they have different eigenvalues allows us to receive distinct measurement readouts for the two states.</p>
+<h3 id="correcting-for-a-phase-flip-in-a-3-bit-code">Correcting for a Phase Flip in a 3-bit code<a class="headerlink" href="#correcting-for-a-phase-flip-in-a-3-bit-code" title="Permanent link">&para;</a></h3>
+<p>Similarly, to detect a relative phase flip—for example, an error that changes <span class="arithmatex">\(\frac{1}{\sqrt{2}}(\vert{}0\rangle + \vert{}1\rangle)\)</span> to <span class="arithmatex">\(\frac{1}{\sqrt{2}}(\vert{}0\rangle - \vert{}1\rangle)\)</span>, or <span class="arithmatex">\(\vert{}+\rangle\)</span> to <span class="arithmatex">\(\vert{}-\rangle\)</span>—we need an operator that differentiates between <span class="arithmatex">\(\vert{}+\rangle\)</span> and <span class="arithmatex">\(\vert{}-\rangle\)</span>. We need an operator where these two are eigenstates with different eigenvalues. That operator is the <span class="arithmatex">\(X\)</span> gate.</p>
+<p>To correct phase flips, we therefore encode our logical qubit into a phase-flip repetition code. We first create repetition qubits (e.g., <span class="arithmatex">\(\alpha\vert{}000\rangle + \beta\vert{}111\rangle\)</span>) and then convert the physical data qubits via Hadamard gates into the <span class="arithmatex">\(X\)</span> basis, yielding <span class="arithmatex">\(\alpha\vert{}+++\rangle + \beta\vert{}---\rangle\)</span>. When passing these through a noisy channel, a phase flip (<span class="arithmatex">\(Z\)</span> error) acts on these states exactly like a bit flip (<span class="arithmatex">\(X\)</span> error) acts on the computational basis.</p>
+<p>To detect this, we measure the parity observables <span class="arithmatex">\(X_1 \otimes X_2\)</span> and <span class="arithmatex">\(X_2 \otimes X_3\)</span>. This is done using two ancilla qubits initialized to <span class="arithmatex">\(\vert{}0\rangle_A\)</span>, passed through Hadamard gates to create <span class="arithmatex">\(\vert{}+\rangle_A\)</span>, and used as control qubits for controlled-<span class="arithmatex">\((X_1 \otimes X_2)\)</span> and controlled-<span class="arithmatex">\((X_2 \otimes X_3)\)</span> operations on the data qubits. Once again, phase kickback transfers the relative phase difference into the ancilla superposition. Passing the ancillae through final Hadamard gates converts the relative phase into a definitive <span class="arithmatex">\(0\)</span> or <span class="arithmatex">\(1\)</span> measurement, yielding the error syndrome.</p>
+<h3 id="correcting-for-a-bit-phase-flip-in-a-9-bit-shor-code">Correcting for a Bit &amp; Phase Flip in a 9-bit Shor Code<a class="headerlink" href="#correcting-for-a-bit-phase-flip-in-a-9-bit-shor-code" title="Permanent link">&para;</a></h3>
+<p>The catch is that if we want to detect both bit and phase flips, we cannot rely solely on the 3-qubit repetition code. Measuring the syndrome for one type of error collapses the superposition required to correct the other, and the code lacks the degrees of freedom to protect against both simultaneously. To accommodate both, we create a 9-qubit concatenated code known as the Shor code.</p>
+<p>The Shor code encodes a single logical qubit, <span class="arithmatex">\(\vert{}0\rangle_L\)</span>, into three blocks of the phase-flip protection state <span class="arithmatex">\(\vert{}+\rangle_{3b}\)</span>, where <span class="arithmatex">\(\vert{}+\rangle_{3b} = \frac{1}{\sqrt{2}}(\vert{}000\rangle + \vert{}111\rangle)\)</span>. The full logical <span class="arithmatex">\(\vert{}0\rangle_L\)</span> state is therefore:</p>
+<div class="arithmatex">\[\vert{}0\rangle_L = \left[ \frac{1}{\sqrt{2}}(\vert{}000\rangle + \vert{}111\rangle) \right]^{\otimes 3}\]</div>
+<p>Similarly, the logical qubit <span class="arithmatex">\(\vert{}1\rangle_L\)</span> is encoded using <span class="arithmatex">\(\vert{}-\rangle_{3b}\)</span> blocks:</p>
+<div class="arithmatex">\[\vert{}1\rangle_L = \left[ \frac{1}{\sqrt{2}}(\vert{}000\rangle - \vert{}111\rangle) \right]^{\otimes 3}\]</div>
+<p>Bit flips can be detected by <span class="arithmatex">\(Z_1Z_2\)</span> and <span class="arithmatex">\(Z_2Z_3\)</span>, along with their equivalents in the other blocks: <span class="arithmatex">\(Z_4Z_5\)</span>, <span class="arithmatex">\(Z_5Z_6\)</span>, <span class="arithmatex">\(Z_7Z_8\)</span>, and <span class="arithmatex">\(Z_8Z_9\)</span>. Phase flips must be detected across the <span class="arithmatex">\(\vert{} \pm \rangle_{3b}\)</span> blocks because an error in phase (and therefore a difference in relative phase) can only be detected by comparing the superpositions across these blocks. Therefore, phase flips are detected by the joint operators <span class="arithmatex">\(X_1X_2X_3X_4X_5X_6\)</span> and <span class="arithmatex">\(X_4X_5X_6X_7X_8X_9\)</span>. This yields 8 syndrome generators. Since there are 9 physical qubits in the code, we are left with <span class="arithmatex">\(9 - 8 = 1\)</span> encoded data qubit.</p>
+<p>To convert <span class="arithmatex">\(\vert{}0\rangle_L\)</span> into <span class="arithmatex">\(\vert{}1\rangle_L\)</span> (i.e., to perform a logical <span class="arithmatex">\(\bar{X}\)</span> operation), we apply a <span class="arithmatex">\(Z\)</span> gate to one qubit in each of the three blocks, such as <span class="arithmatex">\(Z_1Z_4Z_7\)</span>. This flips the sign on the <span class="arithmatex">\(\vert{}111\rangle\)</span> terms in every <span class="arithmatex">\(\vert{} \pm \rangle_{3b}\)</span> block, converting between the two logical states. </p>
+<p>We could also use <span class="arithmatex">\(Z_1Z_2Z_3Z_4Z_5Z_6Z_7Z_8Z_9\)</span>, but we are particularly interested in the minimum weight operator i.e. the string with the smallest number of non-identity Pauli elements capable of this transformation. This weight defines the distance <span class="arithmatex">\(d\)</span> of the code, which is the minimum number of local physical errors needed to map one valid logical codeword to another. A codeword is a valid string of logical qubits.</p>
+<p>The distance for the Shor code is <span class="arithmatex">\(3\)</span>. The number of errors <span class="arithmatex">\(t\)</span> that can be reliably detected and corrected is given by <span class="arithmatex">\(d \ge 2t + 1\)</span>; hence, <span class="arithmatex">\(t = 1\)</span>. If the number of errors exceeds <span class="arithmatex">\(t\)</span> but is strictly less than <span class="arithmatex">\(d\)</span>, the errors can be detected but not reliably corrected, as the corrupted state may be closer to a different (but still valid) logical codeword.</p>
+<h3 id="stabilizer-formalism">Stabilizer Formalism<a class="headerlink" href="#stabilizer-formalism" title="Permanent link">&para;</a></h3>
+<p>The mechanics of the Shor code can be generalized into the Stabilizer Formalism, which describes a broad class of quantum error correction codes. Several classical linear error correcting codes can also be written in the stabilizer formalism, but we will focus on quantum error correction here.</p>
+<p>Looking at the Shor code, we have 9 total qubits, with 8 syndromes and 1 data bit, and a distance of 3. A stabilizer code encoding <span class="arithmatex">\(k\)</span> logical qubits in <span class="arithmatex">\(n\)</span> physical qubits with distance <span class="arithmatex">\(d\)</span> is denoted as an <span class="arithmatex">\([[n, k, d]]\)</span> code. The Shor code is a <span class="arithmatex">\([[9, 1, 3]]\)</span> code.</p>
+<p>Looking at each of the syndrome detection strings, note that they only trigger a syndrome, i.e. an eigenvalue of <span class="arithmatex">\(-1\)</span> for errors. For all valid codewords, they must trigger an eigenvalue of <span class="arithmatex">\(+1\)</span>. In the stabilizer formalism, the syndrome strings are called the stabilizers because they stabilize or do not disturb valid codewords.</p>
+<p>This tells us that we should construct our stabilizers such that each of them catches one particular error. Or, we can work the other way around and given a group of stabilizers, figure out what errors they can detect.</p>
+<p>All generators of the stabilizer group must commute with each other (<span class="arithmatex">\([g_i, g_j] = 0\)</span>) to ensure they can be measured simultaneously without disturbing the system, as per the requirement of commutativity for compatible observables. The set of all unique products of these <span class="arithmatex">\(n-k\)</span> generators forms the stabilizer group <span class="arithmatex">\(\mathcal{S}\)</span>. For <span class="arithmatex">\(n-k\)</span> independent generators, the group contains <span class="arithmatex">\(2^{n-k}\)</span> elements.</p>
+<p>Notice that each stabilizer can have an eigenvalue of either +1 or -1. Because each independent stabilizer generator restricts the valid codeword space to its <span class="arithmatex">\(+1\)</span> eigenspace (effectively halving the dimension of the allowed Hilbert space), an <span class="arithmatex">\(n\)</span>-qubit system constrained by <span class="arithmatex">\(n-k\)</span> generators leaves a <span class="arithmatex">\(2^k\)</span>-dimensional code space. This code space accommodates <span class="arithmatex">\(k\)</span> logical qubits.</p>
+<p>Operations within this <span class="arithmatex">\(2^k\)</span>-dimensional space are executed by logical operators (<span class="arithmatex">\(\bar{X}\)</span>, <span class="arithmatex">\(\bar{Y}\)</span>, <span class="arithmatex">\(\bar{Z}\)</span>), which are strings formed by applying one of the 4 Pauli operators on each qubit. By definition, logical operators must commute globally with all elements of the stabilizer group (they reside in the normalizer, <span class="arithmatex">\(N(\mathcal{S})\)</span>) so that applying them does not move the state out of the valid code space.</p>
+<p>To see why, note that <span class="arithmatex">\(L C_1 = C_2\)</span> where <span class="arithmatex">\(C_1\)</span> and <span class="arithmatex">\(C_2\)</span> are valid codewords. If <span class="arithmatex">\(g\)</span> is a stabilizer then multiplying with <span class="arithmatex">\(g\)</span> on both sides, we get <span class="arithmatex">\(gL C_1 = gC_2 = C_2\)</span> (because all codewords are eigenstates with eigenvalue 1 for any <span class="arithmatex">\(g\)</span>). Similarly, we can write <span class="arithmatex">\(gC_1 = C_1\)</span>. Multiplying on both sides with <span class="arithmatex">\(L\)</span> we get <span class="arithmatex">\(LgC_1 = LC_1 = C_2\)</span>. Since these results are valid for all <span class="arithmatex">\(C_1\)</span>, <span class="arithmatex">\(Lg = gL\)</span>.</p>
+<p>While they commute with the stabilizers, logical operators corresponding to the same logical qubit must anticommute with each other to to preserve the anticommutativity of operators for a single physical qubit. The logical operators represent the equivalents of the single qubit <span class="arithmatex">\(Z\)</span> and <span class="arithmatex">\(X\)</span> operators, but applied on the logical qubits and depicted by <span class="arithmatex">\(\bar Z\)</span> and <span class="arithmatex">\(\bar X\)</span>. Thus for a 2-logical qubit system, we would have the equivalents for each logical qubit, which would be <span class="arithmatex">\(\bar Z_1\)</span>, <span class="arithmatex">\(\bar X_1\)</span> and <span class="arithmatex">\(\bar Z_2\)</span> and <span class="arithmatex">\(\bar X_2\)</span> </p>
+<p>Note that when we say commute and anticommute, we are referring to these operations on a per qubit basis, and when determining commutativity between multi-qubit Pauli strings, sign changes accumulate per qubit. Operators that anticommute on an even number of individual physical qubits will commute globally. For instance, <span class="arithmatex">\(Z_1Z_2\)</span> commutes with <span class="arithmatex">\(Z_2Z_3\)</span> because <span class="arithmatex">\(Z_2^2\)</span> is the identity. But it does not commute with <span class="arithmatex">\(X_2X_3\)</span> because <span class="arithmatex">\(Z_2\)</span> and <span class="arithmatex">\(X_2\)</span> do not commute. However it will commute with <span class="arithmatex">\(X_1X_2\)</span> since the two minus signs cancel out.</p>
+<p>The <span class="arithmatex">\(n-k\)</span> stabilizer generators combined with the <span class="arithmatex">\(k\)</span> logical <span class="arithmatex">\(\bar{Z}\)</span> operators form a maximally commuting set of <span class="arithmatex">\(n\)</span> observables, which completely defines a unique computational basis state for the full Hilbert space. Generally, the X logical operators are also included in the list as a complete description of the error correction code.</p>
+<p>An error correction code will flag any error that anticommutes with at least one element of the stabilizer group. Errors that are elements of the stabilizer group <span class="arithmatex">\(\mathcal{S}\)</span> are degenerate; they act as the identity operation on the code space and do not corrupt the logical state. However, the code will fail to detect errors that commute with all stabilizers but are not in the stabilizer group (errors in the Normalizer of <span class="arithmatex">\(S\)</span>, <span class="arithmatex">\(N(\mathcal{S}) \setminus \mathcal{S}\)</span>), as these execute undetected logical operations.</p>
+<p>We can calculate the logical qubits by applying the below projector to any unconstrained reference state such as <span class="arithmatex">\(\vert{}+++\rangle\)</span>.</p>
+<div class="arithmatex">\[\prod_i\frac{I+P_i}{2}\]</div>
+<p>where <span class="arithmatex">\(P_i\)</span> is a Pauli stabilizer generator.</p>
+<p>Note that if the reference state is perfectly orthogonal to the target logical state (meaning they have zero mathematical overlap), the projector will completely annihilate it, returning a scalar zero (<span class="arithmatex">\(0\)</span>) instead of a state vector. When you are writing classical software to simulate these projections and you receive a <span class="arithmatex">\(0\)</span> output, the algorithmic response is trivial: you simply discard the result, load a different unentangled basis state (such as <span class="arithmatex">\(\vert{}000\rangle\)</span> or <span class="arithmatex">\(\vert{}+++\rangle\)</span>), and run the projection matrix again until a non-zero vector survives.</p>
+<p>Here is an example of the mechanical derivation for the 3-bit bit-flip repetition code, which encodes <span class="arithmatex">\(k=1\)</span> logical qubit into <span class="arithmatex">\(n=3\)</span> physical qubits.</p>
+<p>To uniquely define the state, we need exactly <span class="arithmatex">\(n=3\)</span> commuting constraint equations.</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(g_1=Z_1Z_2\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(g_2=Z_2Z_3\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(\bar{Z}=Z_1Z_2Z_3\)</span></p>
+</li>
+</ul>
+<p>We construct the global projector <span class="arithmatex">\(\Pi\)</span> by multiplying the filters for all three constraints. To construct <span class="arithmatex">\(\vert{}0\rangle_L\)</span>, we enforce the <span class="arithmatex">\(+\bar{Z}\)</span> condition:</p>
+<div class="arithmatex">\[\Pi=\left(\frac{I+Z_1Z_2}{2}\right)\left(\frac{I+Z_2Z_3}{2}\right)\left(\frac{I+Z_1Z_2Z_3}{2}\right)\]</div>
+<p>If we apply this to the physical vacuum state <span class="arithmatex">\(\vert{}000\rangle\)</span>, the math is trivial because <span class="arithmatex">\(\vert{}000\rangle\)</span> is already a <span class="arithmatex">\(+1\)</span> eigenstate of all three operators. The projector simply outputs <span class="arithmatex">\(\vert{}000\rangle\)</span>.</p>
+<p>To see the filtering mechanics in action, we apply <span class="arithmatex">\(\Pi\)</span> to an unconstrained reference state, such as the uniform superposition:</p>
+<div class="arithmatex">\[\vert{}\psi_{\text{raw}}\rangle=\Pi\vert{}+++\rangle\]</div>
+<div class="arithmatex">\[\vert{}+++\rangle=\frac{1}{2\sqrt{2}}(\vert{}000\rangle+\vert{}001\rangle+\vert{}010\rangle+\vert{}011\rangle+\vert{}100\rangle+\vert{}101\rangle+\vert{}110\rangle+\vert{}111\rangle)\]</div>
+<p>We pass the superposition through each matrix factor sequentially.</p>
+<p><em>Step A: Apply the <span class="arithmatex">\(g_1\)</span> filter</em></p>
+<p>The operator <span class="arithmatex">\(\frac{I+Z_1Z_2}{2}\)</span> annihilates any term where the first and second qubits differ in parity.</p>
+<div class="arithmatex">\[\vert{}\psi_A\rangle=\frac{1}{2\sqrt{2}}(\vert{}000\rangle+\vert{}001\rangle+\vert{}110\rangle+\vert{}111\rangle)\]</div>
+<p><em>Step B: Apply the <span class="arithmatex">\(g_2\)</span> filter</em></p>
+<p>The operator <span class="arithmatex">\(\frac{I+Z_2Z_3}{2}\)</span> annihilates any term where the second and third qubits differ. This isolates the error-correcting subspace.</p>
+<div class="arithmatex">\[\vert{}\psi_B\rangle=\frac{1}{2\sqrt{2}}(\vert{}000\rangle+\vert{}111\rangle)\]</div>
+<p><em>Step C: Apply the <span class="arithmatex">\(\bar{Z}\)</span> filter</em></p>
+<p>The operator <span class="arithmatex">\(\frac{I+Z_1Z_2Z_3}{2}\)</span> evaluates the total <span class="arithmatex">\(Z\)</span>-parity. The term <span class="arithmatex">\(\vert{}000\rangle\)</span> yields an eigenvalue of <span class="arithmatex">\(+1\)</span>, while <span class="arithmatex">\(\vert{}111\rangle\)</span> yields an eigenvalue of <span class="arithmatex">\(-1\)</span> and is annihilated.</p>
+<div class="arithmatex">\[\vert{}\psi_{\text{raw}}\rangle=\frac{1}{2\sqrt{2}}\vert{}000\rangle\]</div>
+<p>Normalizing the surviving vector gives the final logical state:</p>
+<div class="arithmatex">\[\vert{}0\rangle_L=\vert{}000\rangle\]</div>
+<p>Applying the transversal logical bit-flip <span class="arithmatex">\(\bar{X}=X_1X_2X_3\)</span> to this result will flip all three bits, generating <span class="arithmatex">\(\vert{}1\rangle_L=\vert{}111\rangle\)</span>.</p>
+<h3 id="unitary-operations-via-stabilizer-formalism">Unitary Operations via Stabilizer Formalism<a class="headerlink" href="#unitary-operations-via-stabilizer-formalism" title="Permanent link">&para;</a></h3>
+<p>In the Schrodinger picture of Quantum Physics, time evolution and unitary operations are described via the differential equations involved. To simulate these on classical computers involves massive computation. For eg. a <span class="arithmatex">\(2^n\)</span>-dimensional Hilbert space involves solving and tracking <span class="arithmatex">\(2^n\)</span> differential equations. In the Heisenberg picture, upon which the stabilizer formalism is based, we utilize the stabilizers to create simple lookup tables that depict how different operations affect a state.</p>
+<p>Given a unitary operation <span class="arithmatex">\(U\)</span> and a state <span class="arithmatex">\(\vert{}\psi\rangle\)</span> with a set of stabilizer generators <span class="arithmatex">\(\{g\}\)</span>, the state <span class="arithmatex">\(\vert{}\phi\rangle\)</span> after the operation acts on <span class="arithmatex">\(\vert{}\psi\rangle\)</span> will be stabilized by the generators <span class="arithmatex">\(\{UgU^\dagger\}\)</span>. For eg. let us say we apply a Hadamard gate to a single qubit. Note that <span class="arithmatex">\(HXH^\dagger=Z\)</span>; <span class="arithmatex">\(HYH^\dagger=-Y\)</span>; <span class="arithmatex">\(HZH^\dagger=X\)</span>. As a consequence we can deduce that after a Hadamard gate is applied to the quantum state stabilized by <span class="arithmatex">\(Z\)</span> (<span class="arithmatex">\(\vert{}0\rangle\)</span>), the resulting state will be stabilized by <span class="arithmatex">\(X\)</span> (<span class="arithmatex">\(\vert{}+\rangle\)</span>).</p>
+<p>As another example, consider the CNOT gate. We can see that the <span class="arithmatex">\(X_1\)</span> operation on <span class="arithmatex">\(\vert{}\psi\rangle\)</span>, where the first bit is the control bit, becomes an <span class="arithmatex">\(X_1X_2\)</span>.</p>
+<div class="arithmatex">\[(X\otimes I)C=(X\otimes I)(\vert{}0\rangle\langle0\vert{}\otimes I+\vert{}1\rangle\langle1\vert{}\otimes X)\]</div>
+<p>We distribute the terms. Because <span class="arithmatex">\(X\vert{}0\rangle=\vert{}1\rangle\)</span> and <span class="arithmatex">\(X\vert{}1\rangle=\vert{}0\rangle\)</span>, the basis vectors on the control qubit flip:</p>
+<div class="arithmatex">\[=X\vert{}0\rangle\langle0\vert{}\otimes II+X\vert{}1\rangle\langle1\vert{}\otimes IX\]</div>
+<div class="arithmatex">\[=\vert{}1\rangle\langle0\vert{}\otimes I+\vert{}0\rangle\langle1\vert{}\otimes X\]</div>
+<p>Now, we complete the conjugation by multiplying the CNOT operator on the left side of our previous result:</p>
+<div class="arithmatex">\[C(X\otimes I)C=(\vert{}0\rangle\langle0\vert{}\otimes I+\vert{}1\rangle\langle1\vert{}\otimes X)(\vert{}1\rangle\langle0\vert{}\otimes I+\vert{}0\rangle\langle1\vert{}\otimes X)\]</div>
+<p>We expand this multiplication using the standard FOIL method. When we multiply the outer products, any terms containing orthogonal vectors (where <span class="arithmatex">\(\langle0\vert{}1\rangle\)</span> or <span class="arithmatex">\(\langle1\vert{}0\rangle\)</span> appear in the middle) mathematically evaluate to <span class="arithmatex">\(0\)</span>.</p>
+<ul>
+<li>
+<p><strong>First term:</strong> <span class="arithmatex">\((\vert{}0\rangle\langle0\vert{}\otimes I)(\vert{}1\rangle\langle0\vert{}\otimes I)=0\)</span></p>
+</li>
+<li>
+<p><strong>Outside term:</strong> <span class="arithmatex">\((\vert{}0\rangle\langle0\vert{}\otimes I)(\vert{}0\rangle\langle1\vert{}\otimes X)=\vert{}0\rangle\langle1\vert{}\otimes X\)</span></p>
+</li>
+<li>
+<p><strong>Inside term:</strong> <span class="arithmatex">\((\vert{}1\rangle\langle1\vert{}\otimes X)(\vert{}1\rangle\langle0\vert{}\otimes I)=\vert{}1\rangle\langle0\vert{}\otimes X\)</span></p>
+</li>
+<li>
+<p><strong>Last term:</strong> <span class="arithmatex">\((\vert{}1\rangle\langle1\vert{}\otimes X)(\vert{}0\rangle\langle1\vert{}\otimes X)=0\)</span></p>
+</li>
+</ul>
+<p>Only the outside and inside terms survive the multiplication. We factor out the tensor product:</p>
+<div class="arithmatex">\[C(X\otimes I)C=\vert{}0\rangle\langle1\vert{}\otimes X+\vert{}1\rangle\langle0\vert{}\otimes X\]</div>
+<div class="arithmatex">\[=(\vert{}0\rangle\langle1\vert{}+\vert{}1\rangle\langle0\vert{})\otimes X\]</div>
+<p>The resulting term inside the parentheses is the exact geometric definition of the Pauli <span class="arithmatex">\(X\)</span> matrix:</p>
+<div class="arithmatex">\[=X\otimes X\]</div>
+<p>Thus, a state stabilized by <span class="arithmatex">\(X_1\)</span> (<span class="arithmatex">\(\vert{}+\rangle\)</span>) becomes a state stabilized by <span class="arithmatex">\(X_1X_2\)</span> (<span class="arithmatex">\(\vert{}++\rangle\)</span> or <span class="arithmatex">\(\vert{}--\rangle\)</span> or <span class="arithmatex">\(\frac{1}{\sqrt{2}}(\vert{}00\rangle+\vert{}11\rangle)\)</span>).</p>
+<p>Now consider an analysis of the SWAP gate, which can be described by a CNOT gate with control qubit 1, followed by a CNOT gate with control qubit 2 and another CNOT with control 1. The operator <span class="arithmatex">\(Z_1\)</span> transforms through the sequence <span class="arithmatex">\(Z_1\to Z_1\to Z_1Z_2\to Z_2\)</span> and the operator <span class="arithmatex">\(Z_2\)</span> transforms through the sequence <span class="arithmatex">\(Z_2\to Z_1Z_2\to Z_1\to Z_1\)</span>. Similarly, <span class="arithmatex">\(X_1\to X_2\)</span> and <span class="arithmatex">\(X_2\to X_1\)</span> under the circuit. Thus we see the stabilizers swap across qubits 1 and 2. We had no need to perform any matrix multiplication to determine this.</p>
+<h3 id="css-codes">CSS Codes<a class="headerlink" href="#css-codes" title="Permanent link">&para;</a></h3>
+<p>CSS codes are stabilizer codes formed by <span class="arithmatex">\(2\)</span> linear classical codes <span class="arithmatex">\(C_1\)</span> and <span class="arithmatex">\(C_2\)</span> such that <span class="arithmatex">\(C_1^\perp\)</span> is a subset of <span class="arithmatex">\(C_2\)</span>. Note that this also means that <span class="arithmatex">\(C_2^\perp\)</span> is a subset or equal to <span class="arithmatex">\(C_1\)</span>. If the codes are <span class="arithmatex">\([n, k_1, d_1]\)</span> and <span class="arithmatex">\([n, k_2, d_2]\)</span> type, then we can form a quantum error correction code <span class="arithmatex">\([[n, k_1+k_2-n, d]]\)</span> where <span class="arithmatex">\(d\)</span> is greater than or equal to the min of <span class="arithmatex">\(d_1\)</span> and <span class="arithmatex">\(d_2\)</span>.</p>
+<p>To form the CSS code, we take the parity matrices of the classical codes, <span class="arithmatex">\(H_1\)</span> and <span class="arithmatex">\(H_2\)</span>. They will be <span class="arithmatex">\((n-k_1)\times n\)</span> and <span class="arithmatex">\((n-k_2)\times n\)</span> matrices. For one matrix, say <span class="arithmatex">\(H_1\)</span>, replace every <span class="arithmatex">\(1\)</span> in a row of <span class="arithmatex">\(H_1\)</span> by a <span class="arithmatex">\(Z\)</span> for that qubit and a <span class="arithmatex">\(0\)</span> by identity. Similarly, for <span class="arithmatex">\(H_2\)</span>, replace every <span class="arithmatex">\(1\)</span> by an <span class="arithmatex">\(X\)</span> and a <span class="arithmatex">\(0\)</span> by identity. The combined set of stabilizer generators form a CSS code. The logical operators for this code are given by the equivalence classes of codewords that commute with the stabilizers but are not stabilizers themselves. Specifically, the logical <span class="arithmatex">\(X\)</span> operators are formed by the classical codewords in <span class="arithmatex">\(C_1 \setminus C_2^\perp\)</span>, and the logical <span class="arithmatex">\(Z\)</span> operators are formed by the classical codewords in <span class="arithmatex">\(C_2 \setminus C_1^\perp\)</span>.</p>
+<p>For surface codes it is beneficial to adopt a <a href="https://arxiv.org/html/1907.11157">pictorial representation</a> where the basic unit is a four-cycle. These units can be attached together to form larger lattices. Code qubits and ancilla qubits alternate in a lattice with edges connecting them. The red edges represent controlled-X gates, each controlled on an ancilla qubit <span class="arithmatex">\(A\)</span> and acting on a data qubit <span class="arithmatex">\(D\)</span>. Likewise, the blue edges represent controlled-Z operations, each controlled by an ancilla qubit and acting on a data qubit. These controlled operations are the gates with which the stabilizers of the four-cycle are measured. Ancilla qubit <span class="arithmatex">\(A_1\)</span> connects to data qubits <span class="arithmatex">\(D_1\)</span> and <span class="arithmatex">\(D_2\)</span> via red edges, and therefore measures the stabilizer <span class="arithmatex">\(X_{D1}X_{D2}\)</span>. Likewise, ancilla qubit <span class="arithmatex">\(A_2\)</span> measures the stabilizer <span class="arithmatex">\(Z_{D1}Z_{D2}\)</span>.</p>
+<p>In a surface code, stabilizers are local checks. Geometrically, they are closed loops or localized clusters (the crosses and plaquettes). If you multiply adjacent stabilizers together, they merge into larger closed loops. Therefore, any operator inside the stabilizer group <span class="arithmatex">\(\mathcal{S}\)</span> always forms a boundary-less geometric shape on the lattice.</p>
+<p>To find a logical operator, an operator in <span class="arithmatex">\(N(\mathcal{S}) \setminus \mathcal{S}\)</span>, you must draw a string of Pauli operators that satisfies two rules:</p>
+<ol>
+<li>
+<p><strong>Commutation:</strong> It must cross every stabilizer on an even number of qubits (<span class="arithmatex">\(0\)</span> or <span class="arithmatex">\(2\)</span>) so that it commutes.</p>
+</li>
+<li>
+<p><strong>Independence:</strong> It cannot be a closed loop, because all closed loops can be generated by multiplying stabilizers.</p>
+</li>
+</ol>
+<p>The only geometric object that satisfies both rules is an open string that stretches continuously from one boundary of the lattice to the opposite boundary. Because it stretches across the entire lattice, it cannot be formed by local closed loops (it is not in <span class="arithmatex">\(\mathcal{S}\)</span>). Because it passes cleanly through the internal lattice structure, it enters and exits every local stabilizer it touches, guaranteeing it overlaps on exactly <span class="arithmatex">\(2\)</span> qubits (it is in <span class="arithmatex">\(N(\mathcal{S})\)</span>).</p>
+<p>Note that a string that forms a closed loop, either in the bulk or by traveling exclusively along boundaries of its own colour, belongs to the stabilizer group and evaluates to <span class="arithmatex">\(+1\)</span>. It cannot be a logical operator.</p>
+<p>To be a valid logical operator, the string must satisfy one strict geometric condition: it must start on one boundary and terminate on the opposite, disconnected boundary of its own colour. The path traversed to go from one boundary to the other should however be of the same colour, that is red for the <span class="arithmatex">\(X\)</span> operator and blue for the <span class="arithmatex">\(Z\)</span> logical operator.</p>
+<p>So for the <span class="arithmatex">\([[13, 1, 3]]\)</span> code in the paper, <span class="arithmatex">\(X_{11}X_9X_{10}X_8X_3\)</span> is a valid operator as is <span class="arithmatex">\(X_{11}X_6X_4X_5X_3\)</span> and <span class="arithmatex">\(X_{13}X_8X_5X_2\)</span>. They can be continuously deformed into one another by multiplying them by the code's local <span class="arithmatex">\(X\)</span> stabilizers, they represent mathematically equivalent forms of the exact same logical <span class="arithmatex">\(\bar{X}\)</span> operator.</p>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://www.youtube.com/playlist?list=PLOFEBzvs-VvqKKMXX4vbi4EB1uaErFMSO">QISKIT Playlist From IBM</a></li>
+<li>Quantum Computation and Quantum Information - Nielsen &amp; Chuang</li>
+<li>Quantum Error Correction: An Introductory Guide](https://arxiv.org/html/1907.11157)</li>
+<li><a href="https://www.cs.umd.edu/~dgottesm/QECCbook-2026.pdf">Surviving as a Quantum Computer in a Classical World - 2026 - Gottesman</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
