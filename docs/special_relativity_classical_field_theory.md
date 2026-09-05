@@ -879,6 +879,22 @@ $$p^\mu=m\frac{dx^\mu}{d\tau}$$
 
 This is just the definition of 4-momentum. So, the canonical momentum derived from the action principle is physically identical to the kinematic 4-momentum: $P^\mu \equiv p^\mu$
 
+### Action with Potentials in Electromagnetism
+
+If we have to add a potential in order to account for forces operating on the particle (i.e., it is no longer a free particle), we need to add a $V(x)$ term to the Lagrangian. How do we do this while ensuring it is reparameterization and Lorentz invariant?
+
+For the first requirement, using a term that depends on $\dot{x}$ will do the job, as the $d\sigma$ in the denominator cancels out the $d\sigma$ integration parameter (just like we saw in the free particle case). For Lorentz invariance, we need to contract the indices. Together, we can propose an action:
+
+$$S_1 = \int_{\sigma_1}^{\sigma_2} \left[ -mc \sqrt{-\eta_{\mu\nu} \frac{dx^\mu}{d\sigma} \frac{dx^\nu}{d\sigma}} + qA_\mu(x) \dot{x}^\mu \right] d\sigma$$
+
+Here $q$ is added as a coupling factor between $A$ and $\dot{x}$ and, as can be seen below, will turn out to be the charge in the electromagnetic equations.
+
+If we pick the worldline parameter to coincide with the time of some inertial observer, $\sigma = t$, so that $dx^0/d\sigma = c$. If we write the contravariant 4-potential as $A^\mu(x) = (\phi(x)/c, \mathbf{A}(x))$, lowering the index gives $A_\mu(x) = (-\phi(x)/c, \mathbf{A}(x))$. Contracting this with $\dot{x}^\mu = (c, \dot{\mathbf{x}})$ and substituting it into the integral, we find:
+
+$$S_1 = \int_{t_1}^{t_2} \left[ -mc^2 \sqrt{1 - \frac{\dot{\mathbf{x}}^2}{c^2}} - q\phi(x) + q\mathbf{A}(x) \cdot \dot{\mathbf{x}} \right] dt$$
+
+This is essentially the electromagnetic Action, from which the Lorentz force law can be derived.
+
 ## References
 - [Eigenchris Relativity Playlist](https://www.youtube.com/playlist?list=PLJHszsWbB6hqlw73QjgZcFh4DrkQLSCQa)
 - Ch 01 of Classical Field Theory by Joel Franklin
