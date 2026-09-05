@@ -803,6 +803,24 @@ $$S_{\text{wrong}}=\int \sqrt{\delta_{\mu\nu}\frac{dx^\mu}{d\lambda}\frac{dx^\nu
 
 This action is perfectly geometric and independent of our mathematical choices of path labeling ($\lambda$). However, it describes a universe where space and time are treated exactly the same, meaning the speed of light is not constant, there is no cosmic speed limit, and moving observers would see the laws of physics change. In a Euclidean metric, the distance between any two distinct points is strictly positive, meaning there are no null paths ($ds^2=0$) and therefore no absolute structure separating past, future, and elsewhere.
 
+**Aside:** While we have $4$ spacetime coordinates and therefore can derive $4$ equations of motion, we actually only have $3$ physical degrees of freedom. All $4$ coordinates are not dynamically independent of each other. There is redundancy among them. This comes from the constraint of the constant magnitude of the 4-velocity which satisfies the constraint: $\eta_{\mu\nu}u^\mu u^\nu = -c^2$. This binds the temporal and spatial velocities together, reducing the system by one degree of freedom. The reduction of a degree of freedom is the direct consequence of the "gauge" degree of freedom.
+
+---
+
+One more requirement we must meet when choosing a Lagrangian or action is that it reduces to Newton's equations of motion under the low-velocity approximation. This can be seen to be true when we parameterize the action by proper time $\tau$, and can be written as:
+
+$$S = -mc \int \sqrt{ c^2 \left(\frac{dt}{d\tau}\right)^2 - \sum_i \left(\frac{dx^i}{dt}\frac{dt}{d\tau}\right)^2 } d\tau$$
+
+By factoring out the $\left(\frac{dt}{d\tau}\right)^2$ to cancel with the $d\tau$ integration measure, and pulling $c^2$ out of the square root, we get:
+
+$$S = -mc^2 \int \sqrt{1 - \frac{\dot{x}^2}{c^2}} dt$$
+
+Taking the low-velocity approximation and applying the binomial Taylor series expansion ($\sqrt{1 - \epsilon} \approx 1 - \frac{\epsilon}{2}$), the Action becomes:
+
+$$S \approx \int \left( -mc^2 + \frac{1}{2}m\dot{x}^2 \right) dt$$
+
+Because the Euler-Lagrange equations operate via derivatives, adding or subtracting a constant to the Lagrangian does not change the resulting equations of motion. We can then ignore the constant rest mass energy term ($-mc^2$), and the action reduces to the non-relativistic action we saw earlier: $S_{\text{NR}} = \int \frac{1}{2}m\dot{x}^2 dt$
+
 ### Parameterization with Proper Time
 Since $ds^2=-c^2d\tau^2$, if we parameterize the Action with $\tau$ the Action can be written as $S=-mc^2\int d\tau$. This makes sense since Action is after all energy $\times$ time. The natural choice for energy of a free particle is its rest mass energy, while the natural choice for a free particle is to measure time in its rest frame, which is proper time. 
 
