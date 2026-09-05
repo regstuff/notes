@@ -786,8 +786,9 @@ The Action is Lorentz invariant since all the dummy indices are contracted, whic
 
 We have used $\sigma$ as the parameter of the functionals. In the non-relativistic case, we used time $t$, however with Special Relativity, coordinate time depends on the reference frame, so which $t$ should we use? One obvious choice is the proper time $\tau$ which is invariant. But it turns out that in this Action, we can choose any parameter and get away with it. The only constraint is the mathematical one that it monotonically increases along a worldline, because that is literally the job of the parameter.
     
-
 This is because the two $d\sigma$ terms in the denominator in the square root cancel out the one on the outside. So if we chose a new parameter $\lambda$, we can rewrite all the derivatives in terms of $\lambda$, and they would cancel out the $\frac{d\lambda}{d\sigma}$ term on the outside.
+
+$$\tilde{S} = -mc \int_{\tilde{\sigma}_1}^{\tilde{\sigma}_2} d\tilde{\sigma} \sqrt{-\eta_{\mu\nu} \frac{dx^\mu}{d\tilde{\sigma}} \frac{dx^\nu}{d\tilde{\sigma}}} = -mc \int_{\sigma_1}^{\sigma_2} d\sigma \frac{d\tilde{\sigma}}{d\sigma} \sqrt{-\eta_{\mu\nu} \frac{dx^\mu}{d\sigma} \frac{dx^\nu}{d\sigma} \left( \frac{d\sigma}{d\tilde{\sigma}} \right)^2} = S$$
 
 Why does this matter? The Action must be reparameterization invariant because when a mathematical quantity is parameter-independent, it means the final numerical value you calculate does not depend on how you choose to label or parametrize the path. The value is not an artifact of the choice of coordinate system. It must be a direct property of the geometric curve itself. It describes a real physical reality (like the actual aging of a particle or the true spacetime distance between events) rather than a mathematical illusion created by a lucky coordinate choice.
 
