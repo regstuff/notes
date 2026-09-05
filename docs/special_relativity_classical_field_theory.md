@@ -778,6 +778,7 @@ The Action then becomes:
 
 $$S = \int_{\sigma_1}^{\sigma_2} L d\sigma = -mc \int_{\sigma_1}^{\sigma_2} \sqrt{-\eta_{\mu\nu}\frac{dx^\mu}{d\sigma}\frac{dx^\nu}{d\sigma}} d\sigma$$
 
+### Properties of a "Successful" Action
 A few things to note about the Action:
 
 The $mc$ term is needed to ensure the Action has dimensions of energy $\times$ time.
@@ -801,6 +802,13 @@ To see the difference between what Lorentz invariance adds to the table that rep
 $$S_{\text{wrong}}=\int \sqrt{\delta_{\mu\nu}\frac{dx^\mu}{d\lambda}\frac{dx^\nu}{d\lambda}} d\lambda$$
 
 This action is perfectly geometric and independent of our mathematical choices of path labeling ($\lambda$). However, it describes a universe where space and time are treated exactly the same, meaning the speed of light is not constant, there is no cosmic speed limit, and moving observers would see the laws of physics change. In a Euclidean metric, the distance between any two distinct points is strictly positive, meaning there are no null paths ($ds^2=0$) and therefore no absolute structure separating past, future, and elsewhere.
+
+### Parameterization with Proper Time
+Since $ds^2=-c^2d\tau^2$, if we parameterize the Action with $\tau$ the Action can be written as $S=-mc^2\int d\tau$. This makes sense since Action is after all energy $\times$ time. The natural choice for energy of a free particle is its rest mass energy, while the natural choice for a free particle is to measure time in its rest frame, which is proper time. 
+
+Extremizing this action means the particle will follow the path through spacetime that maximizes the proper time i.e. time in its rest frame. Note that this is _not_ the same as saying the clock in a rest frame measures the least time, which is a statement about how the world line changes due to coordinate change. In contrast, extremizing the action is about an equation of motion. What path does the free particle follow in spacetime, or alternatively what is the shape/geometry of the particle's worldline when it is simply floating in space. 
+
+The action principle is in fact saying that a free particle travels in a straight line in spacetime. This is a geodesic. Any curve or deviation (acceleration) decreases the elapsed proper time. This is the Twin Paradox. Imagine two twins starting at Event A and meeting again at Event B. Twin 1 floats freely through space without firing any thrusters. This is an inertial, straight-line path in spacetime. Twin 2 fires thrusters, accelerating near the speed of light, turning around, and returning to meet Twin 1 at Event B. Because Twin 2 accelerated, they underwent severe time dilation relative to the inertial frame. When they meet at Event B, Twin 2's wristwatch will have ticked significantly less than Twin 1's wristwatch.
 
 ### Canonical Momentum is 4-Momentum
 The invariant spacetime interval $ds^2$ is related to proper time $\tau$ by $ds^2=-c^2d\tau^2$. We can also write $ds^2$ in terms of the metric:
