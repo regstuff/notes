@@ -1321,6 +1321,326 @@ Similarly, we can do the same for the spatial components and verify that the rel
 
 Though we've arrived at the 4-vector relation via construction, in effect, the electromagnetic field tensor is actually defined by $K^\mu = q F^{\mu\nu} U_\nu$.
 
+
+## Stress-Energy-Momentum Tensor
+### Physical Intuition
+To quantify the local distribution of energy, momentum, and shear stress intrinsic to the electromagnetic field, we utilize the stress-energy tensor. Essentially, we want to write out the energy, stress and momentum of the field itself, without any reference to the particles it might be acting on, so that we have something self-contained to the variables associated with the field. There are no new observations that go into writing the stress-energy tensor. We arrive at it simply by taking the equations we have so far, and doing some replacements of variables. 
+
+The modus operandi is to take the Lorentz force, which is the force applied on a particle by the field, and therefore a measure of the momentum present in the field, and rewrite it in terms of the electromagnetic field tensor components by eliminating any terms related to the particle, such as $\rho$ and $\mathbf{J}$. 
+
+We now have a rate of transfer. It tells you how much energy and momentum is being pushed from the field into the matter per second, per cubic meter. This is essentially flux and density, which from Gauss Law of divergence, we can express as the divergence of some term. These terms make up the components of the stress energy tensor.
+
+The power density, the rate at which the field does work on the matter (proportional to $\mathbf{J}\cdot\mathbf{E}$, which should remind you of $V\cdot I$) is related to the time components of the stress energy tensor namely energy density and energy flux. The  3D Lorentz force density maps to the spatial components of the stress energy tensor, namely the momentum density and the momentum flux or stress.
+
+It is also important to note what the stress energy tensor does not tell us, namely how matter influences fields, which require us to work with Maxwell's laws. 
+
+### Derivation
+We start with 
+$$K^\mu = q.F^{\mu\nu}U_\nu$$
+
+To analyze continuous fields, we scale the single-particle 4-force to a force density $f^\mu$, representing the rate of 4-momentum transfer per unit volume from the field to matter. We replace the single charge $q$ and 4-velocity $U_\nu$ with the 4-current density $J_\nu$:
+
+$$f^\mu = F^{\mu\nu}J_\nu$$
+
+We use the inhomogeneous Maxwell equation ($\partial_\lambda F^{\lambda\nu} = \mu_0 J^\nu$) to eliminate the matter current entirely, expressing the force strictly in terms of fields:
+
+$$f^\mu = \frac{1}{\mu_0}F^{\mu\nu}\partial^\lambda F_{\lambda\nu}$$
+
+Since the lefthand side is a density or flux term, we ought to be able to write the righthand side as a 4-divergence. To do that, we rename dummy indices for clarity ($\nu \to \lambda$, $\lambda \to \nu$) so that the free index is $\mu$ and the divergence index is $\nu$. Applying the product rule to the right side yields:
+
+$$f^\mu = \frac{1}{\mu_0} \left[ \partial_\nu(F^{\mu\lambda}F^\nu_{\;\;\lambda}) - F^\nu_{\;\;\lambda}\partial_\nu F^{\mu\lambda} \right]$$
+
+The second term in the bracket is not yet a total derivative. To convert it, we exploit the antisymmetry of the electromagnetic tensor and the homogeneous Maxwell equation (the Bianchi identity), which states $\partial_\nu F_{\lambda\mu} + \partial_{\lambda} F_{\mu\nu} + \partial_\mu F_{\nu\lambda} = 0$.
+
+Because $F_{\nu\lambda}$ is antisymmetric, we can rewrite the trailing term symmetrically: $F^\nu_{\;\;\lambda}\partial_\nu F^{\mu\lambda} = \frac{1}{2}F_{\nu\lambda}(\partial^\nu F^{\mu\lambda} - \partial^\lambda F^{\mu\nu})$.
+    
+Using the Bianchi identity, the inner parenthesis simplifies exactly to $\partial^\mu F^{\nu\lambda}$.
+    
+This substitution yields $\frac{1}{2}F_{\nu\lambda}\partial^\mu F^{\nu\lambda}$, which is the exact product-rule expansion of a scalar gradient: $\frac{1}{4}\partial^\mu(F_{\nu\lambda}F^{\nu\lambda})$.
+
+Substitute this gradient back into the force density equation:
+
+$$f^\mu = \frac{1}{\mu_0} \left[ \partial_\nu(F^{\mu\lambda}F^\nu_{\;\;\lambda}) - \frac{1}{4}\partial^\mu(F_{\alpha\beta}F^{\alpha\beta}) \right]$$
+
+To factor out a common divergence operator $\partial_\nu$, we rewrite the partial derivative $\partial^\mu$ using the Minkowski metric $\eta^{\mu\nu}\partial_\nu$:
+
+$$f^\mu = \partial_\nu \left[ \frac{1}{\mu_0} \left( F^{\mu\lambda}F^\nu_{\;\;\lambda} - \frac{1}{4}\eta^{\mu\nu}F_{\alpha\beta}F^{\alpha\beta} \right) \right]$$
+
+If we decide that $f^\mu = -\partial_\nu T^{\mu\nu}$, the term inside the bracket (accounting for the sign inversion to match the convention of positive energy density) is the electromagnetic stress-energy tensor:
+
+$$T^{\mu\nu} = \frac{1}{\mu_0} \left( F^{\mu\alpha}F^\nu_{\;\;\alpha} + \frac{1}{4}\eta^{\mu\nu}F_{\alpha\beta}F^{\alpha\beta} \right)$$
+
+### The Components of the Stress Energy Tensor
+**Time-time component**
+This is the energy density $u$ of the field or the energy stored in the field itself. To evaluate it, we can expand the terms of the field tensor in terms of the electric and magnetic fields:
+
+$$T^{00} = -F^{0\alpha}F^0_{\;\;\alpha} + \frac{1}{4}\eta^{00}F_{\alpha\beta}F^{\alpha\beta}$$
+
+Since $F^{00} = 0$ and $-F^{0i}F^0_{\;\;i} = -(-E^i)(E^i) = E^2$ and $F_{\alpha\beta}F^{\alpha\beta} = -2(E^2 - B^2)$, and $\eta^{00} = 1$, we get:
+
+$$T^{00} = E^2 - \frac{1}{2}(E^2 - B^2) = \frac{1}{2}(E^2 + B^2)$$
+
+**Time-space component**
+$T^{0i}$ represents the flux of the field's energy across a surface and $T^{i0}$, the momentum density ($\mathbf{g}$) of the field. Since the tensor is symmetric, they are identical (up to a factor of $c^2$). 
+
+Evaluating the component $F^{0\alpha}F^i_{\;\;\alpha}$ yields the cross product of the electric and magnetic fields:
+
+$$T^{0i} = T^{i0} = (\mathbf{E} \times \mathbf{B})^i$$
+
+This is the Poynting vector $\mathbf{S}$. In standard SI units, the Poynting vector is $\frac{1}{\mu_0}\mathbf{E} \times \mathbf{B}$ and the momentum density is $\epsilon_0 \mathbf{E} \times \mathbf{B}$. In natural units, they are identical.
+
+**Time-space continuity equation**
+The relationship between $T^{00}$ and $T^{0i}$ is governed by a continuity equation:
+
+$$f^0=-\partial_0 T^{00}-\partial_i T^{0i}$$
+
+$f^0$ (Power Density) is the rate at which the field does work on the matter, scaled by $c$. $f^0=\frac{1}{c}\mathbf{J}\cdot\mathbf{E}$.    
+
+Substituting these into the expanded equation, multiplying by $c$ to clear the denominators, and rearranging:
+
+$$\frac{\partial u}{\partial t}+\nabla\cdot\mathbf{S}=-\mathbf{J}\cdot\mathbf{E}$$
+
+This is Poynting's Theorem, which states that the rate of change of energy density in a region ($\frac{\partial u}{\partial t}$) plus the energy flowing out of that region ($\nabla\cdot\mathbf{S}$) is perfectly balanced by the mechanical work done by charge on the field ($-\mathbf{J}\cdot\mathbf{E}$). The field's energy loss equals the matter's kinetic energy gain.
+
+**Spatial components**
+The remaining 9 spatial components ($i, j = 1, 2, 3$) form a $3 \times 3$ symmetric matrix describing the flux of momentum. $T^{ij}$ represents the flux of the $i$-th component of momentum passing through a surface of constant $j$.
+
+Evaluating $-F^{i\alpha}F^j_{\;\;\alpha} + \frac{1}{4}\eta^{ij}F_{\alpha\beta}F^{\alpha\beta}$ yields:
+
+$$T^{ij} = -E^i E^j - B^i B^j + \frac{1}{2}\delta^{ij}(E^2 + B^2)$$
+
+This $3 \times 3$ block is the negative of the classical Maxwell stress tensor ($\sigma^{ij}$).
+
+The diagonal components represent isotropic pressures exerted by the field. The off-diagonal components represent shear stresses (forces parallel to the surface). To understand how these components are related to the momentum in general, 
+
+**Associated continuity equation**
+We are mapping the 3D mechanical force to the momentum components of the tensor:
+
+$$f^j=-\partial_0 T^{j0}-\partial_i T^{ji}$$
+
+$f^j$ (Force Density) is the classical 3D Lorentz force density, $\mathbf{f}=\rho\mathbf{E}+\mathbf{J}\times\mathbf{B}$.
+
+Substituting these into the equation yields:
+
+$$f^j=-\frac{1}{c}\frac{\partial}{\partial t}\left(c g^j\right)-\partial_i\left(-\sigma^{ji}\right)$$
+
+Writing this in 3D vector notation:
+
+$$\mathbf{f}=-\frac{\partial\mathbf{g}}{\partial t}+\nabla\cdot\boldsymbol{\sigma}$$
+
+This is the conservation of momentum. It dictates that the mechanical force $\mathbf{f}$ exerted on the charges is drawn from two sources:
+
+1.  $-\frac{\partial\mathbf{g}}{\partial t}$: The localized depletion of the electromagnetic field's intrinsic momentum.
+    
+2.  $\nabla\cdot\boldsymbol{\sigma}$: The net mechanical stress (pressure and shear) exerted by the surrounding field lines pushing inward across the boundaries of the volume.
+
+**Combined continuity equation**
+All 4 continuity equations can be succinctly written as $\partial_\mu T^{\mu\nu} = 0$ holds for all values of the free index $\nu$. This represents the four distinct continuity equations we looked at above.
+
+### The Two Reservoirs of Momentum
+
+In any region of space containing both matter and electromagnetic fields, the total momentum density $\mathbf{p}_{\text{total}}$ is the sum of two independent components:
+
+1. **Mechanical Momentum Density ($\mathbf{p}_{\text{mech}}$):** The actual physical momentum of the particles with mass.
+2. **Field Momentum Density ($\mathbf{p}_{\text{field}}$):** The momentum stored purely in the electromagnetic field itself, defined by the Poynting vector ($\mathbf{p}_{\text{field}} = \epsilon_0 \mathbf{E} \times \mathbf{B}$ in SI units, or $\mathbf{E} \times \mathbf{B}$ in natural units).
+
+The Lorentz force density $\mathbf{f}$ only accounts for the rate of change of the **mechanical** momentum of the charges: $\mathbf{f} = \frac{\partial \mathbf{p}_{\text{mech}}}{\partial t}$. It does not include the field momentum aspects which comes from the Poynting vector, which is why our equation for conservation of above includes the term for $\mathbf{g}$.
+
+Note that this also means that a particle can gain momentum even when the Poynting vector is $0$ because the momentum is supplied to the particle continuously by the spatial flux i.e. the Maxwell stress tensor $\sigma$. The divergence of this stress tensor ($\nabla \cdot \sigma$) acts as a river of momentum flowing through the vacuum, which deposits that momentum directly into the particle via the Lorentz force.
+
+## Misc Ignore
+The general form of the conserved quantity is if the Lagrangian is invariant under a translation of q of the form q = q+epsilon*f(q), then the inner product of p and f(q) is conserved i.e. sigma(p_i*f_i(q))
+
+### Noether Momentum
+In terms of conservation of momentum from spatial translation invariance, if the transformation is x_bar = x+epsilon, then x_dot, which is the velocity does not change. So kinetic energy $T$ is inherently unaffected by the shift. For a symmetry, we say the Lagrangian is unaffected by this shift, which means the potential energy term $U(x)$ must also be completely unaffected by the shift in position.
+
+Conceptually, this indicates that the "potential landscape" is perfectly uniform along the $x$-direction. There is no spatial gradient. Because physical force is the negative gradient of the potential ($F = -\frac{\partial U}{\partial x}$), a uniform landscape implies that zero net force exists along that axis. Thus the particle's inertia dictates that its momentum must remain constant.
+
+### Hamiltonian Split
+In general, If the Lagrangian (or the Lagrangian density for fields) consists exclusively of quadratic terms (and linear terms) in the fields and their derivatives, the resulting equations of motion will be strictly linear differential equations.
+
+We can also say that the Kinetic energy density is essentially the products of time derivatives of some variable, upto quadratic products. And the potential energy is everything else. This is correct from a strict Hamiltonian perspective, but in field theory, the total energy density (the Hamiltonian density $\mathcal{H}$) is divided into kinetic and potential components, but the spatial derivatives play a specific role.
+
+Given a general scalar field Lagrangian density:
+
+
+$$\mathcal{L} = \frac{1}{2}(\partial_t\phi)^2 - \frac{1}{2}(\nabla\phi)^2 - U(\phi)$$
+
+If you derive the energy density $\mathcal{H}$ using the Legendre transform ($\mathcal{H} = \pi\dot{\phi} - \mathcal{L}$), you obtain:
+
+
+$$\mathcal{H} = \frac{1}{2}(\partial_t\phi)^2 + \frac{1}{2}(\nabla\phi)^2 + U(\phi)$$
+
+In this strict energetic breakdown:
+
+* **Kinetic Energy Density:** This is strictly the term involving time derivatives: $\frac{1}{2}(\partial_t\phi)^2$. It represents the energy of the field's local rate of change, perfectly analogous to $\frac{1}{2}m\dot{q}^2$ in classical mechanics.
+* **Potential Energy Density:** This encompasses everything else, but it is physically divided into two distinct types:
+1. **Elastic Potential Energy ($\frac{1}{2}(\nabla\phi)^2$):** The spatial derivatives represent the energy cost of deforming or stretching the field across space. It is equivalent to the potential energy stored in a stretched string or spring.
+2. **Local Potential Energy ($U(\phi)$):** This term depends only on the field amplitude itself, not its gradients. It dictates the mass of the field quanta (e.g., $\frac{1}{2}m^2\phi^2$) and any self-interactions.
+
+#### The Relativistic Split (Lagrangian Perspective)
+
+While the Hamiltonian split isolates time derivatives, doing so breaks explicit Lorentz invariance (since it treats time differently than space). In relativistic field theory, it is standard practice to group the time and space derivatives back together into the covariant kinetic term:
+
+
+$$\mathcal{L} = \mathcal{T}_{covariant} - \mathcal{V}_{local}$$
+
+$$\mathcal{T}_{covariant} = \frac{1}{2}\partial_\mu\phi\partial^\mu\phi$$
+
+$$\mathcal{V}_{local} = U(\phi)$$
+
+Therefore, when field theorists refer to the "kinetic term" of a Lagrangian, they are referring to the entirety of $\partial_\mu\phi\partial^\mu\phi$ (both time and space derivatives), because it is the fundamental Lorentz-invariant term containing the derivatives. They refer to the remaining non-derivative terms $U(\phi)$ simply as the "potential."
+### Klein-Gordon Equation
+Here is the physical and mathematical context for what the author means when they say Klein and Gordon "made the mistake of trying to be relativistic."
+
+#### The Quantum Operator Substitutions
+
+To convert classical mechanics into quantum wave mechanics, physicists use a standard prescription where classical observables (energy $E$ and momentum $p$) are replaced by differential operators acting on a wavefunction $\phi$:
+
+* Energy operator: $E \rightarrow i\hbar\frac{\partial}{\partial t}$
+* Momentum operator: $p \rightarrow -i\hbar\nabla$
+
+The difference between the Schrödinger equation and the Klein-Gordon equation stems entirely from which classical energy-momentum relationship you apply these operators to.
+
+#### The Non-Relativistic Approach (Schrödinger)
+
+In classical Newtonian mechanics, the total energy of a free particle (ignoring rest mass) is purely kinetic:
+
+
+$$E = \frac{p^2}{2m}$$
+
+If you substitute the quantum operators into this non-relativistic equation, you get:
+
+
+$$i\hbar\frac{\partial\phi}{\partial t} = -\frac{\hbar^2}{2m}\nabla^2\phi$$
+
+This is the free-particle **Schrödinger equation**. Notice that it features a **first-order derivative with respect to time** and a second-order derivative with respect to space.
+
+#### The Relativistic Approach (Klein-Gordon)
+
+In Einstein's special relativity, the complete energy-momentum relationship for a free particle is:
+
+
+$$E^2 = p^2c^2 + m^2c^4$$
+
+If you substitute the exact same quantum operators into this relativistic equation, you get:
+
+
+$$\left(i\hbar\frac{\partial}{\partial t}\right)^2\phi = \left(-i\hbar\nabla\right)^2c^2\phi + m^2c^4\phi$$
+
+$$-\hbar^2\frac{\partial^2\phi}{\partial t^2} = -\hbar^2c^2\nabla^2\phi + m^2c^4\phi$$
+
+By dividing through by $-\hbar^2c^2$ and rearranging the terms to one side, you obtain:
+
+
+$$\frac{1}{c^2}\frac{\partial^2\phi}{\partial t^2} - \nabla^2\phi + \left(\frac{mc}{\hbar}\right)^2\phi = 0$$
+
+If you define a constant $\mu = \frac{mc}{\hbar}$ and work in natural units where $c=1$, this matches Equation 5.27 from your image exactly:
+
+
+$$\frac{\partial^2\phi}{\partial t^2} - \frac{\partial^2\phi}{\partial x^2} - \frac{\partial^2\phi}{\partial y^2} - \frac{\partial^2\phi}{\partial z^2} + \mu^2\phi = 0$$
+
+This is the **Klein-Gordon equation**. Because the relativistic energy formula squares the energy, the resulting wave equation features a **second-order derivative with respect to time**, putting time and space on equal footing (as required by Lorentz invariance).
+
+#### Historical Context: The "Mistake"
+
+The author's joke about Klein and Gordon making a "mistake" refers to the historical sequence of events.
+
+Erwin Schrödinger actually derived the relativistic Klein-Gordon equation first. However, when he applied it to the hydrogen atom, the energy levels it predicted did not match the fine structure observed in experimental spectroscopy. We now know this is because the Klein-Gordon equation only applies to spin-0 particles (like the Higgs boson or pions). Electrons are spin-1/2 particles and require the Dirac equation, which had not been discovered yet.
+
+Realizing his relativistic equation yielded incorrect predictions for the electron, Schrödinger retreated to the simpler, non-relativistic approximation ($E = p^2/2m$). This non-relativistic version accurately predicted the primary energy levels of the hydrogen atom (ignoring fine structure), leading to his fame and a Nobel Prize.
+
+Klein and Gordon independently derived and published the relativistic version, but because it failed to describe the electron, it was initially considered a failure—hence the author's remark that they "became much less famous."
+
+### 1. Time Translation (Energy Flux)
+
+If you apply Noether's theorem exclusively for invariance under time translation ($x^0 \rightarrow x^0 + a^0$), you derive the conservation of energy.
+
+The resulting conserved Noether current is the four-vector representing the flow of energy, $T^{0\mu} = (T^{00}, T^{0i})$.
+
+* The time component $T^{00}$ is the energy density.
+* The spatial components $T^{0i}$ represent the flux of energy across spatial boundaries.
+
+In this derivation, the Poynting vector $\mathbf{S}$ emerges strictly as the **energy flux**.
+
+### 2. Spatial Translation (Momentum Density)
+
+If you apply Noether's theorem exclusively for invariance under spatial translations ($x^i \rightarrow x^i + a^i$), you derive the conservation of linear momentum.
+
+The resulting conserved Noether currents form the spatial rows of the tensor, $T^{i\mu} = (T^{i0}, T^{ij})$.
+
+* The spatial components $T^{ij}$ represent the flux of momentum (the Maxwell stress tensor).
+* The time component $T^{i0}$ represents the density of momentum stored in the field itself ($\mathbf{p}_{\text{field}}$).
+
+In this derivation, the Poynting vector $\mathbf{S}$ emerges strictly as the **momentum density** of the field.
+
+### 3. The Symmetry Requirement
+
+In the canonical derivation from the Lagrangian, the resulting stress-energy tensor is not initially symmetric ($T^{0i} \neq T^{i0}$). The canonical momentum density derived from spatial translation does not initially equal the canonical energy flux derived from time translation.
+
+However, the physical stress-energy tensor must be symmetric to ensure the conservation of angular momentum. Once the Belinfante-Rosenfeld procedure is applied to symmetrize the tensor ($T^{\mu\nu} = T^{\nu\mu}$), it mathematically forces the energy flux to exactly equal the momentum density:
+
+
+$$T^{0i} = T^{i0}$$
+
+Therefore, applying spatial translation to the Lagrangian does directly yield the Poynting vector (as field momentum density $\mathbf{p}_{\text{field}}$), which is mathematically identical to the energy flux derived from time translation.
+
+Note that the divergence of the stress tensor, $\nabla \cdot \sigma$, does not represent the stress on a single particle. It represents the net flux of electromagnetic momentum into an arbitrary **volume of space**.
+
+Therefore, what experiences this stress is the total contents of that volume—both the matter and the electromagnetic field combined.
+
+Here is the exact physical interpretation of how this momentum is distributed.
+
+### 1. The Volume and the Flux
+
+The Maxwell stress tensor $\sigma$ represents the flux of electromagnetic momentum. In continuum mechanics, stress is defined as force per unit area. The components $\sigma^{ij}$ describe the momentum per unit time (which has the dimensions of force) flowing across a spatial surface.
+
+The divergence operator ($\nabla \cdot$) evaluates the net inward or outward flow through the closed boundary of an infinitesimal volume. Therefore, $\nabla \cdot \sigma$ is the net electromagnetic force exerted by the fields *outside* a given volume upon the entirety of the volume's *interior*.
+
+### 2. The Partition of Momentum
+
+Once this momentum flux enters the volume, the conservation equation dictates that it must be partitioned into two distinct physical outcomes. The equation $\nabla \cdot \sigma = \mathbf{f} + \frac{\partial \mathbf{p}_{\text{field}}}{\partial t}$ states:
+
+* **$\mathbf{f}$ (Mechanical Force Density):** If there are charges or currents inside the volume, a portion of the incoming momentum is transferred to them. This manifests as the Lorentz force, physically accelerating the particles. This is the only portion of the total stress that is experienced by matter.
+* **$\frac{\partial \mathbf{p}_{\text{field}}}{\partial t}$ (Field Momentum Density Rate):** Any incoming momentum that is not absorbed by matter must remain within the electromagnetic field itself. This locally changes the momentum density of the field (the Poynting vector) inside that specific volume.
+
+If you evaluate a region of perfect vacuum (no charges, meaning $\mathbf{f} = 0$), that volume of space still experiences the stress flux. In this case, $\nabla \cdot \sigma = \frac{\partial \mathbf{p}_{\text{field}}}{\partial t}$, meaning the net flow of momentum into the vacuum strictly alters the local momentum of the passing electromagnetic waves.
+
+### 1. The First Term and Canonical Momentum
+
+You correctly recognized the second term $\frac{1}{4}\eta^{\mu\nu}F_{\alpha\beta}F^{\alpha\beta}$ as $-\eta^{\mu\nu}\mathcal{L}$. The first term, $-F^{\mu\alpha}F^\nu_{\;\;\alpha}$, is directly related to the canonical momentum, but it is not exactly $\int(\pi \dot{A})$. It is the gauge-invariant extension of the Hamiltonian density term.
+
+By definition, the canonical momentum density conjugate to the field $A_\alpha$ is:
+
+
+$$\pi^\alpha = \frac{\partial \mathcal{L}}{\partial(\partial_0 A_\alpha)} = -F^{0\alpha}$$
+
+When you apply Noether's theorem to derive the energy-momentum tensor strictly from spacetime translations, you get the **canonical stress-energy tensor**:
+
+
+$$T^{\mu\nu}_{\text{can}} = \frac{\partial \mathcal{L}}{\partial(\partial_\mu A_\alpha)}\partial^\nu A_\alpha - \eta^{\mu\nu}\mathcal{L}$$
+
+$$T^{\mu\nu}_{\text{can}} = -F^{\mu\alpha}\partial^\nu A_\alpha - \eta^{\mu\nu}\mathcal{L}$$
+
+For the time-time component ($T^{00}_{\text{can}}$), the first term is exactly $\pi^\alpha \dot{A}_\alpha$ (the canonical momentum multiplied by the time derivative of the generalized coordinate). This forms the standard Legendre transformation into the Hamiltonian.
+
+However, $T^{\mu\nu}_{\text{can}}$ is not symmetric and is gauge-dependent (it explicitly contains the bare $\partial^\nu A_\alpha$). To get the physical tensor you wrote, the bare derivative $\partial^\nu A_\alpha$ is replaced by the gauge-invariant field tensor $F^\nu_{\;\;\alpha}$.
+
+### 2. The Belinfante-Rosenfeld Procedure
+
+The Belinfante-Rosenfeld procedure is **not** equivalent to choosing a gauge like $A_0 = 0$ (the temporal gauge). It is a completely gauge-independent mathematical operation.
+
+The procedure adds a specific identically conserved quantity (a total four-divergence of an antisymmetric tensor, $\partial_\lambda K^{\lambda\mu\nu}$) to the canonical tensor. Because the divergence of an antisymmetric tensor is automatically zero ($\partial_\mu \partial_\lambda K^{\lambda\mu\nu} = 0$), adding this term does not change the global conservation laws.
+
+Physically, this added term represents the intrinsic spin angular momentum of the electromagnetic field. The procedure absorbs the spin contribution into the orbital contribution, yielding a final tensor $T^{\mu\nu}$ that is perfectly symmetric ($T^{\mu\nu} = T^{\nu\mu}$) and explicitly gauge-invariant (containing only $F$, not $A$).
+
+### 3. Field Momentum vs. Canonical Momentum
+
+The physical field momentum density $\mathbf{p}_{\text{field}} = \mathbf{E} \times \mathbf{B}$ is fundamentally different from the canonical momentum density $\pi^\alpha$.
+
+* **Canonical Momentum:** $\pi^\alpha = -F^{0\alpha}$. Therefore, $\pi^0 = 0$ and the spatial canonical momentum is strictly the electric field, $\boldsymbol{\pi} = \mathbf{E}$.
+* **Field Momentum:** $\mathbf{p}_{\text{field}}$ is extracted from the $T^{0i}$ components of the symmetrized stress-energy tensor. It represents the actual spatial density of linear momentum carried by the propagating electromagnetic wave.
+
 ## References
 - [Eigenchris Relativity Playlist](https://www.youtube.com/playlist?list=PLJHszsWbB6hqlw73QjgZcFh4DrkQLSCQa)
 - Special Relativity and Classical Field Theory - The Theoretical Minimum by Leonard Susskind
