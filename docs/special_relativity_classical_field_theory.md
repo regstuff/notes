@@ -1138,11 +1138,11 @@ Regarding the interaction component, its job is to couple the electromagnetic fi
 
 $$\mathcal{L}_{\text{int}} = -J^\mu A_\mu = -(\rho\phi - \mathbf{J} \cdot \mathbf{A})$$
 
-However, this term is not manifestly gauge invariant. But we will resolve this shortly. The action $S$ of the electromagnetic field interacting with a current source is the four-dimensional integral of the Lagrangian density:
+However, this term is still not coordinate invariant or covariant, though we can get away with it in flat spacetime. We will resolve this shortly when we talk about the Jacobian a little later. This term is also not manifestly gauge invariant, something else that we will resolve shortly as well. 
+
+The action $S$ of the electromagnetic field interacting with a current source is the four-dimensional integral of the Lagrangian density:
 
 $$S = \int \left( -\frac{1}{4\mu_0} F_{\alpha\beta}F^{\alpha\beta} - J^\mu A_\mu \right) d^4x$$
-
-Note that in the integral, we have a $d^4x$ for the invariant volume element. This is a special case for Minkowski spacetime of the more general $\sqrt{-g} d^4x$. In flat Minkowski spacetime, $\sqrt{-\eta} = 1$, so it seamlessly reduces to $d^4x$. This ensures gauge invariance.
 
 The Euler-Lagrange equation for the continuous field components $A_\mu$ is:
 
@@ -1190,6 +1190,16 @@ This term is actually not manifestly gauge invariant on its own. But note that $
 Regarding Lorentz invariance, the requirement needs contraction of the indices, which is clearly satisfied in $^\mu A_\mu$. Together, we can propose an action:
 
 $$S_1 = \int_{\sigma_1}^{\sigma_2} \left[ -mc \sqrt{-\eta_{\mu\nu} \frac{dx^\mu}{d\sigma} \frac{dx^\nu}{d\sigma}} + qA_\mu(x) \dot{x}^\mu \right] d\sigma$$
+
+#### About the Jacobian
+
+Note that in the action integral, we have a $d^4x$ for the invariant volume element. This is a special case for Minkowski spacetime of the more general $\sqrt{-g} d^4x$. In flat Minkowski spacetime, $\sqrt{-\eta} = 1$, so it seamlessly reduces to $d^4x$. The $\sqrt{-g}$ term is required to manage the Jacobian determinant to ensure covariance. To understand why, note that a field theory action integrates a Lagrangian density over a four-dimensional block of spacetime: $S=\int\mathcal{L}d^4x$.
+
+The 4D volume differential is the wedge product of four independent coordinate intervals: $d^4x=dx^0 dx^1 dx^2 dx^3$. When we perform a 4D coordinate transformation $x \to x'$, this hypervolume scales by the full $4 \times 4$ Jacobian determinant $\vert{}J\vert{}$. Because the Lagrangian density $\mathcal{L}$ (such as $-\frac{1}{4\mu_0}F_{\alpha\beta}F^{\alpha\beta}$) is a pure scalar, its transformation cannot produce the inverse Jacobian required to cancel $\vert{}J\vert{}d^4x'$. We must construct an invariant 4D volume measure explicitly by multiplying by $\sqrt{-g}$. The metric determinant $\sqrt{-g}$ transforms as $\vert{}J\vert{}^{-1}\sqrt{-g'}$, providing the exact mathematical counterweight needed to ensure covariance. 
+
+Heuristically, the square root in $\sqrt{-g}$ is present because each item in the metric is the dot product of two basis vectors, and we can consider the determinant to be the product of the diagonal elements, which means we have 8 basis vectors, or rather the 4 basis vectors each appearing twice, in the product, compared to four terms in the Jacobian's determinant itself.
+
+We do not encounter such issues in the particle's action however. For a particle, the action is defined by integrating the proper length along its 1D path: $S=-mc\int ds$, where $ds=\sqrt{g_{\mu\nu}dx^\mu dx^\nu}$. This is a full contraction that evaluates to a true scalar and is coordinate invariant, and so integrating over it to get the action is also invariant. Changing the parameter does not affect it. The parameter outside the integral and the $\frac{dx^\mu}{d\sigma}$ terms inside the square root will cancel out the 1D Jacobian $\left\vert{}\frac{d\lambda}{d\sigma}\right\vert{}$ from the differential element.
 
 ## The Discrete Particle Lagrangian and Lorentz Force
 
