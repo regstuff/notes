@@ -1013,6 +1013,15 @@ $F$ is a differential 2-form derived from the exterior derivative of the 1-form 
 
 These two Maxwell equations are said to be homogeneous since they evaluate to zero. Notice that their "complements" (the other two Maxwell Laws) contain terms for electrical charges and currents. Thus, these two homogeneous equations are the mathematical expression of the experimental observation that isolated magnetic monopoles and magnetic currents do not exist.
 
+### What If Magnetic Monopoles & Currents Existed?
+If magnetic monopoles and a corresponding magnetic current density did exist, the framework of classical electrodynamics would become perfectly symmetric, and the homogeneous equations would become inhomogeneous. Additionally, the definition $\mathbf{B} = \nabla \times \mathbf{A}$ would have to be modified or abandoned entirely, because it mathematically prevents $\nabla \cdot \mathbf{B}$ from ever equalling a non-zero $\rho_m$.
+
+**Gauss's Law for Magnetism:** If magnetic monopoles existed, they would act as point sources or sinks for the magnetic field, exactly as electric charges do for the electric field. The equation would become inhomogeneous: $\nabla \cdot \mathbf{B} = \mu_0 \rho_m$.
+
+**Faraday's Law:** If magnetic charges existed and were in motion, they would constitute a magnetic current $\mathbf{J}_m$. Just as an electric current generates a circulating magnetic field (Ampere's Law), a magnetic current would generate a circulating electric field. The equation would become inhomogeneous: $\nabla \times \mathbf{E} + \frac{\partial \mathbf{B}}{\partial t} = -\mu_0 \mathbf{J}_m$.
+
+Note that the negative sign is a convention required to maintain energy conservation and the directionality defined by Lenz's Law.
+
 ## References
 - [Eigenchris Relativity Playlist](https://www.youtube.com/playlist?list=PLJHszsWbB6hqlw73QjgZcFh4DrkQLSCQa)
 - Special Relativity and Classical Field Theory - The Theoretical Minimum by Leonard Susskind
