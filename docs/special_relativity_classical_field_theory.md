@@ -915,7 +915,7 @@ There are 4 laws of electromagnetism, known as Maxwell's laws, which tell us how
 
 **Gauss's Law for Electricity**
 
-$\nabla \cdot \mathbf{E} = \frac{\rho}{\varepsilon_0}$ or equivalently $\nabla \times \mathbf{E} + \frac{\partial \mathbf{B}}{\partial t} = 0$
+$$\nabla \cdot \mathbf{E} = \frac{\rho}{\varepsilon_0}$$
 
 **Gauss's Law for Magnetism**
 
@@ -923,7 +923,7 @@ $$\nabla \cdot \mathbf{B} = 0$$
 
 **Faraday's Law of Induction**
 
-$$\nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t}$$
+$\nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t}$ or equivalently $\nabla \times \mathbf{E} + \frac{\partial \mathbf{B}}{\partial t} = 0$
 
 **Ampère-Maxwell Law**
 
