@@ -758,23 +758,9 @@ $$p^\mu=m\frac{dx^\mu}{d\tau}$$
 
 This is just the definition of 4-momentum. So, the canonical momentum derived from the action principle is physically identical to the kinematic 4-momentum: $P^\mu \equiv p^\mu$
 
-### Action with Potentials in Electromagnetism
+### Action with Potentials in Gravity
 
 If we have to add a potential in order to account for forces operating on the particle (i.e., it is no longer a free particle), we need to add a $V(x)$ term to the Lagrangian. How do we do this while ensuring it is reparameterization and Lorentz invariant?
-
-For the first requirement, using a term that depends on $\dot{x}$ will do the job, as the $d\sigma$ in the denominator cancels out the $d\sigma$ integration parameter (just like we saw in the free particle case). For Lorentz invariance, we need to contract the indices. Together, we can propose an action:
-
-$$S_1 = \int_{\sigma_1}^{\sigma_2} \left[ -mc \sqrt{-\eta_{\mu\nu} \frac{dx^\mu}{d\sigma} \frac{dx^\nu}{d\sigma}} + qA_\mu(x) \dot{x}^\mu \right] d\sigma$$
-
-Here $q$ is added as a coupling factor between $A$ and $\dot{x}$ and, as can be seen below, will turn out to be the charge in the electromagnetic equations.
-
-If we pick the worldline parameter to coincide with the time of some inertial observer, $\sigma = t$, so that $dx^0/d\sigma = c$. If we write the contravariant 4-potential as $A^\mu(x) = (\phi(x)/c, \mathbf{A}(x))$, lowering the index gives $A_\mu(x) = (-\phi(x)/c, \mathbf{A}(x))$. Contracting this with $\dot{x}^\mu = (c, \dot{\mathbf{x}})$ and substituting it into the integral, we find:
-
-$$S_1 = \int_{t_1}^{t_2} \left[ -mc^2 \sqrt{1 - \frac{\dot{\mathbf{x}}^2}{c^2}} - q\phi(x) + q\mathbf{A}(x) \cdot \dot{\mathbf{x}} \right] dt$$
-
-This is essentially the electromagnetic Action, from which the Lorentz force law can be derived.
-
-### Action with Potentials in Gravity
 
 For gravity, we do something a little different. We write the action as:
 
@@ -788,15 +774,15 @@ Why did we choose this action? One motivation is that the low-velocity approxima
 
 How do we ensure this action is reparameterization invariant and preserves spacetime symmetries? The $1$ in the Taylor approximation actually originates from the time component of the flat Minkowski metric, $-\eta_{00}$. To incorporate gravity, we promote this constant to a coordinate-dependent metric component, $-g_{00}(x) = 1 + \frac{2\Phi(x)}{c^2}$.
 
-Of course, once we've done this to the time component, we are no longer in Minkowski spacetime. We use a general metric tensor $g_{\mu\nu}$. Because $g_{00}$ is dependent on the coordinates, it means that to maintain **general covariance** (invariance under arbitrary coordinate transformations, which replaces global Lorentz invariance in General Relativity), we need to ensure the spatial and off-diagonal components of the metric can also dynamically respond to spacetime curvature.
+Of course, once we've done this to the time component, we are no longer in Minkowski spacetime. We use a general metric tensor $g_{\mu\nu}$. Because $g_{00}$ is dependent on the coordinates, it means that to maintain general covariance (invariance under arbitrary coordinate transformations, which replaces global Lorentz invariance in General Relativity), we need to ensure the spatial and off-diagonal components of the metric can also dynamically respond to spacetime curvature.
 
-Just as in the previous two situations, the fully contracted spacetime velocity terms are parameter invariant. This indicates that we can write a generalized covariant line element and place it directly inside our Lagrangian:
+Just as in the previous situation, the fully contracted spacetime velocity terms are parameter invariant. This indicates that we can write a generalized covariant line element and place it directly inside our Lagrangian:
 
 $$S_2 = -mc \int_{\sigma_1}^{\sigma_2} \sqrt{-g_{\mu\nu}(x) \frac{dx^\mu}{d\sigma} \frac{dx^\nu}{d\sigma}} d\sigma$$
 
 This describes a particle moving in curved spacetime. The components of the metric $g_{\mu\nu}$ are deduced from the Einstein Field Equations, but even without them, we can see that modifying the $g_{00}$ term correctly reduces to Newtonian motion in the low-velocity, weak-field approximation as seen above.
 
-Applying the Euler-Lagrange equations, we see that just as the free-particle non-relativistic action yields $m\ddot{x}_i = 0$, the curved spacetime action yields free-fall along geodesics. yields the geodesic equation: 
+Applying the Euler-Lagrange equations, we see that just as the free-particle non-relativistic action yields $m\ddot{x}_i = 0$, the curved spacetime action yields free-fall along geodesics: 
 
 $$\frac{d^2x^\mu}{d\tau^2} + \Gamma^\mu_{\alpha\beta}\frac{dx^\alpha}{d\tau}\frac{dx^\beta}{d\tau} = 0$$
 
