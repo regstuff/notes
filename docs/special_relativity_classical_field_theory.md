@@ -1095,6 +1095,11 @@ Therefore we can say local charge conservation arises directly from the antisymm
 
 Though the inhomogeneous equations were originally established by experimental observation, they can also be derived directly from the principle of least action applied to the sum of the free-field and interaction Lagrangian densities.
 
+---
+**Aside:** Constructing a Lagrangian in field theory is not a derivation from first principles, but an act of mathematical reverse-engineering. The goal is to construct the simplest possible scalar function that reproduces observed physical dynamics while obeying required conservation laws.Here is the analytical breakdown of why these exact terms are chosen and what constraints govern their selection. The most absolute constraint is that the action $S$ must be a Lorentz scalar, ensuring the laws of physics are identical for all inertial observers. Therefore, the Lagrangian density $\mathcal{L}$ must be constructed entirely from contracted tensors.
+
+---
+
 ### How Lagrangians and Actions Vary for Particles & Fields
 
 In classical mechanics, we take the action as the integral of the Lagrangian. We solve for the equations of motion, which are essentially how the particle coordinates vary with time. Therefore the variables of interest here are the coordinates and velocities. These are the variables for which we would want to write down various actions, and then find the least action i.e. the set (or rather the function) of coordinates and velocities which give the least action. Therefore, the degrees of freedom that we allow the action to vary with while extremizing the action are literally the path itself i.e. coordinates (and velocities) between the start and end time.
@@ -1139,7 +1144,7 @@ $$S = \int \left( -\frac{1}{4\mu_0} F_{\alpha\beta}F^{\alpha\beta} - J^\mu A_\mu
 
 ---
 
-**Aside:** Note that in the integral, we have a $d^4x$ for the invariant volume element. This is a special case for Minkowski spacetime if the more general $\sqrt{-g} d^4x$. In flat Minkowski spacetime, $\sqrt{-\eta} = 1$, so it seamlessly reduces to $d^4x$.
+**Aside:** Note that in the integral, we have a $d^4x$ for the invariant volume element. This is a special case for Minkowski spacetime of the more general $\sqrt{-g} d^4x$. In flat Minkowski spacetime, $\sqrt{-\eta} = 1$, so it seamlessly reduces to $d^4x$.
 
 ---
 
@@ -1169,11 +1174,22 @@ $$\partial_\nu F^{\nu\mu} = \mu_0 J^\mu$$
 
 Expanding this into its time ($\mu=0$) and spatial ($\mu=1,2,3$) components recovers Gauss's Law ($\nabla \cdot \mathbf{E} = \frac{\rho}{\epsilon_0}$) and the Ampere-Maxwell Law ($\nabla \times \mathbf{B} - \frac{1}{c^2}\frac{\partial \mathbf{E}}{\partial t} = \mu_0 \mathbf{J}$), respectively.
 
----
+#### Why Did We Choose This Lagrangian
+For the field's Lagrangian density:
 
-**Aside:** It is worth noting mathematically that because $\mathcal{L}_{\text{field}}$ contains no terms proportional to $A_\mu A^\mu$ (a mass term) or $(\partial_\mu A^\mu)^2$, the Lagrangian is explicitly gauge invariant. This gauge invariance implies the operator acting on $A_\mu$ has no unique inverse, which is why choosing a gauge (like the Lorenz gauge) is strictly necessary to solve the differential equations for the potentials.
+**Linearity of Equations:** The observed Maxwell's equations are linear (meaning electromagnetic fields obey the principle of superposition). To produce linear Euler-Lagrange equations, the Lagrangian must be strictly quadratic in the fields. The term $F_{\mu\nu}F^{\mu\nu}$ is exactly quadratic. Using a term like $(F_{\mu\nu}F^{\mu\nu})^2$ would introduce non-linear field self-interactions.
+    
+**Stability (Ostrogradsky's Theorem):** If a Lagrangian contains second derivatives (or higher) of the dynamical variables, it generally produces runaway unstable solutions with negative energy. The Faraday tensor $F_{\mu\nu}$ contains only first derivatives ($\partial_\mu A_\nu-\partial_\nu A_\mu$), avoiding this instability.
+    
+**Gauge Invariance:** The physical fields cannot depend on the arbitrary gauge choice of $A_\mu$. Because $F_{\mu\nu}$ is invariant under the transformation $A_\mu\to A_\mu+\partial_\mu\Lambda$, any term built from it is inherently gauge invariant.
 
----
+It is worth noting mathematically that because $\mathcal{L}_{\text{field}}$ contains no terms proportional to $A_\mu A^\mu$ (a mass term) or $(\partial_\mu A^\mu)^2$, the Lagrangian is explicitly gauge invariant. This gauge invariance implies the operator acting on $A_\mu$ has no unique inverse, which is why choosing a gauge (like the Lorenz gauge) is strictly necessary to solve the differential equations for the potentials.
+
+For the interaction term:
+
+We need to build a Lagrangian by coupling something of the field and something of the particle. $\mathcal{L}_{\text{int}}=-J^\mu A_\mu$ is the simplest possible Lorentz scalar that does this.
+
+This term is actually not manifestly gauge invariant on its own. Under a gauge transformation, the term shifts by $-J^\mu\partial_\mu\Lambda$. However, applying integration by parts within the action integral transfers the derivative, yielding $\Lambda\partial_\mu J^\mu$. The overall action remains invariant if and only if $\partial_\mu J^\mu=0$. Therefore, choosing this exact interaction term strictly mandates local charge conservation.
 
 ## References
 - [Eigenchris Relativity Playlist](https://www.youtube.com/playlist?list=PLJHszsWbB6hqlw73QjgZcFh4DrkQLSCQa)
