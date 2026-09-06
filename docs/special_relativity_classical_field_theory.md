@@ -923,10 +923,98 @@ Depending on how you define the origin of the Rindler chart, the accelerating ob
 * **Shifted Origin:** The object is defined to sit exactly at $X=0$.
 * **Horizon Origin:** The object is defined to sit exactly at $X=c^2/a$.
 
-## Classical Field Theory
+## Electromagnetism: Maxwell's Laws
+
+There are 4 laws of electromagnetism, known as Maxwell's laws, which were established based on experimental observations of the interaction of charged particles, and electric and magnetic fields.
+
+**Gauss's Law for Electricity**
+
+$$\nabla \cdot \mathbf{E} = \frac{\rho}{\varepsilon_0}$$
+
+**Gauss's Law for Magnetism**
+
+$$\nabla \cdot \mathbf{B} = 0$$
+
+**Faraday's Law of Induction**
+
+$$\nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t}$$
+
+**Ampère-Maxwell Law**
+
+$$\nabla \times \mathbf{B} = \mu_0 \mathbf{J} + \mu_0 \varepsilon_0 \frac{\partial \mathbf{E}}{\partial t}$$
+
+$\mathbf{E}, \mathbf{B}, \rho$ and $\mathbf{J}$ are the electric field, the magnetic field, charge density and electric current. Note that there are no magnetic charges or magnetic currents in the equations. The reason will be pointed out later.
+
+These 4 equations tell us how fields are influenced by charged particles. But the charged particles are also influenced by the fields. The equations for that are the Lorentz force equations of motion:
+
+Classical 3D formulation:
+
+$$\mathbf{F} = q(\mathbf{E} + \mathbf{v} \times \mathbf{B})$$
+
+Relativistic 4-vector formulation:
+
+$$\frac{dp^\mu}{d\tau} = q F^{\mu\nu} u_\nu$$
+
+The study of electromagnetism revolves around these equations. When the Maxwell equations were initially proposed to explain observations, they were thought to be distinct equations. However, with the advent of Special Relativity, the electric and magnetic fields were seen to be related via the components of a 4-vector, just as space and time are related via the components of a spacetime 4-vector.
+
+### E & B as the 4-curl of the 4-vector potential
+
+The 4-vector potential is defined as $A^\mu = (\frac{\phi}{c}, \mathbf{A})$. $\phi$ is the scalar potential, the electrostatic equivalent of classical voltage potential. $\mathbf{A}$ is called the vector potential. Put together they form the 4-vector potential. The time component ($\frac{\phi}{c}$) and the spatial components ($\mathbf{A}$) are denoted distinctly as a matter of convention, which makes things cleaner since, as we will see, the electric field depends on the time component $\phi$ whereas the magnetic field does not.
+
+Similarly, the magnetic field can be arrived at via the regular 3D curl of the spatial components of the 4-vector potential, so it is convenient to denote the spatial components with distinct notation. But if we wish to look at both electric and magnetic fields via a single definition, we say they can be arrived at from the 4-vector potential $A^\mu$ by taking its 4-curl or the exterior derivative, a 4D extension of the curl operator. Both these definitions are equivalent.
+
+Note that the above definition is for the contravariant version of the 4-vector potential. To use its covariant form, we lower the index using the Minkowski metric, which in short, simply negates the spatial components (we use the $(+,-,-,-)$ convention here): $A_\mu = (\frac{\phi}{c}, -\mathbf{A})$.
+
+$\mathbf{E}$ and $\mathbf{B}$ are defined classically as:
+
+$\mathbf{B} = \nabla \times \mathbf{A}$ or component-wise: $B_k = \partial_i A_j - \partial_j A_i$
+
+$\mathbf{E} = -\nabla\phi - \frac{\partial \mathbf{A}}{\partial t}$ or component-wise: $E_i = -\partial_i\phi - \frac{\partial A^i}{\partial t}$
+
+As mentioned earlier, the magnetic field is simply the 3D curl of the spatial components of the 4-vector potential. The electric field involves the spatial gradients of $\phi$ (the time component) plus the time derivative of $\mathbf{A}$ (the spatial components). In a way, it is kind of like the curl of the time and spatial components mixed.
+
+The definitions of the electric and magnetic fields can be captured in a single equation if we use the notation of the 4-vector potential and define:
+
+$$F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu$$
+
+Evaluating the purely spatial components (e.g., $\mu=1, \nu=2$) gives the 3D curl, yielding the magnetic field components $B_k$. Evaluating the mixed time-space components (e.g., $\mu=0, \nu=i$) gives the electric field.
+
+Note that the above equation uses covariant components. This leads to a sign change from the classical 3D equation from Maxwell's laws, where $\mathbf{E} = -\nabla\phi - \frac{\partial \mathbf{A}}{\partial t}$. The two terms share the same sign (an overall negative), instead of a subtraction between terms which we would have expected from a curl operation.
+
+The fundamental 4-curl equation $F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu$ **does** use a minus sign. The reason the final 3D equation looks different is due to the Minkowski metric signature $(+,-,-,-)$, which flips the sign of the spatial components when lowering indices to the covariant form. Factoring in $\partial_0 = \frac{1}{c}\frac{\partial}{\partial t}$:
+
+$$F_{0i} = \partial_0 A_i - \partial_i A_0 = \frac{1}{c}\frac{\partial}{\partial t}(-A^i) - \nabla_i\left(\frac{\phi}{c}\right) = -\frac{1}{c}\left( \nabla_i\phi + \frac{\partial A^i}{\partial t} \right) = \frac{E_i}{c}$$
+
+$F_{\mu\nu}$ are the components of the electromagnetic field tensor. Raising both indices yields $F^{\mu\nu}$:
+
+$$F^{\mu\nu} = \begin{pmatrix} 0 & -E_x/c & -E_y/c & -E_z/c \\ E_x/c & 0 & -B_z & B_y \\ E_y/c & B_z & 0 & -B_x \\ E_z/c & -B_y & B_x & 0 \end{pmatrix}$$
+
+As can be seen, this is an antisymmetric tensor, and we only need 6 components—the 3 electric field components and the 3 magnetic field components—to describe it. From this tensor expression, it is easier to see that $\mathbf{E}$ and $\mathbf{B}$ are not separate fields, but interwoven components of a single unified tensor $F^{\mu\nu}$. A Lorentz boost (changing reference frames) simply mixes the temporal and spatial components of this matrix, transforming what looks like a pure magnetic field in one frame into a mixture of electric and magnetic fields in another.
+
+This is why a charged particle moving through a pure magnetic field in a laboratory experiences a force. However, when analyzed from the rest frame of the particle (where its velocity is zero), it cannot experience a magnetic force. Instead, in that frame, the magnetic field is Lorentz-transformed into an electric field, and the particle is accelerated by an electrostatic force. The two fields mix into each other depending entirely on the observer's reference frame!
+
+### Two of Maxwell's Laws Are Identities
+
+Once we realize that the two fields can be derived via a 4-curl of a vector potential, we see that two of Maxwell's laws are no longer simply experimental observations, they are quite literally mathematical laws and come from mathematical identities of vector calculus:
+
+**Gauss's Law for Magnetism:** The divergence of a curl is zero, so $\nabla \cdot (\nabla \times \mathbf{A}) = 0$. Since $\mathbf{B} = \nabla \times \mathbf{A}$, we get $\nabla \cdot \mathbf{B} = 0$.
+
+This dictates the absence of magnetic monopoles because the divergence of a field is always linked to the magnitude of a source "charge density".
+
+**Faraday's Law:** The curl of a gradient is always zero. Thus, $\nabla \times (\nabla\phi) = 0$, which implies $-\nabla \times (\nabla\phi) - \frac{\partial}{\partial t}(\nabla \times \mathbf{A}) + \frac{\partial}{\partial t}(\nabla \times \mathbf{A}) = 0$. Substituting the potential definitions yields $\nabla \times \mathbf{E} + \frac{\partial \mathbf{B}}{\partial t} = 0$.
+
+These two equations are combined into a single, elegant tensor equation known as the Bianchi identity:
+
+$$\partial_\alpha F_{\beta\gamma} + \partial_\beta F_{\gamma\alpha} + \partial_\gamma F_{\alpha\beta} = 0$$
+
+This can be proved by simply expanding the electromagnetic tensor components in terms of the 4-vector potential components. All partial derivatives commute, and the terms cancel each other out identically.
+
+$F$ is a differential 2-form derived from the exterior derivative of the 1-form $A$ ($F = dA$). The Bianchi identity and thus the homogeneous Maxwell equations become a trivial geometric statement: the boundary of a boundary is zero ($dF = d(dA) = 0$).
+
+These two Maxwell equations are said to be homogeneous since they evaluate to zero. Notice that their "complements" (the other two Maxwell Laws) contain terms for electrical charges and currents. Thus, these two homogeneous equations are the mathematical expression of the experimental observation that isolated magnetic monopoles and magnetic currents do not exist.
 
 ## References
 - [Eigenchris Relativity Playlist](https://www.youtube.com/playlist?list=PLJHszsWbB6hqlw73QjgZcFh4DrkQLSCQa)
+- Special Relativity and Classical Field Theory - The Theoretical Minimum by Leonard Susskind
 - Ch 01 of Classical Field Theory by Joel Franklin
 - [Lecture 01](https://davidtong.org/pdfs/teaching/general-relativity/gr1.pdf) of David Tong's General Relativity Notes
-- Special Relativity and Classical Field Theory - The Theoretical Minimum by Leonard Susskind
