@@ -1047,6 +1047,14 @@ $$\square A^\mu-\partial^\mu(\partial_\nu A^\nu)=\mu_0 J^\mu$$
 
 where $\square=\partial_\nu\partial^\nu=\frac{1}{c^2}\frac{\partial^2}{\partial t^2}-\nabla^2$ is the d'Alembertian operator.
 
+This equation can also be written in terms of the electromagnetic field tensor. Swap the order of the derivatives in the second term and factor out the common covariant derivative to get:
+
+$$\mu_0 J^\mu = \partial_\nu(\partial^\nu A^\mu-\partial^\mu A^\nu)=\partial_\nu F^{\nu\mu}=-\partial_\nu F^{\mu\nu}$$
+
+This is usually written as:
+
+$$\partial_\nu F^{\mu\nu}=-\mu_0 J^\mu$$
+
 ### Understanding the Scalar Potential and Current Density
 
 In purely electrostatic situations, $\phi$ is equivalent to the classical voltage potential $V$, and $\mathbf{E} = -\nabla\phi$. To understand this a little better, we define a system as electrostatic if the macroscopic charges generating the fields are perfectly stationary. Thus, the velocity of the charge is zero, which means there are no electrical currents as per the definition of current density above. It also means that since the charges are **not** moving, the charge density does not change with time. This means all time derivatives are zero ($\frac{\partial}{\partial t} = 0$).
