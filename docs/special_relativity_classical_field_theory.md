@@ -929,7 +929,7 @@ There are 4 laws of electromagnetism, known as Maxwell's laws, which were establ
 
 **Gauss's Law for Electricity**
 
-$$\nabla \cdot \mathbf{E} = \frac{\rho}{\varepsilon_0}$$
+$\nabla \cdot \mathbf{E} = \frac{\rho}{\varepsilon_0}$ or equivalently $\nabla \times \mathbf{E} + \frac{\partial \mathbf{B}}{\partial t} = 0$
 
 **Gauss's Law for Magnetism**
 
