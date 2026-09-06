@@ -762,7 +762,7 @@ This is just the definition of 4-momentum. So, the canonical momentum derived fr
 
 If we have to add a potential in order to account for forces operating on the particle (i.e., it is no longer a free particle), we need to add a $V(x)$ term to the Lagrangian. How do we do this while ensuring it is reparameterization and Lorentz invariant?
 
-For gravity, we do something a little different. We write the action as:
+For gravity, we write the action as:
 
 $$S_2 = \int_{t_1}^{t_2} \left[ -mc^2 \sqrt{1 + \frac{2\Phi(x)}{c^2} - \frac{\dot{\mathbf{x}}^2}{c^2}} \right] dt$$
 
@@ -908,6 +908,32 @@ Depending on how you define the origin of the Rindler chart, the accelerating ob
 
 * **Shifted Origin:** The object is defined to sit exactly at $X=0$.
 * **Horizon Origin:** The object is defined to sit exactly at $X=c^2/a$.
+
+---
+
+Lagrangian for a non-relativistic free particle $L = \frac{1}{2}m\dot{x}_i\dot{x}^i$ and for relativistic particles $L = -mc\sqrt{-\eta_{\mu\nu}\dot{x}^\mu\dot{x}^\nu}$.
+
+The Action then becomes $S = \int_{\sigma_1}^{\sigma_2} L d\sigma = -mc \int_{\sigma_1}^{\sigma_2} \sqrt{-\eta_{\mu\nu}\frac{dx^\mu}{d\sigma}\frac{dx^\nu}{d\sigma}} d\sigma$.
+
+Taking the low-velocity approximation and applying the binomial Taylor series expansion ($\sqrt{1 - \epsilon} \approx 1 - \frac{\epsilon}{2}$), the Action becomes $S \approx \int \left( -mc^2 + \frac{1}{2}m\dot{x}^2 \right) dt$, which is the Newtonian approximation (after ignoring the constant rest mass term).
+
+---
+
+The canonical momentum from the Lagrangian is 4-momentum: $P^\mu \equiv p^\mu$
+
+---
+
+If we have to add a potential in order to account for gravity, we write the action as:
+
+$$S = \int_{t_1}^{t_2} \left[ -mc^2 \sqrt{1 + \frac{2\Phi(x)}{c^2} - \frac{\dot{\mathbf{x}}^2}{c^2}} \right] dt$$
+
+If we Taylor expand the square root, assuming that $\vert{}\dot{\mathbf{x}}\vert{} \ll c$ and that $2\Phi(x) \ll c^2$, then the leading terms give:
+
+$$S_2 \approx \int_{t_1}^{t_2} \left[ -mc^2 + \frac{1}{2}m\dot{\mathbf{x}}^2 - m\Phi(x) \right] dt$$
+
+This low-velocity approximation gives us a potential energy term that is proportional to $m$ ($V = m\Phi$), which is exactly the definition of Newtonian gravitational potential energy.
+
+---
 
 ## Electromagnetism: Maxwell's Laws
 
