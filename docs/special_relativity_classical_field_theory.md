@@ -1088,6 +1088,90 @@ $$0 = \mu_0 \partial_\mu J^\mu \implies \partial_\mu J^\mu = 0$$
 
 Therefore we can say local charge conservation arises directly from the antisymmetry of the electromagnetic field tensor.
 
+## Principle of Least Action in Electromagnetism
+
+Though the inhomogeneous equations were originally established by experimental observation, they can also be derived directly from the principle of least action applied to the sum of the free-field and interaction Lagrangian densities.
+
+### How Lagrangians and Actions Vary for Particles & Fields
+
+In classical mechanics, we take the action as the integral of the Lagrangian. We solve for the equations of motion, which are essentially how the particle coordinates vary with time. Therefore the variables of interest here are the coordinates and velocities. These are the variables for which we would want to write down various actions, and then find the least action i.e. the set (or rather the function) of coordinates and velocities which give the least action. Therefore, the degrees of freedom that we allow the action to vary with while extremizing the action are literally the path itself i.e. coordinates (and velocities) between the start and end time.
+
+For Lagrangians of fields, we are trying to solve for the equations of motion, which are essentially how the field value (and direction for vector fields) varies with time and coordinate dimensions. Therefore, we would like to evaluate the action for various functions of field values and its derivatives with respect to the coordinates and time, and find which of these gives the least action. The degrees of freedom that we are interested have now become the actual field value and its derivatives.
+
+| Concept | Particle Mechanics | Field Theory |
+| --- | --- | --- |
+| **Independent Variable(s)** | Time: $t$ | Spacetime: $x^\mu = (t, x, y, z)$ |
+| **Degrees of Freedom** | Position coordinates: $q_i(t)$ | Field amplitudes: $\phi(x^\mu)$, $A^\mu(x^\nu)$ |
+| **Action Integral** | $S = \int_{t_1}^{t_2} L(q_i, \dot{q}_i, t) dt$ | $S = \int_{\Omega} \mathcal{L}(\phi, \partial_\mu \phi) d^4x$ |
+| **Variation Target** | Path trajectory: $\delta q_i(t)$ | Field configuration: $\delta \phi(x^\mu)$ |
+| **Boundary Conditions** | Fixed endpoints: $\delta q_i(t_1) = \delta q_i(t_2) = 0$ | Fixed boundary surface: $\delta \phi = 0$ on $\partial\Omega$ |
+
+When extremizing the action for a field, you evaluate a four-dimensional spacetime volume $\Omega$. You hold the field values rigidly fixed on the boundary surface of this volume ($\partial\Omega$), and you vary the field amplitude $\phi(t,x,y,z)$ at every interior point in spacetime.
+
+You are not varying a spatial trajectory; you are varying the intensity (or vector direction) of the field at every coordinate simultaneously. Because the continuous spatial label $\mathbf{x}$ effectively replaces the discrete index $i$ found in mechanical coordinates $q_i$, a field possesses an infinite number of degrees of freedom. The resulting generalized Euler-Lagrange equations act as an infinite set of equations of motion, one for every point in space, manifesting collectively as a single partial differential equation.
+
+### Lagrangian Density for a Field
+
+The dynamics of the field are determined by the principle of least action. The total Lagrangian density for a field interacting with matter consists of a free-field component and an interaction component.
+
+The free-field Lagrangian density is:
+
+$$\mathcal{L}_{\text{field}} = -\frac{1}{4\mu_0} F_{\mu\nu}F^{\mu\nu}$$
+
+which works out in SI units to:
+
+$$\mathcal{L}_{\text{field}} = \frac{1}{2}\epsilon_0 E^2 - \frac{1}{2\mu_0} B^2$$
+
+and in natural units to:
+
+$$\mathcal{L} = \frac{1}{2}(E^2 - B^2)$$
+
+Regarding the interaction component, its job is to couple the electromagnetic field to the matter field (the charge and current densities). This interaction term is where the charge density enters the Lagrangian density:
+
+$$\mathcal{L}_{\text{int}} = -J^\mu A_\mu = -(\rho\phi - \mathbf{J} \cdot \mathbf{A})$$
+
+The action $S$ of the electromagnetic field interacting with a current source is the four-dimensional integral of the Lagrangian density:
+
+$$S = \int \left( -\frac{1}{4\mu_0} F_{\alpha\beta}F^{\alpha\beta} - J^\mu A_\mu \right) d^4x$$
+
+---
+
+**Aside:** Note that in the integral, we have a $d^4x$ for the invariant volume element. This is a special case for Minkowski spacetime if the more general $\sqrt{-g} d^4x$. In flat Minkowski spacetime, $\sqrt{-\eta} = 1$, so it seamlessly reduces to $d^4x$.
+
+---
+
+The Euler-Lagrange equation for the continuous field components $A_\mu$ is:
+
+$$\partial_\nu \left( \frac{\partial \mathcal{L}}{\partial (\partial_\nu A_\mu)} \right) - \frac{\partial \mathcal{L}}{\partial A_\mu} = 0$$
+
+First, evaluate the derivative with respect to the field potential $A_\mu$. Only the interaction term contains $A_\mu$ directly:
+
+$$\frac{\partial \mathcal{L}}{\partial A_\mu} = -J^\mu$$
+
+Next, evaluate the derivative with respect to the field gradients $\partial_\nu A_\mu$. Only the free-field term contains the gradients (embedded within $F_{\alpha\beta}$):
+
+$$\frac{\partial \mathcal{L}}{\partial (\partial_\nu A_\mu)} = \frac{\partial}{\partial (\partial_\nu A_\mu)} \left( -\frac{1}{4\mu_0} F_{\alpha\beta}F^{\alpha\beta} \right)$$
+
+Because $F^{\alpha\beta} = \partial^\alpha A^\beta - \partial^\beta A^\alpha$, applying the chain rule to the product $F_{\alpha\beta}F^{\alpha\beta}$ isolates the specific indices $\nu$ and $\mu$, yielding:
+
+$$\frac{\partial \mathcal{L}}{\partial (\partial_\nu A_\mu)} = -\frac{1}{\mu_0} F^{\nu\mu}$$
+
+Substituting these two derivatives back into the Euler-Lagrange equation gives:
+
+$$\partial_\nu \left( -\frac{1}{\mu_0} F^{\nu\mu} \right) - (-J^\mu) = 0$$
+
+Rearranging this produces the covariant form of the inhomogeneous Maxwell equations:
+
+$$\partial_\nu F^{\nu\mu} = \mu_0 J^\mu$$
+
+Expanding this into its time ($\mu=0$) and spatial ($\mu=1,2,3$) components recovers Gauss's Law ($\nabla \cdot \mathbf{E} = \frac{\rho}{\epsilon_0}$) and the Ampere-Maxwell Law ($\nabla \times \mathbf{B} - \frac{1}{c^2}\frac{\partial \mathbf{E}}{\partial t} = \mu_0 \mathbf{J}$), respectively.
+
+---
+
+**Aside:** It is worth noting mathematically that because $\mathcal{L}_{\text{field}}$ contains no terms proportional to $A_\mu A^\mu$ (a mass term) or $(\partial_\mu A^\mu)^2$, the Lagrangian is explicitly gauge invariant. This gauge invariance implies the operator acting on $A_\mu$ has no unique inverse, which is why choosing a gauge (like the Lorenz gauge) is strictly necessary to solve the differential equations for the potentials.
+
+---
+
 ## References
 - [Eigenchris Relativity Playlist](https://www.youtube.com/playlist?list=PLJHszsWbB6hqlw73QjgZcFh4DrkQLSCQa)
 - Special Relativity and Classical Field Theory - The Theoretical Minimum by Leonard Susskind
