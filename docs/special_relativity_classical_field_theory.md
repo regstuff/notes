@@ -1269,6 +1269,28 @@ Applying the Euler-Lagrange equations to this complete Lagrangian generates the 
 
 $$\frac{d\mathbf{p}}{dt} = \mathbf{F} = q(\mathbf{E} + \mathbf{v} \times \mathbf{B})$$
 
+We can also get the conjugate momentum from the Lagrangian. For the first term in the Lagrangian, we get:
+
+$$\frac{\partial}{\partial \mathbf{v}} \left( -mc^2 \sqrt{1 - \frac{v^2}{c^2}} \right) = -mc^2 \left[ \frac{1}{2} \left( 1 - \frac{v^2}{c^2} \right)^{-1/2} \left( -\frac{2\mathbf{v}}{c^2} \right) \right]$$
+
+Simplifying this gives the relativistic mechanical momentum: $= \frac{m\mathbf{v}}{\sqrt{1 - \frac{v^2}{c^2}}} = \gamma m\mathbf{v}$
+
+The scalar potential term $-q\phi$ has no velocity dependence. For the vector potential term, the derivative is straightforward: $\frac{\partial}{\partial \mathbf{v}} (q\mathbf{v} \cdot \mathbf{A}) = q\mathbf{A}$
+
+Combining these, the total canonical conjugate momentum is: $\mathbf{p} = \gamma m\mathbf{v} + q\mathbf{A}$
+
+We can then derive the Hamiltonian: $H = \mathbf{P} \cdot \mathbf{v} - L$
+
+$$H = \mathbf{P} \cdot \mathbf{v} + mc^2 \sqrt{1 - \frac{v^2}{c^2}} + q\phi - \frac{q}{c}\mathbf{v} \cdot \mathbf{A}$$
+
+which eventually becomes:
+
+$$H = \sqrt{m^2 c^4 + c^2 \left( \mathbf{P} - \frac{q}{c}\mathbf{A} \right)^2} + q\phi$$
+
+The non-relativistic approximation is:
+
+$$H_{NR} = H - mc^2 = \frac{1}{2m} \left( \mathbf{P} - \frac{q}{c}\mathbf{A} \right)^2 + q\phi$$
+
 ### Upgrading the Force to a 4-Vector
 The action above does not yield a time component of the 4-force. It only yields the three spatial components of the Lorentz force due to the choice of the integration parameter. By defining the Lagrangian with respect to coordinate time $t$, time is treated as the independent parameter of integration, while only the three spatial coordinates are treated as dynamical variables. Consequently, applying the Euler-Lagrange equations to $\mathbf{x}(t)$ will strictly output three spatial equations of motion.
 
