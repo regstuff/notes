@@ -1007,7 +1007,13 @@ These two equations are combined into a single, elegant tensor equation known as
 
 $$\partial_\alpha F_{\beta\gamma} + \partial_\beta F_{\gamma\alpha} + \partial_\gamma F_{\alpha\beta} = 0$$
 
-This can be proved by simply expanding the electromagnetic tensor components in terms of the 4-vector potential components. All partial derivatives commute, and the terms cancel each other out identically.
+---
+
+**Aside:** Poincaré's Lemma states that if an antisymmetric tensor satisfies this identity (meaning the differential form is "closed"), it can always be expressed as the derivative of a vector field (meaning it is "exact"). Therefore, there is a mathematical guarantee that a 4-vector field $A^\mu = (\phi/c, \mathbf{A})$ must exist such that the tensor is strictly defined by its gradients: $F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu$.
+
+---
+
+The Bianchi identity can be proved by simply expanding the electromagnetic tensor components in terms of the 4-vector potential components. All partial derivatives commute, and the terms cancel each other out identically.
 
 $F$ is a differential 2-form derived from the exterior derivative of the 1-form $A$ ($F = dA$). The Bianchi identity and thus the homogeneous Maxwell equations become a trivial geometric statement: the boundary of a boundary is zero ($dF = d(dA) = 0$).
 
