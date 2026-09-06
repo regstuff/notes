@@ -1191,6 +1191,34 @@ Regarding Lorentz invariance, the requirement needs contraction of the indices, 
 
 $$S_1 = \int_{\sigma_1}^{\sigma_2} \left[ -mc \sqrt{-\eta_{\mu\nu} \frac{dx^\mu}{d\sigma} \frac{dx^\nu}{d\sigma}} + qA_\mu(x) \dot{x}^\mu \right] d\sigma$$
 
+## The Discrete Particle Lagrangian and Lorentz Force
+
+The Lorentz force (and not the Lorenz force!) tells us how fields influence particles. To derive this, we can use the Principle of Least Action again, where we have a discrete point particle of mass $m$ and charge $q$, and the action includes the particle's free kinematics and its specific interaction with the field.
+
+To start with, we take the kinematic component for the free particle, which we already arrived at earlier. Using an arbitrary parameter $\sigma$, the Lagrangian is $L = -mc\sqrt{-\eta_{\mu\nu}\dot{x}^\mu\dot{x}^\nu}$. If we parameterize this using coordinate time $t$, it becomes $L = -mc^2 \sqrt{1 - \frac{v^2}{c^2}}$. This is clearly Lorentz invariant and ensures our complete Lagrangian is coordinate independent.
+
+To account for the force terms, we need to add a potential term to this. We already derived the interaction Lagrangian density earlier. To turn this into a Lagrangian for a discrete particle, $L_{\text{int}}$, we integrate the density over all 3D space. For a point particle at position $\mathbf{r}_p(t)$ with velocity $\mathbf{v}$, the source densities are modeled using Dirac delta functions: $\rho = q\delta^3(\mathbf{r} - \mathbf{r}_p)$ and $\mathbf{J} = q\mathbf{v}\delta^3(\mathbf{r} - \mathbf{r}_p)$. Integrating $\int (-\rho\phi + \mathbf{J} \cdot \mathbf{A}) d^3x$ collapses the fields strictly to the particle's location:
+
+$$L_{\text{int}} = -q\phi + q\mathbf{v} \cdot \mathbf{A}$$
+
+This interaction term acts as a velocity-dependent generalized potential. Recall the point we made in the [4-Force section in Special Relativity](4-force-is-not-a-gradient-like-the-3-force). A relativistic force purely from the spatial gradient of a scalar potential ($\partial^i\Phi$) forces the particle's potential to remain constant ($d\Phi/d\tau = 0$). We concluded that any valid force in relativity must be velocity-dependent to satisfy the geometric constraint $a^i u_i = 0$.The term $q\mathbf{v} \cdot \mathbf{A}$ is the mathematical engine that provides this required velocity dependence. Without it, the Lagrangian would only contain the $-q\phi$ term, which would only generate a static electric field ($\mathbf{E} = -\nabla\phi$).
+
+We could also derive the interaction Lagrangian from the perspective of a particle without resorting to our earlier field interaction density. Essentially, it comes down to adding a potential term $V(x)$ into the covariant Lagrangian to account for the force on the particle due to the field. How do we do this while ensuring it is reparameterization and Lorentz invariant?
+
+For the first requirement, using a term that depends on $\dot{x}$ will do the job, as the $d\sigma$ in the denominator cancels out the $d\sigma$ integration parameter (just like we saw in the free particle case). For Lorentz invariance, we need to contract the indices. Together, we can propose the interaction Lagrangian $q A_\mu(x) \dot{x}^\mu$. Here, $q$ is the charge and is added as a coupling factor between the 4-potential $A^\mu$ and the 4-velocity $\dot{x}^\mu$. Under the mostly-plus metric signature, this covariant term expands exactly to $-q\phi + q\mathbf{v} \cdot \mathbf{A}$.
+
+Combining the free particle and interaction terms gives the total Lagrangian for a single charged particle in an external electromagnetic field:
+
+$$L = -mc^2 \sqrt{1 - \frac{v^2}{c^2}} - q\phi + q\mathbf{v} \cdot \mathbf{A}$$
+
+Integrating this Lagrangian over coordinate time $t$ gives the complete electromagnetic action for the particle:
+
+$$S_1 = \int_{t_1}^{t_2} \left[ -mc^2 \sqrt{1 - \frac{\mathbf{v}^2}{c^2}} - q\phi(x) + q\mathbf{A}(x) \cdot \mathbf{v} \right] dt$$
+
+Applying the Euler-Lagrange equations to this complete Lagrangian generates the correct equations of motion, yielding the Lorentz force law:
+
+$$\frac{d\mathbf{p}}{dt} = \mathbf{F} = q(\mathbf{E} + \mathbf{v} \times \mathbf{B})$$
+
 ## References
 - [Eigenchris Relativity Playlist](https://www.youtube.com/playlist?list=PLJHszsWbB6hqlw73QjgZcFh4DrkQLSCQa)
 - Special Relativity and Classical Field Theory - The Theoretical Minimum by Leonard Susskind
