@@ -1134,19 +1134,15 @@ and in natural units to:
 
 $$\mathcal{L} = \frac{1}{2}(E^2 - B^2)$$
 
-Regarding the interaction component, its job is to couple the electromagnetic field to the matter field (the charge and current densities). This interaction term is where the charge density enters the Lagrangian density:
+Regarding the interaction component, its job is to couple the electromagnetic field to the matter field (the charge and current densities). The simplest possible Lorentz scalar that does this is:
 
 $$\mathcal{L}_{\text{int}} = -J^\mu A_\mu = -(\rho\phi - \mathbf{J} \cdot \mathbf{A})$$
 
-The action $S$ of the electromagnetic field interacting with a current source is the four-dimensional integral of the Lagrangian density:
+However, this term is not manifestly gauge invariant. But we will resolve this shortly. The action $S$ of the electromagnetic field interacting with a current source is the four-dimensional integral of the Lagrangian density:
 
 $$S = \int \left( -\frac{1}{4\mu_0} F_{\alpha\beta}F^{\alpha\beta} - J^\mu A_\mu \right) d^4x$$
 
----
-
-**Aside:** Note that in the integral, we have a $d^4x$ for the invariant volume element. This is a special case for Minkowski spacetime of the more general $\sqrt{-g} d^4x$. In flat Minkowski spacetime, $\sqrt{-\eta} = 1$, so it seamlessly reduces to $d^4x$.
-
----
+Note that in the integral, we have a $d^4x$ for the invariant volume element. This is a special case for Minkowski spacetime of the more general $\sqrt{-g} d^4x$. In flat Minkowski spacetime, $\sqrt{-\eta} = 1$, so it seamlessly reduces to $d^4x$. This ensures gauge invariance.
 
 The Euler-Lagrange equation for the continuous field components $A_\mu$ is:
 
@@ -1189,7 +1185,11 @@ For the interaction term:
 
 We need to build a Lagrangian by coupling something of the field and something of the particle. $\mathcal{L}_{\text{int}}=-J^\mu A_\mu$ is the simplest possible Lorentz scalar that does this.
 
-This term is actually not manifestly gauge invariant on its own. Under a gauge transformation, the term shifts by $-J^\mu\partial_\mu\Lambda$. However, applying integration by parts within the action integral transfers the derivative, yielding $\Lambda\partial_\mu J^\mu$. The overall action remains invariant if and only if $\partial_\mu J^\mu=0$. Therefore, choosing this exact interaction term strictly mandates local charge conservation.
+This term is actually not manifestly gauge invariant on its own. But note that $J = q \cdot v$, where $v = \frac{dx_i}{d\tau}$. When we take the integral over the parameter $d\tau$ to get the action, the $d\tau$ in the denominator cancels out the $d\tau$ integration parameter (just like we saw in the free particle case). Another way to say this is under a gauge transformation, the term shifts by $-J^\mu\partial_\mu\Lambda$. However, applying integration by parts within the action integral transfers the derivative, yielding $\Lambda\partial_\mu J^\mu$. The overall action remains invariant if and only if $\partial_\mu J^\mu=0$. Therefore, choosing this exact interaction term strictly mandates local charge conservation.
+
+Regarding Lorentz invariance, the requirement needs contraction of the indices, which is clearly satisfied in $^\mu A_\mu$. Together, we can propose an action:
+
+$$S_1 = \int_{\sigma_1}^{\sigma_2} \left[ -mc \sqrt{-\eta_{\mu\nu} \frac{dx^\mu}{d\sigma} \frac{dx^\nu}{d\sigma}} + qA_\mu(x) \dot{x}^\mu \right] d\sigma$$
 
 ## References
 - [Eigenchris Relativity Playlist](https://www.youtube.com/playlist?list=PLJHszsWbB6hqlw73QjgZcFh4DrkQLSCQa)
