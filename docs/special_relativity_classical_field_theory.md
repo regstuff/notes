@@ -1021,7 +1021,7 @@ The above two homogeneous Maxwell equations tell us how electric and magnetic fi
 
 **Aside:** Electromagnetic Duality or Heaviside-Larmor symmetry states that if magnetic monopoles $\rho_m$ and magnetic currents $\mathbf{J}_m$ are ever discovered, we would simply plug them into the right-hand side of the homogeneous equations: 
 
-$$\nabla \cdot \mathbf{B} = \mu_0 \rho_m$$$$\nabla \times \mathbf{E} + \frac{\partial \mathbf{B}}{\partial t} = -\mu_0 \mathbf{J}_m$$
+$\nabla \cdot \mathbf{B} = \mu_0 \rho_m$ and $\nabla \times \mathbf{E} + \frac{\partial \mathbf{B}}{\partial t} = -\mu_0 \mathbf{J}_m$
 
 The Maxwell equations would then become perfectly symmetric. The fact that nature appears to break this beautiful mathematical symmetry by setting $\rho_m = 0$ and $\mathbf{J}_m = 0$ remains one of the fundamental mysteries in theoretical physics.
 
