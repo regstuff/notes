@@ -1219,6 +1219,84 @@ Applying the Euler-Lagrange equations to this complete Lagrangian generates the 
 
 $$\frac{d\mathbf{p}}{dt} = \mathbf{F} = q(\mathbf{E} + \mathbf{v} \times \mathbf{B})$$
 
+### Upgrading the Force to a 4-Vector
+The action above does not yield a time component of the 4-force. It only yields the three spatial components of the Lorentz force due to the choice of the integration parameter. By defining the Lagrangian with respect to coordinate time $t$, time is treated as the independent parameter of integration, while only the three spatial coordinates are treated as dynamical variables. Consequently, applying the Euler-Lagrange equations to $\mathbf{x}(t)$ will strictly output three spatial equations of motion.
+
+To recover the four-dimensional formulation, we must promote time to a dynamical coordinate $x^0(\tau)$ and parameterize the action using an invariant scalar, such as $\tau$.
+
+To find the 4D Lorentz force, we rewrite the action using the four-potential $A^\mu=(\phi/c, \mathbf{A})$ and the four-velocity $U^\mu=\frac{dx^\mu}{d\tau}$.
+
+The interaction term in the previous action $(-q\phi+q\mathbf{A}\cdot\mathbf{v})dt$, is the non-covariant expansion of the invariant inner product $-qA_\mu dx^\mu$. By factoring out $d\tau$ instead of $dt$, the complete covariant action becomes:
+
+$$S=\int\left(-mc\sqrt{\eta_{\mu\nu}\frac{dx^\mu}{d\tau}\frac{dx^\nu}{d\tau}}-qA_\mu\frac{dx^\mu}{d\tau}\right)d\tau$$
+
+Applying the Euler-Lagrange equations yields the fully covariant 4D Lorentz force law:
+
+$$\frac{dp^\mu}{d\tau}=K^{\mu}=qF^{\mu\nu}U_\nu$$
+
+The spatial components ($\mu=1,2,3$) reproduce the 3D Lorentz force we derived earlier, multiplied by the Lorentz factor $\gamma$ (since $d\tau=dt/\gamma$).
+
+The time component ($\mu=0$) was missing earlier emerges from the 4D formulation. Evaluating $\frac{dp^0}{d\tau}=qF^{0\nu}U_\nu$ gives:
+
+$$\frac{d}{d\tau}\left(\frac{E}{c}\right)=q\left(\frac{E^i}{c}\right)U_i$$
+
+Converting the proper time derivative back to coordinate time ($d\tau \to dt$) and dividing out the Lorentz factor yields:
+
+$$\frac{dE}{dt}=q\mathbf{v}\cdot\mathbf{E}$$
+
+This is the work-energy theorem, which sets the rate of change of the particle's total relativistic energy $E$ equal to the mechanical power delivered by the electric field. Magnetic fields do no work, which is mathematically enforced by the fact that the spatial magnetic components in $F^{\mu\nu}$ drop out of the $\mu=0$ equation.
+
+#### Tying Back to the 4-Force from Special Relativity
+Instead of using an action to arrive at the 4-force, we can also arrive at it by utilizing the equation for 4-force that we arrived at in Special Relativity. Since we already know the 3D force from the previous action, we can use the equation $K^\mu=\gamma\left(\frac{\mathbf{F}\cdot\mathbf{v}}{c},\mathbf{F}\right)$.
+
+Substitute the known 3D Lorentz force, $\mathbf{F}=q(\mathbf{E}+\mathbf{v}\times\mathbf{B})$, into the dot product $K^0=\gamma\frac{\mathbf{F}\cdot\mathbf{v}}{c}$:
+
+$$K^0=\frac{\gamma}{c}\left(q(\mathbf{E}+\mathbf{v}\times\mathbf{B})\cdot\mathbf{v}\right)$$
+
+$$K^0=\frac{\gamma}{c}\left(q(\mathbf{E}\cdot\mathbf{v})+q((\mathbf{v}\times\mathbf{B})\cdot\mathbf{v})\right)$$
+
+The vector resulting from $\mathbf{v}\times\mathbf{B}$ is strictly orthogonal to both $\mathbf{v}$ and $\mathbf{B}$. Therefore, its dot product with the velocity $\mathbf{v}$ is identically zero. This mathematically proves that magnetic fields perform no mechanical work on the particle. The equation collapses to:
+
+$$K^0=\gamma\frac{q\mathbf{E}\cdot\mathbf{v}}{c}$$
+
+We can continue, and arrive at the work-energy theorem again. By definition, the 4-force is the proper time derivative of the 4-momentum ($K^\mu=\frac{dp^\mu}{d\tau}$). For the time component, the 4-momentum is $p^0=E_{\text{total}}/c$.
+
+Therefore $K^0=\frac{dp^0}{d\tau}=\frac{1}{c}\frac{dE_{\text{total}}}{d\tau}$
+
+Since proper time is related to coordinate time by $d\tau=dt/\gamma$, we rewrite the derivative:
+
+$$K^0=\frac{\gamma}{c}\frac{dE_{\text{total}}}{dt}$$
+
+Equate this kinematic definition of $K^0$ to the electromagnetic expression derived in earlier:
+
+$$\frac{\gamma}{c}\frac{dE_{\text{total}}}{dt}=\gamma\frac{q\mathbf{E}\cdot\mathbf{v}}{c}$$
+
+Cancel the $\frac{\gamma}{c}$ terms from both sides, and you arrive at the exact same power equation:
+
+$$\frac{dE_{\text{total}}}{dt}=q\mathbf{E}\cdot\mathbf{v}$$
+
+To make this physically consistent across all reference frames, the 3-vectors must be upgraded to 4-vectors. The particle's velocity becomes the 4-velocity $U^\mu = \gamma(c, \mathbf{v})$. 
+
+$$K^\mu = \gamma\left(\frac{\mathbf{F} \cdot \mathbf{v}}{c}, \mathbf{F}\right)$$
+
+Now we claim that 
+
+$$K^\mu = q F^{\mu\nu} U_\nu$$ 
+
+is the 4-vector formulation of force and that it is consistent with the time and spatial components. We can verify this by expanding all the components.
+
+$$K^0 = q F^{0\nu} U_\nu = q (F^{00}U_0 + F^{01}U_1 + F^{02}U_2 + F^{03}U_3)$$
+
+$$K^0 = q \left[ 0 + \left(-\frac{E_x}{c}\right)(-\gamma v_x) + \left(-\frac{E_y}{c}\right)(-\gamma v_y) + \left(-\frac{E_z}{c}\right)(-\gamma v_z) \right]$$
+
+$$K^0 = \gamma \frac{q}{c} (E_x v_x + E_y v_y + E_z v_z)$$
+
+$$K^0 = \gamma \frac{q (\mathbf{E} \cdot \mathbf{v})}{c}$$
+
+Similarly, we can do the same for the spatial components and verify that the relation stands true. 
+
+Though we've arrived at the 4-vector relation via construction, in effect, the electromagnetic field tensor is actually defined by $K^\mu = q F^{\mu\nu} U_\nu$.
+
 ## References
 - [Eigenchris Relativity Playlist](https://www.youtube.com/playlist?list=PLJHszsWbB6hqlw73QjgZcFh4DrkQLSCQa)
 - Special Relativity and Classical Field Theory - The Theoretical Minimum by Leonard Susskind
