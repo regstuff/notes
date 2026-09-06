@@ -1454,13 +1454,20 @@ Writing this in 3D vector notation:
 
 $$\mathbf{f}=-\frac{\partial\mathbf{g}}{\partial t}+\nabla\cdot\boldsymbol{\sigma}$$
 
-This is the conservation of momentum. It dictates that the mechanical force $\mathbf{f}$ exerted on the charges is drawn from two sources:
+The lefthand side is related to the physical momentum of the particles. The sum on the righthand side includes the field's intrinsic momentum and the net mechanical stress exerted by the surrounding field lines, which means:
+
+$$\frac{\partial \mathbf{p}_{\text{mech}}}{\partial t} = -\frac{\partial \mathbf{p}_{\text{field}}}{\partial t} + \nabla \cdot \boldsymbol{\sigma}$$
+
+$$\frac{\partial}{\partial t} (\mathbf{p}_{\text{mech}} + \mathbf{p}_{\text{field}}) = \nabla \cdot \boldsymbol{\sigma}$$
+
+which is conservation of momentum in classical electrodynamics.It dictates that the mechanical force $\mathbf{f}$ exerted on the charges is drawn from two sources:
 
 1.  $-\frac{\partial\mathbf{g}}{\partial t}$: The localized depletion of the electromagnetic field's intrinsic momentum.
     
 2.  $\nabla\cdot\boldsymbol{\sigma}$: The net mechanical stress (pressure and shear) exerted by the surrounding field lines pushing inward across the boundaries of the volume.
 
 **Combined continuity equation**
+
 All 4 continuity equations can be succinctly written as $\partial_\mu T^{\mu\nu} = 0$ holds for all values of the free index $\nu$. This represents the four distinct continuity equations we looked at above.
 
 ### The Two Reservoirs of Momentum
@@ -1473,6 +1480,169 @@ In any region of space containing both matter and electromagnetic fields, the to
 The Lorentz force density $\mathbf{f}$ only accounts for the rate of change of the **mechanical** momentum of the charges: $\mathbf{f} = \frac{\partial \mathbf{p}_{\text{mech}}}{\partial t}$. It does not include the field momentum aspects which comes from the Poynting vector, which is why our equation for conservation of above includes the term for $\mathbf{g}$.
 
 Note that this also means that a particle can gain momentum even when the Poynting vector is $0$ because the momentum is supplied to the particle continuously by the spatial flux i.e. the Maxwell stress tensor $\sigma$. The divergence of this stress tensor ($\nabla \cdot \sigma$) acts as a river of momentum flowing through the vacuum, which deposits that momentum directly into the particle via the Lorentz force.
+
+## Useful Formulas
+
+The 4 Maxwell equations tell us how fields are influenced by charged particles. 
+
+The homogenous Maxwell's laws relate the electric and magnetic fields to magnetic sources (which do not exist and are therefore set to 0):
+
+$$\nabla \cdot \mathbf{E} = \frac{\rho}{\varepsilon_0}$$
+
+$\nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t}$ or equivalently $\nabla \times \mathbf{E} + \frac{\partial \mathbf{B}}{\partial t} = 0$
+
+In 4-vector terms, these two equations can be represented by the Bianchi identity:
+
+$$\partial_\alpha F_{\beta\gamma} + \partial_\beta F_{\gamma\alpha} + \partial_\gamma F_{\alpha\beta} = 0$$
+
+The inhomogeneous Maxwell's laws which relate the electric and magnetic fields to electric sources (charge and current density):
+
+$$\nabla \cdot \mathbf{B} = 0$$
+
+$$\nabla \times \mathbf{B} = \mu_0 \mathbf{J} + \mu_0 \varepsilon_0 \frac{\partial \mathbf{E}}{\partial t}$$
+
+In 4-vector terms these become: $\partial_\nu(\partial^\nu A^\mu-\partial^\mu A^\nu)=\mu_0 J^\mu$, often written as: $\square A^\mu-\partial^\mu(\partial_\nu A^\nu)=\mu_0 J^\mu$, where $\square=\partial_\nu\partial^\nu=\frac{1}{c^2}\frac{\partial^2}{\partial t^2}-\nabla^2$ is the d'Alembertian operator.
+
+This equation can also be written in terms of the electromagnetic field tensor: $\partial_\nu F^{\mu\nu}=-\mu_0 J^\mu$
+
+---
+
+$J^\nu=\rho_0 U^\nu$. The spatial components are $J^i=\rho\mathbf{v}$, classical 3D current density. The time component $J^0=\rho c$ represents the local charge density. 
+
+---
+
+Charged particles are influenced by the fields, which give us the Lorentz force equations of motion:
+
+Classical 3D formulation:
+
+$$\mathbf{F} = q(\mathbf{E} + \mathbf{v} \times \mathbf{B})$$
+
+Relativistic 4-vector formulation:
+
+$$\frac{dp^\mu}{d\tau} = q F^{\mu\nu} u_\nu$$
+
+---
+
+The 4-vector potential is defined as $A^\mu = (\frac{\phi}{c}, \mathbf{A})$. $\phi$ is the scalar potential, the electrostatic equivalent of classical voltage potential. 
+
+$\mathbf{E}$ and $\mathbf{B}$ can be seen to be components of $A^\mu$ when written as:
+
+$\mathbf{B} = \nabla \times \mathbf{A}$ or component-wise: $B_k = \partial_i A_j - \partial_j A_i$
+
+$\mathbf{E} = -\nabla\phi - \frac{\partial \mathbf{A}}{\partial t}$ or component-wise: $E_i = -\partial_i\phi - \frac{\partial A^i}{\partial t}$
+
+This can be captured in a single equation with the electromagnetic field tensor:
+
+$$F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu$$
+
+$$F^{\mu\nu} = \begin{pmatrix} 0 & -E_x/c & -E_y/c & -E_z/c \\ E_x/c & 0 & -B_z & B_y \\ E_y/c & B_z & 0 & -B_x \\ E_z/c & -B_y & B_x & 0 \end{pmatrix}$$
+
+---
+
+The continuity equation: $\frac{\partial \rho}{\partial t} = -\nabla \cdot \mathbf{J}$ or in covariant notation: $\partial_\mu J^\mu = 0$.
+
+---
+The Euler-Lagrange equation for the continuous field components gives us the inhomogeneous Maxwell equation.
+
+The free-field Lagrangian density is:
+
+$$\mathcal{L}_{\text{field}} = -\frac{1}{4\mu_0} F_{\mu\nu}F^{\mu\nu}$$
+
+which works out in SI units to:
+
+$$\mathcal{L}_{\text{field}} = \frac{1}{2}\epsilon_0 E^2 - \frac{1}{2\mu_0} B^2$$
+
+and in natural units to:
+
+$$\mathcal{L} = \frac{1}{2}(E^2 - B^2)$$
+
+The interaction Lagrangian:
+
+$$\mathcal{L}_{\text{int}} = -J^\mu A_\mu = -(\rho\phi - \mathbf{J} \cdot \mathbf{A})$$
+
+The action combining the two Lagrangians:
+
+$$S = \int \left( -\frac{1}{4\mu_0} F_{\alpha\beta}F^{\alpha\beta} - J^\mu A_\mu \right) d^4x$$
+
+where we ought to integrate over $\sqrt{-g} d^4x$ to ensure coordinate invariance or covariance, but for flat spacetime, this can be ignored. 
+
+---
+
+The Lagrangian for the particle is: 
+
+$$L = -mc^2 \sqrt{1 - \frac{v^2}{c^2}} - q\phi + q\mathbf{v} \cdot \mathbf{A}$$
+
+The action:
+
+$$S_1 = \int_{t_1}^{t_2} \left[ -mc^2 \sqrt{1 - \frac{\mathbf{v}^2}{c^2}} - q\phi(x) + q\mathbf{A}(x) \cdot \mathbf{v} \right] dt$$
+
+Applying the Euler-Lagrange equations gives the Lorentz force law:
+
+$$\frac{d\mathbf{p}}{dt} = \mathbf{F} = q(\mathbf{E} + \mathbf{v} \times \mathbf{B})$$
+
+And to get the 4-force we parametrize the action with $\tau$:
+
+$$S=\int\left(-mc\sqrt{\eta_{\mu\nu}\frac{dx^\mu}{d\tau}\frac{dx^\nu}{d\tau}}-qA_\mu\frac{dx^\mu}{d\tau}\right)d\tau$$
+
+Applying the Euler-Lagrange equations yields the fully covariant 4D Lorentz force law:
+
+$$\frac{dp^\mu}{d\tau}=K^{\mu}=qF^{\mu\nu}U_\nu$$
+
+The spatial components ($\mu=1,2,3$) reproduce the 3D Lorentz force. The time component gives the work-energy theorem: the rate of change of the particle's total relativistic energy $E$ equal to the mechanical power delivered by the electric field.
+
+$$\frac{dE}{dt}=q\mathbf{v}\cdot\mathbf{E}$$
+
+---
+
+The electromagnetic stress-energy tensor:
+
+$$T^{\mu\nu} = \frac{1}{\mu_0} \left( F^{\mu\alpha}F^\nu_{\;\;\alpha} + \frac{1}{4}\eta^{\mu\nu}F_{\alpha\beta}F^{\alpha\beta} \right)$$
+
+---
+
+Time-time component:
+
+$$T^{00} = \frac{1}{2}(E^2 + B^2)$$
+
+Time-space component: The momentum density of the field denoted by ($\mathbf{g}$) and the Poynting vector $\mathbf{S}$, representing the energy flux.  
+
+$$T^{0i} = T^{i0} = (\mathbf{E} \times \mathbf{B})^i$$
+
+Time-space continuity equation:
+
+$$f^0=-\partial_0 T^{00}-\partial_i T^{0i}$$
+
+$f^0$ (Power Density) is the rate at which the field does work on the matter, scaled by $c$. $f^0=\frac{1}{c}\mathbf{J}\cdot\mathbf{E}$.    
+
+Substituting, we get Poynting's theorem, which states that the rate of change of energy density in a region ($\frac{\partial u}{\partial t}$) plus the energy flowing out of that region ($\nabla\cdot\mathbf{S}$) is perfectly balanced by the mechanical work done by charge on the field ($-\mathbf{J}\cdot\mathbf{E}$). 
+
+$$\frac{\partial u}{\partial t}+\nabla\cdot\mathbf{S}=-\mathbf{J}\cdot\mathbf{E}$$
+
+---
+
+Spatial components: 
+
+$$T^{ij} = -E^i E^j - B^i B^j + \frac{1}{2}\delta^{ij}(E^2 + B^2)$$
+
+This $3 \times 3$ block is the negative of the classical Maxwell stress tensor ($\sigma^{ij}$).
+
+The diagonal components represent isotropic pressures exerted by the field. The off-diagonal components represent shear stresses (forces parallel to the surface). 
+
+Associated continuity equation:
+
+$f^j=-\partial_0 T^{j0}-\partial_i T^{ji}$ where $f^j$ (Force Density) is the 3D Lorentz force density.
+
+In 3D vector notation: $\mathbf{f}=-\frac{\partial\mathbf{g}}{\partial t}+\nabla\cdot\boldsymbol{\sigma}$
+
+The lefthand side is related to the physical momentum of the particles. The sum on the righthand side includes the field's intrinsic momentum and the net mechanical stress exerted by the surrounding field lines, which means:
+
+$$\frac{\partial \mathbf{p}_{\text{mech}}}{\partial t} = -\frac{\partial \mathbf{p}_{\text{field}}}{\partial t} + \nabla \cdot \boldsymbol{\sigma}$$
+
+$$\frac{\partial}{\partial t} (\mathbf{p}_{\text{mech}} + \mathbf{p}_{\text{field}}) = \nabla \cdot \boldsymbol{\sigma}$$
+
+which is conservation of momentum in classical electrodynamics.
+
+---
 
 ## Misc Ignore
 The general form of the conserved quantity is if the Lagrangian is invariant under a translation of q of the form q = q+epsilon*f(q), then the inner product of p and f(q) is conserved i.e. sigma(p_i*f_i(q))
