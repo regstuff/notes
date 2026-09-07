@@ -790,6 +790,21 @@ where the Christoffel symbols are given by
 
 $$\Gamma^\lambda_{\mu\nu} = \frac{1}{2} g^{\lambda\rho} \left( \partial_\mu g_{\nu\rho} + \partial_\nu g_{\rho\mu} - \partial_\rho g_{\mu\nu} \right)$$
 
+### A Shortcut to Make Life Easier
+If we are only interested in the geodesic equation for some metric, we can bypass the complicated Lagrangian with the square roots that we have above, and simply use:
+
+$$S_{\text{easy}}=\frac{1}{2}m\int d\tau g_{\mu\nu}(x) \frac{dx^\mu}{d\tau} \frac{dx^\nu}{d\tau}$$
+
+The $\frac{1}{2}m$ factor is present to ensure the integral has the dimensions of action. Unlike the square root action, this is not reparameterization invariant, so we get equations of motion that are valid only if the parameter chosen is affine. We must also add a constraint to the equations of motion with the normalization constraint of the four-velocity:
+
+$$g_{\mu\nu} \frac{dx^\mu}{d\tau} \frac{dx^\nu}{d\tau}=-c^2$$
+
+For lightlike geodesics, the constraint with some affine parameter $\lambda$ (since photons have no proper time $\tau$) becomes:
+
+$$g_{\mu\nu} \frac{dx^\mu}{d\lambda} \frac{dx^\nu}{d\lambda}=0$$
+
+Mathematically, the Action with the square root and the Action without the square root yield the exact same equations of motion _if and only if_ the parameter we are integrating over is an affine parameter: a parameter that linearly tracks the particle's path, like proper time $\tau$ for massive particles.
+
 ## Useful Formulas
 $$\begin{bmatrix}ct'\\x'\end{bmatrix}=\begin{bmatrix}\gamma&-\gamma\beta\\-\gamma\beta&\gamma\end{bmatrix}\begin{bmatrix}ct\\x\end{bmatrix}$$
 
