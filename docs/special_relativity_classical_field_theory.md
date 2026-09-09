@@ -516,11 +516,17 @@ What other options do we have to construct a 4-force such that $F^i u_i=0$ witho
 
 ## Hyperbolic Formulation
 
-The Lorentz transformation naturally maps to hyperbolic geometry, satisfying the constant hyperbolic curve $(ct)^2-x^2=\text{constant}$:
+The Lorentz transformation (due to its signature have one sign that is the opposite of all the rest) naturally maps to hyperbolic geometry, satisfying the constant hyperbolic curve $(ct)^2-x^2=\text{constant}$:
 
 $$\begin{bmatrix}ct'\\x'\end{bmatrix}=\begin{bmatrix}\cosh\phi&-\sinh\phi\\-\sinh\phi&\cosh\phi\end{bmatrix}\begin{bmatrix}ct\\x\end{bmatrix}$$
 
 Here, $\phi$ is the rapidity, defined by the relation $\tanh\phi=v/c=\beta$. Note that $\gamma=\cosh\phi$ and $\gamma\frac{v}{c}=\sinh\phi$. This hyperbolic formulation allows relative velocities to be calculated via the simple addition of rapidities: $\phi_{AC}=\phi_{AB}+\phi_{BC}$
+
+---
+
+**Aside:** While we have only written out the equations for time + 1 spatial dimension using a hyperbolic curve, you can do more or less the same thing for time + 3 spatial dimensions: $ds^2 = \text{constant} = (ct)^2 - x^2 -y^2 - z^2$ to get a 3D hyperboloid of two sheets embedded in four-dimensional spacetime. The intrinsic geometry of this hyperboloid is called a three-dimensional Lobachevskian (hyperbolic) space. The hyperboloid can be transformed into an ellipsoid using a Wick Rotation, where we substitute real time with imaginary time ($t \to \tau$), which turns the negative sign into a positive sign. We mentioned this in the thermodynamics notes in the context of the partition function of a paramagnet and its dipoles, which also have a hyperbolic formulation.
+
+---
 
 To see why this is so, just multiply the two Lorentz boost matrices, one for each rapidity that we want to add up. We end up with terms that can be replaced by hyperbolic identities $\cosh(\phi_1-\phi_2)=\cosh\phi_1\cosh\phi_2-\sinh\phi_1\sinh\phi_2$ and $\sinh(\phi_1-\phi_2)=\sinh\phi_1\cosh\phi_2-\cosh\phi_1\sinh\phi_2$:
 
