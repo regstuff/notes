@@ -1162,4 +1162,4 @@ $$R_{r\phi r\phi} = -r \frac{f'}{f} \sin^2\theta$$
 $$R_{\theta\phi\theta\phi} = (1 - f^2) r^2 \sin^2\theta$$
 
 ## References
-- [University of Toronto Cheat Sheet] (https://xueqilin.me/engsci-2t4/apm426/apm426.pdf)
+- [University of Toronto Cheat Sheet](https://xueqilin.me/engsci-2t4/apm426/apm426.pdf)
