@@ -1,0 +1,13 @@
+:root {
+  /* Increase the main reading text size (default is usually 0.8rem) */
+  --md-typeset-font-size: 0.95rem; 
+  
+  /* Increase inline and block code size if needed */
+  --md-code-font-size: 0.9em; 
+}
+
+/* Ensure LaTeX equations scale nicely with the text */
+.md-typeset .MathJax, 
+.md-typeset .arithmatex {
+  font-size: 1.05em !important;
+}
