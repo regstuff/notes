@@ -378,7 +378,59 @@ Spectroscopically, you can distinguish a $\text{G2I}$ supergiant from a $\text{G
 
 ## Equations of Stellar Equilibrium
 
-In order to calculate the steady-state pressure, luminosity, mass, etc. of a star, we must first understand how a star stays in equilibrium.
+In order to calculate the steady-state pressure, luminosity, mass, etc. of a star, we must first understand how a star stays in equilibrium. One aspect is gravity. The mass of the star and the corresponding gravitational attraction will tend to cause contraction of the star. This contraction must be resisted by the outward pressure of the material that makes up the star. In regular stars, this pressure could be from thermal energy due to kinetic motion of particles. In larger, brighter stars, the pressure from the photons radiating outward might be the main contributor. In white dwarfs or neutron stars, the pressure could be degeneracy pressure from the Fermi sea of electrons or neutrons.
+
+Another aspect is the temperature of the star and its relationship to luminosity. Since we approximate stars to blackbodies, the luminosity or radiative power of photons is related to temperature via the Stefan-Boltzmann Law, and of course the opacity of the star's material to photons of various frequencies. Opacity is fundamentally related to scattering and absorption of photons through various processes.
+
+A third aspect is energy conservation. The fundamental source of energy in a star is nuclear reactions of various kinds, and what nuclear reactions are present depends on the chemical composition of the star. However, for protostars where nuclear reactions haven't been triggered, the source of energy might be gravitational collapse. Either way, this energy generation is once again radiated away via the luminosity.
+
+These three aspects of equilibrium you summarized in your three paragraphs correspond directly to the three fundamental timescales of stellar astrophysics. Gravity vs pressure determines the time it would take a star to collapse if pressure support suddenly vanished ($t_{\text{dyn}} \sim \frac{1}{\sqrt{G\bar{\rho}}} \sim \sqrt{\frac{R^3}{GM}}$). For the Sun, $t_{\text{dyn}} \approx 30\text{ minutes}$.
+    
+Radiative transport & gravitational contraction decides the time it takes a star (or contracting protostar) to radiate away its entire reservoir of thermal/gravitational potential energy at its current luminosity ($t_{\text{KH}} \sim \frac{\vert{}E_{\text{gr}}\vert{}}{L} \sim \frac{GM^2}{RL}$). For the Sun, $t_{\text{KH}} \approx 3 \times 10^7\text{ years}$.
+    
+Nuclear energy generation decides the time it takes the star to exhaust its available core nuclear fuel ($t_{\text{nuc}} \sim \frac{\epsilon_{\text{frac}} M c^2}{L}$, where $\epsilon_{\text{frac}} \approx 0.007$ for hydrogen fusion). For the Sun, $t_{\text{nuc}} \approx 10^{10}\text{ years}$.
+    
+Because $t_{\text{dyn}} \ll t_{\text{KH}} \ll t_{\text{nuc}}$ by many orders of magnitude, a main-sequence star can maintain instantaneous mechanical (hydrostatic) and thermal equilibrium while its chemical composition evolves very slowly over billions of years.
+
+Both the Kelvin-Helmholtz (thermal) timescale ($t_{\text{KH}}$) and the dynamical (free-fall) timescale ($t_{\text{dyn}}$) are not merely theoretical constructs—they are the actual physical clocks that govern a star's birth, its transitions between fusion stages, its pulsations, and its death.
+
+A star only runs on the slow nuclear clock ($t_{\text{nuc}}$) when a stable nuclear fuel source is actively burning in its core. The moment that fuel runs out—or before it ever ignites—the star immediately switches to the Kelvin-Helmholtz clock ($t_{\text{KH}}$). And if hydrostatic pressure support ever fails, the star switches to the dynamical clock ($t_{\text{dyn}}$).
+
+Whenever a star (or its core) lacks nuclear fusion to balance the energy radiating away from its surface, gravity takes over as the power source. By the Virial Theorem ($2K + U = 0$), as a star contracts under gravity, half of the released gravitational potential energy goes into radiating light ($L$), and the other half goes into heating up the internal gas ($K$).
+
+This gravitational contraction happens strictly on the Kelvin-Helmholtz timescale ($t_{\text{KH}} \sim \frac{GM^2}{RL}$). It dictates three major observational realities.
+
+**Star Birth: The Pre-Main-Sequence Phase (T Tauri & Herbig Ae/Be Stars):** Before a newborn protostar gets hot enough in its core ($T_c \approx 10^7\text{ K}$) to ignite Hydrogen fusion, how does it shine? Entirely by Kelvin-Helmholtz gravitational contraction.
+
+A $1\,M_\odot$ protostar (like the young Sun) spends roughly $30\text{ million years}$ ($t_{\text{KH}}$) slowly shrinking and heating its core along the Hayashi and Henyey tracks on the H-R diagram until its core hits $10\text{ million K}$ and ignites the Main Sequence.
+    
+Why Brown Dwarfs exist: If a protostar has a mass below $0.07\,M_\odot$, quantum electron degeneracy pressure halts its Kelvin-Helmholtz contraction before the core can reach $10^7\text{ K}$. It never enters the nuclear timescale—it simply cools and fades on its thermal timescale forever.
+    
+**The "Hertzsprung Gap". Crossing from Main Sequence to Red Giant:** When a star exhausts Hydrogen in its core at the end of the Main Sequence, the core stops producing nuclear energy. Immediately, the star switches from $t_{\text{nuc}}$ to $t_{\text{KH}}$. The inert Helium core contracts on the Kelvin-Helmholtz timescale, releasing gravitational energy that heats a thin Hydrogen shell around it and causes the outer envelope to balloon into a Red Giant (while the core heats up from $1.5 \times 10^7\text{ K}$ to $10^8\text{ K}$ to ignite Helium fusion).
+    
+Because $t_{\text{KH}}$ is roughly 1,000 times shorter than $t_{\text{nuc}}$, stars race across the middle of the H-R diagram (the Subgiant branch) in just a few million years.
+    
+When you plot a star cluster's H-R diagram, there is an almost completely empty void between the Main Sequence and the Red Giant Branch—called the Hertzsprung Gap. We rarely catch massive or intermediate-mass stars in this region because they cross it at the speed of $t_{\text{KH}}$ rather than $t_{\text{nuc}}$.
+
+**The Self-Regulating "Thermostat" of Fusion:** Even during the Main Sequence, $t_{\text{KH}}$ is the damping timescale of the star's nuclear thermostat. If the Sun's core fusion rate accidentally spiked by $10\%$ today, the extra heat would expand and cool the core, and that thermal perturbation would relax back to equilibrium on the Kelvin-Helmholtz timescale. Furthermore, because $t_{\text{KH}} \approx 30\text{ million years}$, the thermal energy generated in the Sun's core today takes millions of years of radiative diffusion and thermal relaxation to alter the surface luminosity.
+
+The dynamical timescale ($t_{\text{dyn}}$) rules a star's life in certain situations. Because $t_{\text{dyn}} \sim \frac{1}{\sqrt{G\bar{\rho}}}$ measures how fast pressure waves (sound waves) cross the star to restore hydrostatic equilibrium ($t_{\text{dyn}} \approx \frac{R}{c_s}$, the sound-crossing time), it governs rapid physical motion, oscillations, and catastrophic collapse.
+
+**Variable Stars & Cepheid Pulsations (Cosmic Distance Ladder):** Cepheid variables and RR Lyrae stars pulsate with a strictly regular period $P$ (ranging from hours to weeks) that depends directly on their luminosity. A pulsating star is literally ringing like a giant acoustic bell in its fundamental radial mode. The period of pulsation $P$ is set directly by the dynamical timescale:
+    
+$$P \propto t_{\text{dyn}} \propto \frac{1}{\sqrt{G\bar{\rho}}}$$
+    
+Because larger, more luminous supergiants have a much lower average density $\bar{\rho}$, their dynamical timescale $t_{\text{dyn}}$ is longer (days to weeks instead of minutes). Henrietta Swan Leavitt's Period-Luminosity Relation—which Edwin Hubble used to discover the expansion of the universe—is a direct observational manifestation of $t_{\text{dyn}}$.
+
+**Core-Collapse Supernovae ($t_{\text{dyn}} \approx 0.1\text{ to }1\text{ second}$):** At the end of a massive star's life ($M > 8\,M_\odot$), its core is a dense ball of Iron ($\bar{\rho} \approx 10^9\text{ g/cm}^3$) supported by electron degeneracy pressure. Once the Iron core exceeds the Chandrasekhar limit ($\approx 1.4\,M_\odot$), two things happen simultaneously: high-energy photons shatter Iron nuclei (photodisintegration), and protons capture electrons ($p + e^- \to n + \nu_e$).
+
+Pressure support vanishes instantaneously. The core switches to the dynamical free-fall timescale:
+    
+$$t_{\text{dyn}} \sim \frac{1}{\sqrt{G \rho_{\text{core}}}} \approx \frac{1}{\sqrt{(6.67\times 10^{-8})(10^9)}} \approx 0.1\text{ seconds}$$
+    
+An Earth-sized Iron core collapses to a $20\text{ km}$ neutron star at $\approx 25\%$ the speed of light in less than a quarter of a second, triggering a Type II Supernova.
+    
+**Helioseismology and Asteroseismology:** Our Sun has a dynamical timescale of $t_{\text{dyn}} \approx 30\text{ minutes}$. Because acoustic waves ($p$-modes) bounce through the Sun on fractions of this timescale, the entire surface of the Sun rises and falls every 5 minutes ("solar 5-minute oscillations"). By measuring these exact dynamical frequencies via Doppler shifts, astronomers map the internal sound speed, rotation rate, and depth of the convection zone inside the Sun and distant stars.
 
 ### Hydrostatic Equilibrium
 
