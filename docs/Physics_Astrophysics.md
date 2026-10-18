@@ -88,27 +88,27 @@ $$F_{\text{bol}}=\int_0^\infty f_\lambda(T)\,d\lambda=\frac{2\pi^5 k_B^4}{15c^2 
 
 Or by setting the derivative to zero to find the peak wavelength (Wien’s Law):
 
-$$\frac{df_\lambda(T)}{d\lambda}=0\implies\lambda_{\text{max}}=\frac{hc}{4.9651\,k_B T}\implies T_W\equiv\frac{2.898\times 10^7\text{ \AA}\cdot\text{K}}{\lambda_{\text{max}}}=T$$
+$$\frac{df_\lambda(T)}{d\lambda}=0\implies\lambda_{\text{max}}=\frac{hc}{4.9651\,k_B T}\implies T_W\equiv\frac{2.898\times 10^7 \mathring{A} \cdot\text{K}}{\lambda_{\text{max}}}=T$$
 
 Therefore, whenever an object's spectrum closely follows a Planck blackbody curve near its peak, $T_{\text{eff}}$ and $T_W$ will automatically coincide.
 
 However, stars are not perfect blackbodies. For example, Alpha Lyrae (the star Vega) has an effective temperature that is calculated to be around 9500 K, whereas the temperature we get from its measured peak emission wavelength (via Wien's displacement law) is 7600 K. Why does this happen? If Vega were a true 9500 K blackbody, its peak wavelength $\lambda_{\text{max}}$ according to Wien's law would be at:
 
-$$\lambda_{\text{max, expected}} = \frac{2.898 \times 10^7\text{ \AA}\cdot\text{K}}{9500\text{ K}} \approx 3050\text{ \AA}\quad(305\text{ nm, in the Near-UV})$$
+$$\lambda_{\text{max, expected}} = \frac{2.898 \times 10^7 \mathring{A} \cdot\text{K}}{9500\text{ K}} \approx 3050 \mathring{A} \quad(305\text{ nm, in the Near-UV})$$
 
-If we trace Vega’s spectrum from red (7000 $\text{\AA}$) toward the ultraviolet (3000 $\text{\AA}$), from 7000 $\text{\AA}$ down to 3800 $\text{\AA}$, Vega's spectrum rises steeply toward the ultraviolet, following the exact slope of a 9500 K blackbody curve heading toward a peak at 3050 $\text{\AA}$. However, just as the curve is climbing past 3800 $\text{\AA}$ on its way to 3050 $\text{\AA}$, over 50% of the star's light suddenly vanishes! The highest surviving point left standing on the graph is the edge right before the cliff—at $\lambda = 3800\text{ \AA}$! When we blindly plug that "chopped-off shoulder" at 3800 $\mathring{A}$ into Wien's law, we get an artificially low temperature of 7600 K instead of 9500 K.
+If we trace Vega’s spectrum from red (7000 $\text{\AA}$) toward the ultraviolet (3000 $\text{\AA}$), from 7000 $\text{\AA}$ down to 3800 $\text{\AA}$, Vega's spectrum rises steeply toward the ultraviolet, following the exact slope of a 9500 K blackbody curve heading toward a peak at 3050 $\text{\AA}$. However, just as the curve is climbing past 3800 $\text{\AA}$ on its way to 3050 $\text{\AA}$, over 50% of the star's light suddenly vanishes! The highest surviving point left standing on the graph is the edge right before the cliff—at $\lambda = 3800 \mathring{A} $! When we blindly plug that "chopped-off shoulder" at 3800 $\mathring{A}$ into Wien's law, we get an artificially low temperature of 7600 K instead of 9500 K.
 
-Why does something in Vega's atmosphere suddenly absorb over half the photons with wavelengths shorter than $\approx 3700\text{ \AA}$? We will examine this after looking a bit more at spectra and absorption in the next section.
+Why does something in Vega's atmosphere suddenly absorb over half the photons with wavelengths shorter than $\approx 3700 \mathring{A} $? We will examine this after looking a bit more at spectra and absorption in the next section.
 
 ---
 
 **Aside:** Note that the frequency $\nu_{\text{max}}$ where $B_\nu$ peaks is not the same as the frequency $\nu = c/\lambda_{\text{max}}$ at which $B_\lambda$ peaks. The two spectral distributions are different, because a constant frequency interval $d\nu$ corresponds to a changing wavelength interval $\vert{}d\lambda\vert{} = \frac{c}{\nu^2} d\nu$ that grows with wavelength (and falls with frequency).
 
-To avoid this shifting peak paradox (where for example $B_\nu$ peaks in the near-infrared at $\approx 8800\text{ \AA}$ for the Sun while $B_\lambda$ peaks at $\approx 5000\text{ \AA}$), observational astrophysicists often plot the spectral energy distribution (SED) per unit _logarithmic_ frequency or wavelength interval:
+To avoid this shifting peak paradox (where for example $B_\nu$ peaks in the near-infrared at $\approx 8800 \mathring{A} $ for the Sun while $B_\lambda$ peaks at $\approx 5000 \mathring{A} $), observational astrophysicists often plot the spectral energy distribution (SED) per unit _logarithmic_ frequency or wavelength interval:
 
 $$\nu B_\nu = \lambda B_\lambda$$
 
-Because $d(\ln \nu) = \frac{d\nu}{\nu} = -\frac{d\lambda}{\lambda} = -d(\ln \lambda)$, the distribution $\nu B_\nu(T) = \lambda B_\lambda(T)$ peaks at the exact same physical photon energy regardless of whether you work in frequency or wavelength ($h\nu_{\text{max}} = \frac{hc}{\lambda_{\text{max}}} \approx 3.92\,k_B T$, which for the Sun gives $\lambda \approx 6350\text{ \AA}$).
+Because $d(\ln \nu) = \frac{d\nu}{\nu} = -\frac{d\lambda}{\lambda} = -d(\ln \lambda)$, the distribution $\nu B_\nu(T) = \lambda B_\lambda(T)$ peaks at the exact same physical photon energy regardless of whether you work in frequency or wavelength ($h\nu_{\text{max}} = \frac{hc}{\lambda_{\text{max}}} \approx 3.92\,k_B T$, which for the Sun gives $\lambda \approx 6350 \mathring{A} $).
 
 **Physical intuition of percentage change:** $\frac{d\lambda}{\lambda}$ is the fractional (or percentage) bandwidth. Suppose you are looking at light around $\lambda = 500\text{ nm}$ through a filter of width $\Delta\lambda = 5\text{ nm}$. The fractional width is $\frac{\Delta\lambda}{\lambda} = \frac{5}{500} = 0.01$ (a $1\%$ change in wavelength). Because $\nu = c/\lambda$, increasing $\lambda$ by $1\%$ decreases $\nu$ by $1\%$. Therefore, the corresponding frequency interval $\Delta\nu$ around $\nu = 6\times 10^{14}\text{ Hz}$ must also be a $1\%$ change in frequency: $\frac{\vert{}\Delta\nu\vert{}}{\nu} = 0.01$.
     
@@ -244,23 +244,19 @@ Now, photons do not escape a star from its entire bulk. A photon emitted somewhe
 
 When a photon is emitted from the surface of last scattering and travels through the photosphere, it can encounter various atoms (primarily of Hydrogen, but other elements such as Helium and Carbon as well). Now Hydrogen atoms hold an electron which could be in various energy states. The energy of the electron in the $n$-th energy state is given by $-\frac{13.6}{n^2}\text{ eV}$.
 
-Thus, a photon with an energy of say $\frac{13.6}{n_1^2} - \frac{13.6}{n_2^2}\text{ eV}$ can be absorbed by the Hydrogen atom, whose electron would then move from the $n_1$ state to the $n_2$ state. Absorption lines are dark because of the temperature gradient in the photosphere (Kirchhoff's Law of Spectroscopy). The upper layers of the photosphere are cooler than the deeper layers. At wavelengths inside an absorption line, the opacity $\kappa_\lambda$ is much higher, so our line of sight only penetrates to a shallow, cool layer where the source function $B_\lambda(T_{\text{cool}})$ is much dimmer than the deep continuum $B_\lambda(T_{\text{hot}})$.
-
-If the hydrogen atoms are in the ground state ($n_1=1$), then any absorption lines are said to be Lyman lines. Lines corresponding to an electron shifting from the ground state to $n=2$ are called Lyman-alpha ($\text{Ly}\alpha$), to $n=3$ are Lyman-beta ($\text{Ly}\beta$), and so forth. Similarly, if the electron was already sitting in the $n=2$ state, and transitions to $n=3, 4,$ etc., we get the Balmer series or Balmer-alpha ($\text{H}\alpha$), beta ($\text{H}\beta$), etc. Starting from $n=3, 4,$ and $5$, we get the Paschen, Brackett, and Pfund series.
+Thus, a photon with an energy of say $\frac{13.6}{n_1^2} - \frac{13.6}{n_2^2}\text{ eV}$ can be absorbed by the Hydrogen atom, whose electron would then move from the $n_1$ state to the $n_2$ state. If the hydrogen atoms are in the ground state ($n_1=1$), then any absorption lines are said to be Lyman lines. Lines corresponding to an electron shifting from the ground state to $n=2$ are called Lyman-alpha ($\text{Ly}\alpha$), to $n=3$ are Lyman-beta ($\text{Ly}\beta$), and so forth. Similarly, if the electron was already sitting in the $n=2$ state, and transitions to $n=3, 4,$ etc., we get the Balmer series or Balmer-alpha ($\text{H}\alpha$), beta ($\text{H}\beta$), etc. Starting from $n=3, 4,$ and $5$, we get the Paschen, Brackett, and Pfund series.
 
 Note that the Lyman series are generally at wavelengths in the UV range, while everything above the Balmer series is at wavelengths in the infrared, which means they are largely blocked by the Earth's atmosphere. Early astronomers observing stellar spectra were therefore only able to observe the Balmer series. Based on this, and the presence of absorption lines of other elements such as Calcium (for the Sun), astronomers created a classification system for stars: $\text{O, B, A, F, G, K, M}$ (and $\text{L}$ & $\text{T}$ for brown dwarfs). Each of these classifications has a finer continuum going from $0$ to $9$, with $0$ being hotter and $9$ being cooler. Thus, the Sun is a $\text{G2}$ star.
 
 Note that these classifications are not so much about the chemical composition of the star's atmosphere, but about the temperature of the star (and thus its color). This is because temperature induces an exponential change in the number of photons emitted at a particular energy level, or in the number of hydrogen (or other element) atoms in a particular excitation or ionization state (for e.g., $n=1, 2,$ etc.). A simple change in composition is mostly only linear and is overpowered by the exponential dependence on temperature.
 
-Thus, for a particular absorption line to be present in a star's spectrum, the star must be hot (or cool) enough to emit enough continuum photons at that energy, and must also be at a high (or low) enough temperature to maintain a sufficient population of atoms in those specific excitation and ionization states.
-
-This is the exact physical realization that Cecilia Payne-Gaposchkin made in her 1925 PhD thesis—that stellar spectral classes reflect temperature, not abundance variations. This is governed by two competing statistical mechanics equations:
+Thus, for a particular absorption line to be present in a star's spectrum, the star must be hot (or cool) enough to emit enough continuum photons at that energy, and must also be at a high (or low) enough temperature to maintain a sufficient population of atoms in those specific excitation and ionization states. Therefore, stellar spectral classes reflect temperature, not abundance variations. This is governed by two competing statistical mechanics equations:
 
 The Boltzmann Equation (Excitation): Gives the ratio of neutral hydrogen atoms in the $n=2$ (Balmer-absorbing) state relative to the $n=1$ ground state:
     
 $$\frac{N_2}{N_1} = \frac{g_2}{g_1} e^{-(E_2 - E_1)/k_B T} = 4 e^{-10.2\text{ eV}/k_B T}$$
     
-As $T$ rises, the fraction of hydrogen in the $n=2$ state grows exponentially.
+As $T$ rises, the fraction of hydrogen in the $n=2$ state grows exponentially. Here, $g_1$ and $g_2$ are the statistical weights (or degeneracies) of the ground state ($n=1$) and the first excited state ($n=2$) of the Hydrogen atom. $g_n = 2n^2$.
     
 The Saha Equation (Ionization): Gives the ratio of ionized hydrogen ($\text{H II}$, naked protons with no electron to absorb anything) to neutral hydrogen ($\text{H I}$):
     
@@ -284,7 +280,7 @@ $$\frac{N_{n=2}}{N_{n=1}} = 4\exp\left(-\frac{10.2}{0.5}\right) = 4 e^{-20.4} \a
 
 Even though $74\%$ of the Sun's photosphere is hydrogen, only 1 out of every 200 million hydrogen atoms is in the $n=2$ state! The other $99.9999995\%$ are sitting in the ground state ($n=1$), which can only absorb ultraviolet Lyman photons ($10.2\text{ eV}$), not visible Balmer photons. Thus, the Sun has relatively modest visible hydrogen lines despite being made almost entirely of hydrogen.
 
-At the other extreme, when $T \gtrsim 15,000\text{ K}$, like O and B stars, the Saha FactorAs you raise the temperature $T$, the Boltzmann factor $e^{-10.2\text{ eV}/k_B T}$ climbs rapidly, putting more atoms into $n=2$. However, hydrogen's total ionization energy from the ground state is $\chi = 13.6\text{ eV}$ (and from $n=2$, it takes only $3.4\text{ eV}$ to strip the electron completely!).
+At the other extreme, when $T \gtrsim 15,000\text{ K}$, like O and B stars, as you raise the temperature $T$, the Boltzmann factor $e^{-10.2\text{ eV}/k_B T}$ climbs rapidly, putting more atoms into $n=2$. However, hydrogen's total ionization energy from the ground state is $\chi = 13.6\text{ eV}$ (and from $n=2$, it takes only $3.4\text{ eV}$ to strip the electron completely!).
 
 According to the Saha Ionization Equation, the ratio of ionized hydrogen ($N_{\text{II}}$) to neutral hydrogen ($N_{\text{I}}$) given electron number density $n_e$ is:
 
@@ -305,7 +301,7 @@ So every element has a narrow "Goldilocks temperature window" where its excitati
 
 Look at the row for the Sun (G-type star): the two darkest, most dramatic absorption lines in the entire solar spectrum are the $\text{Ca II}$ (ionized calcium) H and K lines at $393\text{ nm}$ and $397\text{ nm}$—even though Calcium makes up less than $0.0002\%$ of the atoms in the Sun, compared to $92\%$ for Hydrogen! Why? Because at $5800\text{ K}$, almost $100\%$ of Calcium is in the $\text{Ca}^+$ ground state ready to absorb $393\text{ nm}$ photons, whereas only $5\times 10^{-9}$ of Hydrogen is in the $n=2$ state needed to absorb Balmer photons.
 
-We can now once again look at the discrepenacy in the effective temperature and Wien displacement temperature of Vega, and why this happens to be absent in the Sun. Vega ($\alpha$ Lyrae) is an A0 star with $T_{\text{eff}} = 9500\text{ K}$ — the exact peak of the Payne curve where Hydrogen has the maximum possible population in the $n=2$ first excited state!
+We can now once again look at the discrepenacy in the effective temperature and Wien displacement temperature of Vega, and why this happens to be absent in the Sun. Vega ($\alpha$ Lyrae) is an A0 star with $T_{\text{eff}} = 9500\text{ K}$ — the exact peak of the Payne curve (which is the product we showed above of Boltzmann Excitation multiplied by Saha Ionization, which tells us how the fraction of total hydrogen capable of producing Balmer lines) where Hydrogen has the maximum possible population in the $n=2$ first excited state!
 
 How much energy does it take to completely photoionize a hydrogen atom whose electron is sitting in the $n=2$ state (known as the Balmer continuum or Balmer limit, $n=2 \to \infty$)?
 
@@ -313,9 +309,17 @@ $$E_{\text{ion}}(n=2) = \frac{13.6\text{ eV}}{2^2} = 3.40\text{ eV}$$
 
 What wavelength $\lambda_{\text{limit}}$ corresponds to a photon energy of $3.40\text{ eV}$?
 
-$$\lambda_{\text{limit}} = \frac{hc}{3.40\text{ eV}} = \frac{12,398\text{ \AA}\cdot\text{eV}}{3.40\text{ eV}} = 3646\text{ \AA}\quad(\approx 365\text{ nm})$$
+$$\lambda_{\text{limit}} = \frac{hc}{3.40\text{ eV}} = \frac{12,398 \mathring{A} \cdot\text{eV}}{3.40\text{ eV}} = 3646 \mathring{A} \quad(\approx 365\text{ nm})$$
 
-And because discrete Balmer lines $n=2 \to 10, 11, 12\dots$ crowd together and blend just below the ionization limit, the drop visibly starts around $3700\text{ \AA}$!
+And because discrete Balmer lines $n=2 \to 10, 11, 12\dots$ crowd together and blend just below the ionization limit, the drop visibly starts around $3700 \mathring{A} $!
+
+#### Why Are Absorption Lines Dark?
+
+A common misconception is that absorption lines are completely devoid of light. They only appear "dark" in contrast to the brighter continuum beside them. The fundamental mechanism comes down to how far into the star you can see. If the photons at some frequency are barely scattered, then we can see photons at this frequency emitted by the deeper layers of a star. If a photon is at a frequency where it will tend to be scattered, then the opacity of the star's gas with respect to this photon increases, and so we only see photons from the upper layers of the star. Generally, the upper layers are cooler and the deeper layers are hotter, and since the intensity of the photon emission rises as temperature rises, we see more brightness when a photon emerges from deeper portions of a star.
+
+Of course, there is a bit of a catch here. One catch is that upper layers of stars such as the Sun are actually hotter. The outer chromosphere and corona are extremely hot compared to almost all the rest of the Sun. However, the density here is extremely low, which means very few photons are emitted at these layers. An additional point here is that the temperature is so high that any photons emitted are usually in the UV or x-ray frequencies and not in the visible range. Thus, we actually see bright emission lines at these frequencies from the Sun, mostly from these two very hot outer layers.
+
+The other catch is that even if photons are scattered by atoms or ions in the stellar atmosphere, if these atoms or ions re-emit a photon of the same energy, wouldn't that lead to a recovery of the lost photon's energy? The thing to keep in mind here is that, let's say an atom scatters a photon and picks up that photon's energy. Even if it immediately re-emits a photon at the same energy, this photon has a 50% chance of being re-emitted into the star's interior. This is one reason why the opacity for photons of these frequencies is high. Thus, we have a 50% loss of photons. But suppose the atom does not immediately re-emit the photon. It is possible that some free electron might scatter off the atom and gain the energy of that photon. But then the electron distributes that energy via thermal scattering across the entire blackbody frequency spectrum. Thus, the energy is emitted, but it is spread out over a large frequency spread and not at the original photon's frequency. In fact, we do see a general increase in radiative transfer across the entire frequency spectrum in stellar radiation.
 
 ### Hertzsprung-Russell Diagram
 
@@ -1153,7 +1157,7 @@ While brown dwarfs ($M \lesssim 0.075\,M_\odot$, or $\lesssim 75\text{–}80\,M_
 
 **Deuterium Fusion ($^2\text{H} + p \to {}^3\text{He} + \gamma$):** Ignites at $T_c \approx 10^6\text{ K}$, which occurs in objects above $M \approx 13\,M_{\text{Jupiter}}$ ($\approx 0.012\,M_\odot$). The International Astronomical Union (IAU) uses this $13\,M_{\text{Jupiter}}$ deuterium-burning threshold as the working boundary between giant planets and brown dwarfs.
     
-**Lithium Fusion ($^7\text{Li} + p \to 2\,{}^4\text{He}$):** Ignites at $T_c \approx 2.5 \times 10^6\text{ K}$, which requires $M \gtrsim 60\text{–}65\,M_{\text{Jupiter}}$. Because brown dwarfs are fully convective throughout their interiors, any brown dwarf above $65\,M_{\text{Jupiter}}$ rapidly mixes and destroys all its primordial lithium, whereas lower-mass brown dwarfs retain a strong $\text{Li I}$ absorption line at $6708\text{ \AA}$. Observers use this Lithium Test to distinguish true substellar brown dwarfs from dim low-mass $\text{M}$-dwarf stars.
+**Lithium Fusion ($^7\text{Li} + p \to 2\,{}^4\text{He}$):** Ignites at $T_c \approx 2.5 \times 10^6\text{ K}$, which requires $M \gtrsim 60\text{–}65\,M_{\text{Jupiter}}$. Because brown dwarfs are fully convective throughout their interiors, any brown dwarf above $65\,M_{\text{Jupiter}}$ rapidly mixes and destroys all its primordial lithium, whereas lower-mass brown dwarfs retain a strong $\text{Li I}$ absorption line at $6708 \mathring{A} $. Observers use this Lithium Test to distinguish true substellar brown dwarfs from dim low-mass $\text{M}$-dwarf stars.
 
 ### Neutron Stars
 
@@ -1254,5 +1258,5 @@ Detailed calculations of neutron star cooling are considerably more uncertain th
 Interstellar gas atoms falling onto a neutron-star surface also have an effect, and are likely to heat it to X-ray temperatures. To date, only several candidate isolated old neutron stars have been found in X-ray surveys. The small surface areas of neutron stars mean that their optical luminosities are very low, and hence such objects can be found only when they are near enough. X-ray surveys do reveal a large population of accreting neutron stars in binary systems, called “X-ray binaries”.
 
 ## References
-- Astrophysics in a nutshell (by Dan Maoz
+- Astrophysics in a nutshell by Dan Maoz
 - [Stellar Structure and Evolution Lecture Notes](https://www.astro.ru.nl/~onnop/education/stev_utrecht_notes/) by Onno Pols, Radboud University
