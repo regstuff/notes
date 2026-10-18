@@ -96,7 +96,7 @@ However, stars are not perfect blackbodies. For example, Alpha Lyrae (the star V
 
 $$\lambda_{\text{max, expected}} = \frac{2.898 \times 10^7\text{ \AA}\cdot\text{K}}{9500\text{ K}} \approx 3050\text{ \AA}\quad(305\text{ nm, in the Near-UV})$$
 
-If we trace Vega’s spectrum from red (7000 $\text{\AA}$) toward the ultraviolet (3000 $\text{\AA}$), from 7000 $\text{\AA}$ down to 3800 $\text{\AA}$, Vega's spectrum rises steeply toward the ultraviolet, following the exact slope of a 9500 K blackbody curve heading toward a peak at 3050 $\text{\AA}$. However, just as the curve is climbing past 3800 $\text{\AA}$ on its way to 3050 $\text{\AA}$, over 50% of the star's light suddenly vanishes! The highest surviving point left standing on the graph is the edge right before the cliff—at $\lambda = 3800\text{ \AA}$! When we blindly plug that "chopped-off shoulder" at 3800 $\text{\AA}$ into Wien's law, we get an artificially low temperature of 7600 K instead of 9500 K.
+If we trace Vega’s spectrum from red (7000 $\text{\AA}$) toward the ultraviolet (3000 $\text{\AA}$), from 7000 $\text{\AA}$ down to 3800 $\text{\AA}$, Vega's spectrum rises steeply toward the ultraviolet, following the exact slope of a 9500 K blackbody curve heading toward a peak at 3050 $\text{\AA}$. However, just as the curve is climbing past 3800 $\text{\AA}$ on its way to 3050 $\text{\AA}$, over 50% of the star's light suddenly vanishes! The highest surviving point left standing on the graph is the edge right before the cliff—at $\lambda = 3800\text{ \AA}$! When we blindly plug that "chopped-off shoulder" at 3800 $\mathring{A}$ into Wien's law, we get an artificially low temperature of 7600 K instead of 9500 K.
 
 Why does something in Vega's atmosphere suddenly absorb over half the photons with wavelengths shorter than $\approx 3700\text{ \AA}$? We will examine this after looking a bit more at spectra and absorption in the next section.
 
@@ -104,7 +104,7 @@ Why does something in Vega's atmosphere suddenly absorb over half the photons wi
 
 **Aside:** Note that the frequency $\nu_{\text{max}}$ where $B_\nu$ peaks is not the same as the frequency $\nu = c/\lambda_{\text{max}}$ at which $B_\lambda$ peaks. The two spectral distributions are different, because a constant frequency interval $d\nu$ corresponds to a changing wavelength interval $\vert{}d\lambda\vert{} = \frac{c}{\nu^2} d\nu$ that grows with wavelength (and falls with frequency).
 
-To avoid the shifting peak paradox mentioned in your Aside (where $B_\nu$ peaks in the near-infrared at $\approx 8800\text{ \AA}$ for the Sun while $B_\lambda$ peaks at $\approx 5000\text{ \AA}$), observational astrophysicists often plot the spectral energy distribution (SED) per unit _logarithmic_ frequency or wavelength interval:
+To avoid this shifting peak paradox (where for example $B_\nu$ peaks in the near-infrared at $\approx 8800\text{ \AA}$ for the Sun while $B_\lambda$ peaks at $\approx 5000\text{ \AA}$), observational astrophysicists often plot the spectral energy distribution (SED) per unit _logarithmic_ frequency or wavelength interval:
 
 $$\nu B_\nu = \lambda B_\lambda$$
 
