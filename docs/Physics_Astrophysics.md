@@ -325,7 +325,7 @@ The other catch is that even if photons are scattered by atoms or ions in the st
 
 A crucial step toward understanding stellar physics was taken in 1911 independently by two astronomers, Hertzsprung and Russell, who placed measurements of stars on a logarithmic plot with axes of luminosity and effective surface temperature.
 
-Almost all known stars are concentrated in several well-defined loci on such a diagram. About $80\text{–}90\%$ of all stars (depending on what stellar environment one looks at) lie in a narrow diagonal strip called the main sequence, which corresponds very roughly to a relation $L \sim T_E^8$.
+Almost all known stars are concentrated in several well-defined loci on [such a diagram](https://cdn.britannica.com/17/143617-050-DA3F8537/diagram-Hertzsprung-Russell-Annie-Jump-Cannon-type-order.jpg). About $80\text{–}90\%$ of all stars (depending on what stellar environment one looks at) lie in a narrow diagonal strip called the main sequence, which corresponds very roughly to a relation $L \sim T_E^8$.
 
 Since the luminosity of a spherical blackbody radiator is
 
@@ -927,7 +927,7 @@ For intermediate-mass stars, which obey a mass-luminosity relation with $\alpha 
 
 ### Post-Main Sequence Nuclear Reactions
 
-Once most of the hydrogen in the core of a star has been converted into helium, the core contracts and the inner temperatures rise. As a result, hydrogen in the less-processed regions outside the core starts to burn in a shell surrounding the core. Stellar models consistently predict that, at this stage, there is a huge expansion of the outer layers of the star. This phenomenon is widely known in stellar evolution as the Mirror Principle: whenever a star develops an active nuclear-burning shell separating a contracting core from an outer envelope, radial contraction inside the shell causes radial expansion outside the shell (and vice versa during core helium ignition, when core expansion causes the envelope to contract back leftward onto the Horizontal Branch).
+[Once most of the hydrogen](https://physics.weber.edu/palen/phsx1040/images/hrlowmass.jpg) in the core of a star has been converted into helium, the core contracts and the inner temperatures rise. As a result, [hydrogen in the less-processed regions](https://e7.pngegg.com/pngimages/69/33/png-clipart-hertzsprung-russell-diagram-asymptotic-giant-branch-giant-star-horizontal-branch-stellar-evolution-star-angle-text-thumbnail.png) outside the core starts to burn in a shell surrounding the core. Stellar models consistently predict that, at this stage, there is a huge expansion of the outer layers of the star. This phenomenon is widely known in stellar evolution as the Mirror Principle: whenever a star develops an active nuclear-burning shell separating a contracting core from an outer envelope, radial contraction inside the shell causes radial expansion outside the shell (and vice versa during core helium ignition, when core expansion causes the envelope to contract back leftward onto the Horizontal Branch).
 
 The increase in luminosity, due to the gravitational contraction and the hydrogen shell burning, moves the star up in the H-R diagram, while the increase in radius lowers the effective temperature, moving the star to the right on the diagram into the red giant phase. The red-giant phase is brief compared to the main sequence, lasting roughly one-tenth the time.
 
