@@ -199,7 +199,7 @@ In the Wien regime, divide the observed intensity $I_\nu$ by $\nu^3$ and take th
 
 $$\ln\left(\frac{I_\nu}{\nu^3}\right) = \text{const} - \left(\frac{h}{k_B T}\right)\nu$$
 
-On a semi-log plot of $\ln(I_\nu / \nu^3)$ versus photon energy $E = h\nu$, the spectrum becomes a **straight line whose slope is simply $-\frac{1}{k_B T}$**! You can read the temperature of a neutron star or X-ray cluster gas directly off the slope of the high-energy exponential tail.
+On a semi-log plot of $\ln(I_\nu / \nu^3)$ versus photon energy $E = h\nu$, the spectrum becomes a straight line whose slope is simply $-\frac{1}{k_B T}$. You can read the temperature of a neutron star or X-ray cluster gas directly off the slope of the high-energy exponential tail.
 
 _B. Analytic Integrals for Ionizing Photons (H II Regions & Recombination)_
 
@@ -209,7 +209,7 @@ $$n_\gamma(\ge \chi_{\text{ion}}) = \int_{\nu_{\text{ion}}}^\infty \frac{u_\nu}{
 
 With the $-1$ in the denominator, this integral has no closed-form elementary solution.
 
-However, for both a hot star ($T \approx 30,000\text{ K} \implies k_B T \approx 2.6\text{ eV}$) and the early universe at recombination ($T \approx 3000\text{ K} \implies k_B T \approx 0.26\text{ eV}$), the $13.6\text{ eV}$ ionization threshold sits deep in the **Wien tail** ($\frac{\chi_{\text{ion}}}{k_B T} \gg 1$). Dropping the $-1$ turns the integrand into $\nu^2 e^{-h\nu/k_B T}$, which you can integrate by parts in two lines to get:
+However, for both a hot star ($T \approx 30,000\text{ K} \implies k_B T \approx 2.6\text{ eV}$) and the early universe at recombination ($T \approx 3000\text{ K} \implies k_B T \approx 0.26\text{ eV}$), the $13.6\text{ eV}$ ionization threshold sits deep in the Wien tail ($\frac{\chi_{\text{ion}}}{k_B T} \gg 1$). Dropping the $-1$ turns the integrand into $\nu^2 e^{-h\nu/k_B T}$, which you can integrate by parts in two lines to get:
 
 $$n_\gamma(\ge \chi_{\text{ion}}) \propto \left(\frac{\chi_{\text{ion}}}{k_B T}\right)^2 \exp\left(-\frac{\chi_{\text{ion}}}{k_B T}\right)$$
 
