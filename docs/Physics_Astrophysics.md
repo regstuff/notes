@@ -262,7 +262,7 @@ The Saha Equation (Ionization): Gives the ratio of ionized hydrogen ($\text{H II
     
 $$\frac{N_{\text{II}}}{N_{\text{I}}} = \frac{2 k_B T}{P_e} \left(\frac{2\pi m_e k_B T}{h^2}\right)^{3/2} e^{-13.6\text{ eV}/k_B T}$$
     
-Above $T \approx 10,000\text{ K}$, almost all hydrogen becomes ionized ($N_{\text{II}}/N_{\text{I}} \gg 1$).
+Above $T \approx 10,000\text{ K}$, almost all hydrogen becomes ionized ($N_{\text{II}}/N_{\text{I}} \gg 1$). Note that here, $N_{\text{I}} = N_1 + N_2 + N_3 + \dots$ i.e. the subscript in Roman numerals represents all neutral states, whereas the Arabic numeral subscripts represent the neutral states at various energy levels. 
     
 Combining both equations gives the fraction of total hydrogen capable of producing Balmer lines:
     
