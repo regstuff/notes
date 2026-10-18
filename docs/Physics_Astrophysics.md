@@ -620,6 +620,8 @@ This condition can also be stated as a condition on the density, which must be l
 
 $$\rho_J = \frac{M}{\frac{4}{3}\pi r_J^3} = \frac{3}{4\pi M^2}\left(\frac{3k_B T}{G\bar{m}}\right)^3$$
 
+Intuitively, what's happening here is that as density increases, it becomes easier for gravity to overpower thermal pressure, and so Jeans mass limit reduces. However, as temperature increases, thermal pressure is better able to contract gravity, and so Jean's mass limit increases. Similarly, if the total mass of the object is larger, then Jeans density limit is lower because the sheer mass provides enough gravitational pressure. A smaller mass would need each particle to be closer (and thus density to be higher) to trigger an overpowering gravitational contraction. 
+
 It is especially useful to write these formulas in terms of temperature and density because in an extended interstellar cloud, the physically uniform properties are its $T$ and mass density $\rho_0$. If we substitute $r = \left(\frac{3M_J}{4\pi\rho_0}\right)^{1/3}$ into $M_J = \frac{3k_B T}{G\bar{m}}r$ and solve for $M_J$ and $r_J$ exclusively in terms of $T$ and $\rho_0$, we get two other standard forms of the Jeans Mass and Jeans Length:
 
 $$M_J = \left(\frac{3}{4\pi\rho_0}\right)^{1/2}\left(\frac{3k_B T}{G\bar{m}}\right)^{3/2} \propto \left(\frac{T^3}{\rho_0}\right)^{1/2}$$
@@ -638,7 +640,7 @@ If $M_J \propto \rho_0^{-1/2}$ keeps dropping as density rises, why doesn't a mo
 
 $$M_J \propto \rho^{\frac{3}{2}\gamma - 2}$$
     
-For a diatomic molecular hydrogen gas ($\gamma = 7/5 = 1.4$) or monoatomic gas ($\gamma = 5/3$), the exponent $\frac{3}{2}\gamma - 2$ becomes positive ($+0.1$ or $+0.5$). That means as soon as the fragment becomes optically thick and heats up adiabatically, the Jeans mass stops decreasing and starts increasing with density, halting any further fragmentation at a minimum fragment mass of $\sim 0.005\text{–}0.01\,M_\odot$ ($\sim 5\text{–}10\,M_{\text{Jupiter}}$).
+For a diatomic molecular hydrogen gas ($\gamma = 7/5 = 1.4$) or monoatomic gas ($\gamma = 5/3$), the exponent $\frac{3}{2}\gamma - 2$ becomes positive ($+0.1$ or $+0.5$). That means as soon as the fragment becomes optically thick and heats up adiabatically, the Jeans mass stops decreasing and starts increasing with density because the trapped heat improves the thermal pressure's resistance to gravitational contraction. This halts any further fragmentation at a minimum fragment mass of $\sim 0.005\text{–}0.01\,M_\odot$ ($\sim 5\text{–}10\,M_{\text{Jupiter}}$).
 
 **Acoustic Interpretation of the Jeans Length ($t_{\text{ff}} < t_{\text{sound}}$)**
 
