@@ -382,9 +382,9 @@ In order to calculate the steady-state pressure, luminosity, mass, etc. of a sta
 
 Another aspect is the temperature of the star and its relationship to luminosity. Since we approximate stars to blackbodies, the luminosity or radiative power of photons is related to temperature via the Stefan-Boltzmann Law, and of course the opacity of the star's material to photons of various frequencies. Opacity is fundamentally related to scattering and absorption of photons through various processes.
 
-A third aspect is energy conservation. The fundamental source of energy in a star is nuclear reactions of various kinds, and what nuclear reactions are present depends on the chemical composition of the star. However, for protostars where nuclear reactions haven't been triggered, the source of energy might be gravitational collapse. Either way, this energy generation is once again radiated away via the luminosity.
+A third aspect is energy conservation. The fundamental source of energy in a star is nuclear reactions of various kinds, and what nuclear reactions are present depend on the chemical composition of the star. However, for protostars where nuclear reactions haven't been triggered, the source of energy might be gravitational collapse. Either way, conservation of energy dictates that the rate at which a star loses total energy to space is its luminosity.
 
-These three aspects of equilibrium you summarized in your three paragraphs correspond directly to the three fundamental timescales of stellar astrophysics. Gravity vs pressure determines the time it would take a star to collapse if pressure support suddenly vanished ($t_{\text{dyn}} \sim \frac{1}{\sqrt{G\bar{\rho}}} \sim \sqrt{\frac{R^3}{GM}}$). For the Sun, $t_{\text{dyn}} \approx 30\text{ minutes}$.
+These three aspects of equilibrium correspond directly to the three fundamental timescales of stellar astrophysics. Gravity vs pressure determines the time it would take a star to collapse if pressure support suddenly vanished ($t_{\text{dyn}} \sim \frac{1}{\sqrt{G\bar{\rho}}} \sim \sqrt{\frac{R^3}{GM}}$). For the Sun, $t_{\text{dyn}} \approx 30\text{ minutes}$.
     
 Radiative transport & gravitational contraction decides the time it takes a star (or contracting protostar) to radiate away its entire reservoir of thermal/gravitational potential energy at its current luminosity ($t_{\text{KH}} \sim \frac{\vert{}E_{\text{gr}}\vert{}}{L} \sim \frac{GM^2}{RL}$). For the Sun, $t_{\text{KH}} \approx 3 \times 10^7\text{ years}$.
     
@@ -458,7 +458,7 @@ This is one form of the virial theorem. To understand where the $1/3$ factor com
 
 $$\delta W = \delta E_{\text{gr}}$$
 
-Gravitational potential energy between every pair of mass elements scales inversely with distance to the **first power** ($E_{\text{gr}} \propto R^{-1}$), whereas if we look at work done, pressure works against 3D volume $dV$. Volume scales as length cubed ($V \propto R^3$) in 3-dimensional space; stretching every linear dimension by $\frac{dR}{R}$ increases the total volume by thrice that fraction. Thus we have:
+Gravitational potential energy between every pair of mass elements scales inversely with distance to the first power ($E_{\text{gr}} \propto R^{-1}$), whereas if we look at work done, pressure works against 3D volume $dV$. Volume scales as length cubed ($V \propto R^3$) in 3-dimensional space; stretching every linear dimension by $\frac{dR}{R}$ increases the total volume by thrice that fraction. Thus we have:
 
 $$3\bar{P}V\left(\frac{dR}{R}\right) = -E_{\text{gr}}\left(\frac{dR}{R}\right)$$
 
@@ -485,6 +485,8 @@ $$\bar{P}V = \frac{2}{3}E_{\text{th}}^{\text{tot}}$$
 Thus, we get the second form of the virial theorem:
 
 $$E_{\text{th}}^{\text{tot}} = -\frac{1}{2}E_{\text{gr}}$$
+
+This is also written as $2 E_{\text{th}} + E_{\text{gr}} = 0$ and sometimes as $2K + U = 0$.
 
 The total energy of a star ($E_{\text{tot}} = E_{\text{th}}^{\text{tot}} + E_{\text{gr}}$) is therefore:
 
