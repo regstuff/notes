@@ -879,6 +879,12 @@ $$L \sim \frac{T^4 r}{\kappa\rho}$$
 
 (just as, instead of solving a differential equation, say,  $df/dx = x^4$, we can write directly $f \sim x^5$).
 
+These three relations can be conceptually understood in the following way: Hydrostatic balance is simply gas pressure equated to gravitational potential energy density ~ $GM^2/R/V = GM/R*M/V \sim M \rho/R$
+
+The second relation is just the formula for density: $\rho \sim M/R^3$ rearranged.
+
+The third one relates the luminosity to the gradient of radiative energy density: $L \sim d(aT^4)/dR * 4\pi R^2*mean free path \sim T^4R/\kappa \rho$. Now let us apply these approximations to different situations. 
+
 For moderately massive stars, the pressure will be dominated by the kinetic gas pressure, and the opacity by electron scattering. Therefore $P \sim \rho T$ and $\kappa = \text{const.}$
 
 Substituting $P \sim \rho T$ in $P \sim \frac{M\rho}{r}$, we get $T \sim \frac{M}{r}$. Substituting this into $L \sim \frac{T^4 r}{\kappa\rho}$ and using $M \sim r^3\rho$, we get:
