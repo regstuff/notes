@@ -500,7 +500,7 @@ where $N$ is the number of individual particles, which includes ionized nuclei a
 
 $$E_{\text{th}} = \frac{3}{2} Nk_B T$$
 
-Therefore, $PV = \frac{2}{3} E_{\text{th}}$. This can also be written in terms of internal energy (which is the same as thermal energy in the case of an ideal gas) density and mass density as $u = \frac{3}{2}\frac{P}{\rho}$.  Also, for equations of state other than an ideal gas, a relation between pressure and internal energy exists, which we can write generally as: $u = \phi\frac{P}{\rho}$. If we consider a gas of relativistic particles, in particular photons (i.e., radiation pressure), $\phi = 3$. Note that the number of translational/internal degrees of freedom $f$ gives $u = \frac{f}{2}\frac{P}{\rho}$, so $\phi = \frac{f}{2}$ and $\gamma = 1 + \frac{1}{\phi}$.
+Therefore, $PV = \frac{2}{3} E_{\text{th}}$. This can also be written in terms of internal energy $E_{int}$ (which is the same as thermal energy in the case of an ideal gas) density and mass density as $u = \frac{3}{2}\frac{P}{\rho}$.  Also, for equations of state other than an ideal gas, a relation between pressure and internal energy exists, which we can write generally as: $u = \phi\frac{P}{\rho}$. If we consider a gas of relativistic particles, in particular photons (i.e., radiation pressure), $\phi = 3$. Note that the number of translational/internal degrees of freedom $f$ gives $u = \frac{f}{2}\frac{P}{\rho}$, so $\phi = \frac{f}{2}$ and $\gamma = 1 + \frac{1}{\phi}$.
 
 Integrating and averaging the $PV$ equation over the entire star gives us the relationship between average pressure, volume, and the star's total thermal energy:
 
@@ -512,13 +512,19 @@ $$E_{\text{th}}^{\text{tot}} = -\frac{1}{2}E_{\text{gr}}$$
 
 This is also written as $2 E_{\text{th}} + E_{\text{gr}} = 0$ and sometimes as $2K + U = 0$.
 
-The total energy of a star ($E_{tot} = E_{gr} + E_{int} + E_{kin}$, but for a star in steady state, the last term is set to zero, so $E_{\text{tot}} = E_{\text{th}}^{\text{tot}} + E_{\text{gr}}$) is therefore:
+The total energy of a star ($E_{tot} = E_{gr} + E_{th} + E_{kin}$, but for a star in steady state, the last term is set to zero, so $E_{\text{tot}} = E_{\text{th}}^{\text{tot}} + E_{\text{gr}}$) is therefore:
 
 $$E_{\text{tot}} = \frac{1}{2}E_{\text{gr}} = -E_{\text{th}}^{\text{tot}}$$
 
 More generally, utilizing the general equation state with $\phi$, we can write $E_{\text{tot}} = E_{\text{int}} + E_{\text{gr}} = \frac{\phi - 3}{\phi}E_{\text{int}} = \left(1 - \frac{1}{3}\phi\right)E_{\text{gr}}$.
 
-Due to the minus sign relating the thermal and gravitational energy, if the star contracts, the radius decreases and therefore the magnitude of $E_{\text{gr}}$ will increase (i.e., it becomes more negative). The total thermal energy therefore becomes more positive, which means the star heats up as it collapses. This also means that a star heats up as it loses energy, which means it has a negative heat capacity. This isn't all that surprising since when a star collapses, its particles will gain kinetic energy, which translates to more thermal energy and heat.
+The rate at which energy is radiated from the surface is the luminosity of the star. In the absence of an internal energy source, this energy loss must equal the decrease of the total energy of the star: $L = -dE_{\text{tot}}/dt > 0$, since $L$ is positive by convention when it is radiating and thus losing energy.
+
+Taking the time derivative (for a non-relativistic gas with $\phi = \frac{3}{2}$, where $E_{\text{tot}} = \frac{1}{2}E_{\text{gr}} = -E_{\text{int}}$):
+
+$\dot{E}_{\text{gr}} = -2L$ which is negative if the star loses energy ($L > 0$), and $\dot{E}_{\text{th}} = L$ which is positive if the star loses energy ($L > 0$).
+
+From these relations and the minus sign relating the thermal and gravitational energy, if the star radiates away too much energy and loses energy, the magnitude of $E_{\text{gr}}$ will increase (i.e., it becomes more negative), the radius decreases and the star contracts. The total thermal energy however becomes more positive, which means the star heats up as it collapses. This also means that a star heats up as it loses energy, which means it has a negative heat capacity. This isn't all that surprising since when a star collapses, its particles will gain kinetic energy, which translates to more thermal energy and heat.
 
 The negativegravothermal heat capacity is the reason stars do not blow themselves up like hydrogen bombs. In a terrestrial fusion reactor (or a degenerate white dwarf where $P$ does not depend on $T$), if a fluctuation slightly increases the nuclear reaction rate, the temperature rises, which exponentially increases the fusion rate further, causing a runaway thermonuclear explosion. In a main-sequence star governed by the virial theorem, if the core generates excess nuclear energy ($dE_{\text{tot}} > 0$), the core expands ($r$ increases, $E_{\text{gr}}$ becomes less negative) and cools down ($dE_{\text{th}} = -dE_{\text{tot}} < 0$), automatically throttling the fusion rate back down to equilibrium. Let's put some concrete example numbers to this.
 
