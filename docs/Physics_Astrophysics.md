@@ -907,7 +907,7 @@ Since $T \sim \text{const.}$,  $r \sim M$, and $\rho \sim M^{-2}$, then $\kappa 
 
 $$L \sim \frac{T^4 r}{\kappa\rho} \sim \frac{r}{\rho^2} \sim M^5$$
 
-as seen in low-mass stars.
+as seen in low-mass stars. The fundamental change from the high-mass stars is that $\kappa$ was constant back then, instead of the $M^{-2}$ relation we have for low-mass stars, which ends up adding an extra power of two to the exponent in the mass-luminosity relation.
 
 For the most massive stars, the low gas density will make radiation pressure dominant in the equation of state:
 
