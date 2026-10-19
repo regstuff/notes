@@ -378,6 +378,8 @@ Spectroscopically, you can distinguish a $\text{G2I}$ supergiant from a $\text{G
 
 ## Equations of Stellar Equilibrium
 
+When constructing the differential equations for stellar structure, one should thus generally consider partial derivatives of physical quantities with respect to radius and time, $\partial/\partial r$ and $\partial/\partial t$, taken at constant $t$ and $r$, respectively. For now though, we will generally ignore the time dependant aspect.
+
 In order to calculate the steady-state pressure, luminosity, mass, etc. of a star, we must first understand how a star stays in equilibrium. One aspect is gravity. The mass of the star and the corresponding gravitational attraction will tend to cause contraction of the star. This contraction must be resisted by the outward pressure of the material that makes up the star. In regular stars, this pressure could be from thermal energy due to kinetic motion of particles. In larger, brighter stars, the pressure from the photons radiating outward might be the main contributor. In white dwarfs or neutron stars, the pressure could be degeneracy pressure from the Fermi sea of electrons or neutrons.
 
 Another aspect is the temperature of the star and its relationship to luminosity. Since we approximate stars to blackbodies, the luminosity or radiative power of photons is related to temperature via the Stefan-Boltzmann Law, and of course the opacity of the star's material to photons of various frequencies. Opacity is fundamentally related to scattering and absorption of photons through various processes. The relation is basically that radiative energy flux $F_{\text{rad}} = \frac{L(r)}{4\pi r^2}$ is driven by the gradient of the radiation energy density ($u_{\text{rad}} = a T^4$) divided by the photon mean-free-path opacity ($\kappa \rho$).
@@ -659,6 +661,26 @@ A cloud collapses when its gravitational free-fall time ($t_{\text{ff}}$) is sho
 Nothing fancy here. This is just an expression for the mass of an infinitesimal mass shell in terms of the density:
 
 $$dM(r) = \rho(r)4\pi r^2 dr, \quad \text{which is} \quad \frac{dM(r)}{dr} = 4\pi r^2\rho(r)$$
+
+If we also consider variation with time, we get:   
+
+$$dm(r, t) = 4\pi r^2\rho\,dr - 4\pi r^2\rho v\,dt$$
+
+where $v$ is the outward radial velocity of the gas at radius $r$.
+
+$$\left(\frac{\partial m}{\partial r}\right)_t = 4\pi r^2\rho \qquad \text{and} \qquad \left(\frac{\partial m}{\partial t}\right)_r = -4\pi r^2\rho v$$
+
+Moreover, because mixed second partial derivatives must commute ($\frac{\partial^2 m}{\partial t \partial r} = \frac{\partial^2 m}{\partial r \partial t}$), taking $\frac{\partial}{\partial t}$ of the first relation and equating it to $\frac{\partial}{\partial r}$ of the second relation recovers the standard spherical fluid equation of continuity:
+
+$$\frac{\partial}{\partial t}\left(4\pi r^2\rho\right) = \frac{\partial}{\partial r}\left(-4\pi r^2\rho v\right) \implies \frac{\partial \rho}{\partial t} + \frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\rho v\right) = 0$$
+
+Notice what happens if you move _with_ a fluid shell at its radial velocity $v = \frac{dr}{dt}$. Substituting $dr = v\,dt$ into your equation gives:
+
+$$dm(r, t) = 4\pi r^2\rho(v\,dt) - 4\pi r^2\rho v\,dt = 0$$
+
+That means the enclosed mass $m$ inside a moving fluid shell stays strictly constant as the star expands or contracts! For this reason, numerical stellar evolution codes almost never use radius $r$ as the independent spatial variable (Eulerian coordinates, where the outer boundary $R(t)$ moves wildly by factors of $10^3$ during the red giant phase). Instead, they invert the variables and use the enclosed mass $m$ as the independent spatial coordinate and radius $r(m, t)$ as the dependent variable (Lagrangian coordinates), where the star always spans the fixed domain $0 \le m \le M$, and the mass continuity equation becomes:
+
+$$\left(\frac{\partial r}{\partial m}\right)_t = \frac{1}{4\pi r^2\rho}$$
 
 ### Radiative Energy Transport
 
@@ -988,6 +1010,19 @@ The Schwarzschild criterion assumes the chemical composition (mean molecular wei
 $$\left\vert{}\frac{d\ln T}{d\ln P}\right\vert{} > \frac{\gamma - 1}{\gamma} + \frac{\ln \mu}{\ln P}$$
 
 ## Stellar Evolution & Remnants
+
+### Stellar Populations
+Stars in the Galaxy are divided into different populations:
+
+Population I: Stars in the galactic disk, in spiral arms, and in (relatively young) open clusters. These stars have ages $\lesssim 10^9\text{ yr}$ and are relatively metal-rich ($Z \sim 0.5\text{–}1\,Z_\odot$).
+
+Population II: Stars in the galactic halo and in globular clusters, with ages $\sim 10^{10}\text{ yr}$. These stars are observed to be metal-poor ($Z \sim 0.01\text{–}0.1\,Z_\odot$).
+
+An intermediate population (with intermediate ages and metallicities) is also seen in the disk of the Galaxy. Together they provide evidence for the chemical evolution of the Galaxy: the abundance of heavy elements ($Z$) apparently increases with time. This is the result of chemical enrichment by subsequent stellar generations.   The study of chemical evolution has led to the hypothesis of a ‘Population III’ consisting of the first generation of stars formed after the Big Bang, containing only hydrogen and helium and no heavier elements (‘metal-free’, $Z = 0$). No metal-free stars have ever been observed, probably due to the fact that they were massive and had short lifetimes and quickly enriched the Universe with metals.
+
+### Stellar Evolution
+
+Stars are formed with a homogeneous composition, a reasonable assumption since the molecular clouds out of which they form are well-mixed. We will often assume a so-called quasi-solar composition ($X = 0.70, Y = 0.28$ and $Z = 0.02$), even though recent determinations of solar abundances have revised the solar metallicity down to $Z = 0.014$. In practice there is relatively little variation in composition from star to star, so that the initial mass is the most important parameter that determines the evolution of a star. The composition, in particular the metallicity $Z$, is of secondary influence but can have important effects especially in very metal-poor stars.
 
 We know that $L \sim M^\alpha$. We also know that the energy source is nuclear reactions, whereby a fraction of a star’s rest mass is converted to energy and radiated away. The total radiated energy is therefore proportional to mass, $L t_{\text{ms}} \sim E \sim M$, and:
 
