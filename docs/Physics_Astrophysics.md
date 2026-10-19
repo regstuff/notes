@@ -452,7 +452,21 @@ However, in steady state where net acceleration is zero, called hydrostatic equi
 
 $$\frac{dP(r)}{dr} = -\frac{GM(r)\rho(r)}{r^2}$$
 
-which is the equation of hydrostatic equilibrium. We can multiply both sides by $4\pi r^3 dr$ and integrate, which converts the RHS into the gravitational potential energy needed to assemble the entire star shell by shell, bringing it from infinity to a radius of $r$ going from $0$ to the final $r_*$ radius of the star. This is the gravitational potential self-energy of the star, $E_{\text{gr}}$:
+which is the equation of hydrostatic equilibrium. Note that the pressure decreases with radius. Switching coordinates to $m$ gives us the same equation in the form:
+
+$$\frac{dP}{dm} = -\frac{Gm}{4\pi r^4}$$
+
+Integrating this to get a relation between $P$ and $m$ gives us a minimum pressure at the core, by assuming that the pressure at the surface is $0$:
+
+$$P_c > \frac{GM^2}{8\pi R^4}$$
+
+We can get a stronger lower bound by setting the density of the star to the average density$M$ divided by total volume $\frac{4\pi}{3}R^3$. Since a star's density always increases as radius reduces, its density will always be greater than this average because ny star whose density increases inward ($\frac{d\rho}{dr} < 0$) is more centrally condensed than a uniform sphere. Thus we get:
+
+$$P_c = \frac{G M^{4/3}}{4\pi R^4}\int_0^M m^{-1/3}\,dm = \frac{G M^{4/3}}{4\pi R^4}\left[\frac{3}{2}m^{2/3}\right]_0^M = \frac{3}{8\pi}\frac{GM^2}{R^4}$$
+
+as a better lower bound.
+
+Going back to the equation of hydrostatic equilibrium, we can multiply both sides by $4\pi r^3 dr$ and integrate, which converts the RHS into the gravitational potential energy needed to assemble the entire star shell by shell, bringing it from infinity to a radius of $r$ going from $0$ to the final $r_*$ radius of the star. This is the gravitational potential self-energy of the star, $E_{\text{gr}}$:
 
 $$-\int_0^{r_*} \frac{GM(r)\rho(r)4\pi r^2 dr}{r}$$
 
@@ -486,9 +500,9 @@ where $N$ is the number of individual particles, which includes ionized nuclei a
 
 $$E_{\text{th}} = \frac{3}{2} Nk_B T$$
 
-Therefore, $PV = \frac{2}{3} E_{\text{th}}$.
+Therefore, $PV = \frac{2}{3} E_{\text{th}}$. This can also be written in terms of internal energy (which is the same as thermal energy in the case of an ideal gas) density and mass density as $u = \frac{3}{2}\frac{P}{\rho}$.  Also, for equations of state other than an ideal gas, a relation between pressure and internal energy exists, which we can write generally as: $u = \phi\frac{P}{\rho}$. If we consider a gas of relativistic particles, in particular photons (i.e., radiation pressure), $\phi = 3$.
 
-Integrating and averaging this over the entire star gives us the relationship between average pressure, volume, and the star's total thermal energy:
+Integrating and averaging the $PV$ equation over the entire star gives us the relationship between average pressure, volume, and the star's total thermal energy:
 
 $$\bar{P}V = \frac{2}{3}E_{\text{th}}^{\text{tot}}$$
 
@@ -501,6 +515,8 @@ This is also written as $2 E_{\text{th}} + E_{\text{gr}} = 0$ and sometimes as $
 The total energy of a star ($E_{\text{tot}} = E_{\text{th}}^{\text{tot}} + E_{\text{gr}}$) is therefore:
 
 $$E_{\text{tot}} = \frac{1}{2}E_{\text{gr}} = -E_{\text{th}}^{\text{tot}}$$
+
+More generally, utilizing the general equation state with $\phi$, we can write $E_{\text{tot}} = E_{\text{int}} + E_{\text{gr}} = \frac{\phi - 3}{\phi}E_{\text{int}} = \left(1 - \frac{1}{3}\phi\right)E_{\text{gr}}$
 
 Due to the minus sign relating the thermal and gravitational energy, if the star contracts, the radius decreases and therefore the magnitude of $E_{\text{gr}}$ will increase (i.e., it becomes more negative). The total thermal energy therefore becomes more positive, which means the star heats up as it collapses. This also means that a star heats up as it loses energy, which means it has a negative heat capacity. This isn't all that surprising since when a star collapses, its particles will gain kinetic energy, which translates to more thermal energy and heat.
 
@@ -560,6 +576,8 @@ $$\gamma = 1 + \frac{2}{6} = \frac{4}{3}$$
 
 ---
 
+
+
 Now, going back to our integration to calculate $E_{\text{gr}}$:
 
 $$E_{\text{gr}} = -\int_0^{r_*} \frac{GM(r)\rho(r)4\pi r^2 dr}{r}$$
@@ -576,7 +594,7 @@ Assuming mostly ionized hydrogen, we get $\bar{m} \approx m_H / 2$.
 
 $$T_{\text{vir}} \sim 4 \times 10^6\text{ K}$$
 
-This is the characteristic average temperature of the Sun needed to maintain hydrostatic balance given the mass and gravitational potential of the Sun.
+This is the characteristic average temperature of the Sun needed to maintain hydrostatic balance given the mass and gravitational potential of the Sun. Since the temperature in a star normally decreases outwards, it is also an approximate lower limit on the central temperature of the Sun.
 
 More generally, in stellar structure, stars are modeled as polytropes of index $n$ (where $P \propto \rho^{1 + 1/n}$, and larger $n$ means higher central concentration $\rho_c / \bar{\rho}$). A classic theorem (the Betti-Ritter theorem) gives the exact prefactor $\alpha$ for any polytrope of index $n$:
 
