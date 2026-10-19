@@ -955,7 +955,7 @@ Because radiative heat exchange across a macroscopic parcel is slow compared to 
         
 $$\left(\frac{dT}{dr}\right)_{\text{ad}} = \frac{\gamma - 1}{\gamma}\frac{T}{P}\frac{dP}{dr}$$
         
-The parcel will be buoyant and continue accelerating upward if its new density is _lower_ than the surrounding ambient density ($\rho_{\text{blob}} < \rho_{\text{env}}$). Since $P_{\text{blob}} = P_{\text{env}}$ and $P \propto \rho T$ (at constant composition $\mu$), lower density means the blob must be **hotter** than its new surroundings ($T_{\text{blob}} > T_{\text{env}}$). Since both $T_{\text{blob}}$ and $T_{\text{env}}$ decrease outward ($\frac{dT}{dr} < 0$), $T_{\text{blob}} > T_{\text{env}}$ requires that the ambient temperature drops _steeper_ than the blob's adiabatic cooling rate:
+The parcel will be buoyant and continue accelerating upward if its new density is _lower_ than the surrounding ambient density ($\rho_{\text{blob}} < \rho_{\text{env}}$). Since $P_{\text{blob}} = P_{\text{env}}$ and $P \propto \rho T$ (at constant composition $\mu$), lower density means the blob must be hotter than its new surroundings ($T_{\text{blob}} > T_{\text{env}}$). Since both $T_{\text{blob}}$ and $T_{\text{env}}$ decrease outward ($\frac{dT}{dr} < 0$), $T_{\text{blob}} > T_{\text{env}}$ requires that the ambient temperature drops _steeper_ than the blob's adiabatic cooling rate:
         
 $$\left\vert{}\frac{dT}{dr}\right\vert{}_{\text{env}} > \left\vert{}\frac{dT}{dr}\right\vert{}_{\text{ad}} = \frac{\gamma - 1}{\gamma}\frac{T}{P}\left\vert{}\frac{dP}{dr}\right\vert{}$$
         
