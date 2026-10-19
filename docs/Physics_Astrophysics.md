@@ -1083,7 +1083,7 @@ Substituting this into the expression for $P_e$, we obtain a useful form for the
 
 $$P_e = \left(\frac{3}{\pi}\right)^{2/3}\frac{h^2}{20m_e m_p^{5/3}}\left(\frac{Z}{A}\right)^{5/3}\rho^{5/3}$$
 
-The important feature of this equation of state is that the electron pressure does not depend on temperature.
+The important feature of this equation of state is that the electron pressure does not depend on temperature. Also note that electron degeneracy pressure and thermal pressure are not two separate mechanisms. They are both 100% ordinary translational kinetic pressure—particles bouncing off walls and transferring momentum. 
 
 As opposed to the electrons, the nuclei at such densities are still completely in
 the classical regime due to huge difference in mass between nucleons and electrons, since for the same $\delta x$ and $\delta p$, the velocity of the nucleon is much lower (and therefore the time taken by it to traverse a unit length is higher, which means fewer impacts on "walls"), which means it exerts far less pressure than electrons.
@@ -1171,7 +1171,7 @@ $v$ is carrier speed or how fast those particles carry that thermal energy from 
 
 $\ell$ is mean free path. For electrons deep in the Fermi sea, this is a huge value because they cannot participate in scattering due to there being no available nearby energy slots. However, these "deep sea" electrons do not participate in the thermal conduction process, so we can ignore them. Looking at the top of the Fermi sea, we see that mean free path is high for these electrons as well because they have a high velocity, which means Rutherford or electrostatic coulomb scattering between an electron and a nucleus is very minimal. Essentially, the electrons are so fast they are barely deflected by ions and protons, and so their mean free path is high.
 
-Now getting back to white dwarf cooling, the thermal energy reservoir being radiated away during white dwarf cooling is purely the kinetic thermal energy of the non-degenerate ions. However, to estimate the peak temperature reached right at the onset of electron degeneracy, let us assume a pure helium composition; then the number of nuclei in the core is $\frac{M}{4m_p}$, and the number of electrons is $\frac{M}{2m_p}$. Prior to complete electron degeneracy, the total thermal energy (which, once degeneracy sets in, will no longer play a role in supporting the star against gravity) is therefore:
+Now getting back to white dwarf cooling, the thermal energy reservoir being radiated away during white dwarf cooling is purely the kinetic thermal energy of the non-degenerate ions. However, to estimate the peak temperature reached right at the onset of electron degeneracy, let us assume a pure helium composition; then the number of nuclei in the core is $\frac{M}{4m_p}$, and the number of electrons is $\frac{M}{2m_p}$. Prior to complete electron degeneracy, the total thermal energy (which, once degeneracy sets in, will no longer play a role in supporting the star against gravity because the Fermi sea prevents electrons from picking up additional energy when it collides with a thermally jiggling Carbon nucleus for example) is therefore:
 
 $$E_{\text{th}} = \frac{3}{2}Nk_B T = \frac{3}{2}\frac{M}{m_p}\left(\frac{1}{2} + \frac{1}{4}\right)k_B T = \frac{9}{8}\frac{M}{m_p}k_B T$$
 
