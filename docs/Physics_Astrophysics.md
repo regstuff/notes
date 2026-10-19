@@ -512,7 +512,7 @@ $$E_{\text{th}}^{\text{tot}} = -\frac{1}{2}E_{\text{gr}}$$
 
 This is also written as $2 E_{\text{th}} + E_{\text{gr}} = 0$ and sometimes as $2K + U = 0$.
 
-The total energy of a star ($E_{\text{tot}} = E_{\text{th}}^{\text{tot}} + E_{\text{gr}}$) is therefore:
+The total energy of a star ($E_{tot} = E_{gr} + E_{int} + E_{kin}$, but for a star in steady state, the last term is set to zero, so $E_{\text{tot}} = E_{\text{th}}^{\text{tot}} + E_{\text{gr}}$) is therefore:
 
 $$E_{\text{tot}} = \frac{1}{2}E_{\text{gr}} = -E_{\text{th}}^{\text{tot}}$$
 
