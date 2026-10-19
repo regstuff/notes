@@ -1285,7 +1285,7 @@ $$n_e = n_p \approx \frac{1}{200}n_n$$
 
 Thus, most of the nucleons become neutrons, and a neutron star forms, in which degenerate neutrons, rather than electrons, provide the pressure support against gravity.
 
-Because neutrons are spin-$1/2$ fermions just like electrons, a non-relativistic neutron star obeys the exact same equation of state as for white dwarfs, except with the electron mass $m_e$ replaced by the neutron mass $m_n \approx m_p \approx 1836\,m_e$, and with $Z/A \to 1$ (since every nucleon is now a fermion contributing to degeneracy pressure, rather than $1$ electron per $2$ nucleons):
+Because neutrons are spin-$1/2$ fermions just like electrons, a non-relativistic neutron star obeys the exact same equation of state as for white dwarfs, except with the electron mass $m_e$ replaced by the neutron mass $m_n \approx m_p \approx 1836\,m_e$, and with $Z/A \to 1$ (since every nucleon is now a fermion contributing to degeneracy pressure, rather than $1$ electron and $1$ non-participating hydrogen proton):
 
 $$P_n = \left(\frac{3}{\pi}\right)^{2/3}\frac{h^2}{20m_n m_p^{5/3}}\rho^{5/3} \approx \left(\frac{3}{\pi}\right)^{2/3}\frac{h^2}{20m_n^{8/3}}\rho^{5/3}$$
 
