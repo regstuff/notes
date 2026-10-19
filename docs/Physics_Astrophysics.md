@@ -895,7 +895,7 @@ $T \sim \frac{M}{r}$ also suggests that $r \sim M$ on the main sequence. To see 
 
 $$r \sim M$$
 
-Detailed models confirm that the core temperature varies only by a factor $\approx 4$ over a range of $\sim 100$ in mass on the main sequence. With $r \sim M$, we see from $M \sim r^3\rho$ that the density of a star decreases as $\rho \sim M^{-2}$, so that more massive stars will have low density, and low-mass stars will have high density. 
+We have made two simplifying textbook assumptions here: constant opacity and a strictly constant core temperature. When we make actual measurements directly from real eclipsing binary stars in the sky, we get empirical best-fit power laws: $L \propto M^{3.8}$ and $R \propto M^{0.7}$. Detailed models confirm that the core temperature varies only by a factor $\approx 4$ over a range of $\sim 100$ in mass on the main sequence. With $r \sim M$, we see from $M \sim r^3\rho$ that the density of a star decreases as $\rho \sim M^{-2}$, so that more massive stars will have low density, and low-mass stars will have high density. 
 
 For example, the Sun ($1\,M_\odot$) has a mean density $\bar{\rho}_\odot \approx 1.4\text{ g cm}^{-3}$. But a $20\,M_\odot$ O-type star has a mean density roughly $20^{-2} = \frac{1}{400}$ of the Sun's ($\bar{\rho} \approx 0.0035\text{ g cm}^{-3}$, comparable to terrestrial air), which is why bound-free/free-free collisions ($\kappa \propto \rho$) become negligible and radiation pressure ($P_{\text{rad}}/P_g \propto T^3/\rho$) takes over. Conversely, a $0.1\,M_\odot$ red dwarf has a mean density roughly $100$ times the Sun's ($\bar{\rho} \sim 100\text{ g cm}^{-3}$), driving Kramers opacity so high that radiative transport breaks down completely and the entire star becomes fully convective.
 
