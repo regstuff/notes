@@ -1159,9 +1159,7 @@ In the non-relativistic white dwarf regime ($\gamma = 5/3$), $E_{\text{tot}} = \
 
 #### White Dwarf Cooling
 
-Due to the good thermal conduction of the degenerate electrons in a white dwarf
-(similar to the conduction in metals, which arises in the same way), the temperature
-inside a white dwarf is approximately constant with radius. 
+Due to the good thermal conduction of the degenerate electrons in a white dwarf (similar to the conduction in metals, which arises in the same way), the temperature inside a white dwarf is approximately constant throughout (except a thin insulting skin of ions on top). 
 
 To understand why a white dwarf is a good conductor, recall that this is mostly due to the electrons at the top of the Fermi sea. Deep in the Fermi sea, there are no nearby higher empty states that an electron can jump to after picking up some thermal energy state. However, at the very top of the Fermi sea, this becomes feasible. Because temperature $T > 0$ slightly blurs the sharp step of the Fermi-Dirac distribution $\langle n_{\text{FD}}\rangle = \frac{1}{e^{(E - E_F)/k_B T} + 1}$ over a narrow thermal skin of width $\Delta E \sim k_B T$ right around $E_F$, a tiny fraction of electrons ($\sim \frac{k_B T}{E_F} \approx 0.005$) just below $E_F$ were thermally excited into states just above $E_F$.
 
