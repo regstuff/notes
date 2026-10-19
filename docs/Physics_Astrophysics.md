@@ -1067,7 +1067,7 @@ Replacing $n(p)$ with the Maxwell-Boltzmann distribution recovers the classical 
 
 $$P_e = \frac{1}{3}\int_0^{p_F} \frac{8\pi}{h^3}\frac{p^4}{m_e}dp = \frac{8\pi}{3h^3 m_e}\frac{p_F^5}{5} = \left(\frac{3}{8\pi}\right)^{2/3}\frac{h^2}{5m_e}n_e^{5/3}$$
 
-There is another way to approximately arrive at this equation of state for degenerate elctrons. If there are $n$ particles per unit volume, each particle occupies a tiny cube of volume $(\Delta x)^3 = \frac{1}{n}$. Taking the cube root gives the linear spacing between particles: $\Delta x = n^{-1/3}$
+There is another way to approximately arrive at this equation of state for degenerate electrons. If there are $n$ particles per unit volume, each particle occupies a tiny cube of volume $(\Delta x)^3 = \frac{1}{n}$. Taking the cube root gives the linear spacing between particles: $\Delta x = n^{-1/3}$
 
 Using the de Broglie / Heisenberg relation $p \sim \frac{h}{\Delta x}$ and substituting $\Delta x = n^{-1/3}$ gives: $p \sim \frac{h}{n^{-1/3}} = h\,n^{1/3}$
        
