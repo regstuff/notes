@@ -662,7 +662,7 @@ Nothing fancy here. This is just an expression for the mass of an infinitesimal 
 
 $$dM(r) = \rho(r)4\pi r^2 dr, \quad \text{which is} \quad \frac{dM(r)}{dr} = 4\pi r^2\rho(r)$$
 
-If we also consider variation with time, we get:   
+This is almost always a good approximation for stellar interiors. But if we also consider variation with time (important for mass loss in stellar winds or mass gain in accretion disks), we get:   
 
 $$dm(r, t) = 4\pi r^2\rho\,dr - 4\pi r^2\rho v\,dt$$
 
@@ -674,13 +674,21 @@ Moreover, because mixed second partial derivatives must commute ($\frac{\partial
 
 $$\frac{\partial}{\partial t}\left(4\pi r^2\rho\right) = \frac{\partial}{\partial r}\left(-4\pi r^2\rho v\right) \implies \frac{\partial \rho}{\partial t} + \frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\rho v\right) = 0$$
 
-Notice what happens if you move _with_ a fluid shell at its radial velocity $v = \frac{dr}{dt}$. Substituting $dr = v\,dt$ into your equation gives:
+Notice what happens if we move with a fluid shell at its radial velocity $v = \frac{dr}{dt}$. Substituting $dr = v\,dt$ into the equation gives:
 
 $$dm(r, t) = 4\pi r^2\rho(v\,dt) - 4\pi r^2\rho v\,dt = 0$$
 
 That means the enclosed mass $m$ inside a moving fluid shell stays strictly constant as the star expands or contracts! For this reason, numerical stellar evolution codes almost never use radius $r$ as the independent spatial variable (Eulerian coordinates, where the outer boundary $R(t)$ moves wildly by factors of $10^3$ during the red giant phase). Instead, they invert the variables and use the enclosed mass $m$ as the independent spatial coordinate and radius $r(m, t)$ as the dependent variable (Lagrangian coordinates), where the star always spans the fixed domain $0 \le m \le M$, and the mass continuity equation becomes:
 
 $$\left(\frac{\partial r}{\partial m}\right)_t = \frac{1}{4\pi r^2\rho}$$
+
+We can thus write all quantities as functions of $m$, i.e.,  $r = r(m)$,  $\rho = \rho(m)$,  $P = P(m)$, etc. Using the coordinate transformation $r \to m$, i.e.:
+
+$$\frac{\partial}{\partial m} = \frac{\partial}{\partial r} \cdot \frac{\partial r}{\partial m}$$
+
+The mass continuity equation of stellar structure becomes in terms of the coordinate $m$:
+
+$$\frac{\partial r}{\partial m} = \frac{1}{4\pi r^2\rho}$$
 
 ### Radiative Energy Transport
 
@@ -753,6 +761,31 @@ $$dL = \epsilon dm = \epsilon\rho 4\pi r^2 dr$$
 or
 
 $$\frac{dL(r)}{dr} = 4\pi r^2 \rho(r)\epsilon(r)$$
+
+#### Shifting Coordinates from $r$ to $m$
+Remember when we shifted coordinates from $r$ to $m$ in the mass continuity section. Applying the chain rule operator $\frac{\partial}{\partial m} = \frac{1}{4\pi r^2\rho}\frac{\partial}{\partial r}$ to the remaining equations of stellar structure immediately converts the entire system from Eulerian coordinates $(r, t)$ to Lagrangian mass coordinates $(m, t)$:
+    
+In Eulerian form, the radial equation of motion for a spherical shell is $\rho\frac{d^2 r}{dt^2} = -\frac{\partial P}{\partial r} - \frac{Gm\rho}{r^2}$. Substituting $\frac{\partial P}{\partial r} = 4\pi r^2\rho\frac{\partial P}{\partial m}$ and dividing by $4\pi r^2\rho$ yields the Lagrangian equation of motion:
+        
+$$\frac{1}{4\pi r^2}\frac{\partial^2 r}{\partial t^2} = -\frac{\partial P}{\partial m} - \frac{Gm}{4\pi r^4}$$
+        
+In hydrostatic equilibrium ($\frac{\partial^2 r}{\partial t^2} = 0$), this reduces to:
+        
+$$\frac{\partial P}{\partial m} = -\frac{Gm}{4\pi r^4}$$
+        
+Substituting $\frac{\partial T}{\partial r} = 4\pi r^2\rho\frac{\partial T}{\partial m}$ into $\frac{\partial T}{\partial r} = -\frac{3\kappa\rho L}{16\pi ac r^2 T^3}$ cancels $\rho$ completely and combines the geometric factors into $(4\pi r^2)^2$:
+        
+$$\frac{\partial T}{\partial m} = -\frac{3\kappa L}{64\pi^2 ac r^4 T^3}$$
+        
+In Lagrangian coordinates, a mass shell $dm$ generates nuclear power $\epsilon\,dm$ while also releasing or absorbing internal heat $du$ and compressional work $P\,d(1/\rho)$ at rate $-T\frac{\partial s}{\partial t}\,dm$ (where $s$ is specific entropy):
+        
+$$\frac{\partial L}{\partial m} = \epsilon - T\frac{\partial s}{\partial t} = \epsilon - \left(\frac{\partial u}{\partial t} + P\frac{\partial}{\partial t}\left(\frac{1}{\rho}\right)\right)$$
+        
+A major physical advantage of switching from $(r, t)$ to $(m, t)$ is that holding $m$ constant while differentiating with respect to $t$ automatically follows a fixed parcel of matter as it moves radially. In fluid mechanics, the Lagrangian time derivative $\left(\frac{\partial}{\partial t}\right)_m$ is identical to the material (or convective) derivative in Eulerian coordinates:
+    
+$$\left(\frac{\partial}{\partial t}\right)_m \equiv \frac{D}{Dt} = \left(\frac{\partial}{\partial t}\right)_r + v\left(\frac{\partial}{\partial r}\right)_t$$
+    
+This eliminates all nonlinear advection terms $v\frac{\partial}{\partial r}$ from the time-dependent equations of stellar evolution and core collapse.
 
 ### Altogether Now!
 We have now assembled the complete system of four first-order nonlinear differential equations that govern the interior structure of any static, spherically symmetric radiative star:
