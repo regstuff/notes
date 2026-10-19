@@ -979,7 +979,7 @@ When convection dominates and enforces the equality $\frac{dT}{dr} = \frac{\gamm
     
 $$P = K\rho^\gamma = K\rho^{1 + 1/n}$$
     
-For a monoatomic fully ionized gas ($\gamma = 5/3$), a fully convective star (such as a low-mass red dwarf with $M < 0.35\,M_\odot$, or a pre-main-sequence protostar on the Hayashi track) has a structure given strictly by an **$n = 1.5$ polytrope** ($P = K\rho^{5/3}$), completely independent of its opacity $\kappa$!
+For a monoatomic fully ionized gas ($\gamma = 5/3$), a fully convective star (such as a low-mass red dwarf with $M < 0.35\,M_\odot$, or a pre-main-sequence protostar on the Hayashi track) has a structure given strictly by an $n = 1.5$ polytrope ($P = K\rho^{5/3}$), completely independent of its opacity $\kappa$!
     
 #### The Ledoux Criterion (Composition Gradients)
     
