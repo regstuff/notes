@@ -961,7 +961,7 @@ $$\left\vert{}\frac{dT}{dr}\right\vert{}_{\text{env}} > \left\vert{}\frac{dT}{dr
         
 #### Three Physical Triggers for Convection
 
-If you compare the radiative temperature gradient required to carry luminosity $L(r)$:
+If you compare the radiative temperature gradient (which is the temperature gradient of the envelope or the LHS of the inequality) required to carry luminosity $L(r)$:
     
 $$\left\vert{}\frac{dT}{dr}\right\vert{}_{\text{rad}} = \frac{3\kappa\rho L(r)}{16\pi ac r^2 T^3}$$
     
@@ -969,7 +969,7 @@ against the adiabatic threshold $\left\vert{}\frac{dT}{dr}\right\vert{}_{\text{a
     
 1.  **Large $\kappa$ (High Opacity in Cool Outer Envelopes):** In the cool outer layers of low-mass stars ($M \lesssim 1.3\,M_\odot$) and red giants, Kramers and $\text{H}^-$ opacity become enormous, blocking radiative diffusion and making $\left\vert{}\frac{dT}{dr}\right\vert{}_{\text{rad}}$ spike above the adiabatic limit.
         
-2.  **Small $\gamma$ (Partial Ionization Zones):** As you noted in your text, in regions where $\text{H I} \to \text{H II}$ ($T \sim 10^4\text{ K}$) or $\text{He I} \to \text{He II} \to \text{He III}$ ($T \sim 4 \times 10^4\text{ K}$), energy goes into stripping electrons rather than raising kinetic temperature. This drives $\gamma$ down from $5/3$ ($1.67$) toward $1.1\text{–}1.2$, shrinking the right-hand side factor $\frac{\gamma - 1}{\gamma}$ from $0.4$ down to $\sim 0.1$ and easily triggering convection.
+In regions where $\text{H I} \to \text{H II}$ ($T \sim 10^4\text{ K}$) or $\text{He I} \to \text{He II} \to \text{He III}$ ($T \sim 4 \times 10^4\text{ K}$), energy goes into stripping electrons rather than raising kinetic temperature. This drives $\gamma$ down from $5/3$ ($1.67$) toward $1.1\text{–}1.2$, shrinking the right-hand side factor $\frac{\gamma - 1}{\gamma}$ from $0.4$ down to $\sim 0.1$ and easily triggering convection.
         
 3.  **Large $\frac{L(r)}{4\pi r^2}$ (Concentrated Core Fusion in Massive Stars):** You mentioned that massive stars have convective cores even though they are hot and fully ionized ($\gamma = 5/3$ and $\kappa = \kappa_{\text{es}}$ is low). Why? Because massive stars ($M \gtrsim 1.3\,M_\odot$) fuse hydrogen via the **CNO cycle**, whose energy generation rate scales as $\epsilon_{\text{CNO}} \propto T^{16}$. This extreme temperature sensitivity concentrates almost the entire luminosity $L$ inside a tiny central core radius $r$, making the local flux $\frac{L(r)}{4\pi r^2}$ (and thus $\left\vert{}\frac{dT}{dr}\right\vert{}_{\text{rad}}$) so huge that only vigorous core convection can carry the heat out!
         
