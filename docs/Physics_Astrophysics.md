@@ -436,11 +436,19 @@ An Earth-sized Iron core collapses to a $20\text{ km}$ neutron star at $\approx 
 
 ### Hydrostatic Equilibrium
 
-A star is a sphere of particles acting on each other via gravity. However, the gravitational attraction does not cause all the particles to collapse to the center because of the pressure build-up in the star's layers. If we look at a small mass element of the star, and equate the gravitational force on it towards the center to the difference in pressure in the radially outward direction, we get:
+A star is a sphere of particles acting on each other via gravity. However, the material of the star itself exerts a pressure which competes with gravity. If we look at a small mass element of the star, and look at these two forces acting on it, we get the net force as:
 
-$$-\frac{GM(r)dm}{r^2} = AdP$$
+$$-\frac{GM(r)dm}{r^2} - AdP$$
 
-Since $dm = \rho(r)Adr$, we get:
+Since $dm = \rho(r)Adr$, we get the equation of motion for a gas element inside the star:
+
+$$\frac{\partial^2 r}{\partial t^2} = -\frac{Gm}{r^2} - \frac{1}{\rho}\frac{\partial P}{\partial r}$$
+
+This is a simplified form of the Navier-Stokes equation of hydrodynamics, applied to spherical symmetry. Writing the pressure gradient $\partial P/\partial r$ in terms of the mass coordinate $m$ by substituting $\frac{\partial r}{\partial m} = \frac{1}{4\pi r^2\rho}$, the equation of motion is:
+
+$$\frac{\partial^2 r}{\partial t^2} = -\frac{Gm}{r^2} - 4\pi r^2\frac{\partial P}{\partial m}$$
+
+However, in steady state where net acceleration is zero, called hydrostatic equilibrium, the gravitational attraction does not cause all the particles to collapse to the center because of the pressure build-up in the star's layers matching the gravitation attraction: 
 
 $$\frac{dP(r)}{dr} = -\frac{GM(r)\rho(r)}{r^2}$$
 
