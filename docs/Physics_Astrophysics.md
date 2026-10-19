@@ -500,7 +500,7 @@ where $N$ is the number of individual particles, which includes ionized nuclei a
 
 $$E_{\text{th}} = \frac{3}{2} Nk_B T$$
 
-Therefore, $PV = \frac{2}{3} E_{\text{th}}$. This can also be written in terms of internal energy (which is the same as thermal energy in the case of an ideal gas) density and mass density as $u = \frac{3}{2}\frac{P}{\rho}$.  Also, for equations of state other than an ideal gas, a relation between pressure and internal energy exists, which we can write generally as: $u = \phi\frac{P}{\rho}$. If we consider a gas of relativistic particles, in particular photons (i.e., radiation pressure), $\phi = 3$.
+Therefore, $PV = \frac{2}{3} E_{\text{th}}$. This can also be written in terms of internal energy (which is the same as thermal energy in the case of an ideal gas) density and mass density as $u = \frac{3}{2}\frac{P}{\rho}$.  Also, for equations of state other than an ideal gas, a relation between pressure and internal energy exists, which we can write generally as: $u = \phi\frac{P}{\rho}$. If we consider a gas of relativistic particles, in particular photons (i.e., radiation pressure), $\phi = 3$. Note that the number of translational/internal degrees of freedom $f$ gives $u = \frac{f}{2}\frac{P}{\rho}$, so $\phi = \frac{f}{2}$ and $\gamma = 1 + \frac{1}{\phi}$.
 
 Integrating and averaging the $PV$ equation over the entire star gives us the relationship between average pressure, volume, and the star's total thermal energy:
 
@@ -516,7 +516,7 @@ The total energy of a star ($E_{\text{tot}} = E_{\text{th}}^{\text{tot}} + E_{\t
 
 $$E_{\text{tot}} = \frac{1}{2}E_{\text{gr}} = -E_{\text{th}}^{\text{tot}}$$
 
-More generally, utilizing the general equation state with $\phi$, we can write $E_{\text{tot}} = E_{\text{int}} + E_{\text{gr}} = \frac{\phi - 3}{\phi}E_{\text{int}} = \left(1 - \frac{1}{3}\phi\right)E_{\text{gr}}$
+More generally, utilizing the general equation state with $\phi$, we can write $E_{\text{tot}} = E_{\text{int}} + E_{\text{gr}} = \frac{\phi - 3}{\phi}E_{\text{int}} = \left(1 - \frac{1}{3}\phi\right)E_{\text{gr}}$.
 
 Due to the minus sign relating the thermal and gravitational energy, if the star contracts, the radius decreases and therefore the magnitude of $E_{\text{gr}}$ will increase (i.e., it becomes more negative). The total thermal energy therefore becomes more positive, which means the star heats up as it collapses. This also means that a star heats up as it loses energy, which means it has a negative heat capacity. This isn't all that surprising since when a star collapses, its particles will gain kinetic energy, which translates to more thermal energy and heat.
 
