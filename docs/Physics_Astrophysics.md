@@ -1031,15 +1031,15 @@ Instead of the Maxwell-Boltzmann distribution, the energy distribution at quantu
 
 In a white dwarf, the electrons reach degeneracy before neutrons or protons, and so we look at the Fermi sea created by electrons at the core of the white dwarf. The Fermi sea refers to how every available momentum/energy state up to the Fermi energy $E_F$ (or Fermi momentum $p_F$) is occupied.
 
-Each single quantum state occupies a 6-dimensional phase-space volume of $h^3 = dx\,dy\,dz\,dp_x\,dp_y\,dp_z$. Because electrons are spin-$1/2$ fermions, each phase-space cell of volume $h^3$ can hold at most $g_s = 2$ electrons (spin up $\uparrow$ and spin down $\downarrow$). Per unit spatial volume ($dx\,dy\,dz = 1$), the momentum-space shell between $p$ and $p + dp$ is a spherical shell of volume $4\pi p^2 dp$. Multiplying the spin degeneracy ($2$) by the spherical momentum shell ($4\pi p^2 dp$) and dividing by $h^3$ gives $\frac{8\pi p^2 dp}{h^3}$. Inverting the result gives the Fermi momentum in terms of electron density:
+Each single quantum state occupies a 6-dimensional phase-space volume of $h^3 = dx\,dy\,dz\,dp_x\,dp_y\,dp_z$. Because electrons are spin-$1/2$ fermions, each phase-space cell of volume $h^3$ can hold at most $g_s = 2$ electrons (spin up $\uparrow$ and spin down $\downarrow$). Per unit spatial volume ($dx\,dy\,dz = 1$), the momentum-space shell between $p$ and $p + dp$ is a spherical shell of volume $4\pi p^2 dp$. Multiplying the spin degeneracy ($2$) by the spherical momentum shell ($4\pi p^2 dp$) and dividing by $h^3$ gives $\frac{8\pi p^2 dp}{h^3}$. Integrating over all momenta from $0$ to $p_F$ gives a relation between the electron number density $n_e$ and $p_F$:
+
+$$n_e = \int_0^{p_F} \frac{8\pi}{h^3} p^2 dp = \frac{8\pi}{3h^3} p_F^3$$
+
+Inverting the result gives the Fermi momentum in terms of electron density:
     
 $$p_F = \left(\frac{3h^3}{8\pi} n_e\right)^{1/3} = \hbar (3\pi^2 n_e)^{1/3}$$
     
- Notice that $p_F \propto n_e^{1/3} \propto \rho^{1/3}$ is completely independent of temperature $T$
-
-Integrating over all momenta from $0$ to $p_F$ gives a relation between the electron number density $n_e$ and $p_F$:
-
-$$n_e = \int_0^{p_F} \frac{8\pi}{h^3} p^2 dp = \frac{8\pi}{3h^3} p_F^3$$
+Notice that $p_F \propto n_e^{1/3} \propto \rho^{1/3}$ is completely independent of temperature $T$
 
 Let us now calculate the equation of state of an ideal gas. Consider a container with a flat wall of area $A$ perpendicular to the $+x$-axis, and look at the subset of particles that have momentum magnitude between $p$ and $p+dp$ (number density $n(p)\,dp$). 
 
