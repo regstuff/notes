@@ -1684,3 +1684,4 @@ Interstellar gas atoms falling onto a neutron-star surface also have an effect, 
 ## References
 - Astrophysics in a nutshell by Dan Maoz
 - [Stellar Structure and Evolution Lecture Notes](https://www.astro.ru.nl/~onnop/education/stev_utrecht_notes/) by Onno Pols, Radboud University
+- Principles of Stellar Evolution and Nucleosynthesis by Donald Clayton
