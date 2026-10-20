@@ -514,7 +514,11 @@ For a monoatomic ideal gas, we know that the equipartition of energy with $3$ de
 
 $$E_{\text{th}} = \frac{3}{2} Nk_B T$$
 
-Therefore, $PV = \frac{2}{3} E_{\text{th}}$. This can also be written in terms of internal energy $E_{int}$ (which is the same as thermal energy in the case of an ideal gas) density and mass density as $u = \frac{3}{2}\frac{P}{\rho}$.  Also, for equations of state other than an ideal gas, a relation between pressure and internal energy exists, which we can write generally as: $u = \phi\frac{P}{\rho}$. If we consider a gas of relativistic particles, in particular photons (i.e., radiation pressure), $\phi = 3$. Note that the number of translational/internal degrees of freedom $f$ gives $u = \frac{f}{2}\frac{P}{\rho}$, so $\phi = \frac{f}{2}$ and $\gamma = 1 + \frac{1}{\phi}$.
+Therefore, $PV = \frac{2}{3} E_{\text{th}}$. The number of particles per unit volume can be expressed in terms of the density and the mean molecular weight as: $n = \frac{\rho}{\mu M_u} = \frac{N_0\rho}{\mu}$, where $N_0 = 1/M_u$ is Avogadro’s number and is equal to $6.022 \times 10^{23}\text{ mol}^{-1}$ (or $\text{g}^{-1}$ in CGS units where the atomic mass unit is $M_u = 1.6605 \times 10^{-24}\text{ g}$). Substitution into the ideal gas law gives the pressure of the gas in terms of the density and the mean molecular weight:
+
+$$P = \frac{N_0 k_B}{\mu}\rho T = \frac{\mathcal{R}}{\mu}\rho T$$
+
+This can also be written in terms of internal energy $E_{int}$ (which is the same as thermal energy in the case of an ideal gas) density and mass density as $u = \frac{3}{2}\frac{P}{\rho}$. Also, for equations of state other than an ideal gas, a relation between pressure and internal energy exists, which we can write generally as: $u = \phi\frac{P}{\rho}$. If we consider a gas of relativistic particles, in particular photons (i.e., radiation pressure), $\phi = 3$. Note that the number of translational/internal degrees of freedom $f$ gives $u = \frac{f}{2}\frac{P}{\rho}$, so $\phi = \frac{f}{2}$ and $\gamma = 1 + \frac{1}{\phi}$.
 
 Integrating and averaging the $PV$ equation over the entire star gives us the relationship between average pressure, volume, and the star's total thermal energy:
 
