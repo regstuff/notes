@@ -518,7 +518,7 @@ Therefore, $PV = \frac{2}{3} E_{\text{th}}$. The number of particles per unit vo
 
 $$P = \frac{N_0 k_B}{\mu}\rho T = \frac{\mathcal{R}}{\mu}\rho T$$
 
-This can also be written in terms of internal energy $E_{int}$ (which is the same as thermal energy in the case of an ideal gas) density and mass density as $u = \frac{3}{2}\frac{P}{\rho}$. Also, for equations of state other than an ideal gas, a relation between pressure and internal energy exists, which we can write generally as: $u = \phi\frac{P}{\rho}$. If we consider a gas of relativistic particles, in particular photons (i.e., radiation pressure), $\phi = 3$. Note that the number of translational/internal degrees of freedom $f$ gives $u = \frac{f}{2}\frac{P}{\rho}$, so $\phi = \frac{f}{2}$ and $\gamma = 1 + \frac{1}{\phi}$.
+where the universal gas constant is defined as $\mathcal{R} = N_0 k_B$. This can also be written in terms of internal energy $E_{int}$ (which is the same as thermal energy in the case of an ideal gas) density and mass density as $u = \frac{3}{2}\frac{P}{\rho}$. Also, we can write generally: $u = \phi\frac{P}{\rho}$. If we consider a gas of relativistic particles, in particular photons (i.e., radiation pressure), $\phi = 3$. For an monoatomic ideal gas,  $\phi = 1.5$. Note that the number of translational/internal degrees of freedom $f$ gives $u = \frac{f}{2}\frac{P}{\rho}$, so $\phi = \frac{f}{2}$ and $\gamma = 1 + \frac{1}{\phi}$.
 
 Integrating and averaging the $PV$ equation over the entire star gives us the relationship between average pressure, volume, and the star's total thermal energy:
 
