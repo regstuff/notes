@@ -807,6 +807,10 @@ $$L \sim \left(\frac{ac G^4 m_H^4}{k_B^4}\right) \frac{M^3}{\kappa}$$
 
 Notice that the stellar radius $R$ cancels out completely. For high-mass stars where Thomson scattering dominates ($\kappa = \text{const}$), this immediately yields the $L \propto M^3$ mass-luminosity relation we wrote about in the H-R diagram section!
 
+Note that all of this is for radiative flux only. In a convective zone, because $F_{\text{conv}}$ carries the excess flux, the actual temperature gradient $\frac{dT}{dr}$ is shallower than the purely radiative formula and closely tracks the adiabatic gradient $\left(\frac{dT}{dr}\right)_{\text{ad}}$. If convection carries part of the luminosity, then $F_{\text{rad}}(r) = \frac{L(r)}{4\pi r^2} - F_{\text{conv}}(r)$, so the temperature gradient equation becomes: 
+
+$$\frac{dT}{dr} = -\frac{3}{4ac\,l_{\text{mfp}}\,T(r)^3}\left(\frac{L(r)}{4\pi r^2} - F_{\text{conv}}(r)\right)$$
+
 ### Energy Conservation
 
 Unsurprisingly, energy conservation gives us another equation related to the equilibrium state of a star. Let us define $\epsilon(r)$ as the power produced per unit mass of stellar material. Energy conservation means that the addition to a star’s luminosity due to the energy production in a thin shell at radius $r$ is:
