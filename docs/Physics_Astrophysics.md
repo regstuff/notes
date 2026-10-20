@@ -811,6 +811,8 @@ Note that all of this is for radiative flux only. In a convective zone, because 
 
 $$\frac{dT}{dr} = -\frac{3}{4ac\,l_{\text{mfp}}\,T(r)^3}\left(\frac{L(r)}{4\pi r^2} - F_{\text{conv}}(r)\right)$$
 
+It should be realized that, as we just did here, when viewing radiation as an ensemble of mutually non-interacting, massless particles - photons, and describing the interaction between radiation and matter in terms of simple collisions (interactions) between photons and massive particles, the wave phenomena connected with radiation are in fact neglected. This is a good approximation generally, except sometimes for infrared and radio wavelengths, where some wave phenomena (e.g. refraction) may actually play a role in the radiative transfer. 
+
 ### Energy Conservation
 
 Unsurprisingly, energy conservation gives us another equation related to the equilibrium state of a star. Let us define $\epsilon(r)$ as the power produced per unit mass of stellar material. Energy conservation means that the addition to a star’s luminosity due to the energy production in a thin shell at radius $r$ is:
