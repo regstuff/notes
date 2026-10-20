@@ -1218,7 +1218,47 @@ $$P_e = P_{e,0}\left[1 + \frac{\pi^2}{2}\left(\frac{k_B T}{E_F}\right)^2 + \dots
     
 where $P_{e,0}$ is the strictly temperature-independent ($T=0$) degeneracy pressure. Either way, because the smallest term is itself a square, even if temperature is $10^8 K$ and the Fermi temperature is $10^9 K$, the thermal correction to the pressure is still only $10^{-2}$, so we treat electron degeneracy pressure as purely a function of density.
 
-Also note that as opposed to the electrons, the nuclei at white dwarf densities are still completely in the classical regime due to huge difference in mass between nucleons and electrons, since for the same $\delta x$ and $\delta p$, the velocity of the nucleon is much lower (and therefore the time taken by it to traverse a unit length is higher, which means fewer impacts on "walls"), which means it exerts far less pressure than electrons.
+In reality, the transition from classical to degeneracy is gradual. The Fermi-Dirac occupancy probability actually includes a term for the chemical potential $\mu_c$:
+
+$$f(E) = \frac{1}{\exp\left(\frac{E - \mu_c}{k_B T}\right) + 1}$$
+
+Some books often define a dimensionless degeneracy parameter $\alpha$ as: $\alpha = -\frac{\mu_c}{k_B T}$ or $\psi = -\alpha = +\frac{\mu_c}{k_B T}$.
+
+$\mu_c = \left(\frac{\partial F}{\partial N}\right)_{T,V}$ is the change in Helmholtz free energy ($F = U - TS$) when you add one electron at constant temperature and volume:
+
+$$\mu_c = \frac{\partial U}{\partial N} - T\frac{\partial S}{\partial N}$$
+   
+At $T = 0$ (complete degeneracy), the entropy term $-T\frac{\partial S}{\partial N}$ vanishes completely. All states up to $E_F$ are full, so to add one more electron, we are forced to place it directly on top of the Fermi sea at energy $E_F$. Thus, at $T = 0$ $\mu_c(T=0) = E_F$.
+    
+As $T$ increases ($0 < T \lesssim T_F$), thermal agitation kicks some electrons from just below $E_F$ to above $E_F$, leaving empty quantum holes below $E_F$. Now, when we add an extra electron, it has more ways to arrange itself (increasing the entropy $\frac{\partial S}{\partial N} > 0$), which lowers the free energy cost. So as $T$ rises,  $\mu_c$ drops below $E_F$.
+
+More specifically, from the Sommerfeld expansion:
+
+$$\mu_c(T) \approx E_F\left[1 - \frac{\pi^2}{12}\left(\frac{T}{T_F}\right)^2\right]$$
+
+So as $T$ rises,  $\mu_c$ drops below $E_F$. When $T \approx 0.99\,T_F$, $\mu_c$ crosses zero ($\alpha = -\frac{\mu_c}{k_B T} = 0$). When $T \gg T_F$ (classical ideal gas), adding one particle at high temperature creates a massive increase in entropy ($-T\frac{\partial S}{\partial N}$ dominates over $\frac{\partial U}{\partial N}$), driving the chemical potential deeply negative and $\alpha$ positive:
+    
+$$\mu_c(T) \approx -k_B T \ln\left[\frac{2}{n_e}\left(\frac{2\pi m_e k_B T}{h^2}\right)^{3/2}\right] < 0$$
+
+Thus, conversely, as density $\rho$ increases (or temperature $T$ decreases), $\alpha$ slides from $+\infty$ down to $-\infty$.
+
+Substituting $\alpha = -\frac{\mu_c}{k_B T}$ into the Fermi-Dirac occupancy function gives:
+
+$$f(E) = \frac{1}{\exp\left(\alpha + \frac{E}{k_B T}\right) + 1}$$
+
+As density $\rho$ increases (or temperature $T$ decreases), and $\alpha$ slides from $+\infty$ down to $-\infty$, the Fermi-Dirac occupancy goes from $0$ to a conditional $1$. 
+
+When the occupancy is 0, what it means there are vastly more available quantum states in phase space than there are electrons, so the probability of any single quantum state being occupied is nearly $0$. By conditional $1$, what we mean is that for states below the Fermi surface ($E < E_F$), the occupancy is $1$, while for states above the Fermi surface, though $\alpha$ is a huge negative number, $E/E_f$ is a positive number of larger magnitude, and so occupancy goes to $0$ again.
+
+You can picture how the curve of $f(E)$ versus $E$ evolves as $\alpha$ slides from $+\infty$ to $-\infty$ (checking specifically the ground state $E = 0$, where $f(0) = \frac{1}{e^\alpha + 1}$):
+
+| Regime | Value of $\alpha$ | Occupancy at Ground State $f(E=0)$ | Shape of $f(E)$ across all energies $E$ |
+| --- | --- | --- | --- |
+| **Classical Gas** | $\alpha \to +\infty$ | $f(0) = \frac{1}{e^{+\infty} + 1} \to 0$ | Flat and hugging $0$ everywhere (thin Maxwellian tail). |
+| **Transition ($\mu_c = 0$)** | $\alpha = 0$ | $f(0) = \frac{1}{e^0 + 1} = \frac{1}{2}$ | Half-filled at $E=0$, decaying smoothly to $0$ at high $E$. |
+| **Complete Degeneracy** | $\alpha \to -\infty$ | $f(0) = \frac{1}{e^{-\infty} + 1} \to 1$ | A sharp rectangular step: $f(E) = 1$ for $E < E_F$, dropping vertically to $0$ for $E > E_F$. |
+
+Also note that as opposed to electrons, the nuclei at white dwarf densities are still completely in the classical regime due to huge difference in mass between nucleons and electrons, since for the same $\delta x$ and $\delta p$, the velocity of the nucleon is much lower (and therefore the time taken by it to traverse a unit length is higher, which means fewer impacts on "walls"), which means it exerts far less pressure than electrons.
 
 #### Properties of White Dwarfs
 
