@@ -378,7 +378,7 @@ Spectroscopically, you can distinguish a $\text{G2I}$ supergiant from a $\text{G
 
 ## Equations of Stellar Equilibrium
 
-When constructing the differential equations for stellar structure, one should thus generally consider partial derivatives of physical quantities with respect to radius and time, $\partial/\partial r$ and $\partial/\partial t$, taken at constant $t$ and $r$, respectively. For now though, we will generally ignore the time dependant aspect.
+When constructing the differential equations for stellar structure, one should generally consider partial derivatives of physical quantities with respect to radius and time, $\partial/\partial r$ and $\partial/\partial t$, taken at constant $t$ and $r$, respectively. For now though, we will generally ignore the time dependant aspect.
 
 In order to calculate the steady-state pressure, luminosity, mass, etc. of a star, we must first understand how a star stays in equilibrium. One aspect is gravity. The mass of the star and the corresponding gravitational attraction will tend to cause contraction of the star. This contraction must be resisted by the outward pressure of the material that makes up the star. In regular stars, this pressure could be from thermal energy due to kinetic motion of particles. In larger, brighter stars, the pressure from the photons radiating outward might be the main contributor. In white dwarfs or neutron stars, the pressure could be degeneracy pressure from the Fermi sea of electrons or neutrons.
 
@@ -496,7 +496,21 @@ We can also relate the gravitational potential energy to the thermal energy of t
 
 $$PV = Nk_B T$$
 
-where $N$ is the number of individual particles, which includes ionized nuclei and free electrons. For a monoatomic gas, we know that the equipartition of energy with $3$ degrees of translational freedom gives:
+where $N$ is the number of individual particles, which includes ionized nuclei and free electrons. 
+
+For any isotropic gas of non-interacting particles (where $n(p)\,dp$ is the number density of particles with momentum magnitude between $p$ and $p+dp$), the general kinetic pressure integral is:
+
+$$P = \frac{1}{3}\int_0^\infty p v(p) n(p)\,dp$$
+
+We can replace $v(p)$ with $v(p) = \frac{p}{\gamma m} = \frac{p c}{\sqrt{p^2 + m^2 c^2}}$, which in  the non-relativistic limit reduces to $v = \frac{p}{m}$. Thus we get
+
+$$P_{\text{NR}} = \frac{1}{3m}\int_0^\infty p^2 n(p)\,dp = \frac{2}{3}u_{\text{kin}}$$
+    
+In the relativistic limit, $v \to c$ and we get: $P_{\text{UR}} = \frac{c}{3}\int_0^\infty p n(p)\,dp = \frac{1}{3}u_{\text{kin}}$.
+    
+Here, since this is an ideal gas, we have assumed the number density $n(p)$ follows the Maxwell-Boltzmann distribution, which depends on temperature. But in cases such as white dwarfs (which we will detail below), the number density depends on quantum statistics and obeys Fermi-Dirac statistics. In this situation as well, we will show later that there is a difference in how we handle the momentum for the non-relativistic and relativistic case.
+
+For a monoatomic ideal gas, we know that the equipartition of energy with $3$ degrees of translational freedom gives:
 
 $$E_{\text{th}} = \frac{3}{2} Nk_B T$$
 
@@ -615,6 +629,11 @@ Here's how $\alpha$ behaves as central density increases:
 | **$n = 1.5$** | Fully convective star / Low-mass white dwarf | $6.0$ | $\alpha = \frac{3}{3.5} = \frac{6}{7} \approx \mathbf{0.86}$ |
 | **$n = 2$** | Centrally condensed sphere | $11.4$ | $\alpha = \frac{3}{3} = \mathbf{1.00}$ |
 | **$n = 3$** | Standard Solar Model (Eddington Model) / Relativistic white dwarf | $54.2$ | $\alpha = \frac{3}{2} = \mathbf{1.50}$ |
+
+
+**Aside 2:** Here's a justification for the assumption of ideal gas properties for stellar material. Application of the Saha ionization equation reveals that the hydrogen constituent of stellar structure becomes almost completely ionized by the time the temperature has risen to about $10^4 K$, whereas the helium is almost completely ionized by the time the temperature has risen to $10^5 K$, at which temperature the heavier elements have also lost a sizable number of their electrons to the continuum and are in relatively high stages of ionization. For temperatures higher than $10^5 K$, it becomes increasingly more accurate, insofar as the pressure is concerned, to talk of a completely ionized gas.  Significantly, a large fraction of the mass of most stars does lie at temperatures higher than $10^5 K$. 
+
+A completely ionized gas behaves like a perfect gas to extremely high densities. Terrestrial matter reaches a density of only a few grams per cubic centimeter before it begins to resist compression, and the perfect￾gas law begins to break down even before that density is reached. The rather large size of atoms and the interatomic forces between the electron clouds of the various atoms set a rather sudden limit to the density of un-ionized matter. The radii of nuclei, on the other hand, are only $10-5$ of the radii of most atoms. A gas composed of nuclei and electrons, therefore, occupies only about $10-15$ of the volume occupied by atoms. We may anticipate, therefore, that highly ionized matter can be compressed to extremely high densities before the perfect-gas law will break down as a result of the volume effect.
 
 ---
 
