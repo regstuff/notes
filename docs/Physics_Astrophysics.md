@@ -1206,10 +1206,19 @@ Substituting this into the expression for $P_e$, we obtain a useful form for the
 
 $$P_e = \left(\frac{3}{\pi}\right)^{2/3}\frac{h^2}{20m_e m_p^{5/3}}\left(\frac{Z}{A}\right)^{5/3}\rho^{5/3}$$
 
-The important feature of this equation of state is that the electron pressure does not depend on temperature. Also note that electron degeneracy pressure and thermal pressure are not two separate mechanisms. They are both 100% ordinary translational kinetic pressure—particles bouncing off walls and transferring momentum. 
+The important feature of this equation of state is that the electron pressure does not depend on temperature. Also note that electron degeneracy pressure and thermal pressure are not two separate mechanisms. They are both 100% ordinary translational kinetic pressure—particles bouncing off walls and transferring momentum. The Fermi-Dirac distribution is $f(E) = \frac{1}{\exp\left(\frac{E - E_F}{k_B T}\right) + 1}$. When $k_B T \ll E_F$ (or $T \ll T_F$, where $T_F = E_F/k_B$ is the Fermi temperature), the exponential term acts like a sharp step function. Every quantum state below the Fermi energy $E_F$ is $100\%$ occupied, and every state above $E_F$ is empty. When $k_B T \gtrsim E_F$ ($T \gtrsim T_F$), thermal energy is comparable to or larger than the Fermi energy. The sharp step function smears out into a high-energy Maxwell-Boltzmann tail. Electrons are thermally excited well above $E_F$, destroying the degeneracy and returning the gas to a temperature-dependent equation of state ($P \propto \rho T$). This occurs at temperatures in the order of a billion Kelvin. 
 
-As opposed to the electrons, the nuclei at such densities are still completely in
-the classical regime due to huge difference in mass between nucleons and electrons, since for the same $\delta x$ and $\delta p$, the velocity of the nucleon is much lower (and therefore the time taken by it to traverse a unit length is higher, which means fewer impacts on "walls"), which means it exerts far less pressure than electrons.
+If we want to see exactly how small the temperature dependence of the degeneracy is, the Sommerfeld expansion of the Fermi-Dirac integral gives the pressure at finite temperature $T \ll T_F$  in the non-relativistic ($p_F \ll m_e c$) case as:
+
+$$P_e = P_{e,0}\left[1 + \frac{5\pi^2}{12}\left(\frac{k_B T}{E_F}\right)^2 + \dots\right]$$
+    
+And for the relativistic case ($p_F \gg m_e c$) as:
+    
+$$P_e = P_{e,0}\left[1 + \frac{\pi^2}{2}\left(\frac{k_B T}{E_F}\right)^2 + \dots\right]$$
+    
+where $P_{e,0}$ is the strictly temperature-independent ($T=0$) degeneracy pressure. Either way, because the smallest term is itself a square, even if temperature is $10^8 K$ and the Fermi temperature is $10^9 K$, the thermal correction to the pressure is still only $10^{-2}$, so we treat electron degeneracy pressure as purely a function of density.
+
+Also note that as opposed to the electrons, the nuclei at white dwarf densities are still completely in the classical regime due to huge difference in mass between nucleons and electrons, since for the same $\delta x$ and $\delta p$, the velocity of the nucleon is much lower (and therefore the time taken by it to traverse a unit length is higher, which means fewer impacts on "walls"), which means it exerts far less pressure than electrons.
 
 #### Properties of White Dwarfs
 
