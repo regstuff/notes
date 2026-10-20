@@ -977,6 +977,186 @@ which is called a Kramers opacity law. This behavior holds only over limited ran
 This is much cleaner for tracking stellar evolution because the total mass $M_*$ of a star remains constant even when its radius $R_*$ expands by orders of magnitude into a red giant.
 
 ---
+
+### Polytropes
+Normally, to solve for the structure of a star, you have to solve the four coupled differential equations simultaneously. The mechanical structure ($m, P, \rho$) is coupled to the thermal structure ($T, l$), and you cannot solve the mechanical equations by themselves because the ideal gas law $P(\rho, T)$ contains temperature $T$. Whenever the physics of a star allows us to write pressure purely as a power law of density—$P = K\rho^{1 + \frac{1}{n}}$, with temperature $T$ eliminated— these two sets of equations decouple. We can ignore the nuclear reaction rates and opacity tables, and solve for the entire mechanical structure ($\rho(r), P(r), M, R$) using only hydrostatic equilibrium and mass continuity.
+
+The essence of the equation of hydrostatic equilibrium is that the pressure at each point in a stellar interior is sufficient to just balance the weight of the overlying layers of the star. Furthermore, the pressure itself is determined by the equation of state applicable to the local conditions in the stellar interior. These considerations do not in themselves determine the structure of a star. Any specified pressure that may be required to support the overlying layers is obtainable from an unlimited number of combinations of density and temperature at that point. What are clearly needed are more conditions on the density and temperature in a stellar interior that relate to other physical processes that go on there.
+
+One explicit auxiliary condition that has been found to correspond to certain idealized physical situations in stars is a pressure expressible in terms of some power of the density only $P = K\rho^\gamma$ where $\gamma = 1 + \frac{1}{n}$. 
+
+Gaseous spheres in hydrostatic equilibrium which follow this relationship are called polytropes. $K$ depends upon the nature of the polytrope. 
+
+One obvious candidate for polytropes are adiabatic processes, such as in stars where convective adiabatic processes dominate and radiation pressure is unimportant. Considering the gas to be an ideal, monoatomic gas, the polytrope exponent is $\gamma = \frac{5}{3}$ and index is $n = 1.5$. 
+
+A second example is when radiation pressure is not unimportant for a nondegenerate gas. The hydrostatic equilibrium pressure is the sum of the gas pressure and the radiation pressure, each of which can be written as a fraction of total pressure $P$, using a factor $\beta$:
+
+$$P_g = \frac{N_0 k_B}{\mu}\rho T = \beta P, \qquad P_r = \frac{1}{3}aT^4 = (1 - \beta)P$$
+
+Note that from observation we know that $\beta \sim 1$ for stars of main-sequence mass.
+
+Equating the values of the total pressure $P$ from these two equations gives immediately at each point:
+
+$$T = \left(\frac{N_0 k_B}{\mu}\frac{3}{a}\frac{1 - \beta}{\beta}\right)^{1/3}\rho^{1/3}$$
+
+Since we also have:
+
+$$P = \frac{P_g}{\beta} = \frac{N_0 k_B}{\mu\beta}\rho T$$
+
+we see that:
+
+$$P = \left[\left(\frac{N_0 k_B}{\mu}\right)^4 \frac{3}{a}\frac{1 - \beta}{\beta^4}\right]^{1/3}\rho^{4/3}$$
+
+$\beta$ depends upon the distance from the center of the star. If we have some ideal situation where $\beta$ was a constant, then we get a polytropic equation:
+
+$P = K\rho^{4/3}$ with an index $n = 3$. 
+
+This model of stars corresponds more closely to stars for which the energy is transported by radiative transfer rather than by convection, and is in radiative equilibrium i.e. the radial gradient of radiative pressure is proportional to luminosity and opacity. To see why, note that in radiative equilibrium, the equation of radiative transfer relates the radiation pressure gradient is: $\frac{dP_r}{dr} = -\frac{\kappa \rho L(r)}{4\pi c r^2}$.
+
+Dividing this by the hydrostatic equilibrium equation $\frac{dP}{dr} = -\frac{G m(r) \rho}{r^2}$ gives:
+
+$$\frac{dP_r}{dP} = \frac{\kappa(r) L(r)}{4\pi c G m(r)}$$
+
+Arthur Eddington introduced what is called the Standard Model by assuming that the product of opacity $\kappa(r)$ and the average energy generation rate inside radius $r$, $\bar{\epsilon}(r) = \frac{L(r)}{m(r)}$, is constant throughout the star ($\kappa \bar{\epsilon} = \text{constant}$). Integrating $\frac{dP_r}{dP} = \text{constant}$ with the boundary condition $P_r = 0$ at $P = 0$ immediately yields:
+
+$$P_r = (1 - \beta)P \quad \text{with } \beta = \text{constant everywhere.}$$
+
+This model star is often used in an attempt to get a first approximation to the runs of temperatures and densities in the interiors of stars.
+
+A third example is white dwarfs. As we will see later, the electron degeneracy pressure that provides hydrostatic equilibrium in white dwarfs is proportional to the density with an exponent that goes from $\frac{5}{3}$ when density is not sufficient to push electrons to relativistic velocities, to $\frac{4}{3}$ when density is sufficient to make electrons relativistic.
+
+To take this further, let us look at the hydrostatic equilibrium and mass continuity equations and try to reduce it to a relation between pressure and density. 
+
+Mass Continuity gives $\frac{dm}{dr} = 4\pi r^2 \rho$ and Hydrostatic Equilibrium gives $\frac{dP}{dr} = -\frac{Gm\rho}{r^2}$. Now let's do some algebraic manipulation.
+
+$$m = -\frac{r^2}{G\rho}\frac{dP}{dr}$$
+
+Differentiate both sides with respect to $r$:
+
+$$\frac{dm}{dr} = -\frac{1}{G}\frac{d}{dr}\left(\frac{r^2}{\rho}\frac{dP}{dr}\right)$$
+
+Substitute $\frac{dm}{dr} = 4\pi r^2 \rho$ into the left-hand side:
+
+$$4\pi r^2 \rho = -\frac{1}{G}\frac{d}{dr}\left(\frac{r^2}{\rho}\frac{dP}{dr}\right)$$
+
+Divide both sides by $-\frac{r^2\rho}{G}$ (or equivalently, multiply by $-G$ and divide by $\rho r^2$) to turn it into a Poisson-like differential operator:
+
+$$\frac{1}{\rho r^2}\frac{d}{dr}\left(\frac{r^2}{\rho}\frac{dP}{dr}\right) = -4\pi G$$
+
+Now differentiate the polytropic relation $P = K\rho^\gamma$ with respect to $r$ using the chain rule:
+
+$$\frac{dP}{dr} = \frac{d}{dr}\left(K\rho^\gamma\right) = K\gamma\rho^{\gamma - 1}\frac{d\rho}{dr}$$
+
+Divide this expression by $\rho$ to match the $\frac{1}{\rho}\frac{dP}{dr}$ term inside our bracket:
+
+$$\frac{1}{\rho}\frac{dP}{dr} = K\gamma\frac{\rho^{\gamma - 1}}{\rho}\frac{d\rho}{dr} = K\gamma\rho^{\gamma - 2}\frac{d\rho}{dr}$$
+
+Substitute this back into the combined hydrostatic/continuity equation:
+
+$$\frac{1}{\rho r^2}\frac{d}{dr}\left(r^2 K\gamma\rho^{\gamma - 2}\frac{d\rho}{dr}\right) = -4\pi G$$
+
+Since $K$ and $\gamma$ are spatial constants, pull $K\gamma$ out of the derivative $\frac{d}{dr}$ and divide both sides by $K\gamma$:
+
+$$\frac{1}{\rho r^2}\frac{d}{dr}\left(r^2 \rho^{\gamma - 2}\frac{d\rho}{dr}\right) = -\frac{4\pi G}{K\gamma}$$
+
+This is the dimensional precursor to the Lane-Emden equation, which involves a change of variables to make this differential equation more palatable. 
+
+This change of variables is to write: $\rho = \lambda \phi^n$ This is also written as $\rho(r) = \rho_c \theta^n$. $\rho_c$ is the central density of the star. Essentially, we factor out a constant scale density $\lambda$, chosen to be the density at the center of the star. $\theta$ or $\phi(r)$ is called the Lane-Emden variable and is a scaling factor from $1$ to $0$. At the center of the star $\phi(0) = 1$. At the surface of the star, $\rho(R) = 0$, so $\phi(R) = 0$.
+
+We have two motivations to introduce this change of variable. One is that for non-degenerate, ideal gases, from the Ideal Gas Law, $P \propto \rho T$. Substituting this into the polytrope relation between pressure and density gives $\rho \propto T^n$ for non-degenerate, ideal gas polytropes. $\phi(r)$ is therefore the dimensionless temperature profile $T(r)/T_c$ from the center ($\phi = 1$) to the surface ($\phi = 0$). 
+
+This connection between $\phi$ and $T$ does not hold for general cases of course. But even in such general cases, this change of variables helps. 
+
+Look back at the ugly non-linear derivative in the earlier polytrope equation: $K\gamma\rho^{\gamma - 2}\frac{d\rho}{dr}$. If we substitute $\rho = \lambda \phi^n$, its derivative is $\frac{d\rho}{dr} = \lambda n \phi^{n-1}\frac{d\phi}{dr}$. Watch how the fractional exponents of $\phi$ completely cancel out:
+
+$$\rho^{\frac{1}{n} - 1}\frac{d\rho}{dr} = \left(\lambda \phi^n\right)^{\frac{1}{n} - 1} \left(\lambda n \phi^{n-1}\frac{d\phi}{dr}\right) = \lambda^{1/n} \phi^{1 - n} \cdot n \phi^{n-1}\frac{d\phi}{dr} = n\lambda^{1/n}\frac{d\phi}{dr}$$
+
+By raising $\phi$ to the power $n$, the nasty $\rho^{\gamma - 2}\frac{d\rho}{dr}$ term collapses into a clean linear derivative $\frac{d\phi}{dr}$.
+
+Substitution of the values of pressure and density for a polytrope yields:
+
+$$(n + 1)K\lambda^{\frac{1-n}{n}}\frac{1}{r^2}\frac{d}{dr}\left(r^2\frac{d\phi}{dr}\right) = -4\pi G\lambda\phi^n$$
+
+This equation can be made more attractive by defining a unit of length:
+
+$$\alpha = \left[\frac{(n + 1)K}{4\pi G}\lambda^{\frac{1-n}{n}}\right]^{1/2}$$
+
+and by defining a dimensionless distance variable $\xi = r/\alpha$, whereupon the differential equation above reduces to:
+
+$$\frac{1}{\xi^2}\frac{d}{d\xi}\left(\xi^2\frac{d\phi}{d\xi}\right) = -\phi^n$$
+
+This equation is called the Lane-Emden equation for the structure of a polytrope of index $n$. The solution for $\phi$ as a function of $\xi$ completely determines the structure of the polytrope except for the choice of the central density. By setting $\lambda$ equal to the central density, it is easy to see that the temperature-like variable $\phi$ must obey certain boundary conditions at the center of the star, i.e., at $\xi = 0$:
+
+$$\phi = 1 \quad \text{and} \quad \frac{d\phi}{d\xi} = 0 \quad \text{at} \quad \xi = 0$$
+
+The solution $\phi$ which satisfies the Lane-Emden equation of index $n$ under these boundary conditions is called the Lane-Emden function of index $n$. Explicit solutions for $n$ do not exist other than  $n = 0$, $1$, and $5$, and numerical techniques must be employed in other cases.
+
+The solutions are found to decrease monotonically from the center and for values of $n$ less than $5$ have a zero for some finite value of $\xi$, say, $\xi = \xi_1$. At $\xi = \xi_1$ it is clear that $\phi$’s being equal to zero makes the pressure vanish, and the configuration may be said to have a physical boundary at that point.
+
+Solving for $\phi(\xi)$ gives us various properties of the star with the central density $\lambda$ as a parameter or variable.
+
+The radius of the configuration is by definition determined by the first zero of the Lane-Emden function of order $n$. Thus:
+
+$$R = \alpha\xi_1 = \left[\frac{(n + 1)K}{4\pi G}\right]^{1/2}\lambda^{\frac{1-n}{2n}}\xi_1$$
+
+The mass $M(\xi)$ interior to the normalized radius $\xi$ is given by:
+
+$$M(\xi) = \int_0^r 4\pi r^2\rho\,dr = 4\pi\alpha^3\lambda\int_0^\xi \phi^n\xi^2\,d\xi$$
+
+Evaluating the above expression at $\xi = \xi_1$ gives the total mass of the star:
+
+$$M = -4\pi\left[\frac{(n + 1)K}{4\pi G}\right]^{3/2}\lambda^{\frac{3-n}{2n}}\left(\xi^2\frac{d\phi}{d\xi}\right)_{\xi_1}$$
+
+For $n = 3$, the mass depends only upon $K$ and is independent of $\lambda$.
+
+The mean density of the configuration is given by the total mass of the configuration divided by the volume of the configuration, whereas the central density is equal to $\lambda$. Thus, the ratio of the mean density to the central density can be determined from the radius and mass expressions above to be:
+
+$$\frac{\bar{\rho}}{\rho_c} = \frac{\bar{\rho}}{\lambda} = \frac{M}{\frac{4}{3}\pi R^3\lambda} = -\frac{3}{\xi_1}\left(\frac{d\phi}{d\xi}\right)_{\xi_1}$$
+
+The ratio of mean density to central density depends only upon the index of the polytrope. In fact, we may take this to be the main feature of the polytropic index i.e. the extent to which the matter is concentrated toward the center of the star. Although we have not shown it here, the ratio of the central density to the mean density varies between the limits of unity (a star of uniform density) for a polytrope of index zero to a value of infinity (a star infinitely concentrated toward the center) for a polytrope of index $5$, passing through all intermediate values as $n$ increases from zero to $5$.
+
+Since $\phi$ is normalized to unity at $\xi = 0$ by the interpretation of $\lambda$, the central pressure may be written as:
+
+$$P_c = K\lambda^{\frac{n+1}{n}}$$
+
+And we get:
+
+$$\begin{aligned} P_c = \frac{1}{4\pi(n + 1)\left(d\phi/d\xi\right)_{\xi_1}^2}\frac{GM^2}{R^4} \end{aligned}$$
+
+The central temperature may be computed from the central pressure and the central density by use of the appropriate equation of state. For the case of the ideal ionized nondegenerate gas, the relevant relationships are:
+
+$$P_g = \frac{N_0 k_B}{\mu}\rho_c T_c = \beta P_c$$
+
+where $P_c$ equals the total pressure (gas plus radiation) at the center of the star. Thus the central temperature is given by:
+
+$$T_c = \frac{\mu\beta P_c}{N_0 k_B \rho_c} = \frac{\mu\beta}{N_0 k_B}\left(K\lambda^{\frac{1-n}{n}}\right)\rho_c = \frac{4\pi G\mu\beta}{(n + 1)N_0 k_B \xi_1^2}R^2\rho_c$$
+
+We may in fact use this relation at this point to make an estimate of the central temperatures of main-sequence stars. Main-sequence stars certainly are not polytropes of index $3$, but we may nonetheless expect to see the trend of central temperatures by representing all main-sequence stars by the standard model. It is clear that the central density is an unknown in this relation; however, we can derive that for $n=3$, $\rho_c = 54.2\,\bar{\rho}$ for the standard model, so that the equation may be altered to read:
+
+$$T_c = 1.97 \times 10^7\,\mu\beta\left(\frac{M}{M_\odot}\right)\left(\frac{R_\odot}{R}\right)\text{ K} = 17.4 \times 10^6\,\mu\beta\left(\frac{R}{R_\odot}\right)^2\bar{\rho}\text{ K}$$
+
+A great deal of intuitive appreciation for the complexities of the physics of stellar structure may be obtained by an extensive analysis of the structure of polytropes. However, modern research has shown that the usefulness of polytropes is for the most part limited to this introductory acquaintance. Accurate and detailed models of the structure of real stars may be obtained only from detailed computer calculation.
+
+For reference, here is how the surface boundary constants behave across the primary polytropic indices used in stellar structure:
+
+| Polytropic Index $n$ | $\gamma = 1 + \frac{1}{n}$ | First Zero $\xi_1$ | Surface Mass Factor $-\xi_1^2\left(\frac{d\phi}{d\xi}\right)_{\xi_1}$ | Central Concentration $\frac{\rho_c}{\bar{\rho}}$ | Primary Astrophysical Application |
+| --- | --- | --- | --- | --- | --- |
+| **$n = 0$** | $\infty$ | $2.44949$ | $4.89898$ | $1.0000$ | Uniform-density sphere (incompressible terrestrial planets) |
+| **$n = 1$** | $2$ | $3.14159$ ($\pi$) | $3.14159$ ($\pi$) | $3.2899$ | Radius independent of mass (Jovian planets, approximate neutron stars) |
+| **$n = 1.5$** | $\frac{5}{3}$ | $3.65375$ | $2.71406$ | $5.9907$ | Fully convective stars (low-mass M-dwarfs, Hayashi track), non-relativistic white dwarfs |
+| **$n = 3$** | $\frac{4}{3}$ | $6.89685$ | $2.01824$ | $54.1825$ | Eddington Standard Model (radiative stars), ultra-relativistic white dwarfs ($M_{\text{Ch}}$) |
+| **$n = 5$** | $\frac{6}{5}$ | $\infty$ | $1.73205$ ($\sqrt{3}$) | $\infty$ | Plummer model for globular clusters (infinite extent, finite total mass) |
+
+**In short:** We can create approximate models of stellar structures in various situations by writing $P=K\rho^{1+1/n}$, where $n$ is the polytropic index. Using this in the combined hydrostatic and mass continuity differential equations, we apply some change of variables to arrive at the Lane-Emden equation, which can be solved analytically for only certain $n$, and numerically for others.
+
+The Lane-Emden equation solves for the function $\phi(\xi)$ (the dimensionless density/temperature profile) as a function of $\xi$, the dimensionless radius running from $0$ at the center outward where $\xi = r/\alpha$. Note that $\rho = \rho_c \phi^n$. $\alpha$ is a rather complicated variable that depends on the polytropic index $n$, the polytropic constant $K$, and the density at the center of the star. For a given equation of state where $K$ and $n$ are fixed by quantum mechanics (such as a degenerate white dwarf), there is only one free parameter: the central density $\lambda$.
+
+For each $n$ we can do a one-time calculation and arrive at a value for $\xi$ where the curve $\phi(\xi)$ first hits zero. Note that $\phi$ goes to zero at a finite $\xi$ only if $n$ is less than $5$. For $n=5$, it goes to zero asymptotically as $\xi \to \infty$. 
+
+This calculation allows us to determine the properties of the star's surface in terms of $M, R, \rho$, etc. These serve as one set of boundary conditions. Using the slope at the surface $\left(\frac{d\phi}{d\xi}\right)_{\xi_1}$, we can then arrive at values for the rest of the star for $M, R, \bar{\rho}$, and $P_c$ for a particular $\rho_c$. As an example, integrating the Lane-Emden equation for $n = 3$ from $\phi(0) = 1$ down to $\phi(\xi_1) = 0$ gives $\xi_1 = 6.89685$ and $-\xi_1^2\left(\frac{d\phi}{d\xi}\right)_{\xi_1} = 2.01824$.
+
+The real mathematical power of the Lane-Emden transformation is that we only have to solve them once. In general hydrostatic problems, changing the central density $\rho_c$ or the equation-of-state constant $K$ requires re-integrating the differential equations from scratch. However, because the polytropic relation $P = K\rho^{1+1/n}$ is a pure power law, all polytropes of the same index $n$ are homologous (self-similar)—their internal density and pressure profiles are identical curve shapes, merely stretched radially by the length scale $\alpha \propto K^{1/2}\rho_c^{\frac{1-n}{2n}}$ and vertically by $\rho_c$.
+
 ### Applying Scaling Approximations to the HR Diagram
 
 The first three differential equations (hydrostatic equilibrium, mass continuity, and radiative transport) can be written as scaling relations:
