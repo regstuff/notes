@@ -2852,3 +2852,8 @@ Theorem 8.33: Let $S$ be a set of points in the Euclidean plane, containing $(0,
 Theorem 8.34: A regular $n$-gon is constructible with ruler and compass if and only if $n$ is the product of a power of 2 and a number of distinct Fermat primes.
 
 Theorem 8.35 (The Theorem of the Primitive Element): Let $K/F$ be a ﬁnite extension. Then the following are equivalent: (a) $K = F(a)$ for some $a \in K$; (b) there are only ﬁnitely many ﬁelds $L$ intermediate between $F$ and $K$ (that is, satisfying $F \subseteq L \subseteq K$).
+
+## References
+- Introduction to Algebra by PJ Cameron
+- Representations and Characters of Groupsby Gordon James, Martin Liebeck
+- Permutation Groups by PJ Cameron
