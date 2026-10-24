@@ -615,11 +615,10 @@ If you take the finite point-set $\mathcal{Q} = \{ (x_0 : x_1 : x_2 : x_3) \in P
 
 1. No 3 Collinear Points Outside the Rulings: If you pick a line in $PG(3, q)$ that is *not* one of the $2(q+1)$ lines of $\mathcal{R} \cup \mathcal{R}'$, that line can hit $\mathcal{Q}$ in at most $2$ points (because a degree-2 equation $x_0 x_3 - x_1 x_2 = 0$ has at most $2$ roots!). That is the finite-geometry definition of "curved": a line that isn't part of the ruling pierces in and pierces out in at most $2$ points.
 2. Horizontal Slices ("The Throat and Rims"): If you slice $\mathcal{Q}$ with a plane $\Pi$ that is not tangent to $\mathcal{Q}$, the intersection $\Pi \cap \mathcal{Q}$ is a non-degenerate conic (an oval of $q+1$ points in the plane $\Pi$ where no three points are collinear).
-* In $\mathbb{R}$, slicing the hyperboloid horizontally gives a circle/ellipse (the circular throat and rims).
-* In $\mathbb{F}_q$, slicing $\mathcal{Q}$ with a non-tangent plane gives a finite conic (an oval of $q+1$ points), and every single one of the $q+1$ lines in $\mathcal{R}$ pierces that oval in exactly $1$ point!
+   * In $\mathbb{R}$, slicing the hyperboloid horizontally gives a circle/ellipse (the circular throat and rims).
+   * In $\mathbb{F}_q$, slicing $\mathcal{Q}$ with a non-tangent plane gives a finite conic (an oval of $q+1$ points), and every single one of the $q+1$ lines in $\mathcal{R}$ pierces that oval in exactly $1$ point!
 
 3. Tangent Plane Slices: If you pick any point $P \in \mathcal{Q}$ and take the tangent plane $\Pi_P$ at $P$, the plane slices $\mathcal{Q}$ in exacty two intersecting lines: the unique line $g \in \mathcal{R}$ through $P$ and the unique line $h \in \mathcal{R}'$ through $P$ (which contains $2q+1$ points).
----
 
 As an example, let's look at a regulus in the smallest field $PG(3, 2)$, $\mathbb{F}_2 = \{0, 1\}$ ($q = 2$).
 
