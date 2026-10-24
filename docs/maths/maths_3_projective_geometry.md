@@ -39,8 +39,10 @@ A9. (Fano’s Postulate) Every $S_1$ of $S_r$ contains at least three points.
 
 Now for some terminology. In an $r$-dimensional projective space $S_r$ a one-dimensional subspace $S_1$ is called a line. A two-dimensional subspace $S_2$ is called a plane. A three-dimensional subspace $S_3$ is called a solid. An $(r - 1)$-dimensional subspace $S_{r-1}$ is called a hyperplane of the $S_r$. Points which lie on the same line are said to be collinear. Points or lines which lie on the same plane are said to be coplanar. Lines which pass through the same point are said to be concurrent.
 
+We will see that every line in a projective space has the same number of points, say $q+1$. The number $q$ is called the order of the space.
+
 ### Projective Plane
-A projective plane is a 2D projective space. We can take the axioms of an $r$-dimensional projective space and come up with something specific for a projective plane. The EEP is an example of a projective plane.
+A projective plane is a 2D projective space. We can take the axioms of an $r$-dimensional projective space and come up with something specific for a projective plane. The EEP is an example of a projective plane. Later, we will generalize the results for a projective space.
 
 A projective plane $\pi$ is a set $P$ of points and a set $L$ of subsets of $P$, called lines, satisfying the following:
 
@@ -54,7 +56,7 @@ A projective plane $\pi$ is a set $P$ of points and a set $L$ of subsets of $P$,
 
 If $\pi$ has a finite number $N_2$ of points. Then:
 
-> Every line of $\pi$ has the same number $N_1 = q + 1$ of points. The number $q$ is called the order of the plane $\pi$.
+> Every line of $\pi$ has the same number $N_1 = q + 1$ of points. The order of the plane is $q$.
     
 > The number $N_2$ of points in $\pi$ is $q^2 + q + 1 = \frac{q^3 - 1}{q - 1}$.
 
@@ -66,25 +68,25 @@ By the principle of duality in the plane:
 
 ### $r$-dimensional Projective Space
 
-More generally, if an $r$-dimensional projective space has a finite number $N_r$ of points. Then every line of $S_r$ has the same number $q+1$ of points. The number $q$ is called the order of the space $S_r$. $N_r = q^r + q^{r-1} + \dots + q + 1 = \frac{q^{r+1} - 1}{q - 1}$. 
+More generally, if an $r$-dimensional projective space has a finite number $N_r$ of points, then every line of $S_r$ has the same number $q+1$ of points. The number $q$ is called the order of the space $S_r$. $N_r = q^r + q^{r-1} + \dots + q + 1 = \frac{q^{r+1} - 1}{q - 1}$. Note that the order is always defined based on the number of points on a line (and not a hyperplane or any other subspace), irrespective of the dimension of the projective space.
 
-If $U$ be a $n$-dimensional subspace of $\mathbf{P}$ ($1 \le n \le r$) then the number of points of $U$ is:
+Duality associates points with hyperplanes, which are $(r-1)$-dimensional projective subspaces of $S_r$. In general, for all $n$, with $0 \le n \le r$, a subspace $S_n$ of dimension $n$ is dual to a subspace $S_{r-n-1}$ of dimension $r - n - 1$.
+
+If $U$ be a $n$-dimensional subspace of $\mathbf{P}$ ($1 \le n \le r$) then $U$ is itself a projective space and the number of points of $U$ is:
 
 $$q^n + q^{n-1} + \dots + q + 1 = \frac{q^{n+1} - 1}{q - 1}$$
-
-Note that this holds for $\mathbf{P}$ also by setting $n = r$.
 
 The number of lines of $U$ through a fixed point of $U$ equals:
 
 $$q^{n-1} + \dots + q + 1 = \frac{q^n - 1}{q - 1}$$
 
-The total number of lines of $U$ equals:
+You can arrive at this by seeing that by duality this is the same number as the number of $(n-2)$-D subspaces contained in an $(n-1)$-subspace of $U$. By duality once again, this is in turn the same as the number of points in a $(n-1)$-subspace. Just for kicks, note that this number can also be arrived at by seeing that every line of $U$ through $P$ contains $P$ plus $q$ other points of $U$, and every point $Q \neq P$ lies on a unique line through $P$. Dividing the remaining points by $q$ points per line gives the number of lines through $P$ (and by duality, the number of $(n-2)$-subspaces in an $(n-1)$-subspace): $\frac{q(q^n - 1)}{q(q - 1)} = \frac{q^n - 1}{q - 1} = q^{n-1} + \dots + q + 1$
+
+Getting back to our original thread, the total number of lines of $U$ equals:
 
 $$\frac{(q^n + q^{n-1} + \dots + q + 1)(q^{n-1} + \dots + q + 1)}{q + 1} = \frac{(q^{n+1} - 1)(q^n - 1)}{(q^2 - 1)(q - 1)}$$
 
-In $S_r$, for all $n$, with $0 \le n \le r$, a subspace $S_n$ of dimension $n$ is dual to a subspace $S_{r-n-1}$ of dimension $r - n - 1$.
-
-In the plane ($r = 2$), $S_0$ and $S_1$ are dual spaces.
+Note that all of these hold for $\mathbf{P}$ also by setting $n = r$.
 
 ### 3-dimensional Projective Space $S_3$
 
@@ -99,6 +101,8 @@ In the projective space $S_3$ of dimension $3$,
 > Number of planes containing a line $\ell$ = number of points on a line $\ell$ = $q + 1$. 
 
 > Number of lines through a point = number of lines in a plane = $q^2 + q + 1$.
+
+Though we have a formula derived above for this, counting the number of lines in the space in a few different ways helps to give an intuition of the kind of numbers and combinatorics encountered in projective spaces especially over finite fields. 
 
 **Counting the number of lines in $S_3$ - Method I:** Let $N$ be the number of lines in $S_3$. We count the number $M$ of pairs $(\ell, P)$, where $P$ is a point lying on the line $\ell$. On each of the $N$ lines of $S_3$ there are $q + 1$ points. Thus,
 
