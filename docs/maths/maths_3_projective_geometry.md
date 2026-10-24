@@ -494,7 +494,7 @@ Also, the mapping $(1 : a) \times (1 : b) \mapsto (1 : b : a : ab)$ is the simpl
 
 What we showed in this section bridges three seemingly distinct areas of mathematics—pure incidence geometry (skew lines and transversals),  abstract algebra (whether multiplication in the coordinate division ring $F$ is commutative:  $ab = ba$), and algebraic geometry (curved quadratic surfaces, or quadrics).
 
-### What Does A Hyperbolic QUadric Look Like?
+### What Does A Hyperbolic Quadric Look Like?
 What it "looks like" depends on whether you view it in projective space, an affine slice, or over a finite field.
 
 In 3D Projective Space $PG(3, F)$ (over any field), there is no distinction between "finite" points and "points at infinity." The regulus $\mathcal{R}$ and opposite regulus $\mathcal{R}'$ form a completely symmetric, closed grid:  $\mathbb{P}^1(F) \times \mathbb{P}^1(F)$.
