@@ -1181,3 +1181,10 @@ Does $q(v) = 0$? Yes:  $0^2 + 0^2 - 0^2 = 0$. So $V_{\text{tip}} \in \mathcal{Q}
 Does $B(x, v) = 0$ for all $x = (x_0, x_1, x_2, x_3)$? Yes:  $2x_0(0) + 2x_1(0) - 2x_2(0) = 0$ for every  $x \in \mathbb{R}^4$!
         
 Because $v = (0, 0, 0, 1) \neq 0$ satisfies both $q(v) = 0$ and $B(x, v) = 0$ for all $x$, this quadratic form is degenerate, and $\langle (0, 0, 0, 1) \rangle$ is the singular vertex of the cone ($\text{Rad}(\mathcal{Q}) = \{\langle (0,0,0,1) \rangle\}$).
+
+## References
+- Projective Geometry: An Introduction by Rey Casse
+- Projective Geometry: From Foundations to Applications by Albrecht Beutelspacher, Ute Rosenbaum
+- Foundations of Incidence Geometry: Projective and Polar Spaces by Johannes Ueberberg
+- An Introduction to Incidence Geometry by Bart De Bruyn
+- The Geometry of the Classical Groups by DE Taylor
