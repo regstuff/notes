@@ -1,19 +1,33 @@
-0) Basic Maths and Classical Mechanics
-   
-1) Special Relativity & Classical Field Theory
+## Maths
+
+Differential Geometry
+
+Sets, Rings, Fields & Groups
+
+Projective Geometry
+
+## General Physics
+
+Special Relativity & Classical Field Theory
  
-2) Quantum Physics
+Statistical Mechanics
 
-3) Statistical Mechanics
+[TODO] General Relativity
 
-4) Quantum Information Theory
+[TODO] Particle Physics
 
-5) General Relativity
+## Quantum Theory
 
-6) Quantum Field Theory
+Quantum Physics
 
-7) Blackholes & Thermodynamics
+Quantum Information Theory
 
-8) Particle Physics
+[TODO] Quantum Field Theory
 
-9) Cosmology
+## Astrophysics
+
+Stellar Astrophysics
+
+[TODO] Cosmology
+
+[TODO] Blackholes & Thermodynamics
