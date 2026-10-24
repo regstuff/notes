@@ -1,5 +1,13 @@
 # Maths 3 - Projective Geometry
 
+Projective geometry is a very significant area since it is effectively how human beings view the world. We see the 3D world as it is projected onto our retinas in 2D. Similarly, computer vision also projects the 3D world onto a 2D computer screen (or whatever else). Projective geometry is also important in physics, for example in the AdS/CFT formalism, where the bulk is projected onto the boundary.
+
+Projective geometry should be quite intuitive on one level because it is essentially what is happening when you shine a torch at something, and a shadow falls on a wall or the floor. What is happening here is that rays of light are grazing the surface of the object i.e. they are tangential to the surface, and then go on to strike the surface serving as the projective wall or plane.
+
+We will do much the same thing in a little while when we take a vector space of $(d+1)$-dimensions, then send out rays/vectors from the origin, and take note of where they intersect a $d$-dimensional subspace that functions as our projective space. This place projective geometry under the umbrella of vector spaces and algebra.
+
+But before that, we look at projective geometry axiomatically, which is called the synthetic approach, so that we understand projective geometry not just in terms of algebra, but also structurally and visually.
+
 In the Euclidean plane that we are familiar with, $\mathbb{R}^2$, we know that any two distinct lines are concurrent (i.e. they meet at a single point), unless they are parallel, and any two distinct points determine a single line. To eliminate the exception of parallelism and make the rule general, we work with the Extended Euclidean Plane (EEP), where we first define a pencil of lines (i.e. given a line, the pencil of lines associated with it are all lines parallel to it). We say that every pencil of lines meets at a distinct point at infinity. Since we require that any two distinct points determine a single line, we then say that all these distinct points at infinity are collinear and lie on the line at infinity called $l_\infty$. If $l$ is a line in the Euclidean plane, we denote $l^*$ as the line in the EEP.
 
 As a matter of notation, we define a triple $(P, L, I)$ to be a set $P$ whose elements are called points, a set $L$ of subsets of $P$ whose elements are called lines (or blocks),and an incidence relation $I$ which describes precisely which points belong to which lines (blocks).
@@ -137,33 +145,23 @@ Purely axiomatic geometry (also called synthetic geometry) lacks a coordinate sy
 
 Before going further, we must point out that every axiomatic projective space of dimension greater than or equal to 3 can be constructed out of a $(d+1)$-dimensional vector space $V$ over some division ring $K$. 
 
-If dimension $d = 2$ i.e. if we are looking at projective planes, then we may not be able to find such vector spaces for certain projective planes called non-Desarguesian planes. Essentially, they cannot be embedded inside any 3D projective space. We will not bother about such planes here, but one important plane is Moufang / Octonion Plane $\mathbb{O}\mathbb{P}^2$, which is built using the 8-dimensional Octonions $\mathbb{O}$, where multiplication is non-associative. Because octonions are not associative, you cannot form a true vector space over them, and $\mathbb{O}\mathbb{P}^2$ cannot exist inside any $\mathbb{O}\mathbb{P}^3$.
+If dimension $d = 2$ i.e. if we are looking at projective planes, then we may not be able to find such vector spaces for certain projective planes called non-Desarguesian planes. Essentially, they cannot be embedded inside any 3D projective space. We will not bother about such planes here, but one important plane is the Moufang / Octonion Plane $\mathbb{O}\mathbb{P}^2$, which is built using the 8-dimensional Octonions $\mathbb{O}$, where multiplication is non-associative. Because octonions are not associative, you cannot form a true vector space over them, and $\mathbb{O}\mathbb{P}^2$ cannot exist inside any $\mathbb{O}\mathbb{P}^3$.
 
-To make the geometry calculable, we construct a projective space out of a standard vector space $V$ over a field $\mathbb{F}$ (such as $\mathbb{F}^3$ for a 2D projective plane). By intentionally defining projective objects as vector subspaces, the geometry inherits the robust machinery of linear algebra.
+To make the geometry of a projective space calculable, we construct a $d$-dimensional projective space out of a standard $(d+1)$-dimensional vector space $V$ over a field $\mathbb{F}$ (such as $\mathbb{F}^3$ for a 2D projective plane). By intentionally defining projective objects as vector subspaces, the geometry inherits the robust machinery of linear algebra.
 
-A Projective Point is defined as a 1-dimensional vector subspace (a line extending through the origin in $V$). A Projective Line is defined as a 2-dimensional vector subspace (a plane extending through the origin in $V$).
+Think of it this way. Take a 3D vector space. Draw a vector from the origin. This vector will pierce the $z=1$ plane at a point. This point represents a point on the projective plane. Of course, the vector will pierce every plane $z = k \in \mathbf{C}$ except the $z=0$ plane. All these points are considered an equivalence class, which is no different from saying the $1D$ vector is equivalent to the projective point. The points at infinity are formed by the intersection of vectors with the $z=0$ plane at infinity. Thus:
+
+A Projective Point is defined as a 1-dimensional vector subspace (a line extending through the origin in $V$). A Projective Line is defined as a 2-dimensional vector subspace (a plane extending through the origin in $V$). The Projective Plane (dimension $2$) is defined as the entire $3$D vector space $V = \mathbb{F}^3$. The "$-1$ relationship in dimensions continues into higher dimensions. 
 
 This algebraic translation automatically satisfies the abstract axioms. For instance, the axiom stating "any two projective lines must intersect in exactly one projective point" simply becomes the standard linear algebra theorem: "In a 3-dimensional vector space, the intersection of any two distinct 2-dimensional subspaces must be a 1-dimensional subspace."
 
-In an ordinary affine plane over a field $\mathbb{F}_q$, there are $q^2$ points $(x, y)$ and parallel lines never meet. So we end up with theorems that always have qualifications. 
+However, once again, as we saw earlier, we end up rules with qualifications. For example, two lines meet at a point - unless they are parallel. Another example: the intersection of $a_1x + b_1y = c_1$ and $a_2x + b_2y = c_2$ is found by Cramer's rule... unless the determinant is zero. A third example: a conic section can be an ellipse, a parabola, or a hyperbola... depending on how its asymptotes behave.
 
-For eg. two lines meet at a point - unless they are parallel. Another example: the intersection of $a_1x + b_1y = c_1$ and $a_2x + b_2y = c_2$ is found by Cramer's rule... unless the determinant is zero. A third example: a conic section can be an ellipse, a parabola, or a hyperbola... depending on how its asymptotes behave.
+To avoid these qualifications, we saw how to add points at infinity where parallel lines meet. Similarly, conics stop having three different names: parabolas and hyperbolas are simply ellipses that happen to touch or cross at a point at infinity. 
 
-To avoid these qualifications, we add points at infinity where parallel lines meet. Similarly, conics stop having three different names: parabolas and hyperbolas are simply ellipses that happen to touch or cross at a point at infinity. Projective geometry turns fragmented edge cases into a single, uniform geometric reality. There are $q+1$ directions of parallel lines, so we add $q+1$ "points at infinity" which form the line at infinity $\ell_\infty$. Thus the total points on the projective plane is now $q^2 + (q+1) = q^2 + q + 1$.
+To label all these points, we use something like the usual coordinate system of $(x, y)$ but add an additional $z$ coordinate such that the coordinates of the points on the line at infinity have $z=0$, while the other points are $z=1$. Of course, this leaves us in a bit of a quandary. What do the points with $z \neq 0, 1$ mean? We need to map these back to the affine plane somehow. The trick that is used is to simply normalize $(x, y, z)$ by $z$, so that $(\rho x, \rho y, \rho z)$ is the same as $(x, y, z)$. The ratio $X/Z$ and $Y/Z$ determines the point of the affine plane, and there is a whole equivalence class of coordinates in the projective plane, which differ only by the scale factor, that map to the same affine and projective plane point. For example, the equivalence class containing $(2, 4, 2)$ can be scaled by $1/2$ to become $(1, 2, 1)$. This class represents the specific finite affine point $(1, 2)$. 
 
-To label these points, we use something like the usual coordinate system of $(x, y)$ but add an additional $z$ coordinate such that the coordinates of the points on the line at infinity have $z=0$, while the other points are $z=1$. Of course, this leaves us in a bit of a quandary. What do the points with $z \neq 0, 1$ mean? We need to map these back to the affine plane somehow. The trick that is used is to simply normalize $(x, y, z)$ by $z$, so that $(\rho x, \rho y, \rho z)$ is teh same as $(x, y, z)$. The ratio $X/Z$ and $Y/Z$ determines the point of the affine plane, and there is a whole equivalence class of coordinates in the projective plane, which differ only by the scale factor, that map to the same affine and projective plane point. For example, the equivalence class containing $(2, 4, 2)$ can be scaled by $1/2$ to become $(1, 2, 1)$. This class represents the specific finite affine point $(1, 2)$. 
-
-When $z=0$, the $x$ and $y$ values capture the direction vector of a line. Once again, because for example, $(4, 8, 0) = 2 \cdot (2, 4, 0)$, both triples belong to the same equivalence class. Geometrically, this makes sense: a direction vector of $(2, 4)$ points in the exact same direction (a slope of $2$) as a direction vector of $(4, 8)$. Therefore, they define the exact same point on the line at infinity. Note that these coordinates, called homogenous coordinates are not something new. They are just the coordinate values of each basis vector that is needed to describe a vector of the vector space. Essentially, if we fix a basis $\{v_0, v_1, \dots, v_d\}$ of $V$. Then we can express any vector as $v = a_0 v_0 + a_1 v_1 + \dots + a_d v_d \in V$ uniquely by its coordinates $(a_0, a_1, \dots, a_d)$. Two homogenous coordinates $a$ and $b$ are an equivalence class and therefore the same point (as discussed above) if there is an $\alpha \in F \setminus \{0\}$ such that $(a_0, a_1, \dots, a_d) = \alpha \cdot (b_0, b_1, \dots, b_d)$
-
-Once we recognize that a projective point is an equivalence class linear algebra immediately steps in: an equivalence class under scalar multiplication is a $1$-dimensional vector subspace (a line passing through the origin $\mathbf{0}$) in $V = \mathbb{F}^3$. This realization connects pure geometry to linear algebra. Vector space $V = \mathbb{F}^{n+1}$ provides the algebraic machinery (dot products, matrices, determinants, Gaussian elimination). Projective space $PG(n, \mathbb{F})$ is formed by quotienting out the origin and scalar scaling. 
-
-Think of it this way. Take a 3-D vector space. Draw a vector from the origin. This vector will pierce the $z=1$ plane at a point. This point represents a point on the projective plane. Of course, the vector will pierce every plane $z = k \in \mathbf{C}$ except the $z=0$ plane. All these points are considered an equivalence class, which is no different from saying the $1D$ vector is equivalent to the projective point. The points at infinity are formed by the intersection of vectors with the $z=0$ plane at infinity. Thus:
-
-A Projective Point (dimension $0$) $\longleftrightarrow$ A $1$D subspace of $V$ (span of a non-zero vector). 
-
-A Projective Line (dimension $1$) $\longleftrightarrow$ A $2$D subspace of $V$ (span of two linearly independent vectors). 
-
-The Projective Plane (dimension $2$) $\longleftrightarrow$ The entire $3$D vector space $V = \mathbb{F}^3$.
+When $z=0$, the $x$ and $y$ values capture the direction vector of a line. Once again, for example because $(4, 8, 0) = 2 \cdot (2, 4, 0)$, both triples belong to the same equivalence class. Geometrically, this makes sense: a direction vector from the origin to $(2, 4)$ points in the exact same direction (a slope of $2$) as a direction vector from the origin to $(4, 8)$. Therefore, they define the exact same point on the line at infinity. Note that these coordinates, called homogenous coordinates are not something new. They are just the coordinate values of each basis vector that is needed to describe a vector of the $d+1$-dimensional vector space. Essentially, if we fix a basis $\{v_0, v_1, \dots, v_d\}$ of $V$. Then we can express any vector as $v = a_0 v_0 + a_1 v_1 + \dots + a_d v_d \in V$ uniquely by its coordinates $(a_0, a_1, \dots, a_d)$. Two homogenous coordinates $a$ and $b$ are an equivalence class and therefore the same point (as discussed above) if there is an $\alpha \in F \setminus \{0\}$ such that $(a_0, a_1, \dots, a_d) = \alpha \cdot (b_0, b_1, \dots, b_d)$
 
 The vector space model directly reproduces the axiomatic count $q^2 + q + 1$. The ambient vector space $V = \mathbb{F}_q^3$ has $q^3$ total vectors. Remove the origin $\mathbf{0}$: $q^3 - 1$ non-zero vectors. Every $1$-dimensional vector subspace contains $q - 1$ non-zero scalar multiples of its spanning (unit) vector. The total number of $1$-dimensional subspaces (projective points) is: $\frac{q^3 - 1}{q - 1} = q^2 + q + 1$.
 
@@ -177,7 +175,7 @@ Checking if a point $\mathbf{p} = (x, y, z)$ lies on a line $\boldsymbol{\ell} =
     
 Checking collinearity of three points: Compute a single $3 \times 3$ determinant: $\det \begin{pmatrix} x_1 & y_1 & z_1 \\ x_2 & y_2 & z_2 \\ x_3 & y_3 & z_3 \end{pmatrix} = 0$
 
-Geometric problems become straightforward matrix and vector calculations.
+Geometric problems become straightforward matrix and vector calculations. These rules generalize to higher dimensions $PG(n, \mathbb{F})$ where the 3D cross product is replaced by the exterior wedge product ($\wedge$) and Plücker coordinates, which we won't immediately bother about right now.
 
 The vector space representation also includes the principle of duality. For example, because a point is a 1D subspace of $\mathbb{F}^3$ and a line is a 2D subspace of $\mathbb{F}^3$, the incidence condition:
 
@@ -185,7 +183,7 @@ $$ax + by + cz = 0$$
 
 is completely symmetric between the point coordinates $(x, y, z)$ and the line coordinates $[a, b, c]$.
 
-In linear algebra, a 2D subspace (a plane through the origin) is uniquely defined by its 1D normal vector (an element of the dual space $V^*$). This means every theorem true for points and lines is automatically true if you swap the words "point" and "line". You prove a theorem once, and you get its dual theorem for free without any additional work.
+In linear algebra over a 3D vector space, a 2D subspace (a plane through the origin) is uniquely defined by its 1D normal vector (an element of the dual space $V^*$). This means every theorem true for points and lines is automatically true if you swap the words "point" and "line". You prove a theorem once, and you get its dual theorem for free without any additional work.
 
 ### Homogenous Polynomials
 Since we have homogenous coordinates (the ones with the additional $z=0$ coordinate), we can create homogenous polynomials. A polynomial $F(X_0, X_1, \dots, X_n)$ is homogeneous of degree $d$ if every individual monomial term has the exact same total degree $d$.
@@ -212,18 +210,16 @@ $$F(X_0, \dots, X_n) = 0 \iff F(\rho X_0, \dots, \rho X_n) = 0$$
 
 The zero-locus $F = 0$ is well-defined: whether a point satisfies the equation does not depend on which representative vector of the equivalence class we choose.
 
-All of this can be extended for general projective spaces of $r$ dimensions. The number of points is $q^r + q^{r−1} + ··· + q + 1$, which is also the number of hyperplanes. The number of hyperplanes containing a line, which is also the number of points contained in a subspace of dimension $r − 2$ is $q^{r−2} + ··· + q + 1$.
-
 ### Mapping Projective Subspaces to Blocks
-Finite projective geometries over a finite field act as a natural machine for constructing highly symmetric block designs. 
+Finite projective geometries over a finite field act as a natural machine for constructing highly symmetric block designs. Note that a $t-(v, k, \lambda)$ design is called a Balanced Incomplete Block Design (BIBD). This is a setup where there are a total of $v$ points. We create "blocks", each with $k$ points (where $k \lt v$, and hence any block is Incomplete), with the constraint that any set of $t$ points must appear together in $\lambda$ blocks (since this property is uniformly applied to all points, the design is balanced). 
 
-When a finite projective space of dimension $n$ over a field of order $q$, denoted as $\text{PG}(n, q)$, is used to build a block design, its geometric components directly map to the elements of a $2\text{-}(v, k, \lambda)$ design.
+When a finite projective space of dimension $n$ over a field of order $q$, denoted as $\text{PG}(n, q)$, is used to build a block design, its geometric components directly map to the elements of a $2\text{-}(v, k, \lambda)$.
 
 Points ($v$) of the block design are the geometric points ($1$-dimensional vector subspaces of $\mathbb{F}_q^{n+1}$) of $\text{PG}(n, q)$.
     
-Blocks ($b$) are all $d$-dimensional projective subspaces (subspaces of a fixed projective dimension $1 \le d \le n-1$). For instance, blocks are frequently chosen to be the lines ($d=1$) or hyperplanes ($d=n-1$) of the space.
+Blocks ($b$), each with $k$ points$ are all $d$-dimensional projective subspaces (subspaces of a fixed projective dimension $1 \le d \le n-1$). For instance, blocks are frequently chosen to be the lines ($d=1$) or hyperplanes ($d=n-1$) of the space. As we have seen, a line contains $q+1=k$ points.
     
-Balance ($\lambda$) property of a Balanced Incomplete Block Designs (BIBD) states that any pair of distinct points must appear together in $\lambda$ blocks. In projective geometry, any two distinct points uniquely determine a line, or more broadly, lie together in a constant number of higher-dimensional subspaces.
+Balance ($\lambda$) property of a $2$-BIBD states that any pair of distinct points must appear together in $\lambda$ blocks. In projective geometry, any two distinct points uniquely determine a line, or more broadly, lie together in a constant number of higher-dimensional subspaces.
     
 If you choose $d$-dimensional subspaces as blocks in $\text{PG}(n, q)$, the standard design parameters $(v, b, r, k, \lambda)$ are determined using Gaussian binomial coefficients ($q$-analogs):
 
@@ -234,11 +230,20 @@ If you choose $d$-dimensional subspaces as blocks in $\text{PG}(n, q)$, the stan
 | **$\lambda$ (Pair Replication)** | Subspaces of dim $d$ containing $2$ points | $\lambda = \begin{bmatrix} n-1 \\ d-1 \end{bmatrix}_q = \frac{(q^{n-1}-1)(q^{n-2}-1)\cdots(q^{n-d+1}-1)}{(q^{d-1}-1)(q^{d-2}-1)\cdots(q-1)}$ |
 | **$r$ (Point Replication)** | Subspaces of dim $d$ passing through $1$ point | $r = \begin{bmatrix} n \\ d \end{bmatrix}_q$ |
 | **$b$ (Total Blocks)** | Total number of $d$-dimensional subspaces | $b = \begin{bmatrix} n+1 \\ d+1 \end{bmatrix}_q$ |
-As a special case, when you take a $2$-dimensional projective plane $\text{PG}(2, q)$ and let the blocks be the lines, you get a Symmetric BIBD where $v = b$ and $r = k$:
+
+---
+
+**Aside:** $\begin{bmatrix} m \\ k \end{bmatrix}_q$ is the Gaussian binomial coefficient (or $q$-binomial coefficient). It is the $q$-analog of the standard binomial coefficient $\binom{m}{k}$. For integers $m \ge k \ge 0$, the explicit product formula is:
+
+$$\begin{bmatrix} m \\ k \end{bmatrix}_q = \frac{(q^m - 1)(q^{m-1} - 1) \cdots (q^{m-k+1} - 1)}{(q^k - 1)(q^{k-1} - 1) \cdots (q - 1)} = \prod_{i=1}^{k} \frac{q^{m - i + 1} - 1}{q^i - 1}$$
+
+By convention, $\begin{bmatrix} m \\ 0 \end{bmatrix}_q = 1$, and $\begin{bmatrix} m \\ k \end{bmatrix}_q = 0$ if $k < 0$ or $k > m$.
+
+---
+
+As a special case, when you take a $2$-dimensional projective plane $\text{PG}(2, q)$ and let the blocks be the lines, you get a Symmetric BIBD (where $v = b$ and $r = k$) with parameters: $2\text{-}\left(q^2 + q + 1,\; q + 1,\; 1\right)$
     
-$$\text{Parameters: } 2\text{-}\left(q^2 + q + 1,\; q + 1,\; 1\right)$$
-    
-For the special case of Point-Hyperplane Designs ($d = n-1$), i.e. move to higher dimensions ($n \ge 3$), and choose the blocks to be hyperplanes (subspaces of codimension $1$), we obtain the family of symmetric designs $\text{PG}_{n-1}(n, q)$:
+For the special case of Point-Hyperplane Designs ($d = n-1$), i.e. we move to higher dimensions ($n \ge 3$), and choose the blocks to be hyperplanes (subspaces of codimension $1$), we obtain the family of symmetric designs $\text{PG}_{n-1}(n, q)$:
     
 $$v = b = \frac{q^{n+1}-1}{q-1}, \qquad k = r = \frac{q^n-1}{q-1}, \qquad \lambda = \frac{q^{n-1}-1}{q-1}$$
 
@@ -246,10 +251,7 @@ Why do the Gaussian Binomial Coefficient $\begin{bmatrix} m \\ k \end{bmatrix}_q
 
 To count the number of $(d+1)$-dimensional vector subspaces in $\mathbb{F}_q^{n+1}$:
 
-Count the number of ordered linearly independent $(d+1)$-tuples of vectors $(w_1, w_2, \dots, w_{d+1})$ in $V$:
-* $w_1$ can be any nonzero vector: $q^{n+1} - 1$ choices.
-* $w_2$ can be any vector outside $\text{span}(w_1)$: $q^{n+1} - q$ choices.
-* $w_i$ can be any vector outside $\text{span}(w_1, \dots, w_{i-1})$: $q^{n+1} - q^{i-1}$ choices.
+Count the number of ordered linearly independent $(d+1)$-tuples of vectors $(w_1, w_2, \dots, w_{d+1})$ in $V$. Starting with the first basis vector $w_1$, it can be any nonzero vector: $q^{n+1} - 1$ choices. $w_2$ can be any vector outside $\text{span}(w_1)$: $q^{n+1} - q$ choices. $w_i$ can be any vector outside $\text{span}(w_1, \dots, w_{i-1})$: $q^{n+1} - q^{i-1}$ choices.
 
 Then divide by the number of ordered bases of a fixed $(d+1)$-dimensional subspace $W$, which by the exact same logic is $(q^{d+1}-1)(q^{d+1}-q)\cdots(q^{d+1}-q^d)$. Canceling common powers of $q$ yields the Gaussian binomial coefficient:
 
@@ -275,7 +277,7 @@ $$bk = vr \qquad \text{and} \qquad \lambda(v - 1) = r(k - 1)$$
 
 If $V'$ is a subspace of the vector space $V$ then $P(V')$ is a subspace of $P(V)$. And if $U$ be a subspace of the projective space $P(V)$, there exists a vector subspace $V'$ of $V$ such that $P(V')=U$.
 
-The line of $P(V)$ through the points $v, w$ consists of the point $w$ and the points $v + aw, (a \in \mathbf{F})$. In particular we have: if $\mathbf{F} is a finite field with $q$ elements, then any line of $P(V)$ has exactly $q+1$ points. In this case $P(V)$ has order $q$. This implies that for any prime power $q$ (that is for any integer $q = p^a$ where p is prime, and any positive integer $d>2$ there is a projective space of order $q$ and dimension $d$. (Since any prime power $q$ implies there is a finite field $\mathbf{F}$ with $q$ elements.
+The line of $P(V)$ through the points $v, w$ consists of the point $w$ and the points $v + aw, (a \in \mathbf{F})$. In particular we have: if $\mathbf{F}$ is a finite field with $q$ elements, then any line of $P(V)$ has exactly $q+1$ points. In this case $P(V)$ has order $q$. This implies that for any prime power $q$ ($q = p^a$ where p is prime), and any positive integer $d>2$ there is a projective space of order $q$ and dimension $d$. (Since any prime power $q$ implies there is a finite field $\mathbf{F}$ with $q$ elements.
 
 Let $H$ be a hyperplane of $\mathbf{P}(V)$. Then the homogeneous coordinates of the points of $H$ are the solutions of a homogeneous linear equation ($c_0 x_0 + c_1 x_1 + \dots + c_r x_r = 0$) with coefficients in $F$. Conversely, any homogeneous linear equation that is different from the ‘zero equation’ (where all coefficients are $0$) describes a hyperplane of $\mathbf{P}(V)$. We already saw this with a line in a projective plane.
 
