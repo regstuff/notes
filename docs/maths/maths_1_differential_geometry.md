@@ -1,8 +1,7 @@
-# 0. Basic Mathematics
 
-## Differential Geometry
+# Maths 1 - Differential Geometry
 
-### Intuition
+## Intuition
 
 Before the mathematical formalism of differential geometry, it helps to understand why differential geometry is needed. For example, if we wanted to setup a coordinate system for the surface of the Earth, you could zoom out into space, create a 3D coordinate system and establish the coordinates in that grid for every point on the Earth's surface. But what if I wanted to do the same thing for the universe as a whole, which is a requirement in General Relativity. There is no place to zoom out to from the universe. We are forced to figure out how to setup a coordinate system, distance measurement tools and a description of the space from within the space itself.
 
@@ -112,9 +111,9 @@ As we said earlier, a topological space + an atlas = a manifold. We can now modi
 
 ---
 
-### Mathematical Formalities
+## Mathematical Formalities
 
-#### Vectors & Covectors
+### Vectors & Covectors
 
 The coordinate basis of our tangent spaces are quite literally the tangents, or rather the partial derivatives along each coordinate direction. We can therefore define any vector in this space using this basis. 
 
@@ -126,7 +125,7 @@ Now let us say we multiply that basis by a component of 5, we get $5 dx^\mu$. Th
 
 **In short:** Vectors scale by length. Change a vector component from $1$ to $5$, the physical arrow stretches to become 5 times longer. Covectors scale by density. Change a covector component from $1$ to $5$, the contour lines get squished together, becoming 5 times denser.
 
-#### Multivariable Chain Rule
+### Multivariable Chain Rule
 
 We can tie all this together with the chain rule. Depending on how we "factor" it, we generate either the covector (1-form) or the vector (operator). We take a scalar function $f$ evaluated along a parameterized curve $x^\mu(t)$. 
 
@@ -185,7 +184,7 @@ We can define whether a vector field flows into itself or another vector field u
     
 By separating the metric-free machinery (like $df(X)$) from the metric-dependent machinery (like lengths and angles), we can isolate physics that requires a gravitational/geometric field from physics that falls only out of smooth manifold structure.
 
-#### Vector Fields & Global Flows
+### Vector Fields & Global Flows
 
 As we mentioned earlier, the metric tensor is what defines measurement and distance and angles in our manifold. And the mathematician or the physics of the situation provide us with it. But what if they don't? Is there any way we can gain knowledge about the situation without resorting to a metric tensor? As we saw above, there is a way. We take a vector and a scalar function and club them together. Earlier, we did that for just one point. But we can do that for every point as well by taking vector fields, which is the collection of vectors at every point of the manifold.  
 
@@ -235,7 +234,7 @@ By integrating these ODEs starting from an initial position $x^\mu_{\text{initia
 
 Integral curves do not require you to know anything about the metric tensor or connections. You are handed a pre-existing vector field $X$ defined everywhere on the manifold. You just follow the arrows. Because the arrows already exist at every point, you never have to move an arrow yourself. The smooth structure of the manifold is enough to calculate $\frac{dx^\mu}{dt} = X^\mu(x)$.
 
-#### Scalar Fields
+### Scalar Fields
 
 A scalar field is a set of scalar values at every point of the manifold. For example, the temperature at every point on Everest. A nice thing to keep in mind about scalar fields is that they have contour lines, which will come in handy soon.
 
@@ -255,14 +254,17 @@ Without a metric tensor, there is no concept of "steepest ascent" or "perpendicu
 
 Note that the metric tensor maps the one-form back into a vector by raising the index. The classical gradient vector is formally written as $(\nabla f)^\mu = g^{\mu\nu} \partial_\nu f$. This explicitly shows that "steepest ascent" is a metric-dependent geometric construct.
 
-### More Stuff We Don't Need A Metric Tensor For
-**The Lie bracket:** $\mathcal{L}_X Y = [X, Y] = XY - YX$
+## More Stuff We Don't Need A Metric Tensor For
 
-With components: $[X, Y]^\nu = X^\mu \partial_\mu Y^\nu - Y^\mu \partial_\mu X^\nu$
+### The Lie Bracket 
+
+This is given by $\mathcal{L}_X Y = [X, Y] = XY - YX$ with components: $[X, Y]^\nu = X^\mu \partial_\mu Y^\nu - Y^\mu \partial_\mu X^\nu$
 
 This measures the failure of the two flows to commute. If you flow along $X$ for an infinitesimal distance, then flow along $Y$, and then reverse the sequence (flow along $-X$ then $-Y$), you will not necessarily return to your starting point. The spatial gap between your starting point and ending point is the vector produced by the Lie derivative.
 
-**The Lie Derivative:** Tells you how a tensor changes relative to a dynamic flow of a vector. Whenever you want to know if a physical system, a geometric shape, or a coordinate grid looks exactly the same after you shift it in a certain direction, you calculate the Lie derivative. If the result is zero, you have found a symmetry.
+### The Lie Derivative
+
+The Lie Derivative tells you how a tensor changes relative to a dynamic flow of a vector. Whenever you want to know if a physical system, a geometric shape, or a coordinate grid looks exactly the same after you shift it in a certain direction, you calculate the Lie derivative. If the result is zero, you have found a symmetry.
 
 To find out if the vector has its own independent rate of change, meaning it is changing differently than the fluid wants it to, we must take the total observed change and subtract the baseline distortion forced upon it by the fluid.
 
@@ -284,9 +286,11 @@ $$\mathcal{L}_X \omega = \left( X^\nu \partial_\nu \omega_\mu + \omega_\nu \part
 
 Notice the sign difference between the vector and covector Lie derivatives. For a vector, the correction term is subtracted. For a covector, the correction term is added. This is a direct mathematical consequence of their dual nature: pushing a vector forward vs. pulling a covector backward.
 
-**Differential Forms:** In this section, we are interested in tensors that are formed from a basis of $p$ covectors, which can be fed $p$ vectors to give a scalar, i.e., $(0,p)$ tensors. First, we generalize our 1-forms to $p$-forms.
+### Differential Forms
 
-A tensor product is a general operation that combines a $(0, p)$ tensor and a $(0, q)$ tensor to create a new $(0, p+q)$ tensor. Completely antisymmetric $(0,p)$ covariant tensors are called **differential forms** (or $p$-forms).
+In this section, we are interested in tensors that are formed from a basis of $p$ covectors, which can be fed $p$ vectors to give a scalar, i.e., $(0,p)$ tensors. First, we generalize our 1-forms to $p$-forms.
+
+A tensor product is a general operation that combines a $(0, p)$ tensor and a $(0, q)$ tensor to create a new $(0, p+q)$ tensor. Completely antisymmetric $(0,p)$ covariant tensors are called differential forms (or $p$-forms).
 
 The process of taking the tensor product and extracting the completely antisymmetric portion is represented by the wedge product $\wedge$. For two 1-forms:
 
@@ -405,7 +409,9 @@ $$-(\partial_1 \partial_2 f) dx^1 \wedge dx^2 + (\partial_1 \partial_2 f) dx^1 \
 
 Because the symmetric partial derivatives are contracted against the antisymmetric wedge product, every single term cancels itself out. Therefore, $d^2 = 0$.
 
-**Interior Product:** The interior product, denoted $\iota_X$, is a mathematical operation that "contracts" a vector field with a differential form. You can think of it as permanently occupying one of the input slots of a tensor.
+### Interior Product
+
+The interior product, denoted $\iota_X$, is a mathematical operation that "contracts" a vector field with a differential form. You can think of it as permanently occupying one of the input slots of a tensor.
 
 Because a $p$-form is a machine that requires $p$ vectors to output a number, permanently filling one of those slots with a specific vector $X$ leaves $p-1$ empty slots. Therefore, the resulting object is a $(p-1)$-form.
 
@@ -429,7 +435,7 @@ The Lie derivative of differential forms can also be calculated via Cartan's Mag
 
 $$\mathcal{L}_X \omega = d(\iota_X \omega) + \iota_X(d\omega)$$
 
-### de Rham Cohomology
+## de Rham Cohomology
 
 If the exterior derivative of a form evaluates to zero, $d\omega = 0$, then $\omega$ is called a closed form.
 
@@ -533,7 +539,7 @@ $$\mathcal{L}_{X_H} \omega = 0$$
 
 In three lines of pure algebra, Cartan's formula mathematically proves Liouville's Theorem: the volume of phase space is strictly conserved as a classical system evolves, regardless of the complexity of the forces involved.
 
-### The Metric Tensor
+## The Metric Tensor
 
 A metric $g$ is a $(0, 2)$ symmetric tensor field. It can be written as a tensor product of basis 1-forms: $g = g_{\mu\nu}(x) dx^\mu \otimes dx^\nu$, which means it eats two vectors to give a scalar, or one vector to give a covector (this operation is called index lowering: $X_\mu = g_{\mu\nu}X^\nu$). The metric components can be extracted via dot products of the coordinate basis vectors (as we discussed in our intuitive analogy):
 
@@ -639,7 +645,7 @@ The cohomology group $H^p(M)$ groups all closed forms into equivalence classes b
 
 Hodge's Theorem proves that within every infinite equivalence class of closed forms, there is exactly one unique harmonic form ($\Delta \gamma = 0$). Physically, because the Laplacian minimizes energy, this means that for any topological configuration dictated by the shape of the space, a physical field will naturally settle into the single, unique harmonic configuration that represents the minimum energy state for that topology.
 
-#### Hodge Dual's & ELectromagnetism
+### Hodge Dual's & Electromagnetism
 
 In classical field theory, the dynamical degrees of freedom are fields, which are objects taking values at each point in the spacetime manifold $M$. The simplest example is a scalar field, which assigns a smooth function across $M$.
 
@@ -678,7 +684,8 @@ $$d \star J = 0$$
 
 This is the geometric expression of current conservation (the continuity equation $\nabla_\mu J^\mu = 0$). With the source term included in the action, the variational principle yields the full Maxwell equations of motion: $d \star F = \star J$.
 
-### The Covariant Derivative
+## The Covariant Derivative
+
 A tensor is a physical object that exists on the manifold independently of any coordinate system. The covariant derivative isolates the true, intrinsic rate of change of that tensor relative to the manifold itself. However, when we impose a coordinate grid onto a curved manifold, that grid will inevitably twist, stretch, or shrink from point to point. Because we describe the invariant tensor using the components of this twisting grid, if you only take the naive partial derivative of the tensor components ($\partial_\nu Y^\mu$), you are only measuring how the component's numbers change. As your coordinate grid is curving—like latitude and longitude lines on the Earth, the numerical components $Y^\mu$ of a vector will change from point to point even if the physical vector is pointing rigidly in the exact same direction. The partial derivative is "polluted" by this coordinate illusion. 
 
 This is why the covariant derivative is sensitive to the coordinate grid and how it connects across local patches of the manifold. A connection is a map that helps you go from local patch to local patch in the manifold. It is written in terms of the covariant derivative: $\nabla(X, Y) = \nabla_X Y$, where the object $\nabla_X$ is the covariant derivative. It measures if the field $Y$ is "straight" and constant relative to the intrinsic curvature of the manifold itself.
@@ -798,7 +805,7 @@ Note that the multiplication by the components of $X$ are necessary. They tell t
 
 If we are interested in a measurement of how much $Y$ truly deviates from perfectly riding the flow of $X$, we must correct for the dragging effects of $X$. The flow term ($- Y^\nu \partial_\nu X^\mu$) corrects for $X$'s shearing. If $\mathcal{L_X} Y = 0$, the two fields flow together perfectly to form closed coordinate loops, which is why the Lie Derivative of two fields is equal to the commutator. 
 
-### Parallel Transport
+## Parallel Transport
 
 Consider a vector field $X$ and one of its integral curves, denoted as $C$. This curve can be parametrized by a scalar variable $\tau$, yielding the coordinate path $x^\mu(\tau)$. By the definition of an integral curve, the vector field evaluated at any point on $C$ is exactly equal to the tangent velocity vector of the curve at that point:
 
@@ -989,10 +996,13 @@ Yes, several specific names from continuum mechanics and the gravito-electromagn
 
 The Ricci scalar $R$ is the complete trace of the Ricci tensor across all time and spatial dimensions. It represents an invariant measure of the total scalar volume deviation of a 4D hyper-volume compared to flat Euclidean space.
 
-### Tetrad Formalism
+### The Weyl Tensor
+[ADD STUFF]
+
+## Tetrad Formalism
 As we've seen, the coordinate system twists and turns along the manifold, leadings to some messy calculations if we want to make measurements and calculate the Riemann tensor to assess the curvature of the manifold. But going back to the RNC, we know that it is possible to pick a coordinate system at any point such that the metric there becomes Minkowski. The only issue is, every other point on the manifold becomes a mess. 
 
-What if we could have the best of both worlds? Rather than change the coordinate system at any point, we will leave the coordinate system as it is i.e. twisting and turning with the metric, but instead choose our basis vectors at any point such that we have a flat metric there _when calculated with this new basis._ Note that every point will have a different basis. These do not replace the coordinate basis that we can evaluate at every point. They are separate from them and are called non-coordinate basis. They are explicitly chosen so that we can calculate a new metric out of them, which will be Minkowski, and we can then use a local Jacobian matrix to map between these non-coordinate basis and the actual "global" coordinate basis that we've always had.
+What if we could have the best of both worlds? Rather than change the coordinate system at any point, we will leave the coordinate system as it is i.e. twisting and turning with the metric, but instead choose our basis vectors at any point such that we have a flat metric there when calculated with this new basis. Note that every point will have a different basis. These do not replace the coordinate basis that we can evaluate at every point. They are separate from them and are called non-coordinate basis. They are explicitly chosen so that we can calculate a new metric out of them, which will be Minkowski, and we can then use a local Jacobian matrix to map between these non-coordinate basis and the actual "global" coordinate basis that we've always had.
 
 This way, I can conduct experiments and measurements using the flat local metric, and use the local mapping at that point to translate these results into the global metric and coordinate system. This is called the tetrad formalism or vielbiens. It makes the calculation of the Riemman curvature tensor much more algebraic and straightforward. The downside is we have to keep track of our translator Jacobian matrix that must be recalculated at every point.
 
@@ -1031,7 +1041,7 @@ Instead of evaluating derivatives of the metric, you do this:
 3.  Algebraically solve the wedge product equation above to find the unknown $\omega^a_b$ terms, utilizing the antisymmetry ($\omega_{ab} = -\omega_{ba}$) to eliminate variables.
 Once you have the spin connection, you need to find the curvature. The Riemann tensor $R^\sigma_{\rho\mu\nu}$ has four indices. Cartan simplifies this by compressing the two coordinate indices ($\mu, \nu$) into a differential 2-form, leaving only the two flat-frame indices ($a, b$).
 
-This yields the **Curvature Two-Form**:
+This yields the Curvature Two-Form:
 
 $$R^a_b = \frac{1}{2} R^a_{bcd} \hat{\theta}^c \wedge \hat{\theta}^d$$
 
@@ -1043,7 +1053,7 @@ If you look closely at this equation, it is mathematically identical to the fiel
 
 Besides utility in general relativity, the vielbein is required to put quantum mechanics into curved spacetime. Fermions (like electrons) are described by spinors. Spinors transform under the rules of flat-space Lorentz rotations. A spinor does not know what a curved coordinate grid ($g_{\mu\nu}$) is; it literally cannot be mathematically defined on a general curved manifold. To describe an electron in a gravitational field, you _must_ establish a flat local vielbein frame ($\hat{e}_a$), define the spinor inside that flat frame, and use the spin connection ($\omega^a_b$) to track how the electron's spin rotates as it falls through curved space.
 
-#### Example with the Schwarzschild Metric
+### Example with the Schwarzschild Metric
 
 The global Schwarzschild metric in coordinates $(t, r, \theta, \phi)$ is given by the line element:
 
