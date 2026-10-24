@@ -1,82 +1,14 @@
 # Maths 3 - Projective Geometry
 
-In the Euclidean plane that we are familiar with, $\mathbb{R}^2$, we know that any two distinct lines are concurrent (i.e. they meet at a single point), unless they are parallel, and any two distinct points determine a single line. To eliminate the two exceptions and make the rule general, we work with the Extended Euclidean Plane (EEP), where we first define a pencil of lines (i.e. given a line, the pencil of lines associated with it are all lines parallel to it). We say that every pencil of lines meets at a distinct point at infinity. All these distinct points are collinear and lie on the line at infinity called $l_\infty$. If $l$ is a line in the Euclidean plane, we denote $l^*$ as the line in the EEP.
+In the Euclidean plane that we are familiar with, $\mathbb{R}^2$, we know that any two distinct lines are concurrent (i.e. they meet at a single point), unless they are parallel, and any two distinct points determine a single line. To eliminate the exception of parallelism and make the rule general, we work with the Extended Euclidean Plane (EEP), where we first define a pencil of lines (i.e. given a line, the pencil of lines associated with it are all lines parallel to it). We say that every pencil of lines meets at a distinct point at infinity. Since we require that any two distinct points determine a single line, we then say that all these distinct points at infinity are collinear and lie on the line at infinity called $l_\infty$. If $l$ is a line in the Euclidean plane, we denote $l^*$ as the line in the EEP.
 
-As a matter of notation, we define a triple $(P, L, I)$ to be:
+As a matter of notation, we define a triple $(P, L, I)$ to be a set $P$ whose elements are called points, a set $L$ of subsets of $P$ whose elements are called lines (or blocks),and an incidence relation $I$ which describes precisely which points belong to which lines (blocks).
 
-> A set $P$ whose elements are called points, together with
+For example, the Euclidean plane is a triple $(P, L, I)$, where $P = \{(x, y) \mid x, y \in \mathbb{R}\}$, $L = \{[a, b, c] \mid a, b, c \in \mathbb{R}, a, b \text{ not both zero}\}$; $I$ : point $(x, y)$ lies on line $[a, b, c]$ if and only if $ax + by + c = 0$.
 
-> A set $L$ of subsets of $P$ whose elements are called lines (or blocks),
-
-> An incidence relation $I$ which describes precisely which points belong to which lines (blocks).
-
-For example, the Euclidean plane is a triple $(P, L, I)$, where
-
-> $P = \{(x, y) \mid x, y \in \mathbb{R}\}$,
-
-> $L = \{[a, b, c] \mid a, b, c \in \mathbb{R}, a, b \text{ not both zero}\}$;
-
-> $I$ : point $(x, y)$ lies on line $[a, b, c]$ if and only if $ax + by + c = 0$.
-
-It is sometimes convenient, particularly when $P$ and $L$ are finite sets, to express $I$ as a subset of $P \times L$. For example, consider the triple $(P, L, I)$ given by:
-
-> $P = \{1, 2, 3, 4\}$,
-
-> $L = \{a, b, c, d, e, f\}$,
-
-> I = \{(1, a),(2, a),(3, b),(4, b),(1, c),(3, c),(2, d),(4, d),(1, e),(4, e),(2, f),(3, f)\}$.
+It is sometimes convenient, particularly when $P$ and $L$ are finite sets, to express $I$ as a subset of $P \times L$. For example, consider the triple $(P, L, I)$ given by: $P = \{1, 2, 3, 4\}$; $L = \{a, b, c, d, e, f\}$; I = \{(1, a),(2, a),(3, b),(4, b),(1, c),(3, c),(2, d),(4, d),(1, e),(4, e),(2, f),(3, f)\}$.
 
 This means that points $1$ and $2$ lie on line $a$, points $3$ and $4$ lie on line $b$, and so on.
-
-We refer to a configuration as a n-angle in the EEP, if it is a set of n points, no three collinear. The lines of this configuration are formed by connecting every possible pair of these initial points. Because no three points are collinear, any single line in this configuration contains $2$ of the generating points. Furthermore, from any single point, lines must be drawn to connect to all the remaining points in the set, meaning each point lies on exactly $n-1$ lines. 
-
-Similarly, an n-lateral is a set of n lines, no three concurrent. The points of this configuration are formed by the intersections of every possible pair of these lines. Because no three lines are concurrent, any single intersection point in this configuration is formed by and lies on $2$ lines. Furthermore, any single line must intersect all the other lines in the set, meaning each line contains exactly $n-1$ intersection points.
-
-The dual of a configuration can be obtained by replacing point ←→ line, ollinear ←→ concurrent, join ←→ intersection.
-
-These are obviously quite different from the regular squares or pentagons we encounter in high school. These configurations are used in projective geometry, whereas the ordinary polygons we study are in Euclidean geometry. These are called complete $n$-angles. By contrast, a square or a rectangle is a simple $n$-angle.
-
-Here is how they differ. In the simple $n$-angle, you select $n$ points and connect them with exactly $n$ lines to form a closed loop or boundary. There are no lines connecting opposite corners (the diagonals). By contrast, in the complete $n$-angle, you select $n$ points and draw every possible line between them. For $4$ points, this means drawing $\binom{4}{2} = 6$ lines. A complete quadrangle includes the $4$ "outer" edges plus the $2$ "inner" diagonals as equal structural elements, completely ignoring the concept of an "inside" or "outside" boundary.
-
-Now let's look at a few examples.
-
----
-
-**Triangle:** Points ($v$): $3$ non-collinear vertices.
-
-Lines ($b$): $\binom{3}{2} = 3$ joining lines.
-
-Incidences: Each point lies on $2$ lines, and each line contains $2$ points.
-
-In configuration notation, this is represented as the symmetric configuration $(3_2, 3_2)$ (or simply $(3_2)$). Interchanging points and lines yields $3$ lines and $3$ intersection points with the exact same incidence relations. Because it is isomorphic to its dual, the complete triangle is self-dual.
-
----
-
-**Quadrangle:** Points ($v$): $4$ points, no three collinear.
-
-Lines ($b$): The lines connecting pairs of points, giving $\binom{4}{2} = 6$ lines.
-
-Incidences: Each of the $4$ points lies on $3$ lines, and each of the $6$ lines contains $2$ points.
-
-The configuration symbol is: $(4_3, 6_2)$
-
----
-
-**Quadrilateral:** Applying projective duality to the quadrangle (replacing points with lines and lines with points):
-
-Lines ($b$): $4$ lines, no three concurrent.
-
-Points ($v$): The intersection points of pairs of lines, giving $\binom{4}{2} = 6$ points.
-
-Incidences: Each of the $6$ points lies on $2$ lines, and each of the $4$ lines contains $3$ points.
-
-The dual configuration symbol is:
-
-$$(6_2, 4_3)$$
-
-These two are clearly not self-dual.
-
----
 
 In general, in projective geometry, we have The Principle of Duality. If $T$ is a theorem valid in the EEP, and $T'$ is the statement obtained from $T$ by making the following changes: point $\leftrightarrow$ line, collinear $\leftrightarrow$ concurrent, join $\leftrightarrow$ intersection, and whatever grammatical adjustments that are necessary, then $T'$ (called the Dual Theorem) is a valid theorem in the EEP.
 
@@ -105,24 +37,10 @@ that is: $\dim S_h + \dim S_k = \dim (S_h \cap S_k) + \dim (S_h \oplus S_k)$.
 
 A9. (Fano’s Postulate) Every $S_1$ of $S_r$ contains at least three points.
 
-In an $r$-dimensional projective space $S_r$:
-
--   A one-dimensional subspace $S_1$ is called a line.
-    
--   A two-dimensional subspace $S_2$ is called a plane.
-    
--   A three-dimensional subspace $S_3$ is called a solid.
-    
--   An $(r - 1)$-dimensional subspace $S_{r-1}$ is called a hyperplane of the $S_r$.
-    
--   Points which lie on the same line are said to be collinear.
-    
--   Points or lines which lie on the same plane are said to be coplanar.
-    
--   Lines which pass through the same point are said to be concurrent.
+Now for some terminology. In an $r$-dimensional projective space $S_r$ a one-dimensional subspace $S_1$ is called a line. A two-dimensional subspace $S_2$ is called a plane. A three-dimensional subspace $S_3$ is called a solid. An $(r - 1)$-dimensional subspace $S_{r-1}$ is called a hyperplane of the $S_r$. Points which lie on the same line are said to be collinear. Points or lines which lie on the same plane are said to be coplanar. Lines which pass through the same point are said to be concurrent.
 
 ### Projective Plane
-We can take the axioms of an $r$-dimensional projective space and come up with something specific for a projective plane. The EEP is an example of a projective plane.
+A projective plane is a 2D projective space. We can take the axioms of an $r$-dimensional projective space and come up with something specific for a projective plane. The EEP is an example of a projective plane.
 
 A projective plane $\pi$ is a set $P$ of points and a set $L$ of subsets of $P$, called lines, satisfying the following:
 
@@ -1181,6 +1099,58 @@ Does $q(v) = 0$? Yes:  $0^2 + 0^2 - 0^2 = 0$. So $V_{\text{tip}} \in \mathcal{Q}
 Does $B(x, v) = 0$ for all $x = (x_0, x_1, x_2, x_3)$? Yes:  $2x_0(0) + 2x_1(0) - 2x_2(0) = 0$ for every  $x \in \mathbb{R}^4$!
         
 Because $v = (0, 0, 0, 1) \neq 0$ satisfies both $q(v) = 0$ and $B(x, v) = 0$ for all $x$, this quadratic form is degenerate, and $\langle (0, 0, 0, 1) \rangle$ is the singular vertex of the cone ($\text{Rad}(\mathcal{Q}) = \{\langle (0,0,0,1) \rangle\}$).
+
+## Polygons
+
+We refer to a configuration as a n-angle in the EEP, if it is a set of n points, no three collinear. The lines of this configuration are formed by connecting every possible pair of these initial points. Because no three points are collinear, any single line in this configuration contains $2$ of the generating points. Furthermore, from any single point, lines must be drawn to connect to all the remaining points in the set, meaning each point lies on exactly $n-1$ lines. 
+
+Similarly, an n-lateral is a set of n lines, no three concurrent. The points of this configuration are formed by the intersections of every possible pair of these lines. Because no three lines are concurrent, any single intersection point in this configuration is formed by and lies on $2$ lines. Furthermore, any single line must intersect all the other lines in the set, meaning each line contains exactly $n-1$ intersection points.
+
+The dual of a configuration can be obtained by replacing point ←→ line, collinear ←→ concurrent, join ←→ intersection.
+
+These are obviously quite different from the regular squares or pentagons we encounter in high school. These configurations are used in projective geometry, whereas the ordinary polygons we study are in Euclidean geometry. These are called complete $n$-angles. By contrast, a square or a rectangle is a simple $n$-angle.
+
+Here is how they differ. In the simple $n$-angle, you select $n$ points and connect them with exactly $n$ lines to form a closed loop or boundary. There are no lines connecting opposite corners (the diagonals). By contrast, in the complete $n$-angle, you select $n$ points and draw every possible line between them. For $4$ points, this means drawing $\binom{4}{2} = 6$ lines. A complete quadrangle includes the $4$ "outer" edges plus the $2$ "inner" diagonals as equal structural elements, completely ignoring the concept of an "inside" or "outside" boundary.
+
+Now let's look at a few examples.
+
+---
+
+**Triangle:** Points ($v$): $3$ non-collinear vertices.
+
+Lines ($b$): $\binom{3}{2} = 3$ joining lines.
+
+Incidences: Each point lies on $2$ lines, and each line contains $2$ points.
+
+In configuration notation, this is represented as the symmetric configuration $(3_2, 3_2)$ (or simply $(3_2)$). Interchanging points and lines yields $3$ lines and $3$ intersection points with the exact same incidence relations. Because it is isomorphic to its dual, the complete triangle is self-dual.
+
+---
+
+**Quadrangle:** Points ($v$): $4$ points, no three collinear.
+
+Lines ($b$): The lines connecting pairs of points, giving $\binom{4}{2} = 6$ lines.
+
+Incidences: Each of the $4$ points lies on $3$ lines, and each of the $6$ lines contains $2$ points.
+
+The configuration symbol is: $(4_3, 6_2)$
+
+---
+
+**Quadrilateral:** Applying projective duality to the quadrangle (replacing points with lines and lines with points):
+
+Lines ($b$): $4$ lines, no three concurrent.
+
+Points ($v$): The intersection points of pairs of lines, giving $\binom{4}{2} = 6$ points.
+
+Incidences: Each of the $6$ points lies on $2$ lines, and each of the $4$ lines contains $3$ points.
+
+The dual configuration symbol is:
+
+$$(6_2, 4_3)$$
+
+These two are clearly not self-dual.
+
+---
 
 ## References
 - Projective Geometry: An Introduction by Rey Casse
