@@ -1,4 +1,4 @@
-# 4. Quantum Information Theory
+# Quantum Theory 2 - Quantum Information Theory
 
 ## Qubits
 
