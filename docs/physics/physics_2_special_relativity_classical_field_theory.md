@@ -1,5 +1,6 @@
-# 1. Special Relativity and Classical Field Theory
-## Special Relativity: Fundamental Postulates and the Lorentz Transformation
+# Physics 2 - Special Relativity and Classical Field Theory
+
+## Fundamental Postulates and the Lorentz Transformation
 
 Galilean relativity assumes that every observer sees the "same" time; i.e., time is invariant across different inertial reference frames. Special Relativity, however, assumes the speed of light $c$ is invariant in all inertial reference frames. If we look at the equation for velocity $v = \frac{\Delta l}{\Delta t}$, in Galilean relativity, since $\Delta t$ is fixed for everyone, it is $\Delta l$ and $v$ that are correlated. However, in Special Relativity, since the speed of light $c$ is fixed, $\Delta l$ and $\Delta t$ are correlated.
 
