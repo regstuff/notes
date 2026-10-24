@@ -1,4 +1,4 @@
-# 3. Statistical Mechanics
+# Physics 1 - Statistical Mechanics
 
 ## Probability & States
 A system usually has several different states it can inhabit. These states are called microstates. Microstates that are indistinguishable from each other are clubbed under a single macrostate, and the number of microstates that make up a macrostate is called the multiplicity of that macrostate.
