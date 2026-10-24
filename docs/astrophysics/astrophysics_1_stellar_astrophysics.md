@@ -1,8 +1,7 @@
-# Physics 5 - Astrophysics
 
-## Basics of Stellar Astrophysics
+# Astrophysics 1 - Stellar Astrophysics
 
-### Blackbody Radiation
+## Blackbody Radiation
 
 While studying stars, it is convenient as a first approximation to model them as blackbodies. Accordingly, the formula for the energy density per frequency interval of a blackbody is given by Planck's Law:
 
@@ -124,7 +123,7 @@ You would use $\nu B_\nu = \lambda B_\lambda$ (per $\ln\nu$ or $\ln\lambda$) in 
 
 ---
 
-#### Rayleigh Jeans & Wien's Approximations of Blackbody Spectra
+### Rayleigh Jeans & Wien's Approximations of Blackbody Spectra
 
 In astronomical data analysis and theoretical modeling, the full Planck function is mathematically awkward because the temperature $T$ and frequency $\nu$ are trapped inside a non-linear denominator ($e^{h\nu/k_B T} - 1$). You cannot easily invert it, integrate it over a passband, or propagate it through the differential equation of radiative transfer.
 
@@ -231,7 +230,7 @@ Compare how sensitive a star's flux is to a small change in temperature $\frac{d
     
     At $h\nu / k_B T = 10$ (in the UV), a $10\%$ change in temperature produces a $100\%$ ($\sim e^1$) change in flux! That is why optical/UV astronomers always use short-wavelength filters ($U - B$ or $B - V$ color indices) as ultra-sensitive thermometers for stars.
 
-### Spectra & Absorption Lines
+## Spectra & Absorption Lines
 
 
 The light from stars can be observed to have certain characteristics which help us identify the nature of the star. Specifically, the light from stars will be such that the intensity dips at specific wavelengths. These are called absorption lines. We will focus on Hydrogen absorption lines for now.
@@ -313,7 +312,7 @@ $$\lambda_{\text{limit}} = \frac{hc}{3.40\text{ eV}} = \frac{12,398 \mathring{A}
 
 And because discrete Balmer lines $n=2 \to 10, 11, 12\dots$ crowd together and blend just below the ionization limit, the drop visibly starts around $3700 \mathring{A} $!
 
-#### Why Are Absorption Lines Dark?
+### Why Are Absorption Lines Dark?
 
 A common misconception is that absorption lines are completely devoid of light. They only appear "dark" in contrast to the brighter continuum beside them. The fundamental mechanism comes down to how far into the star you can see. If the photons at some frequency are barely scattered, then we can see photons at this frequency emitted by the deeper layers of a star. If a photon is at a frequency where it will tend to be scattered, then the opacity of the star's gas with respect to this photon increases, and so we only see photons from the upper layers of the star. Generally, the upper layers are cooler and the deeper layers are hotter, and since the intensity of the photon emission rises as temperature rises, we see more brightness when a photon emerges from deeper portions of a star.
 
@@ -321,7 +320,7 @@ Of course, there is a bit of a catch here. One catch is that upper layers of sta
 
 The other catch is that even if photons are scattered by atoms or ions in the stellar atmosphere, if these atoms or ions re-emit a photon of the same energy, wouldn't that lead to a recovery of the lost photon's energy? The thing to keep in mind here is that, let's say an atom scatters a photon and picks up that photon's energy. Even if it immediately re-emits a photon at the same energy, this photon has a 50% chance of being re-emitted into the star's interior. This is one reason why the opacity for photons of these frequencies is high. Thus, we have a 50% loss of photons. But suppose the atom does not immediately re-emit the photon. It is possible that some free electron might scatter off the atom and gain the energy of that photon. But then the electron distributes that energy via thermal scattering across the entire blackbody frequency spectrum. Thus, the energy is emitted, but it is spread out over a large frequency spread and not at the original photon's frequency. In fact, we do see a general increase in radiative transfer across the entire frequency spectrum in stellar radiation.
 
-### Hertzsprung-Russell Diagram
+## Hertzsprung-Russell Diagram
 
 A crucial step toward understanding stellar physics was taken in 1911 independently by two astronomers, Hertzsprung and Russell, who placed measurements of stars on a logarithmic plot with axes of luminosity and effective surface temperature.
 
@@ -341,7 +340,7 @@ The main sequence is a mass sequence, with high-mass stars at high luminosities 
 
 The strict upper bound of $1.4\,M_\odot$ on white dwarf masses is the Chandrasekhar limit. Unlike main-sequence stars (where thermal gas pressure $P = nk_B T$ increases when the core contracts and heats up), white dwarfs have exhausted their nuclear fuel and are supported entirely by quantum mechanical electron degeneracy pressure ($P_e \propto \rho^{5/3}$ in the non-relativistic regime). As a white dwarf gains mass, its radius actually _shrinks_ ($R_{\text{WD}} \propto M^{-1/3}$), driving the electrons to relativistic speeds where the equation of state softens to $P_e \propto \rho^{4/3}$. At $M_{\text{Ch}} \approx 1.44\,M_\odot$, gravity scales identically with radius as relativistic degeneracy pressure, triggering runaway collapse.
 
-#### Stellar Size & Lifetimes
+### Stellar Size & Lifetimes
 
 The scaling $L \sim M^\alpha$ comes directly from hydrostatic equilibrium and radiative diffusion, which dictate how efficiently photons escape the stellar interior based on the dominant opacity ($\kappa$) and pressure ($P$):
 
@@ -357,7 +356,8 @@ $$\tau_{\text{MS}} \propto \frac{M}{L} \propto M^{1-\alpha}$$
 
 For $\alpha \approx 3.5$, $\tau_{\text{MS}} \approx 10^{10}\text{ yr} \left(\frac{M}{M_\odot}\right)^{-2.5}$. This explains why most field red giants we observe today have masses of only $1\text{–}2\,M_\odot$: higher-mass stars exhaust their core hydrogen in just a few million years and quickly die, whereas sub-solar stars ($M \lesssim 0.8\,M_\odot$) have lifetimes longer than the current age of the universe ($13.8\text{ Gyr}$) and have not yet evolved off the main sequence.
 
-#### More Classifications
+### More Classifications
+
 A final note on nomenclature: apart from their spectral types ($\text{B0}$, $\text{A5}$, $\text{G2}$, etc.), stars are divided into luminosity classes, which are labeled by Roman numerals going from $\text{I}$ to $\text{V}$, with decreasing luminosity. Classes $\text{I}$ to $\text{IV}$ are giants, and $\text{V}$ designates main sequence stars. Thus, the Sun is a $\text{G2V}$ star.
 
 In full Morgan-Keenan (MK) classification, the Roman numerals break down into:
@@ -984,7 +984,7 @@ This is much cleaner for tracking stellar evolution because the total mass $M_*$
 
 ---
 
-### Polytropes
+## Polytropes
 Normally, to solve for the structure of a star, you have to solve the four coupled differential equations simultaneously. The mechanical structure ($m, P, \rho$) is coupled to the thermal structure ($T, l$), and you cannot solve the mechanical equations by themselves because the ideal gas law $P(\rho, T)$ contains temperature $T$. Whenever the physics of a star allows us to write pressure purely as a power law of density—$P = K\rho^{1 + \frac{1}{n}}$, with temperature $T$ eliminated— these two sets of equations decouple. We can ignore the nuclear reaction rates and opacity tables, and solve for the entire mechanical structure ($\rho(r), P(r), M, R$) using only hydrostatic equilibrium and mass continuity.
 
 The essence of the equation of hydrostatic equilibrium is that the pressure at each point in a stellar interior is sufficient to just balance the weight of the overlying layers of the star. Furthermore, the pressure itself is determined by the equation of state applicable to the local conditions in the stellar interior. These considerations do not in themselves determine the structure of a star. Any specified pressure that may be required to support the overlying layers is obtainable from an unlimited number of combinations of density and temperature at that point. What are clearly needed are more conditions on the density and temperature in a stellar interior that relate to other physical processes that go on there.
@@ -1163,7 +1163,7 @@ This calculation allows us to determine the properties of the star's surface in 
 
 The real mathematical power of the Lane-Emden transformation is that we only have to solve them once. In general hydrostatic problems, changing the central density $\rho_c$ or the equation-of-state constant $K$ requires re-integrating the differential equations from scratch. However, because the polytropic relation $P = K\rho^{1+1/n}$ is a pure power law, all polytropes of the same index $n$ are homologous (self-similar)—their internal density and pressure profiles are identical curve shapes, merely stretched radially by the length scale $\alpha \propto K^{1/2}\rho_c^{\frac{1-n}{2n}}$ and vertically by $\rho_c$.
 
-### Applying Scaling Approximations to the HR Diagram
+## Applying Scaling Approximations to the HR Diagram
 
 The first three differential equations (hydrostatic equilibrium, mass continuity, and radiative transport) can be written as scaling relations:
 
@@ -1225,7 +1225,7 @@ $$L \sim T_E^8$$
 
 We have thus seen that the mass vs. luminosity relation and the surface-temperature vs. luminosity relation of main-sequence stars are simply consequences of the different sources of pressure and opacity in stars of different masses, and of the fact that the onset of nuclear hydrogen burning keeps the core temperatures of all main-sequence stars in a narrow range.
 
-### Convection
+## Convection
 
 Under certain conditions, the main means of energy transport in some regions of a star is convection, rather than radiative transport. Convection occurs when a volume element of material that is displaced from its equilibrium position, rather than returning to the original position, continues moving in the displacement direction. For example, if the displacement is upward to a region of lower density, and after the displacement the density of the volume element is lower than that of its new surroundings, the element will continue to be buoyed upwards. When convection sets in, it is very efficient at transporting heat, and becomes the dominant transport mechanism.
 
@@ -1255,7 +1255,7 @@ The parcel will be buoyant and continue accelerating upward if its new density i
         
 $$\left\vert{}\frac{dT}{dr}\right\vert{}_{\text{env}} > \left\vert{}\frac{dT}{dr}\right\vert{}_{\text{ad}} = \frac{\gamma - 1}{\gamma}\frac{T}{P}\left\vert{}\frac{dP}{dr}\right\vert{}$$
         
-#### Three Physical Triggers for Convection
+### Three Physical Triggers for Convection
 
 If you compare the radiative temperature gradient (which is the temperature gradient of the envelope or the LHS of the inequality) required to carry luminosity $L(r)$:
     
@@ -1269,7 +1269,7 @@ In regions where $\text{H I} \to \text{H II}$ ($T \sim 10^4\text{ K}$) or $\text
         
 3.  **Large $\frac{L(r)}{4\pi r^2}$ (Concentrated Core Fusion in Massive Stars):** We noted that massive stars have convective cores even though they are hot and fully ionized ($\gamma = 5/3$ and $\kappa = \kappa_{\text{es}}$ is low). Why? Because massive stars ($M \gtrsim 1.3\,M_\odot$) fuse hydrogen via the CNO cycle, whose energy generation rate scales as $\epsilon_{\text{CNO}} \propto T^{16}$. This extreme temperature sensitivity concentrates almost the entire luminosity $L$ inside a tiny central core radius $r$, making the local flux $\frac{L(r)}{4\pi r^2}$ (and thus $\left\vert{}\frac{dT}{dr}\right\vert{}_{\text{rad}}$) so huge that only vigorous core convection can carry the heat out!
         
-#### Polytropic Structure of Fully Convective Stars ($n = 1.5$ Polytrope)
+### Polytropic Structure of Fully Convective Stars ($n = 1.5$ Polytrope)
     
 When convection dominates and enforces the equality $\frac{dT}{dr} = \frac{\gamma - 1}{\gamma}\frac{T}{P}\frac{dP}{dr}$, you can integrate both sides immediately to get $T \propto P^{\frac{\gamma - 1}{\gamma}}$. Combining this with the ideal gas law $P \propto \rho T$ yields a **polytropic equation of state**:
     
@@ -1277,7 +1277,7 @@ $$P = K\rho^\gamma = K\rho^{1 + 1/n}$$
     
 For a monoatomic fully ionized gas ($\gamma = 5/3$), a fully convective star (such as a low-mass red dwarf with $M < 0.35\,M_\odot$, or a pre-main-sequence protostar on the Hayashi track) has a structure given strictly by an $n = 1.5$ polytrope ($P = K\rho^{5/3}$), completely independent of its opacity $\kappa$!
     
-#### The Ledoux Criterion (Composition Gradients)
+### The Ledoux Criterion (Composition Gradients)
     
 The Schwarzschild criterion assumes the chemical composition (mean molecular weight $\mu$) is uniform across radius $r$. Near the edge of a nuclear-burning core where helium ($Y$) builds up inside hydrogen ($X$), $\mu$ decreases outward ($\frac{d\mu}{dr} < 0$). A heavier helium-rich blob displaced upward into lighter hydrogen experiences an extra downward buoyancy force that resists convection, adding a stabilizing composition term known as the Ledoux Criterion:
     
