@@ -1,4 +1,4 @@
-# 2. Quantum Physics
+# Quantum Theory 1 - Quantum Physics
 
 ## States and Measurement
 
