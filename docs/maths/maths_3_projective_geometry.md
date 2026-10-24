@@ -573,7 +573,7 @@ In $PG(5,F)$ where $d=5$ for example, the equation becomes $x_0 x_5 - x_1 x_4 + 
 
 In general, if $d = 2m - 1$ in $PG(2m-1, F)$, the equation is $\sum_{i=1}^{m} x_{i} y_{i} = 0$. The regulus is woven from two families of $(m-1)$-dimensional flat subspaces. In general, a quadric in $PG(2m-1, F)$ is called hyperbolic (denoted $Q^+(2m-1, F)$) because it is the unique type of non-degenerate quadric that is completely ruled by flat $(m-1)$-dimensional projective subspaces (the maximum possible dimension of a flat subspace that can sit inside a $(2m-2)$-dimensional curved surface).
 
-### Quadratic Sets
+## Quadratic Sets
 
 Just as earlier we defined projective spaces purely using points and lines before proving they come from vector spaces, Buekenhout’s synthetic theory of quadrics allows us to define degree-2 curved surfaces (quadrics) purely using point-line incidence rules—without writing a single quadratic equation or taking a single derivative.
 
@@ -587,13 +587,13 @@ Let $\mathcal{Q}$ be a set of points of the projective space $\mathbf{P}$. We ca
     
 For each point $P$ of $\mathcal{Q}$, let the set $\mathcal{Q}_P$ consist of the point $P$ and all points $X \neq P$ of $\mathbf{P}$ such that the line $XP$ is a tangent of $\mathcal{Q}$. One calls $\mathcal{Q}_P$ the tangent space of $\mathcal{Q}$ at the point $P$.
 
-#### Visualizing The Tangent Plane
+### Visualizing The Tangent Plane
 
 When you place a tangent plane against a sphere at a point $P$, the entire sphere stays on one side of the plane, so the plane only touches the sphere at that single point $P$.
 
 On a hyperbolic quadric (which is shaped like a saddle or hourglass at every point $P$), the surface curves away from the plane in one direction (up/down along the hourglass) and curves _into_ the plane in the perpendicular direction (around the waist). Because of this saddle shape, the flat tangent plane $\mathcal{Q}_P = \langle g, h \rangle$ cannot stay strictly on the outside of the hourglass—it physically cuts right through the wall of the hourglass, dividing the surface into pieces in front of the plane and behind the plane.
 
-#### Axioms of Quadratic Sets
+### Axioms of Quadratic Sets
     
 We call the set $\mathcal{Q}$ a quadratic set of $\mathbf{P}$ if it satisfies the following conditions:
     
@@ -601,7 +601,7 @@ If-three-then-all axiom: Any line $g$ that contains at least three points of $\m
         
 Tangent-space axiom: For any point $P \in \mathcal{Q}$, its tangent space $\mathcal{Q}_P$ is the set of points in a hyperplane or the set of all points of $\mathbf{P}$. One can also express the important tangent-space axiom as follows. For any point $P$ of $\mathcal{Q}$, either $\mathcal{Q}_P$ is a hyperplane, which means any line through $P$ in $\mathcal{Q}_P$ is a tangent, and no line through $P$ outside $\mathcal{Q}_P$ is a tangent (each such line contains exactly one further point of $\mathcal{Q}$). Or, $\mathcal{Q}_P$ is equal to $\mathbf{P}$, and so each line through $P$ is a tangent.
 
-#### The First Axiom
+### The First Axiom
 
 Let's take a closer look at the first axiom. Look at how the "If-three-then-all" axiom captures "degree 2" without algebra. If you intersect a straight line (parameterized by $t$) with an algebraic surface defined by a degree-2 polynomial $f(t) = a t^2 + b t + c = 0$, how many solutions can a quadratic equation have? $0$ solutions (the line misses the surface—a passant), $1$ solution (a double root $b^2 - 4ac = 0$—the line touches at $1$ point), $2$ solutions (two distinct roots—the line pierces in and pierces out, a secant), or more than $2$ solutions. But, the only way a quadratic polynomial $a t^2 + b t + c = 0$ can have 3 roots is if $a = b = c = 0$, meaning $f(t) = 0$ for all $t$, which means the entire line lies inside the surface since it is parametrized by $t$ i.e. we create the line by varying $t$.
 
@@ -617,7 +617,7 @@ The exact same thing happens on the hyperboloid of one sheet (our regulus $\math
 
 If we did not count $\mathcal{Q}$-lines (lines completely inside $\mathcal{Q}$) as "tangent lines," then the tangent plane $\Pi_P$ to a cylinder would have a missing vertical line ripped out of it, and the tangent plane to a hyperboloid would have two missing lines ($g$ and $h$) ripped out of it. By defining a tangent line as meeting $\mathcal{Q}$ in either $1$ point OR all points, the union of all tangent lines through $P$ forms a complete, unbroken flat hyperplane $\mathcal{Q}_P$.
 
-#### How $\mathcal{Q}$-Lines Classify All 3D Quadratic Sets
+### How $\mathcal{Q}$-Lines Classify All 3D Quadratic Sets
 
 Counting how many $\mathcal{Q}$-lines pass through a point $P \in \mathcal{Q}$ (and how they sit inside the tangent plane $\mathcal{Q}_P$) is how projective geometry classifies all non-empty quadratic sets in 3D space:
 
@@ -630,7 +630,7 @@ Counting how many $\mathcal{Q}$-lines pass through a point $P \in \mathcal{Q}$ (
 
 Notice the third row: for a hyperbolic quadric, if you take any point $P \in \mathcal{Q}$, its two rulings $g \in \mathcal{R}$ and $h \in \mathcal{R}'$ intersect at $P$, which means they span a 2D plane $\langle g, h \rangle$. Because both $g$ and $h$ are $\mathcal{Q}$-lines, they are both tangents at $P$, so the plane $\langle g, h \rangle$ they span is the tangent plane $\mathcal{Q}_P$ at $P$.
 
-#### The Second Axiom
+### The Second Axiom
 
 Now let's look at the second axiom. In 3D Euclidean geometry, imagine standing at the North Pole $P$ of a hollow glass sphere $\mathcal{Q}$, if you shoot a line straight horizontally in any compass direction at the North Pole, the laser skims the top of the glass sphere at only $1$ point ($P$). Those horizontal rays are all tangents. And what do all horizontal rays through the North Pole sweep out? A single flat 2D plane—the tangent hyperplane $\mathcal{Q}_P$.
 
@@ -642,7 +642,7 @@ If $P$ is a sharp pinch / singular vertex of $\mathcal{Q}$ then $\mathcal{Q}_P =
 
 In fact, this gives a purely geometric definition of a singular point (pinch/vertex): a point $P \in \mathcal{Q}$ is singular if and only if $\mathcal{Q}_P = \mathbf{P}$.
 
-#### Examples of Quadratic Sets
+### Examples of Quadratic Sets
 
 The empty set, any set consisting of just one point, the set of points on a line,  $\dots$, in short: the set of all points of a subspace is a quadratic set. These quadratic sets $\mathcal{Q}$ have the property that for each point $P \in \mathcal{Q}$ the set $\mathcal{Q}_P$ equals $\mathbf{P}$.
 
@@ -658,7 +658,7 @@ Other examples of quadratic sets include $\mathcal{Q}$, which consists of the po
     
 From elementary geometry we immediately get examples. Each circle (and each ellipse) in the Euclidean plane is a quadratic set. (Here the tangent spaces are just lines.) Also, the sphere in $3$-dimensional (or $d$-dimensional) real affine space is a quadratic set. In real $3$-dimensional space there exist two other, quite different quadratic sets. These are, first of all, the cones; here, there is a point $V$, the vertex of the cone, such that $\mathcal{Q}_V$ is the whole space. Finally, there is the hyperbolic quadric.
 
-#### Properties of Quadratic Sets
+### Properties of Quadratic Sets
 
 The radical $\text{Rad}(\mathcal{Q})$ is the set of all singular points of $\mathcal{Q}$—meaning all points $S \in \mathcal{Q}$ whose tangent space is the entire ambient space ($\mathcal{Q}_S = \mathbf{P}$). 
 
@@ -718,7 +718,7 @@ Now let $\mathcal{Q}$ be a nondegenerate quadratic set of $\mathbf{P}$.
     
 > If $H$ is a hyperplane that is not a tangent hyperplane, then $\mathcal{Q}' := \mathcal{Q} \cap H$ is a nondegenerate quadratic set of $H$.
 
-#### Index of Quadratic Sets
+### Index of Quadratic Sets
 
 A quadratic set $\mathcal{Q}$ can be described very well by the dimension of its maximal $\mathcal{Q}$-subspaces (which are flat linear subspaces - a point, a line, a plane etc. that sits completely inside the curved surface $\mathcal{Q}$. The prefix $\mathcal{Q}$ simply means "contained in $\mathcal{Q}$"). This maximum dimension is connected to the ‘index’ of $\mathcal{Q}$, which turns out to be the crucial parameter to describe $\mathcal{Q}$.
 
@@ -811,7 +811,7 @@ When $\mathcal{Q}$ is nondegenerate,  $\text{Rad}(\mathcal{Q}) = \emptyset$, so 
     
 When $\mathcal{Q} = H_1 \cup H_2$ is two planes in $d = 3$,  $\text{Rad}(\mathcal{Q})$ is a line ($r = 2$), and the formula gives $t \le \frac{3 + 2 + 1}{2} = 3$, which matches $t = 3$.
 
-#### Quadratic Sets in 2D and 3D Projective Spaces
+### Quadratic Sets in 2D and 3D Projective Spaces
 We first define a type of objects found in 2D projective planes, and a few objects found in 3D projective spaces. Then for 2D and 3D spaces, we list out the possible quadratic sets.
 
 A nonempty set $\mathcal{O}$ of points in a projective plane is called an oval if no three points of $\mathcal{O}$ are collinear and each point of $\mathcal{O}$ is on a unique tangent. Ovals are the only type of nonempty, nondegenerate quadratic sets in a projective plane.
@@ -850,7 +850,7 @@ then $L_1(x) = 0$ is a hyperplane  $H_1$, and $L_2(x) = 0$ is a hyperplane  $H_2
 
 Note that $L_1, L_2$ can only be hyperplanes. For example, they cannot be a line in 3D space. This comes down to one of the most fundamental rules of linear algebra:  each single linear equation removes only $1$ degree of freedom (reduces the dimension by $1$).
 
-#### Quadratic sets in finite projective spaces
+### Quadratic Sets in Finite Projective Spaces
 
 Compared to the previous section, this section is both a generalization to arbitrary dimension $d$  and a specialization to finite spaces $PG(d, q)$ (where every line has exactly $q + 1$ points).
 
@@ -964,7 +964,7 @@ $$\vert{}\mathcal{Q}^-(2m - 1, q)\vert{} = \frac{(q^m + 1)(q^{m-1} - 1)}{q - 1} 
 - For $d=3, m=2$ [3D Ovoid]: $q^2 + 1$. 
 - For $d=5, m=3$: $(q^3 + 1)(q + 1) = q^4 + q^3 + q + 1$.
 
-#### Some Properties of Parabolic, Elliptic & Hyperbolic Quadratic Sets
+### Some Properties of Parabolic, Elliptic & Hyperbolic Quadratic Sets
 
 Let $\mathcal{Q}$ be a parabolic quadratic set in a $2t$-dimensional projective space $\mathbf{P}$ with $t \ge 2$. Let $H = \mathcal{Q}_P$ be a tangent hyperplane. Then $\mathcal{Q}' := \mathcal{Q} \cap H$ is a cone over a parabolic quadratic set. Let $H^*$ be a hyperplane that is not a tangent hyperplane. Then $\mathcal{Q}^* := \mathcal{Q} \cap H^*$ is an elliptic or a hyperbolic quadratic set.
 
@@ -984,7 +984,7 @@ Similarly, let $\mathcal{Q}$ be a hyperbolic quadratic set of a $5$-dimensional 
 
 The relation $\sim$ is reflexive and symmetric. Surprisingly, it is also transitive, making it an equivalence relation. 
 
-#### Quadrics Redux
+## Quadrics Redux
 
 Let's get back to quadrics. What we'll be doing here parallels what we did earlier with projective geometry in general. We first gave the synthetic axioms of a projective space and then introduced vector spaces and proved that any $\mathbf{P}(V)$ satisfies those axioms, and also looked at the converse, which is that almost every synthetic projective space is actually a $\mathbf{P}(V)$ (holds for all $d > 2$ but not for non-Desarguesian planes).
     
