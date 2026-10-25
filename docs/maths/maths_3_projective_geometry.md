@@ -233,6 +233,8 @@ If you choose $d$-dimensional subspaces as blocks in $\text{PG}(n, q)$, the stan
 
 ---
 
+Note that not every BIBD represents the number of $d$-dimensional subspaces in a $n$-dimensional projective space. The vast majority of BIBDs have parameters $(v, b, r, k, \lambda)$ that do not match any Gaussian binomial coefficients and have no connection to $PG(n, q)$.The relationship is strictly one-way: every system of points and $d$-dimensional subspaces in $PG(n, q)$ forms a $2\text{-}(v, k, \lambda)$ BIBD (whose parameters are given by Gaussian binomials). Almost no general BIBD comes from a projective space $PG(n, q)$.
+
 **Aside:** $\begin{bmatrix} m \\ k \end{bmatrix}_q$ is the Gaussian binomial coefficient (or $q$-binomial coefficient). It is the $q$-analog of the standard binomial coefficient $\binom{m}{k}$. For integers $m \ge k \ge 0$, the explicit product formula is:
 
 $$\begin{bmatrix} m \\ k \end{bmatrix}_q = \frac{(q^m - 1)(q^{m-1} - 1) \cdots (q^{m-k+1} - 1)}{(q^k - 1)(q^{k-1} - 1) \cdots (q - 1)} = \prod_{i=1}^{k} \frac{q^{m - i + 1} - 1}{q^i - 1}$$
@@ -574,6 +576,8 @@ If a regulus of lines only works in 3D, how do we get hyperbolic quadrics in hig
 In $PG(5,F)$ where $d=5$ for example, the equation becomes $x_0 x_5 - x_1 x_4 + x_2 x_3 = 0$. A regulus is woven from two families of flat 2D planes ($\alpha$-planes and $\beta$-planes). 
 
 In general, if $d = 2m - 1$ in $PG(2m-1, F)$, the equation is $\sum_{i=1}^{m} x_{i} y_{i} = 0$. The regulus is woven from two families of $(m-1)$-dimensional flat subspaces. In general, a quadric in $PG(2m-1, F)$ is called hyperbolic (denoted $Q^+(2m-1, F)$) because it is the unique type of non-degenerate quadric that is completely ruled by flat $(m-1)$-dimensional projective subspaces (the maximum possible dimension of a flat subspace that can sit inside a $(2m-2)$-dimensional curved surface).
+
+Note that in higher dimensional spaces, an $m$-regulus in $PG(2m-1, q)$ specifically means a set of $q + 1$  mutually disjoint  $(m-1)$-subspaces such that every line meeting three of them meets all $q + 1$ of them.
 
 ## Quadratic Sets
 
