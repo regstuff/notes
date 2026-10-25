@@ -338,18 +338,6 @@ Let $\mathbf{P}$ be a projective space. We call a set $\mathcal{S}$ of subspaces
 
 Let $\mathcal{S}$ be a set of skew subspaces. A line is called a transversal of $\mathcal{S}$ if it intersects each subspace of $\mathcal{S}$ in a single point.
 
-Let's test a single point $P$ on $g_1$ to see how many transversals can pass through it:
-
-Take the point $P \in g_1$ and span it with the entire second line $g_2$. This creates a single flat 2D plane,  $\Pi = \langle P, g_2 \rangle$.
-    
-Now look at the third line $g_3$. In 3D projective space, a line ($g_3$) and a plane ($\Pi$) that does not contain it intersect in exactly one point, let's call it $R = \Pi \cap g_3$.
-    
-Draw the line connecting $P$ and $R$. Because both $P$ and $R$ lie inside the plane $\Pi = \langle P, g_2 \rangle$, the line $PR$ lies completely inside $\Pi$. And because two lines in the same plane must intersect, the line $PR$ is forced to intersect $g_2$ at some unique point $Q$.
-
-This is a remarkable geometric constraint:  through every single point $P$ on $g_1$, there is one—and only one—straight line $h_P$ that hits both $g_2$ and $g_3$.
-
-As you slide the point $P$ along $g_1$, this unique transversal line $h_P$ slides along $g_1, g_2,$ and $g_3$ simultaneously. Instead of filling the 3D volume, this 1-parameter family of straight lines [sweeps out a 2-dimensional curved saddle/hourglass surface](https://www.youtube.com/shorts/SoqpsRKFf6k) (in real space, a hyperboloid of one sheet, like a nuclear power plant cooling tower).
-
 Now let $\mathbf{P}$ be a $3$-dimensional projective space over the division ring $F$. Let $\{g_1, g_2, g_3\}$ and $\{h_1, h_2, h_3\}$ be sets of skew lines with the property that each line $g_i$ meets each line $h_j$ i.e. $g_i$ is a transversal of $\{h\}$ and $h_i$ is a transversal of $\{g\}$. Then the following is true:
 
 $F$ is commutative (hence a field) if and only if each transversal $g \notin \{g_1, g_2, g_3\}$ of $\{h_1, h_2, h_3\}$ intersects each transversal $h \notin \{h_1, h_2, h_3\}$ of $\{g_1, g_2, g_3\}$. (To picture this, think of a grid of $16$ points formed by $4$ horizontal lines $g_1, g_2, g_3$, and $g$, and $4$ vertical lines $h_1, h_2, h_3$, and $h$, where $g$ is a transversal of $h_1, h_2$, and $h_3$, and $h$ is a transversal of $g_1, g_2$, and $g_3$.) Essentially, what we are saying is that every transversal of $g$ will intersect every transversal of $h$ and form a "coordinate grid." This is called the 16-point theorem.
@@ -374,7 +362,7 @@ Now imagine you had twisted the top ring $90^\circ$  counter-clockwise instead. 
 
 The twist by angle $90^\circ$ is only an example. You can twist the top ring by any angle $\phi$ between $0^\circ$ and $180^\circ$ and the straight rods will always sweep out a valid hyperboloid of one sheet (a regulus).
 
-What is the size of the hyperboloid throat. Suppose your top and bottom circular rims at $z = +H$ and $z = -H$ both have radius $R$. Take a single rod connecting angle $\theta = 0$ on the bottom rim to angle $\theta = \phi$ on the top rim. The bottom endpoint ($z = -H$):  $A = (R, \, 0, \, -H)$. The top endpoint ($z = +H$):  $B = (R \cos \phi, \, R \sin \phi, \, +H)$    
+What is the size of the hyperboloid throat? Suppose your top and bottom circular rims at $z = +H$ and $z = -H$ both have radius $R$. Take a single rod connecting angle $\theta = 0$ on the bottom rim to angle $\theta = \phi$ on the top rim. The bottom endpoint ($z = -H$):  $A = (R, \, 0, \, -H)$. The top endpoint ($z = +H$):  $B = (R \cos \phi, \, R \sin \phi, \, +H)$    
 
 Where does this straight rod pass through the central waist plane $z = 0$? Exactly at the midpoint $M = \frac{1}{2}(A + B)$ between the top and bottom endpoints. 
 
@@ -386,7 +374,7 @@ $$r_{\text{throat}} = \sqrt{x_M^2 + y_M^2} = R \cdot \cos\left(\frac{\phi}{2}\ri
 
 So if $\phi = 0^\circ$ (no twist), $\cos(0^\circ) = 1 \implies r_{\text{throat}} = R$. It is an untwisted cylinder; the lines are parallel and meet only at the single point at infinity (creating a degenerate cone/cylinder, not a regulus of skew lines).
     
-If $0^\circ \text{ less than } \phi \text{ less than } 180^\circ$ (any intermediate twist), $0 < r_{\text{throat}} < R$. The lines are mutually skew and carve out an open circular throat of radius $R \cos(\phi/2)$.
+If $0^\circ \lt \phi \lt 180^\circ$ (any intermediate twist), $0 < r_{\text{throat}} < R$. The lines are mutually skew and carve out an open circular throat of radius $R \cos(\phi/2)$.
 
 At $\phi = 90^\circ$,  $r_{\text{throat}} = R \cos(45^\circ) = \frac{R}{\sqrt{2}} \approx 0.707 R$. At $\phi = 120^\circ$,  $r_{\text{throat}} = R \cos(60^\circ) = 0.5 R$ (the throat is exactly half the width of the top/bottom rims).
         
@@ -394,15 +382,53 @@ For $\phi = 180^\circ$ (half-turn twist), $\cos(90^\circ) = 0 \implies r_{\text{
 
 Also note while the height $H$ of the cylinder doesn't change the throat radius $r_{\text{throat}}$ at $z=0$, changing $H$ changes the slope of the rods—taller $H$ makes a tall, gentle hourglass; shorter $H$ makes a wide, flared hourglass.
 
-A regulus has as many lines as there are points on a projective line ($\vert{}F\vert{} + 1$ lines). Over $\mathbb{R}$, there are infinitely many lines in $\mathcal{R}$ and infinitely many in $\mathcal{R}'$. Over a finite field $\mathbb{F}_q$, there are $q+1$ lines in $\mathcal{R}$ and $q+1$ lines in $\mathcal{R}'$, forming a $(q+1) \times (q+1)$ grid of $(q+1)^2$ points. 
+Note that in a finite field $\mathbb{F}_q$, the continuous trigonometric formulas ($\cos \phi$, $\sin \phi$, Euclidean distance $\sqrt{x^2+y^2}$) do not hold because finite fields have no concept of angles, ordering ("less than" or "greater than"), or real-valued square-root lengths.
 
-In the 16-point theorem, we only talk of 16 points because, we start with three skew lines $g_1, g_2, g_3$ are fixed as your starting reference frame, and you pick three fixed transversals $h_1, h_2, h_3$ (which automatically gives $3 \times 3 = 9$ intersection points). Now, to prove that every line $g \in \mathcal{R}$ meets every line $h \in \mathcal{R}'$, you pick one arbitrary 4th transversal $g$ of $\{h_1, h_2, h_3\}$ (giving $3$ more intersection points) and one arbitrary 4th transversal $h$ of $\{g_1, g_2, g_3\}$ (giving $3$ more intersection points). You now have $9 + 3 + 3 = 15$ guaranteed intersections in a $4 \times 4$ grid. The theorem asks:  Must $g$ and $h$ intersect at that 16th corner?
+However, the algebraic counterparts of the cylinder, the twist, the throat, and the pinching into a cone all hold with 100% precision in $\mathbb{F}_q$. Instead of a smooth, curved hourglass, a finite field generates a discrete $(q+1) \times (q+1)$ combinatorial incidence grid that obeys the exact same intersection laws as the real hyperboloid.
+
+For example, in the real 3D model, we used $\cos \phi$ and $\sin \phi$ to create the twist because we wanted the top and bottom cross-sections to be Euclidean circles ($x^2 + y^2 = R^2$).
+
+In projective geometry over any field $F$ (including $\mathbb{F}_q$), we don't need trigonometry to twist a line. We can write the family of lines using a purely algebraic "twist parameter" $k \in F$.
+
+For each parameter $t \in F$ (which selects which rod you are looking at around the rim), connect a point on the bottom plane to a "twisted" point on the top plane:
+* Regulus $\mathcal{R}_k$ (twisted by $+k$): Connect $(1 : t : 0 : 0)$ to $(0 : 0 : 1 : k t)$.
+* Opposite Regulus $\mathcal{R}'_k$ (twisted by $-k$): Connect $(1 : s : 0 : 0)$ to $(0 : 0 : k s : 1)$.
+
+Every point on the $t$-th line of $\mathcal{R}_k$ is a linear combination $(1 : t : \lambda : \lambda k t)$. Notice that its coordinates $(x_0 : x_1 : x_2 : x_3)$ satisfy the quadratic equation:
+
+$$x_3 x_0 - k x_1 x_2 = 0 \quad \Longleftrightarrow \quad \det \begin{pmatrix} x_0 & x_1 \\ k x_2 & x_3 \end{pmatrix} = 0$$
+
+Look at what the scalar $k \in \mathbb{F}_q$ does—it acts just like the twist angle $\phi$, without a single trig function:
+
+| Real Twisted Cylinder ($\phi$) | Finite Field Algebraic Twist ($k \in \mathbb{F}_q$) | Geometric Result in $PG(3, q)$ |
+| --- | --- | --- |
+| $0^\circ \text{ less than } \phi \text{ less than } 180^\circ$ (Open throat: $r_{\text{throat}} \neq 0$) | $k \neq 0$ (Non-zero determinant) | Non-degenerate Hyperbolic Quadric $Q^+(3, q)$: The $q+1$ lines are mutually skew. None of them touch each other, and there is no "pinch point." |
+| $\phi = 180^\circ$ (Pinched throat: $r_{\text{throat}} = 0$) | $k = 0$ (Zero determinant: $x_0 x_3 = 0$) | Degenerate Pinch: Every line $(1 : t : \lambda : 0)$ passes through the exact same pinch point $P = (0 : 0 : 1 : 0)$! Skewness collapses completely, just like at $\phi = 180^\circ$. |
+---
+
+What replaces the "throat" and "curvature" in a Finite Field? In $\mathbb{F}_q$, you cannot measure the "narrowest waist radius" in millimeters because there is no Euclidean metric. Yet the geometric signature of curvature—how flat planes slice the surface—is identical in $\mathbb{R}$ and $\mathbb{F}_q$.
+
+Now let's look at how many points and lines are there in a regulus. A regulus has as many lines as there are points on a projective line ($\vert{}F\vert{} + 1$ lines). Over $\mathbb{R}$, there are infinitely many lines in $\mathcal{R}$ and infinitely many in $\mathcal{R}'$. Over a finite field $\mathbb{F}_q$, there are $q+1$ lines in $\mathcal{R}$ and $q+1$ lines in $\mathcal{R}'$, forming a $(q+1) \times (q+1)$ grid of $(q+1)^2$ points. 
+
+Let's test a single point $P$ on $g_1$ to see how many transversals can pass through it:
+
+Take the point $P \in g_1$ and span it with the entire second line $g_2$. This creates a single flat 2D plane,  $\Pi = \langle P, g_2 \rangle$.
+    
+Now look at the third line $g_3$. In 3D projective space, a line ($g_3$) and a plane ($\Pi$) that does not contain it intersect in exactly one point, let's call it $R = \Pi \cap g_3$.
+    
+Draw the line connecting $P$ and $R$. Because both $P$ and $R$ lie inside the plane $\Pi = \langle P, g_2 \rangle$, the line $PR$ lies completely inside $\Pi$. And because two lines in the same plane must intersect, the line $PR$ is forced to intersect $g_2$ at some unique point $Q$.
+
+This is a remarkable geometric constraint:  through every single point $P$ on $g_1$, there is one—and only one—straight line $h_P$ that hits both $g_2$ and $g_3$.
+
+As you slide the point $P$ along $g_1$, this unique transversal line $h_P$ slides along $g_1, g_2,$ and $g_3$ simultaneously. Instead of filling the 3D volume, this 1-parameter family of straight lines [sweeps out a 2-dimensional curved saddle/hourglass surface](https://www.youtube.com/shorts/SoqpsRKFf6k) (in real space, a hyperboloid of one sheet, like a nuclear power plant cooling tower).
+
+What is the significance of the 16-point theorem? In the 16-point theorem, we only talk of 16 points because, we start with three skew lines $g_1, g_2, g_3$ which are fixed as a starting reference frame, and we pick three fixed transversals $h_1, h_2, h_3$ (which automatically gives $3 \times 3 = 9$ intersection points). Now, to prove that every line $g \in \mathcal{R}$ meets every line $h \in \mathcal{R}'$, we pick one arbitrary fourth transversal $g$ of $\{h_1, h_2, h_3\}$ (giving $3$ more intersection points) and one arbitrary fourth transversal $h$ of $\{g_1, g_2, g_3\}$ (giving $3$ more intersection points). We now have $9 + 3 + 3 = 15$ guaranteed intersections in a $4 \times 4$ grid. The theorem asks:  Must $g$ and $h$ intersect at corner 16?
 
 Because $g$ and $h$ were chosen as arbitrary fourth transversals, proving that they must intersect at the 16th point proves that every transversal of $\{h_1, h_2, h_3\}$ intersects every transversal of $\{g_1, g_2, g_3\}$. A regulus exists if and only if that 16th intersection closes up for every choice of $g$ and $h$, which happens if and only if $F$ is commutative i.e. the order of multiplcation of two numbers doesn't matter.
 
 Thus if $g_1, g_2, g_3$ be three skew lines of $\mathbf{P}$, there is exactly one regulus through $g_1, g_2$, and $g_3$ if $F$ is commutative. If $F$ is noncommutative, then there is no regulus in $\mathbf{P}$.
 
-Now let $\mathbf{P}$ be a $3$-dimensional projective space over the field $F$ which is represented by homogeneous coordinates. Let:
+Let's explore how the commutative requirement is forced by the 16-point theorem. Let $\mathbf{P}$ be a $3$-dimensional projective space over the field $F$ which is represented by homogeneous coordinates. Let:
 
 $$\begin{aligned} g_1 &= \langle (1 : 0 : 0 : 0),\, (0 : 1 : 0 : 0) \rangle, \\ g_2 &= \langle (0 : 0 : 1 : 0),\, (0 : 0 : 0 : 1) \rangle, \\ g_3 &= \langle (1 : 0 : 1 : 0),\, (0 : 1 : 0 : 1) \rangle \end{aligned}$$
 
@@ -412,7 +438,7 @@ $$\mathcal{Q} = \left\{(a_0 : a_1 : a_2 : a_3) \;\middle\vert{}\; a_0 a_3 = a_1 
 
 Therefore, the coordinates of the points of $\mathcal{Q}$ satisfy the quadratic equation: $x_0 x_3 - x_1 x_2 = 0$. The surface $\mathcal{Q}$ is the hyperbolic quadric in $PG(3, F)$ (also known as the Segre quadric or Klein quadric in miniature). It demonstrates that you can construct and study a curved 2nd-degree algebraic surface ($x_0 x_3 - x_1 x_2 = 0$) using nothing but straight lines and incidence axioms (three skew lines and their transversals).
 
-How does this condition come about? A line $h$ is a transversal of $\{g_1, g_2, g_3\}$ if it intersects $g_1$ at some point $P_1$,  $g_2$ at some point $P_2$, and $g_3$ at some point $P_3$.
+How does the quadratic condition come about? A line $h$ is a transversal of $\{g_1, g_2, g_3\}$ if it intersects $g_1$ at some point $P_1$,  $g_2$ at some point $P_2$, and $g_3$ at some point $P_3$.
 
 Let's pick a scalar $b \in F$ to locate a point on $g_1$:
 
@@ -484,13 +510,13 @@ Look at what happened. To reach the intersection point along line $h_b$, you sta
     
 Therefore if $ab = ba$ (the division ring $F$ is a commutative field), the two points $(1 : b : a : ab)$ and $(1 : b : a : ba)$ are identical, so the lines $h_b$ and $g_a$ intersect at that point.
     
-If $ab \neq ba$ (for example, in the Quaternions $\mathbb{H}$ where $i \cdot j = k$ but $j \cdot i = -k$), the point on $h_b$ is $(1 : j : i : k)$ while the point on $g_a$ is $(1 : j : i : -k)$. Because $k \neq -k$, the two lines pass right by each other in 3D space without touching!
+If $ab \neq ba$ (for example, in the Quaternions $\mathbb{H}$ where $i \cdot j = k$ but $j \cdot i = -k$), the point on $h_b$ is $(1 : j : i : k)$ while the point on $g_a$ is $(1 : j : i : -k)$. Because $k \neq -k$, the two lines pass right by each other in 3D space without touching.
 
 This is pretty much the same as differential geometry, where if you have two vector fields $X$ and $Y$ in 3D space, you can flow along $X$ by distance $a$ and then along $Y$ by distance $b$, or flow along $Y$ by $b$ and then along $X$ by $a$. Do those two paths land on the exact same 4th corner to weave a 2D coordinate grid (a surface)? Only if the Lie bracket vanishes ($[X, Y] = XY - YX = 0$, or $\partial_x \partial_y = \partial_y \partial_x$). If not, the 4th corner fails to close, and the flows twist into 3D volume instead of staying on a 2D surface.
     
 Both the projective geometry and the differential geometry observations are two manifestations of the exact same structural principle: integrability (closure of a 2D mesh in a 3D+ space).
 
-In higher dimensions, hyperbolic quadrics (like $x_0 x_5 - x_1 x_4 + x_2 x_3 = 0$ in $PG(5, F)$—the Klein Quadric) are completely ruled not just by straight lines ($1$D subspaces), but by entire flat planes ($2$D subspaces), called generators. Specifically, the Klein quadric in 5D space is woven from two opposite families of flat 2D planes (often called $\alpha$-planes and $\beta$-planes), directly generalizing the two reguli $\mathcal{R}$ and $\mathcal{R}'$ of lines in 3D. The expression $x_0 x_5 - x_1 x_4 + x_2 x_3 = 0$ comes directly from the wedge product (exterior algebra), and the determinant used in the area of a parallelogram or traingle (specifically,  $2 \times 2$ minors and the Laplace cofactor expansion). It is related to the Pfaffian of a $4 \times 4$ skew-symmetric matrix.
+In higher dimensions, hyperbolic quadrics (like $x_0 x_5 - x_1 x_4 + x_2 x_3 = 0$ in $PG(5, F)$—the Klein Quadric) are completely ruled not just by straight lines ($1$D subspaces), but by entire flat planes ($2$D subspaces), called generators. Specifically, the Klein quadric in 5D space is woven from two opposite families of flat 2D planes (often called $\alpha$-planes and $\beta$-planes), directly generalizing the two reguli $\mathcal{R}$ and $\mathcal{R}'$ of lines in 3D. The expression $x_0 x_5 - x_1 x_4 + x_2 x_3 = 0$ comes directly from the wedge product (exterior algebra), and the determinant used in the area of a parallelogram or triangle (specifically,  $2 \times 2$ minors and the Laplace cofactor expansion). It is related to the Pfaffian of a $4 \times 4$ skew-symmetric matrix.
     
 Also, the mapping $(1 : a) \times (1 : b) \mapsto (1 : b : a : ab)$ is the simplest case of the Segre Embedding $\mathbb{P}^1 \times \mathbb{P}^1 \hookrightarrow \mathbb{P}^3$, which embeds the product of two lines as a curved quadric in 3D space. In general, you can embed $\mathbb{P}^n \times \mathbb{P}^m$ into $\mathbb{P}^{(n+1)(m+1)-1}$ using $x_{ij} = a_i b_j$.
 
@@ -503,39 +529,13 @@ In 3D Projective Space $PG(3, F)$ (over any field), there is no distinction betw
     
 Over $\mathbb{R}$, a projective line $\mathbb{P}^1(\mathbb{R})$ is a closed circle $S^1$ (a line whose two ends meet at the point at infinity). Thus, in $PG(3, \mathbb{R})$, the surface is topologically a torus ($S^1 \times S^1$).
         
-Over a finite field $\mathbb{F}_q$, a projective line $\mathbb{P}^1(\mathbb{F}_q)$ is a discrete set of $q+1$ points. Thus, in $PG(3, q)$, the hyperbolic quadric $Q^+(3, q)$ is literally a finite $(q+1) \times (q+1)$ combinatorial grid of $(q+1)^2$ points, woven from $q+1$ skew lines of $\mathcal{R}$ and $q+1$ skew lines of $\mathcal{R}'$. There is no continuous "curvature" in a finite field, yet every algebraic and incidence property of the hyperboloid (every line of $\mathcal{R}$ meets every line of $\mathcal{R}'$, tangent planes cut out a pair of intersecting lines, etc.) holds identically!
+Over a finite field $\mathbb{F}_q$, a projective line $\mathbb{P}^1(\mathbb{F}_q)$ is a discrete set of $q+1$ points. Thus, in $PG(3, q)$, the hyperbolic quadric $Q^+(3, q)$ is literally a finite $(q+1) \times (q+1)$ combinatorial grid of $(q+1)^2$ points, woven from $q+1$ skew lines of $\mathcal{R}$ and $q+1$ skew lines of $\mathcal{R}'$. There is no continuous "curvature" in a finite field, yet every algebraic and incidence property of the hyperboloid (every line of $\mathcal{R}$ meets every line of $\mathcal{R}'$, tangent planes cut out a pair of intersecting lines, etc.) holds identically.
         
 In 3D Affine Space (When You Slice Away a Plane at Infinity), depending on which plane you choose as the plane at infinity in $PG(3, \mathbb{R})$, the exact same projective regulus $x_0 x_3 - x_1 x_2 = 0$ appears as two different familiar 3D surfaces:
     
 **Hyperboloid of One Sheet ($x^2 + y^2 - z^2 = 1$):** If you choose a plane at infinity that does _not_ contain any lines of the regulus (it cuts the quadric in an ellipse at infinity), the affine remainder is the hourglass hyperboloid of one sheet.
         
 **Hyperbolic Paraboloid / Pringles Saddle ($z = xy$):** Look directly at $x_0 x_3 - x_1 x_2 = 0$ and set the affine plane at infinity to be $x_0 = 0$. Normalizing $x_0 = 1$ and writing $(x_1, x_2, x_3) = (x, y, z)$ gives **$z = xy$**! Why does it look like a saddle instead of an hourglass? Because the plane at infinity $x_0 = 0$ is _tangent_ to the quadric and contains two lines of the reguli (pushing the closed waist out to infinity). Projectively, the hourglass ($x^2 + y^2 - z^2 = 1$) and the saddle ($z = xy$) are the exact same geometric object.
-
-Note that in a finite field $\mathbb{F}_q$, the continuous trigonometric formulas ($\cos \phi$, $\sin \phi$, Euclidean distance $\sqrt{x^2+y^2}$) do not hold because finite fields have no concept of angles, ordering ("less than" or "greater than"), or real-valued square-root lengths.
-
-However, the algebraic counterparts of the cylinder, the twist, the throat, and the pinching into a cone all hold with 100% precision in $\mathbb{F}_q$. Instead of a smooth, curved hourglass, a finite field generates a discrete $(q+1) \times (q+1)$ combinatorial incidence grid that obeys the exact same intersection laws as the real hyperboloid.
-
-For example, in the real 3D model, we used $\cos \phi$ and $\sin \phi$ to create the twist because we wanted the top and bottom cross-sections to be Euclidean circles ($x^2 + y^2 = R^2$).
-
-In projective geometry over any field $F$ (including $\mathbb{F}_q$), we don't need trigonometry to twist a line. We can write the family of lines using a purely algebraic "twist parameter" $k \in F$.
-
-For each parameter $t \in F$ (which selects which rod you are looking at around the rim), connect a point on the bottom plane to a "twisted" point on the top plane:
-* Regulus $\mathcal{R}_k$ (twisted by $+k$): Connect $(1 : t : 0 : 0)$ to $(0 : 0 : 1 : k t)$.
-* Opposite Regulus $\mathcal{R}'_k$ (twisted by $-k$): Connect $(1 : s : 0 : 0)$ to $(0 : 0 : k s : 1)$.
-
-Every point on the $t$-th line of $\mathcal{R}_k$ is a linear combination $(1 : t : \lambda : \lambda k t)$. Notice that its coordinates $(x_0 : x_1 : x_2 : x_3)$ satisfy the quadratic equation:
-
-$$x_3 x_0 - k x_1 x_2 = 0 \quad \Longleftrightarrow \quad \det \begin{pmatrix} x_0 & x_1 \\ k x_2 & x_3 \end{pmatrix} = 0$$
-
-Look at what the scalar $k \in \mathbb{F}_q$ does—it acts just like the twist angle $\phi$, without a single trig function:
-
-| Real Twisted Cylinder ($\phi$) | Finite Field Algebraic Twist ($k \in \mathbb{F}_q$) | Geometric Result in $PG(3, q)$ |
-| --- | --- | --- |
-| $0^\circ \text{ less than } \phi \text{ less than } 180^\circ$ (Open throat: $r_{\text{throat}} \neq 0$) | $k \neq 0$ (Non-zero determinant) | Non-degenerate Hyperbolic Quadric $Q^+(3, q)$: The $q+1$ lines are mutually skew. None of them touch each other, and there is no "pinch point." |
-| $\phi = 180^\circ$ (Pinched throat: $r_{\text{throat}} = 0$) | $k = 0$ (Zero determinant: $x_0 x_3 = 0$) | Degenerate Pinch: Every line $(1 : t : \lambda : 0)$ passes through the exact same pinch point $P = (0 : 0 : 1 : 0)$! Skewness collapses completely, just like at $\phi = 180^\circ$. |
----
-
-What replaces the "throat" and "curvature" in a Finite Field? In $\mathbb{F}_q$, you cannot measure the "narrowest waist radius" in millimeters because there is no Euclidean metric. Yet the geometric signature of curvature—how flat planes slice the surface—is identical in $\mathbb{R}$ and $\mathbb{F}_q$.
 
 If you take the finite point-set $\mathcal{Q} = \{ (x_0 : x_1 : x_2 : x_3) \in PG(3, q) \mid x_0 x_3 - x_1 x_2 = 0 \}$, it consists of exactly $(q+1)^2$ points. Why do mathematicians still call this discrete cloud of $(q+1)^2$ points a "curved quadric surface"? Because of what happens when you slice it with any 2D plane $\Pi$ in $PG(3, q)$:
 
