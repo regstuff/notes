@@ -201,7 +201,7 @@ Checking if a point $\mathbf{p} = (x, y, z)$ lies on a line $\boldsymbol{\ell} =
     
 Checking collinearity of three points: Compute a single $3 \times 3$ determinant: $\det \begin{pmatrix} x_1 & y_1 & z_1 \\ x_2 & y_2 & z_2 \\ x_3 & y_3 & z_3 \end{pmatrix} = 0$
 
-Geometric problems become straightforward matrix and vector calculations. These rules generalize to higher dimensions $PG(n, \mathbb{F})$ where the 3D cross product is replaced by the exterior wedge product ($\wedge$) and Plücker coordinates, which we won't immediately bother about right now.
+Geometric problems become straightforward matrix and vector calculations. These rules generalize to higher dimensions $PG(n, \mathbb{F})$ where the 3D cross product is replaced by the exterior wedge product ($\wedge$) and Plücker coordinates, which we won't immediately bother about right now. Similarly, in higher dimensions, we can use the dot product rule to check incidence of a point with a hyperplane. To check incidence between a point and a line or non-hyperplanes, we must take multiple dot products between the point and each additional linear constraint equation.
 
 The vector space representation also includes the principle of duality. For example, because a point is a 1D subspace of $\mathbb{F}^3$ and a line is a 2D subspace of $\mathbb{F}^3$, the incidence condition:
 
@@ -674,6 +674,8 @@ If $P$ is a sharp pinch / singular vertex of $\mathcal{Q}$ then $\mathcal{Q}_P =
 
 In fact, this gives a purely geometric definition of a singular point (pinch/vertex): a point $P \in \mathcal{Q}$ is singular if and only if $\mathcal{Q}_P = \mathbf{P}$.
 
+It's pertinent to point out that another condition that implies a point $P$ is singular is that every line connecting $P$ to a point $X \in \mathcal{Q}$ is a $\mathcal{Q}$-line. If every line connecting $P$ to a point of the quadric is entirely contained in the quadric, it means there are no lines through $P$ that are secants of the quadric! Thus, you can take any point in the space and send a line from it to $P$ and you are guaranteed a tangent, meaning $P$ is singular.
+
 ### Examples of Quadratic Sets
 
 The empty set, any set consisting of just one point, the set of points on a line, the set of all points of a subspace are all quadratic sets. These quadratic sets $\mathcal{Q}$ have the property that for each point $P \in \mathcal{Q}$ the set $\mathcal{Q}_P$ equals $\mathbf{P}$.
@@ -726,7 +728,7 @@ This intersection is the quadratic set induced by $\mathcal{Q}$ in the tangent s
 
 Why does this intersection have a radical equal to $\{P\}$? When we intersect the tangent plane $\mathcal{Q}_P$ with a smooth 3D surface $\mathcal{Q}$, let's say a hyperbolic quadric (think of an hourglass) $\mathcal{Q}$ with its tangent plane $\mathcal{Q}_P$ at $P$, what is the 2D cross-section $\overline{\mathcal{Q}} = \mathcal{Q} \cap \mathcal{Q}_P$?
 
-It is an X-shaped cross of two intersecting lines $g \cup h$ meeting at $P$. Inside the 2D plane $\mathcal{Q}_P$, is an X-shaped pair of intersecting lines $g \cup h$ a smooth conic, or is it a degenerate 1D cone whose vertex is the crossing point $P$? It is degenerate, with vertex $P$. Inside the plane $\mathcal{Q}_P$, every line passing through $P$ is either $g$ (all points in $\overline{\mathcal{Q}}$), $h$ (all points in $\overline{\mathcal{Q}}$), or touches $g \cup h$ only at the crossing point $P$ ($1$ point in $\overline{\mathcal{Q}}$)!
+It is an X-shaped cross of two intersecting lines $g \cup h$ meeting at $P$. Inside the 2D plane $\mathcal{Q}_P$, an X-shaped pair of intersecting lines $g \cup h$ is a degenerate 1D cone whose vertex is the crossing point $P$. Inside the plane $\mathcal{Q}_P$, every line passing through $P$ is either $g$ (all points in $\overline{\mathcal{Q}}$), $h$ (all points in $\overline{\mathcal{Q}}$), or touches $g \cup h$ only at the crossing point $P$ ($1$ point in $\overline{\mathcal{Q}}$).
 
 Therefore, for the 2D slice $\overline{\mathcal{Q}} = \mathcal{Q} \cap \mathcal{Q}_P$ living inside the plane $\mathcal{Q}_P$, the point $P$ is a singular vertex and $\text{Rad}(\mathcal{Q} \cap \mathcal{Q}_P) = \{P\}$.
 
@@ -734,7 +736,7 @@ On a Sphere / Elliptic Quadric $\mathcal{Q}$, when you slice a sphere $\mathcal{
 
 Inside the plane $\mathcal{Q}_P$, every line through $P$ meets $\{P\}$ in $1$ point, so $P$ is a singular point of that cross-section: $\text{Rad}(\mathcal{Q} \cap \mathcal{Q}_P) = \{P\}$
 
-Now why did we say "In Other Words..." in the second paragraph of the theorem and linking $\mathcal{Q}_P \neq \mathcal{Q}_R$ to $\text{Rad}(\mathcal{Q} \cap \mathcal{Q}_P) = \{P\}$?
+Now why did we say "In Other Words..." in the second paragraph of the theorem, linking $\mathcal{Q}_P \neq \mathcal{Q}_R$ to $\text{Rad}(\mathcal{Q} \cap \mathcal{Q}_P) = \{P\}$?
 
 What does it mean for a point $R \in \mathcal{Q} \cap \mathcal{Q}_P$ to be in the radical of the slice $\mathcal{Q} \cap \mathcal{Q}_P$? It means that every line through $R$ inside the plane $\mathcal{Q}_P$ is tangent to $\mathcal{Q}$. In other words, the plane $\mathcal{Q}_P$ is made entirely of tangent lines to $\mathcal{Q}$ at $R$—which means $\mathcal{Q}_P$ is also the tangent plane to $\mathcal{Q}$ at $R$ ($\mathcal{Q}_R = \mathcal{Q}_P$)!
 
@@ -754,7 +756,7 @@ Now let $\mathcal{Q}$ be a nondegenerate quadratic set of $\mathbf{P}$.
 
 ### Index of Quadratic Sets
 
-A quadratic set $\mathcal{Q}$ can be described very well by the dimension of its maximal $\mathcal{Q}$-subspaces (which are flat linear subspaces - a point, a line, a plane etc. that sits completely inside the curved surface $\mathcal{Q}$. The prefix $\mathcal{Q}$ simply means "contained in $\mathcal{Q}$"). This maximum dimension is connected to the ‘index’ of $\mathcal{Q}$, which turns out to be the crucial parameter to describe $\mathcal{Q}$.
+A quadratic set $\mathcal{Q}$ can be described very well by the dimension of its maximal $\mathcal{Q}$-subspaces (which are flat linear subspaces - a point, a line, a plane etc. that sit completely inside the curved surface $\mathcal{Q}$). The prefix $\mathcal{Q}$ simply means "contained in $\mathcal{Q}$"). This maximum dimension is connected to the index of $\mathcal{Q}$, which turns out to be the crucial parameter to describe $\mathcal{Q}$.
 
 Let $t - 1$ be the maximum dimension of a $\mathcal{Q}$-subspace of a quadratic set $\mathcal{Q}$. Then the integer $t$ is called the index of $\mathcal{Q}$. The $\mathcal{Q}$-subspaces of dimension $t - 1$ are also called maximal $\mathcal{Q}$-subspaces.
 
@@ -762,7 +764,7 @@ In the literature, $\mathcal{Q}$-subspaces are also called generators or totally
 
 **Examples.** A cone and a hyperboloid in $3$-dimensional real space have index $2$, since they contain lines, but no planes. Any nonempty quadratic set that does not contain a line has index $1$; for instance, a sphere has index $1$.
 
-If $\mathcal{Q}$ is a nondegenerate quadratic set of index $t$ in a $d$-dimensional projective space $\mathbf{P}$, then if $d$ is even, then $t \le \frac{d}{2}$. If $d$ is odd, then $t \le \frac{d + 1}{2}$. The more general formula which includes degenerate spaces if $t \le \frac{d + r + 1}{2}$ where $r$ is the size of the radical.
+If $\mathcal{Q}$ is a nondegenerate quadratic set of index $t$ in a $d$-dimensional projective space $\mathbf{P}$, then if $d$ is even, then $t \le \frac{d}{2}$. If $d$ is odd, then $t \le \frac{d + 1}{2}$. The more general formula which includes degenerate spaces is $t \le \frac{d + r + 1}{2}$ where $r$ is the size of the radical.
 
 Why do we care about the index? In linear algebra and differential geometry, this number $t$ is called the Witt Index (or isotropic index) of a quadratic form. The point of the index is classification. Suppose you are in a $d$-dimensional projective space $\mathbf{P}$ over a finite field $\mathbb{F}_q$ (or the real numbers $\mathbb{R}$), and you want a complete list of every possible nondegenerate quadratic set $\mathcal{Q}$ that can exist in $\mathbf{P}$. The index $t$ is the single invariant that tells them apart. 
 
@@ -775,9 +777,9 @@ Look at how the index $t$ completely classifies all nondegenerate quadrics in $P
 | $t = 1$ | $t - 1 = \mathbf{0}$ | Points (contains no straight lines at all) | Elliptic Quadric $Q^-(3, q)$ (or Ovoid / Sphere) | $x_0^2 + d x_1^2 + x_2 x_3 = 0$ *(where $x_0^2 + dx_1^2$ is irreducible)* |
 | $t = 2$ | $t - 1 = \mathbf{1}$ | Lines (contains lines, but no 2D planes) | Hyperbolic Quadric $Q^+(3, q)$ (Regulus / Hourglass) | $x_0 x_3 - x_1 x_2 = 0$ |
 
-And in even dimension $d = 2m$ (e.g., $d = 4$, where $t \le \frac{4}{2} = 2$), there is only one main type of nondegenerate quadric—the Parabolic Quadric $Q(4, q)$ ($x_0^2 + x_1 x_4 - x_2 x_3 = 0$), which has index $t = 2$ (ruled by lines).
+And in even dimension $d = 2m$ (e.g., $d = 4$, where $t \le \frac{4}{2} = 2$), there is only one main type of nondegenerate quadric—the Parabolic Quadric $Q(4, q)$ ($x_0^2 + x_1 x_4 - x_2 x_3 = 0$), which has index $t = 2$ (ruled by lines). In fact, over finite fields, we will see that once we are given the dimension of a projective space, we can determine which of the 3 types of non-degenerate quadrics (parabolic, hyperbolic, elliptic) are possible, and which one a specific quadric is, based on its index.
 
-The following lemma shows that the maximal $\mathcal{Q}$-subspaces are ‘uniformly distributed’.
+The following lemma shows that the maximal $\mathcal{Q}$-subspaces are 'uniformly distributed'.
 
 Before that, let's understand what uniformly distributed means. Imagine a bizarre surface where one half of the surface was bumpy like a sphere (containing only $0$D points, no lines), and the other half had a flat 2D disc glued onto it, or a single isolated straight line stuck to one side.  The lemma proves that a quadratic set can NEVER look like that. Now for the lemma:
 
@@ -787,7 +789,7 @@ More precisely: if $P$ is a point of $\mathcal{Q}$ outside a $(t - 1)$-dimension
 
 We formulate the assertion above once more in the case $t = 2$: through each point of $\mathcal{Q}$ outside a $\mathcal{Q}$-line $g$ there is a $\mathcal{Q}$-line that intersects $g$. We have seen this in the regulus.
 
-So let's relook at what "uniformly distributed" means. It means there are no isolated lower-dimensional patches. If $\mathcal{Q}$ contains even a single  $(t-1)$-dimensional flat subspace $U$ somewhere on it, then every single point $P \in \mathcal{Q}$—no matter where you look on $\mathcal{Q}$—must have at least one $(t-1)$-dimensional flat subspace $U'$ passing right through it.
+Now let's relook at what "uniformly distributed" means. It means there are no isolated lower-dimensional patches. If $\mathcal{Q}$ contains even a single  $(t-1)$-dimensional flat subspace $U$ somewhere on it, then every single point $P \in \mathcal{Q}$—no matter where you look on $\mathcal{Q}$—must have at least one $(t-1)$-dimensional flat subspace $U'$ passing right through it. For eg. for a hyperbolic in 3D, this is equivalent to saying, if there is even one $\mathcal{Q}$-line, then every point of the quadric must fall on a $\mathcal{Q}$-line.
     
 Furthermore, every maximal subspace has the same dimension ($t-1$). And in a finite space $PG(d, q)$, every $(t-1)$-dimensional projective subspace has the exact same number of points ($q^{t-1} + \dots + q + 1$), and by symmetry, every non-singular point $P \in \mathcal{Q}$ lies on the exact same number of maximal $\mathcal{Q}$-subspaces.
 
@@ -815,9 +817,9 @@ Thus, the entire 2D flat interior of the triangle $\langle A, B, C \rangle$ gets
 
 Now let $\mathcal{Q}$ be a quadratic set in a $d$-dimensional projective space $\mathbf{P}$, and let $U$ be a maximal $\mathcal{Q}$-subspace. If $\mathcal{Q}$ is nondegenerate, then there is a maximal $\mathcal{Q}$-subspace that is skew (disjoint, which means their intersection is empty) to $U$.
 
-Why must this be true? Let's contrast a cone (degenerate) vs. a hyperboloid (nondegenerate). On a cone, the maximal $\mathcal{Q}$-subspaces are the straight lines ruling the cone.  No two lines on a cone skew. Every single line passes through the vertex $V$. It is impossible to find a maximal $\mathcal{Q}$-line that is skew to $U$.
+Why must this be true? Let's contrast a cone (degenerate) vs. a hyperboloid (nondegenerate). On a cone, the maximal $\mathcal{Q}$-subspaces are the straight lines ruling the cone.  No two lines on a cone are skew. Every single line passes through the vertex $V$. It is impossible to find a maximal $\mathcal{Q}$-line that is skew to $U$.
     
-But in a non-degenerate sphere or hyperboloid, because $\mathcal{Q}$ is nondegenerate, there is no universal vertex $V$ where all maximal $\mathcal{Q}$-subspaces are pinned together. To see why this is so, assume that there is such a vertex $V$. Now let's take some point $X$ in the quadratic set. By the uniform distribution lemma, this point must lie on some maximal subspace $U$. Since $U$ is a flat subspace and it contains both $V$ and $X$, the line $VX$ must lie in $U$ as well, making it a $\mathcal{Q}$-line. Since we chose $X$ arbitrarily, it means the line from $V$ to every point in $\mathcal{Q}$. Thus $V$ is a singular point and so the radical of the quadratic set is non-empty, which contradicts the fact that it is non-degenerate.
+But in a non-degenerate sphere or hyperboloid, because $\mathcal{Q}$ is nondegenerate, there is no universal vertex $V$ where all maximal $\mathcal{Q}$-subspaces are pinned together. To see why this is so, assume that there is such a vertex $V$. Now let's take some point $X$ in the quadratic set. By the uniform distribution lemma, this point must lie on some maximal subspace $U$. Since $U$ is a flat subspace and it contains both $V$ and $X$, the line $VX$ must lie in $U$ as well, making it a $\mathcal{Q}$-line. Since we chose $X$ arbitrarily, it means the line from $V$ to every point in $\mathcal{Q}$ is a $\mathcal{Q}$-line. Thus $V$ is a singular point and so the radical of the quadratic set is non-empty, which contradicts the fact that it is non-degenerate.
 
 Now back to visualizing our two skew maximal subspaces, for $t = 1$ (sphere / ovoid), a maximal $\mathcal{Q}$-subspace $U$ is just a single point $P$ ($\dim = 0$). Saying there is a maximal $\mathcal{Q}$-subspace $U'$ skew to $U$ just means there is a second point $P' \in \mathcal{Q}$ disjoint from $P$ ($P \neq P'$).
         
@@ -846,7 +848,7 @@ When $\mathcal{Q}$ is nondegenerate,  $\text{Rad}(\mathcal{Q}) = \emptyset$, so 
 When $\mathcal{Q} = H_1 \cup H_2$ is two planes in $d = 3$,  $\text{Rad}(\mathcal{Q})$ is a line ($r = 2$), and the formula gives $t \le \frac{3 + 2 + 1}{2} = 3$, which matches $t = 3$.
 
 ### Quadratic Sets in 2D and 3D Projective Spaces
-We first define a type of objects found in 2D projective planes, and a few objects found in 3D projective spaces. Then for 2D and 3D spaces, we list out the possible quadratic sets.
+We first define a type of object found in 2D projective planes, and a few objects found in 3D projective spaces. Then for 2D and 3D spaces, we list out the possible quadratic sets.
 
 A nonempty set $\mathcal{O}$ of points in a projective plane is called an oval if no three points of $\mathcal{O}$ are collinear and each point of $\mathcal{O}$ is on a unique tangent. Ovals are the only type of nonempty, nondegenerate quadratic sets in a projective plane.
 
