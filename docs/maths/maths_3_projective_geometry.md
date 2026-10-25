@@ -442,7 +442,7 @@ Take the point $P \in g_1$ and span it with the entire second line $g_2$. This c
     
 Now look at the third line $g_3$. In 3D projective space, a line ($g_3$) and a plane ($\Pi$) that does not contain it intersect in exactly one point, let's call it $R = \Pi \cap g_3$.
     
-Draw the line connecting $P$ and $R$. Because both $P$ and $R$ lie inside the plane $\Pi = \langle P, g_2 \rangle$, the line $PR$ lies completely inside $\Pi$. And because two lines in the same plane must intersect, the line $PR$ is forced to intersect $g_2$ at some unique point $Q$.
+Draw the line connecting $P$ and $R$. Because both $P$ and $R$ lie inside the plane $\Pi = \langle P, g_2 \rangle$, the line $PR$ lies completely inside $\Pi$. $g_2$ also lies completely inside this plane. Two lines in the same plane must intersect, so the line $PR$ is forced to intersect $g_2$ at some unique point $Q$.
 
 This is a remarkable geometric constraint:  through every single point $P$ on $g_1$, there is one—and only one—straight line $h_P$ that hits both $g_2$ and $g_3$.
 
