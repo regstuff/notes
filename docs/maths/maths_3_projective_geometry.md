@@ -43,6 +43,8 @@ $$h + k = i + c,$$
 
 that is: $\dim S_h + \dim S_k = \dim (S_h \cap S_k) + \dim (S_h \oplus S_k)$.
 
+This is called the Grassmann Dimension Formula or Grassmann's Identity. We'll talk about this a little bit more soon.
+
 A9. (Fano’s Postulate) Every $S_1$ of $S_r$ contains at least three points.
 
 Now for some terminology. In an $r$-dimensional projective space $S_r$ a one-dimensional subspace $S_1$ is called a line. A two-dimensional subspace $S_2$ is called a plane. A three-dimensional subspace $S_3$ is called a solid. An $(r - 1)$-dimensional subspace $S_{r-1}$ is called a hyperplane of the $S_r$. Points which lie on the same line are said to be collinear. Points or lines which lie on the same plane are said to be coplanar. Lines which pass through the same point are said to be concurrent.
@@ -139,6 +141,30 @@ $$= \frac{(q^2 + 1)(q + 1)q(q^2 + q + 1)}{(q + 1)q}$$
 $$= (q^2 + 1)(q^2 + q + 1)$$
 
 $$= q^4 + q^3 + 2q^2 + q + 1.$$
+
+### Grassman Formula for Intersection of Spaces
+
+As we saw earlier, the Grassmann Dimension Formula or Grassmann's Identity relates the dimensions of two subspaces $U$ and $W$ to the dimensions of their intersection (meet) and their span (join). Because projective dimension is always $1$ less than the underlying vector space dimension (we'll talk about this soon), the formula looks identical in both settings, provided you use the convention that the empty projective subspace $\emptyset$ has projective dimension $-1$.
+
+For any two projective subspaces $U$ and $W$ in a projective space $PG(n, \mathbb{F})$:
+
+$$\dim(U) + \dim(W) = \dim(U \vee W) + \dim(U \cap W)$$
+
+where: $U \vee W$ (Join / Span) is the smallest projective subspace containing both $U$ and $W$. $U \cap W$ (Meet / Intersection) is the largest projective subspace contained in both $U$ and $W$ (with $\dim(\emptyset) = -1$ if $U$ and $W$ are disjoint/skew).
+
+When looking at the dimensions of subspaces, there is a concept called codimension which makes it easy to see how different subspaces interact. If $S \subset H$ and $\dim S = M - c$, then it has codimension $c$ inside $H$. Let $K \subset H$ have dimension $k$. Applyt the Grassmann formula to find a minimum dimension of their intersection (where the span of these two subspaces is set to a maximum of M):
+
+$$\dim(S \cap K) \ge (M - c) + k - M = k - c$$
+
+Remember that in projective geometry, the empty set has dimension $\dim(\emptyset) = -1$, while a non-empty intersection (at least a point) requires $\dim(S \cap K) \ge \mathbf{0}$. Therefore, an intersection is guaranteed if and only if:
+
+$$k - c \ge 0 \iff \mathbf{k \ge c} \quad (\text{Dimension} \ge \text{Codimension})$$
+
+Let's look at some examples. A $\text{codim } c = 1$ subspace is forced to intersect a line $K ($\dim k = 1$) because dimension $1$ and codimension $1$ "fill each other out" (their vector space dimensions are $2$ and $m$ inside an $(m+1)$-dimensional vector space, summing to $m + 2 > m + 1$).
+
+But $\text{codim } c = 2$ will not be filled out by $\dim k = 1$ (a line), leaving "wiggle room" for them to miss each other completely (just like two skew lines in $PG(3, F)$, where a line has $\dim 1$ but $\text{codim } 3 - 1 = 2$).
+        
+Again, $\text{codim } c = 2$ and $\dim k = 3$ will intersect in at least a $1$-dimensional line because $k - c = 3 - 2 = \mathbf{1} \ge 0$.
 
 ## Vector Spaces and Projective Geometry
 Purely axiomatic geometry (also called synthetic geometry) lacks a coordinate system, making it very difficult to compute transformations, intersections, or specific loci. We want to label these abstract points and lines with coordinates so we can calculate with them and get geometrical results by mechanically manipulating numbers. 
@@ -569,7 +595,7 @@ Look at that $3 \times 3$ table of $9$ points inside the 15-point space $PG(3, 2
 ### Hyperbolic Quadrics & 3D Projective Spaces
 In projective geometry, $d = 3$ is the "Goldilocks dimension" where lines can be skew and where three skew lines uniquely lock transversals into a 2D surface.
 
-When$d = 2$, a plane, skew lines cannot exist ($\dim(g \cap h) = 1 + 1 - 2 = 0$, so any two lines must intersect). In $d = 3$ (3-Space), two lines have codimension $2$ each, so they typically miss each other. A plane ($2$D) and a line ($1$D) always meet at a point ($2 + 1 - 3 = 0$). Therefore, $3$ skew lines uniquely determine a 1-parameter family of transversals (a 2D surface). If $d \ge 4$, for example in 4D space, a plane ($2$D) and a line ($1$D) generally miss each other completely ($2 + 1 - 4 = -1$). If you pick three skew lines in 4D space, there is typically only one single transversal line (or none) in total, rather than a continuous surface of them. Thus, the classical regulus of lines is an intrinsically 3-dimensional phenomenon.
+When $d = 2$ i.e. a plane, skew lines cannot exist ($\dim(g \cap h) = 1 + 1 - 2 = 0$, so any two lines must intersect). In $d = 3$ (3-Space), two lines have codimension $2$ each, so they typically miss each other. A plane ($2$D) and a line ($1$D) always meet at a point ($2 + 1 - 3 = 0$). Therefore, $3$ skew lines uniquely determine a 1-parameter family of transversals (a 2D surface). If $d \ge 4$, for example in 4D space, a plane ($2$D) and a line ($1$D) generally miss each other completely ($2 + 1 - 4 = -1$). If you pick three skew lines in 4D space, there is typically only one single transversal line (or none) in total, rather than a continuous surface of them. Thus, the classical regulus of lines is an intrinsically 3-dimensional phenomenon.
 
 If a regulus of lines only works in 3D, how do we get hyperbolic quadrics in higher dimensions? We noted that in $d = 3$, a line ($\dim = 1$) is guaranteed to intersect a plane ($\dim = 2$) in a point because $1 + 2 - 3 = 0$. In higher odd-dimensional projective spaces $PG(2m-1, F)$, the exact same intersection guarantee holds—not between two lines, but between $(m-1)$-dimensional subspaces.
 
