@@ -852,11 +852,13 @@ We first define a type of object found in 2D projective planes, and a few object
 
 A nonempty set $\mathcal{O}$ of points in a projective plane is called an oval if no three points of $\mathcal{O}$ are collinear and each point of $\mathcal{O}$ is on a unique tangent. Ovals are the only type of nonempty, nondegenerate quadratic sets in a projective plane.
 
-An ovoid is a nonempty set $\mathcal{O}$ of points of $\mathbf{P}$ where no three points of $\mathcal{O}$ are collinear and for each point $P \in \mathcal{O}$, the tangents through $P$ cover a hyperplane (that is,  $\mathcal{O}_P$ is a hyperplane).
+An ovoid is a nonempty set $\mathcal{O}$ of points of a 3D projective space $\mathbf{P}$ where no three points of $\mathcal{O}$ are collinear and for each point $P \in \mathcal{O}$, the tangents through $P$ cover a hyperplane (that is,  $\mathcal{O}_P$ is a hyperplane).
+
+Ovals and ovoids are the same kind of geometric structure, a non-degenerate quadratic set of index $t = 1$, meaning it contains zero lines. Since every point in an oval or an ovoid has a tangent plane that is a hyperplane, this also means that they have no singular points. Later, we will see that in a finite field, ovals and ovoids cannot exist in any projective space of $d \gt 3$.
 
 ---
 
-**Aside:** Because no three points of an ovoid are collinear, an ovoid contains no lines at all, meaning its index is $t = 1$. In 3D space, ovoids are the exact synthetic generalization of spheres/elliptic quadrics. So every sphere and elliptic quadric is automatically an ovoid, but there are ovoids that are not spheres or elliptic quadrics.
+**Aside:** Because no three points of an ovoid are collinear, an ovoid contains no lines at all, meaning its index is $t = 1$. In 3D space, ovoids are the synthetic generalization of spheres/elliptic quadrics. So every sphere and elliptic quadric is an ovoid, but there are ovoids that are not spheres or elliptic quadrics.
 
 ---
 
@@ -878,13 +880,13 @@ The resulting tangent space $\mathcal{Q}_P$ is $\mathcal{Q}_P = \left( \mathbf{P
 
 Of course, in a 2D projective plane, there is no 3D space through which tangent lines can travel, so the tangent space ends up being the entire plane, and so the two lines are quadratic sets.
 
-In algebra, a quadric $\mathcal{Q}$ is defined by one single quadratic equation  $f(x_0, x_1, x_2, x_3) = 0$. If that quadratic polynomial factors into two linear pieces:
+We can put this in algebraic terms as well. In algebra, a quadric $\mathcal{Q}$ is defined by one single quadratic equation  $f(x_0, x_1, x_2, x_3) = 0$. If that quadratic polynomial factors into two linear pieces:
 
 $$f(x_0, x_1, x_2, x_3) = L_1(x_0, x_1, x_2, x_3) \cdot L_2(x_0, x_1, x_2, x_3) = 0$$
 
 then $L_1(x) = 0$ is a hyperplane  $H_1$, and $L_2(x) = 0$ is a hyperplane  $H_2$, so their union is $H_1 \cup H_2$ (two planes in 3D space). You can never get the union of two 1D lines in 3D space from a single quadratic equation (in algebraic geometry, two skew lines in 3D space require intersecting multiple quadratic surfaces, not just one). The Tangent-Space Axiom is the synthetic rule that detects this.
 
-Note that $L_1, L_2$ can only be hyperplanes. For example, they cannot be a line in 3D space. This comes down to one of the most fundamental rules of linear algebra:  each single linear equation removes only $1$ degree of freedom (reduces the dimension by $1$).
+Note that $L_1, L_2$ can only be hyperplanes. For example, they cannot be a line in 3D space. This comes down to one of the most fundamental rules of linear algebra:  each single linear equation removes only $1$ degree of freedom (reduces the dimension by $1$). If you wanted to arrive at a line, you need two constraint equations, not one.
 
 ### Quadratic Sets in Finite Projective Spaces
 
@@ -902,9 +904,9 @@ The proof reveals some additional, useful numbers. Every line through $P$ that l
 
 How many lines through $P$ lie outside the hyperplane $\mathcal{Q}_P$? Total lines through $P$ in $PG(d, q)$: $\frac{q^d - 1}{q - 1} = q^{d-1} + q^{d-2} + \dots + q + 1$. Lines through $P$ inside the hyperplane $\mathcal{Q}_P$: $\frac{q^{d-1} - 1}{q - 1} = q^{d-2} + \dots + q + 1$. Subtracting the two gives exactly $q^{d-1}$ secant lines through $P$ outside $\mathcal{Q}_P$.
 
-Each of those $q^{d-1}$ secant lines contributes $1$ point of $\mathcal{Q}$ outside $\mathcal{Q}_P$. Add to this the total number of points in $\mathcal{Q}_P$ ($1 + aq$) to get the total number of points of the quadratic set.
+Each of those $q^{d-1}$ secant lines contributes $1$ point of $\mathcal{Q}$ outside $\mathcal{Q}_P$. Add to this the total number of points in $\mathcal{Q}_P$ i.e. ($1 + aq$), to get the total number of points of the quadratic set. Note that we can be sure that no points of the quadric that are missed by the secants since any two points of a projective space have a line joining them. Thus, since we have accounted for all tangents through $P$ via the tangent plane, every other line connecting $P$ to a point on the quadric is a secant. Also note that as we already saw earlier, any line through $P$ therefore contains either $1$ point of the quadric (P itself), or $q + 1$ points of the quadric (for $\mathcal{Q}$-lines) in both of which cases the line is a tangent, or $2$ points of the quadric for secants.
 
-Why $a$ is independent of $P$: Solving for $a_P$ gives $a_P = \frac{\vert{}\mathcal{Q}\vert{} - 1 - q^{d-1}}{q}$. Because $\vert{}\mathcal{Q}\vert{}$, $d$, and $q$ are global constants of $\mathcal{Q}$, every non-singular point $P \in \mathcal{Q} \setminus \text{Rad}(\mathcal{Q})$ has the same number $a$ of $\mathcal{Q}$-lines passing through it.
+Why is $a$ independent of $P$? Solving for $a_P$ gives $a_P = \frac{\vert{}\mathcal{Q}\vert{} - 1 - q^{d-1}}{q}$. Because $\vert{}\mathcal{Q}\vert{}$, $d$, and $q$ are global constants of $\mathcal{Q}$, every non-singular point $P \in \mathcal{Q} \setminus \text{Rad}(\mathcal{Q})$ has the same number $a$ of $\mathcal{Q}$-lines passing through it.
 
 Some counts for standard objects:
 
@@ -915,25 +917,49 @@ Some counts for standard objects:
 | Cone (over an oval in 3D) | $d = 3$ | $a = 1$ | Through any non-vertex point $P \neq V$, there is only $1$ line in $\mathcal{Q}$ (the line $PV$ to the vertex). | $1 + q^2 + 1\cdot q = \mathbf{q^2 + q + 1}$ |
 | Hyperboloid (Regulus in 3D) | $d = 3$ | $a = 2$ | Doubly ruled: each point $P$ lies on $1$ line $g \in \mathcal{R}$ and $1$ line $h \in \mathcal{R}'$. | $1 + q^2 + 2q = \mathbf{(q + 1)^2}$ |
 
-Now let $\mathcal{Q}$ be a nonempty, nondegenerate quadratic set of a finite projective space $\mathbf{P}$ of dimension $d$. Then there are only three possibilities for the index $t$ of $\mathcal{Q}$. If $d$ is odd, then $t = \frac{d - 1}{2}$ or $t = \frac{d + 1}{2}$.
+Now let $\mathcal{Q}$ be a nonempty, nondegenerate quadratic set of a finite projective space $\mathbf{P}$ of dimension $d$. Then there are only three possibilities for the index $t$ of $\mathcal{Q}$. If $d$ is odd, then $t = \frac{d - 1}{2}$ or $t = \frac{d + 1}{2}$. If $d$ is even, $t = \frac{d}{2}$.
 
-This sets an exact value for the index for even dimensions and a very tight bound for odd dimensions. This also means there are no ovoids for $d \geq 4$ because an ovoid has an index of $1$, which is not possible once $d \geq 4$.
+This sets an exact value for the index for even dimensions and a very tight bound for odd dimensions. This also means there are no ovoids for $d \geq 4$ because an ovoid has an index of $1$, which is not possible once $d \geq 4$. We mentioned this earlier.
 
 In general, the nomenclature is, if $d$ is even, then the quadratic set is called parabolic. If $d$ is odd, if $t = \frac{d - 1}{2}$, it is called an elliptic, and if $t = \frac{d + 1}{2}$ it is called a hyperbolic.
 
-The parabolic quadratic sets of a projective plane are the ovals. In a 3D projective space, the elliptic quadratic sets are the ovoids and the hyperboloids are the hyperbolic quadratic sets. And any nonempty non-degenerate quadratic set of a finite projective space is elliptic, parabolic, or hyperbolic. 
+The parabolic quadratic sets of a projective plane are the ovals. In a 3D projective space, the elliptic quadratic sets are the ovoids and the hyperboloids are the hyperbolic quadratic sets. Additionally, any nonempty non-degenerate quadratic set of a finite projective space is either elliptic, parabolic, or hyperbolic. 
 
 Now let $\mathcal{O}$ be an oval in a finite projective plane of order $q$. As we have seen, $\vert{}\mathcal{O}\vert{} = q + 1$ points. At each of the $q + 1$ points of $\mathcal{O}$, there is a unique tangent line, so there are $q + 1$ tangent lines in total in the plane.
 
 If $q$ is odd, every oval is an algebraic conic ($x_0 x_2 - x_1^2 = 0$), and every external point lies on either $0$ or $2$ tangents. If $q$ is even, all $q + 1$ tangent lines meet at a single common point $N$ called the nucleus or knot of the oval. Adding $N$ to $\mathcal{O}$ gives a set of $q + 2$ points with no $3$ collinear, called a hyperoval.
 
-Now let's look at how we get such tight bounds on the the Witt index. We will see that this comes about because the number of points in a quadratic set depends on the number of points of a quadratic set of a lower dimension and index. This way, we inductively calculate the number of points on a quadratic set building up from dimension 2 and 3.  
+Now let's look at how we get such tight bounds on the the index of a quadratic set. We will see that this comes about because the number of points in a quadratic set depends on the number of points of a quadratic set of a lower dimension and index. This way, we inductively calculate the number of points on a quadratic set building up from dimensions 2 and 3.  
 
 Now let $\mathcal{Q}$ be a nondegenerate quadratic set of index $t$ in dimension $d$. Pick a point $P \in \mathcal{Q}$ and look at the induced quadratic set $\overline{\mathcal{Q}} = \mathcal{Q}_P \cap \mathcal{Q}$ inside the $(d-1)$-dimensional tangent hyperplane $\mathcal{Q}_P$.
 
 Because $\mathcal{Q}$ is nondegenerate, $\overline{\mathcal{Q}} = \mathcal{Q}_P \cap \mathcal{Q}$ is a degenerate cone with vertex $\text{Rad}(\mathcal{Q}_P \cap \mathcal{Q}) = \{P\}$. Pick a $(d-2)$-dimensional subspace $U \subset \mathcal{Q}_P$ missing $P$. By the Radical/Cone Theorem, the base slice $\mathcal{Q}' := \mathcal{Q} \cap U$ is a nondegenerate quadratic set in dimension $d - 2$ with index $t - 1$ since every $(t-1)$-dimensional maximal $\mathcal{Q}$-subspace through $P$ meets $U$ in dimension $t - 2$. It's point count is $\vert{}\mathcal{Q}'\vert{} = a$ since every $\mathcal{Q}$-line through $P$ pierces $U$ in a unique point of $\mathcal{Q}'$.
 
-Each time we perform this tangent-slice reduction to algebraically peel off one hyperbolic coordinate pair $x_i y_i$, the ambient dimension drops by $2$ and the index drops by $1$. Repeat this reduction $t - 1$ times until we strip away all the straight lines and reach a nondegenerate quadratic set of index $t_{\text{stop}} = 1$ (a line-free ovoid/oval).
+---
+
+**Aside:** To make it easy to visualize this whole thing, let us plug the exact numbers for a hyperbolic quadric in a 3D projective space. 
+
+Our starting parameters are $d = 3$ and index: $t = 2$ (because the maximal flat subspaces on $\mathcal{Q}$ are lines, which have projective dimension $t - 1 = 1$). The tangent plane is the 2D tangent plane formed by the two $\mathcal{Q}$-lines touching the saddle surface at $P$.
+    
+Look at the intersection (also called a slice) $\overline{\mathcal{Q}} = \mathcal{Q}_P \cap \mathcal{Q}$ inside that 2D tangent plane. The tangent plane slices $\mathcal{Q}$ in the two intersecting $\mathcal{Q}$-lines at $P$ — line $g \in \mathcal{R}$ and line $h \in \mathcal{R}'$.
+    
+$$\overline{\mathcal{Q}} = \mathcal{Q}_P \cap \mathcal{Q} = g \cup h$$
+    
+Why did we call this "X" of two lines a degenerate cone with vertex $\text{Rad}(\overline{\mathcal{Q}}) = \{P\}$? Because inside a 2D plane, as we saw, the union of two hyperplanes (i.e. lines) is a quadratic set. Further, a line from every point in the 2D plane to $P$, besides $g$ and $h$, touches this quadratic set at just one point, $P$ itself. If it touched either $g$ or $h$ at a second point, it would have to overlap with $g$ and $h$ itself because there can only be one line connecting two points on a projective plane. Thus  $P$ is singular. $\overline{\mathcal{Q}}$ is therefore referred to as a cone with $P$ as the apex/vertex where both lines are pinned together ($\text{Rad}(\overline{\mathcal{Q}}) = \{P\}$).
+
+Next, our text says: Pick a $(d-2)$-dimensional subspace $U \subset \mathcal{Q}_P$ missing $P$.
+
+Since $d = 3$, we have $d - 2 = 3 - 2 = \mathbf{1}$. So $U$ is simply a straight 1D line drawn inside the 2D tangent plane $\mathcal{Q}_P$ such that $U$ does not pass through the crossing point $P$ ($P \notin U$).
+
+Now read the final sentences: "By the Radical/Cone Theorem, the base slice $\mathcal{Q}' := \mathcal{Q} \cap U$ is a nondegenerate quadratic set in dimension $d-2$ with index $t-1$... Its point count is $\vert{}\mathcal{Q}'\vert{} = a$ since every $\mathcal{Q}$-line through $P$ pierces $U$ in a unique point of $\mathcal{Q}'$."
+
+What happens on our 2D $\mathcal{Q}_P$ when the line $U$ cuts across the two lines $g$ and $h$ of the "X"? The base slice $\mathcal{Q}' = \mathcal{Q} \cap U$ is literally just two points $\{A, B\}$ sitting on the 1D line $U$, where it intersects $g$ and $h$.
+
+$$\mathcal{Q}' = \mathcal{Q} \cap U = \{A, B\} \quad \implies \quad \vert{}\mathcal{Q}'\vert{} = a = 2$$
+
+---
+
+This whole process of stripping away hyperbolic coordinates step by step is called a Witt decomposition. Each time we perform this tangent-slice reduction to algebraically peel off one hyperbolic coordinate pair $x_i y_i$, the ambient dimension drops by $2$ and the index drops by $1$. Repeat this reduction $t - 1$ times until we strip away all the straight lines and reach a nondegenerate quadratic set of index $t_{\text{stop}} = 1$ (a line-free ovoid/oval). 
 
 Because no line-free quadratic set ($t_{\text{stop}} = 1$) can exist in dimension $d_{\text{stop}} \ge 4$, the stopping dimension $d_{\text{stop}} = d - 2(t - 1)$ must be $1$, $2$, or $3$:
 
@@ -941,7 +967,7 @@ $$1 \le d - 2(t - 1) \le 3 \quad \Longleftrightarrow \quad \frac{d - 1}{2} \le t
 
 This single inequality locks $t$ into only three possibilities across all dimensions $d$. In fact, we can make the bound tighter, at least for even dimensions.
 
-In even dimension $d = 2m$ parabolic quadrics $\mathcal{Q}(2m, q)$), reducing $d = 2m$ by $2$ (and $t$ by 1) repeatedly $m - 1$ times lands in $d_0 = 2$ (the projective plane $\text{PG}(2, q)$). Since every nonempty nondegenerate quadratic set in $\text{PG}(2, q)$ is an oval of index $t_0 = 1$, we can now inductively build back to our original $d$-dimensional space, which will add $m - 1$ to the index: $t = 1 + (m - 1) = m = \frac{d}{2}$.
+In even dimension $d = 2m$, we have parabolic quadrics $\mathcal{Q}(2m, q)$), and reducing $d = 2m$ by $2$ (and $t$ by 1) repeatedly $m - 1$ times lands in $d_0 = 2$ (the projective plane $\text{PG}(2, q)$). Since every nonempty nondegenerate quadratic set in $\text{PG}(2, q)$ is an oval of index $t_0 = 1$, we can now inductively build back to our original $d$-dimensional space, which will add $m - 1$ to the index: $t = 1 + (m - 1) = m = \frac{d}{2}$. You can also arrive at this quite easily by checking $d_{\text{stop}}$ from above. Starting from an even dimension, we will naturally end up at $d_{\text{stop}} = 2$. From $d - 2(t - 1) = 2$, we get $t = \frac{d}{2}$.
             
 For odd dimensions $d = 2m + 1$ (elliptic $\mathcal{Q}^-(2m+1, q)$ and hyperbolic $\mathcal{Q}^+(2m+1, q)$ quadrics), reducing $d = 2m + 1$ by $2$ repeatedly $m - 1$ times lands in $d_0 = 3$ ($\text{PG}(3, q)$), where the only nondegenerate quadratic sets are ovoids ($t_0 = 1$) and hyperboloids ($t_0 = 2$). Adding back $m - 1$ to the index leaves only two possibilities: $t = 1 + (m - 1) = m = \frac{d - 1}{2}$for elliptic, $t = 2 + (m - 1) = m + 1 = \frac{d + 1}{2}$ for hyperbolic.
 
@@ -1006,7 +1032,7 @@ Let $\mathcal{Q}$ be a parabolic quadratic set in a $2t$-dimensional projective 
 
 Now let $\mathcal{Q}$ be a hyperbolic quadratic set of a $(2t - 1)$-dimensional projective space $\mathbf{P}$ with $t \ge 2$. If $H = \mathcal{Q}_P$ is a tangent hyperplane, then $\mathcal{Q}' := \mathcal{Q} \cap H$ is a cone over a hyperbolic quadratic set. Let $H^*$ be a hyperplane that is not a tangent hyperplane. Then $\mathcal{Q}^* := \mathcal{Q} \cap H^*$ is a parabolic quadratic set.
 
-Note that we already encountered the conics referred to here when slicing with a tangent hyperplane. What's new here is slicing with a non-tangent hyperplane $H^*$, which drops you by only $1$ dimension and yields a nondegenerate quadratic set. Because $d$ and $d - 1$ have opposite parities, a non-tangent slice forces the quadric to switch between the even-dimensional family (parabolic) and the odd-dimensional families (hyperbolic / elliptic).
+Note that we already encountered the conics referred to here when slicing with a tangent hyperplane. What's new here is slicing with a non-tangent hyperplane $H^*$, which drops you by $1$ dimension (just like the slice by the tangent plane) but yields a nondegenerate quadratic set (unlike the tangent plane slice). Because $d$ and $d - 1$ have opposite parities, a non-tangent slice forces the quadric to switch between the even-dimensional family (parabolic) and the odd-dimensional families (hyperbolic / elliptic).
 
 Now let $\mathcal{Q}$ be a hyperbolic quadratic set in $\mathbf{P} = \text{PG}(5, q)$. Then $a = (q + 1)^2$ and $\vert{}\mathcal{Q}\vert{} = q^4 + q^3 + 2q^2 + q + 1 = (q^2 + q + 1)(q^2 + 1)$. Note that as we saw previously while inductively building the point count formula, $a$ is equal to the number of points of a quadratic set of $d-2$ dimensions and index $t-1$. When $d=3$, $a$ becomes the number of points on a regulus in a 3D projective space, which we already know is $(q+1)^2$.
 
@@ -1014,7 +1040,7 @@ A hyperbolic quadratic set has an extremely remarkable property: one can divide 
 
 If $d \ge 5$, all the maximal $\mathcal{Q}$-subspaces are partitioned into two equivalence classes by this parity formula.
 
-In a $3$-dimensional projective space, we already know that the maximal $\mathcal{Q}$-subspaces of a hyperboloid are the lines of a regulus and its opposite regulus. If we define that two $\mathcal{Q}$-lines are equivalent if they are equal or skew, we get two classes of $\mathcal{Q}$-lines. There are two equivalence classes.
+In a $3$-dimensional projective space, we already know that the maximal $\mathcal{Q}$-subspaces of a hyperboloid are the lines of a regulus and its opposite regulus. If we define that two $\mathcal{Q}$-lines are equivalent if they are equal or skew, we get two classes of $\mathcal{Q}$-lines. There are two equivalence classes since $(t-1) = 1$ and $\dim(U_1 \cap U_2) = -1$, so $(t-1) - \dim(U_1 \cap U_2) = 2$, which is even.
 
 Similarly, let $\mathcal{Q}$ be a hyperbolic quadratic set of a $5$-dimensional projective space $\mathbf{P}$. We say that two $\mathcal{Q}$-planes $\pi_1$ and $\pi_2$ are equivalent ($\pi_1 \sim \pi_2$) if $\pi_1$ and $\pi_2$ are equal or intersect each other in a single point.
 
@@ -1024,9 +1050,9 @@ The relation $\sim$ is reflexive and symmetric. Surprisingly, it is also transit
 
 Let's get back to quadrics. What we'll be doing here parallels what we did earlier with projective geometry in general. We first gave the synthetic axioms of a projective space and then introduced vector spaces and proved that any $\mathbf{P}(V)$ satisfies those axioms, and also looked at the converse, which is that almost every synthetic projective space is actually a $\mathbf{P}(V)$ (holds for all $d > 2$ but not for non-Desarguesian planes).
     
-We'll do something similar here. We already talked of quadratic sets and their synthetic axioms: "If-three-then-all" and "Tangent-space" axioms. Now, we look at an algebraic model, or quadrics, inside $\mathbf{P}(V)$ defined by a polynomial equation $q(v) = 0$, and prove that every algebraic quadric satisfies the two axioms of a quadratic set, and that the converse is almost true with specific exceptions (like Tits ovoids or hyperovals in even characteristic).
+We'll do something similar here. We already looked at quadratic sets and their synthetic axioms: "If-three-then-all" and "Tangent-space" axioms. Now, we look at an algebraic model, or quadrics, inside $\mathbf{P}(V)$ defined by a polynomial equation $q(v) = 0$, and prove that every algebraic quadric satisfies the two axioms of a quadratic set, and that the converse is almost true with specific exceptions (like Tits ovoids or hyperovals in even characteristic).
 
-First we define a quadratic form, which is essentially a homogenous polynomial of degree 2. Note that this implies that $q(\alpha \cdot v) = \alpha^2 \cdot q(v)$ for all $v \in V$ and all $\alpha \in F$. Note that we cannot use an inhomogenous polynomial because then once again, as earlier, the solution to the polynomial will not be independent of the scaling factor which treats multiple points as an equivalence class in projective spaces.
+First we define a quadratic form, which is essentially a homogenous polynomial of degree 2. Note that this implies that $q(\alpha \cdot v) = \alpha^2 \cdot q(v)$ for all $v \in V$ and all $\alpha \in F$. Note that we cannot use an inhomogenous polynomial because then once again, as earlier, the solution to the polynomial will not be independent of the scaling factor which treats points along a ray but in different $z$ (or whatever) planes as an equivalence class in projective spaces.
 
 The quadric $\mathcal{Q}$ in $\mathbf{P}(V)$ is simply the set of all projective points $\langle v \rangle$ where that polynomial equals zero:  $q(v) = 0$. So you can simply write out a quadratic form and find its zeroes to arrive at all the points of a quadric.
 
@@ -1034,7 +1060,21 @@ Examples include the polynomial $x_0^2 - x_1^2 - x_2^2$ which yields a quadric i
 
 We also define the polar form of $q$ as the map $B : V \times V \to F$ defined by $B(v, w) := q(v + w) - q(v) - q(w)$. It is a symmetric bilinear form. 
 
-We can write a quadratic form via matrices once we define a vector space basis, $B(v, w) = v^T M w$. $M$ is a symmetric matrix. Note that there can be various $M$ that give the same quadratic form, since the coefficients of the cross terms $b_ib_j$ in the quadratic form will depend on the sum of entries in $M$ that correspond to the terms $b_ib_j$ and $b_jb_i$. In order to be able to define this uniquely, we can use an upper triangular matrix. This is also useful in characteristic 2 fields, because you cannot divide an odd coefficient by $2$ to split $b_1 b_2$ symmetrically into $\frac{1}{2} b_1 b_2 + \frac{1}{2} b_2 b_1$! Using an upper-triangular sum $\sum_{i \le j} c_{ij} b_i b_j$ works in every field.
+Note that $q(v)$ only takes one vector as input, which tells us whether a single point $\langle v \rangle$ lies on the quadric ($q(v) = 0$). To study how a straight line connecting two points $\langle v \rangle$ and $\langle w \rangle$ intersects the quadric, we have to evaluate $q$ on a linear combination $v + \lambda w$. This is where $B(v,w)$ comes into play. Think of $B(x, v) = 0$ as the algebraic version of the dot product, which defines the tangent hyperplane at $v$ without needing limits or derivatives. Similarly, $B$ will also be useful in our algebraic definition of tangents.
+
+The above relation of $B$ also has a parallel with the dot product. If we define the quadratic form $q(v)$ as the squared norm of a vector:
+
+$$q(v) = \Vert{}v\Vert{}^2 = v \cdot v$$
+
+Expand $q(v + w) = \Vert{}v + w\Vert{}^2$ using the standard dot product:
+
+$$\Vert{}v + w\Vert{}^2 = (v + w) \cdot (v + w) = v \cdot v + 2(v \cdot w) + w \cdot w = \Vert{}v\Vert{}^2 + 2(v \cdot w) + \Vert{}w\Vert{}^2$$
+
+Subtracting $\Vert{}v\Vert{}^2$ and $\Vert{}w\Vert{}^2$ from both sides gives the same formula as above:
+
+$$\underbrace{\Vert{}v + w\Vert{}^2}_{q(v+w)} - \underbrace{\Vert{}v\Vert{}^2}_{q(v)} - \underbrace{\Vert{}w\Vert{}^2}_{q(w)} = \underbrace{2(v \cdot w)}_{B(v, w)}$$
+
+We can write a quadratic form via matrices once we define a vector space basis, $B(v, w) = v^T M w$. $M$ is a symmetric matrix. Note that there can be various $M$ that give the same quadratic form, since the coefficients of the cross terms $b_ib_j$ in the quadratic form will depend on the sum of entries in $M$ that correspond to the terms $b_ib_j$ and $b_jb_i$. In order to be able to define this uniquely, we can use an upper triangular matrix. This is also useful in characteristic 2 fields, because you cannot divide an odd coefficient by $2$ to split $b_1 b_2$ symmetrically into $\frac{1}{2} b_1 b_2 + \frac{1}{2} b_2 b_1$. Using an upper-triangular sum $\sum_{i \le j} c_{ij} b_i b_j$ works in every field.
 
 As an example, suppose we have the quadratic polynomial:
 
@@ -1048,15 +1088,13 @@ will give us the polynomial. However, there is a unique upper triangular matrix 
 
 $$C_{\text{upper}} = \begin{pmatrix} 2 & \mathbf{6} & -4 \\ 0 & 5 & 0 \\ 0 & 0 & 3 \end{pmatrix}$$
 
-The polar form is key to understanding how a quadric satisfies both axioms of a quadratic set. Understanding this fact will also give us insight into why the polar form is defined the way it is, so let's take the two axioms are see what is needed from a quadratic form to satisfy the two axioms.
-
-Note that $q(v)$ only takes one vector as input, which tells us whether a single point $\langle v \rangle$ lies on the quadric ($q(v) = 0$). To study how a straight line connecting two points $\langle v \rangle$ and $\langle w \rangle$ intersects the quadric, we have to evaluate $q$ on a linear combination $v + \lambda w$. This is where $B(v,w)$ comes into play. Think of $B(x, v) = 0$ as the algebraic version of the calculus gradient dot product $\nabla q(v) \cdot x = 0$, which defines the tangent hyperplane at $v$ without needing limits or derivatives.
+The polar form is key to understanding how a quadric satisfies both axioms of a quadratic set. Understanding this fact will also give us insight into why the polar form is defined the way it is, so let's take the two axioms and see what is needed from a quadratic form to satisfy the two axioms.
 
 Any point on the line $vw$ is given by $v + \lambda w$. Let's check if it lies on the quadric. By the definition of the bilinear form:
 
 $$q(v + \lambda w) = q(v) + q(\lambda w) + B(v, \lambda w)$$
 
-Since $q(\lambda w) = \lambda^2 q(w)$ and $B$ is bilinear or linear in each slot ($B(v, \lambda w) = \lambda B(v, w)$), we get the fundamental Line-Quadric Intersection Formula:
+Since $q(\lambda w) = \lambda^2 q(w)$ and $B$ is bilinear (linear in each slot, $B(v, \lambda w) = \lambda B(v, w)$), we get the fundamental Line-Quadric Intersection Formula:
 
 $$q(v + \lambda w) = q(v) + \lambda B(v, w) + \lambda^2 q(w)$$
 
@@ -1068,7 +1106,11 @@ Let's look at the "If-Three-Then-All" axiom. Let $g$ be the line through $\langl
 
 $$q(v + \lambda w) = \lambda B(v, w)$$
 
-Now use the third point of $\mathcal{Q}$ on the line $g$, which corresponds to some non-zero scalar $\lambda_0 \neq 0$ with $q(v + \lambda_0 w) = 0$:$$\lambda_0 B(v, w) = 0 \quad \stackrel{\lambda_0 \neq 0}{\Longrightarrow} \quad B(v, w) = 0$$Since $q(v) = 0$, $q(w) = 0$, and $B(v, w) = 0$, our formula gives $q(v + \lambda w) = 0$ for all $\lambda \in F$. Every point of the line $g$ lies in $\mathcal{Q}$.
+Now use the third point of $\mathcal{Q}$ on the line $g$, which corresponds to some non-zero scalar $\lambda_0 \neq 0$ with $q(v + \lambda_0 w) = 0$: 
+
+$$\lambda_0 B(v, w) = 0 \quad \stackrel{\lambda_0 \neq 0}{\Longrightarrow} \quad B(v, w) = 0$$
+
+Since $q(v) = 0$, $q(w) = 0$, and $B(v, w) = 0$, our formula gives $q(v + \lambda w) = 0$ for all $\lambda \in F$. Every point of the line $g$ lies in $\mathcal{Q}$.
 
 Now let's look at how the tangent space axiom behaves. First let's define something that will become our tangent space. 
 
