@@ -1215,6 +1215,8 @@ A point, a line, a plane etc. are each elements of a different geometric type. W
 
 A chamber is a maximal flag of a geometry, a flag whose type set equals the entire type set $I$ of the geometry ($\text{type}(F) = I$). Because a flag can contain at most one element of each type, a chamber contains exactly one element of every available type in $I$, all mutually incident with one another. Consequently, its corank is $0$ (there are no missing types left to add).
 
+A flag can be extended to a chamber by iteratively finding higher-dimensional elements containing lower-dimensional ones all the way to the maximal dimension, and also filling in any missing lower-dimensional elements and intermediate-dimensional elements. Because a starting flag $F$ can contain any subset of types in $I$, extending $F$ to a chamber means finding one element for every missing type in $I \setminus \text{type}(F)$ so that the entire collection is mutually incident.
+
 ### Residues
 A residue means fixing a chosen object (or flag of objects) and looking only at the local incidence structure of the remaining types that touch it. It is given by a two-step process:
 
@@ -1327,7 +1329,7 @@ A high-dimensional geometry (say, rank $5$ or rank $8$) is too large to visualiz
         
 - Fix a line (type $1$): its residue of points on the line and planes through the line is a generalized digon (every point on the line lies in every plane through the line). Any simply connected rank $3$ geometry whose local rank $2$ residues obey those three rules is forced to be the 3D projective space $PG(3, \mathbb{F})$.
         
-**Inductive Counting and Proofs:** Just as we will with the Witt decomposition later on a quadric, taking the residue of a point on a polar space reduces its rank by $1$. This lets us prove theorems and count points or generators by induction on the rank.
+**Inductive Counting and Proofs:** Just as we saw with the Witt decomposition on a quadric, taking the residue of a point on a polar space reduces its rank by $1$. This lets us prove theorems and count points or generators by induction on the rank.
     
 #### Amalgamation Constructions Help Build Exotic Geometries and Exceptional Groups
 
