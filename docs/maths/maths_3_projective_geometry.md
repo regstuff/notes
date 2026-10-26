@@ -1378,6 +1378,214 @@ Here's a summary of the difference between amalgamations vs. shadow spaces
 | What becomes a new line? | Combinatorial triples linking flags, points, lines, and anti-flags across orbits. | The shadow of a flag of the remaining types (e.g., the pencil of lines incident with a point-plane flag $\{P, \Pi\}$). |
 | Why do we do it? | To construct a brand-new geometry with a larger symmetry group out of smaller pieces. | To turn a rank $n$ incidence geometry into a concrete point-line linear space (rank 2) that can often be embedded as an algebraic variety in a higher projective space. |
 
+### Diagrams
+
+A Buekenhout-Tits diagram is a visual blueprint of a geometry. Instead of trying to draw all the points, lines, and planes at once, the diagram summarizes how any two types of objects interact locally when we freeze all the other types. 
+
+A diagram is a graph where each node (circle) represents one type in the type set $I$. If a geometry has rank $3$ over $I = \{0, 1, 2\}$ (such as points, lines, and planes), its diagram has $3$ nodes. Each edge connecting two nodes $i$ and $j$ tells us how elements of type $i$ and elements of type $j$ interact with each other as a rank 2 point-line geometry. To achieve this, we find the residue of a flag containing every type except $i$ and $j$. Since taking the residue of $F$ erases all the types inside $F$, we are left with the types that are not in $F$ i.e. $i, j$. 
+
+This helps us decompose complex geometries into rank 2 point-line geometries and understand how they fit together to form the more complex geometry. 
+
+One natural question arises: if there are many different flags $F$ of type $I \setminus \{i, j\}$ in our geometry, what if one flag gives a projective plane on $\{i, j\}$ while another flag of the exact same type gives a square?
+
+In the definition of a Buekenhout-Tits diagram, the label on the edge between node $i$ and node $j$ represents the class of rank $2$ geometries (such as the class of all projective planes, or all generalized quadrangles) to which the residue $\Gamma_F$ belongs for every flag $F$ of cotype $\{i, j\}$. In highly symmetric geometries (like buildings, polar spaces, projective spaces, and regular polytopes), the automorphism group acts transitively on chambers, which guarantees that any two flags of the exact same type have isomorphic residues.
+
+#### The Digon
+
+Next, we'll define something called a digon. A generalized digon is a rank $2$ geometry over two types (say, type $0$ "points" and type $1$ "lines") in which every element of type $0$ is incident with every element of type $1$.
+
+Think of the sequence of ordinary polygons as thin rank $2$ geometries: a 4-gon (square) has $4$ vertices and $4$ edges. A 3-gon (triangle) has $3$ vertices and $3$ edges. A 2-gon (digon) has $2$ vertices (say,  $A$ and $B$) and $2$ edges (say,  $e_1$ and $e_2$) that both connect $A$ to $B$.
+
+When we generalize this to allow more than $2$ elements of each type (say,  $m$ elements of type $0$ and $n$ elements of type $1$, where every element of type $0$ is still incident with every element of type $1$), we call it a generalized digon.
+
+#### Notation
+To save clutter, diagrams use a shorthand for the edges between two nodes $i$ and $j$:
+
+No Edge at all (Blank Space) = Generalized Digon: Every element of type $i$ is incident with every element of type $j$. Because this is a trivial complete bipartite relation where everything touches everything, we draw no line at all between node $i$ and node $j$.
+
+A Single Unlabeled Stroke ( `o-----o` ) = Projective Plane (or Generalized Triangle): The residue on types $i$ and $j$ is a projective plane (like the Fano plane, or a triangle in thin geometries). Because projective planes are the most common building blocks, a single line without a label always means a projective plane.
+
+A Double Stroke ( `o=====o` ) or an Edge Labeled $4$ = Generalized Quadrangle: The residue on types $i$ and $j$ is a generalized quadrangle (such as a square, or the points and lines on a 3D hyperboloid or 4D quadric).
+
+ An Edge with a Label ($L$, $c$, $6$, etc.): If the rank $2$ residue is something else, we write a label directly over the edge—for instance, $L$ for a general linear space, $A$ for an affine plane, $c$ for a circle geometry (blocks of size $2$, like the edges and vertices of a polygon), or $6$ for a generalized hexagon.
+
+Sometimes numbers are also written underneath the nodes. Usually, the type name $0, 1, 2$ is written above the node, and $s_i$—meaning each panel of cotype $i$ is contained in $s_i + 1$ chambers—is written below the node.
+
+---
+
+**Aside:** Why does a generalized diagon get no stroke? Whenever a rank $2$ residue is a generalized digon, the two types $i$ and $j$ do not place any restriction on each other at all—picking an element of type $i$ in that residue gives zero information about which element of type $j$ can be paired with it, because every choice works.
+
+This happens any time we fix an intermediate dimension in a nested chain. If we fix an edge in a polyhedron, every vertex on that edge automatically lies in every face containing that edge. Or if we fix a line $\ell$ in $PG(3, q)$, every point $P \in \ell$ automatically lies in every plane $\Pi \supset \ell$ (giving a generalized digon with $q+1$ points and $q+1$ planes, where all $(q+1) \times (q+1)$ pairs are incident).
+    
+Because the incidence between the two remaining types is automatic and universal (a cartesian product of choices), Buekenhout-Tits diagrams leave the space between those two nodes blank.
+
+---
+
+#### How to Build a Diagram: The 3D Cube
+
+Let us build the diagram for our 3D cube geometry over $I = \{0 \text{ (vertices)}, 1 \text{ (edges)}, 2 \text{ (faces)}\}$.
+
+Draw 3 nodes for the 3 types: Node $0$ (vertices), Node $1$ (edges), and Node $2$ (faces).
+
+Find the connection between Node $0$ (vertices) and Node $1$ (edges): Fix the remaining type: pick a single Face (type $2$). Inside that fixed square face, what geometry do its $4$ vertices (type $0$) and $4$ edges (type $1$) form? They form a square (a $4$-gon / generalized quadrangle). So between Node $0$ and Node $1$, we draw a double stroke (or an edge labeled $4$).
+
+Find the connection between Node $1$ (edges) and Node $2$ (faces): Fix the remaining type: pick a single Vertex (type $0$). As we saw earlier when we took the residue $\Gamma_1$ of vertex $1$, the $3$ edges and $3$ faces meeting at a vertex form a triangle (a thin projective plane). So between Node $1$ and Node $2$, we draw a single unlabeled stroke.
+
+Find the connection between Node $0$ (vertices) and Node $2$ (faces): Fix the remaining type: pick a single Edge (type $1$). What are the vertices on that edge, and what are the faces through that edge? There are $2$ vertices at the ends of the edge and $2$ faces meeting along that edge. Every vertex on that edge automatically lies in every face containing that edge. That is a generalized digon. So between Node $0$ and Node $2$, we draw no edge at all.
+
+Putting these together gives the diagram of the cube (called the $B_3$ / $C_3$ diagram):
+
+```
+   0 (Vertices)          1 (Edges)          2 (Faces)
+       o =================== o ----------------- o
+          (Square / 4-gon)      (Triangle / PP)
+
+```
+
+Notice why Node $0$ and Node $2$ are placed on opposite ends with Node $1$ in the middle: because Node $0$ and Node $2$ have no edge between them, placing Node $1$ in the middle makes the diagram a clean straight line.
+
+#### How to Build a Diagram: 3D Projective Space $PG(3, q)$
+
+Now let us do the exact same 4 steps for $PG(3, q)$, where $I = \{0 \text{ (points)}, 1 \text{ (lines)}, 2 \text{ (planes)}\}$:
+
+- Between $0$ (points) and $1$ (lines) — Fix a Plane (type $2$): The points and lines lying inside a fixed plane form a projective plane $PG(2, q)$. So we draw a single stroke between $0$ and $1$.
+
+- Between $1$ (lines) and $2$ (planes) — Fix a Point (type $0$): The lines and planes passing through a fixed point in 3D space also form a projective plane $PG(2, q)$. So we draw a single stroke between $1$ and $2$.
+
+- Between $0$ (points) and $2$ (planes) — Fix a Line (type $1$): Every point on the fixed line automatically lies inside every plane passing through that line. That is a generalized digon, so we draw no edge between $0$ and $2$.
+
+This gives the $A_3$ diagram for $PG(3, q)$:
+
+```
+   0 (Points)            1 (Lines)          2 (Planes)
+       o ----------------- o ----------------- o
+         (Projective Plane)  (Projective Plane)
+
+```
+
+---
+
+#### Reading Diagrams by Deleting Nodes
+
+Once we have a diagram for a high-rank geometry, we can read off the diagram of any residue immediately without doing any new geometric work. To find the diagram of the residue of a flag $F$, simply erase the nodes in $\text{type}(F)$ and all edges attached to those erased nodes.
+
+Let us test this on the cube diagram `o === o --- o` (Nodes $0, 1, 2$):
+
+- Residue of a Vertex (erase Node $0$): We are left with `o --- o` on Nodes $1$ and $2$ (a triangle / projective plane).
+
+- Residue of a Face (erase Node $2$): We are left with `o === o` on Nodes $0$ and $1$ (a square / quadrangle).
+
+- Residue of an Edge (erase Node $1$ in the middle): We are left with `o     o` on Nodes $0$ and $2$ with no edge between them (a generalized digon).
+
+Let's do another example, the 4-dimensional projective space $PG(4, q)$, which has rank $4$ over the type set: $I = \{0 \text{ (points)}, 1 \text{ (lines)}, 2 \text{ (planes)}, 3 \text{ (3-spaces / solids)}\}$
+
+Its diagram is a 4-node chain ($A_4$):
+
+```
+   0 (Points)       1 (Lines)       2 (Planes)       3 (Solids)
+       o -------------- o -------------- o -------------- o
+
+```
+
+Let us see how we read the different parts of this 4-node diagram by deleting nodes.
+
+Deleting 1 Node (Fixing a Flag of Rank 1 -> Leaves a Rank 3 Sub-Diagram): Suppose we fix just one single element, say a Solid $S$ (type $3$). Erasing node $3$ leaves the 3-node sub-diagram on $\{0, 1, 2\}$:
+    
+    ```
+    0 (Points)       1 (Lines)       2 (Planes)
+        o -------------- o -------------- o
+    
+    ```
+    
+This tells us that all the points, lines, and planes inside a single solid $S$ form a 3D projective space $PG(3, q)$.
+    
+Deleting 2 Nodes (Fixing a Flag of Rank 2 -> Leaves a Single Rank 2 Edge): Now suppose we want to read the single edge between $0$ (points) and $1$ (lines). To isolate nodes $0$ and $1$, we must erase both node $2$ (planes) and node $3$ (solids). 
+
+Geometrically, that means we fix a rank $2$ flag $F = \{\Pi, S\}$ consisting of a plane $\Pi$ lying inside a solid $S$ ($\Pi \subset S$). The residue of $F = \{\Pi, S\}$ consists of all points $P$ and lines $\ell$ that are incident with both $\Pi$ and $S$. Since $\Pi$ is already inside $S$, any point or line inside $\Pi$ is automatically inside $S$. Thus, the points and lines inside $\Pi$ form the projective plane $PG(2, q)$, which gives the single stroke `o --- o` between node $0$ and node $1$.
+    
+What if we delete the middle two nodes ($1$ and $2$)? Fix a flag $F = \{\ell, \Pi\}$ consisting of a line $\ell$ inside a plane $\Pi$. Erasing nodes $1$ and $2$ leaves nodes $0$ (points) and $3$ (solids) with no edge between them. Why is it a generalized digon? Because the remaining elements are the points $P$ on the line $\ell$ and the solids $S$ containing the plane $\Pi$. Since $P \in \ell \subset \Pi \subset S$, every point on $\ell$ is automatically incident with every solid containing $\Pi$.
+
+#### Common Diagrams at a Glance
+
+| Geometry | Type Set $I$ | Diagram | Why It Looks Like That |
+| --- | --- | --- | --- |
+| Projective Plane $PG(2, q)$ | $0$ (pts), $1$ (lines) | `o ----- o` | Only 2 types; they form a projective plane. |
+| 3D Projective Space $PG(3, q)$ | $0$ (pts), $1$ (lines), $2$ (planes) | `o --- o --- o` | Fixing a plane gives a projective plane; fixing a point gives a projective plane; fixing a line gives a digon. |
+| $d$-Dim Projective Space $PG(d, q)$ | $0, 1, \dots, d-1$ | `o --- o --- ... --- o` | A chain of $d$ nodes connected by single strokes ($A_d$ diagram). |
+| 3D Cube (or Polar Space of Rank 3) | $0, 1, 2$ | `o --- o === o` | Fixing type $2$ gives a projective plane; fixing type $0$ gives a generalized quadrangle ($B_3 / C_3$ diagram). |
+| Affine Space $AG(3, q)$ | $0$ (pts), $1$ (lines), $2$ (planes) | `o --L-- o ----- o` | Fixing a plane gives an affine plane (which is a linear space $L$, not a projective plane); fixing a point gives a projective plane of lines and planes through that point. |
+
+
+#### How Do DIagrams Help?
+
+For a single 3D cube, we obviously do not need a diagram to know what a cube looks like. The power of the diagram appears when we go in the opposite direction: when we do not know what the global space looks like, or when we are working in dimensions or finite fields where we cannot visualize the object at all. Here are the four concrete things a diagram does for us.
+
+**The Rigidity Theorem: Local Rules Force the Global Space**: Suppose we do not know what our global geometry $\Gamma$ is, or how many elements it has. All we know is its local diagram:
+
+* Around every vertex, edges and faces meet like a triangle (`---`).
+* Inside every face, vertices and edges form a square (`===`).
+* Along every edge, vertices and faces form a digon (blank).
+
+Can we glue squares and triangles together in some weird, arbitrary way to get thousands of different irregular polyhedra that all obey this local rule? No. Tits proved that if the geometry is simply connected (doesn't wrap around on itself like a quotient), there is one and only one thin geometry in the universe with the diagram `o === o --- o`: the 3D cube (and its dual, the octahedron, obtained by reading the diagram backwards).
+
+More importantly, what if we thicken the diagram over a finite field $\mathbb{F}_q$ (so each triangle becomes a thick projective plane $PG(2, q)$ with $q+1$ points per line, and each square becomes a thick generalized quadrangle with $q+1$ points per line)?
+With zero coordinate equations, the diagram `o === o --- o` immediately tells us that the global space is a Polar Space of rank $3$ (such as a non-degenerate quadric of Witt index $t = 3$, where the 3 types are points, lines, and planes lying entirely on the quadric).
+
+**Instant Dualities and Hidden Isomorphisms (Reading the Diagram)**
+
+Because the diagram encodes the entire axiom system visually, any symmetry of the diagram immediately gives us a geometric theorem:
+
+* Dualities (Flipping the Diagram Left-to-Right): Look at the cube diagram `o === o --- o`. If we reverse the order of the types (read it from right to left, swapping vertices $0$ and faces $2$), the diagram becomes `o --- o === o`. Geometrically, swapping vertices and faces turns the cube into the regular octahedron (where faces are triangles and $4$ faces meet at every vertex). Because it is the exact same diagram just read right-to-left, the cube and the octahedron are isomorphic as incidence geometries and have the exact same symmetry group. The cube and the octahedron are dual polyhedra, as the cube's 8 vertices and 6 faces perfectly mirror the octahedron's 6 vertices and 8 faces.
+
+* Triality (Three-Way Symmetry in $D_4$): When we look at the hyperbolic quadric $Q^+(7, q)$ in 7D projective space (Witt index $t = 4$), its diagram is not a straight line—it is a 4-node Y-shaped star ($D_4$):
+
+```
+                    o  (Type 2: + Solids)
+                   /
+   0 (Points)     1 (Lines)
+       o -------- o
+                   \
+                    o  (Type 3: - Solids)
+
+```
+
+Just by looking at this Y-shaped diagram, we can see that the three outer branches (Points of dimension $0$, and the two families of $3$-dimensional solids on the quadric) are completely symmetric around the central node (Lines).
+
+Without doing a single matrix calculation, the diagram reveals Cartan's Triality: in $Q^+(7, q)$, 0-dimensional points behave identically to 3-dimensional solids, and there is an outer automorphism of the orthogonal group $P\Omega^+(8, q)$ of order $3$ that cycles points and 3-solids into one another.
+
+** Automatic Structural Theorems from Blank Spaces (Disconnected Nodes)**
+
+Whenever a diagram has no edge between two nodes (a generalized digon), we get a massive computational shortcut. For example, in any diagram that is a straight line (like the cube `0 === 1 --- 2` or projective space `0 --- 1 --- 2`), node $0$ and node $2$ have no edge between them, and node $1$ sits between them. 
+
+In Buekenhout-Tits theory, the Separation Theorem states that whenever node $1$ separates node $0$ from node $2$ in the diagram: * A point $P$ (type $0$) and a plane/face $\Pi$ (type $2$) are incident in the global space if and only if they share a common line/edge $\ell$ (type $1$) between them. Furthermore, the entire geometry is completely determined by just the elements of type $0$ (points) and their shadows on the other nodes.
+
+**Counting Elements and Group Orders Mechanically**
+
+The diagram also gives us a recipe to calculate the exact number of elements and the exact size of the symmetry group just by multiplying local numbers.
+
+Take the cube diagram `0 === 1 --- 2`:
+
+* In a square (`0 === 1`), each edge has $2$ vertices, and each vertex of that square meets $2$ edges.
+* In a triangle (`1 --- 2`), each vertex has $3$ faces/edges, and each face/edge at that vertex meets $2$ others.
+* From those tiny numbers ($2$ and $3$) on the 2-node pieces of the diagram, Coxeter/Tits theory immediately computes the total number of chambers of the cube:
+
+$$\vert{}\text{Chambers}\vert{} = 2^3 \times 3! = 8 \times 6 = 48$$
+
+And from $48$ chambers:
+* Since each vertex residue (triangle `1 --- 2`) has $3 \times 2 = 6$ chambers, the cube must have $48 / 6 = 8$ vertices.
+* Since each face residue (square `0 === 1`) has $4 \times 2 = 8$ chambers, the cube must have $48 / 8 = 6$ faces.
+* Since each edge residue (digon `0   2`) has $2 \times 2 = 4$ chambers, the cube must have $48 / 4 = 12$ edges.
+
+
+
+Notice what just happened: we never drew a 3D cube. We only knew that one rank-2 piece was a triangle ($6$ chambers) and the other rank-2 piece was a square ($8$ chambers), and the diagram forced the global object to have $8$ vertices, $12$ edges, $6$ faces, and a symmetry group of order $48$.
+
+| Without the Diagram | With the Diagram |
+| --- | --- |
+| We have to visualize a high-dimensional space or solve systems of quadratic equations over $\mathbb{F}_q$. | We only look at a tiny graph of 2-node building blocks (triangles, squares, projective planes, quadrangles). |
+| Proving two geometries or groups are isomorphic requires explicit coordinate transformations. | If their diagrams match (up to flipping or rotating the graph), the geometries and their groups match automatically. |
+| Counting subspaces of dimension $k$ requires new combinatorial arguments each time. | Deleting node $k$ from the diagram tells us the exact size of the stabilizer subgroup, letting us divide total chambers by residue chambers. |
+
 ## Polygons
 
 We refer to a configuration as a n-angle in the EEP, if it is a set of n points, no three collinear. The lines of this configuration are formed by connecting every possible pair of these initial points. Because no three points are collinear, any single line in this configuration contains $2$ of the generating points. Furthermore, from any single point, lines must be drawn to connect to all the remaining points in the set, meaning each point lies on exactly $n-1$ lines. 
