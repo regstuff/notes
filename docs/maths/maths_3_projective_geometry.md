@@ -76,6 +76,8 @@ By the principle of duality in the plane:
 
 > number of points in the plane = number of lines in the plane = $q^2 + q + 1$.
 
+Nete that every finite projective plane of order 2 is a Fano Plane. In other words, the projective plane P has seven points and seven lines, and, with a suitable numbering 1, 2, 3, 4, 5, 6, 7 of the points, the lines of P are the points sets {1, 2, 3}, {1, 4, 5}, {1, 6, 7}, {2, 4, 7}, {2, 5, 6}, {3, 4, 6} and {3, 5, 7}.
+
 ### $r$-dimensional Projective Space
 
 More generally, if an $r$-dimensional projective space has a finite number $N_r$ of points, then every line of $S_r$ has the same number $q+1$ of points. The number $q$ is called the order of the space $S_r$. $N_r = q^r + q^{r-1} + \dots + q + 1 = \frac{q^{r+1} - 1}{q - 1}$. Note that the order is always defined based on the number of points on a line (and not a hyperplane or any other subspace), irrespective of the dimension of the projective space.
