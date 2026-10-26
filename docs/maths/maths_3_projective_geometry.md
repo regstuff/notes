@@ -1390,6 +1390,12 @@ One natural question arises: if there are many different flags $F$ of type $I \s
 
 In the definition of a Buekenhout-Tits diagram, the label on the edge between node $i$ and node $j$ represents the class of rank $2$ geometries (such as the class of all projective planes, or all generalized quadrangles) to which the residue $\Gamma_F$ belongs for every flag $F$ of cotype $\{i, j\}$. In highly symmetric geometries (like buildings, polar spaces, projective spaces, and regular polytopes), the automorphism group acts transitively on chambers, which guarantees that any two flags of the exact same type have isomorphic residues.
 
+As an aside, we will also define an incidence graph. Let $\Gamma$ be a geometry of rank $d$. The incidence graph  $I(\Gamma)$ of $\Gamma$ is defined as follows: The vertices of $I(\Gamma)$ are the elements of $\Gamma$. Two distinct vertices $x$ and $y$ of $I(\Gamma)$ are joined by an edge if and only if $x$ and $y$ are incident.
+
+A geometry $\Gamma$ is called connected if the incidence graph $I(\Gamma)$ of $\Gamma$ is connected, i.e., for any two vertices $x$ and $y$, there exists a path from $x$ to $y$.
+
+$\Gamma$ is called residually connected if all rank-$m$ residues ($2 \le m \le d$) of $\Gamma$ are connected.
+
 #### The Digon
 
 Next, we'll define something called a digon. A generalized digon is a rank $2$ geometry over two types (say, type $0$ "points" and type $1$ "lines") in which every element of type $0$ is incident with every element of type $1$.
