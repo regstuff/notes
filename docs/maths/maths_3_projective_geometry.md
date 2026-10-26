@@ -1219,6 +1219,18 @@ Note that a flag does not need to include elements that are of successive dimens
 
 A flag can be extended to a chamber by iteratively finding higher-dimensional elements containing lower-dimensional ones all the way to the maximal dimension, and also filling in any missing lower-dimensional elements and intermediate-dimensional elements. Because a starting flag $F$ can contain any subset of types in $I$, extending $F$ to a chamber means finding one element for every missing type in $I \setminus \text{type}(F)$ so that the entire collection is mutually incident.
 
+#### Principle of Double Counting
+
+We will also state a theorem here which can be shown easily using flags, but has far-reaching consequences in incidence geometry. This is the Principle of Double Counting. 
+
+Consider a rank 2 pregeometry such as points and lines or points and blocks in a BIBD. Let $A$ be the set of points (type $0$) and $B$ be the set of lines or blocks (type $1$). For a single point $a \in A$, the number $[a]$ is the number of lines passing through $a$. For a single line $b \in B$, the number $[b]$ is the number of points lying on $b$. Then:
+
+$$\sum_{a \in A} [a] = \sum_{b \in B} [b]$$
+
+When we sum $[a]$ over every point $a \in A$, versus summing $[b]$ over every line $b \in B$, the LHS, $\sum_{a \in A} [a]$, goes point by point and counts how many incident point-line flags contain each point. Summing over all points counts the total number of incident point-line flags in the entire geometry. Similarly, the RHS goes line by line, and counts how many incident point-line flags contain each line. Summing over all lines counts the same total number of incident point-line flags in the entire geometry.
+
+For a BIBD, this equation becomes the well-known BIBD identity $vr = bk$. However, let us look at when a BIBD gives us $r=k$ i.e. the number of blocks through a point ($r = [a]$) equals the number of points on a block ($k = [b]$). This happens if and only if the total number of points equals the total number of blocks i.e. $v = b$. This is known as a symmetric BIBD, and includes projective planes where $v = b = q^2 + q + 1$ and $r = k = q + 1$.
+
 ### Residues
 A residue means fixing a chosen object (or flag of objects) and looking only at the local incidence structure of the remaining types that touch it. It is given by a two-step process:
 
@@ -1394,7 +1406,7 @@ As an aside, we will also define an incidence graph. Let $\Gamma$ be a geometry 
 
 A geometry $\Gamma$ is called connected if the incidence graph $I(\Gamma)$ of $\Gamma$ is connected, i.e., for any two vertices $x$ and $y$, there exists a path from $x$ to $y$.
 
-$\Gamma$ is called residually connected if all rank-$m$ residues ($2 \le m \le d$) of $\Gamma$ are connected.
+$\Gamma$ is called residually connected if all rank-$m$ residues ($2 \le m \le d$) of $\Gamma$ are connected. Noth affine and projective spaces are residually connected.
 
 #### The Digon
 
