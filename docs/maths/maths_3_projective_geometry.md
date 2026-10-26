@@ -1606,6 +1606,96 @@ Notice what just happened: we never drew a 3D cube. We only knew that one rank-2
 | Proving two geometries or groups are isomorphic requires explicit coordinate transformations. | If their diagrams match (up to flipping or rotating the graph), the geometries and their groups match automatically. |
 | Counting subspaces of dimension $k$ requires new combinatorial arguments each time. | Deleting node $k$ from the diagram tells us the exact size of the stabilizer subgroup, letting us divide total chambers by residue chambers. |
 
+## Autocorrelations, Automorphisms & Collineations
+
+### Autocorrelations
+
+An autocorrelation $\alpha$ is a bijection $\alpha: X \to X$ that preserves incidence ($x * y \iff \alpha(x) * \alpha(y)$) and maps elements of the same type to elements of the same type:
+
+$$\text{type}(x) = \text{type}(y) \iff \text{type}(\alpha(x)) = \text{type}(\alpha(y))$$
+
+Notice that this definition does not require $\alpha(x)$ to have the exact same type as $x$—it only requires that if $x$ and $y$ share a type (say, both are points), then $\alpha(x)$ and $\alpha(y)$ must also share a type (say, both become planes).
+
+Because $\alpha$ sends all elements of a given type $i \in I$ into a single target type $j \in I$,  $\alpha$ gives us a well-defined permutation $\alpha_I: I \to I$ on the set of types itself, defined by: $\alpha_I(\text{type}(x)) = \text{type}(\alpha(x))$
+
+Visually,  $\alpha_I$ is the action of $\alpha$ on the nodes of the Buekenhout-Tits diagram:
+
+-   In $PG(3, q)$ with $I = \{0 \text{ (points)}, 1 \text{ (lines)}, 2 \text{ (planes)}\}$, a duality sends all points ($0$) to planes ($2$), all lines ($1$) to lines ($1$), and all planes ($2$) to points ($0$).
+    
+-   Here, the induced permutation $\alpha_I$ on the type set $I = \{0, 1, 2\}$ is the swap $\alpha_I = (0 \,\, 2)(1)$, which flips the diagram `0 --- 1 --- 2` left-to-right.
+
+The autocorrelation $\alpha$ is an automorphism of $\Gamma$ if $\alpha$ induces the identity on $I$ i.e. it is type preserving. It maps points to points, lines to lines, and planes to planes, or $\alpha_I(i) = i$ for all $i \in I$.
+
+So autocorrelation ($\text{Cor}(\Gamma)$) is the overarching term for any incidence-preserving symmetry of $\Gamma$, whether it scrambles the types in $I$ or keeps them fixed. Automorphism ($\text{Aut}(\Gamma)$) is reserved strictly for an autocorrelation where the induced permutation $\alpha_I$ on the types is the identity permutation ($\alpha_I(i) = i$ for all $i \in I$).
+
+Different textbooks use the word "automorphism" in one of two ways—some authors define $\text{Aut}(\Gamma)$ to mean only the type-preserving automorphisms (which are the collineations), while calling the larger group that includes dualities as the correlation group or extended automorphism group $\text{Cor}(\Gamma)$. In rank $2$, i.e., a projective plane $PG(2, q)$, hyperplanes are lines, so a duality literally swaps points and lines.
+    
+#### Order of an Autocorrelation
+
+Because an autocorrelation $\alpha$ lives in two worlds at once—it permutes the actual geometric elements in $X$, and it induces a permutation $\alpha_I$ on the type set $I$—there are two closely related "orders" to keep track of:
+
+**The Group-Theoretic Order $\vert{}\alpha\vert{}$ (Action on $X$)**
+
+As a bijection $\alpha: X \to X$, the order of $\alpha$ is the smallest positive integer $m$ such that applying $\alpha$  $m$ times sends every element $x \in X$ back to itself:
+
+$$\alpha^m = \text{id}_X \quad (\text{i.e., } \alpha^m(x) = x \text{ for all } x \in X)$$
+
+**The Induced Type-Order $\vert{}\alpha_I\vert{}$ (Action on the the Buekenhout-Tits Diagram)**
+
+The order of the induced permutation $\alpha_I \in \text{Sym}(I)$ is the smallest positive integer $k$ such that applying $\alpha$  $k$ times brings every type back to its original type:
+
+$$(\alpha_I)^k = \text{id}_I \iff \alpha^k \text{ is an automorphism of } \Gamma$$
+
+Because $\alpha \mapsto \alpha_I$ is a group homomorphism from $\text{Cor}(\Gamma)$ to $\text{Sym}(I)$ whose kernel is $\text{Aut}(\Gamma)$, the induced type-order $k = \vert{}\alpha_I\vert{}$ always divides the full order $m = \vert{}\alpha\vert{}$.
+
+But why do we care about $\alpha_I$? Because if the order of $\alpha_I$ is $1$, then $\alpha$ is an automorphism. Similarly if the order of $\alpha_I$ is $2$, this is called a duality of $PG(d, q)$ where $\alpha_I$ swaps $0 \leftrightarrow d-1$. Then $\alpha^2$ is guaranteed to be an automorphism, even if $\alpha^2$ still permutes the individual points among themselves. If both $\alpha$ and $\alpha_I$ are of order 2, this is called a polarity. We will see shortly, with an example of the Fano Plane, that $\alpha$ could be quite different from $2$ even if $\alpha_I = 2$.
+
+Note that if a textbook simply asks for "the order of an autocorrelation $\alpha$" without specifying $\alpha_I$, it always means the first order—the number of steps $m$ needed for $\alpha^m$ to fix every individual element in $X$.
+
+Let's compare $\alpha$ vs. $\alpha_I$ with the example of the Fano Plane $PG(2, 2)$, which has $7$ points $\{P_1, \dots, P_7\}$ and $7$ lines $\{\ell_1, \dots, \ell_7\}$ ($14$ elements in total). It's diagram contains only two nodes.     
+
+Suppose we pick an autocorrelation $\alpha$ that swaps points and lines in such a way that applying $\alpha$ once ($1$ step) sends every point to a line, and every line to a point. However, when we apply $\alpha$ twice ($\alpha^2$), point $P_1$ does not land back on $P_1$; instead,  $P_1$ lands on a different point $P_2$, and it takes $14$ steps ($\alpha^{14}$) for every individual point $P_i$ and line $\ell_i$ to return to its exact starting spot. Thus, order of $\alpha = 14$ but order of $\alpha_I=2$.
+
+Let's look at some more examples. 
+
+**In Projective Space $PG(d, q)$ (Diagram $A_d$:  `0 --- 1 --- ... --- d-1`):** The diagram is a straight line, so its only non-trivial diagram symmetry $\alpha_I$ is flipping the line left-to-right ($i \mapsto d - 1 - i$), which has type-order $k = 2$.
+    
+Therefore, for any correlation $\alpha$ that swaps points and hyperplanes, its square $\alpha^2$ is guaranteed to be a type-preserving automorphism (collineation).
+        
+What is the full order $m = \vert{}\alpha\vert{}$ on $X$? It can be any even number $2r$. In the special case where $m = 2$ (meaning $\alpha^2 = \text{id}_X$, so if point $P$ goes to hyperplane $\Pi$, then hyperplane $\Pi$ goes back to the exact same point $P$), the correlation of order $2$, as we saw, is called a polarity (which defines polar spaces: quadrics, symplectic spaces, and Hermitian varieties). 
+        
+**In the Hyperbolic Quadric $Q^+(7, q)$ (Diagram $D_4$: Y-shaped with 3 outer nodes):** Because the $D_4$ diagram has 3 identical outer branches (points,  $+$-solids, and $-$-solids), an autocorrelation $\alpha$ can induce a 3-cycle $\alpha_I$ on those 3 types (a triality).
+    
+Here, the induced type-order on the diagram is $k = 3$ (or $k = 2$ if it swaps two branches, up to $\text{Sym}(3)$ of order $6$).
+        
+When $\alpha^3 = \text{id}_X$, the autocorrelation has full order $3$ and is called a triality of order $3$.
+        
+**In the 3D Cube (Diagram $B_3$:  `0 === 1 --- 2`):** Look at the two ends of the cube's diagram: node $0$ has a double stroke `===` attached to it, while node $2$ has a single stroke `---` attached to it. Because a square (`===`) is not isomorphic to a triangle (`---`), you cannot flip the cube's diagram left-to-right without changing the geometry.
+    
+Thus, for the cube, the only possible permutation $\alpha_I$ is the identity ($k = 1$). Every autocorrelation of the cube is already a type-preserving automorphism.
+
+### Collineations
+A collineation is a bijection on the points that sends full lines to full lines (and higher subspaces to higher subspaces) while maintaining incidence relations. Note that we cannot send a line to any other arbitrary line because a collineation must preserve incidence (intersections). Suppose two lines $\ell_1$ and $\ell_2$ intersect at a point $P$. Any valid collineation $\phi$ must send $\ell_1$ and $\ell_2$ to two lines $\phi(\ell_1)$ and $\phi(\ell_2)$ that also intersect at the point $\phi(P)$. For example, you cannot map two intersecting lines to two skew lines.
+
+This means given any two lines $\ell_1$ and $\ell_2$, there exists a collineation that sends $\ell_1$ to $\ell_2$. But not every bijective mapping of the set of lines is a valid collineation.
+    
+More specifically, a collineation $\phi$ of a projective space is defined as a bijection on the set of points $\mathcal{P} \to \mathcal{P}$ and a bijection on the set of lines $\mathcal{L} \to \mathcal{L}$ (and all higher subspaces), such that for every point $P$ and every line $\ell$: $P \in \ell \iff \phi(P) \in \phi(\ell)$.
+
+Once a bijection on points maps every collinear triple of points to a collinear triple of points, its action on all lines, planes, and higher subspaces is completely locked in.
+
+From what we have already seen above, we can now see that collineations are automorphisms as they preserve type. Automorphism ($\text{Aut}(\Gamma)$) is the general Buekenhout-Tits term that applies to any incidence geometry $\Gamma$ over any type set $I$ (even geometries that do not have "points" and "lines," such as a graph or a abstract polytope). It simply means an incidence-preserving bijection of $X$ that fixes every type in $I$ ($\alpha_I = \text{id}_I$). Collineation is the classical projective geometry term for that exact same map when the types in $I$ are points, lines, planes, and higher subspaces.
+
+#### What Do Collineations Look Like?
+For any projective space $PG(d, q)$ of dimension $d \ge 2$ over a finite field $\mathbb{F}_q$ (where $q = p^h$ for a prime $p$), the Fundamental Theorem of Projective Geometry tells us exactly what the collineation group $P\Gamma L(d+1, q)$ is made of. 
+
+Every collineation is a combination of two operations on the homogeneous coordinate vectors $\mathbf{x} = (x_0, x_1, \dots, x_d)$:
+
+Projective Linear Transformations ($PGL(d+1, q)$): Multiplying the coordinate vector by any invertible $(d+1) \times (d+1)$ matrix $A$ over $\mathbb{F}_q$: $\mathbf{x} \mapsto A\mathbf{x}$
+    
+Field Automorphisms ($\text{Aut}(\mathbb{F}_q)$): Applying a Frobenius field automorphism $\sigma(x) = x^{p^k}$ to every coordinate of the vector: $(x_0, x_1, \dots, x_d) \mapsto (x_0^\sigma, x_1^\sigma, \dots, x_d^\sigma)$
+    
+Together, all invertible matrices combined with all field automorphisms (modulo scalar multiples $cI$) give the exact group of all collineations $P\Gamma L(d+1, q)$ of $PG(d, q)$.
+
 ## Polygons
 
 We refer to a configuration as a n-angle in the EEP, if it is a set of n points, no three collinear. The lines of this configuration are formed by connecting every possible pair of these initial points. Because no three points are collinear, any single line in this configuration contains $2$ of the generating points. Furthermore, from any single point, lines must be drawn to connect to all the remaining points in the set, meaning each point lies on exactly $n-1$ lines. 
