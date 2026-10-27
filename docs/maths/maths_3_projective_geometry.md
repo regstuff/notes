@@ -1546,7 +1546,7 @@ What if we delete the middle two nodes ($1$ and $2$)? Fix a flag $F = \{\ell, \P
 | Affine Space $AG(3, q)$ | $0$ (pts), $1$ (lines), $2$ (planes) | `o --L-- o ----- o` | Fixing a plane gives an affine plane (which is a linear space $L$, not a projective plane); fixing a point gives a projective plane of lines and planes through that point. |
 
 
-#### How Do DIagrams Help?
+#### How Do Diagrams Help?
 
 For a single 3D cube, we obviously do not need a diagram to know what a cube looks like. The power of the diagram appears when we go in the opposite direction: when we do not know what the global space looks like, or when we are working in dimensions or finite fields where we cannot visualize the object at all. Here are the four concrete things a diagram does for us.
 
