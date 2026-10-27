@@ -2025,6 +2025,8 @@ $$P\Gamma L(d+1, K) = PGL(d+1, K) \rtimes \text{Aut}(K)$$
 
 So in practice, working with a semilinear transformation just means carrying around an ordinary matrix $M$ alongside a field automorphism $\sigma$, applying $\sigma$ to the coordinates, and twisting matrix entries by $\sigma$ whenever a field automorphism jumps across a matrix.
 
+As an aside, note that $PGL(d+1, K)$ operates transitively on the chambers of $P$. Additionally, we define a frame of $P$ as an ordered set of $d+2$ points such that any $d+1$ of them form a basis of $P$. $PGL(d+1, K)$ operates transitively on the frames of $P$. If K is commutative, it operates sharply transitively. In this case, every projective collineation of P is uniquely determined by its definition on a frame.
+
 We should also point out briefly that there are fields called rigid fields. As we saw, the field $\mathbb{C}$ has non-trivial (i.e. other than the identity or mapping a scalar to the same scalar making it a linear map) outer automorphisms (such as the complex conjugation we just saw, as well as uncountably many wild, non-continuous automorphisms). A field $K$ whose only field automorphism is the identity map is called a rigid field. Every semilinear map over a rigid field reduces to an ordinary linear map. The field of real numbers $\mathbb{R}$ has this property. A few other rigid fields include:
 
 **The Rational Numbers ($\mathbb{Q}$):** Any field automorphism must fix $0$ and $1$. Since every rational number is built from $1$ via addition, subtraction, and division, every automorphism of $\mathbb{Q}$ must fix every element ($\sigma(q) = q$).
