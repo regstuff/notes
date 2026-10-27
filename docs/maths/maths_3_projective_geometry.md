@@ -197,7 +197,7 @@ Let $\mathbf{P}$ be a $d$-dimensional projective space, and let $U$ and $W$ be t
 ## Vector Spaces and Projective Geometry
 Purely axiomatic geometry (also called synthetic geometry) lacks a coordinate system, making it very difficult to compute transformations, intersections, or specific loci. We want to label these abstract points and lines with coordinates so we can calculate with them and get geometrical results by mechanically manipulating numbers. 
 
-Before going further, we must point out that every axiomatic projective space of dimension greater than or equal to 3 can be constructed out of a $(d+1)$-dimensional vector space $V$ over some division ring $K$. 
+Before going further, we must point out that every axiomatic projective space of dimension greater than or equal to 3 can be constructed out of a $(d+1)$-dimensional vector space $V$ over some division ring (which includes skew fields) $K$. Note that a skew field ring is almost the same as a field, except that multiplication must commute in a field, but need not in a division ring. Inverses still commute and are unique. 
 
 If dimension $d = 2$ i.e. if we are looking at projective planes, then we may not be able to find such vector spaces for certain projective planes called non-Desarguesian planes. Essentially, they cannot be embedded inside any 3D projective space. We will not bother about such planes here, but one important plane is the Moufang / Octonion Plane $\mathbb{O}\mathbb{P}^2$, which is built using the 8-dimensional Octonions $\mathbb{O}$, where multiplication is non-associative. Because octonions are not associative, you cannot form a true vector space over them, and $\mathbb{O}\mathbb{P}^2$ cannot exist inside any $\mathbb{O}\mathbb{P}^3$.
 
@@ -215,7 +215,7 @@ To avoid these qualifications, we saw how to add points at infinity where parall
 
 To label all these points, we use something like the usual coordinate system of $(x, y)$ but add an additional $z$ coordinate such that the coordinates of the points on the line at infinity have $z=0$, while the other points are $z=1$. Of course, this leaves us in a bit of a quandary. What do the points with $z \neq 0, 1$ mean? We need to map these back to the affine plane somehow. The trick that is used is to simply normalize $(x, y, z)$ by $z$, so that $(\rho x, \rho y, \rho z)$ is the same as $(x, y, z)$. The ratio $X/Z$ and $Y/Z$ determines the point of the affine plane, and there is a whole equivalence class of coordinates in the projective plane, which differ only by the scale factor, that map to the same affine and projective plane point. For example, the equivalence class containing $(2, 4, 2)$ can be scaled by $1/2$ to become $(1, 2, 1)$. This class represents the specific finite affine point $(1, 2)$. 
 
-When $z=0$, the $x$ and $y$ values capture the direction vector of a line. Once again, for example because $(4, 8, 0) = 2 \cdot (2, 4, 0)$, both triples belong to the same equivalence class. Geometrically, this makes sense: a direction vector from the origin to $(2, 4)$ points in the exact same direction (a slope of $2$) as a direction vector from the origin to $(4, 8)$. Therefore, they define the exact same point on the line at infinity. Note that these coordinates, called homogenous coordinates are not something new. They are just the coordinate values of each basis vector that is needed to describe a vector of the $d+1$-dimensional vector space. Essentially, if we fix a basis $\{v_0, v_1, \dots, v_d\}$ of $V$. Then we can express any vector as $v = a_0 v_0 + a_1 v_1 + \dots + a_d v_d \in V$ uniquely by its coordinates $(a_0, a_1, \dots, a_d)$. Two homogenous coordinates $a$ and $b$ are an equivalence class and therefore the same point (as discussed above) if there is an $\alpha \in F \setminus \{0\}$ such that $(a_0, a_1, \dots, a_d) = \alpha \cdot (b_0, b_1, \dots, b_d)$
+When $z=0$, the $x$ and $y$ values capture the direction vector of a line. Once again, for example because $(4, 8, 0) = 2 \cdot (2, 4, 0)$, both triples belong to the same equivalence class. Geometrically, this makes sense: a direction vector from the origin to $(2, 4)$ points in the exact same direction (a slope of $2$) as a direction vector from the origin to $(4, 8)$. Therefore, they define the exact same point on the line at infinity. Note that these coordinates, called homogenous coordinates are not something new. They are just the coordinate values of each basis vector that is needed to describe a vector of the $d+1$-dimensional vector space. Essentially, if we fix a basis $\{v_0, v_1, \dots, v_d\}$ of $V$. Then we can express any vector as $v = a_0 v_0 + a_1 v_1 + \dots + a_d v_d \in V$ uniquely by its coordinates $(a_0, a_1, \dots, a_d)$ in that basis. Two homogenous coordinates $a$ and $b$ are an equivalence class and therefore the same point (as discussed above) if there is an $\alpha \in F \setminus \{0\}$ such that $(a_0, a_1, \dots, a_d) = \alpha \cdot (b_0, b_1, \dots, b_d)$
 
 The vector space model directly reproduces the axiomatic count $q^2 + q + 1$. The ambient vector space $V = \mathbb{F}_q^3$ has $q^3$ total vectors. Remove the origin $\mathbf{0}$: $q^3 - 1$ non-zero vectors. Every $1$-dimensional vector subspace contains $q - 1$ non-zero scalar multiples of its spanning (unit) vector. The total number of $1$-dimensional subspaces (projective points) is: $\frac{q^3 - 1}{q - 1} = q^2 + q + 1$.
 
@@ -238,6 +238,16 @@ $$ax + by + cz = 0$$
 is completely symmetric between the point coordinates $(x, y, z)$ and the line coordinates $[a, b, c]$.
 
 In linear algebra over a 3D vector space, a 2D subspace (a plane through the origin) is uniquely defined by its 1D normal vector (an element of the dual space $V^*$). This means every theorem true for points and lines is automatically true if you swap the words "point" and "line". You prove a theorem once, and you get its dual theorem for free without any additional work.
+
+Note that these relations hold in higher dimensions as well between points and hyperplanes. Also, we have assumed that we are operating with left vector spaces, which is a fancy way of saying that we are using row vectors for the homogenous coordinates of points, and when we want to transform a row vector with a matrix, we do $v.M$ (not $M.v$). With right vector spaces, this flips.
+
+Additionally, the coordinates of a line/hyperplane may be written as $[a, b, c... ]$, but we actually mean a column vector $[a, b, c... ]^T$. Thus, the test for incidence being a dot product makes more sense now. It is simply $(x, y, z...)\cdot[a, b, c... ]^T$.
+
+Thus, a hyperplane is always defined by a linear equation, $x_0 a_0 + \dots + x_d a_d = 0$, which is pretty much what we see with a line on a plane. The homogenous coordinates of any point on this hyperplane satisify this equation. If however, we want to find the unique hyperplane passing through $d$ points, we plug the coordinates of the $d$ points into the hyperplane equation:
+
+$$\begin{aligned} x_0^{(1)} a_0 + x_1^{(1)} a_1 + \dots + x_d^{(1)} a_d &= 0 \\ x_0^{(2)} a_0 + x_1^{(2)} a_1 + \dots + x_d^{(2)} a_d &= 0 \\ &\;\;\vdots \\ x_0^{(d)} a_0 + x_1^{(d)} a_1 + \dots + x_d^{(d)} a_d &= 0 \end{aligned}$$
+
+This is a system of $d$ equations over $d+1$ unknowns (the homogenous coordinates of the hyperplane). A system of $d$ independent homogeneous equations in $d+1$ unknowns has a 1-dimensional space of solutions, which gives the unique homogeneous coordinate vector $[a_0, a_1, \dots, a_d]^T$ (up to a right scalar multiple) of the hyperplane $H$.
 
 ### Homogenous Polynomials
 Since we have homogenous coordinates (the ones with the additional $z=0$ coordinate), we can create homogenous polynomials. A polynomial $F(X_0, X_1, \dots, X_n)$ is homogeneous of degree $d$ if every individual monomial term has the exact same total degree $d$.
@@ -1696,11 +1706,340 @@ Field Automorphisms ($\text{Aut}(\mathbb{F}_q)$): Applying a Frobenius field aut
     
 Together, all invertible matrices combined with all field automorphisms (modulo scalar multiples $cI$) give the exact group of all collineations $P\Gamma L(d+1, q)$ of $PG(d, q)$.
 
+#### Collineations & Automorphisms
+First, a few definitions. A linear map (also called a linear transformation or linear operator) is a map between two vector spaces that preserves the operations of vector addition and scalar multiplication. So we have $A(a_1u + a_2v) = a_1A(u) + a_2A(v)$. Note that this means $A(cu) = cA(u)$.
+
+A field isomorphism or skew-field isomorphism $\sigma: K \to K'$ (where $K, K'$ are two fields or division rings (skew fields)) is a mapping of scalars in $K$ to $K'$. It is a bijection so every scalar in $K'$ comes from a unique scalar in $K$. It also preserves addition and multiplication for all scalars: $\sigma(a + b) = \sigma(a) + \sigma(b) \quad \text{and} \quad \sigma(a \cdot b) = \sigma(a) \cdot \sigma(b)$.
+    
+This automatically forces $\sigma(0) = 0$ and $\sigma(1) = 1$. However, other scalars could get scrambled. 
+
+Note that a field isomorphism becomes an automorphism if it maps a field into itself. 
+
+A semilinear transformation is what you get if you take a linear transformation and replace the scalar multiplication with a field isomorphism. So a semilinear transformation is specified by the pair $(A, \sigma)$, where $A: V \to V'$ is the map on vectors and $\sigma: K \to K'$ is the accompanying field isomorphism.
+
+**Additivity:** $A(\mathbf{x} + \mathbf{y}) = A(\mathbf{x}) + A(\mathbf{y})$
+    
+**Twisted Homogeneity:**  $A(k\mathbf{x}) = \sigma(k)A(\mathbf{x})$
+
+Thus if we "remove" $\sigma$—meaning we set $\sigma$ to be the trivial identity map $\sigma(k) = k$—then the rule $A(k\mathbf{x}) = \sigma(k)A(\mathbf{x})$ becomes $A(k\mathbf{x}) = kA(\mathbf{x})$, which is an ordinary linear map. Thus, every linear transformation is a special case of a semilinear transformation where $\sigma = \text{id}_K$.
+
+Let's look at two familiar examples of a semilinear map:
+
+**Complex Conjugation over $\mathbb{C}$:** Let $V = \mathbb{C}^3$ over the complex numbers $K = \mathbb{C}$, and let $\sigma(z) = \bar{z}$ (complex conjugation), which is an automorphism of the field $\mathbb{C}$ since $\overline{z_1 + z_2} = \bar{z}_1 + \bar{z}_2$ and $\overline{z_1 z_2} = \bar{z}_1 \bar{z}_2$. Now define $A(x_0, x_1, x_2) = (\bar{x}_0, \bar{x}_1, \bar{x}_2)$. What happens when we scale a vector $\mathbf{x}$ by $k = i$ before applying $A$?
+    
+$$A(i\mathbf{x}) = \overline{(i\mathbf{x})} = -i\bar{\mathbf{x}} = \sigma(i)A(\mathbf{x})$$
+    
+Because $i$ came out as $-i = \sigma(i)$ instead of $+i$,  $A$ is not linear over $\mathbb{C}$—it is semilinear with accompanying automorphism $\sigma(z) = \bar{z}$.
+
+**Frobenius Automorphisms over Finite Fields $\mathbb{F}_q$:** In a finite field $\mathbb{F}_q$ where $q = p^h$ (for instance,  $\mathbb{F}_4$ or $\mathbb{F}_8$ or $\mathbb{F}_9$), the map $\sigma(k) = k^p$ is a non-trivial field automorphism ($\sigma(a+b) = (a+b)^p = a^p + b^p$ and $\sigma(ab) = a^p b^p$). Raising every coordinate of a vector $\mathbf{x} = (x_0, \dots, x_d)$ to the $p$-th power, combined with multiplying by an invertible matrix $M$, gives a semilinear map:
+    
+$$A(\mathbf{x}) = \mathbf{x}^\sigma M$$
+
+So why do we care about semilinear maps? Because they represent collineations. You might expect collineations to be represented by just linear maps. Linear maps do represent some but not all collineations. Why? Because a projective point is not defined as a single vector $\mathbf{x}$; it is an entire equivalence class and 1-dimensional subspace $\langle \mathbf{x} \rangle = \{k\mathbf{x} \mid k \in K\}$.
+
+If we want a map $A: V \to V$ to send a projective point $\langle \mathbf{x} \rangle$ to a well-defined projective point $\langle A(\mathbf{x}) \rangle$, we need all scalar multiples $k\mathbf{x}$ of $\mathbf{x}$ to land inside the same 1-dimensional subspace spanned by $A(\mathbf{x})$.
+
+Look at what a semilinear map does to the set of scalar multiples $\{k\mathbf{x} \mid k \in K\}$:
+
+$$A(\langle \mathbf{x} \rangle) = \{A(k\mathbf{x}) \mid k \in K\} = \{\sigma(k)A(\mathbf{x}) \mid k \in K\} = \langle A(\mathbf{x}) \rangle$$
+
+Because $\sigma: K \to K$ is a bijection on the scalars, as $k$ sweeps over all of $K$, $\sigma(k)$ also sweeps over all of $K$. And what about a projective line joining $\langle \mathbf{x} \rangle$ and $\langle \mathbf{y} \rangle$ (the 2D subspace $\{k_1\mathbf{x} + k_2\mathbf{y} \mid k_1, k_2 \in K\}$)?
+
+$$A(k_1\mathbf{x} + k_2\mathbf{y}) = \sigma(k_1)A(\mathbf{x}) + \sigma(k_2)A(\mathbf{y})$$
+
+It maps the entire line through $\langle \mathbf{x} \rangle$ and $\langle \mathbf{y} \rangle$ directly onto the line through $\langle A(\mathbf{x}) \rangle$ and $\langle A(\mathbf{y}) \rangle$. 
+
+In short: Once again, linear maps are NOT the only maps on $V$ that preserve projective lines. Semilinear maps preserve projective points, lines, planes, and incidence just as well as linear maps do, because geometry only cares about whether two vectors lie in the same 1D span, i.e. are they a scaled version of each other, and not which specific scalar $k$ vs. $\sigma(k)$ labeled them.
+
+Furthermore, the Fundamental Theorem of Projective Geometry proves the converse: in dimension $d \ge 2$, every collineation (automorphism) of $\mathbf{P}(V)$ comes from a semilinear transformation of $V$. If we left out semilinear transformations and only used linear ones, we would miss part of the collineation group whenever $K$ has non-trivial field automorphisms. We'll look at this a little more in a bit.
+
+Let's look at something called an inner automorphism. An inner automorphism is a symmetry (automorphism) of a group or a skew field that is created entirely from the inside of the algebraic structure, simply by picking one fixed invertible element $c$ and sandwiching every element $x$ between $c$ and $c^{-1}$ or conjugating by $c$.
+
+Let $K$ be a skew field (division ring), and pick any fixed non-zero element $c \in K^\times$. The map $\sigma_c: K \to K$ defined for all $x \in K$ by $\sigma_c(x) = c x c^{-1}$ is called the inner automorphism of $K$ induced by $c$. 
+
+Let us check that is obeys the rules of a semilinear map: it must be a bijection that preserves both addition and multiplication. Just from the distributive and associative laws of $K$, we can see that it preserves addition:
+    
+$$\sigma_c(x + y) = c(x + y)c^{-1} = cxc^{-1} + cyc^{-1} = \sigma_c(x) + \sigma_c(y)$$
+    
+Preserves Multiplication (Notice how $c^{-1}$ and $c$ cancel in the middle):
+    
+$$\sigma_c(x \cdot y) = c(xy)c^{-1} = cx(c^{-1}c)yc^{-1} = (cxc^{-1})(cyc^{-1}) = \sigma_c(x) \cdot \sigma_c(y)$$
+    
+Bijection (Reversible): To undo the sandwiching by $c$, we simply sandwich by $c^{-1}$, since $c^{-1}(cxc^{-1})c = x$.
+
+What is the difference between inner and outer automorphisms? In any algebraic system, inner automorphisms are automorphisms of the form $\sigma_c(x) = cxc^{-1}$ that can be written using the multiplication of an element $c$ that already lives inside $K$. Outer automorphisms are ones that cannot be written as $cxc^{-1}$ for any $c \in K^\times$. For example, complex conjugation $\sigma(a + bi) = a - bi$ in $\mathbb{C}$ or the Frobenius map $\sigma(x) = x^p$ in $\mathbb{F}_q$ cannot be achieved by multiplying by a number and its inverse—they are genuine external symmetries of the field.
+
+Inner automorphisms are found only in skew fields. In a commutative field, it reduces to the identity and so we end up with a linear map. because if $K$ is an ordinary commutative field (like $\mathbb{R}$,  $\mathbb{C}$, or $\mathbb{F}_q$), then for any non-zero constant $c \in K^\times$:
+
+$$c k c^{-1} = c c^{-1} k = 1 \cdot k = k$$
+
+So in a commutative field,  $\sigma(k) = ckc^{-1}$ is just the identity $\sigma(k) = k$.
+
+In a skew field $K$, where multiplication is not commutative ($ck \neq kc$), suppose we take an ordinary linear map $L: V \to V$ (which has $\sigma = \text{id}_K$, so $L(k\mathbf{x}) = kL(\mathbf{x})$), and we scale the entire map $L$ on the left by a fixed non-zero scalar $c \in K^\times$ to define a new map $A(\mathbf{x}) = cL(\mathbf{x})$.
+
+Notice that on projective space $\mathbf{P}(V)$,  $A(\mathbf{x}) = cL(\mathbf{x})$ and $L(\mathbf{x})$ define the same projective point, because $\langle cL(\mathbf{x}) \rangle = \langle L(\mathbf{x}) \rangle$. Yet look at what happens when we plug $k\mathbf{x}$ into $A(\mathbf{x}) = cL(\mathbf{x})$:
+
+$$A(k\mathbf{x}) = c L(k\mathbf{x}) = c \big(k L(\mathbf{x})\big) = (ck) L(\mathbf{x})$$
+
+We want to rewrite $L(\mathbf{x})$ in terms of $A(\mathbf{x}) = cL(\mathbf{x})$, so we insert $c^{-1}c = 1$:
+
+$$A(k\mathbf{x}) = (ckc^{-1}) \big(c L(\mathbf{x})\big) = (ckc^{-1}) A(\mathbf{x})$$
+
+Look at the scalar factor in front of $A(\mathbf{x})$: because $c$ and $k$ do not commute, scaling a purely linear map $L$ by $c$ turned its scalar rule into $\sigma(k) = ckc^{-1}$.
+
+What this calculation shows is that any semilinear map $A$ whose $\sigma$ is an inner automorphism $\sigma(k) = ckc^{-1}$ is just $c$ times a purely linear map $L(\mathbf{x}) = c^{-1}A(\mathbf{x})$, and both $A$ and $L$ induce the exact same collineation on $\mathbf{P}(V)$.
+
+**Motivation Behind Inner Automorphisms**
+
+Let us look at why we need inner automorphisms before looking at an example. The entire reason we have to talk about inner automorphisms is to solve an embarrassing algebraic glitch that happens when we try to do Nothing (the identity map) in projective space over a non-commutative skew field.
+
+Let us look at what goes wrong when we try to scale a vector by a constant $c$, and how inner automorphisms fix it.
+
+In projective space $\mathbf{P}(V)$, any vector $\mathbf{x}$ and its scalar multiple $c\mathbf{x}$ (for a fixed non-zero constant $c \in K^\times$) represent the exact same projective point:
+
+$$\langle c\mathbf{x} \rangle = \langle \mathbf{x} \rangle$$
+
+So suppose we define a map $S_c: V \to V$ on our left vector space $V$ that simply multiplies every vector on the left by a fixed constant $c \in K^\times$:
+
+$$S_c(\mathbf{x}) = c\mathbf{x}$$
+
+Geometrically, what does $S_c$ do to the points of projective space $\mathbf{P}(V)$? Nothing at all! It sends every projective point $\langle \mathbf{x} \rangle$ to $\langle c\mathbf{x} \rangle = \langle \mathbf{x} \rangle$. It induces the identity collineation on $\mathbf{P}(V)$.
+
+Now ask the algebra question: Is this trivial scaling map $S_c(\mathbf{x}) = c\mathbf{x}$ a linear transformation of $V$? Let us test the linear transformation rule $S_c(k\mathbf{x}) = k S_c(\mathbf{x})$:
+
+-   Left side:  $S_c(k\mathbf{x}) = c(k\mathbf{x}) = (ck)\mathbf{x}$.
+    
+-   Right side:  $k S_c(\mathbf{x}) = k(c\mathbf{x}) = (kc)\mathbf{x}$.
+ 
+If $K$ is non-commutative ($ck \neq kc$), the left side does NOT equal the right side! That means in a left vector space over the quaternions $\mathbb{H}$, multiplying every vector by $c = i$ is NOT a linear map.
+
+Instead, look at what $S_c$ actually obeys:
+
+$$S_c(k\mathbf{x}) = (ck)\mathbf{x} = (ckc^{-1})(c\mathbf{x}) = \sigma_c(k) S_c(\mathbf{x})$$
+
+Because $ck = (ckc^{-1})c$, the trivial scaling map $S_c(\mathbf{x}) = c\mathbf{x}$ is actually a semilinear map whose accompanying automorphism is the inner automorphism $\sigma_c(k) = ckc^{-1}$.
+
+In projective geometry, we want to build a dictionary between:
+
+-   Geometry: Collineations of $\mathbf{P}(V)$ (which live in $P\Gamma L(V)$ and $PGL(V)$), and
+
+-   Algebra: Transformations of the vector space $V$ (which live in $\Gamma L(V)$ and $GL(V)$).
+
+To pass from the vector space $V$ to the projective space $\mathbf{P}(V)$, we have to quotient out (divide out) all the scaling maps $S_c(\mathbf{x}) = c\mathbf{x}$ that do nothing to projective points. Look at what happens in that quotient if we did not know about inner automorphisms:
+
+1.  Over a commutative field $\mathbb{F}$, all scaling maps $S_c(\mathbf{x}) = c\mathbf{x}$ are linear ($\sigma = \text{id}$), so they sit inside $GL(V)$, and we simply write: $PGL(V) = GL(V) / \{S_c\}$
+    
+2.  Over a non-commutative skew field $K$, the scaling maps $S_c(\mathbf{x}) = c\mathbf{x}$ are NOT inside $GL(V)$ (unless $c$ is in the center $Z(K)$ of the skew field, meaning $c$ commutes with everything). Most scaling maps $S_c$ actually sit out in the semilinear group $\Gamma L(V)$ with inner automorphisms $\sigma_c(k) = ckc^{-1}$.
+3. 
+Therefore, when we ask: "Which semilinear maps $(A, \sigma)$ in $\Gamma L(V)$ represent a pure matrix collineation in $PGL(V)$ (like a central collineation)?"
+
+-   We cannot simply say "the ones with $\sigma = \text{id}$," because if someone takes a linear map $L$ (with $\sigma = \text{id}$) and multiplies it by a harmless scalar $c$ to get $A(\mathbf{x}) = cL(\mathbf{x})$ (which is the exact same collineation on $\mathbf{P}(V)$!), its $\sigma$ suddenly changes from $\text{id}$ to the inner automorphism $\sigma_c(k) = ckc^{-1}$.
+
+-   Conversely, if a semilinear map $(A, \sigma)$ happens to have an inner automorphism $\sigma(k) = ckc^{-1}$, we can multiply $A$ by $c^{-1}$ to get $L(\mathbf{x}) = c^{-1}A(\mathbf{x})$, which kills off the $\sigma_c$ and turns the map back into an ordinary linear matrix $L$ with $\sigma = \text{id}$.
+- 
+In short, inner automorphisms are not a new geometric transformation we are trying to construct—they are simply the "gauge freedom" (coordinate redundancy) created by scaling vectors by a non-commuting constant $c$:
+
+
+| Level | What Plays the Role of "Trivial Scaling" (Doing Nothing Geometrically) | What Plays the Role of "Pure Projective Linear Transformations" $PGL(V)$ |
+| --- | --- | --- |
+| On Vectors $V$ | Multiplying a vector by $c \in K^\times$: $\mathbf{x} \mapsto c\mathbf{x}$ | Linear maps $L \in GL(V)$, or scalar multiples $cL$ |
+| On Scalars $K$ | Inner automorphisms $\sigma_c(k) = ckc^{-1} \in \text{Inn}(K)$ | Semilinear maps $(A, \sigma)$ where $\sigma \in \text{Inn}(K)$ (because dividing $A$ by $c$ makes $\sigma = \text{id}$) |
+| On Projective Space $\mathbf{P}(V)$ | The identity map $\langle c\mathbf{x} \rangle = \langle \mathbf{x} \rangle$ | The group $PGL(V)$, which contains all central collineations |
+
+So the only reason the textbook mentions inner automorphisms is bookkeeping:
+
+Scaling a vector by $c$ does nothing in projective space.
+
+In a non-commutative skew field, scaling by $c$ twists scalars by the inner automorphism $ckc^{-1}$.
+
+Therefore, any inner automorphism $ckc^{-1}$ can be canceled out just by rescaling our map by $c^{-1}$, reducing the semilinear map to a pure linear matrix.
+    
+Once we know that, whenever we see "$\sigma$ is an inner automorphism" in a theorem, we can immediately translate it in our heads as: "After rescaling by a constant $c^{-1}$, we can set $\sigma = \text{id}$ and treat the map as an ordinary linear matrix."
+
+Now let's work on an example. Let us compare what $\sigma_c(x) = cxc^{-1}$ does in an ordinary commutative field versus a non-commutative skew field like the quaternions $\mathbb{H}$:
+
+-   Case A: In any commutative field (like $\mathbb{R}$,  $\mathbb{C}$, or $\mathbb{F}_q$): Because multiplication is commutative ($cx = xc$), the $c$ and $c^{-1}$ immediately cancel out for every $x$:
+    
+    $$\sigma_c(x) = cxc^{-1} = cc^{-1}x = 1 \cdot x = x$$
+    
+    Therefore, in a commutative field, every inner automorphism is just the trivial identity map $\sigma(x) = x$.
+    
+-   Case B: In the non-commutative skew field of Quaternions $\mathbb{H}$: Recall that in $\mathbb{H}$, the basis elements $i, j, k$ satisfy $i^2 = j^2 = k^2 = -1$ (so $i^{-1} = -i$), and $ij = k = -ji$,  $ik = -j = -ki$. Now pick the fixed non-zero quaternion $c = i$, and form the inner automorphism $\sigma_i(x) = i x i^{-1} = -ixi$:
+    
+    -   On $x = 1$:  $\sigma_i(1) = i(1)i^{-1} = 1$
+        
+    -   On $x = i$:  $\sigma_i(i) = i(i)i^{-1} = i$
+        
+    -   On $x = j$:  $\sigma_i(j) = i(j)(-i) = k(-i) = -j$
+        
+    -   On $x = k$:  $\sigma_i(k) = i(k)(-i) = (-j)(-i) = -k$
+
+    Look at what happened: for a general quaternion $x = a + bi + cj + dk$, the inner automorphism $\sigma_i$ sends:
+    
+    $$\sigma_i(a + bi + cj + dk) = a + bi - cj - dk$$
+    
+    Even though we only multiplied by $i$ on the left and $i^{-1}$ on the right, the non-commutativity of $\mathbb{H}$ flipped the signs of the $j$ and $k$ components, creating a genuine, non-trivial automorphism of $\mathbb{H}$ (geometrically, a 180-degree rotation around the $i$-axis in 3D space).
+
+This matters for projective space $\mathbf{P}(V)$, where a projective point is the 1D subspace $\langle \mathbf{v} \rangle = \{k\mathbf{v} \mid k \in K\}$. If we take a purely linear map $L: V \to V$ (which obeys $L(k\mathbf{v}) = kL(\mathbf{v})$) and multiply its output on the left by a fixed non-zero scalar $c \in K^\times$ to define $A(\mathbf{v}) = cL(\mathbf{v})$:
+
+Geometrically on $\mathbf{P}(V)$,  $A$ and $L$ do the exact same thing to every projective point, because scaling a vector by $c$ does not change which 1D line through the origin it spans:  $\langle cL(\mathbf{v}) \rangle = \langle L(\mathbf{v}) \rangle$.
+    
+Algebraically on $V$, however, when a scalar $k$ passes through $A(\mathbf{v}) = cL(\mathbf{v})$, it gets conjugated by $c$:
+    
+$$A(k\mathbf{v}) = cL(k\mathbf{v}) = ckL(\mathbf{v}) = (ckc^{-1})\big(cL(\mathbf{v})\big) = \sigma_c(k)A(\mathbf{v})$$
+
+So in projective geometry over a skew field $K$, saying "a semilinear map $A$ has an inner automorphism $\sigma_c(k) = ckc^{-1}$" is simply the algebraic way of saying "$A$ is just a scalar multiple $cL$ of an ordinary linear map $L$."
+
+Now for a few properties of semilinear maps. 
+
+| Goal | Mathematical Statement | What It Means Conceptually |
+| --- | --- | --- |
+| Semilinear $\implies$ Collineation | Any bijective semilinear map $A: V \to V$ induces a collineation (automorphism) $\alpha$ of $\mathbf{P}(V)$ via $\alpha(\langle \mathbf{x} \rangle) = \langle A(\mathbf{x}) \rangle$. | Both matrices ($PGL$) and field automorphisms ($\sigma$) produce valid geometric symmetries of $\mathbf{P}(V)$, giving the group $P\Gamma L(V)$. |
+| When Two Maps Give the Same Collineation | Two semilinear maps $A_1, A_2$ induce the exact same collineation on $\mathbf{P}(V)$ if and only if $A_2(\mathbf{x}) = c A_1(\mathbf{x})$ for a fixed scalar $c \in K^\times$. | Scaling every vector by a global constant $c$ doesn't move any 1D subspace $\langle \mathbf{x} \rangle$, so we quotient out scalar transformations $Z(GL(V))$. |
+| Central Collineations Are strictly Linear | If a semilinear map $A$ induces a central collineation (fixes a hyperplane $H$ pointwise, with $\dim H \ge 1$), then its accompanying automorphism $\sigma$ is forced to be an inner automorphism ($\sigma(k) = c k c^{-1}$), meaning the central collineation can actually be represented by a purely linear map ($\sigma = \text{id}$). | Why? Because fixing all the points on a line inside the axis $H$ freezes all the scalar cross-ratios on that line, which forces $\sigma$ to act trivially on the coordinates. |
+
+That third point is the punchline of the section: while a general collineation of $\mathbf{P}(V)$ requires a semilinear map ($P\Gamma L$), a central collineation (elation or homology) is so constrained by its pointwise-fixed axis $H$ that it can always be written as a pure linear transformation ($PGL$).
+
+Why do we care that central collineations come from linear maps (and not semilinear maps)?
+
+**It Separates Pure Geometry (Matrices) from Field Arithmetic (Galois Theory)**
+
+The full collineation group $P\Gamma L(d+1, K)$ is a mixture of two completely different worlds:
+
+* Matrix transformations ($PGL(d+1, K)$): Coming from linear maps ($\sigma = \text{id}$).
+* Field automorphisms ($\text{Aut}(K)$): Coming from Galois theory (like $\sigma(z) = \bar{z}$ or $\sigma(k) = k^p$).
+
+How can you tell, purely from looking at how a collineation moves points and lines in space, whether it came from a pure matrix ($PGL$) or has a field automorphism $\sigma$ mixed in?
+
+Central collineations give us the answer. Because every central collineation is induced by a linear map, the subgroup generated by all central collineations (elations and homologies) consists purely of matrices—it never has any field automorphism twist $\sigma$ in it.
+
+**You Cannot Fix a Line Pointwise If $\sigma \neq \text{id}$**
+
+Why can't a genuinely semilinear map ($\sigma \neq \text{id}$) be a central collineation?
+
+Suppose $\alpha$ is a central collineation with axis $H$. Inside the hyperplane $H$, pick a line $\ell$ spanned by two basis points $P_1 = \langle \mathbf{e}_1 \rangle$ and $P_2 = \langle \mathbf{e}_2 \rangle$, and also containing the unit point $U = \langle \mathbf{e}_1 + \mathbf{e}_2 \rangle$.
+
+Because $\ell$ lies inside the axis $H$, every single point on $\ell$ must stay fixed under $\alpha$:
+
+* Fixing $P_1, P_2,$ and $U$ forces $A(\mathbf{e}_1) = \mathbf{e}_1$ and $A(\mathbf{e}_2) = \mathbf{e}_2$ (up to a common scalar).
+* Now look at any other point $P_k = \langle \mathbf{e}_1 + k\mathbf{e}_2 \rangle$ on the line $\ell$ (for any scalar $k \in K$).
+* Apply our semilinear map $A$ to $P_k$:
+
+$$A(\mathbf{e}_1 + k\mathbf{e}_2) = A(\mathbf{e}_1) + \sigma(k)A(\mathbf{e}_2) = \mathbf{e}_1 + \sigma(k)\mathbf{e}_2$$
+
+* For the point $P_k = \langle \mathbf{e}_1 + k\mathbf{e}_2 \rangle$ to stay fixed on the axis $H$ for every $k \in K$, we must have:
+
+$$\mathbf{e}_1 + \sigma(k)\mathbf{e}_2 = \mathbf{e}_1 + k\mathbf{e}_2 \implies \sigma(k) = k \quad \text{for all } k \in K$$
+
+In other words, if $\sigma(k) \neq k$, then $\alpha$ will move the point $\langle \mathbf{e}_1 + k\mathbf{e}_2 \rangle$ to the different point $\langle \mathbf{e}_1 + \sigma(k)\mathbf{e}_2 \rangle$, making it impossible to freeze an entire line pointwise!
+
+**It Lets Us Write Every Central Collineation as a Simple Matrix**
+
+Because central collineations are guaranteed to be induced by linear maps, we never have to worry about $\sigma$ when computing with elations and homologies. Every central collineation of $\mathbf{P}(V)$ can be written directly as a linear transformation of the form:
+
+$$A(\mathbf{x}) = \mathbf{x} + \varphi(\mathbf{x})\mathbf{c}$$
+
+where $\mathbf{c}$ is a vector spanning the centre $C = \langle \mathbf{c} \rangle$, and $\varphi: V \to K$ is a linear functional whose kernel $\ker(\varphi) = \{ \mathbf{x} \in V \mid \varphi(\mathbf{x}) = 0 \}$ is the hyperplane axis $H$.
+
+In summary:
+
+| Concept | Algebraic Meaning | Geometric Meaning in $\mathbf{P}(V)$ |
+| --- | --- | --- |
+| Semilinear Map $(A, \sigma)$ | $A(\mathbf{x}+\mathbf{y}) = A(\mathbf{x})+A(\mathbf{y})$ and $A(k\mathbf{x}) = \sigma(k)A(\mathbf{x})$ | Generates the entire collineation group $P\Gamma L(V)$ (matrices + field automorphisms). |
+| Linear Map ($A$ with $\sigma = \text{id}$) | $A(k\mathbf{x}) = kA(\mathbf{x})$ (pure matrix multiplication) | Generates the projective linear group $PGL(V)$ (collineations that preserve cross-ratios). |
+| Central Collineations (Elations & Homologies) | Always linear: $A(\mathbf{x}) = \mathbf{x} + \varphi(\mathbf{x})\mathbf{c}$ ($\sigma$ is forced to be trivial because the axis $H$ is fixed pointwise). | Elementary projections with a centre $C$ and pointwise-fixed axis $H$; they generate $PSL(V)$ and $PGL(V)$ inside $P\Gamma L(V)$. |
+
+How do we actually compute with semilinear maps if they are not matrices? Even though a semilinear transformation $A: V \to V$ is not a pure matrix, it is almost as easy to compute with. Once we choose a basis $\{\mathbf{e}_0, \mathbf{e}_1, \dots, \mathbf{e}_d\}$ for $V$, every semilinear transformation splits into a two-step assembly line:
+
+1. Apply the field automorphism $\sigma$ to every coordinate of the vector $\mathbf{x}$.
+2. Multiply the resulting vector by an ordinary invertible matrix $M$.
+
+Let us derive why this works directly from the definition $A(k\mathbf{x}) = \sigma(k)A(\mathbf{x})$.
+
+Suppose a vector $\mathbf{x} \in V$ has coordinates $(x_0, x_1, \dots, x_d)$ relative to the basis $\{\mathbf{e}_0, \dots, \mathbf{e}_d\}$:
+
+$$\mathbf{x} = x_0 \mathbf{e}_0 + x_1 \mathbf{e}_1 + \dots + x_d \mathbf{e}_d$$
+
+Now apply the semilinear transformation $A$ to $\mathbf{x}$ using additivity and the $\sigma$-rule:
+
+$$\begin{aligned} A(\mathbf{x}) &= A(x_0 \mathbf{e}_0 + x_1 \mathbf{e}_1 + \dots + x_d \mathbf{e}_d) \\ &= A(x_0 \mathbf{e}_0) + A(x_1 \mathbf{e}_1) + \dots + A(x_d \mathbf{e}_d) \\ &= \sigma(x_0) A(\mathbf{e}_0) + \sigma(x_1) A(\mathbf{e}_1) + \dots + \sigma(x_d) A(\mathbf{e}_d) \end{aligned}$$
+
+Just as in standard linear algebra, each basis image $A(\mathbf{e}_i)$ is some vector in $V$, which can be written as a row of an invertible $(d+1) \times (d+1)$ matrix $M = (m_{ij})$.
+
+If we write $\mathbf{x}^\sigma$ for the coordinate vector where $\sigma$ has been applied to each entry:
+
+$$\mathbf{x}^\sigma = \big(\sigma(x_0), \, \sigma(x_1), \, \dots, \, \sigma(x_d)\big)$$
+
+then the action of the semilinear transformation $A$ on the coordinate row vector $\mathbf{x}$ is simply:
+
+$$A(\mathbf{x}) = \mathbf{x}^\sigma M$$
+
+Or if we write coordinates as column vectors with matrices on the left over a commutative field, $A(\mathbf{x}) = M \mathbf{x}^\sigma$.
+
+---
+
+Let us do a concrete calculation in the projective plane $PG(2, 4)$ over the finite field $\mathbb{F}_4 = \{0, 1, \omega, \omega^2\}$, where $\omega^2 = \omega + 1$ and $\omega^3 = 1$.
+
+In $\mathbb{F}_4$, the Frobenius field automorphism is squaring: $\sigma(k) = k^2$. It swaps $\omega \leftrightarrow \omega^2$ and leaves $0$ and $1$ fixed.
+
+Suppose our semilinear transformation $A$ has the accompanying automorphism $\sigma(k) = k^2$ and the matrix:
+
+$$M = \begin{pmatrix} 1 & 0 & 0 \\ 0 & \omega & 0 \\ 1 & 0 & 1 \end{pmatrix}$$
+
+How do we find the image of the point $\mathbf{x} = (1, \omega, \omega^2)$ under $A$?
+
+1. Step 1 (Apply $\sigma$ entry-by-entry to the coordinate vector $\mathbf{x}$):
+
+$$\mathbf{x}^\sigma = \big(\sigma(1), \, \sigma(\omega), \, \sigma(\omega^2)\big) = (1^2, \, \omega^2, \, \omega^4) = (1, \, \omega^2, \, \omega)$$
+
+
+2. Step 2 (Multiply $\mathbf{x}^\sigma$ by the matrix $M$):
+
+$$\mathbf{x}' = \mathbf{x}^\sigma M = (1, \, \omega^2, \, \omega) \begin{pmatrix} 1 & 0 & 0 \\ 0 & \omega & 0 \\ 1 & 0 & 1 \end{pmatrix} = (1 + \omega, \, \omega^3, \, \omega) = (\omega^2, \, 1, \, \omega)$$
+
+What happens if we compose two different semilinear transformations $A_1 = (M_1, \sigma_1)$ and $A_2 = (M_2, \sigma_2)$?
+
+Let us apply $A_1$ first, and then apply $A_2$ to the result:
+
+1. Applying $A_1$ to $\mathbf{x}$ gives: $\mathbf{y} = \mathbf{x}^{\sigma_1} M_1$.
+2. Applying $A_2$ to $\mathbf{y}$ means we must first apply $\sigma_2$ to every entry of $\mathbf{y}$, and then multiply by $M_2$:
+
+$$A_2(A_1(\mathbf{x})) = \big(\mathbf{x}^{\sigma_1} M_1\big)^{\sigma_2} M_2$$
+
+
+3. Since $\sigma_2$ is a field automorphism, it distributes across all the additions and multiplications inside $\mathbf{x}^{\sigma_1} M_1$, meaning it hits both $\mathbf{x}^{\sigma_1}$ and every entry of the matrix $M_1$:
+
+$$A_2(A_1(\mathbf{x})) = \mathbf{x}^{\sigma_2 \circ \sigma_1} \big(M_1^{\sigma_2} M_2\big)$$
+
+This gives us the multiplication rule for pairs $(M, \sigma)$ in the semilinear group $\Gamma L(d+1, K)$:
+
+$$(M_1, \sigma_1) \cdot (M_2, \sigma_2) = \big(M_1^{\sigma_2} M_2, \,\, \sigma_2 \circ \sigma_1\big)$$
+
+In group theory, this twisted multiplication rule is called a semidirect product:
+
+$$\Gamma L(d+1, K) = GL(d+1, K) \rtimes \text{Aut}(K)$$
+
+And when we pass to projective space by factoring out scalar matrices, we get the full collineation group:
+
+$$P\Gamma L(d+1, K) = PGL(d+1, K) \rtimes \text{Aut}(K)$$
+
+So in practice, working with a semilinear transformation just means carrying around an ordinary matrix $M$ alongside a field automorphism $\sigma$, applying $\sigma$ to the coordinates, and twisting matrix entries by $\sigma$ whenever a field automorphism jumps across a matrix.
+
+We should also point out briefly that there are fields called rigid fields. As we saw, the field $\mathbb{C}$ has non-trivial (i.e. other than the identity or mapping a scalar to the same scalar making it a linear map) outer automorphisms (such as the complex conjugation we just saw, as well as uncountably many wild, non-continuous automorphisms). A field $K$ whose only field automorphism is the identity map is called a rigid field. Every semilinear map over a rigid field reduces to an ordinary linear map. The field of real numbers $\mathbb{R}$ has this property. A few other rigid fields include:
+
+**The Rational Numbers ($\mathbb{Q}$):** Any field automorphism must fix $0$ and $1$. Since every rational number is built from $1$ via addition, subtraction, and division, every automorphism of $\mathbb{Q}$ must fix every element ($\sigma(q) = q$).
+    
+**Prime Finite Fields ($\mathbb{F}_p$ or $\mathbb{Z}/p\mathbb{Z}$):** Like $\mathbb{Q}$, these fields are generated entirely by the element $1$, so no non-trivial automorphism can exist.
+    
+**Real Closed Fields:** Any algebraic extension of $\mathbb{Q}$ or field equipped with an ordering where positive elements are squares (like $\mathbb{R}$) forces any automorphism to preserve order ($x > 0 \implies x = y^2 \implies \sigma(x) = \sigma(y)^2 > 0$), making non-trivial automorphisms impossible.
+
+This distinction has a major impact on collineations. Over rigid fields, the semilinear group collapses into the projective linear group: $P\Gamma L(n+1, \mathbb{R}) = PGL(n+1, \mathbb{R})$. Every collineation is induced strictly by a matrix (a projective linear transformation). You cannot construct "exotic" collineations using field twists, unlike on $\mathbb{CP}^n$ where complex conjugation $\sigma(z) = \bar{z}$ yields non-linear collineations.
+
 ## Polygons
 
-We refer to a configuration as a n-angle in the EEP, if it is a set of n points, no three collinear. The lines of this configuration are formed by connecting every possible pair of these initial points. Because no three points are collinear, any single line in this configuration contains $2$ of the generating points. Furthermore, from any single point, lines must be drawn to connect to all the remaining points in the set, meaning each point lies on exactly $n-1$ lines. 
+We refer to a configuration as an $n$-angle in the EEP, if it is a set of n points, no three collinear. The lines of this configuration are formed by connecting every possible pair of these initial points. Because no three points are collinear, any single line in this configuration contains $2$ of the generating points. Furthermore, from any single point, lines must be drawn to connect to all the remaining points in the set, meaning each point lies on exactly $n-1$ lines. 
 
-Similarly, an n-lateral is a set of n lines, no three concurrent. The points of this configuration are formed by the intersections of every possible pair of these lines. Because no three lines are concurrent, any single intersection point in this configuration is formed by and lies on $2$ lines. Furthermore, any single line must intersect all the other lines in the set, meaning each line contains exactly $n-1$ intersection points.
+Similarly, an $n$-lateral is a set of n lines, no three concurrent. The points of this configuration are formed by the intersections of every possible pair of these lines. Because no three lines are concurrent, any single intersection point in this configuration is formed by and lies on $2$ lines. Furthermore, any single line must intersect all the other lines in the set, meaning each line contains exactly $n-1$ intersection points.
 
 The dual of a configuration can be obtained by replacing point ←→ line, collinear ←→ concurrent, join ←→ intersection.
 
