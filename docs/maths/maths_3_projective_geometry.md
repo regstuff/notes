@@ -1830,13 +1830,13 @@ To pass from the vector space $V$ to the projective space $\mathbf{P}(V)$, we ha
 1.  Over a commutative field $\mathbb{F}$, all scaling maps $S_c(\mathbf{x}) = c\mathbf{x}$ are linear ($\sigma = \text{id}$), so they sit inside $GL(V)$, and we simply write: $PGL(V) = GL(V) / \{S_c\}$
     
 2.  Over a non-commutative skew field $K$, the scaling maps $S_c(\mathbf{x}) = c\mathbf{x}$ are NOT inside $GL(V)$ (unless $c$ is in the center $Z(K)$ of the skew field, meaning $c$ commutes with everything). Most scaling maps $S_c$ actually sit out in the semilinear group $\Gamma L(V)$ with inner automorphisms $\sigma_c(k) = ckc^{-1}$.
-3. 
+
 Therefore, when we ask: "Which semilinear maps $(A, \sigma)$ in $\Gamma L(V)$ represent a pure matrix collineation in $PGL(V)$ (like a central collineation)?"
 
 -   We cannot simply say "the ones with $\sigma = \text{id}$," because if someone takes a linear map $L$ (with $\sigma = \text{id}$) and multiplies it by a harmless scalar $c$ to get $A(\mathbf{x}) = cL(\mathbf{x})$ (which is the exact same collineation on $\mathbf{P}(V)$!), its $\sigma$ suddenly changes from $\text{id}$ to the inner automorphism $\sigma_c(k) = ckc^{-1}$.
 
 -   Conversely, if a semilinear map $(A, \sigma)$ happens to have an inner automorphism $\sigma(k) = ckc^{-1}$, we can multiply $A$ by $c^{-1}$ to get $L(\mathbf{x}) = c^{-1}A(\mathbf{x})$, which kills off the $\sigma_c$ and turns the map back into an ordinary linear matrix $L$ with $\sigma = \text{id}$.
-- 
+  
 In short, inner automorphisms are not a new geometric transformation we are trying to construct—they are simply the "gauge freedom" (coordinate redundancy) created by scaling vectors by a non-commuting constant $c$:
 
 
