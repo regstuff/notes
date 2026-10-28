@@ -2502,6 +2502,40 @@ Now compare this to the 3D cube. A thin projective plane (`o --- o`) is a triang
     
 The octahedron / cube is literally the "thin" ($q = 1$) polar space of rank $3$, and a polar space over $\mathbb{F}_q$ is the "thick" ($q > 1$) version where every vertex-pair gets thickened into $(q+1)$ points and every triangle gets thickened into $PG(2, q)$.
 
+More generally, for a polar space of rank $n$, if we fix a generator (node), all the points, lines, and planes inside it form an ordinary projective space , which has the linear diagram: `o --- o --- ... --- o`.
+
+If we fix a flag of low-dimensional subspaces and look at the last two nodes, they form a rank $2$ polar space, which is a Generalized Quadrangle (a thick square `o === o`, because the "1-or-all" axiom forbids triangles).
+
+### The Classical Tits-Veldkamp Definition of Polar Spaces
+This definition is superseded by the One-or-All axiom but it tells us quite a bit about the properties of polar spaces. So let's go through it here. Additionally, it ties back to the diagram in its first point about projective spaces. 
+
+A polar space of rank $n \ge 1$ is a pair $(\mathcal{P}, \Sigma)$, where $\mathcal{P}$ is a non-empty set whose elements are called points, and $\Sigma$ is a collection of non-empty subsets of $\mathcal{P}$ called singular subspaces (or simply subspaces), satisfying the following axioms:
+
+1.  **Subspaces are Projective Spaces:** Every element $S \in \Sigma$, considered as an incidence structure with the induced subsets belonging to $\Sigma$, is a projective space of dimension at most $n - 1$.
+    
+2.  **Intersection Closed:** The intersection of any two elements of $\Sigma$ is either empty or belongs to $\Sigma$.
+    
+3.  **Subspace Completeness:** If $S \in \Sigma$ and $S'$ is a projective subspace of $S$, then $S' \in \Sigma$.
+    
+4.  **The Projective Bundle (Cone) Axiom:** If $S \in \Sigma$ has dimension $n - 1$ (a maximal singular subspace, or generator) and $p \in \mathcal{P} \setminus S$ is a point not in $S$, then:
+    
+    -   There exists a unique singular subspace $S' \in \Sigma$ containing $p$ such that $S \cap S'$ has dimension $n - 2$.
+        
+    -   The union of all lines joining $p$ to points in $S \cap S'$ is contained in $S'$.
+
+     In modern terms: the set of points of $S$ collinear to $p$ forms a projective hyperplane of $S$.)_
+    
+5.  **Non-Degeneracy (Existence of Disjoint Generators):** There exist two maximal singular subspaces in $\Sigma$ of dimension $n - 1$ that are completely disjoint ($S_1 \cap S_2 = \emptyset$).
+    
+
+#### Unpacking the Axioms
+
+**Axiom 1 & 3 (Internal Projective Geometry):** This formalizes the phrase "behaving like projective spaces internally". Every flat on the polar space—whether it is an isotropic line, plane, or higher-dimensional flat—satisfies Desargues' and Veblen-Young axioms natively. The intrinsic geometry inside any individual subspace $S \in \Sigma$ has no "curvature" or missing points; it is identical to a standard projective space $\mathrm{PG}(d, \mathbb{F})$.
+    
+**Axiom 4 (The Polar Connection):** This is the higher-dimensional ancestor of the Buekenhout-Shult point-line axiom. Instead of testing a point against a line, it tests a point $p$ against a maximal subspace $S \cong \mathrm{PG}(n - 1, \mathbb{F})$. It dictates that the locus of points in $S$ that can "see" $p$ along polar lines does not form a messy curved slice: it cuts $S$ along a genuine, flat projective hyperplane $S \cap S' \cong \mathrm{PG}(n - 2, \mathbb{F})$.
+    
+**Axiom 5 (Global Non-Degeneracy):** If all maximal subspaces shared a common intersection $R$, the geometry would simply be a cone over a smaller polar space with vertex $R$. Demanding disjoint maximal subspaces forces the radical of the geometry to be empty, ensuring the space is non-degenerate.
+
 ### Is a Polar Space Always a Homogeneous Polynomial of Degree 2?
 
 Yes, when defined analytically using coordinates, classical polar spaces are always defined by homogeneous polynomials of degree 2 (quadratic forms) or their close algebraic relatives (degree-2-like bilinear/sesquilinear forms). Here is exactly how the math aligns:
