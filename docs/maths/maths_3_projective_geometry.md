@@ -2037,6 +2037,222 @@ We should also point out briefly that there are fields called rigid fields. As w
 
 This distinction has a major impact on collineations. Over rigid fields, the semilinear group collapses into the projective linear group: $P\Gamma L(n+1, \mathbb{R}) = PGL(n+1, \mathbb{R})$. Every collineation is induced strictly by a matrix (a projective linear transformation). You cannot construct "exotic" collineations using field twists, unlike on $\mathbb{CP}^n$ where complex conjugation $\sigma(z) = \bar{z}$ yields non-linear collineations.
 
+## Polar Spaces & Polarity
+We looked at quadratic forms and quadrics. There were in fact special cases of polar spaces. Recall that quadratic sets with their two axioms of three-or-all and tangent space provide a synthetic geometry handle, while quadrics provide an algebraic handle when quadratic sets are embedded in projective spaces. We find a similar distinction here, but we will flip the order of study. 
+
+We will first look at polar spaces and their analysis when they are embedded in projective spaces. This will allow us to apply algebraic tools on them. We will then look at the single axiom which ensures a set of lines and points form a polar space. This is called the One-or-All axiom. This gives us the synthetic geometry analogue to polar spaces in projective spaces. A famous theorem by Jacques Tits assures us that every abstract (synthetic) non-degenerate polar space of rank $\ge 3$ is isomorphic to a classical polar space embedded in a projective space, thus tying these two aspects together.
+
+---
+
+**Aside:** Tits discovered that in rank $3$, there is an exceptional polar space that does not come from a form on a vector space: the polar space of the 27-dimensional exceptional Jordan algebra (the Albert algebra) over the octonions $\mathbb{O}$, whose automorphism group is a form of the exceptional Lie group $E_7$. In rank $\ge 4$, however, the projective planes inside the polar space are forced to be Desarguesian by ambient 3-space intersections, locking you strictly into vector spaces over division rings.
+
+---
+
+### Quadrics Re-redux!
+Let's rejig our exploration of quadrics a bit. We defined a quadric as all points where a quadratic form $Q(x) = 0$. We then defined the bilinear form $B(x, y) := q(x + y) - q(x) - q(y)$. Note that by this definition, we end up with a symmetric bilinear form, which means $B(x, y) = B(y, x)$. Remember that we sais we really didn't need the quadratic form. We could just as well have defined a bilinear form and then defined the quadric with it because $Q(x) = \frac{1}{2}B(x,x)$ - except in char $=2$. It is only because of char $=2$ that we introduced a quadratic form. Let's look a little closer at this. 
+
+In char $=2, B(x, x) = 0$ for every point, not just the points on the quadric. Why? Because it is a symmetric bilinear form, which means $B(x, y) = B(y, x)$. This implies that every cross term such as $x_1y_2$ or $x_1y_1$ has a corresponding term with the $x$ and $y$ flipped i.e. $y_1x_2$ and $y_1x_1$. Note that $x_1, x_2...$ and $y_1, y_2...$ are the homogenous coordinates of the points $x$ and $y$. 
+
+When we look at $B(x, x), this means that crossterms across coordinates such as $x_1y_2$ will become $x_1x_2$ and will appear twice. A multiplication by $2$ in char $=2$ is $0$! Now what about the non-crossterms? They end up as squares. In a finite field of characteristic 2, every element has a unique square root, and the map $x \mapsto x^2$ is an additive homomorphism ($(a+b)^2 = a^2+b^2$ because $2ab=0$). This means we can rewrite the surviving squares as a single perfect square. $B(x, x) = 0$ therefore implies that the square root (which has coordinate degrees of $1$) is also zero, which represent a linear equation, not a quadric. 
+
+Let's look at this for a general symmetric bilinear form: 
+
+$$B(\mathbf{x},\mathbf{y})=c_{11}x_{1}y_{1}+c_{12}x_{1}y_{2}+c_{21}x_{2}y_{1}+c_{22}x_{2}y_{2}$$
+
+For $B$ to be symmetric ($B(\mathbf{x},\mathbf{y}) = B(\mathbf{y},\mathbf{x})$), we must have $c_{12} = c_{21}$. Let's call this coefficient $d$. So our form is:
+
+$$B(\mathbf{x},\mathbf{y})=c_{11}x_{1}y_{1}+d(x_{1}y_{2}+x_{2}y_{1})+c_{22}x_{2}y_{2}$$
+
+Note that there are no squares such as $x_1^2$ here because then the form wouldn't be linear in multiplication. 
+
+Now, plug a vector into itself ($\mathbf{y} = \mathbf{x}$) :
+
+$$B(\mathbf{x},\mathbf{x})=c_{11}x_{1}^{2}+d(x_{1}x_{2}+x_{2}x_{1})+c_{22}x_{2}^{2}$$
+
+In characteristic 2, the crossterms vanish. We have just the square terms: $c_{11}x_1^2 + c_{22}x_2^2$.
+
+But in characteristic 2, every element has a unique square root, and the map $x \mapsto x^2$ is an additive homomorphism ($(a+b)^2 = a^2+b^2$). This means we can rewrite the surviving squares as a single perfect square:    
+    
+$$B(\mathbf{x},\mathbf{x})=(\sqrt{c_{11}}x_{1}+\sqrt{c_{22}}x_{2})^{2}$$
+    
+If $B(\mathbf{x}, \mathbf{x}) = 0$, then its square root $\sqrt{c_{11}}x_{1}+\sqrt{c_{22}}x_{2}=0$ must also be zero. This is the equation of a flat linear hyperplane. 
+
+So in $\text{char} \neq 2$, evaluating $B(\mathbf{x}, \mathbf{x}) = 0$ gives you a beautiful curved cone or circle. But in $\text{char} = 2$, evaluating $B(\mathbf{x}, \mathbf{x}) = 0$ either collapses into a flat linear subspace (if $c_{11}$ or $c_{22}$ is non-zero) or becomes identically $0$ everywhere (if $c_{11}=c_{22}=0$, making the form alternating). This is why we define the quadratic form seperately to actually pinpoint the points of the quadric. 
+
+The point (sorry!) of all this is that the bilinear form is the key, but in specific cases (quadrics in char $=2$), we need to define a quadratic form to handle weird situations. In every other situation, we needn't even bother defining the quadratic form and in fact we won't for any polar form other than a quadric. Now let's look at two different types of bilinear forms and the closely related sesquilinear form, which will help us define polar spaces. 
+
+### A Few Definitions (& Other Stuff!)
+**Sesquilinear Form $f(x, y)$:** ("Sesqui" is Latin for "one and a half.") It is a generalization of a bilinear form where the first slot is linear, and the second slot is semilinear (twisted by a field automorphism $\sigma$):
+
+$$f(ax, y) = a f(x, y) \quad \text{and} \quad f(x, by) = f(x, y)\sigma(b)$$
+
+Why do we need this? Think of the standard inner product in a complex vector space $\mathbb{C}^n$: if we defined the dot product of $z = (i, 0)$ with itself without complex conjugation, we would get $i^2 = -1$ instead of $+1$ as the length. To fix that, the complex inner product conjugates the second vector: $f(x, y) = x_0 \bar{y}_0 + x_1 \bar{y}_1$. That makes it linear in $x$ and semilinear in $y$ (with $\sigma(z) = \bar{z}$). Over a finite field $\mathbb{F}_{q^2}$, the exact same role is played by $\sigma(b) = b^q$.
+
+**Orthogonality:** Once we have a form $B(x, y)$, setting $B(x, y) = 0$ implies $x$ and $y$ are orthogonal. Think of a dot product. This is very similar. 
+
+**Reflexive Form:** A bilinear or sesquilinear form $f(x, y)$ where "orthogonality is a two-way street": $f(x, y) = 0 \iff f(y, x) = 0$.
+
+Our polar spaces are going to be point sets where a point is orthogonal to itself as defined by a reflexive form. These are called isotropic points. This idea doesn't make much sense when we use the regular dot product formula of length (and for that matter, what is the length of a point anyway?). But we are not really thinking of length here. We are defining a form and using that to define orthogonality, which might arise due to, for example, minus signs in the form ($x_1y_1 - x_2y_2$) or due to the field being finite, in which case, as we saw in $\text{char} = 2$, a scalar multiple turns out to be $0$ modulo the characteristic.
+
+So to help build a mental model of polar spaces, we have, as a background, a vector space or its projective space. We then filter points using a reflexive form that identifies which points are isotropic and which pairs of points are orthogonal i.e. a point $x$ can only "see" (be collinear with) a subset of other points $y$ that satisfy $B(x, y)=0$. 
+
+Note that if a pair of isotropic points is orthogonal, then all pairs of points on the line formed by those points will also be orthogonal because the form $B$ is bilinear (or sesquilinear); it is linear (or semilinear) in its arguments.
+
+If we have two isotropic points $\mathbf{x}$ and $\mathbf{y}$ such that they are orthogonal ($B(\mathbf{x}, \mathbf{y}) = 0$), any other point $\mathbf{p}$ on the projective line connecting them can be written as a linear combination $\mathbf{p} = \mathbf{x} + \alpha \mathbf{y}$ (ignoring the scaling factor on $\mathbf{x}$). Let's check if the whole line is orthogonal to $\mathbf{x}$:
+
+$$B(\mathbf{x},\mathbf{p})=B(\mathbf{x},\mathbf{x}+\alpha \mathbf{y})=B(\mathbf{x},\mathbf{x})+\alpha B(\mathbf{x},\mathbf{y})$$
+
+Since $\mathbf{x}$ is isotropic,  $B(\mathbf{x}, \mathbf{x}) = 0$. Since we chose $\mathbf{y}$ to be orthogonal to $\mathbf{x}$,  $B(\mathbf{x}, \mathbf{y}) = 0$. Therefore:
+
+$$B(\mathbf{x},\mathbf{p})=0+\alpha(0)=0$$
+
+By extension, if you pick any two points $\mathbf{p}_1 = \mathbf{x} + \alpha_1 \mathbf{y}$ and $\mathbf{p}_2 = \mathbf{x} + \alpha_2 \mathbf{y}$ on this line,  $B(\mathbf{p}_1, \mathbf{p}_2) = 0$ (requiring $\mathbf{y}$ to also be isotropic so that $B(\mathbf{y}, \mathbf{y}) = 0$). Thus, every single pair of points on that line is mutually orthogonal. We can then extend this to higher-dimensional subspaces as well. Such subspaces where all points are isotropic and all pairs of points are orthogonal are called totally isotropic subspaces.
+
+We then include all totally isotropic subspaces in our polar space and study how they are incident with each other. This is the whole game in polar spaces and geometry.
+
+Why do we care about isotropic points? In projective space $\text{PG}(n, \mathbb{F})$, a point is an equivalence class, a 1D subspace $\langle \mathbf{x} \rangle$, meaning $\mathbf{x}$ and $\lambda \mathbf{x}$ ($\lambda \neq 0$) represent the same projective point. If you try to evaluate the "length squared" $B(\mathbf{x}, \mathbf{x})$ of a projective point, scaling by $\lambda$ changes the value to $B(\lambda \mathbf{x}, \lambda \mathbf{x}) = \lambda^2 B(\mathbf{x}, \mathbf{x})$ (or $\lambda \overline{\lambda} B(\mathbf{x}, \mathbf{x})$). Thus, a non-zero value of $B(\mathbf{x}, \mathbf{x})$ is not well-defined on projective points.
+
+---
+
+**Aside:** When moving to characteristic 2, we also speak of  singular and totally singular forms. Given a quadratic form, a point $\langle \mathbf{x} \rangle$ is singular if $Q(\mathbf{x}) = 0$, and a subspace $U$ is totally singular if $Q(U) = 0$. (In $\text{char} = 2$, taking two singular points $\mathbf{x}, \mathbf{y}$ with $Q(\mathbf{x}) = Q(\mathbf{y}) = 0$ that are orthogonal under the polar form $B(\mathbf{x}, \mathbf{y}) = 0$ gives $Q(\mathbf{x} + \alpha \mathbf{y}) = Q(\mathbf{x}) + \alpha^2 Q(\mathbf{y}) + \alpha B(\mathbf{x}, \mathbf{y}) = 0$, making the whole line totally singular.)
+
+---
+
+_**Generator (Maximal Totally Singular Subspace):** A totally singular subspace of the largest possible dimension inside a polar space. The number of nodes in the polar space diagram—its rank $n$, also called the Witt index $t$—is the vector space dimension of a generator, which has projective dimension $n - 1$._
+
+_**Generalized Quadrangle (`o === o`):** A rank 2 point-line geometry that has no triangles, and satisfies the "One-or-All" axiom: given any line $\ell$ and any point $P \notin \ell$, there is at most $1$ point on $\ell$ collinear with $P$ (in fact, for a generalized quadrangle, there is always a unique point $Q \in \ell$ and a unique line $P \vee Q$ connecting $P$ to $\ell$). A simple square is a thin generalized quadrangle ($2$ points per line, $2$ lines per point). A hyperbolic quadric $Q^+(3, q)$ in $PG(3, q)$ (two reguli of $q+1$ lines each) is a grid generalized quadrangle ($q+1$ points per line, $2$ lines per point)._
+
+### One-or-All Axiom
+
+We showed why if two isotropic points are orthogonal, all pairs of points on the line formed by them will also be orthogonal. This sets up the stage for the famous One-or-All axiom of abstract polar spaces: given a point $p$ and a line $L$ of the polar space (meaning $p$ is isotropic and $L$ is a totally isotropic line), either $p$ is orthogonal to every point on $L$ (so $p$ and $L$ span a totally isotropic plane) or $p$ is orthogonal to exactly one point on $L$ (because the linear map $y \mapsto B(p, y)$ restricted to the 2D vector subspace of $L$ is a non-zero linear functional, whose kernel must have dimension $2 - 1 = 1$, i.e., a single projective point).
+
+To see how a polar space sits inside a projective space, picture a smooth quadric surface $Q$ inside 3D projective space $PG(3, K)$, like a one-sheeted hyperboloid (which looks like a cooling tower made of straight lines).
+
+* The ambient space $PG(3, K)$ has lots of points, lines, and planes.
+* Now restrict your attention ONLY to the points $P$ that lie on the surface $Q$, and the straight lines $\ell$ that lie completely flat inside the surface $Q$.
+* Notice what happens to the projective geometry axioms when we restrict to points and lines inside $Q$:
+* In all of $PG(3, K)$, any two points have a line joining them.
+* Inside $Q$, two points on the surface might NOT have a line of $Q$ joining them (because the line through them in $PG(3, K)$ pokes outside the surface).
+* Instead, if you pick any line $\ell$ lying on the surface $Q$ and any point $P$ on $Q$ (not on $\ell$), how many lines of $Q$ pass through $P$ and intersect $\ell$?
+Exactly ONE (or every line through $P$ in the rare case where $P$ is collinear with all of $\ell$)!
+
+
+That single rule—the "One-or-All Axiom"—is the defining incidence axiom of a Polar Space.
+
+```
+         P  (Point on the polar space, outside line L)
+        /|\
+       / | \
+      /  |  \   <-- Out of all points on line L, either:
+     /   |   \      (1) P is joined by a line of the polar space
+    /    |    \         to AT MOST ONE point Q on L, OR
+   *-----Q-----*    (2) P is joined to EVERY point on L.
+  Line L (lying inside the polar space)
+
+```
+
+### 3 Types of Polar Spaces
+    
+A theorem by Birkhoff and von Neumann proves that there are only three ways a form $f(x, y)$ can satisfy $f(x, y) = 0 \iff f(y, x) = 0$ i.e. there are only three types of reflexive forms:
+    
+**Symmetric / Orthogonal (field automorphism $\sigma = \text{id}$, making this a bilinear form):** $f(x, y) = f(y, x)$. (Example: $x_0 y_0 + x_1 y_1 - x_2 y_2$). The matrices preserving this form make up the Orthogonal Group (which includes both rotations and reflections). These form our quadrics.
+
+You will see $\mathcal{Q}^+(2n-1, q)$,  $\mathcal{Q}(2n, q)$, and $\mathcal{Q}^-(2n-1, q)$ representing their geometric shapes: hyperbolic, parabolic, and elliptic.
+        
+**Alternating / Symplectic ($\sigma = \text{id}$):** $f(x, y) = -f(y, x)$ and $f(x, x) = 0$ for every vector $x$. Because $f(x, x) = 0$ always, every single vector in the vector space (and therefore point in the projective space) is orthogonal to itself. In two variables, it is the 2D determinant (signed area): $f(x, y) = x_0 y_1 - x_1 y_0$. In physics (Hamiltonian mechanics and optics), this measures phase-space area (position $\times$ momentum). The matrices preserving a symplectic form make up the Symplectic Group.
+        
+**Hermitian / Unitary ($\sigma \neq \text{id}$ with $\sigma^2 = \text{id}$):** $f(y, x) = \sigma(f(x, y))$. An example is conjugation over $\mathbb{C}$: $x_0 \bar{y}_0 + x_1 \bar{y}_1$; or over $\mathbb{F}_{q^2}$: $x_0 y_0^q + x_1 y_1^q$. The matrices preserving a Hermitian form make up the Unitary Group.
+
+Since we already looked at quadrics, let's look at the other two.
+
+### Symplectic Spaces & Antisymmetric Bilinear Forms
+#### Difference From a Quadric
+Since $B(x, x) = 0$ for all points, every point in the entire projective space is isotropic. This is a key difference from quadrics. Most points in the projective space are not in the polar space/quadric. In a symplectic space, the point set is the entire projective space.
+
+#### Notation
+Such spaces are denoted by $\mathcal{W}_{2n-1}(q)$ where:
+
+-   $2n-1$: The dimension of the projective space $\text{PG}(2n-1, q)$ it lives in. Non-degenerate alternating forms can only exist in even-dimensional vector spaces, which correspond to odd-dimensional projective spaces.
+    
+-   $q$: The polar space is defined over the finite field $\mathbb{F}_{q}$.
+
+### Unitary (Hermitian) Spaces $\mathcal{H}(n, q^2)$
+#### The Field Automorphism
+A Hermitian sesquilinear form satisfies:
+
+$$B(\mathbf{x},\mathbf{y})=\sigma(B(\mathbf{y},\mathbf{x}))$$
+
+$$B(\alpha \mathbf{x},\beta \mathbf{y})=\alpha \sigma(\beta)B(\mathbf{x},\mathbf{y})$$
+
+The specific constraint on $\sigma$:  $\sigma$ must be a field automorphism, and specifically one of order 2 (meaning $\sigma(\sigma(k)) = k$, with $\sigma \neq \text{id}$). Think of $\sigma$ exactly like complex conjugation ($z \mapsto \bar{z}$). 
+
+In finite fields, a field $\mathbb{F}_{q^{2}}$ has a natural, unique automorphism of order 2 given by:
+
+$$\sigma(k)=k^{q}$$
+
+$\sigma(k) = k^q$ is a power of the Frobenius automorphism. To be precise, the fundamental Frobenius map is $x \mapsto x^p$ (where $p$ is the prime characteristic of the field). When working in the field $\mathbb{F}_{q^{2}}$ (where $q = p^m$), applying that base map $m$ times gives $\sigma(k) = k^q$, which acts as the unique generator of the Galois group $\text{Gal}(\mathbb{F}_{q^2} / \mathbb{F}_q)$.
+
+Are there other order-2 field automorphisms? In the world of finite fields, the answer is a strict no. Galois theory dictates that the Galois group of any finite field extension is cyclic. For a finite field $\mathbb{F}_{Q}$ to possess an order-2 automorphism, its absolute Galois group $\text{Gal}(\mathbb{F}_Q / \mathbb{F}_p)$ must have an element of order 2. Since $\text{Gal}(\mathbb{F}_{p^d} / \mathbb{F}_p) \cong \mathbb{Z}_d$, this is only mathematically possible if the extension degree $d$ is even ($d = 2m$), which means the field's size is a perfect square ($Q = p^{2m} = q^2$). In that specific case,  $\sigma(k) = k^q$ is the one and only automorphism of order 2.
+    
+If we step outside finite fields into infinite fields, we can have order-2 automorphisms without being restricted to a square field size. The classic order-2 automorphism is complex conjugation ($z \mapsto \bar{z}$). Here, the fixed subfield is the Real numbers ($\mathbb{R}$), and the characteristic is $0$. Over the rational numbers, the map $a + b\sqrt{2} \mapsto a - b\sqrt{2}$ is an order-2 automorphism. It referred to as adjoining the square root ($\mathbb{Q}(\sqrt{2})$).
+
+If classical polar spaces were only defined over finite fields, we would always be stuck with $\mathbb{F}_{q^{2}}$ for Unitary spaces. But because they are defined over arbitrary fields, a Unitary (Hermitian) polar space can be constructed over any field that possesses an order-2 automorphism (making it a quadratic Galois extension of its fixed subfield), using its corresponding involution map.
+
+#### Difference From a Quadric
+
+For a quadric, a line meets it in $0, 1, 2$, or all points. For a Hermitian variety over $\mathbb{F}_{q^{2}}$, a line meets the variety in $1$,  $q + 1$, or all ($q^2 + 1$) points ( specifically, a secant line meets the variety in $q+1$ points, a tangent line meets it in $1$ point, and a totally isotropic line lies entirely inside it). It creates a highly rigid, beautiful combinatorial structure.
+    
+#### Notation
+These spaces are denoted by $\mathcal{H}(n, q^2)$ where:
+
+-   $\mathcal{H}$: Stands for Hermitian.
+    
+-   $n$: The dimension of the projective space $\text{PG}(n, q^2)$ it lives in. Unlike symplectic spaces, non-degenerate Hermitian spaces can exist in both even and odd projective dimensions.
+    
+-   $q^{2}$: The underlying finite field must be a quadratic extension (its size must be a perfect square, like $\mathbb{F}_4, \mathbb{F}_9, \mathbb{F}_{25}$) because you absolutely need that order-2 field automorphism $\sigma(k) = k^q$ to define the Hermitian property.
+
+### Is a Polar Space Always a Homogeneous Polynomial of Degree 2?
+
+Yes, when defined analytically using coordinates, classical polar spaces are always defined by homogeneous polynomials of degree 2 (quadratic forms) or their close algebraic relatives (degree-2-like bilinear/sesquilinear forms). Here is exactly how the math aligns:
+
+-   Orthogonal Spaces (Quadrics): These are exactly the vanishing sets of a homogeneous polynomial of degree 2, meaning $Q(x_1, x_2, \dots, x_n) = 0$. Every term is explicitly of degree 2 (e.g.,  $x_{1}^{2}$ or $x_{1}x_{2}$).
+    
+-   Symplectic Spaces: An alternating bilinear form $B(\mathbf{x}, \mathbf{y}) = 0$ is a bi-homogeneous polynomial of degree $(1,1)$, i.e., total degree 2 in the coordinates of $\mathbf{x}$ and $\mathbf{y}$). Since $B(\mathbf{x}, \mathbf{x}) = 0$ for all points, the point set is the entire projective space, and the "degree 2" aspect comes from checking the orthogonality relationship between pairs of points.
+    
+-   Unitary Spaces: A sesquilinear form in finite fields $\mathbb{F}_{q^{2}}$ expands to terms like $x_{i}x_{j}^{q}$, making it a homogeneous polynomial of degree $q+1$. While not strictly a polynomial of degree 2 in the classical sense due to the field automorphism exponent ($q$), it behaves structurally like a degree-2 quadratic form (it is sometimes called a "$q$-quadratic" or Hermitian form) because it pairs two vector inputs together.
+    
+Ultimately, the geometry of a classical polar space is fundamentally the geometry of degree-2 (two-input) algebraic structures.
+
+Why can't we build a polar space out of a homogeneous polynomial of degree $3$ (a cubic hypersurface $\mathcal{C}$ in $\text{PG}(n, \mathbb{F})$)? 
+
+Test the One-or-All Axiom on a degree-$d$ hypersurface $F(\mathbf{x}) = 0$: suppose $L = \langle \mathbf{x}, \mathbf{y} \rangle$ is a line lying entirely inside the hypersurface, and $p = \langle \mathbf{z} \rangle$ is an external point on the hypersurface ($F(\mathbf{z}) = 0$). For a point $\mathbf{w} = \mathbf{x} + t\mathbf{y} \in L$, we want the line joining $\mathbf{z}$ and $\mathbf{w}$ to lie entirely inside the hypersurface:
+
+$$F(\mathbf{z} + s\mathbf{w}) = 0 \quad \text{for all } s \in \mathbb{F}$$
+
+By Taylor / homogeneous expansion in $s$:
+
+$$F(\mathbf{z} + s\mathbf{w}) = F(\mathbf{z}) + s D_{\mathbf{w}}F(\mathbf{z}) + s^2 D_{\mathbf{w}}^2 F(\mathbf{z}) + \dots + s^d F(\mathbf{w})$$
+
+Since $\mathbf{z}$ and $\mathbf{w}$ are on the hypersurface,  $F(\mathbf{z}) = 0$ and $F(\mathbf{w}) = 0$.
+
+**When $d = 2$ (Quadric):** There is only one intermediate cross-term $s B(\mathbf{z}, \mathbf{w})$, which is linear in $\mathbf{w} = \mathbf{x} + t\mathbf{y}$. Setting $B(\mathbf{z}, \mathbf{x}) + t B(\mathbf{z}, \mathbf{y}) = 0$ gives a single linear equation in $t$, which always has either 1 solution or all $t$ as solutions (the One-or-All Axiom!).
+    
+**When $d = 3$ (Cubic):** Expanding $F(\mathbf{z} + s\mathbf{w}) = 0$ for all $s$ requires two simultaneous conditions to vanish: the term linear in $s$ ($D_{\mathbf{w}}F(\mathbf{z}) = 0$, which is linear in $t$) and the term quadratic in $s$ ($D_{\mathbf{z}}F(\mathbf{w}) = 0$, which is quadratic in $t$). A random point $\mathbf{z}$ on the cubic will fail to satisfy both equations simultaneously for _any_  $t \in L$, meaning $\mathbf{z}$ is collinear with zero points of $L$! Thus, the One-or-All Axiom fails for $d \ge 3$ unless the cross-terms collapse into a single condition—which happens over finite fields only when $F$ is a Frobenius twist $x_i x_j^q$ (a Hermitian form of degree $q+1$, where $(a+b)^q = a^q + b^q$ eliminates all intermediate binomial terms).
+
+### The Picture From Group Theory
+
+When initially studying projective spaces, we built a connection between: 
+
+- Synthetic Incidence Geometry: Abstract points, lines, and planes obeying the Veblen-Young axioms.
+- Buekenhout-Tits Diagram Geometry: The linear diagram $A_n$ (`o --- o --- ... --- o`).
+- Algebra & Group Theory: Vector spaces $V$ over a skew field $K$, giving $PG(d, K)$ and the full projective linear/semilinear groups $PGL(V)$ and $P\Gamma L(V)$.
+
+In group theory, $PGL(V)$ is only the first family of classical simple groups. What about the other three great families of classical groups—the Orthogonal groups, the Symplectic groups, and the Unitary groups?
+
+In linear algebra, those three families of groups are obtained by taking a vector space $V$ and equipping it with an inner product (a bilinear, sesquilinear, or quadratic form—like a dot product or Lorentz metric) and looking at the matrices that preserve the vectors of length zero ($x^2 + y^2 - z^2 = 0$).
+
+What do those zero-length points, lines, and planes inside $PG(d, K)$ look like as an incidence geometry in their own right, and can we characterize them purely by a simple point-line axiom without mentioning coordinates or equations? That geometry is a Polar Space, and its Buekenhout-Tits diagram is $C_n$ (a cube diagram `o === o --- o --- ... --- o` thickened up).
+
 ## Polygons
 
 We refer to a configuration as an $n$-angle in the EEP, if it is a set of n points, no three collinear. The lines of this configuration are formed by connecting every possible pair of these initial points. Because no three points are collinear, any single line in this configuration contains $2$ of the generating points. Furthermore, from any single point, lines must be drawn to connect to all the remaining points in the set, meaning each point lies on exactly $n-1$ lines. 
