@@ -2081,7 +2081,8 @@ So in $\text{char} \neq 2$, evaluating $B(\mathbf{x}, \mathbf{x}) = 0$ gives you
 
 The point (sorry!) of all this is that the bilinear form is the key, but in specific cases (quadrics in char $=2$), we need to define a quadratic form to handle weird situations. In every other situation, we needn't even bother defining the quadratic form and in fact we won't for any polar form other than a quadric. Now let's look at two different types of bilinear forms and the closely related sesquilinear form, which will help us define polar spaces. 
 
-### A Few Definitions (& Other Stuff!)
+### A Few Definitions & An Intuitive Picture
+#### Forms & Orthogonality
 **Sesquilinear Form $f(x, y)$:** ("Sesqui" is Latin for "one and a half.") It is a generalization of a bilinear form where the first slot is linear, and the second slot is semilinear (twisted by a field automorphism $\sigma$):
 
 $$f(ax, y) = a f(x, y) \quad \text{and} \quad f(x, by) = f(x, y)\sigma(b)$$
@@ -2112,32 +2113,187 @@ We then include all totally isotropic subspaces in our polar space and study how
 
 Why do we care about isotropic points? In projective space $\text{PG}(n, \mathbb{F})$, a point is an equivalence class, a 1D subspace $\langle \mathbf{x} \rangle$, meaning $\mathbf{x}$ and $\lambda \mathbf{x}$ ($\lambda \neq 0$) represent the same projective point. If you try to evaluate the "length squared" $B(\mathbf{x}, \mathbf{x})$ of a projective point, scaling by $\lambda$ changes the value to $B(\lambda \mathbf{x}, \lambda \mathbf{x}) = \lambda^2 B(\mathbf{x}, \mathbf{x})$ (or $\lambda \overline{\lambda} B(\mathbf{x}, \mathbf{x})$). Thus, a non-zero value of $B(\mathbf{x}, \mathbf{x})$ is not well-defined on projective points.
 
+Note that the condition $Q(x) = 0$ is completely independent of the choice of coordinate basis. Let $\mathcal{B} = (e_1, \dots, e_n)$ be a basis of $V$, giving coordinate vectors $[x]_{\mathcal{B}}$. In this basis, the quadratic form is represented by a symmetric (or upper-triangular) matrix $A$: $Q(x) = [x]_{\mathcal{B}}^T A [x]_{\mathcal{B}}$
+
+If you choose another basis $\mathcal{B}'$, related by an invertible change-of-basis matrix $M \in \text{GL}(V)$ such that $[x]_{\mathcal{B}} = M [x]_{\mathcal{B}'}$, the Gram matrix transforms by congruence: $A' = M^T A M$
+
+Evaluating the condition in the new basis yields:
+
+$$[x]_{\mathcal{B}'}^T A' [x]_{\mathcal{B}'} = [x]_{\mathcal{B}'}^T (M^T A M) [x]_{\mathcal{B}'} = (M [x]_{\mathcal{B}'})^T A (M [x]_{\mathcal{B}'}) = [x]_{\mathcal{B}}^T A [x]_{\mathcal{B}} = Q(x)$$
+
+The evaluated scalar is identically equal before and after the coordinate transformation. If it evaluated to zero in one basis, it evaluates to zero in every other basis.
+
 ---
 
 **Aside:** When moving to characteristic 2, we also speak of  singular and totally singular forms. Given a quadratic form, a point $\langle \mathbf{x} \rangle$ is singular if $Q(\mathbf{x}) = 0$, and a subspace $U$ is totally singular if $Q(U) = 0$. (In $\text{char} = 2$, taking two singular points $\mathbf{x}, \mathbf{y}$ with $Q(\mathbf{x}) = Q(\mathbf{y}) = 0$ that are orthogonal under the polar form $B(\mathbf{x}, \mathbf{y}) = 0$ gives $Q(\mathbf{x} + \alpha \mathbf{y}) = Q(\mathbf{x}) + \alpha^2 Q(\mathbf{y}) + \alpha B(\mathbf{x}, \mathbf{y}) = 0$, making the whole line totally singular.)
 
 ---
 
-_**Generator (Maximal Totally Singular Subspace):** A totally singular subspace of the largest possible dimension inside a polar space. The number of nodes in the polar space diagram—its rank $n$, also called the Witt index $t$—is the vector space dimension of a generator, which has projective dimension $n - 1$._
+#### What Do Isotropic Points Tell You About A Projective Space
+
+A projective space $\mathrm{PG}(V)$ by itself is completely uniform. The group $\mathrm{PGL}(V)$ acts transitively on points, on lines, and on frames. Every point looks like every other point, and every hyperplane looks like every other hyperplane.
+
+Introducing a non-degenerate form $f$ (or quadratic form $Q$) breaks this global homogeneity and equips the projective space with geometric measurement, duality, and coordinate fibrations.
+
+The set of isotropic points $\mathcal{Q} = \{ \langle x \rangle \mid Q(x) = 0 \}$ acts as the absolute variety (or the "horizon" / "gauge") of the projective space. Without isotropic points, a projective space lacks the internal boundary needed to distinguish different types of incidence, define metrics, or construct geometric dualities.
+
+Here is what isotropic points reveal about the host projective space $\mathrm{PG}(V)$ that cannot be seen otherwise.
+
+**Classification of Lines and Invariant Intersections**
+
+In an unadorned projective space $\mathrm{PG}(n, \mathbb{F})$, all lines are projective copies of $\mathrm{PG}(1, \mathbb{F})$. They have no intrinsic distinction.
+
+The existence of isotropic points immediately stratifies every projective line $\ell$ in $\mathrm{PG}(V)$ into three geometrically distinct types, based solely on how $\ell$ meets the isotropic locus $\mathcal{Q}$: secants, tangents and passants. 
+
+This gives $\mathrm{PG}(V)$ an incidence calculus: you can classify arbitrary linear subspaces by their signature relative to the isotropic locus.
+
+Note that a locus is not a single point. It is a set of all points that satisfy a specified condition, property, or equation. The set of isotropic points is the locus here.
+
+**Concrete Projective Duality Without Coordinates**
+
+Projective geometry has a fundamental duality principle: any theorem about points and hyperplanes remains true if you swap "point" and "hyperplane".
+
+Abstractly, duality maps $\mathrm{PG}(V)$ to the dual projective space $\mathrm{PG}(V^*)$. This map is an external isomorphism: $V^*$ is not $V$. To identify a point with a hyperplane inside the same space, you need a correlation or polarity: $P \mapsto P^\perp$
+
+Isotropic points are precisely the fixed elements of this polarity: $P \in P^\perp \iff Q(P) = 0$.
+
+They mark where a point and its dual hyperplane collide. Non-isotropic points never meet their duals. In synthetic and classical geometry, knowing the locus where $P$ lies on its own dual hyperplane is the only way to anchor the polarity geometrically inside $\mathrm{PG}(V)$.
+
+**Recovering Affine and Non-Euclidean Metrics (Cayley-Klein Geometries)**
+
+Projective space has no notion of distance, angle, or perpendicularity. Cayley and Klein showed that all classical metrics (Euclidean, hyperbolic, elliptic, affine) arise purely inside projective space by designating an absolute quadric of isotropic points $\mathcal{Q}$.
+
+For any two non-isotropic points $A, B \in \mathrm{PG}(V)$, the line $AB$ intersects the isotropic locus $\mathcal{Q}$ at two points, say $X$ and $Y$. The projective cross-ratio:
+
+$$(A, B; X, Y) = \frac{(x_A - x_X)(x_B - x_Y)}{(x_B - x_X)(x_A - x_Y)}$$
+
+is a projective invariant. The metric distance between $A$ and $B$ is then defined purely projectively by $d(A, B) = k \ln (A, B; X, Y)$.
+
+* If $X$ and $Y$ are real points: this is the Beltrami-Klein model of Hyperbolic Geometry.
+* If $X$ and $Y$ are complex conjugate points: this produces Elliptic Geometry.
+* If the quadric degenerates to a hyperplane: you recover standard Affine / Euclidean Geometry.
+
+Without isotropic points, cross-ratios require choosing four arbitrary points. The isotropic locus provides the two universal reference points on every line to define projective distance and orthogonality.
+
+#### Polarity
+**Polarity:** A global map defined on all points in $PG(d, K)$. Every point $P$ gets mapped to a hyperplane $P^\pi$ which contains all points orthogonal to $P$ (as defined by the polar form). Thus $P^\pi = \{ \langle y \rangle \mid f(x, y) = 0 \}$. $P^\pi$ is called the polar hyperplane of $P$. 
+
+Applying a polarity on a point will always give a hyperplane because $f(x, y) = 0$ is a linear equation in terms of $y$ i.e. when $x$ is fixed. As long as $x \neq 0$ and $f$ is non-degenerate, this linear equation always has a $(d)$-dimensional vector space of solution vectors $y$. In $PG(d, K)$, those solutions form a $(d-1)$-dimensional hyperplane.
+
+If $P$ is isotropic, then $P$ lies directly on $P^\pi$, which means the hyperplane is tangent to the quadric/polar space at $P$. Note that $P^\pi$ typically consists of a mix of isotropic and non-isotropic points. Note that the synthetic geometry equivalent of the isotropic point is the absolute point i.e. a point $P$ such that $P \in P^\pi$. They are one and the same. Similarly a hyperplane $H$ is absolute if and only if $H^\pi \in H$ i.e. its assigned pole (the pointa polarity maps the hyperplane to) lies inside $H$.
+
+To build a totally isotropic subspace, typically you start with an isotropic point $P$. To extend $P$ to a 1-dimensional totally isotropic subspace/line you pick another point $Q = \langle y \rangle \in P^\pi$ that is itself isotropic. As we saw, the line $\langle P, Q \rangle$ will be contained in $P^\pi$ and by the same logic of a line being a linear subspace, will be totally isotropic. Continue this process inside $P^\pi$ to build higher-dimensional totally isotropic subspaces.
+
+Here's a concrete example: a sphere in $PG(3, \mathbb{R})$. Consider the quadratic form $f(x, y) = x_0 y_0 + x_1 y_1 + x_2 y_2 - x_3 y_3 = 0$ in $PG(3, \mathbb{R})$. The isotropic points form a sphere/cone: $x_0^2 + x_1^2 + x_2^2 - x_3^3 = 0$.
+
+Let $P = \langle (0, 0, 1, 1) \rangle$. Check isotropy:  $0^2 + 0^2 + 1^2 - 1^2 = 0 \implies P$ is isotropic.
+    
+The polar hyperplane $P^\pi$ is given by $f((0,0,1,1), y) = 0 \implies y_2 - y_3 = 0$.
+    
+Now test points in $P^\pi$:
+
+- $Q_1 = \langle (1, 0, 0, 0) \rangle$: Fits $y_2 - y_3 = 0$. But $f(Q_1, Q_1) = 1 \neq 0 \implies$ Non-isotropic point inside $P^\pi$.
+        
+- $Q_2 = \langle (1, 0, 1, 1) \rangle$: Fits $y_2 - y_3 = 0$, and $f(Q_2, Q_2) = 1^2 + 0^2 + 1^2 - 1^2 = 1 \neq 0 \implies$ Non-isotropic.
+        
+- $P = \langle (0, 0, 1, 1) \rangle$: Isotropic point inside $P^\pi$.
+
+In this example,  $P^\pi$ is a 2D plane tangent to the sphere at $P$. The only isotropic point on that tangent plane is $P$ itself. All other points on the plane lie strictly outside the sphere and are non-isotropic. This is what you would expect from a sphere.
+
+Note that a point lies on $\frac{q^d - 1}{q - 1}$ hyperplanes of the projective space. But the polarity will map the point to only one hyperplane i.e. the hyperplane tangent to the polar space at point $P$.
+
+Also note that a general map between points and hyperplanes that reverses inclusion ($\langle x \rangle \subseteq \langle y \rangle \implies \langle y \rangle^\pi \subseteq \langle x \rangle^\pi$) is called a correlation (or duality). To be a polarity, a correlation must be an involution ($\pi^2 = \text{id}$). Without requiring $\pi^2 = \text{id}$, you would just have an arbitrary correlation, where taking the polar hyperplane of $P$, and then taking the pole of that hyperplane, might land you on a completely different point $Q \neq P$. We saw this happen with the Fano plane example for collineations some time ago.
+
+The involutory property $(P^\pi)^\pi = P$ holds if and only if $f$ is reflexive: $f(x, y) = 0 \iff f(y, x) = 0$. Because $f$ is reflexive, if $Y \in P^\pi$ (meaning $f(x, y) = 0$), then $f(y, x) = 0$, which means $X \in Y^\pi$. This mutual orthogonality is what guarantees: $(P^\pi)^\pi = P$.
+
+**Generator (Maximal Totally Singular Subspace):** A totally singular subspace of the largest possible dimension inside a polar space. The number of nodes in the polar space diagram—its rank $n$, also called the Witt index $t$—is the vector space dimension of a generator, which has projective dimension $n - 1$. Note that in a $d$-dimensional projective space, the maximal isotropic subspace need NOT be of dimension $d-1$.
+
+All maximal totally isotropic subspaces of a given non-degenerate polar form have the exact same dimension $r$. You can start with any totally isotropic subspace $W_k$ of dimension $k < r$ and extend it step-by-step until it reaches dimension $r$.
+
+The union of all such maximal totally isotropic subspaces across the projective space will sweep out ("generate") the set of all isotropic points. The polar space is therefore the set of all these points along with every smaller isotropic subspace contained within them. This is why we refer to these maximal subspaces as generators. A good example to remember is the hyperboloid in 3D, which is generated by the straight lines that rule its surface.
+
+A totally isotropic subspace $W$ is maximal if and only if:
+
+$$W^\perp \cap \mathcal{Q} = W$$
+
+In terms of incidence,  $W$ is maximal if no point outside $W$ is collinear to all of $W$.
+
+To understand why this holds, let's say there is some point of the polar space that belongs to $W^\perp$ but not to $W$. Since this point belongs to $W^\perp$, it must be orthogonal to every point in $W$. Since it is a point of the polar space, it must be isotropic. Thus the new subspace of $W$ and this point is a totally isotropic subspace and since it has a point not in $W$ but includes all points in $W$, it must be of higher dimension than $W$, which contradicts $W$ being a maximal subspace. The statement of no point outside $W$ being collinear to all of $W$ is the same thing, since collinearity is just orthogonality algebraically.
+
+As a reminder, $W^\perp$ is the intersection of the polar hyperplanes of all points in $W$, which means every point in $W^\perp$ is orthogonal to every point in $W$.
+
+---
+
+**Aside 1:** **A polarity can also swap higher dimensional subspaces and not just points with their complements. If $U \subseteq PG(d, K)$ is a projective subspace of dimension $t$ (corresponding to a vector subspace $W \subseteq V$ of dimension $t + 1$), its polar image under $\pi$ is defined as the joint orthogonal complement of all points in $U$, or the intersection of the polar hyperplanes of all points $\in U$:
+
+$$U^\pi = \bigcap_{P \in U} P^\pi = \{\langle y \rangle \in PG(d, K) \mid f(x, y) = 0 \text{ for all } \langle x \rangle \in U\}$$
+
+Algebraically, $U^\pi$ corresponds to $W^\perp \subseteq V$. Since $f$ is non-degenerate:
+
+$\dim(W^\perp) = (d + 1) - \dim(W) = (d + 1) - (t + 1) = d - t$ and translating back to projective dimensions: $\dim(U^\pi) = \dim(W^\perp) - 1 = d - 1 - t$. So a $t$-dimensional subspace is mapped to a subspace of codimension $t$.
+
+**Aside 2:** Every point in $W^\perp$ is orthogonal to every point in $W$. This should remind you of error correction codes where codewords and parity checks are orthogonal. When applied to Reed-Muller codes and finite geometries, the polar space structure and incidence geometry emerge in several concrete ways:
+
+**Codewords vs. Dual Code ($C$ vs. $C^\perp$)**
+
+In a linear block code $C \subseteq \mathbb{F}_2^n$ codewords are not orthogonal to non-codewords; non-codewords produce non-zero syndrome vectors when tested against the parity checks. Instead, every codeword $c \in C$ is orthogonal to every vector in the dual code $H \in C^\perp$ under the standard dot product: $c \cdot h = 0 \quad \text{for all } h \in C^\perp$.
+    
+For Reed-Muller codes $\mathrm{RM}(r, m)$ of length $n = 2^m$, the dual code is another Reed-Muller code: $\mathrm{RM}(r, m)^\perp = \mathrm{RM}(m - r - 1, m)$.
+    
+When $r = \frac{m - 1}{2}$ (for odd $m$), the code is self-dual ($C = C^\perp$), meaning every codeword is orthogonal to every other codeword—making $C$ a maximal totally isotropic subspace (a Lagrangian subspace) of $\mathbb{F}_2^n$ under the standard bilinear form.
+
+**Incidence Geometry of First-Order Codes $\mathrm{RM}(1, m)$**
+
+The connection to projective and affine polar spaces becomes direct when viewing codewords as geometric incidence vectors. In $\mathrm{RM}(1, m)$, the codewords correspond to affine functions over $\mathbb{F}_2^m$, which are characteristic vectors of affine hyperplanes and their complements. 
+
+The minimum weight codewords correspond to affine hyperplanes.
+
+In projective terms, extended Reed-Muller codes and projective Reed-Muller codes embed directly into $\mathrm{PG}(m, 2)$. The syndrome equations used in majority-logic decoding are intersections of secant lines and hyperplanes, mimicking how points outside a polar space are tested against polar hyperplanes to locate errors.
+
+**Quadratic Forms and the Kerdock / Preparata Codes**
+
+The exact quadratic/polar machinery ($Q(x)$, symplectic forms, and isotropic subspaces) appears directly when analyzing second-order Reed-Muller codes $\mathrm{RM}(2, m)$. Any codeword in $\mathrm{RM}(2, m)$ can be viewed as a Boolean quadratic function $q(x_1, \dots, x_m)$. Associated with $q(x)$ is a symplectic bilinear form (polar form):
+
+$$B_q(x, y) = q(x + y) + q(x) + q(y) + q(0)$$
+    
+The radical of this alternating form,  $\mathrm{rad}(B_q) = \{ x \mid B_q(x, y) = 0 \text{ for all } y \}$, defines the invariant subspace where the quadratic function degenerates.
+
+The weight (number of ones) of the codeword corresponds to whether the quadric $q(x) = 0$ is hyperbolic, elliptic, or parabolic, giving Dickson's invariant classification of codewords via Witt index.
+
+Non-linear codes with optimal error-correcting properties (like the Kerdock code) are formed by partitioning the set of all symplectic forms on $\mathbb{F}_2^m$ into maximal isotropic sets (spreads and packings of polar spaces).
+
+---
+
+The polar form and the polarity are two sides of the same coin (the algebraic vs synthetic coin). Solving $f(x,x) = 0$ is the algebraic approach, while building via generators/polar planes is the incidence-geometric (synthetic) approach.
+
+In the algebraic approach, you set up the quadratic/Hermitian equation $f(x, x) = 0$ in coordinates: $\sum_{i,j} a_{ij} x_i x_j = 0$. You get the set of point coordinates that satisfy the equation (the quadric / locus of absolute points). But this has a limitation. Knowing the algebraic locus of points alone doesn't immediately reveal the internal geometric structure—such as what flat linear subspaces (lines, planes, etc.) lie entirely inside the surface, or how those subspaces intersect one another.
+
+In the synthetic or incidence approach of generators and polarities, we use the polarity map $P \mapsto P^\pi$ to systematically identify which subspaces are orthogonal to themselves ($W \subseteq W^\perp$). This gives us the full lattice of linear subspaces contained in the polar space, classified by their dimensions and intersection properties.
+    
+This matters because in axiomatic and finite geometry, polar spaces are often defined without coordinates at all (e.g., via the Buekenhout-Shult axioms). In that framework, there is no algebra or coordinate system to "solve"—the polar space is defined purely synthetically as a set of points and family of generator subspaces satisfying geometric incidence rules.
+
+So very roughly speaking, a polar form is a fancy way of writing out the equation of some degree 2 curved surface (or hypersurface) inside a vector or projective space. If the dimension of the projective space is $d \ge 3$, this curved surface can be studied purely by geometric axioms as well.
 
 _**Generalized Quadrangle (`o === o`):** A rank 2 point-line geometry that has no triangles, and satisfies the "One-or-All" axiom: given any line $\ell$ and any point $P \notin \ell$, there is at most $1$ point on $\ell$ collinear with $P$ (in fact, for a generalized quadrangle, there is always a unique point $Q \in \ell$ and a unique line $P \vee Q$ connecting $P$ to $\ell$). A simple square is a thin generalized quadrangle ($2$ points per line, $2$ lines per point). A hyperbolic quadric $Q^+(3, q)$ in $PG(3, q)$ (two reguli of $q+1$ lines each) is a grid generalized quadrangle ($q+1$ points per line, $2$ lines per point)._
 
 ### One-or-All Axiom
 
-We showed why if two isotropic points are orthogonal, all pairs of points on the line formed by them will also be orthogonal. This sets up the stage for the famous One-or-All axiom of abstract polar spaces: given a point $p$ and a line $L$ of the polar space (meaning $p$ is isotropic and $L$ is a totally isotropic line), either $p$ is orthogonal to every point on $L$ (so $p$ and $L$ span a totally isotropic plane) or $p$ is orthogonal to exactly one point on $L$ (because the linear map $y \mapsto B(p, y)$ restricted to the 2D vector subspace of $L$ is a non-zero linear functional, whose kernel must have dimension $2 - 1 = 1$, i.e., a single projective point).
+We showed why if two isotropic points are orthogonal, all pairs of points on the line formed by them will also be orthogonal. This sets up the stage for the famous One-or-All axiom (called the Buekenhout-Shult axiom) of abstract polar spaces.
 
-To see how a polar space sits inside a projective space, picture a smooth quadric surface $Q$ inside 3D projective space $PG(3, K)$, like a one-sheeted hyperboloid (which looks like a cooling tower made of straight lines).
+Note that this axiom is from the stable of synthetic geometry. It is formulated purely as an incidence structure $(\mathcal{P}, \mathcal{L})$ without referencing coordinates, matrices, or forms. We do not have a concept of orthogonality yet because that requires the definition of a form algebraically. Thus, two points $p, q \in \mathcal{P}$ are defined to be collinear (often written $p \sim q$ or $p \perp q$) if there exists a line $m \in \mathcal{L}$ (the line set) of the polar space containing both $p$ and $q$. By convention, every point is also considered collinear to itself. Also, a line belongs to the line set of the polar space only if every point of the line lies in the polar space. When we look at this through an algebraic lens, since a line is totally isotropic, any pair of points on the line are orthogonal. Thus two points being collinear is the same as them being orthogonal. 
 
-* The ambient space $PG(3, K)$ has lots of points, lines, and planes.
-* Now restrict your attention ONLY to the points $P$ that lie on the surface $Q$, and the straight lines $\ell$ that lie completely flat inside the surface $Q$.
-* Notice what happens to the projective geometry axioms when we restrict to points and lines inside $Q$:
+Now for the axiom: Given a point $p$ and a line $L$ of the polar space (meaning $p$ is isotropic and $L$ is a totally isotropic line), either $p$ is collinear (we could also say orthogonal) to every point on $L$ (so $p$ and $L$ span a totally isotropic plane) or $p$ is collinear with exactly one point on $L$ (i.e. $L$ intersects the tangent hyperplane at a single point, which itself lies on the polar space).
+
+This single rule—the "One-or-All Axiom"—is the defining incidence axiom of a Polar Space.
+
+#### Example: Hyperboloid in 3D Space
+To see how a polar space sits inside a projective space, picture a smooth quadric surface $Q$ inside 3D projective space $PG(3, K)$, like a one-sheeted hyperboloid.
+
+The ambient space $PG(3, K)$ has lots of points, lines, and planes. Now restrict your attention ONLY to the points $P$ that lie on the surface $Q$, and the straight lines $\ell$ that lie completely flat inside the surface $Q$. Notice what happens to the projective geometry axioms when we restrict to points and lines inside $Q$:
+
 * In all of $PG(3, K)$, any two points have a line joining them.
 * Inside $Q$, two points on the surface might NOT have a line of $Q$ joining them (because the line through them in $PG(3, K)$ pokes outside the surface).
-* Instead, if you pick any line $\ell$ lying on the surface $Q$ and any point $P$ on $Q$ (not on $\ell$), how many lines of $Q$ pass through $P$ and intersect $\ell$?
-Exactly ONE (or every line through $P$ in the rare case where $P$ is collinear with all of $\ell$)!
-
-
-That single rule—the "One-or-All Axiom"—is the defining incidence axiom of a Polar Space.
+* Instead, if you pick any line $\ell$ lying on the surface $Q$ and any point $P$ on $Q$ (not on $\ell$), how many lines of $Q$ pass through $P$ and intersect $\ell$? Exactly one, a line of the opposite regulus.
 
 ```
          P  (Point on the polar space, outside line L)
@@ -2151,11 +2307,37 @@ That single rule—the "One-or-All Axiom"—is the defining incidence axiom of a
 
 ```
 
+#### Example: Klein Quadric $\mathcal{Q}^+(5, K)$ in $\mathrm{PG}(5, K)$
+When can $P$ be collinear with all of $\ell$? This happens only in polar spaces of rank $\ge 3$, which require ambient projective space of dimension at least 4 or 5. For example, on the Klein quadric $\mathcal{Q}^+(5, K)$ in $\mathrm{PG}(5, K)$, maximal generators are projective planes. Entire planes are embedded in the quadric. Pick a line $\ell$ and a point $P \notin \ell$ that both lie inside the same totally isotropic plane. Then $P$ is collinear to every point on $\ell$.
+
+Note that when the set of isotropic points contains no lines—such as an elliptic quadric (a sphere or ellipsoid) $\mathcal{Q}^-(3, \mathbb{F})$ or an abstract ovoid $\mathcal{O}$ in $\mathrm{PG}(3, \mathbb{F})$—the Buekenhout-Shult axiom holds vacuously.
+
+How do we build up from this axiom about points and lines to get an entire polar space? Because we can build successively higher subspaces. In a polar space, we define a "subspace" $U$ to be any set of points such that whenever two points $X, Y$ are in $U$, they are joined by a line $X \vee Y$ of the polar space and that entire line lies inside $U$. 
+
+Suppose we take a line $\ell$ and a point $P \notin \ell$. Assume that the "All" case holds (every line joining $P$ to a point of $\ell$ is in the polar space). Then the union of all those lines joining $P$ to $\ell$ forms a 2D plane $\Pi = P \vee \ell$ inside the polar space. Since $P$ and $\ell$ (and therefore the intersection of the line joining $P$ to $\ell$) lie in the plane, once again, every point on every one of these connecting lines is pairwise orthogonal and isotropic. Since the plane is spanned by these lines, every point on the line is isotropic and pairwise orthogonal. So we have a totally isotropic plane. 
+
+We can also show this synthetically via the Veblen–Young theorem. In short, if you take any two lines $\ell_1, \ell_2$ inside $\Pi$ and pick a point $X \in \ell_1$, the Buekenhout-Shult axiom says $X$ must be joined to at least one point of $\ell_2$, which forces $\ell_1$ and $\ell_2$ to intersect inside $\Pi$. Since the Veblen–Young theorem holds for this plane, every plane inside a polar space is an ordinary Projective Plane $PG(2, K)$.
+
+Note that we made an assumption that $P$ is collinear with all points of $\ell$. It is possible that that assumption does not hold and the specific subspace spanned by $p$ and $\ell$ is not isotropic. But the line $\ell$ itself may still be capable of growing into a larger totally isotropic subspace by choosing a different point.
+
+### The Rank of a Polar Space
+In Tits' classification, the rank of a polar space is the projective dimension of its maximal totally isotropic subspaces plus 1, which is the vector dimension of a maximal totally isotropic subspace. 
+
+A hyperbolic quadric $\mathcal{Q}^+(3, \mathbb{F})$ contains lines (1-dimensional projective subspaces or vector dimension 2). This is a polar space of rank 2 (a generalized quadrangle).
+
+Similarly, the Klein quadric has entire planes embedded in it, and the polar space rank is 3.
+    
+An elliptic quadric $\mathcal{Q}^-(3, \mathbb{F})$ (sphere / ovoid) contains points (0-dimensional projective subspaces) but no lines. The underlying anisotropic or defect form allows maximal totally isotropic subspaces of vector dimension only 1. Therefore, a sphere or ovoid is a degenerate/trivial polar space of rank 1.
+
+Because rank 1 structures are just sets of points with an empty line set, the main theorems of polar space theory explicitly add non-triviality conditions to rule them out.
+
+The rank is the geometric generalization of the algebraic Witt index to the language of incidence geometry and buildings. The Witt index is the algebraic invariant measured in the vector space, while the rank is the geometric and combinatorial invariant measured in the projective lattice and the building.
+
 ### 3 Types of Polar Spaces
     
 A theorem by Birkhoff and von Neumann proves that there are only three ways a form $f(x, y)$ can satisfy $f(x, y) = 0 \iff f(y, x) = 0$ i.e. there are only three types of reflexive forms:
     
-**Symmetric / Orthogonal (field automorphism $\sigma = \text{id}$, making this a bilinear form):** $f(x, y) = f(y, x)$. (Example: $x_0 y_0 + x_1 y_1 - x_2 y_2$). The matrices preserving this form make up the Orthogonal Group (which includes both rotations and reflections). These form our quadrics.
+**Symmetric / Orthogonal (field automorphism $\sigma = \text{id}$, making this a bilinear form):** $f(x, y) = f(y, x)$. (Example: $x_0 y_0 + x_1 y_1 - x_2 y_2$). The matrices preserving this form make up the Orthogonal Group (which includes both rotations and reflections). These form our nondegenerate quadrics.
 
 You will see $\mathcal{Q}^+(2n-1, q)$,  $\mathcal{Q}(2n, q)$, and $\mathcal{Q}^-(2n-1, q)$ representing their geometric shapes: hyperbolic, parabolic, and elliptic.
         
@@ -2175,6 +2357,25 @@ Such spaces are denoted by $\mathcal{W}_{2n-1}(q)$ where:
 -   $2n-1$: The dimension of the projective space $\text{PG}(2n-1, q)$ it lives in. Non-degenerate alternating forms can only exist in even-dimensional vector spaces, which correspond to odd-dimensional projective spaces.
     
 -   $q$: The polar space is defined over the finite field $\mathbb{F}_{q}$.
+
+#### Other Properties
+Field Constraint: None! A symplectic space can be constructed over ANY commutative field $K$ (finite or infinite, characteristic $2$ or $\neq 2$).
+
+However, it cannot exist over a strictly non-commutative skew field, because alternating forms $f(x, x) = 0$ force the underlying ring to be commutative in order for $f$ to be reflexive.
+
+Dimension Constraint: The vector space dimension $d+1$ MUST be even ($d+1 = 2n$), which means the ambient projective dimension $d = 2n - 1$ MUST be odd ($PG(1, K), PG(3, K), PG(5, K), \dots$).
+
+Why? Because a skew-symmetric matrix $M^T = -M$ of odd size $(2n+1) \times (2n+1)$ always has determinant $0$, so it is always degenerate (there is at least one point orthogonal to the entire space).
+
+Witt Index & Uniqueness: Up to a change of basis, there is only one non-degenerate symplectic form in dimension $2n$, with canonical equation:
+
+$$(x_0 y_1 - x_1 y_0) + (x_2 y_3 - x_3 y_2) + \dots + (x_{2n-2} y_{2n-1} - x_{2n-1} y_{2n-2}) = 0$$
+
+Therefore, its Witt index is always the maximum possible value: $r = n = \frac{d+1}{2}$ regardless of what field $K$ you use (even over $\mathbb{R}$, where $x^2 + y^2 = 0$ has no solutions, $x_0 y_1 - x_1 y_0 = 0$ still has Witt index $n$).
+
+Special Geometric Property (All Points Are Absolute): Because $f(x, x) = 0$ for every vector $x \in V$, EVERY point of the ambient projective space $PG(2n-1, K)$ is a point of the symplectic polar space $W(2n-1, K)$.
+
+Geometrically, every point $P$ lies inside its own polar hyperplane ($P \in P^\pi$). What makes $W(2n-1, K)$ a non-trivial polar space is that NOT every line of $PG(2n-1, K)$ is a line of $W(2n-1, K)$: through any point $P$, only the lines lying inside the hyperplane $P^\pi$ belong to the polar space.
 
 ### Unitary (Hermitian) Spaces $\mathcal{H}(n, q^2)$
 #### The Field Automorphism
@@ -2210,6 +2411,96 @@ These spaces are denoted by $\mathcal{H}(n, q^2)$ where:
 -   $n$: The dimension of the projective space $\text{PG}(n, q^2)$ it lives in. Unlike symplectic spaces, non-degenerate Hermitian spaces can exist in both even and odd projective dimensions.
     
 -   $q^{2}$: The underlying finite field must be a quadratic extension (its size must be a perfect square, like $\mathbb{F}_4, \mathbb{F}_9, \mathbb{F}_{25}$) because you absolutely need that order-2 field automorphism $\sigma(k) = k^q$ to define the Hermitian property.
+
+#### Other Properties
+
+Field Constraint (Requires a Field Involution $\sigma$ of Order 2): Unlike symplectic spaces or quadrics, you CANNOT build a unitary polar space over just any field! The field $K$ must possess an automorphism $\sigma \neq \text{id}$ of order $2$ ($\sigma(\sigma(k)) = k$).
+
+Over finite fields: $K$ must be a field of square order $\mathbb{F}_{q^2}$ (like $\mathbb{F}_4, \mathbb{F}_9, \mathbb{F}_{16}, \mathbb{F}_{25}$), where the unique involution is $\sigma(k) = k^q$. You cannot build a unitary space over $\mathbb{F}_2, \mathbb{F}_3, \mathbb{F}_5, \mathbb{F}_7,$ or $\mathbb{F}_8$!
+* Over infinite fields: Examples include $\mathbb{C}$ (with $\sigma(z) = \bar{z}$, fixing $\mathbb{R}$) or the quaternions $\mathbb{H}$ (with quaternion conjugation).
+
+Dimension Constraint: None! Both even and odd vector space dimensions $d+1$ are completely valid ($PG(2, q^2), PG(3, q^2), PG(4, q^2), \dots$ all work).
+
+Witt Index (Depends on the Field $K$): Over a finite field $K = \mathbb{F}_{q^2}$: Just like in the symplectic case, there is ONLY ONE non-degenerate Hermitian form in each dimension up to change of basis! In diagonal form it is:
+
+$$x_0^{q+1} + x_1^{q+1} + \dots + x_d^{q+1} = 0$$
+
+and in hyperbolic form it always splits completely, giving the maximum possible Witt index:
+
+$$r = \left\lfloor \frac{d+1}{2} \right\rfloor$$
+
+So for $d+1 = 2n$, $r = n$; for $d+1 = 2n+1$, $r = n$.
+
+Over $\mathbb{C}$ (with $\sigma(z) = \bar{z}$): By Sylvester's Law of Inertia, the form has $p$ plus signs and $m$ minus signs ($z_0 \bar{z}_0 + \dots - z_d \bar{z}_d = 0$), and the Witt index can be any integer $r = \min(p, m)$ from $0$ up to $\lfloor (d+1)/2 \rfloor$.
+
+Special Geometric Property (Line Secants Have $q+1$ Points): In $PG(d, q^2)$, every line of the ambient space has $q^2 + 1$ points. If a line of $PG(d, q^2)$ does not lie completely inside the Hermitian variety $H(d, q^2)$ and is not tangent ($1$ point), it intersects $H(d, q^2)$ in a subline $PG(1, q)$ of exactly $q + 1$ points (called a Baer subline).
+
+### Orthogonal Polar Spaces / Non-Degenerate Quadrics $\mathcal{Q}$
+
+We'll only look at the other properties here because everything else has been covered elsewhere. 
+
+#### Other Properties
+
+Field Constraint: None! Quadrics exist over any commutative field $K$. (However, as we saw earlier, characteristic $2$ behaves slightly differently from characteristic $\neq 2$ because the associated bilinear form $f(x, y) = Q(x+y) - Q(x) - Q(y)$ is alternating in characteristic $2$.)
+
+Dimension & Witt Index Constraints: Unlike symplectic and finite unitary spaces (where each dimension has only one space), the Witt index $r$ of a quadric depends heavily on both the parity of $d+1$ and the arithmetic of the field $K$.
+
+Over a Finite Field $\mathbb{F}_q$ (Chevalley-Warning Theorem), any quadratic form in $3$ or more variables over $\mathbb{F}_q$ ALWAYS has a non-zero zero ($Q(x) = 0$). This forces the anisotropic core $V_{\text{aniso}}$ to have dimension at most $2$, which leaves exactly 3 possibilities depending on whether $d+1$ is even or odd:
+
+1. Hyperbolic Quadric $Q^+(2n-1, q)$ in odd projective dimension $d = 2n-1$ (even vector dimension $2n$):
+Canonical equation: $x_0 x_1 + x_2 x_3 + \dots + x_{2n-2} x_{2n-1} = 0$.
+Anisotropic core has dimension $0$. Witt index is $r = n$.
+2. Parabolic Quadric $Q(2n, q)$ in even projective dimension $d = 2n$ (odd vector dimension $2n+1$):
+Canonical equation: $x_0 x_1 + \dots + x_{2n-2} x_{2n-1} + x_{2n}^2 = 0$.
+Anisotropic core has dimension $1$ ($x_{2n}^2$). Witt index is $r = n$.
+*(Note in characteristic $2$: When $q = 2^h$, the polar bilinear form $f(x, y)$ of $Q(2n, q)$ has a 1-dimensional radical $N = \langle (0, \dots, 0, 1) \rangle$ called the nucleus of the quadric, where all tangent hyperplanes intersect! Quotienting out the nucleus gives an isomorphism between the polar space $Q(2n, 2^h)$ and the symplectic space $W(2n-1, 2^h)$!)*
+3. Elliptic Quadric $Q^-(2n+1, q)$ in odd projective dimension $d = 2n+1$ (even vector dimension $2n+2$):
+Canonical equation: $x_0 x_1 + \dots + x_{2n-2} x_{2n-1} + (x_{2n}^2 + a x_{2n} x_{2n+1} + b x_{2n+1}^2) = 0$ (where $t^2 + at + b$ is irreducible over $\mathbb{F}_q$).
+Anisotropic core has dimension $2$. Witt index is $r = n$.
+
+
+Over General Infinite Fields (like $\mathbb{R}$ or $\mathbb{Q}$): The Witt index $r$ can be ANY integer from $0$ up to $\lfloor (d+1)/2 \rfloor$ (for instance, the sphere $x_0^2 + x_1^2 + x_2^2 - x_3^2 = 0$ over $\mathbb{R}$ has Witt index $r = 1$, whereas $x_0^2 + x_1^2 + x_2^2 + x_3^2 = 0$ has Witt index $r = 0$).
+
+
+
+### Comparison: Finite Classical Polar Spaces (Over $\mathbb{F}_q$ or $\mathbb{F}_{q^2}$)
+
+In finite geometry, a finite polar space of rank $r$ (Witt index $r$) has two numerical parameters $(s, t_{\text{line}})$ that control all counting formulas:
+
+* Every line has $s + 1$ points (where $s$ is the size of the field: $q$ or $q^2$).
+* Every sub-generator of projective dimension $r - 2$ is contained in $q^e + 1$ maximal generators of projective dimension $r - 1$. That exponent $e$ (which sits on the last node of the $C_r$ diagram) is the single number that distinguishes all 5 finite classical polar spaces of the same rank $r$:
+
+| Polar Space Family | Ambient Space | Vector Dim $d+1$ | Field Needed | Witt Index (Rank $r$) | Parameter $e$ (Generators per $(r-2)$-subspace: $q^e + 1$) |
+| --- | --- | --- | --- | --- | --- |
+| Hyperbolic Quadric $Q^+(2n-1, q)$ | $PG(2n-1, q)$ | $2n$ (Even) | Any $\mathbb{F}_q$ | $r = n$ | $e = 0$ ($q^0 + 1 = 2$ generators; gives thin $D_n$ branching!) |
+| Symplectic Space $W(2n-1, q)$ | $PG(2n-1, q)$ | $2n$ (Even) | Any $\mathbb{F}_q$ | $r = n$ | $e = 1$ ($q + 1$ generators) |
+| Parabolic Quadric $Q(2n, q)$ | $PG(2n, q)$ | $2n+1$ (Odd) | Any $\mathbb{F}_q$ | $r = n$ | $e = 1$ ($q + 1$ generators) |
+| Elliptic Quadric $Q^-(2n+1, q)$ | $PG(2n+1, q)$ | $2n+2$ (Even) | Any $\mathbb{F}_q$ | $r = n$ | $e = 2$ ($q^2 + 1$ generators) |
+| Hermitian Space $H(2n-1, q^2)$ | $PG(2n-1, q^2)$ | $2n$ (Even) | Square $\mathbb{F}_{q^2}$ | $r = n$ | $e = 1/2$ in base $q^2$, so $(q^2)^{1/2} + 1 = q + 1$ generators |
+| Hermitian Space $H(2n, q^2)$ | $PG(2n, q^2)$ | $2n+1$ (Odd) | Square $\mathbb{F}_{q^2}$ | $r = n$ | $e = 3/2$ in base $q^2$, so $(q^2)^{3/2} + 1 = q^3 + 1$ generators |
+
+Look at that last column: for a fixed rank $r = n$, all six classical polar spaces share the exact same diagram $C_n$ (`o --- o --- ... --- o === o`), and the only difference between them is how thick the Generalized Quadrangle `o === o` is at the right-hand end of the diagram ($2, q+1, q^2+1,$ or $q^3+1$ generators meeting at each $(n-2)$-subspace).
+
+### Polar Spaces Have the Same Diagram ($C_n$) as a Cube
+
+Let us trace how the diagram of a polar space of rank $3$ (types $0 = \text{points}$, $1 = \text{lines}$, $2 = \text{planes lying inside the polar space}$) is built by taking residues, and compare it directly to the 3D cube:
+
+```
+   0 (Points)          1 (Lines)          2 (Planes)
+       o ----------------- o ================= o
+          (Proj. Plane)      (Gen. Quadrangle)
+
+```
+
+Fix a plane $\Pi$ of the polar space (delete node $2$, leaving nodes $0$ and $1$). What do all the points (type $0$) and lines (type $1$) lying inside a single plane $\Pi$ of the polar space look like? As we saw, every plane inside a polar space satisfies the Veblen-Young axiom and so is an ordinary Projective Plane $PG(2, K)$. So the edge between node $0$ and node $1$ is a single stroke `o --- o` (Projective Plane).
+    
+Fix a Point $P$ of the polar space (delete node $0$, leaving nodes $1$ and $2$). Look at all the lines (type $1$) and planes (type $2$) of the polar space that pass through the fixed point $P$. If you pick a plane $\Pi$ through $P$ and a line $\ell$ through $P$ ($\ell \not\subset \Pi$), the Buekenhout-Shult "One-or-All" axiom guarantees that inside that residue, there is a unique plane through $\ell$ meeting $\Pi$ in a line through $P$—meaning the lines and planes through $P$ form a Generalized Quadrangle. In Buekenhout-Tits notation, any generalized quadrangle (the thick version of a square / 4-gon) is drawn with a double stroke `o === o`.
+    
+Fix a Line $\ell$ of the polar space (delete node $1$, leaving nodes $0$ and $2$). Every point $P$ on the line $\ell$ automatically lies in every plane $\Pi$ containing the line $\ell$. So nodes $0$ and $2$ form a generalized digon (blank space).    
+
+Now compare this to the 3D cube. A thin projective plane (`o --- o`) is a triangle ($q = 1$), and a thin generalized quadrangle (`o === o`) is a square ($q = 1$). In fact, if you take a 3D octahedron (the dual of the cube, with $6$ vertices, $12$ edges, and $8$ triangular faces), notice how its vertices and edges behave: the $6$ vertices come in $3$ opposite pairs $\{N, S\}, \{E, W\}, \{F, B\}$ (just like $3$ hyperbolic pairs $x_0 x_1 + x_2 x_3 + x_4 x_5 = 0$), and every vertex is joined by an edge to all vertices EXCEPT its opposite partner.
+    
+The octahedron / cube is literally the "thin" ($q = 1$) polar space of rank $3$, and a polar space over $\mathbb{F}_q$ is the "thick" ($q > 1$) version where every vertex-pair gets thickened into $(q+1)$ points and every triangle gets thickened into $PG(2, q)$.
 
 ### Is a Polar Space Always a Homogeneous Polynomial of Degree 2?
 
@@ -2252,6 +2543,119 @@ In group theory, $PGL(V)$ is only the first family of classical simple groups. W
 In linear algebra, those three families of groups are obtained by taking a vector space $V$ and equipping it with an inner product (a bilinear, sesquilinear, or quadratic form—like a dot product or Lorentz metric) and looking at the matrices that preserve the vectors of length zero ($x^2 + y^2 - z^2 = 0$).
 
 What do those zero-length points, lines, and planes inside $PG(d, K)$ look like as an incidence geometry in their own right, and can we characterize them purely by a simple point-line axiom without mentioning coordinates or equations? That geometry is a Polar Space, and its Buekenhout-Tits diagram is $C_n$ (a cube diagram `o === o --- o --- ... --- o` thickened up).
+
+A few words on group notation and what $GL$ vs. $PGL$ vs. $SL$ vs. $PSL$, and What $P\Omega$, $PSp$, $PSU$ mean.
+
+In algebra and group theory, all classical matrix groups go through a standard 3-step ladder of prefixes/letters:
+
+- Start with the full matrix group on the vector space $V$: $GL$ (General Linear), $O$ (Orthogonal), $Sp$ (Symplectic), $U$ (Unitary).
+- Put an "S" in front ("Special" = determinant $1$): $SL$, $SO$, $SU$.
+- Put a "P" in front ("Projective" = quotient out scalar matrices $cI$ so it acts faithfully on projective space $PG(V)$): $PGL$, $PSL$, $PO$, $PSO$, $PSp$, $PU$, $PSU$.
+
+Here is the exact ladder:
+
+| Step in the Ladder | Linear Maps (All Invertible Matrices) | Symplectic Form $f(x, y) = -f(y, x)$ | Hermitian / Unitary Form $f(y, x) = \sigma(f(x, y))$ | Quadratic / Orthogonal Form $Q(x)$ |
+| --- | --- | --- | --- | --- |
+| 1. Full Matrix Group on $V$ | $GL(n, q)$ (General Linear: all invertible $n \times n$ matrices) | $Sp(n, q)$ (Symplectic matrices preserving $f$) | $U(n, q^2)$ or $GU(n, q)$ (Unitary matrices preserving $f$) | $O(n, q)$ or $GO(n, q)$ (Orthogonal matrices preserving $Q$) |
+| 2. "Special" Subgroup ($\det = 1$) | $SL(n, q)$ (Special Linear: $\det(M) = 1$) | $Sp(n, q)$ (Every symplectic matrix already has $\det = 1$!) | $SU(n, q^2)$ (Special Unitary: $\det(M) = 1$) | $SO(n, q)$ (Special Orthogonal: $\det(M) = 1$) |
+| 3. Commutator / Simple Core (Only needed for Orthogonal!) | $SL(n, q)$ | $Sp(n, q)$ | $SU(n, q^2)$ | $\Omega(n, q)$ (The commutator subgroup of $SO(n, q)$ of index $2$, where spinor norm $= 1$) |
+| 4. "Projective" Quotient (Divide out scalar matrices $cI$) | $PGL(n, q)$ and $PSL(n, q)$ | $PSp(n, q) = Sp(n, q) / \{\pm I\}$ | $PGU(n, q)$ and $PSU(n, q)$ | $PO(n, q)$, $PSO(n, q)$, and $P\Omega(n, q)$ |
+
+Why did we write $P\Omega$ instead of $PSO$ in the bottom-right corner? For $SL$, $Sp$, and $SU$, once you take $\det = 1$ and divide out scalar matrices $cI$ (putting "P" in front), the resulting groups $PSL(n, q)$, $PSp(n, q)$, and $PSU(n, q)$ are already Simple Groups (the atomic building blocks of finite group theory, like prime numbers).
+
+For the Orthogonal group $SO(n, q)$, however, even after taking $\det = 1$ and dividing out $\pm I$ to get $PSO(n, q)$, the group is STILL not quite simple—it has one last subgroup of index $2$ inside it (consisting of products of an even number of reflections with trivial "spinor norm"), denoted by the Greek letter $\Omega(n, q)$.
+
+When we quotient $\Omega(n, q)$ by scalar matrices $\pm I$ to act on projective space, we get $P\Omega(n, q)$ (often written $P\Omega^+(2m, q)$, $P\Omega^-(2m, q)$, or $P\Omega(2m+1, q)$ corresponding to hyperbolic, elliptic, and parabolic quadrics), which is the actual simple orthogonal group.
+
+---
+
+### 3. Section-by-Section Walkthrough of Chapter 4
+
+Notice the order of the Table of Contents: Ueberberg goes from pure synthetic incidence geometry (Sections 1–3) to geometric symmetries (Section 4) and finally to algebraic coordinates and forms (Sections 5–6). Here is what each section accomplishes:
+
+#### Section 1: Introduction (Page 123)
+
+Sets up the two parallel definitions of a polar space:
+
+* The classical Tits-Veldkamp definition (written in terms of all subspaces—points, lines, planes, etc.—lying inside the polar space, behaving like projective spaces internally).
+* The minimalist Buekenhout-Shult definition (written purely in terms of points and lines using the "One-or-All" axiom above).
+
+#### Section 2: The Theorem of Buekenhout–Shult (Page 124)
+
+This is one of the most celebrated theorems in incidence geometry.
+
+* In the 1950s, Veldkamp and Tits needed a long, complicated list of axioms on points, lines, planes, and higher subspaces to define a polar space.
+* In 1974, Buekenhout and Shult proved that if you only specify Points and Lines with the single rule:
+"For every line $\ell$ and every point $P \notin \ell$, $P$ is collinear with either 1 or all points of $\ell$" (plus a non-degeneracy check that no point is collinear with everything, and chains of subspaces have finite length),
+then all the higher-dimensional subspaces (planes, solids, generators) automatically organize themselves into projective spaces!
+* In this section, Ueberberg proves that the simple point-line definition (a Shult space) and the full subspace definition (a Tits polar space) are 100% equivalent.
+
+#### Section 3: The Diagram of a Polar Space (Page 140)
+
+Now we connect polar spaces back to the Buekenhout-Tits diagram machinery we just studied in Chapters 1–3!
+Suppose a polar space has rank $n$ (meaning its largest subspaces—called generators—have projective dimension $n - 1$, so the types are $0 \text{ (points)}, 1 \text{ (lines)}, \dots, n-1 \text{ (generators)}$). What is its diagram?
+
+* If we fix a generator (node $n-1$), all the points, lines, and planes inside it form an ordinary projective space $PG(n-1, K)$, which has the linear diagram `o --- o --- ... --- o`.
+* If we fix a flag of low-dimensional subspaces and look at the last two nodes $n-2$ and $n-1$, they form a rank 2 polar space, which is a Generalized Quadrangle (a thick square `o === o`, because the "1-or-all" axiom forbids triangles!).
+* Putting those together gives the diagram $C_n$ of a polar space of rank $n$:
+
+```
+   0 (Points)       1 (Lines)              n-2           n-1 (Generators)
+       o -------------- o ------- ... ------- o ============== o
+          (Proj. Plane)                        (Gen. Quadrangle)
+
+```
+
+Notice that this is the exact diagram of the cube we studied earlier (read backwards, with node $0$ as points and node $n-1$ as the faces/generators)!
+
+#### Section 4: Polarities (Page 153)
+
+Here the focus shifts from the intrinsic geometry of the polar space back to the ambient projective space $\mathbf{P} = PG(d, K)$ containing it.
+
+* Remember from our earlier discussion that a polarity $\pi$ is a duality (correlation) of $\mathbf{P}$ of order $2$ ($\pi^2 = \text{id}$), which swaps every point $P$ with a hyperplane $P^\pi$ (called its polar hyperplane).
+* Sometimes a point $P$ happens to lie inside its own polar hyperplane:
+
+$$P \in P^\pi$$
+
+
+
+Such a point is called an absolute point (or self-conjugate / isotropic point) of the polarity $\pi$. Similarly, a subspace $U$ with $U \subset U^\pi$ is called an absolute subspace.
+* The main theorem of Section 4 proves that if you take ANY polarity $\pi$ of a projective space $\mathbf{P}$, the collection of all its absolute points, absolute lines, and absolute subspaces forms a Polar Space! (This is why they are called "polar spaces"—they are the spaces of absolute elements of a polarity.)
+
+#### Section 5: Sesquilinear Forms (Page 157)
+
+Just as Chapter 3 showed that collineations of $\mathbf{P}(V)$ come from semilinear maps $(A, \sigma)$, Section 5 asks: "Where do polarities $\pi$ come from algebraically on the vector space $V$?"
+
+* A linear duality comes from a bilinear form $f(\mathbf{x}, \mathbf{y})$.
+* Because a general duality can involve a field automorphism $\sigma$ of our skew field $K$, a general polarity comes from a sesquilinear form $f: V \times V \to K$ ("sesqui" means "one-and-a-half" linear: linear in the first slot $\mathbf{x}$, and $\sigma$-semilinear in the second slot $\mathbf{y}$).
+* For the duality to have order $2$ (a polarity, where $\mathbf{x} \in \mathbf{y}^\pi \iff \mathbf{y} \in \mathbf{x}^\pi$), the sesquilinear form $f$ must be reflexive ($f(\mathbf{x}, \mathbf{y}) = 0 \iff f(\mathbf{y}, \mathbf{x}) = 0$).
+* Celebrated theorem of Birkhoff and von Neumann (proved here): Every reflexive sesquilinear form reduces to one of three algebraic types:
+1. Orthogonal / Symmetric ($f(\mathbf{x}, \mathbf{y}) = f(\mathbf{y}, \mathbf{x})$ with $\sigma = \text{id}$)
+2. Symplectic / Alternating ($f(\mathbf{x}, \mathbf{x}) = 0$ for all $\mathbf{x}$, so $f(\mathbf{x}, \mathbf{y}) = -f(\mathbf{y}, \mathbf{x})$)
+3. Unitary / Hermitian ($f(\mathbf{y}, \mathbf{x}) = \sigma(f(\mathbf{x}, \mathbf{y}))$ where $\sigma^2 = \text{id}$ is an involution of $K$, like complex conjugation $\bar{z}$ or $x \mapsto x^q$ in $\mathbb{F}_{q^2}$).
+
+
+
+#### Section 6: Pseudo-Quadrics (Page 166)
+
+There is one tricky algebraic catch at the end: what happens when the field $K$ has characteristic $2$ (where $1 + 1 = 0$ and $-1 = +1$), or when $K$ is a non-commutative skew field?
+
+* Over a field of characteristic $\neq 2$, a quadratic form $Q(\mathbf{x}) = \mathbf{x}^T M \mathbf{x}$ and its symmetric polarity $f(\mathbf{x}, \mathbf{y}) = Q(\mathbf{x}+\mathbf{y}) - Q(\mathbf{x}) - Q(\mathbf{y})$ determine each other completely (because you can recover $Q(\mathbf{x}) = \frac{1}{2} f(\mathbf{x}, \mathbf{x})$ by dividing by $2$).
+* In characteristic $2$, you cannot divide by $2$! A quadric $Q(\mathbf{x}) = 0$ still gives a valid polar space, even though you cannot recover $Q$ solely from the polarity $f$.
+* Even more generally, over a non-commutative skew field $K$ with an automorphism $\sigma$, Tits discovered that the right generalization of a quadric is a Pseudo-Quadric (defined by a sesquilinear form modulo a twisted trace subgroup).
+* This final section sets up Tits' famous Classification Theorem for Polar Spaces: every polar space of rank $n \ge 3$ arises from either a reflexive sesquilinear form (Section 5) or a pseudo-quadric (Section 6).
+
+---
+
+### Summary Table: How Chapter 3 (Projective Spaces) Parallels Chapter 4 (Polar Spaces)
+
+| Feature | Chapter 3: Projective Spaces | Chapter 4: Polar Spaces |
+| --- | --- | --- |
+| Core Point-Line Axiom | Any two points lie on a unique line; Veblen-Young axiom holds. | Buekenhout-Shult "One-or-All" axiom: a point outside a line is collinear with $1$ or all points on that line. |
+| Buekenhout-Tits Diagram | $A_n$: `o --- o --- ... --- o` | $C_n$: `o --- o --- ... --- o === o` |
+| How It Arises Geometrically | The entire space $PG(d, K)$. | The absolute points/subspaces ($U \subset U^\pi$) of a polarity $\pi$ inside $PG(d, K)$, or points/subspaces on a quadric. |
+| Underlying Linear Algebra | Vector space $V$ over a skew field $K$ with semilinear maps $(A, \sigma)$. | Vector space $V$ equipped with a reflexive sesquilinear form $f(\mathbf{x}, \mathbf{y})$ or pseudo-quadratic form. |
+| Classical Simple Groups | Projective Linear Groups: $PSL(d+1, K)$ and $PGL(d+1, K)$. | Orthogonal ($P\Omega$), Symplectic ($PSp$), and Unitary ($PSU$) groups. |
 
 ## Polygons
 
