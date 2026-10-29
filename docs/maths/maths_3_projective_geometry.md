@@ -2367,7 +2367,7 @@ A theorem by Birkhoff and von Neumann proves that there are only three ways a fo
 
 You will see $\mathcal{Q}^+(2n-1, q)$,  $\mathcal{Q}(2n, q)$, and $\mathcal{Q}^-(2n-1, q)$ representing their geometric shapes: hyperbolic, parabolic, and elliptic.
         
-**Alternating / Symplectic ($\sigma = \text{id}$):** $f(x, y) = -f(y, x)$ and $f(x, x) = 0$ for every vector $x$. Because $f(x, x) = 0$ always, every single vector in the vector space (and therefore point in the projective space) is orthogonal to itself. In two variables, it is the 2D determinant (signed area): $f(x, y) = x_0 y_1 - x_1 y_0$. In physics (Hamiltonian mechanics and optics), this measures phase-space area (position $\times$ momentum). The matrices preserving a symplectic form make up the Symplectic Group.
+**Alternating / Symplectic ($\sigma = \text{id}$):** $f(x, y) = -f(y, x)$ and so $f(x, x) = 0$ for every vector $x$. Because $f(x, x) = 0$ always, every single vector in the vector space (and therefore point in the projective space) is orthogonal to itself. In two variables, it is the 2D determinant (signed area): $f(x, y) = x_0 y_1 - x_1 y_0$. In physics (Hamiltonian mechanics and optics), this measures phase-space area (position $\times$ momentum). The matrices preserving a symplectic form make up the Symplectic Group.
         
 **Hermitian / Unitary ($\sigma \neq \text{id}$ with $\sigma^2 = \text{id}$):** $f(y, x) = \sigma(f(x, y))$. An example is conjugation over $\mathbb{C}$: $x_0 \bar{y}_0 + x_1 \bar{y}_1$; or over $\mathbb{F}_{q^2}$: $x_0 y_0^q + x_1 y_1^q$. The matrices preserving a Hermitian form make up the Unitary Group.
 
@@ -2375,7 +2375,7 @@ Since we already looked at quadrics, let's look at the other two.
 
 ### Symplectic Spaces & Antisymmetric Bilinear Forms
 #### Difference From a Quadric
-Since $B(x, x) = 0$ for all points, every point in the entire projective space is isotropic. This is a key difference from quadrics. Most points in the projective space are not in the polar space/quadric. In a symplectic space, the point set is the entire projective space.
+Since $B(x, x) = 0$ for all points, every point in the entire projective space is isotropic. This is a key difference from quadrics where most points in the projective space are not in the polar space/quadric. In a symplectic space, the point set is the entire projective space.
 
 #### Notation
 Such spaces are denoted by $\mathcal{W}_{2n-1}(q)$ where:
@@ -2385,9 +2385,17 @@ Such spaces are denoted by $\mathcal{W}_{2n-1}(q)$ where:
 -   $q$: The polar space is defined over the finite field $\mathbb{F}_{q}$.
 
 #### Other Properties
-Field Constraint: None! A symplectic space can be constructed over ANY commutative field $K$ (finite or infinite, characteristic $2$ or $\neq 2$).
+Field Constraint: None! A symplectic space can be constructed over ANY commutative field $K$ (finite or infinite, characteristic $2$ or $\neq 2$). However, it cannot exist over a strictly non-commutative skew field, because alternating forms $f(x, x) = 0$ force the underlying ring to be commutative in order for $f$ to be reflexive. Commutativity is implied by the alternating form because:
 
-However, it cannot exist over a strictly non-commutative skew field, because alternating forms $f(x, x) = 0$ force the underlying ring to be commutative in order for $f$ to be reflexive.
+Pull out $\alpha$ first:
+
+$$B(\alpha \mathbf{x}, \beta \mathbf{y}) = -B(\beta \mathbf{y}, \alpha \mathbf{x}) = -\beta B(\mathbf{y}, \alpha \mathbf{x}) = -\beta \big(\alpha B(\mathbf{y}, \mathbf{x})\big) = -\beta \alpha \big(-B(\mathbf{x}, \mathbf{y})\big) = (\beta \alpha) B(\mathbf{x}, \mathbf{y})$$
+
+Pull out $\beta$ first (or use the alternating property $B(\mathbf{u}, \mathbf{v}) = -B(\mathbf{v}, \mathbf{u})$):
+
+$$B(\alpha \mathbf{x}, \beta \mathbf{y}) = -B(\beta \mathbf{y}, \alpha \mathbf{x}) = -\beta B(\mathbf{y}, \alpha \mathbf{x}) = -\beta \big(\alpha B(\mathbf{y}, \mathbf{x})\big) = -\beta \alpha \big(-B(\mathbf{x}, \mathbf{y})\big) = (\beta \alpha) B(\mathbf{x}, \mathbf{y})$$
+
+Set the two equal to see that commutativity is forced.
 
 Dimension Constraint: The vector space dimension $d+1$ MUST be even ($d+1 = 2n$), which means the ambient projective dimension $d = 2n - 1$ MUST be odd ($PG(1, K), PG(3, K), PG(5, K), \dots$).
 
@@ -2484,7 +2492,6 @@ Anisotropic core has dimension $1$ ($x_{2n}^2$). Witt index is $r = n$.
 Canonical equation: $x_0 x_1 + \dots + x_{2n-2} x_{2n-1} + (x_{2n}^2 + a x_{2n} x_{2n+1} + b x_{2n+1}^2) = 0$ (where $t^2 + at + b$ is irreducible over $\mathbb{F}_q$).
 Anisotropic core has dimension $2$. Witt index is $r = n$.
 
-
 Over General Infinite Fields (like $\mathbb{R}$ or $\mathbb{Q}$): The Witt index $r$ can be ANY integer from $0$ up to $\lfloor (d+1)/2 \rfloor$ (for instance, the sphere $x_0^2 + x_1^2 + x_2^2 - x_3^2 = 0$ over $\mathbb{R}$ has Witt index $r = 1$, whereas $x_0^2 + x_1^2 + x_2^2 + x_3^2 = 0$ has Witt index $r = 0$).
 
 ### Comparison: Finite Classical Polar Spaces (Over $\mathbb{F}_q$ or $\mathbb{F}_{q^2}$)
@@ -2504,6 +2511,181 @@ In finite geometry, a finite polar space of rank $r$ (Witt index $r$) has two nu
 | Hermitian Space $H(2n, q^2)$ | $PG(2n, q^2)$ | $2n+1$ (Odd) | Square $\mathbb{F}_{q^2}$ | $r = n$ | $e = 3/2$ in base $q^2$, so $(q^2)^{3/2} + 1 = q^3 + 1$ generators |
 
 Look at that last column: for a fixed rank $r = n$, all six classical polar spaces share the exact same diagram $C_n$ (`o --- o --- ... --- o === o`), and the only difference between them is how thick the Generalized Quadrangle `o === o` is at the right-hand end of the diagram ($2, q+1, q^2+1,$ or $q^3+1$ generators meeting at each $(n-2)$-subspace).
+
+Now let's look at the formulas for some counts in these polar spaces. 
+
+#### Index or Rank
+Let $d$ be the projective dimension of the ambient space $\text{PG}(d, \mathbb{F})$, so the underlying vector space $V$ has vector dimension $N = d + 1$. Let $r$ denote the Witt index (polar rank), which is the vector dimension of a maximal totally isotropic (or totally singular) subspace $U$ (so its projective dimension inside $\text{PG}(d, \mathbb{F})$ is $r - 1$).
+
+As we saw, always, for any non-degenerate reflexive form on a vector space of dimension $N$, a totally isotropic subspace $U$ satisfies $U \subseteq U^\perp$, and by non-degeneracy $\dim(U) + \dim(U^\perp) = N$. Therefore the Witt index $r$ in terms of the projective dimension $d$ and vector space dimension $N = d + 1$ is given by:
+
+$$2r \le N = d + 1 \implies r \le \left\lfloor \frac{d+1}{2} \right\rfloor$$
+    
+For quadrics in finite fields, we saw $r = \frac{d}{2}$ for even $d$, and $r = \frac{d+1}{2}$ or $\frac{d-1}{2}$ for odd $d$. What happens in the other two finite field polar spaces (Symplectic and Unitary)? Over arbitrary fields (like $\mathbb{R}$ or $\mathbb{Q}$), we can give away the answer right now. These formulas break down completely for all polar spaces, so we won't spend any time on these fields. 
+
+First, recall that by Witt's Decomposition Theorem, any vector space $V$ with a non-degenerate reflexive form can be decomposed into an orthogonal direct sum of $r$ hyperbolic planes  $\mathbb{H}$ (each of vector dimension $2$, given by $x_1 y_2 + x_2 y_1$, which contributes $1$ to the Witt index $r$) plus an anisotropic kernel  $V_0$ (a subspace containing zero isotropic vectors).
+
+$$V = \underbrace{\mathbb{H} \perp \mathbb{H} \perp \dots \perp \mathbb{H}}_{r \text{ copies}} \perp V_0$$
+
+Therefore, the vector dimension $N = d+1$ is always:
+  
+$$d + 1 = 2r + \dim(V_0) \implies r = \frac{d + 1 - \dim(V_0)}{2}$$
+
+Over a finite field $\mathbb{F}_q$ (or $\mathbb{F}_{q^2}$ for Unitary), the Chevalley–Warning Theorem guarantees that any anisotropic part of the space (what is left over after we strip away all nondegenerate components via Witt decomposition) has vector dimension at most $2$ (for orthogonal) or $1$ (for unitary). 
+
+In Symplectic ($\mathcal{W}$) space, every vector satisfies $B(\mathbf{x}, \mathbf{x}) = 0$, so an anisotropic subspace cannot exist ($\dim(V_0) = 0$ always). Thus $d+1 = 2r \implies r = \frac{d+1}{2}$ (and $d$ must be odd).
+
+For Unitary ($\mathcal{H}$ over $\mathbb{F}_{q^2}$) spaces, take two variables in $V_0$:  $x_1^{q+1} + x_2^{q+1} = 0 \implies (x_1/x_2)^{q+1} = -1$. Because the norm map $z \mapsto z^{q+1}$ from $\mathbb{F}_{q^2}^\times \to \mathbb{F}_q^\times$ is surjective, there is always a non-zero solution in 2 variables. Thus, a 2D unitary space over $\mathbb{F}_{q^2}$ is never anisotropic ($\dim(V_0)$ can only be $0$ for odd $d$, or $1$ for even $d$). That gives $r = \frac{d+1}{2}$ (odd $d$) and $r = \frac{d}{2}$ (even $d$).
+
+In Orthogonal ($\mathcal{Q}$ over $\mathbb{F}_q$) space, over 2 variables, a quadratic form $x_1^2 + a x_1 x_2 + b x_2^2 = 0$ can be an irreducible quadratic polynomial over $\mathbb{F}_q$ (with no roots in $\mathbb{F}_q$). That gives a 2-dimensional anisotropic kernel ($\dim(V_0) = 2$). By Chevalley–Warning, a quadratic form in $3$ variables ($x_1^2 + x_2^2 + x_3^2 = 0$) always has a non-trivial root over $\mathbb{F}_q$, so $\dim(V_0)$ can never be $3$ or higher.
+
+For even $d$ ($N$ odd):  $\dim(V_0)$ must be odd, so $\dim(V_0) = 1 \implies r = \frac{d}{2}$. For odd $d$ ($N$ even):  $\dim(V_0)$ must be even, so either $\dim(V_0) = 0 \implies r = \frac{d+1}{2}$ (Hyperbolic $\mathcal{Q}^+$) or $\dim(V_0) = 2 \implies r = \frac{d-1}{2}$ (Elliptic $\mathcal{Q}^-$).
+
+Thus,  Symplectic and Unitary spaces do not have the plus/minus split in odd projective dimension. Instead, they always hit the theoretical maximum $r = \lfloor \frac{d+1}{2} \rfloor$.
+  
+So for even projective dimension, Orthogonal $\mathcal{Q}(d, q)$ and Unitary $\mathcal{H}(d, q^2)$ obey the exact same rule:  $r = \frac{d}{2}$. Symplectic $\mathcal{W}(d, q)$ cannot exist as a non-degenerate polar space when $d$ is even, because an alternating matrix of odd vector size $N = d+1$ always has determinant $0$.
+
+In odd projective dimension, we know that orthogonal splits into two types: Hyperbolic ($r = \frac{d+1}{2}$) and Elliptic ($r = \frac{d-1}{2}$). Symplectic and Unitary do not split. They only take the upper value $r = \frac{d+1}{2}$.      
+
+Note that over an infinite field like $\mathbb{R}$, the Chevalley–Warning theorem no longer holds, and the anisotropic kernel $V_0$ can be arbitrarily large. However Symplectic spaces retain $r = \frac{d+1}{2}$ over every field $\mathbb{F}$, because $B(\mathbf{x}, \mathbf{x}) = 0$ is built into the definition of an alternating form regardless of the field.
+
+#### Number of Points
+The exact same inductive machinery gives a formula for the number of points on a polar space. We got a taste of this with quadrics. For all polar spaces, we have a single unified master formula controlled by the Witt index $r$ and a single parameter $e$ tied to the anisotropic kernel $V_0$.
+
+Let's go through the decomposition again. Let $\mathcal{P}_d$ be a non-degenerate polar space in $\text{PG}(d, \mathbb{F}_Q)$ (where the field size is $Q = q$ for Orthogonal/Symplectic, and $Q = q^2$ for Unitary).
+
+Pick any isotropic point $P \in \mathcal{P}_d$. Its tangent hyperplane $P^\perp$ is a projective $(d-1)$-space $\text{PG}(d-1, \mathbb{F}_Q)$. How does $P^\perp$ intersect the polar space $\mathcal{P}_d$?
+
+Because $P$ is isotropic ($P \in P^\perp$), the restriction of the form to $P^\perp$ is degenerate with a 1-dimensional radical: $\text{Rad}(P^\perp) = P$. Quotienting out $P$ (which geometrically means projecting from the vertex $P$ onto a complementary hyperplane $H \cong \text{PG}(d-2, \mathbb{F}_Q)$ not containing $P$) removes the entire hyperbolic plane $\mathbb{H} = \langle P, R \rangle$ from the Witt decomposition:
+
+$$V = \mathbb{H} \perp V' \implies \dim(V') = \dim(V) - 2$$
+
+Note that $R$ is a second isotropic point chosen outside the tangent hyperplane $P^\perp$ ($R \notin P^\perp$) so that the projective line joining $P$ and $R$ forms a hyperbolic plane $\mathbb{H} = \langle P, R \rangle$.
+
+The intersection $P^\perp \cap \mathcal{P}_d$ is a cone with vertex $P$ over a non-degenerate polar space $\mathcal{P}_{d-2}$ of the exact same type in $\text{PG}(d-2, \mathbb{F}_Q)$, with Witt index $r - 1$.
+
+In terms of the "quotient / star" geometry at $P$: the isotropic lines of $\mathcal{P}_d$ passing through $P$ correspond bijectively to the points of $\mathcal{P}_{d-2}$, and the $k$-dimensional flats of $\mathcal{P}_d$ passing through $P$ correspond bijectively to the $(k-1)$-dimensional flats of $\mathcal{P}_{d-2}$. We saw how the $\mathcal{Q}$-lines through a point in a one-sheeted hyperboloid in 3D correspond to the 2 only points of the lower-dimensional ($d-2 = 1$) quadric. These two points and the point $P$ form two lines intersecting at $P$, which are the lines of the two reguli.
+
+---
+
+**Aside:** This exact correspondence is why the quotient geometry at $P$ is also called the residue of $P$ in the language of Tits buildings: taking the residue of a point in a polar space of rank $r$ yields a polar space of rank $r - 1$, shifting the projective dimension of every incident flat down by 1.
+
+---
+
+We can count the total number of points $\vert{}\mathcal{P}_d\vert{}$ directly from this $d \to d-2$ cone structure by partitioning all points $X \in \mathcal{P}_d$ into two disjoint sets relative to $P^\perp$:
+
+Points inside the tangent hyperplane ($X \in P^\perp \cap \mathcal{P}_d$). This is the cone $P \mathcal{P}_{d-2}$. It consists of:
+- The vertex $P$ itself: $1$ point.
+- For each of the $\vert{}\mathcal{P}_{d-2}\vert{}$ points $Y \in \mathcal{P}_{d-2}$, the projective line $\langle P, Y \rangle$ contains $Q + 1$ points total, which gives $Q$ points other than $P$: $Q \cdot \vert{}\mathcal{P}_{d-2}\vert{}$ points.
+
+$$\text{Total inside } P^\perp = 1 + Q\vert{}\mathcal{P}_{d-2}\vert{}$$
+
+Points outside the tangent hyperplane ($X \in \mathcal{P}_d \setminus P^\perp$). For any point $X \notin P^\perp$, the line $L = \langle P, X \rangle$ is a secant line to $\mathcal{P}_d$ (since it is not contained in $P^\perp$, it is not tangent and not totally isotropic).
+
+There are $Q^{d} + Q^{d-1} + \dots + 1$ lines through $P$ in $\text{PG}(d, \mathbb{F}_Q)$, of which $Q^{d-1} + Q^{d-2} + \dots + 1$ lie inside the hyperplane $P^\perp$. Thus, there are exactly $Q^{d-1}$ secant lines through $P$ pointing outside $P^\perp$. How many isotropic points (other than $P$) lie on each secant line through $P$?
+
+* Orthogonal ($\mathcal{Q}$, $Q = q$): Every secant line meets a quadric in $2$ points ($P$ and $1$ other point). So each of the $q^{d-1}$ lines contributes $1$ point $\implies q^{d-1}$ points.
+* Symplectic ($\mathcal{W}$, $Q = q$): Every point is isotropic, so each of the $q^{d-1}$ lines contributes $q$ points $\implies q \cdot q^{d-1} = q^d$ points.
+* Unitary ($\mathcal{H}$, $Q = q^2$): As we proved earlier, every secant line meets $\mathcal{H}(d, q^2)$ in $q + 1$ points ($P$ and $q$ other points). So each of the $(q^2)^{d-1}$ lines contributes $q$ points $\implies q \cdot q^{2d-2} = q^{2d-1}$ points.
+
+Putting the inside and outside counts together gives the exact $d \to d-2$ inductive recurrence for all three families:
+
+Orthogonal $\mathcal{Q}(d, q)$:
+
+$$\vert{}\mathcal{Q}_d\vert{} = 1 + q\vert{}\mathcal{Q}_{d-2}\vert{} + q^{d-1}$$
+
+
+Symplectic $\mathcal{W}(d, q)$:
+
+$$\vert{}\mathcal{W}_d\vert{} = 1 + q\vert{}\mathcal{W}_{d-2}\vert{} + q^d$$
+
+
+Unitary $\mathcal{H}(d, q^2)$:
+
+$$\vert{}\mathcal{H}_d\vert{} = 1 + q^2\vert{}\mathcal{H}_{d-2}\vert{} + q^{2d-1}$$
+
+
+Unrolling those $d \to d-2$ recurrences down to the base case (the anisotropic kernel $V_0$, where $r = 0$ and there are $0$ isotropic points) gives the explicit point counts for all five classical finite polar spaces:
+
+| Polar Space | Projective Dim $d$ | Witt Index $r$ | Parameter $e$ | Total Number of Isotropic Points $\vert{}\mathcal{P}_d\vert{}$ |
+| --- | --- | --- | --- | --- |
+| Symplectic $\mathcal{W}(2n-1, q)$ | $2n-1$ | $n$ | $1$ | $\frac{q^{2n}-1}{q-1} = \frac{(q^n - 1)(q^n + 1)}{q - 1}$ |
+| Hyperbolic Quadric $\mathcal{Q}^+(2n-1, q)$ | $2n-1$ | $n$ | $0$ | $\frac{(q^n - 1)(q^{n-1} + 1)}{q - 1} = \frac{q^{2n-1}-1}{q-1} + q^{n-1}$ |
+| Parabolic Quadric $\mathcal{Q}(2n, q)$ | $2n$ | $n$ | $1$ | $\frac{q^{2n}-1}{q-1} = \frac{(q^n - 1)(q^n + 1)}{q - 1}$ |
+| Elliptic Quadric $\mathcal{Q}^-(2n-1, q)$ | $2n-1$ | $n-1$ | $2$ | $\frac{(q^{n-1} - 1)(q^{n+1} + 1)}{q - 1} = \frac{q^{2n-1}-1}{q-1} - q^{n-1}$ |
+| Unitary (Odd Dim) $\mathcal{H}(2n-1, q^2)$ | $2n-1$ | $n$ | $1/2$ | $\frac{(q^{2n} - 1)(q^{2n-1} + 1)}{q^2 - 1}$ |
+| Unitary (Even Dim) $\mathcal{H}(2n, q^2)$ | $2n$ | $n$ | $3/2$ | $\frac{(q^{2n} - 1)(q^{2n+1} + 1)}{q^2 - 1}$ |
+
+Let's put all this into a master formula. Let $Q$ be the ambient field size ($Q = q$ for Orthogonal/Symplectic, $Q = q^2$ for Unitary) and $r$ be the Witt index. Then every single row in the table above is given by one universal expression:
+
+$$\vert{}\mathcal{P}\vert{} = \frac{(Q^r - 1)(Q^{r + e - 1} + 1)}{Q - 1}$$
+
+And the inductive step from rank $r$ down to rank $r-1$ (peeling off one hyperbolic plane $\mathbb{H}$) is universally:
+
+$$\vert{}\mathcal{P}(r)\vert{} = 1 + Q\vert{}\mathcal{P}(r-1)\vert{} + Q^{2r + e - 2}$$
+
+Look at the magic of the parameter $e$. Notice that $\mathcal{W}(2n-1, q)$ and $\mathcal{Q}(2n, q)$ have the exact same $r = n$ and $e = 1$, which means they have the exact same number of points ($\frac{q^{2n}-1}{q-1}$)—and in fact, in characteristic 2, $\mathcal{Q}(2n, q)$ and $\mathcal{W}(2n-1, q)$ are isomorphic as polar spaces by projecting from the nucleus (knot).
+
+Notice how the three quadrics sit around the baseline $\frac{q^d - 1}{q - 1}$ (the size of a hyperplane $\text{PG}(d-1, q)$):
+
+* Parabolic $\mathcal{Q}(2n, q)$ has exactly $\frac{q^{2n}-1}{q-1}$ points (same size as a hyperplane $\text{PG}(2n-1, q)$).
+* Hyperbolic $\mathcal{Q}^+(2n-1, q)$ has  an extra $+q^{n-1}$ points above a hyperplane: $\frac{q^{2n-1}-1}{q-1} + q^{n-1}$.
+* Elliptic $\mathcal{Q}^-(2n-1, q)$ has a deficit of $-q^{n-1}$ points below a hyperplane: $\frac{q^{2n-1}-1}{q-1} - q^{n-1}$.
+
+#### Number of Maximal Isotropic Subspaces
+
+To count the maximal totally isotropic subspaces or generators, we once again use the same inductive Witt decomposition ($r \to r-1$) and double-counting. Note that the number of points is not equal to the number of maximal isotropic subspaces. Self-duality is a special property of projective spaces $PG(d, K)$. In a general polar space, the number of points is not equal to the number of generators. There are some famous exceptions which will see later.
+
+Let $g(r)$ denote the total number of generators in our polar space $\mathcal{P}(r)$ of rank $r$. Each generator is a projective flat of projective dimension $r - 1$, meaning it is isomorphic to $\text{PG}(r-1, \mathbb{F}_Q)$.
+
+Let us count the number of incident pairs $(P, M)$ where $P$ is an isotropic point of $\mathcal{P}(r)$ and $M$ is a generator containing $P$:
+
+Counting by choosing the point $P$ first. There are $\vert{}\mathcal{P}(r)\vert{}$ choices for the isotropic point $P$. Once $P$ is fixed, every generator $M$ containing $P$ lies entirely inside the tangent hyperplane $P^\perp$. As we established in the Witt decomposition step, quotienting out $P$ projects $P^\perp \cap \mathcal{P}(r)$ onto a non-degenerate polar space $\mathcal{P}(r-1)$ of the same type and parameter $e$, but with rank $r - 1$.
+
+This projection gives a bijection between the generators of $\mathcal{P}(r)$ passing through $P$ and all generators of $\mathcal{P}(r-1)$. Thus, there are $g(r-1)$ generators passing through $P$. 
+
+Total number of pairs: $\vert{}\mathcal{P}(r)\vert{} \cdot g(r-1)$
+
+Now we count by choosing the generator $M$ first. There are $g(r)$ choices for the generator $M$. Because $M \cong \text{PG}(r-1, \mathbb{F}_Q)$ is a projective space of dimension $r - 1$ over $\mathbb{F}_Q$, the number of points inside $M$ is $\frac{Q^r - 1}{Q - 1}$.
+
+Total number of pairs: $g(r) \cdot \frac{Q^r - 1}{Q - 1}$
+
+Now apply the inductive step. Equating our two counts of the incident pairs $(P, M)$ gives:
+
+$$g(r) \cdot \frac{Q^r - 1}{Q - 1} = \vert{}\mathcal{P}(r)\vert{} \cdot g(r-1)$$
+
+Now we substitute our master formula for the number of points $\vert{}\mathcal{P}(r)\vert{}$:
+
+$$\vert{}\mathcal{P}(r)\vert{} = \frac{(Q^r - 1)(Q^{r + e - 1} + 1)}{Q - 1}$$
+
+Plugging this into the double-counting equation yields:
+
+$$g(r) \cdot \frac{Q^r - 1}{Q - 1} = \frac{(Q^r - 1)(Q^{r + e - 1} + 1)}{Q - 1} \cdot g(r-1)$$
+
+Since $r \ge 1$, the factor $\frac{Q^r - 1}{Q - 1}$ is non-zero and cancels cleanly from both sides, leaving the recurrence relation:
+
+$$g(r) = (Q^{r + e - 1} + 1) \cdot g(r-1)$$
+
+When we unroll this recurrence down to the base case $r = 0$ (where the polar space is reduced to the anisotropic kernel $V_0$, so the unique maximal totally isotropic subspace is the trivial zero vector subspace $\{0\}$, giving $g(0) = 1$), each step $k$ from $1$ to $r$ multiplies the count by $(Q^{k + e - 1} + 1)$:
+
+$$g(r) = \prod_{k=1}^{r} (Q^{k + e - 1} + 1) = (Q^e + 1)(Q^{e+1} + 1)(Q^{e+2} + 1) \cdots (Q^{r + e - 1} + 1)$$
+
+Substituting the specific values of $Q$ and $e$ for each classical polar space gives the complete table of generator counts:
+
+| Polar Space | Field Size $Q$ | Witt Index $r$ | Parameter $e$ | Number of Generators $g(r)$ |
+| --- | --- | --- | --- | --- |
+| Hyperbolic Quadric $\mathcal{Q}^+(2n-1, q)$ | $q$ | $n$ | $0$ | $2(q + 1)(q^2 + 1) \cdots (q^{n-1} + 1)$ |
+| Symplectic $\mathcal{W}(2n-1, q)$ | $q$ | $n$ | $1$ | $(q + 1)(q^2 + 1) \cdots (q^n + 1)$ |
+| Parabolic Quadric $\mathcal{Q}(2n, q)$ | $q$ | $n$ | $1$ | $(q + 1)(q^2 + 1) \cdots (q^n + 1)$ |
+| Elliptic Quadric $\mathcal{Q}^-(2n-1, q)$ | $q$ | $n-1$ | $2$ | $(q^2 + 1)(q^3 + 1) \cdots (q^n + 1)$ |
+| Unitary (Odd Dim) $\mathcal{H}(2n-1, q^2)$ | $q^2$ | $n$ | $1/2$ | $(q + 1)(q^3 + 1)(q^5 + 1) \cdots (q^{2n-1} + 1)$ |
+| Unitary (Even Dim) $\mathcal{H}(2n, q^2)$ | $q^2$ | $n$ | $3/2$ | $(q^3 + 1)(q^5 + 1)(q^7 + 1) \cdots (q^{2n+1} + 1)$ |
+
+Notice two structural features in this table:
+
+For the hyperbolic quadric $\mathcal{Q}^+(2n-1, q)$ where $e = 0$, the first factor ($k = 1$) is $q^0 + 1 = 2$. This factor of $2$ reflects the bipartite splitting of the generators of $\mathcal{Q}^+(2n-1, q)$ into two families (where two generators meet in a subspace of even codimension if and only if they belong to the same family). For $n = 2$ ($\mathcal{Q}^+(3, q)$ in $\text{PG}(3, q)$), this gives $2(q + 1)$ lines, which are the two reguli of $q+1$ lines on a hyperbolic quadric surface.
+
+In the two Unitary cases, because $Q = q^2$ and $e$ is a half-integer ($1/2$ or $3/2$), the term $Q^{k + e - 1} = (q^2)^{k + e - 1} = q^{2k + 2e - 2}$ produces purely odd powers of $q$.
 
 ### Polar Spaces Have the Same Diagram ($C_n$) as a Cube
 
