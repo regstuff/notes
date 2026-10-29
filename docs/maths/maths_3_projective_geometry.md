@@ -2089,9 +2089,9 @@ Why do we need this? Think of the standard inner product in a complex vector spa
 
 **Reflexive Form:** A bilinear or sesquilinear form $f(x, y)$ where "orthogonality is a two-way street": $f(x, y) = 0 \iff f(y, x) = 0$.
 
-Our polar spaces are going to be point sets where a point is orthogonal to itself as defined by a reflexive form. These are called isotropic points. This idea doesn't make much sense when we use the regular dot product formula of length (and for that matter, what is the length of a point anyway?). But we are not really thinking of length here. We are defining a form and using that to define orthogonality, which might arise due to, for example, minus signs in the form ($x_1y_1 - x_2y_2$) or due to the field being finite, in which case, as we saw in $\text{char} = 2$, a scalar multiple turns out to be $0$ modulo the characteristic.
+**Isotropic Points:** Our polar spaces are going to be point sets where a point is orthogonal to itself as defined by a reflexive form. These are called isotropic points. This idea doesn't make much sense when we use the regular dot product formula of length (and for that matter, what is the length of a point anyway?). But we are not really thinking of length here. We are defining a form and using that to define orthogonality, which might arise due to, for example, minus signs in the form ($x_1y_1 - x_2y_2$) or due to the field being finite, in which case, as we saw in $\text{char} = 2$, a scalar multiple turns out to be $0$ modulo the characteristic. We'll come back to what isotropic points can tell us about a projective space in a bit.
 
-So to help build a mental model of polar spaces, we have, as a background, a vector space or its projective space. We then filter points using a reflexive form that identifies which points are isotropic and which pairs of points are orthogonal i.e. a point $x$ can only "see" (be collinear with) a subset of other points $y$ that satisfy $B(x, y)=0$. 
+Now let's build a mental model of polar spaces. We have as a background, a vector space or its projective space. We then filter points using a reflexive form that identifies which points are isotropic and which pairs of points are orthogonal i.e. a point $x$ can only "see" (be collinear with) a subset of other points $y$ that satisfy $B(x, y)=0$. 
 
 Note that if a pair of isotropic points is orthogonal, then all pairs of points on the line formed by those points will also be orthogonal because the form $B$ is bilinear (or sesquilinear); it is linear (or semilinear) in its arguments.
 
@@ -2103,9 +2103,9 @@ Since $\mathbf{x}$ is isotropic,  $B(\mathbf{x}, \mathbf{x}) = 0$. Since we chos
 
 $$B(\mathbf{x},\mathbf{p})=0+\alpha(0)=0$$
 
-By extension, if you pick any two points $\mathbf{p}_1 = \mathbf{x} + \alpha_1 \mathbf{y}$ and $\mathbf{p}_2 = \mathbf{x} + \alpha_2 \mathbf{y}$ on this line,  $B(\mathbf{p}_1, \mathbf{p}_2) = 0$ (requiring $\mathbf{y}$ to also be isotropic so that $B(\mathbf{y}, \mathbf{y}) = 0$). Thus, every single pair of points on that line is mutually orthogonal. We can then extend this to higher-dimensional subspaces as well. Such subspaces where all points are isotropic and all pairs of points are orthogonal are called totally isotropic subspaces.
+By extension, if you pick any two points $\mathbf{p}_1 = \mathbf{x} + \alpha_1 \mathbf{y}$ and $\mathbf{p}_2 = \mathbf{x} + \alpha_2 \mathbf{y}$ on this line,  $B(\mathbf{p}_1, \mathbf{p}_2) = 0$ (requiring $\mathbf{y}$ to also be isotropic so that $B(\mathbf{y}, \mathbf{y}) = 0$). Thus, every single pair of points on that line is mutually orthogonal. 
 
-We then include all totally isotropic subspaces in our polar space and study how they are incident with each other. This is the whole game in polar spaces and geometry.
+We can then extend this to higher-dimensional subspaces as well. Such subspaces where all points are isotropic and all pairs of points are orthogonal are called totally isotropic subspaces. We then include all totally isotropic subspaces in our polar space and study how they are incident with each other. This is the whole game in polar spaces and their geometry.
 
 Why do we care about isotropic points? In projective space $\text{PG}(n, \mathbb{F})$, a point is an equivalence class, a 1D subspace $\langle \mathbf{x} \rangle$, meaning $\mathbf{x}$ and $\lambda \mathbf{x}$ ($\lambda \neq 0$) represent the same projective point. If you try to evaluate the "length squared" $B(\mathbf{x}, \mathbf{x})$ of a projective point, scaling by $\lambda$ changes the value to $B(\lambda \mathbf{x}, \lambda \mathbf{x}) = \lambda^2 B(\mathbf{x}, \mathbf{x})$ (or $\lambda \overline{\lambda} B(\mathbf{x}, \mathbf{x})$). Thus, a non-zero value of $B(\mathbf{x}, \mathbf{x})$ is not well-defined on projective points.
 
@@ -2121,62 +2121,20 @@ The evaluated scalar is identically equal before and after the coordinate transf
 
 ---
 
-**Aside:** When moving to characteristic 2, we also speak of  singular and totally singular forms. Given a quadratic form, a point $\langle \mathbf{x} \rangle$ is singular if $Q(\mathbf{x}) = 0$, and a subspace $U$ is totally singular if $Q(U) = 0$. (In $\text{char} = 2$, taking two singular points $\mathbf{x}, \mathbf{y}$ with $Q(\mathbf{x}) = Q(\mathbf{y}) = 0$ that are orthogonal under the polar form $B(\mathbf{x}, \mathbf{y}) = 0$ gives $Q(\mathbf{x} + \alpha \mathbf{y}) = Q(\mathbf{x}) + \alpha^2 Q(\mathbf{y}) + \alpha B(\mathbf{x}, \mathbf{y}) = 0$, making the whole line totally singular.)
+**Aside:** When moving to characteristic 2, we also speak of  singular and totally singular forms. Given a quadratic form, a point $\langle \mathbf{x} \rangle$ is singular if $Q(\mathbf{x}) = 0$, and a subspace $U$ is totally singular if $Q(U) = 0$. (In $\text{char} = 2$, taking two singular points $\mathbf{x}, \mathbf{y}$ with $Q(\mathbf{x}) = Q(\mathbf{y}) = 0$ that are orthogonal under the polar form $B(\mathbf{x}, \mathbf{y}) = 0$ gives $Q(\mathbf{x} + \alpha \mathbf{y}) = Q(\mathbf{x}) + \alpha^2 Q(\mathbf{y}) + \alpha B(\mathbf{x}, \mathbf{y}) = 0$, making the whole line totally singular.) In standard algebra and incidence geometry (across all characteristics, not just characteristic 2), a singular point is one where the quadratic form equates to 0. Since the bilinear form is 0 for all points in char $=2$, we use the quadratic form and so the points are called singular, not isotropic. However, this is just a naming convention. The singular points are what would have been called isotropic points if the whole char $=2$ weirdness didn't exist. Note that these singular points are totally different from the radical of a quadric, which is also sometimes called a singular point (but of a quadric, not a quadratic set).
 
 ---
 
-#### What Do Isotropic Points Tell You About A Projective Space
-
-A projective space $\mathrm{PG}(V)$ by itself is completely uniform. The group $\mathrm{PGL}(V)$ acts transitively on points, on lines, and on frames. Every point looks like every other point, and every hyperplane looks like every other hyperplane.
-
-Introducing a non-degenerate form $f$ (or quadratic form $Q$) breaks this global homogeneity and equips the projective space with geometric measurement, duality, and coordinate fibrations.
-
-The set of isotropic points $\mathcal{Q} = \{ \langle x \rangle \mid Q(x) = 0 \}$ acts as the absolute variety (or the "horizon" / "gauge") of the projective space. Without isotropic points, a projective space lacks the internal boundary needed to distinguish different types of incidence, define metrics, or construct geometric dualities.
-
-Here is what isotropic points reveal about the host projective space $\mathrm{PG}(V)$ that cannot be seen otherwise.
-
-**Classification of Lines and Invariant Intersections**
-
-In an unadorned projective space $\mathrm{PG}(n, \mathbb{F})$, all lines are projective copies of $\mathrm{PG}(1, \mathbb{F})$. They have no intrinsic distinction.
-
-The existence of isotropic points immediately stratifies every projective line $\ell$ in $\mathrm{PG}(V)$ into three geometrically distinct types, based solely on how $\ell$ meets the isotropic locus $\mathcal{Q}$: secants, tangents and passants. 
-
-This gives $\mathrm{PG}(V)$ an incidence calculus: you can classify arbitrary linear subspaces by their signature relative to the isotropic locus.
-
-Note that a locus is not a single point. It is a set of all points that satisfy a specified condition, property, or equation. The set of isotropic points is the locus here.
-
-**Concrete Projective Duality Without Coordinates**
-
-Projective geometry has a fundamental duality principle: any theorem about points and hyperplanes remains true if you swap "point" and "hyperplane".
-
-Abstractly, duality maps $\mathrm{PG}(V)$ to the dual projective space $\mathrm{PG}(V^*)$. This map is an external isomorphism: $V^*$ is not $V$. To identify a point with a hyperplane inside the same space, you need a correlation or polarity: $P \mapsto P^\perp$
-
-Isotropic points are precisely the fixed elements of this polarity: $P \in P^\perp \iff Q(P) = 0$.
-
-They mark where a point and its dual hyperplane collide. Non-isotropic points never meet their duals. In synthetic and classical geometry, knowing the locus where $P$ lies on its own dual hyperplane is the only way to anchor the polarity geometrically inside $\mathrm{PG}(V)$.
-
-**Recovering Affine and Non-Euclidean Metrics (Cayley-Klein Geometries)**
-
-Projective space has no notion of distance, angle, or perpendicularity. Cayley and Klein showed that all classical metrics (Euclidean, hyperbolic, elliptic, affine) arise purely inside projective space by designating an absolute quadric of isotropic points $\mathcal{Q}$.
-
-For any two non-isotropic points $A, B \in \mathrm{PG}(V)$, the line $AB$ intersects the isotropic locus $\mathcal{Q}$ at two points, say $X$ and $Y$. The projective cross-ratio:
-
-$$(A, B; X, Y) = \frac{(x_A - x_X)(x_B - x_Y)}{(x_B - x_X)(x_A - x_Y)}$$
-
-is a projective invariant. The metric distance between $A$ and $B$ is then defined purely projectively by $d(A, B) = k \ln (A, B; X, Y)$.
-
-* If $X$ and $Y$ are real points: this is the Beltrami-Klein model of Hyperbolic Geometry.
-* If $X$ and $Y$ are complex conjugate points: this produces Elliptic Geometry.
-* If the quadric degenerates to a hyperplane: you recover standard Affine / Euclidean Geometry.
-
-Without isotropic points, cross-ratios require choosing four arbitrary points. The isotropic locus provides the two universal reference points on every line to define projective distance and orthogonality.
-
 #### Polarity
-**Polarity:** A global map defined on all points in $PG(d, K)$. Every point $P$ gets mapped to a hyperplane $P^\pi$ which contains all points orthogonal to $P$ (as defined by the polar form). Thus $P^\pi = \{ \langle y \rangle \mid f(x, y) = 0 \}$. $P^\pi$ is called the polar hyperplane of $P$. 
+**Polarity:** A global map defined on all points in $PG(d, K)$. Every point $P$ gets mapped to a hyperplane $P^\pi$ which contains all points orthogonal to $P$ (as defined by the polar form). Thus $P^\pi = \{ \langle y \rangle \in PG(d, K) \mid f(x, y) = 0 \}$. $P^\pi$ is called the polar hyperplane of $P$. It is a full hyperplane of the ambient projective space $PG(d, K)$.
 
 Applying a polarity on a point will always give a hyperplane because $f(x, y) = 0$ is a linear equation in terms of $y$ i.e. when $x$ is fixed. As long as $x \neq 0$ and $f$ is non-degenerate, this linear equation always has a $(d)$-dimensional vector space of solution vectors $y$. In $PG(d, K)$, those solutions form a $(d-1)$-dimensional hyperplane.
 
-If $P$ is isotropic, then $P$ lies directly on $P^\pi$, which means the hyperplane is tangent to the quadric/polar space at $P$. Note that $P^\pi$ typically consists of a mix of isotropic and non-isotropic points. Note that the synthetic geometry equivalent of the isotropic point is the absolute point i.e. a point $P$ such that $P \in P^\pi$. They are one and the same. Similarly a hyperplane $H$ is absolute if and only if $H^\pi \in H$ i.e. its assigned pole (the pointa polarity maps the hyperplane to) lies inside $H$.
+If $P$ is not isotropic (which will see is only possible in orthogonal and unitary polar spaces and not in symplectic spaces), the hyperplane will not contain $P$, and will slice through the polar space. $P^\pi \cap \mathcal{Q}$ is given by the set of points $T \in \mathcal{Q}$ where lines from $P$ are tangent to $\mathcal{Q}$, forming a nondegenerate smaller polar space (of the same type as the original) inside $P^\pi$. We saw this in the quadrics section where we ended up with ellipses when we sliced a cone. 
+
+If $P$ is isotropic, then $P$ lies directly on $P^\pi$, which means the hyperplane is tangent to the polar space at $P$. $P^\pi$ typically consists of a mix of isotropic and non-isotropic points. The plane will slice the polar space such that we have a radical at $P$. We end up with a degenerate polar space of the same time. We saw this too with the hyperboloid, where the point $P$ became a singular point because the two lines of the two regulus families meet there.
+
+ Note that the synthetic geometry equivalent of the isotropic point is the absolute point i.e. a point $P$ such that $P \in P^\pi$. They are one and the same. Similarly a hyperplane $H$ is absolute if and only if $H^\pi \in H$ i.e. its assigned pole (the pointa polarity maps the hyperplane to) lies inside $H$.
 
 To build a totally isotropic subspace, typically you start with an isotropic point $P$. To extend $P$ to a 1-dimensional totally isotropic subspace/line you pick another point $Q = \langle y \rangle \in P^\pi$ that is itself isotropic. As we saw, the line $\langle P, Q \rangle$ will be contained in $P^\pi$ and by the same logic of a line being a linear subspace, will be totally isotropic. Continue this process inside $P^\pi$ to build higher-dimensional totally isotropic subspaces.
 
@@ -2196,7 +2154,7 @@ Now test points in $P^\pi$:
 
 In this example,  $P^\pi$ is a 2D plane tangent to the sphere at $P$. The only isotropic point on that tangent plane is $P$ itself. All other points on the plane lie strictly outside the sphere and are non-isotropic. This is what you would expect from a sphere.
 
-Note that a point lies on $\frac{q^d - 1}{q - 1}$ hyperplanes of the projective space. But the polarity will map the point to only one hyperplane i.e. the hyperplane tangent to the polar space at point $P$.
+Note that a point lies on $\frac{q^d - 1}{q - 1}$ hyperplanes of the projective space. But the polarity will map the point to only one hyperplane i.e. the hyperplane tangent to the polar space at point $P$ (if $P$ is isotropic).
 
 Also note that a general map between points and hyperplanes that reverses inclusion ($\langle x \rangle \subseteq \langle y \rangle \implies \langle y \rangle^\pi \subseteq \langle x \rangle^\pi$) is called a correlation (or duality). To be a polarity, a correlation must be an involution ($\pi^2 = \text{id}$). Without requiring $\pi^2 = \text{id}$, you would just have an arbitrary correlation, where taking the polar hyperplane of $P$, and then taking the pole of that hyperplane, might land you on a completely different point $Q \neq P$. We saw this happen with the Fano plane example for collineations some time ago.
 
@@ -2457,8 +2415,6 @@ Anisotropic core has dimension $2$. Witt index is $r = n$.
 
 Over General Infinite Fields (like $\mathbb{R}$ or $\mathbb{Q}$): The Witt index $r$ can be ANY integer from $0$ up to $\lfloor (d+1)/2 \rfloor$ (for instance, the sphere $x_0^2 + x_1^2 + x_2^2 - x_3^2 = 0$ over $\mathbb{R}$ has Witt index $r = 1$, whereas $x_0^2 + x_1^2 + x_2^2 + x_3^2 = 0$ has Witt index $r = 0$).
 
-
-
 ### Comparison: Finite Classical Polar Spaces (Over $\mathbb{F}_q$ or $\mathbb{F}_{q^2}$)
 
 In finite geometry, a finite polar space of rank $r$ (Witt index $r$) has two numerical parameters $(s, t_{\text{line}})$ that control all counting formulas:
@@ -2531,6 +2487,52 @@ A polar space of rank $n \ge 1$ is a pair $(\mathcal{P}, \Sigma)$, where $\mathc
 **Axiom 4 (The Polar Connection):** This is the higher-dimensional ancestor of the Buekenhout-Shult point-line axiom. Instead of testing a point against a line, it tests a point $p$ against a maximal subspace $S \cong \mathrm{PG}(n - 1, \mathbb{F})$. It dictates that the locus of points in $S$ that can "see" $p$ along polar lines does not form a messy curved slice: it cuts $S$ along a genuine, flat projective hyperplane $S \cap S' \cong \mathrm{PG}(n - 2, \mathbb{F})$.
     
 **Axiom 5 (Global Non-Degeneracy):** If all maximal subspaces shared a common intersection $R$, the geometry would simply be a cone over a smaller polar space with vertex $R$. Demanding disjoint maximal subspaces forces the radical of the geometry to be empty, ensuring the space is non-degenerate.
+
+### What Do Isotropic Points Tell You About A Projective Space
+
+A projective space $\mathrm{PG}(V)$ by itself is completely uniform. The group $\mathrm{PGL}(V)$ acts transitively on points, on lines, and on frames. Every point looks like every other point, and every hyperplane looks like every other hyperplane.
+
+Introducing a non-degenerate form $f$ (or quadratic form $Q$) breaks this global homogeneity and equips the projective space with geometric measurement, duality, and coordinate fibrations.
+
+The set of isotropic points $\mathcal{Q} = \{ \langle x \rangle \mid Q(x) = 0 \}$ acts as the absolute variety (or the "horizon" / "gauge") of the projective space. Without isotropic points, a projective space lacks the internal boundary needed to distinguish different types of incidence, define metrics, or construct geometric dualities.
+
+Here is what isotropic points reveal about the host projective space $\mathrm{PG}(V)$ that cannot be seen otherwise.
+
+**Classification of Lines and Invariant Intersections**
+
+In an unadorned projective space $\mathrm{PG}(n, \mathbb{F})$, all lines are projective copies of $\mathrm{PG}(1, \mathbb{F})$. They have no intrinsic distinction.
+
+The existence of isotropic points immediately stratifies every projective line $\ell$ in $\mathrm{PG}(V)$ into three geometrically distinct types, based solely on how $\ell$ meets the isotropic locus $\mathcal{Q}$: secants, tangents and passants. 
+
+This gives $\mathrm{PG}(V)$ an incidence calculus: you can classify arbitrary linear subspaces by their signature relative to the isotropic locus.
+
+Note that a locus is not a single point. It is a set of all points that satisfy a specified condition, property, or equation. The set of isotropic points is the locus here.
+
+**Concrete Projective Duality Without Coordinates**
+
+Projective geometry has a fundamental duality principle: any theorem about points and hyperplanes remains true if you swap "point" and "hyperplane".
+
+Abstractly, duality maps $\mathrm{PG}(V)$ to the dual projective space $\mathrm{PG}(V^*)$. This map is an external isomorphism: $V^*$ is not $V$. To identify a point with a hyperplane inside the same space, you need a correlation or polarity: $P \mapsto P^\perp$
+
+Isotropic points are precisely the fixed elements of this polarity: $P \in P^\perp \iff Q(P) = 0$.
+
+They mark where a point and its dual hyperplane collide. Non-isotropic points never meet their duals. In synthetic and classical geometry, knowing the locus where $P$ lies on its own dual hyperplane is the only way to anchor the polarity geometrically inside $\mathrm{PG}(V)$.
+
+**Recovering Affine and Non-Euclidean Metrics (Cayley-Klein Geometries)**
+
+Projective space has no notion of distance, angle, or perpendicularity. Cayley and Klein showed that all classical metrics (Euclidean, hyperbolic, elliptic, affine) arise purely inside projective space by designating an absolute quadric of isotropic points $\mathcal{Q}$.
+
+For any two non-isotropic points $A, B \in \mathrm{PG}(V)$, the line $AB$ intersects the isotropic locus $\mathcal{Q}$ at two points, say $X$ and $Y$. The projective cross-ratio:
+
+$$(A, B; X, Y) = \frac{(x_A - x_X)(x_B - x_Y)}{(x_B - x_X)(x_A - x_Y)}$$
+
+is a projective invariant. The metric distance between $A$ and $B$ is then defined purely projectively by $d(A, B) = k \ln (A, B; X, Y)$.
+
+* If $X$ and $Y$ are real points: this is the Beltrami-Klein model of Hyperbolic Geometry.
+* If $X$ and $Y$ are complex conjugate points: this produces Elliptic Geometry.
+* If the quadric degenerates to a hyperplane: you recover standard Affine / Euclidean Geometry.
+
+Without isotropic points, cross-ratios require choosing four arbitrary points. The isotropic locus provides the two universal reference points on every line to define projective distance and orthogonality.
 
 ### Is a Polar Space Always a Homogeneous Polynomial of Degree 2?
 
