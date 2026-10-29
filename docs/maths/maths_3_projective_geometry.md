@@ -1196,13 +1196,37 @@ Now look at the difference between characteristic $\neq 2$ and characteristic $2
     
 This means $q(v)$ and $B(v, w)$ contain the same information. You don't need a separate definition of a quadratic form—you can just start with any symmetric bilinear form $B(v, w) = v^T M w$ (where $M$ is a symmetric matrix), define $q(v) = \frac{1}{2} B(v, v) = \frac{1}{2} v^T M v$, set it equal to $0$, and the non-zero solutions $\langle v \rangle$ are the points of the quadric $\mathcal{Q}$.
     
-But when $\text{char}(F) = 2$ (like $\mathbb{F}_2, \mathbb{F}_4, \mathbb{F}_8, \dots$, where $2 = 1 + 1 = 0$), multiplying by $2$ gives zero.
+But when $\text{char}(F) = 2$ (like $\mathbb{F}_2, \mathbb{F}_4, \mathbb{F}_8, \dots$, where $2 = 1 + 1 = 0$), we cannot recover $q(v)$ from $B(v, v)$ by dividing by $2$, because $2 = 0$. 
 
-$$B(v, v) = 2q(v) = \mathbf{0} \quad \text{for all } v \in V\text{.}$$
+In fact, in char $=2, B(x, x) = 0$ for every point in the projective space, not just the points on the quadric. Why? Because it is a symmetric bilinear form, which means $B(x, y) = B(y, x)$. This implies that every cross term such as $x_1y_2$ or $x_1y_1$ has a corresponding term with the $x$ and $y$ flipped i.e. $y_1x_2$ and $y_1x_1$. Note that $x_1, x_2...$ and $y_1, y_2...$ are the homogenous coordinates of the points $x$ and $y$. 
+
+When we look at $B(x, x)$, this means that crossterms across coordinates such as $x_1y_2$ will become $x_1x_2$ and will appear twice. A multiplication by $2$ in char $=2$ is $0$. What about the non-crossterms? They end up as squares. In a finite field of characteristic 2, every element has a unique square root, and the map $x \mapsto x^2$ is an additive homomorphism ($(a+b)^2 = a^2+b^2$ because $2ab=0$). This means we can rewrite the surviving squares as a single perfect square. $B(x, x) = 0$ therefore implies that the square root (which has coordinate degrees of $1$) is also zero, which represent a linear equation, not a quadric. 
+
+Let's look at this for a general symmetric bilinear form: 
+
+$$B(\mathbf{x},\mathbf{y})=c_{11}x_{1}y_{1}+c_{12}x_{1}y_{2}+c_{21}x_{2}y_{1}+c_{22}x_{2}y_{2}$$
+
+For $B$ to be symmetric, we must have $c_{12} = c_{21}$. Let's call this coefficient $d$. So our form is:
+
+$$B(\mathbf{x},\mathbf{y})=c_{11}x_{1}y_{1}+d(x_{1}y_{2}+x_{2}y_{1})+c_{22}x_{2}y_{2}$$
+
+Note that there are no squares such as $x_1^2$ here because then the form wouldn't be linear under scalar transformation. 
+
+Now, plug a vector into itself ($\mathbf{y} = \mathbf{x}$) :
+
+$$B(\mathbf{x},\mathbf{x})=c_{11}x_{1}^{2}+d(x_{1}x_{2}+x_{2}x_{1})+c_{22}x_{2}^{2}$$
+
+In characteristic 2, the crossterms vanish. We have just the square terms: $c_{11}x_1^2 + c_{22}x_2^2$.
+
+But in characteristic 2, every element has a unique square root, and the map $x \mapsto x^2$ is an additive homomorphism ($(a+b)^2 = a^2+b^2$). This means we can rewrite the surviving squares as a single perfect square:    
     
-We cannot recover $q(v)$ from $B(v, v)$ by dividing by $2$, because $2 = 0$. Look at a concrete example in $\mathbb{F}_2$: suppose $q(x_1, x_2) = c_1 x_1^2 + x_1 x_2 + c_2 x_2^2$. When we compute $B(v, w) = q(v + w) - q(v) - q(w)$ in characteristic $2$, the squared terms cancel out completely because $(v_1 + w_1)^2 - v_1^2 - w_1^2 = 2 v_1 w_1 = 0$. Only the cross-term $x_1 x_2$ survives in $B(v, w)$, while the diagonal squared terms $c_1 x_1^2 + c_2 x_2^2$ vanish from $B(v, w)$.
+$$B(\mathbf{x},\mathbf{x})=(\sqrt{c_{11}}x_{1}+\sqrt{c_{22}}x_{2})^{2}$$
     
-That is why we must define the quadratic form $q(v)$ first (to keep the diagonal squared terms $c_i b_i^2$), and why nondegeneracy requires checking both  $B(x, v) = 0$ for all $x$  and  $q(v) = 0$.
+If $B(\mathbf{x}, \mathbf{x}) = 0$, then its square root $\sqrt{c_{11}}x_{1}+\sqrt{c_{22}}x_{2}=0$ must also be zero. This is the equation of a flat linear hyperplane. 
+
+So in $\text{char} \neq 2$, evaluating $B(\mathbf{x}, \mathbf{x}) = 0$ gives you a beautiful curved cone or circle. But in $\text{char} = 2$, evaluating $B(\mathbf{x}, \mathbf{x}) = 0$ either collapses into a flat linear subspace (if $c_{11}$ or $c_{22}$ is non-zero) or becomes identically $0$ everywhere (if $c_{11}=c_{22}=0$, making the form alternating). 
+
+This is why we define the quadratic form seperately to actually pinpoint the points of the quadric, so the diagonal squared terms $c_i b_i^2$ are retained, and also why nondegeneracy requires checking both  $B(x, v) = 0$ for all $x$  and  $q(v) = 0$.
 
 **An example of a cone and finding its radical**
 
@@ -2049,35 +2073,7 @@ We will first look at polar spaces and their analysis when they are embedded in 
 ---
 
 ### Quadrics Re-redux!
-Let's rejig our exploration of quadrics a bit. We defined a quadric as all points where a quadratic form $Q(x) = 0$. We then defined the bilinear form $B(x, y) := q(x + y) - q(x) - q(y)$. Note that by this definition, we end up with a symmetric bilinear form, which means $B(x, y) = B(y, x)$. Remember that we sais we really didn't need the quadratic form. We could just as well have defined a bilinear form and then defined the quadric with it because $Q(x) = \frac{1}{2}B(x,x)$ - except in char $=2$. It is only because of char $=2$ that we introduced a quadratic form. Let's look a little closer at this. 
-
-In char $=2, B(x, x) = 0$ for every point, not just the points on the quadric. Why? Because it is a symmetric bilinear form, which means $B(x, y) = B(y, x)$. This implies that every cross term such as $x_1y_2$ or $x_1y_1$ has a corresponding term with the $x$ and $y$ flipped i.e. $y_1x_2$ and $y_1x_1$. Note that $x_1, x_2...$ and $y_1, y_2...$ are the homogenous coordinates of the points $x$ and $y$. 
-
-When we look at $B(x, x), this means that crossterms across coordinates such as $x_1y_2$ will become $x_1x_2$ and will appear twice. A multiplication by $2$ in char $=2$ is $0$! Now what about the non-crossterms? They end up as squares. In a finite field of characteristic 2, every element has a unique square root, and the map $x \mapsto x^2$ is an additive homomorphism ($(a+b)^2 = a^2+b^2$ because $2ab=0$). This means we can rewrite the surviving squares as a single perfect square. $B(x, x) = 0$ therefore implies that the square root (which has coordinate degrees of $1$) is also zero, which represent a linear equation, not a quadric. 
-
-Let's look at this for a general symmetric bilinear form: 
-
-$$B(\mathbf{x},\mathbf{y})=c_{11}x_{1}y_{1}+c_{12}x_{1}y_{2}+c_{21}x_{2}y_{1}+c_{22}x_{2}y_{2}$$
-
-For $B$ to be symmetric ($B(\mathbf{x},\mathbf{y}) = B(\mathbf{y},\mathbf{x})$), we must have $c_{12} = c_{21}$. Let's call this coefficient $d$. So our form is:
-
-$$B(\mathbf{x},\mathbf{y})=c_{11}x_{1}y_{1}+d(x_{1}y_{2}+x_{2}y_{1})+c_{22}x_{2}y_{2}$$
-
-Note that there are no squares such as $x_1^2$ here because then the form wouldn't be linear in multiplication. 
-
-Now, plug a vector into itself ($\mathbf{y} = \mathbf{x}$) :
-
-$$B(\mathbf{x},\mathbf{x})=c_{11}x_{1}^{2}+d(x_{1}x_{2}+x_{2}x_{1})+c_{22}x_{2}^{2}$$
-
-In characteristic 2, the crossterms vanish. We have just the square terms: $c_{11}x_1^2 + c_{22}x_2^2$.
-
-But in characteristic 2, every element has a unique square root, and the map $x \mapsto x^2$ is an additive homomorphism ($(a+b)^2 = a^2+b^2$). This means we can rewrite the surviving squares as a single perfect square:    
-    
-$$B(\mathbf{x},\mathbf{x})=(\sqrt{c_{11}}x_{1}+\sqrt{c_{22}}x_{2})^{2}$$
-    
-If $B(\mathbf{x}, \mathbf{x}) = 0$, then its square root $\sqrt{c_{11}}x_{1}+\sqrt{c_{22}}x_{2}=0$ must also be zero. This is the equation of a flat linear hyperplane. 
-
-So in $\text{char} \neq 2$, evaluating $B(\mathbf{x}, \mathbf{x}) = 0$ gives you a beautiful curved cone or circle. But in $\text{char} = 2$, evaluating $B(\mathbf{x}, \mathbf{x}) = 0$ either collapses into a flat linear subspace (if $c_{11}$ or $c_{22}$ is non-zero) or becomes identically $0$ everywhere (if $c_{11}=c_{22}=0$, making the form alternating). This is why we define the quadratic form seperately to actually pinpoint the points of the quadric. 
+Let's rejig our exploration of quadrics a bit. We defined a quadric as all points where a quadratic form $Q(x) = 0$. We then defined the bilinear form $B(x, y) := q(x + y) - q(x) - q(y)$. Note that by this definition, we end up with a symmetric bilinear form, which means $B(x, y) = B(y, x)$. Remember that we said we really didn't need the quadratic form. We could just as well have defined a bilinear form and then defined the quadric with it because $Q(x) = \frac{1}{2}B(x,x)$... except in char $=2$. It is only because of char $=2$ that we introduced a quadratic form. Additionally, in this situation, the bilinear form is $0$ for all points in the projective space. We need the quadratic form to actually filter the points on the quadric.
 
 The point (sorry!) of all this is that the bilinear form is the key, but in specific cases (quadrics in char $=2$), we need to define a quadratic form to handle weird situations. In every other situation, we needn't even bother defining the quadratic form and in fact we won't for any polar form other than a quadric. Now let's look at two different types of bilinear forms and the closely related sesquilinear form, which will help us define polar spaces. 
 
