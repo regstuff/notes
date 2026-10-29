@@ -2085,7 +2085,7 @@ $$f(ax, y) = a f(x, y) \quad \text{and} \quad f(x, by) = f(x, y)\sigma(b)$$
 
 Why do we need this? Think of the standard inner product in a complex vector space $\mathbb{C}^n$: if we defined the dot product of $z = (i, 0)$ with itself without complex conjugation, we would get $i^2 = -1$ instead of $+1$ as the length. To fix that, the complex inner product conjugates the second vector: $f(x, y) = x_0 \bar{y}_0 + x_1 \bar{y}_1$. That makes it linear in $x$ and semilinear in $y$ (with $\sigma(z) = \bar{z}$). Over a finite field $\mathbb{F}_{q^2}$, the exact same role is played by $\sigma(b) = b^q$.
 
-**Orthogonality:** Once we have a form $B(x, y)$, setting $B(x, y) = 0$ implies $x$ and $y$ are orthogonal. Think of a dot product. This is very similar. 
+**Orthogonality:** Once we have a form $B(x, y)$, setting $B(x, y) = 0$ implies $x$ and $y$ are orthogonal. Think of a dot product. This is very similar. Note that in synthetic geometry, we say that $x$ and $y$ are collinear. In the algebraic model, two isotropic points (defined below) $\langle u \rangle$ and $\langle w \rangle$ are joined by a line of the polar space if and only if they are orthogonal ($f(u, w) = 0$) because in a polar space, all subspaces are totally isotropic (also defined below). Essentially, you can't connect points together in a polar space via lines, planes or higher dimensional subspaces unless these points are orthogonal with each other. Note that this doesn't mean every point in a polar space is orthogonal/collinear as there may be disjoint subspaces. No subspace covers the whole polar space. 
 
 **Reflexive Form:** A bilinear or sesquilinear form $f(x, y)$ where "orthogonality is a two-way street": $f(x, y) = 0 \iff f(y, x) = 0$.
 
@@ -2249,6 +2249,8 @@ To understand why this holds, first note that $W \subseteq W_\perp$ always, sinc
 
 $W^\perp$ is the intersection of the polar hyperplanes of all points in $W$, which means every point in $W^\perp$ is orthogonal to every point in $W$. See the aside below.
 
+Note that things are a little different for subspaces. Let $U$ be a subspace of a polar space. If $H$ is a projective hyperplane of $U$, $H$ is a maximal subspace of $U$. $H$ will also be totally isotropic. In fact, any subspace of a polar space can only be totally isotropic.
+
 ---
 
 **Aside 1:** A polarity can also swap higher dimensional subspaces and not just points with their complements. If $U \subseteq PG(d, K)$ is a projective subspace of dimension $t$ (corresponding to a vector subspace $W \subseteq V$ of dimension $t + 1$), its polar image under $\pi$ is defined as the joint orthogonal complement of all points in $U$, or the intersection of the polar hyperplanes of all points $\in U$:
@@ -2357,7 +2359,24 @@ An elliptic quadric $\mathcal{Q}^-(3, \mathbb{F})$ (sphere / ovoid) contains poi
 
 Because rank 1 structures are just sets of points with an empty line set, the main theorems of polar space theory explicitly add non-triviality conditions to rule them out.
 
+The empty set is by definition a subspace of rank 0. Generalized quadrangles are exactly the generalized nondegen￾erate polar spaces of rank 2.
+
 The rank is the geometric generalization of the algebraic Witt index to the language of incidence geometry and buildings. The Witt index is the algebraic invariant measured in the vector space, while the rank is the geometric and combinatorial invariant measured in the projective lattice and the building.
+
+#### Tying Back to Algebra
+The historical evolution of a polar space went from algebra to subspaces (Tits' axioms) to Points-and-Lines (one-or-all axiom). Things started with quadrics and reflexive sesquilinear forms inside $PG(d, K)$. Tits wanted a synthetic, coordinate-free definition of the geometry of totally isotropic subspaces. This was simplified to the One-or-All axiom.
+
+Let's look at how this axiom is equivalent to the algebraic reflexive sesquilinear forms. Take a point $x$ and line on a polar space, where $x$ is not on the line. The axiom says the point could be collinear with just one point of the line. That means the line intersects the tangent space of the point at one point. How can we guarantee that a line will intersect the tangent space at one point that also lies on the polar space? By ensuring that there is at least one point on every line  of the polar space that is orthogonal/collinear to $x$. 
+
+Now we also have the condition that if $x$ is collinear with two points on the line, then the whole line must lie in the tangent space. This means if two points satisfy the property of orthogonality, all points that are a linear combination of those two points must satisfy it. This means orthogonality must be linear, once the original point $x$ is fixed. That means it must be bilinear when we consider $x$ and $y$.
+
+Additionally, because scaling a vector $x \mapsto x\lambda$ does not change the projective point $\langle x \rangle$, the map sending $x \mapsto \varphi_x$ only needs to preserve projective lines, which means it is semilinear (twisted by a field automorphism $\sigma$), not necessarily strictly linear. So bilinearity generalizes into sesquilinearity.
+
+Using this bilinearity/sesquilinearity, go back to the previous condition we looked at where every line in the polar space must have a point collinear with $x$. That means every point on each line from $x$ to all those points must be collinear or orthogonal to $x$. Furthermore, if a point $y$ is collinear with $x$, then point $x$ is collinear with $y$, so the bilinear condition must be reflexive. Thus the axiom is equivalent to the algebraic definition of a polar space.  
+
+Additionally, can we also say that if a line must intersect the tangent hyperspace at at least one point, it means that the tangent hyperspace has to be a hyperplane of the original ambient space because that is the only way to guarantee an intersection because a hyperplane has codimension of 1. This shows why we define nondegenerate polar spaces as spaces where all points have tangent spaces that are hyperplanes.
+    
+One important nuance for Rank 2 vs. Rank $\ge 3$: Notice that to turn the geometric "if 2 points then all points" into algebraic coordinates via the Fundamental Theorem of Projective Geometry, the polar space needs to contain planes—Rank $\ge 3$—so that Desargues' theorem holds. In Rank 2, i.e., Generalized Quadrangles, the "All" case never triggers for $x \notin \ell$, so there exist non-classical generalized quadrangles that satisfy the "One-or-All" axiom without coming from a bilinear/sesquilinear form.
 
 ### 3 Types of Polar Spaces
     
