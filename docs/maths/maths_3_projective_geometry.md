@@ -2160,6 +2160,59 @@ Also note that a general map between points and hyperplanes that reverses inclus
 
 The involutory property $(P^\pi)^\pi = P$ holds if and only if $f$ is reflexive: $f(x, y) = 0 \iff f(y, x) = 0$. Because $f$ is reflexive, if $Y \in P^\pi$ (meaning $f(x, y) = 0$), then $f(y, x) = 0$, which means $X \in Y^\pi$. This mutual orthogonality is what guarantees: $(P^\pi)^\pi = P$.
 
+---
+
+**Aside:** The polar hyperplanes of isotropic points are their tangent hyperplanes. What do the polar hyperplanes of non-isotropic points look like? There are two direct geometric ways to visualize this. Imagine the polar space $\mathcal{Q}$ is a solid sphere or planet floating in 3D space $PG(3, \mathbb{R})$, and $P$ is a point outside the sphere (say, the sun or a flashlight at $P$). If you shine light rays (straight lines) in all directions from $P$ toward the sphere $\mathcal{Q}$:
+-   Some rays miss the sphere completely (passants).
+-   Some rays pierce right through the sphere at two points (secants).
+-   A glowing ring of boundary rays just graze the edge of the sphere at a single point (tangents)—this ring of grazing points is the horizon of the sphere as seen from the satellite $P$.
+
+Now ask: Where do all those grazing points $T_1, T_2, T_3, \dots$ lie? Every single point $T$ where a ray from $P$ is tangent to $\mathcal{Q}$ lies on one flat hyperplane—and that flat hyperplane slicing through the sphere along the horizon ring is $P^\pi$.
+  
+```
+                         . T_1 (Tangent touchpoint: P lies in T_1^pi, so T_1 lies in P^pi)
+                      . ' |
+                   . '    |
+                . '     ( | )
+       P *----.'-------(  |  )-------> Secant line (hits Q at A and B)
+                ' .     ( | )
+                   ' .    |   Quadric / Polar Space Q
+                      ' . |
+                         ' T_2 (Tangent touchpoint)
+                          |
+                        P^pi (The Polar Hyperplane of P: the flat plane
+                              passing through all tangent touchpoints T_i)
+```
+Why does this happen mathematically? Remember the symmetry rule of a polarity ($\pi^2 = \text{id}$): $T \in P^\pi \iff P \in T^\pi$.
+
+Look at what the right-hand side ($P \in T^\pi$) says when $T$ is an isotropic point on the quadric $\mathcal{Q}$. Since $T$ is on the quadric,  $T^\pi$ is the tangent hyperplane to the quadric at $T$. Saying $P \in T^\pi$ means the tangent hyperplane at $T$ passes through $P$—which means the line $P \vee T$ is tangent to the quadric at $T$. By $T \in P^\pi \iff P \in T^\pi$, the polar hyperplane $P^\pi$ cuts the quadric $\mathcal{Q}$ in the exact locus of points $T \in \mathcal{Q}$ whose tangent lines pass through $P$.
+
+The other way to visualize this is a mirror reflection. What if we look at a secant line through $P$ that pierces the quadric at two points $A$ and $B$ (or what if $P$ is inside the sphere so there are no real tangent lines from $P$)? How does $P^\pi$ distinguish itself then?
+  
+Draw any secant line $\ell$ through $P$ that hits the quadric $\mathcal{Q}$ at two points $A$ and $B$, and passes through the hyperplane $P^\pi$ at a point $M = \ell \cap P^\pi$:
+  
+```
+                        | P^pi (Polar Hyperplane)
+                        |
+      P *-------A-------M-------B------->  Secant line through P
+                        |
+```
+Where on the segment $AB$ does the hyperplane $P^\pi$ cross the line?
+  
+-   If $P$ were infinitely far away,  $M$ would be the exact midpoint between $A$ and $B$.
+-   In projective geometry, when $P$ is at a finite distance,  $M$ is the projective harmonic conjugate of $P$ with respect to the two quadric points $A$ and $B$ (meaning the cross-ratio $(P, M; A, B) = -1$).
+
+In fact, this gives the cleanest geometric visualization of all: Every non-isotropic point $P$ defines a unique reflection collineation $\rho_P$ of the entire projective space that swaps the two intersection points $A \leftrightarrow B$ on every secant line through $P$ (leaving the quadric $\mathcal{Q}$ unchanged). As a central collineation of $PG(d, K)$:
+  
+-   The point $P$ is the Centre of the reflection $\rho_P$ (all points move along rays through $P$).
+-   The polar hyperplane $P^\pi$ is the Axis of the reflection $\rho_P$ (the mirror wall that stays completely frozen pointwise while $A$ and $B$ swap across it).
+
+**In short:** If you reflect the polar space $\mathcal{Q}$ across the hyperplane $P^\pi$ along rays radiating from $P$, the polar space $\mathcal{Q}$ maps onto itself ($A \leftrightarrow B$ on every ray through $P$).  $P^\pi$ is the unique mirror hyperplane for which $P$ is the centre of reflection preserving $\mathcal{Q}$.
+
+Since we spoke of the sun/planet analogy, the polar hyperplane is kind of like the day-night terminator on Earth. Think of the Sun as a point source of light. Now look at the day-night terminator, which is the slice of the polar hyperplane on the sphere (Earth). Since the sun is far off, the terminator covers nearly half the sphere, but if it was much closer (and still a point source), the terminator would be closer to the side of the Earth that is towards the Sun.
+
+--
+
 **Generator (Maximal Totally Singular Subspace):** A totally singular subspace of the largest possible dimension inside a polar space. The number of nodes in the polar space diagram—its rank $n$, also called the Witt index $t$—is the vector space dimension of a generator, which has projective dimension $n - 1$. Note that in a $d$-dimensional projective space, the maximal isotropic subspace need NOT be of dimension $d-1$.
 
 All maximal totally isotropic subspaces of a given non-degenerate polar form have the exact same dimension $r$. You can start with any totally isotropic subspace $W_k$ of dimension $k < r$ and extend it step-by-step until it reaches dimension $r$.
@@ -2174,7 +2227,7 @@ In terms of incidence,  $W$ is maximal if no point outside $W$ is collinear to a
 
 To understand why this holds, let's say there is some point of the polar space that belongs to $W^\perp$ but not to $W$. Since this point belongs to $W^\perp$, it must be orthogonal to every point in $W$. Since it is a point of the polar space, it must be isotropic. Thus the new subspace of $W$ and this point is a totally isotropic subspace and since it has a point not in $W$ but includes all points in $W$, it must be of higher dimension than $W$, which contradicts $W$ being a maximal subspace. The statement of no point outside $W$ being collinear to all of $W$ is the same thing, since collinearity is just orthogonality algebraically.
 
-As a reminder, $W^\perp$ is the intersection of the polar hyperplanes of all points in $W$, which means every point in $W^\perp$ is orthogonal to every point in $W$.
+$W^\perp$ is the intersection of the polar hyperplanes of all points in $W$, which means every point in $W^\perp$ is orthogonal to every point in $W$. See the aside below.
 
 ---
 
@@ -2190,7 +2243,7 @@ $\dim(W^\perp) = (d + 1) - \dim(W) = (d + 1) - (t + 1) = d - t$ and translating 
 
 **Codewords vs. Dual Code ($C$ vs. $C^\perp$)**
 
-In a linear block code $C \subseteq \mathbb{F}_2^n$ codewords are not orthogonal to non-codewords; non-codewords produce non-zero syndrome vectors when tested against the parity checks. Instead, every codeword $c \in C$ is orthogonal to every vector in the dual code $H \in C^\perp$ under the standard dot product: $c \cdot h = 0 \quad \text{for all } h \in C^\perp$.
+In a linear block code $C \subseteq \mathbb{F}_2^n$ every codeword $c \in C$ is orthogonal to every vector in the dual code $H \in C^\perp$ under the standard dot product: $c \cdot h = 0 \quad \text{for all } h \in C^\perp$.
     
 For Reed-Muller codes $\mathrm{RM}(r, m)$ of length $n = 2^m$, the dual code is another Reed-Muller code: $\mathrm{RM}(r, m)^\perp = \mathrm{RM}(m - r - 1, m)$.
     
