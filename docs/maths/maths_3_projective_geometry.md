@@ -2375,7 +2375,9 @@ Additionally, because scaling a vector $x \mapsto x\lambda$ does not change the 
 Using this bilinearity/sesquilinearity, go back to the previous condition we looked at where every line in the polar space must have a point collinear with $x$. That means every point on each line from $x$ to all those points must be collinear or orthogonal to $x$. Furthermore, if a point $y$ is collinear with $x$, then point $x$ is collinear with $y$, so the bilinear condition must be reflexive. Thus the axiom is equivalent to the algebraic definition of a polar space.  
 
 Additionally, can we also say that if a line must intersect the tangent hyperspace at at least one point, it means that the tangent hyperspace has to be a hyperplane of the original ambient space because that is the only way to guarantee an intersection because a hyperplane has codimension of 1. This shows why we define nondegenerate polar spaces as spaces where all points have tangent spaces that are hyperplanes.
-    
+
+In fact, we can get something additional from this same logic. What is the synthetic definition of a hyperplane $H$ inside a projective space $U$? It is a proper subspace $H \subsetneq U$ that intersects every line of $U$ in at least one point. When we take a generator $U$ and a point $x \notin U$, the "One-or-All" axiom guarantees that $x^\perp$ meets every line of $U$ in 1 or all points. Therefore,  $x^\perp \cap U$ is forced to be a hyperplane inside $U$.
+
 One important nuance for Rank 2 vs. Rank $\ge 3$: Notice that to turn the geometric "if 2 points then all points" into algebraic coordinates via the Fundamental Theorem of Projective Geometry, the polar space needs to contain planes—Rank $\ge 3$—so that Desargues' theorem holds. In Rank 2, i.e., Generalized Quadrangles, the "All" case never triggers for $x \notin \ell$, so there exist non-classical generalized quadrangles that satisfy the "One-or-All" axiom without coming from a bilinear/sesquilinear form.
 
 ### 3 Types of Polar Spaces
