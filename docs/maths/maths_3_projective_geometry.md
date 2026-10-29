@@ -2087,6 +2087,8 @@ Why do we need this? Think of the standard inner product in a complex vector spa
 
 **Orthogonality:** Once we have a form $B(x, y)$, setting $B(x, y) = 0$ implies $x$ and $y$ are orthogonal. Think of a dot product. This is very similar. Note that in synthetic geometry, we say that $x$ and $y$ are collinear. In the algebraic model, two isotropic points (defined below) $\langle u \rangle$ and $\langle w \rangle$ are joined by a line of the polar space if and only if they are orthogonal ($f(u, w) = 0$) because in a polar space, all subspaces are totally isotropic (also defined below). Essentially, you can't connect points together in a polar space via lines, planes or higher dimensional subspaces unless these points are orthogonal with each other. Note that this doesn't mean every point in a polar space is orthogonal/collinear as there may be disjoint subspaces. No subspace covers the whole polar space. 
 
+Additionally, the fact that $B(x, y)$ is bilinear means it is linear over $y$ once we fix $x$ and vice versa. This means that all points orthogonal to $x$ i.e. its tangent space have to form a hyperplane of the ambient space. This also means the tangent subspace cannot be the entire space, and so the polar space is not degenerate.
+
 **Reflexive Form:** A bilinear or sesquilinear form $f(x, y)$ where "orthogonality is a two-way street": $f(x, y) = 0 \iff f(y, x) = 0$.
 
 **Isotropic Points:** Our polar spaces are going to be point sets where a point is orthogonal to itself as defined by a reflexive form. These are called isotropic points. This idea doesn't make much sense when we use the regular dot product formula of length (and for that matter, what is the length of a point anyway?). But we are not really thinking of length here. We are defining a form and using that to define orthogonality, which might arise due to, for example, minus signs in the form ($x_1y_1 - x_2y_2$) or due to the field being finite, in which case, as we saw in $\text{char} = 2$, a scalar multiple turns out to be $0$ modulo the characteristic. We'll come back to what isotropic points can tell us about a projective space in a bit.
@@ -2130,7 +2132,7 @@ The evaluated scalar is identically equal before and after the coordinate transf
 
 Applying a polarity on a point will always give a hyperplane because $f(x, y) = 0$ is a linear equation in terms of $y$ i.e. when $x$ is fixed. As long as $x \neq 0$ and $f$ is non-degenerate, this linear equation always has a $(d)$-dimensional vector space of solution vectors $y$. In $PG(d, K)$, those solutions form a $(d-1)$-dimensional hyperplane.
 
-If $P$ is not isotropic (which will see is only possible in orthogonal and unitary polar spaces and not in symplectic spaces), the hyperplane will not contain $P$, and will slice through the polar space. $P^\pi \cap \mathcal{Q}$ is given by the set of points $T \in \mathcal{Q}$ where lines from $P$ are tangent to $\mathcal{Q}$, forming a nondegenerate smaller polar space (of the same type as the original) inside $P^\pi$. We saw this in the quadrics section where we ended up with ellipses when we sliced a cone. 
+If $P$ is not isotropic (which we will see is only possible in orthogonal and unitary polar spaces and not in symplectic spaces), the hyperplane will not contain $P$, and will slice through the polar space. $P^\pi \cap \mathcal{Q}$ is given by the set of points $T \in \mathcal{Q}$ where lines from $P$ are tangent to $\mathcal{Q}$, forming a nondegenerate smaller polar space (of the same type as the original) inside $P^\pi$. We saw this in the quadrics section where we ended up with ellipses when we sliced a cone. 
 
 If $P$ is isotropic, then $P$ lies directly on $P^\pi$, which means the hyperplane is tangent to the polar space at $P$. $P^\pi$ typically consists of a mix of isotropic and non-isotropic points. The plane will slice the polar space such that we have a radical at $P$. We end up with a degenerate polar space of the same time. We saw this too with the hyperboloid, where the point $P$ became a singular point because the two lines of the two regulus families meet there.
 
@@ -2158,7 +2160,9 @@ Note that a point lies on $\frac{q^d - 1}{q - 1}$ hyperplanes of the projective 
 
 Also note that a general map between points and hyperplanes that reverses inclusion ($\langle x \rangle \subseteq \langle y \rangle \implies \langle y \rangle^\pi \subseteq \langle x \rangle^\pi$) is called a correlation (or duality). To be a polarity, a correlation must be an involution ($\pi^2 = \text{id}$). Without requiring $\pi^2 = \text{id}$, you would just have an arbitrary correlation, where taking the polar hyperplane of $P$, and then taking the pole of that hyperplane, might land you on a completely different point $Q \neq P$. We saw this happen with the Fano plane example for collineations some time ago.
 
-The involutory property $(P^\pi)^\pi = P$ holds if and only if $f$ is reflexive: $f(x, y) = 0 \iff f(y, x) = 0$. Because $f$ is reflexive, if $Y \in P^\pi$ (meaning $f(x, y) = 0$), then $f(y, x) = 0$, which means $X \in Y^\pi$. This mutual orthogonality is what guarantees: $(P^\pi)^\pi = P$.
+The involutory property $(P^\pi)^\pi = P$ holds if and only if $f$ is reflexive: $f(x, y) = 0 \iff f(y, x) = 0$. Because $f$ is reflexive, if $Y \in P^\pi$ (meaning $f(x, y) = 0$), then $f(y, x) = 0$, which means $X \in Y^\pi$. This mutual orthogonality is what guarantees: $(P^\pi)^\pi = P$. Another way of seeing this is that if point $y \in $(P^\pi)$, and we now want to take the pole of the hyperplane $(P^\pi)$, we do so by taking the intersection of all polar hyperplanes of the points in $(P^\pi)$. From the reflexive property, this will turn out to be the point $P$ alone.
+
+Note that if $x$ and $y$ are two absolute points, the line $xy$ joining them is an absolute line if and only if $y \in \pi(x)$ (i.e., $x$ and $y$ are orthogonal). Extending this, Let $U = \langle a_1, a_2, \dots, a_k \rangle$ be the subspace spanned by the isotropic (absolute) points $a_1, a_2, \dots, a_k$. $U$ is an absolute subspace ($U \subseteq \pi(U)$) if and only if the spanning points are pairwise orthogonal, meaning $a_j \in \pi(a_i)$ for all $i$ and $j$.Moreover, because $\pi$ is a polarity (so $a_j \in \pi(a_i) \iff a_i \in \pi(a_j)$), you only need to check this in one direction for each pair ($i < j$).
 
 ---
 
@@ -2233,7 +2237,7 @@ Geometrically, harmonic conjugacy degenerates: the two fixed points collapse int
 
 --
 
-**Generator (Maximal Totally Singular Subspace):** A totally singular subspace of the largest possible dimension inside a polar space. The number of nodes in the polar space diagram—its rank $n$, also called the Witt index $t$—is the vector space dimension of a generator, which has projective dimension $n - 1$. Note that in a $d$-dimensional projective space, the maximal isotropic subspace need NOT be of dimension $d-1$.
+**Generator (Maximal Totally Singular Subspace):** A totally singular subspace of the largest possible dimension inside a polar space. The number of nodes in the polar space diagram—its rank $n$, also called the Witt index $t$—is the vector space dimension of a generator, which has projective dimension $n - 1$. Note that in a $d$-dimensional projective space, the maximal isotropic subspace will NOT be of dimension $d-1$.
 
 All maximal totally isotropic subspaces of a given non-degenerate polar form have the exact same dimension $r$. You can start with any totally isotropic subspace $W_k$ of dimension $k < r$ and extend it step-by-step until it reaches dimension $r$.
 
@@ -2313,7 +2317,7 @@ Note that this axiom is from the stable of synthetic geometry. It is formulated 
 
 Now for the axiom: Given a point $p$ and a line $L$ of the polar space (meaning $p$ is isotropic and $L$ is a totally isotropic line), either $p$ is collinear (we could also say orthogonal) to every point on $L$ (so $p$ and $L$ span a totally isotropic plane) or $p$ is collinear with exactly one point on $L$ (i.e. $L$ intersects the tangent hyperplane at a single point, which itself lies on the polar space).
 
-This single rule—the "One-or-All Axiom"—is the defining incidence axiom of a Polar Space.
+This single rule—the "One-or-All Axiom"—is the defining incidence axiom of a Polar Space. Note that this means there are no triangles in polar space. A triangle means point $A$ is collinear with $B$ and $C$ i.e. two points of line $BC$, which means it should be collinear with all other points of $BC$. So there are no "empty" triangles in a polar space. Thus, the three lines $AB, BC, CA$ cannot exist as an isolated hollow triangle—they automatically span a full projective plane $\langle A, B, C \rangle$ completely filled with lines of the polar space. In a rank 2 polar space (a generalized quadrangle, where the maximal subspaces are lines and no planes exist in the polar space), the "All" case can never occur. Therefore, $A$ can be collinear with at most one point of $BC$, so triangles of three lines cannot exist at all.
 
 #### Example: Hyperboloid in 3D Space
 The ambient space $PG(3, K)$ has lots of points, lines, and planes. Now [restrict your attention](https://www.researchgate.net/profile/Ricardo-Uribe-Vargas/publication/341213554/figure/fig2/AS:888541198438401@1588856138343/A-one-sheet-hyperboloid.png) ONLY to the points $P$ that lie on the surface $Q$, and the straight lines $\ell$ that lie completely flat inside the surface $Q$. Notice what happens to the projective geometry axioms when we restrict to points and lines inside $Q$:
@@ -2348,21 +2352,6 @@ We can also show this synthetically via the Veblen–Young theorem. In short, if
 
 Note that we made an assumption that $P$ is collinear with all points of $\ell$. It is possible that that assumption does not hold and the specific subspace spanned by $p$ and $\ell$ is not isotropic. But the line $\ell$ itself may still be capable of growing into a larger totally isotropic subspace by choosing a different point.
 
-### The Rank of a Polar Space
-In Tits' classification, the rank of a polar space is the projective dimension of its maximal totally isotropic subspaces plus 1, which is the vector dimension of a maximal totally isotropic subspace. 
-
-A hyperbolic quadric $\mathcal{Q}^+(3, \mathbb{F})$ contains lines (1-dimensional projective subspaces or vector dimension 2). This is a polar space of rank 2 (a generalized quadrangle).
-
-Similarly, the Klein quadric has entire planes embedded in it, and the polar space rank is 3.
-    
-An elliptic quadric $\mathcal{Q}^-(3, \mathbb{F})$ (sphere / ovoid) contains points (0-dimensional projective subspaces) but no lines. The underlying anisotropic or defect form allows maximal totally isotropic subspaces of vector dimension only 1. Therefore, a sphere or ovoid is a degenerate/trivial polar space of rank 1.
-
-Because rank 1 structures are just sets of points with an empty line set, the main theorems of polar space theory explicitly add non-triviality conditions to rule them out.
-
-The empty set is by definition a subspace of rank 0. Generalized quadrangles are exactly the generalized nondegen￾erate polar spaces of rank 2.
-
-The rank is the geometric generalization of the algebraic Witt index to the language of incidence geometry and buildings. The Witt index is the algebraic invariant measured in the vector space, while the rank is the geometric and combinatorial invariant measured in the projective lattice and the building.
-
 #### Tying Back to Algebra
 The historical evolution of a polar space went from algebra to subspaces (Tits' axioms) to Points-and-Lines (one-or-all axiom). Things started with quadrics and reflexive sesquilinear forms inside $PG(d, K)$. Tits wanted a synthetic, coordinate-free definition of the geometry of totally isotropic subspaces. This was simplified to the One-or-All axiom.
 
@@ -2379,6 +2368,21 @@ Additionally, can we also say that if a line must intersect the tangent hyperspa
 In fact, we can get something additional from this same logic. What is the synthetic definition of a hyperplane $H$ inside a projective space $U$? It is a proper subspace $H \subsetneq U$ that intersects every line of $U$ in at least one point. When we take a generator $U$ and a point $x \notin U$, the "One-or-All" axiom guarantees that $x^\perp$ meets every line of $U$ in 1 or all points. Therefore,  $x^\perp \cap U$ is forced to be a hyperplane inside $U$.
 
 One important nuance for Rank 2 vs. Rank $\ge 3$: Notice that to turn the geometric "if 2 points then all points" into algebraic coordinates via the Fundamental Theorem of Projective Geometry, the polar space needs to contain planes—Rank $\ge 3$—so that Desargues' theorem holds. In Rank 2, i.e., Generalized Quadrangles, the "All" case never triggers for $x \notin \ell$, so there exist non-classical generalized quadrangles that satisfy the "One-or-All" axiom without coming from a bilinear/sesquilinear form.
+
+### The Rank of a Polar Space
+In Tits' classification, the rank of a polar space is the projective dimension of its maximal totally isotropic subspaces plus 1, which is the vector dimension of a maximal totally isotropic subspace. 
+
+A hyperbolic quadric $\mathcal{Q}^+(3, \mathbb{F})$ contains lines (1-dimensional projective subspaces or vector dimension 2). This is a polar space of rank 2 (a generalized quadrangle).
+
+Similarly, the Klein quadric has entire planes embedded in it, and the polar space rank is 3.
+    
+An elliptic quadric $\mathcal{Q}^-(3, \mathbb{F})$ (sphere / ovoid) contains points (0-dimensional projective subspaces) but no lines. The underlying anisotropic or defect form allows maximal totally isotropic subspaces of vector dimension only 1. Therefore, a sphere or ovoid is a degenerate/trivial polar space of rank 1.
+
+Because rank 1 structures are just sets of points with an empty line set, the main theorems of polar space theory explicitly add non-triviality conditions to rule them out.
+
+The empty set is by definition a subspace of rank 0. Generalized quadrangles are exactly the generalized nondegen￾erate polar spaces of rank 2.
+
+The rank is the geometric generalization of the algebraic Witt index to the language of incidence geometry and buildings. The Witt index is the algebraic invariant measured in the vector space, while the rank is the geometric and combinatorial invariant measured in the projective lattice and the building.
 
 ### 3 Types of Polar Spaces
     
@@ -2492,8 +2496,9 @@ Over $\mathbb{C}$ (with $\sigma(z) = \bar{z}$): By Sylvester's Law of Inertia, t
 Special Geometric Property (Line Secants Have $q+1$ Points): In $PG(d, q^2)$, every line of the ambient space has $q^2 + 1$ points. If a line of $PG(d, q^2)$ does not lie completely inside the Hermitian variety $H(d, q^2)$ and is not tangent ($1$ point), it intersects $H(d, q^2)$ in a subline $PG(1, q)$ of exactly $q + 1$ points (called a Baer subline).
 
 ### Orthogonal Polar Spaces / Non-Degenerate Quadrics $\mathcal{Q}$
+As we saw, the bilinear form is zero for all points of the projective space. This turns it into a symplectic space where $B(x, x) = 0$ for all points. The quadric however picks only a few points among these and carves out a separate polar space within it. Note that any two points orthogonal to each other in the symplectic space form a line in that space, but for a line in a quadric, we need an additional condition of $q(v)=0$ and $q(w)=0$. A line on the quadric is always a line on the symplectic, but a line of the symplectic space $S_\pi$ is a line of the quadric $S_q$ if and only if at least two of its points (and hence all of its points) lie on the quadric $S_q$. Otherwise, a line of $S_\pi$ only meets the quadric $S_q$ in one point (if the field is perfect, like $\mathbb{F}_{2^h}$) or zero points. Note that $S_q$ is not a subspace of $S_s$. A subspace requires every pair of points to be collinear/orthogonal but many points will not be collinear in a quadric (otherwise it would be its own maximal isotropic subspace). Instead, $S_q$ is called a sub-polar space (or an embedded subgeometry) of $S_s$.
 
-We'll only look at the other properties here because everything else has been covered elsewhere. 
+We'll only look at the other properties now because everything else has been covered elsewhere. 
 
 #### Other Properties
 
@@ -2763,6 +2768,8 @@ More generally, for a polar space of rank $n$, if we fix a generator (node), all
 
 If we fix a flag of low-dimensional subspaces and look at the last two nodes, they form a rank $2$ polar space, which is a Generalized Quadrangle (a thick square `o === o`, because the "1-or-all" axiom forbids triangles).
 
+If you fix a point $p$ in a nondegenerate polar space $S$ of rank $n \ge 3$, and look at all the lines, planes, and higher subspaces of $S$ passing through $p$ (the residue $S_p$), they form a nondegenerate polar space of rank $n - 1$. This makes sense if you look at the diagram. Drop the leftmost node (points), and it looks pretty much like a polar space, provided $n \ge 3$.
+
 ### The Classical Tits-Veldkamp Definition of Polar Spaces
 This definition is superseded by the One-or-All axiom but it tells us quite a bit about the properties of polar spaces. So let's go through it here. Additionally, it ties back to the diagram in its first point about projective spaces. 
 
@@ -2782,8 +2789,9 @@ A polar space of rank $n \ge 1$ is a pair $(\mathcal{P}, \Sigma)$, where $\mathc
 
      In modern terms: the set of points of $S$ collinear to $p$ forms a projective hyperplane of $S$.
     
-5.  **Non-Degeneracy (Existence of Disjoint Generators):** There exist two maximal singular subspaces in $\Sigma$ of dimension $n - 1$ that are completely disjoint ($S_1 \cap S_2 = \emptyset$).
-    
+5.  **Non-Degeneracy (Existence of Disjoint Generators):** There exist two maximal singular subspaces in $\Sigma$ of dimension $n - 1$ that are completely disjoint ($S_1 \cap S_2 = \emptyset$). Thus, given any subspace, there is a maximal singular subspace disjoint from it. Note that not all masimal singular subspaces are disjoint. For any subspace $U$, there are two maximal singular subspaces $M_1, M_2$ such that $M_1 \cap M_2 = U$.
+
+Why are there disjoint maximal subspaces? This is related to the Witt decomposition and also the rank being utmost half the dimension, as we saw earlier. In a nondegenerate polar space, no isotropic vector $x_i$ can be in the radical of the whole space, so every isotropic basis vector $x_i \in M$ (a maximal subspace) must have a non-orthogonal partner $y_i \notin x_i^\perp$, and collecting those partners $y_1, \dots, y_r$ builds the opposite disjoint generator $M'$.    
 
 #### Unpacking the Axioms
 
