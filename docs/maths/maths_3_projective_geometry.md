@@ -2187,6 +2187,10 @@ Why does this happen mathematically? Remember the symmetry rule of a polarity ($
 
 Look at what the right-hand side ($P \in T^\pi$) says when $T$ is an isotropic point on the quadric $\mathcal{Q}$. Since $T$ is on the quadric,  $T^\pi$ is the tangent hyperplane to the quadric at $T$. Saying $P \in T^\pi$ means the tangent hyperplane at $T$ passes through $P$—which means the line $P \vee T$ is tangent to the quadric at $T$. By $T \in P^\pi \iff P \in T^\pi$, the polar hyperplane $P^\pi$ cuts the quadric $\mathcal{Q}$ in the exact locus of points $T \in \mathcal{Q}$ whose tangent lines pass through $P$.
 
+Since we spoke of the sun/planet analogy, the polar hyperplane is kind of like the day-night terminator on Earth. Think of the Sun as a point source of light. Now look at the day-night terminator, which is the slice of the polar hyperplane on the sphere (Earth). Since the sun is far off, the terminator covers nearly half the sphere, but if it was much closer (and still a point source), the terminator would be closer to the side of the Earth that is towards the Sun.
+
+What if we push the point $P$ inside the Earth? You can no longer shine tangent lines from $P$ to the surface, yet the polar plane $P^\pi$ still exists—it now sits completely outside the Earth! Why? By the reciprocity rule ($Q \in P^\pi \iff P \in Q^\pi$), if $P$ is inside the Earth at distance $d < R$ from the center, its polar plane $P^\pi$ lies outside the Earth at distance $R^2 / d > R$. Every point $Q$ lying on that external plane $P^\pi$ is a satellite position whose day-night terminator plane $Q^\pi$ slices through the Earth right through our interior point $P$.
+
 The other way to visualize this is a mirror reflection. What if we look at a secant line through $P$ that pierces the quadric at two points $A$ and $B$ (or what if $P$ is inside the sphere so there are no real tangent lines from $P$)? How does $P^\pi$ distinguish itself then?
   
 Draw any secant line $\ell$ through $P$ that hits the quadric $\mathcal{Q}$ at two points $A$ and $B$, and passes through the hyperplane $P^\pi$ at a point $M = \ell \cap P^\pi$:
@@ -2207,9 +2211,25 @@ In fact, this gives the cleanest geometric visualization of all: Every non-isotr
 -   The point $P$ is the Centre of the reflection $\rho_P$ (all points move along rays through $P$).
 -   The polar hyperplane $P^\pi$ is the Axis of the reflection $\rho_P$ (the mirror wall that stays completely frozen pointwise while $A$ and $B$ swap across it).
 
-**In short:** If you reflect the polar space $\mathcal{Q}$ across the hyperplane $P^\pi$ along rays radiating from $P$, the polar space $\mathcal{Q}$ maps onto itself ($A \leftrightarrow B$ on every ray through $P$).  $P^\pi$ is the unique mirror hyperplane for which $P$ is the centre of reflection preserving $\mathcal{Q}$.
+Essentially, if you reflect the polar space $\mathcal{Q}$ across the hyperplane $P^\pi$ along rays radiating from $P$, the polar space $\mathcal{Q}$ maps onto itself ($A \leftrightarrow B$ on every ray through $P$). $P^\pi$ is the unique mirror hyperplane for which $P$ is the centre of reflection preserving $\mathcal{Q}$.
 
-Since we spoke of the sun/planet analogy, the polar hyperplane is kind of like the day-night terminator on Earth. Think of the Sun as a point source of light. Now look at the day-night terminator, which is the slice of the polar hyperplane on the sphere (Earth). Since the sun is far off, the terminator covers nearly half the sphere, but if it was much closer (and still a point source), the terminator would be closer to the side of the Earth that is towards the Sun.
+Using directed segments, the distances of these points becomes:
+    
+$$\frac{\overline{MA}\cdot \overline{PB}}{\overline{MB}\cdot \overline{PA}}=-1\implies \frac{\overline{MA}}{\overline{MB}}=-\frac{\overline{PA}}{\overline{PB}}$$
+    
+The negative sign here simply means that one of the points ($P$ or $M$) lies inside the segment $AB$, while the other lies outside it.
+    
+If we drop the signs and look strictly at the physical lengths (distances) of the segments, the negative sign disappears:
+    
+$$\frac{\vert{}MA\vert{}}{\vert{}MB\vert{}}=\frac{\vert{}PA\vert{}}{\vert{}PB\vert{}}$$
+    
+This tells us that $P$ and $M$ divide the segment $AB$ in the exact same ratio, one internally and one externally.
+
+This cross-ratio $(A, B; M, P) = -1$ defines a harmonic quadruple (where $M$ and $P$ are harmonic conjugates with respect to $A$ and $B$). If you choose projective coordinates on the line $\text{PG}(1, \mathbb{F})$ so that $A = [1:0]$,  $B = [0:1]$, and $P = \mathbf{a} + \lambda \mathbf{b}$, then its harmonic conjugate is always the negative linear combination: $M = \mathbf{a} - \lambda \mathbf{b}$.
+
+In a field of characteristic 2, something interesting happens. Algebraically, the cross-ratio condition $(A, B; M, P) = -1$ becomes $(A, B; M, P) = 1$, which simplifies to $M = P$. In terms of linear combinations,  $P = \mathbf{a} + \lambda \mathbf{b}$ and $M = \mathbf{a} - \lambda \mathbf{b}$ become the same projective point because $+\lambda = -\lambda$.
+
+Geometrically, harmonic conjugacy degenerates: the two fixed points collapse into a single center (giving an elation instead of a homology), which is the 1D projective manifestation of the exact same characteristic-2 collapse you noted for symmetric bilinear forms.
 
 --
 
@@ -2225,13 +2245,13 @@ $$W^\perp \cap \mathcal{Q} = W$$
 
 In terms of incidence,  $W$ is maximal if no point outside $W$ is collinear to all of $W$.
 
-To understand why this holds, let's say there is some point of the polar space that belongs to $W^\perp$ but not to $W$. Since this point belongs to $W^\perp$, it must be orthogonal to every point in $W$. Since it is a point of the polar space, it must be isotropic. Thus the new subspace of $W$ and this point is a totally isotropic subspace and since it has a point not in $W$ but includes all points in $W$, it must be of higher dimension than $W$, which contradicts $W$ being a maximal subspace. The statement of no point outside $W$ being collinear to all of $W$ is the same thing, since collinearity is just orthogonality algebraically.
+To understand why this holds, first note that $W \subseteq W_\perp$ always, since $W$ consists of points that are orthogonal to each other. Thus, each point is orthogonal to all points of $W$. $W_\perp$  also consists of points orthogonal to all points of $W$, but it consists of *all* points that fulfill this criterion, which means it contains $W$.. Now let's look at the condition above. Let's say there is some point of the polar space that belongs to $W^\perp$ but not to $W$. Since this point belongs to $W^\perp$, it must be orthogonal to every point in $W$. Since it is a point of the polar space, it must be isotropic. Thus the new subspace of $W$ and this point is a totally isotropic subspace and since it has a point not in $W$ but includes all points in $W$, it must be of higher dimension than $W$, which contradicts $W$ being a maximal subspace. The statement of no point outside $W$ being collinear to all of $W$ is the same thing, since collinearity is just orthogonality algebraically.
 
 $W^\perp$ is the intersection of the polar hyperplanes of all points in $W$, which means every point in $W^\perp$ is orthogonal to every point in $W$. See the aside below.
 
 ---
 
-**Aside 1:** **A polarity can also swap higher dimensional subspaces and not just points with their complements. If $U \subseteq PG(d, K)$ is a projective subspace of dimension $t$ (corresponding to a vector subspace $W \subseteq V$ of dimension $t + 1$), its polar image under $\pi$ is defined as the joint orthogonal complement of all points in $U$, or the intersection of the polar hyperplanes of all points $\in U$:
+**Aside 1:** A polarity can also swap higher dimensional subspaces and not just points with their complements. If $U \subseteq PG(d, K)$ is a projective subspace of dimension $t$ (corresponding to a vector subspace $W \subseteq V$ of dimension $t + 1$), its polar image under $\pi$ is defined as the joint orthogonal complement of all points in $U$, or the intersection of the polar hyperplanes of all points $\in U$:
 
 $$U^\pi = \bigcap_{P \in U} P^\pi = \{\langle y \rangle \in PG(d, K) \mid f(x, y) = 0 \text{ for all } \langle x \rangle \in U\}$$
 
@@ -2294,9 +2314,7 @@ Now for the axiom: Given a point $p$ and a line $L$ of the polar space (meaning 
 This single rule—the "One-or-All Axiom"—is the defining incidence axiom of a Polar Space.
 
 #### Example: Hyperboloid in 3D Space
-To see how a polar space sits inside a projective space, picture a smooth quadric surface $Q$ inside 3D projective space $PG(3, K)$, like a one-sheeted hyperboloid.
-
-The ambient space $PG(3, K)$ has lots of points, lines, and planes. Now restrict your attention ONLY to the points $P$ that lie on the surface $Q$, and the straight lines $\ell$ that lie completely flat inside the surface $Q$. Notice what happens to the projective geometry axioms when we restrict to points and lines inside $Q$:
+The ambient space $PG(3, K)$ has lots of points, lines, and planes. Now [restrict your attention](https://www.researchgate.net/profile/Ricardo-Uribe-Vargas/publication/341213554/figure/fig2/AS:888541198438401@1588856138343/A-one-sheet-hyperboloid.png) ONLY to the points $P$ that lie on the surface $Q$, and the straight lines $\ell$ that lie completely flat inside the surface $Q$. Notice what happens to the projective geometry axioms when we restrict to points and lines inside $Q$:
 
 * In all of $PG(3, K)$, any two points have a line joining them.
 * Inside $Q$, two points on the surface might NOT have a line of $Q$ joining them (because the line through them in $PG(3, K)$ pokes outside the surface).
@@ -2319,6 +2337,7 @@ When can $P$ be collinear with all of $\ell$? This happens only in polar spaces 
 
 Note that when the set of isotropic points contains no lines—such as an elliptic quadric (a sphere or ellipsoid) $\mathcal{Q}^-(3, \mathbb{F})$ or an abstract ovoid $\mathcal{O}$ in $\mathrm{PG}(3, \mathbb{F})$—the Buekenhout-Shult axiom holds vacuously.
 
+#### Generating The Whole Polar Space
 How do we build up from this axiom about points and lines to get an entire polar space? Because we can build successively higher subspaces. In a polar space, we define a "subspace" $U$ to be any set of points such that whenever two points $X, Y$ are in $U$, they are joined by a line $X \vee Y$ of the polar space and that entire line lies inside $U$. 
 
 Suppose we take a line $\ell$ and a point $P \notin \ell$. Assume that the "All" case holds (every line joining $P$ to a point of $\ell$ is in the polar space). Then the union of all those lines joining $P$ to $\ell$ forms a 2D plane $\Pi = P \vee \ell$ inside the polar space. Since $P$ and $\ell$ (and therefore the intersection of the line joining $P$ to $\ell$) lie in the plane, once again, every point on every one of these connecting lines is pairwise orthogonal and isotropic. Since the plane is spanned by these lines, every point on the line is isotropic and pairwise orthogonal. So we have a totally isotropic plane. 
