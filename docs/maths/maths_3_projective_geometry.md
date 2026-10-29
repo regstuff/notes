@@ -2435,7 +2435,7 @@ If classical polar spaces were only defined over finite fields, we would always 
 
 #### Difference From a Quadric
 
-For a quadric, a line meets it in $0, 1, 2$, or all points. For a Hermitian variety over $\mathbb{F}_{q^{2}}$, a line meets the variety in $1$,  $q + 1$, or all ($q^2 + 1$) points ( specifically, a secant line meets the variety in $q+1$ points, a tangent line meets it in $1$ point, and a totally isotropic line lies entirely inside it). It creates a highly rigid, beautiful combinatorial structure.
+For a quadric, a line meets it in $0, 1, 2$, or all points. For a Hermitian variety over $\mathbb{F}_{q^{2}}$, a line meets the variety in $1$,  $q + 1$, or all ($q^2 + 1$) points ( specifically, a secant line meets the variety in $q+1$ points, a tangent line meets it in $1$ point, and a totally isotropic line lies entirely inside it). It creates a highly rigid, beautiful combinatorial structure. Note that this means a non-degenerate Hermitian variety $H(d, q^2)$ has no passant (exterior) lines at all.
     
 #### Notation
 These spaces are denoted by $\mathcal{H}(n, q^2)$ where:
@@ -2451,9 +2451,10 @@ These spaces are denoted by $\mathcal{H}(n, q^2)$ where:
 Field Constraint (Requires a Field Involution $\sigma$ of Order 2): Unlike symplectic spaces or quadrics, you CANNOT build a unitary polar space over just any field! The field $K$ must possess an automorphism $\sigma \neq \text{id}$ of order $2$ ($\sigma(\sigma(k)) = k$).
 
 Over finite fields: $K$ must be a field of square order $\mathbb{F}_{q^2}$ (like $\mathbb{F}_4, \mathbb{F}_9, \mathbb{F}_{16}, \mathbb{F}_{25}$), where the unique involution is $\sigma(k) = k^q$. You cannot build a unitary space over $\mathbb{F}_2, \mathbb{F}_3, \mathbb{F}_5, \mathbb{F}_7,$ or $\mathbb{F}_8$!
-* Over infinite fields: Examples include $\mathbb{C}$ (with $\sigma(z) = \bar{z}$, fixing $\mathbb{R}$) or the quaternions $\mathbb{H}$ (with quaternion conjugation).
 
-Dimension Constraint: None! Both even and odd vector space dimensions $d+1$ are completely valid ($PG(2, q^2), PG(3, q^2), PG(4, q^2), \dots$ all work).
+Over infinite fields: Examples include $\mathbb{C}$ (with $\sigma(z) = \bar{z}$, fixing $\mathbb{R}$) or the quaternions $\mathbb{H}$ (with quaternion conjugation).
+
+Dimension Constraint: None. Both even and odd vector space dimensions $d+1$ are completely valid ($PG(2, q^2), PG(3, q^2), PG(4, q^2), \dots$ all work).
 
 Witt Index (Depends on the Field $K$): Over a finite field $K = \mathbb{F}_{q^2}$: Just like in the symplectic case, there is ONLY ONE non-degenerate Hermitian form in each dimension up to change of basis! In diagonal form it is:
 
@@ -2487,7 +2488,7 @@ Anisotropic core has dimension $0$. Witt index is $r = n$.
 2. Parabolic Quadric $Q(2n, q)$ in even projective dimension $d = 2n$ (odd vector dimension $2n+1$):
 Canonical equation: $x_0 x_1 + \dots + x_{2n-2} x_{2n-1} + x_{2n}^2 = 0$.
 Anisotropic core has dimension $1$ ($x_{2n}^2$). Witt index is $r = n$.
-*(Note in characteristic $2$: When $q = 2^h$, the polar bilinear form $f(x, y)$ of $Q(2n, q)$ has a 1-dimensional radical $N = \langle (0, \dots, 0, 1) \rangle$ called the nucleus of the quadric, where all tangent hyperplanes intersect! Quotienting out the nucleus gives an isomorphism between the polar space $Q(2n, 2^h)$ and the symplectic space $W(2n-1, 2^h)$!)*
+*(Note in characteristic $2$: When $q = 2^h$, the polar bilinear form $f(x, y)$ of $Q(2n, q)$ has a 1-dimensional radical $N = \langle (0, \dots, 0, 1) \rangle$ called the nucleus of the quadric, where all tangent hyperplanes intersect. Quotienting out the nucleus gives an isomorphism between the polar space $Q(2n, 2^h)$ and the symplectic space $W(2n-1, 2^h)$)*
 3. Elliptic Quadric $Q^-(2n+1, q)$ in odd projective dimension $d = 2n+1$ (even vector dimension $2n+2$):
 Canonical equation: $x_0 x_1 + \dots + x_{2n-2} x_{2n-1} + (x_{2n}^2 + a x_{2n} x_{2n+1} + b x_{2n+1}^2) = 0$ (where $t^2 + at + b$ is irreducible over $\mathbb{F}_q$).
 Anisotropic core has dimension $2$. Witt index is $r = n$.
@@ -2634,7 +2635,7 @@ Notice how the three quadrics sit around the baseline $\frac{q^d - 1}{q - 1}$ (t
 
 #### Number of Maximal Isotropic Subspaces
 
-To count the maximal totally isotropic subspaces or generators, we once again use the same inductive Witt decomposition ($r \to r-1$) and double-counting. Note that the number of points is not equal to the number of maximal isotropic subspaces. Self-duality is a special property of projective spaces $PG(d, K)$. In a general polar space, the number of points is not equal to the number of generators. There are some famous exceptions which will see later.
+To count the maximal totally isotropic subspaces or generators, we once again use the same inductive Witt decomposition ($r \to r-1$) and double-counting. Note that the number of points is not equal to the number of maximal isotropic subspaces. Self-duality is a special property of projective spaces $PG(d, K)$. In a general polar space, the number of points is not equal to the number of generators. There are some famous exceptions which will see later. Also note that the diagram of a polar space is not symmetric (it has a generalized quadrangle at one end), unlike a projective space.
 
 Let $g(r)$ denote the total number of generators in our polar space $\mathcal{P}(r)$ of rank $r$. Each generator is a projective flat of projective dimension $r - 1$, meaning it is isomorphic to $\text{PG}(r-1, \mathbb{F}_Q)$.
 
@@ -2687,6 +2688,35 @@ For the hyperbolic quadric $\mathcal{Q}^+(2n-1, q)$ where $e = 0$, the first fac
 
 In the two Unitary cases, because $Q = q^2$ and $e$ is a half-integer ($1/2$ or $3/2$), the term $Q^{k + e - 1} = (q^2)^{k + e - 1} = q^{2k + 2e - 2}$ produces purely odd powers of $q$.
 
+Now let's look at the exceptions where the number of isotropic points equal the number of maximal isotropic subspaces. Look closely at the two formulas above and ask: When can the exponent $2n + e - 2$ equal $\frac{1}{2}n(n-1) + ne$?
+
+ Rank $n = 2$ with $e = 1$ (Generalized Quadrangles $W(3, q)$ and $Q(4, q)$): When $n = 2$, the $C_2$ diagram only has two nodes (`o === o`, points and lines). Flipping the diagram `o === o` still gives `o === o`! Plug $n = 2$ and $e = 1$ into the formulas above:
+    
+- Points of $W(3, q)$ or $Q(4, q)$:  $(q^2 + 1)(q + 1)$.
+- Generators (lines) of $W(3, q)$ or $Q(4, q)$:  $(q + 1)(q^2 + 1)$. 
+
+They match! In fact, the parabolic quadric $Q(4, q)$ and the symplectic space $W(3, q)$ are exact point-line duals of each other (when you swap points and lines of $Q(4, q)$, you get $W(3, q)$, and when $q = 2^h$ is even, both are self-dual).
+        
+Rank $n = 4$ with $e = 0$ (Study's Triality on $Q^+(7, q)$ / Diagram $D_4$): Plug $n = 4$ and $e = 0$ (the hyperbolic quadric $Q^+(7, q)$ in $PG(7, q)$) into the formulas:
+    
+- Points:  $\frac{(q^4 - 1)(q^3 + 1)}{q - 1} = (q + 1)(q^2 + 1)(q^3 + 1)$.
+- Generators:  $(q^0 + 1)(q^1 + 1)(q^2 + 1)(q^3 + 1) = 2(q + 1)(q^2 + 1)(q^3 + 1)$. 
+
+Why is there a factor of $2$ on the generators? Because just like the two reguli on $Q^+(3, q)$, the generators (3-spaces) on $Q^+(7, q)$ split into two families of equal size, and each family has $(q + 1)(q^2 + 1)(q^3 + 1)$ generators—the exact same number as the points! This happens because for $Q^+(7, q)$, the double bond at the end of the $C_4$ diagram splits into two single branches, giving the symmetric three-pronged $D_4$ diagram:
+        
+```
+                      o  (Generator Family 1)
+                     /
+   0 (Points) o --- o (Lines)
+                     \
+                      o  (Generator Family 2)
+
+```
+
+Because the three outer prongs of $D_4$ (Points, Generator Family 1, Generator Family 2) are completely symmetric around the central node (Lines),  $Q^+(7, q)$ possesses a 3-way symmetry called Triality that swaps points with either family of generators.
+
+Outside of those special low-rank coincidences ($n = 2$ with $e = 1$, and $n = 3, 4$ with $e = 0$ splitting the generators into two families), a polar space does not have equal numbers of points and generators; flipping a polar space diagram backwards creates a distinct geometry known as a Dual Polar Space.
+
 ### Polar Spaces Have the Same Diagram ($C_n$) as a Cube
 
 Let us trace how the diagram of a polar space of rank $3$ (types $0 = \text{points}$, $1 = \text{lines}$, $2 = \text{planes lying inside the polar space}$) is built by taking residues, and compare it directly to the 3D cube:
@@ -2729,7 +2759,7 @@ A polar space of rank $n \ge 1$ is a pair $(\mathcal{P}, \Sigma)$, where $\mathc
         
     -   The union of all lines joining $p$ to points in $S \cap S'$ is contained in $S'$.
 
-     In modern terms: the set of points of $S$ collinear to $p$ forms a projective hyperplane of $S$.)_
+     In modern terms: the set of points of $S$ collinear to $p$ forms a projective hyperplane of $S$.
     
 5.  **Non-Degeneracy (Existence of Disjoint Generators):** There exist two maximal singular subspaces in $\Sigma$ of dimension $n - 1$ that are completely disjoint ($S_1 \cap S_2 = \emptyset$).
     
@@ -2891,96 +2921,6 @@ Why did we write $P\Omega$ instead of $PSO$ in the bottom-right corner? For $SL$
 For the Orthogonal group $SO(n, q)$, however, even after taking $\det = 1$ and dividing out $\pm I$ to get $PSO(n, q)$, the group is STILL not quite simple—it has one last subgroup of index $2$ inside it (consisting of products of an even number of reflections with trivial "spinor norm"), denoted by the Greek letter $\Omega(n, q)$.
 
 When we quotient $\Omega(n, q)$ by scalar matrices $\pm I$ to act on projective space, we get $P\Omega(n, q)$ (often written $P\Omega^+(2m, q)$, $P\Omega^-(2m, q)$, or $P\Omega(2m+1, q)$ corresponding to hyperbolic, elliptic, and parabolic quadrics), which is the actual simple orthogonal group.
-
----
-
-### 3. Section-by-Section Walkthrough of Chapter 4
-
-Notice the order of the Table of Contents: Ueberberg goes from pure synthetic incidence geometry (Sections 1–3) to geometric symmetries (Section 4) and finally to algebraic coordinates and forms (Sections 5–6). Here is what each section accomplishes:
-
-#### Section 1: Introduction (Page 123)
-
-Sets up the two parallel definitions of a polar space:
-
-* The classical Tits-Veldkamp definition (written in terms of all subspaces—points, lines, planes, etc.—lying inside the polar space, behaving like projective spaces internally).
-* The minimalist Buekenhout-Shult definition (written purely in terms of points and lines using the "One-or-All" axiom above).
-
-#### Section 2: The Theorem of Buekenhout–Shult (Page 124)
-
-This is one of the most celebrated theorems in incidence geometry.
-
-* In the 1950s, Veldkamp and Tits needed a long, complicated list of axioms on points, lines, planes, and higher subspaces to define a polar space.
-* In 1974, Buekenhout and Shult proved that if you only specify Points and Lines with the single rule:
-"For every line $\ell$ and every point $P \notin \ell$, $P$ is collinear with either 1 or all points of $\ell$" (plus a non-degeneracy check that no point is collinear with everything, and chains of subspaces have finite length),
-then all the higher-dimensional subspaces (planes, solids, generators) automatically organize themselves into projective spaces!
-* In this section, Ueberberg proves that the simple point-line definition (a Shult space) and the full subspace definition (a Tits polar space) are 100% equivalent.
-
-#### Section 3: The Diagram of a Polar Space (Page 140)
-
-Now we connect polar spaces back to the Buekenhout-Tits diagram machinery we just studied in Chapters 1–3!
-Suppose a polar space has rank $n$ (meaning its largest subspaces—called generators—have projective dimension $n - 1$, so the types are $0 \text{ (points)}, 1 \text{ (lines)}, \dots, n-1 \text{ (generators)}$). What is its diagram?
-
-* If we fix a generator (node $n-1$), all the points, lines, and planes inside it form an ordinary projective space $PG(n-1, K)$, which has the linear diagram `o --- o --- ... --- o`.
-* If we fix a flag of low-dimensional subspaces and look at the last two nodes $n-2$ and $n-1$, they form a rank 2 polar space, which is a Generalized Quadrangle (a thick square `o === o`, because the "1-or-all" axiom forbids triangles!).
-* Putting those together gives the diagram $C_n$ of a polar space of rank $n$:
-
-```
-   0 (Points)       1 (Lines)              n-2           n-1 (Generators)
-       o -------------- o ------- ... ------- o ============== o
-          (Proj. Plane)                        (Gen. Quadrangle)
-
-```
-
-Notice that this is the exact diagram of the cube we studied earlier (read backwards, with node $0$ as points and node $n-1$ as the faces/generators)!
-
-#### Section 4: Polarities (Page 153)
-
-Here the focus shifts from the intrinsic geometry of the polar space back to the ambient projective space $\mathbf{P} = PG(d, K)$ containing it.
-
-* Remember from our earlier discussion that a polarity $\pi$ is a duality (correlation) of $\mathbf{P}$ of order $2$ ($\pi^2 = \text{id}$), which swaps every point $P$ with a hyperplane $P^\pi$ (called its polar hyperplane).
-* Sometimes a point $P$ happens to lie inside its own polar hyperplane:
-
-$$P \in P^\pi$$
-
-
-
-Such a point is called an absolute point (or self-conjugate / isotropic point) of the polarity $\pi$. Similarly, a subspace $U$ with $U \subset U^\pi$ is called an absolute subspace.
-* The main theorem of Section 4 proves that if you take ANY polarity $\pi$ of a projective space $\mathbf{P}$, the collection of all its absolute points, absolute lines, and absolute subspaces forms a Polar Space! (This is why they are called "polar spaces"—they are the spaces of absolute elements of a polarity.)
-
-#### Section 5: Sesquilinear Forms (Page 157)
-
-Just as Chapter 3 showed that collineations of $\mathbf{P}(V)$ come from semilinear maps $(A, \sigma)$, Section 5 asks: "Where do polarities $\pi$ come from algebraically on the vector space $V$?"
-
-* A linear duality comes from a bilinear form $f(\mathbf{x}, \mathbf{y})$.
-* Because a general duality can involve a field automorphism $\sigma$ of our skew field $K$, a general polarity comes from a sesquilinear form $f: V \times V \to K$ ("sesqui" means "one-and-a-half" linear: linear in the first slot $\mathbf{x}$, and $\sigma$-semilinear in the second slot $\mathbf{y}$).
-* For the duality to have order $2$ (a polarity, where $\mathbf{x} \in \mathbf{y}^\pi \iff \mathbf{y} \in \mathbf{x}^\pi$), the sesquilinear form $f$ must be reflexive ($f(\mathbf{x}, \mathbf{y}) = 0 \iff f(\mathbf{y}, \mathbf{x}) = 0$).
-* Celebrated theorem of Birkhoff and von Neumann (proved here): Every reflexive sesquilinear form reduces to one of three algebraic types:
-1. Orthogonal / Symmetric ($f(\mathbf{x}, \mathbf{y}) = f(\mathbf{y}, \mathbf{x})$ with $\sigma = \text{id}$)
-2. Symplectic / Alternating ($f(\mathbf{x}, \mathbf{x}) = 0$ for all $\mathbf{x}$, so $f(\mathbf{x}, \mathbf{y}) = -f(\mathbf{y}, \mathbf{x})$)
-3. Unitary / Hermitian ($f(\mathbf{y}, \mathbf{x}) = \sigma(f(\mathbf{x}, \mathbf{y}))$ where $\sigma^2 = \text{id}$ is an involution of $K$, like complex conjugation $\bar{z}$ or $x \mapsto x^q$ in $\mathbb{F}_{q^2}$).
-
-
-
-#### Section 6: Pseudo-Quadrics (Page 166)
-
-There is one tricky algebraic catch at the end: what happens when the field $K$ has characteristic $2$ (where $1 + 1 = 0$ and $-1 = +1$), or when $K$ is a non-commutative skew field?
-
-* Over a field of characteristic $\neq 2$, a quadratic form $Q(\mathbf{x}) = \mathbf{x}^T M \mathbf{x}$ and its symmetric polarity $f(\mathbf{x}, \mathbf{y}) = Q(\mathbf{x}+\mathbf{y}) - Q(\mathbf{x}) - Q(\mathbf{y})$ determine each other completely (because you can recover $Q(\mathbf{x}) = \frac{1}{2} f(\mathbf{x}, \mathbf{x})$ by dividing by $2$).
-* In characteristic $2$, you cannot divide by $2$! A quadric $Q(\mathbf{x}) = 0$ still gives a valid polar space, even though you cannot recover $Q$ solely from the polarity $f$.
-* Even more generally, over a non-commutative skew field $K$ with an automorphism $\sigma$, Tits discovered that the right generalization of a quadric is a Pseudo-Quadric (defined by a sesquilinear form modulo a twisted trace subgroup).
-* This final section sets up Tits' famous Classification Theorem for Polar Spaces: every polar space of rank $n \ge 3$ arises from either a reflexive sesquilinear form (Section 5) or a pseudo-quadric (Section 6).
-
----
-
-### Summary Table: How Chapter 3 (Projective Spaces) Parallels Chapter 4 (Polar Spaces)
-
-| Feature | Chapter 3: Projective Spaces | Chapter 4: Polar Spaces |
-| --- | --- | --- |
-| Core Point-Line Axiom | Any two points lie on a unique line; Veblen-Young axiom holds. | Buekenhout-Shult "One-or-All" axiom: a point outside a line is collinear with $1$ or all points on that line. |
-| Buekenhout-Tits Diagram | $A_n$: `o --- o --- ... --- o` | $C_n$: `o --- o --- ... --- o === o` |
-| How It Arises Geometrically | The entire space $PG(d, K)$. | The absolute points/subspaces ($U \subset U^\pi$) of a polarity $\pi$ inside $PG(d, K)$, or points/subspaces on a quadric. |
-| Underlying Linear Algebra | Vector space $V$ over a skew field $K$ with semilinear maps $(A, \sigma)$. | Vector space $V$ equipped with a reflexive sesquilinear form $f(\mathbf{x}, \mathbf{y})$ or pseudo-quadratic form. |
-| Classical Simple Groups | Projective Linear Groups: $PSL(d+1, K)$ and $PGL(d+1, K)$. | Orthogonal ($P\Omega$), Symplectic ($PSp$), and Unitary ($PSU$) groups. |
 
 ## Polygons
 
