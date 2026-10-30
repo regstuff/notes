@@ -888,7 +888,7 @@ When $\mathcal{Q} = H_1 \cup H_2$ is two planes in $d = 3$,  $\text{Rad}(\mathca
 ### Quadratic Sets in 2D and 3D Projective Spaces
 We first define a type of object found in 2D projective planes, and a few objects found in 3D projective spaces. Then for 2D and 3D spaces, we list out the possible quadratic sets.
 
-A nonempty set $\mathcal{O}$ of points in a projective plane is called an oval if no three points of $\mathcal{O}$ are collinear and each point of $\mathcal{O}$ is on a unique tangent. Ovals are the only type of nonempty, nondegenerate quadratic sets in a projective plane.
+A nonempty set $\mathcal{O}$ of points in a projective plane is called an oval if no three points of $\mathcal{O}$ are collinear and each point of $\mathcal{O}$ is on a unique tangent. Ovals are the only type of nonempty, nondegenerate quadratic sets in a projective plane. A cone in $PG(3, K)$, which comes from joining a vertex point $s$ to an oval $\mathcal{O}$ in a plane $E$, is a degenerate quadratic set with $\text{Rad}(\mathcal{K}) = \{s\}$.
 
 An ovoid is a nonempty set $\mathcal{O}$ of points of a 3D projective space $\mathbf{P}$ where no three points of $\mathcal{O}$ are collinear and for each point $P \in \mathcal{O}$, the tangents through $P$ cover a hyperplane (that is,  $\mathcal{O}_P$ is a hyperplane).
 
@@ -1148,7 +1148,9 @@ Now use the third point of $\mathcal{Q}$ on the line $g$, which corresponds to s
 
 $$\lambda_0 B(v, w) = 0 \quad \stackrel{\lambda_0 \neq 0}{\Longrightarrow} \quad B(v, w) = 0$$
 
-Since $q(v) = 0$, $q(w) = 0$, and $B(v, w) = 0$, our formula gives $q(v + \lambda w) = 0$ for all $\lambda \in F$. Every point of the line $g$ lies in $\mathcal{Q}$.
+Since $q(v) = 0$, $q(w) = 0$, and $B(v, w) = 0$, our formula gives $q(v + \lambda w) = 0$ for all $\lambda \in F$. Every point of the line $g$ lies in $\mathcal{Q}$. 
+
+Note that $B(v, w) = 0$ implies that $v$ and $w$ are orthogonal to each other, which in turn, by the same linearity argument as above, implies every pair of points on the line are orthogonal to each other. We haven't talked about orthogonality so far, but since we presented the analogy of the dot product and the bilinear form, this should make sense. We will look more closely at orthogonality when we study polar forms (a quadric is a type of polar form).
 
 Now let's look at how the tangent space axiom behaves. First let's define something that will become our tangent space. 
 
@@ -3148,8 +3150,8 @@ These two are clearly not self-dual.
 ---
 
 ## References
-- Projective Geometry: An Introduction by Rey Casse
-- Projective Geometry: From Foundations to Applications by Albrecht Beutelspacher, Ute Rosenbaum
-- Foundations of Incidence Geometry: Projective and Polar Spaces by Johannes Ueberberg
-- An Introduction to Incidence Geometry by Bart De Bruyn
+- Projective Geometry: An Introduction by Rey Casse (First & perhaps only edition sections 3.1, 3.2, 3.3, 3.4, 4.1, 4.2, 4.3, 4.7, 4.8, 8.2, 8.3)
+- Projective Geometry: From Foundations to Applications by Albrecht Beutelspacher, Ute Rosenbaum (First & perhaps only edition sections 1.2, 1.3, 1.5, 1.6, 2.1, 2.3, 2.4, 3.4, 3.6, 4.1, 4.2, 4.3, 4.4, 4.5, 4.7)
+- Foundations of Incidence Geometry: Projective and Polar Spaces by Johannes Ueberberg (First & perhaps only edition sections 1.4, 1.7, 1.8, 2.4, 3.2, 3.3, 3.4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 5.1, 5.2, 5.3, 5.4, 5.6)
+- An Introduction to Incidence Geometry by Bart De Bruyn (First & perhaps only edition sections 1.1, 1.2, 2.1, 2.2, 2.6, 2.7, 2.8, 2.14, 3.1, 3.2, 3.3, 3.4, 4.5, 5.1, 5.2, 5.3, 5.4, 5.6, 5.8, 7.2, 7.5, 7.8, 9.1)
 - The Geometry of the Classical Groups by DE Taylor
