@@ -2495,6 +2495,150 @@ Over $\mathbb{C}$ (with $\sigma(z) = \bar{z}$): By Sylvester's Law of Inertia, t
 
 Special Geometric Property (Line Secants Have $q+1$ Points): In $PG(d, q^2)$, every line of the ambient space has $q^2 + 1$ points. If a line of $PG(d, q^2)$ does not lie completely inside the Hermitian variety $H(d, q^2)$ and is not tangent ($1$ point), it intersects $H(d, q^2)$ in a subline $PG(1, q)$ of exactly $q + 1$ points (called a Baer subline).
 
+#### Example: Building a Hermitian Form Over $PG(2, 9)$
+To build a concrete Hermitian form over $\mathbb{F}_9$ in $PG(2, 9)$, we first construct the field $\mathbb{F}_9 = \mathbb{F}_{3^2}$ (so $q = 3$ and $q^2 = 9$) and its unique non-trivial automorphism of order 2.  
+
+Since $x^2 + 1$ has no roots in $\mathbb{F}_3 = \{0, 1, 2\}$ (where $2 \equiv -1$), we can construct $\mathbb{F}_9$ just like the complex numbers by adjoining $i$ with $i^2 = -1 \equiv 2 \pmod 3$:
+
+$$\mathbb{F}_9 = \{ a + bi \mid a, b \in \mathbb{F}_3, \, i^2 = -1 \}$$
+
+We saw this example while studying fields.
+
+The unique non-trivial field automorphism of order 2 ($\sigma^2 = \text{id}$, $\sigma \neq \text{id}$) is the Frobenius map $\sigma(\lambda) = \lambda^3$. Let us see what $\lambda^3$ does to an element $a + bi \in \mathbb{F}_9$ in characteristic 3:
+
+$$\sigma(a + bi) = (a + bi)^3 = a^3 + b^3 i^3 = a + b(-i) = a - bi$$
+
+By Fermat's Little Theorem, for every element $a \in \mathbb{F}_p$, raising $a$ to the $p$-th power does nothing at all ($a^p = a$). So $0^3 = 0$,  $1^3 = 1$, and $2^3 = 8 \equiv 2 \pmod 3$, which means the Frobenius map $\sigma(x) = x^3$ leaves the "real" part $a \in \mathbb{F}_3$ completely fixed while flipping $i^3 = i^2 \cdot i = -i$. The Frobenius automorphism $\sigma(\lambda) = \lambda^3$ thus acts like complex conjugation $\overline{a + bi} = a - bi$.
+
+Notice also what the norm $\sigma(\lambda)\lambda = \lambda^4$ looks like:
+
+$$\lambda^4 = (a - bi)(a + bi) = a^2 + b^2 \in \mathbb{F}_3$$
+
+On $V = \mathbb{F}_9^3$ (whose projective space is the projective plane $PG(2, 9)$, having $9^2 + 9 + 1 = 91$ total points), here are the two standard ways to write the nondegenerate Hermitian form $f(x, y)$: the Diagonal Form (Identity Matrix $I_3$) and the Off-Diagonal / Split Form (often easier for finding tangent & secant lines).
+
+Why are there two forms? Over any finite field $\mathbb{F}_{q^2}$, all nondegenerate Hermitian forms on a vector space of fixed dimension $d+1$ are equivalent up to a change of basis and define the exact same polar space $H(d, q^2)$. (Unlike symmetric quadratic forms, which split into hyperbolic, parabolic, and elliptic types, there is only one isomorphism class of nondegenerate Hermitian forms in each dimension over a finite field.)
+
+We use both forms because each makes different properties easy to see:
+
+-   The diagonal form $x_0^4 + x_1^4 + x_2^4 = 0$ uses an orthonormal basis (three mutually orthogonal non-isotropic points), making the symmetry across coordinates obvious.
+    
+-   The split/off-diagonal form $x_0^3 x_1 + x_1^3 x_0 + x_2^4 = 0$ uses two isotropic points on a secant line as the first two basis vectors, making it effortless to read off tangent lines ($y_1 = 0$) without solving equations.
+
+To map the diagonal form $X_0^4 + X_1^4 + X_2^4 = 0$ to the split form $x_0^3 x_1 + x_1^3 x_0 + x_2^4 = 0$, we can change basis in the first two coordinates using:
+
+$$X_0 = x_0 + (1+i)x_1, \quad X_1 = (1+i)x_0 + x_1, \quad X_2 = x_2$$
+
+Let's look at the diagonal form:
+
+$$f(x, y) = \sigma(x_0) y_0 + \sigma(x_1) y_1 + \sigma(x_2) y_2 = x_0^3 y_0 + x_1^3 y_1 + x_2^3 y_2$$
+
+Setting $y = x$, the equation of the isotropic points (the Hermitian curve $H(2, 9)$) is:
+
+$$f(x, x) = x_0^4 + x_1^4 + x_2^4 = 0$$
+
+Sample Isotropic Points on $x_0^4 + x_1^4 + x_2^4 = 0$:
+    
+Since $1^4 = 1$, $(-1)^4 = 1$, and $i^4 = 1$, any point with three non-zero coordinates whose 4th powers are $1, 1, 1$ gives $1 + 1 + 1 = 3 \equiv 0 \pmod 3$. For example:
+
+$$P_1 = \langle (1, 1, 1) \rangle, \quad P_2 = \langle (1, i, 1) \rangle, \quad P_3 = \langle (1, 1 + i, 0) \rangle \quad (\text{since } (1+i)^4 = (1^2 + 1^2) = 2 \equiv -1)$$
+
+How do we arrive at $(1+i)^4 = (1^2 + 1^2) =2$? We could do it the traditional way: 
+
+$$(1+i)^4 = ((1+i)^2)^2 = (1^2 + 2i + i^2)^2 = (2i)^2 = 4i^2 = -4$$
+
+But the Frobenius conjugation says $\sigma(a+bi) = (a+bi)^3 = a-bi$. Because $z^4 = z^3 \cdot z = \sigma(z)z$, the fourth power of any element $z = a+bi \in \mathbb{F}_9$ is just like the squared modulus $\vert{}z\vert{}^2$ in complex numbers:
+
+$$(a+bi)^4 = (a+bi)^3(a+bi) = (a-bi)(a+bi) = a^2 - b^2i^2 = a^2 + b^2$$
+
+Now for the split form. Just like we write $x_0 x_1 + x_2^2 = 0$ for a quadric, we can choose our basis in $PG(2, 9)$ so the Hermitian matrix is:
+
+$$M = \begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 1 \end{pmatrix} \quad \text{or with a twist } \begin{pmatrix} 0 & i & 0 \\ -i & 0 & 0 \\ 0 & 0 & 1 \end{pmatrix}$$
+
+Let us use the first matrix, which gives the sesquilinear form:
+
+$$f(x, y) = x_0^3 y_1 + x_1^3 y_0 + x_2^3 y_2$$
+
+Check that $f$ is strictly Hermitian ($f(y, x) = \sigma(f(x, y))$):
+
+$$\sigma(f(x, y)) = (x_0^3 y_1 + x_1^3 y_0 + x_2^3 y_2)^3 = x_0^9 y_1^3 + x_1^9 y_0^3 + x_2^9 y_2^3 = y_1^3 x_0 + y_0^3 x_1 + y_2^3 x_2 = f(y, x)$$
+
+(since $x_k^9 = x_k$ for every element of $\mathbb{F}_9$).
+
+Setting $y = x$, the equation of the Hermitian curve $H(2, 9)$ is:
+
+$$f(x, x) = x_0^3 x_1 + x_1^3 x_0 + x_2^4 = 0$$
+
+Let us see how the polarity $\pi$ and the "no passant lines" rule work on $f(x, x) = x_0^3 x_1 + x_1^3 x_0 + x_2^4 = 0$:
+
+By our general formula for $H(2, q^2)$, the total number of isotropic points in $PG(2, 9)$ is $q^3 + 1 = 3^3 + 1 = 28$ points (known in geometry as the Hermitian unital on 28 points).
+
+Now let's find the tangent line at an isotropic point $P = \langle (1, 0, 0) \rangle$. Plug $P = (1, 0, 0)$ into $f(P, P) = (1)^3(0) + (0)^3(1) + 0^4 = 0$. So $P$ is an isotropic point on $H(2, 9)$. What is its polar line $P^\pi$? 
+
+Set $f(P, y) = 0$: $(1)^3 y_1 + 0 + 0 = 0 \implies y_1 = 0$
+
+How many points of $H(2, 9)$ lie on this tangent line $y_1 = 0$? Plug $y_1 = 0$ into $f(y, y) = 0$: $0 + 0 + y_2^4 = 0 \implies y_2 = 0$
+
+Thus the only point of $H(2, 9)$ on the line $y_1 = 0$ is $\langle (1, 0, 0) \rangle$ itself ($1$ point—a tangent line).
+
+Note that if you plug the isotropic point $(1, 0, 0)$ from the split form into our change of basis, you get $(X_0, X_1, X_2) = (1, 1+i, 0)$ in the diagonal form—which satisfies $X_0^4 + X_1^4 + X_2^4 = 1 + 2 + 0 \equiv 0 \pmod 3$. And if you use a $3 \times 3$ change of basis that mixes all three coordinates, you can map $(1, 0, 0)$ to a point like $(1, 1, 1)$ whose three coordinates all have 4th power equal to $1$.
+  
+Now let's look at a non-isotropic point $Q = \langle (0, 0, 1) \rangle$. Plug $Q = (0, 0, 1)$ into $f(Q, Q) = 0 + 0 + 1^4 = 1 \neq 0$. So $Q$ is non-isotropic. 
+
+A non-isotropic point $Q$ cannot have a polar hyperplane (in this case a polar line) that is a tangent to the polar form. Why? Let us suppose it is tangential. Then it meets the polar form at one point, say $P$. $P$ will have a polar hyperplane/line that is also a tangent to the polar form, and by definition, $P$'s polar hyperplane is its tangent i.e. the hyperplane/line passing through it. But we said that hyperplane/line is the one belonging to $Q$, which is a contradiction. So a non-isotropic point can only have a polar hyperplane that is "secant".
+
+Now let's look at the secant/polar line $Q^\pi$ and where it meets the polar form. What is $Q^\pi$? Set $f(Q, y) = 0$: $0 + 0 + (1)^3 y_2 = 0 \implies y_2 = 0$
+
+How many points of $H(2, 9)$ lie on this secant line $y_2 = 0$? Plug $y_2 = 0$ and $y_0 = 1$ into $f(y, y) = 0$: $y_1 + y_1^3 = 0 \implies y_1(y_1^2 + 1) = 0$
+
+Why did we set $y_0 = 1$ here? We are working with homogenous coordinates and $y_0$ is the equivalent of $z$ - the homogenizing coordinate from our homogenous coordinates section. We consider a projective point to be the point where the vector from the origin intersects the $z/y_0 = 1$ plane. We set $y_0 = 1$ to eliminate duplicates. We could just as well have set $y_0 = 2$ and then scaled down by $2$. the coordinates of the points we got from the solution.
+
+The roots in $\mathbb{F}_9$ are $y_1 \in \{0, i, -i\}$. As we said above, we could have normalized by $y_0 = 2$. Let us verify what happens if you set $y_0 = 2$ (remembering $2 \equiv -1 \pmod 3$, so $2^3 = 8 \equiv 2 \pmod 3$) in $y_0^3 y_1 + y_1^3 y_0 = 0$:
+
+$$2 y_1 + 2 y_1^3 = 0 \implies 2 y_1(y_1^2 + 1) = 0$$
+
+Dividing by $2$ gives the exact same roots $y_1 \in \{0, i, -i\}$, yielding the three representative vectors:
+
+$$(2, 0, 0), \quad (2, i, 0), \quad (2, -i, 0)$$
+
+First, let's figure out the multiplicative inverse of 3 in $\mathbb{F}_3$. Since $2 \equiv -1 \pmod 3$: $2 \cdot (-1) = -2 = -1(3) + 1 \equiv 1 \pmod 3$. 
+
+Alternatively, remember Fermat's Last Theorem, by which $2^3 = 2$. Diving by $2$ on both sides gives $2^2 = 1$. Thus, $2$ is its own inverse, as is $-1$. 
+
+Now when you divide each of those vectors down by $2$ (which in $\mathbb{F}_3$ is the same as dividing by $-1$), they become:
+
+-   $\frac{1}{2}(2, 0, 0) = (1, 0, 0)$
+    
+-   $\frac{1}{2}(2, i, 0) = (1, -i, 0)$
+    
+-   $\frac{1}{2}(2, -i, 0) = (1, i, 0)$
+    
+
+You recover the exact same three projective points $\langle (1, 0, 0) \rangle$,  $\langle (1, -i, 0) \rangle$, and $\langle (1, i, 0) \rangle$.
+
+Note that in looking for the secant line points, we did not check for points at infinity. Let's do that now. 
+
+Plug $y_0 = 0$ into $f(x, x) = y_0^3 y_1 + y_1^3 y_0 = 0$: $(0)^3 y_1 + y_1^3 0$. This is $0$ for every non-zero $y_1 \in \mathbb{F}_9^\times$. Normalizing by $y_1$ gives the single projective point at infinity $\langle (0, 1, 0) \rangle$.
+
+We thus have exactly $q + 1 = 3 + 1 = 4$ isotropic points on the secant line:
+
+$$\langle (1, 0, 0) \rangle, \quad \langle (1, i, 0) \rangle, \quad \langle (1, -i, 0) \rangle, \quad \langle (0, 1, 0) \rangle$$
+        
+Notice why there are no totally isotropic lines in $PG(2, 9)$: a nondegenerate Hermitian form in dimension $d = 2$ has vector dimension $3$, so its maximum totally isotropic subspace has vector dimension $\lfloor 3/2 \rfloor = 1$, which is a projective point of rank $1$. To see totally isotropic lines of $q^2 + 1 = 10$ points over $\mathbb{F}_9$, you just add one more coordinate $+ x_3^4$ to move up to $H(3, 9)$ in $PG(3, 9)$.
+
+---
+
+**Aside:** In the construction of the two options for the form, why was the automorphism $\sigma$ on the first slot vs. the second slot of the sesquilinear form?
+
+Both conventions define the exact same mathematical object; the difference comes down to whether scalars are written on the left of vectors ($\lambda v$, standard in physics and intro linear algebra) or on the right of vectors ($v\lambda$, used by Tits and Ueberberg for skew fields).
+
+If $f$ is linear in the first slot and semilinear in the second: $f(ax, by) = a f(x, y) \sigma(b)$
+
+In Tits and Ueberberg's definition, $V$ is a right vector space ($v\lambda$), and $f$ is semilinear in the first slot and linear in the second:
+
+$$f(x\lambda, y\mu) = \sigma(\lambda) f(x, y) \mu$$
+
+Why does Tits/Ueberberg put $\sigma$ on the first slot? Because over a non-commutative skew field $K$,  $\sigma$ is an anti-automorphism ($\sigma(\alpha \beta) = \sigma(\beta)\sigma(\alpha)$). Putting $\sigma$ on the left and ordinary multiplication on the right makes the associativity law $f(x(\alpha\beta), y) = \sigma(\alpha\beta)f(x, y) = \sigma(\beta)\sigma(\alpha)f(x, y) = \sigma(\beta)f(x\alpha, y)$ work without reversing vector-scalar order, and allows matrix multiplication to be written cleanly as $x^* M y$ where $x^* = \sigma(x)^T$. Over a commutative field like $\mathbb{F}_9$ where $\sigma^2 = \text{id}$, applying $\sigma$ to the equation $f(x, y) = 0$ shows both conventions yield the exact same orthogonal vectors and the exact same isotropic points $f(x, x) = 0$.
+
 ### Orthogonal Polar Spaces / Non-Degenerate Quadrics $\mathcal{Q}$
 As we saw, the bilinear form is zero for all points of the projective space. This turns it into a symplectic space where $B(x, x) = 0$ for all points. The quadric however picks only a few points among these and carves out a separate polar space within it. Note that any two points orthogonal to each other in the symplectic space form a line in that space, but for a line in a quadric, we need an additional condition of $q(v)=0$ and $q(w)=0$. A line on the quadric is always a line on the symplectic, but a line of the symplectic space $S_\pi$ is a line of the quadric $S_q$ if and only if at least two of its points (and hence all of its points) lie on the quadric $S_q$. Otherwise, a line of $S_\pi$ only meets the quadric $S_q$ in one point (if the field is perfect, like $\mathbb{F}_{2^h}$) or zero points. Note that $S_q$ is not a subspace of $S_s$. A subspace requires every pair of points to be collinear/orthogonal but many points will not be collinear in a quadric (otherwise it would be its own maximal isotropic subspace). Instead, $S_q$ is called a sub-polar space (or an embedded subgeometry) of $S_s$.
 
