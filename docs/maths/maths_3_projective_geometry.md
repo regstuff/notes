@@ -2309,8 +2309,6 @@ This matters because in axiomatic and finite geometry, polar spaces are often de
 
 So very roughly speaking, a polar form is a fancy way of writing out the equation of some degree 2 curved surface (or hypersurface) inside a vector or projective space. If the dimension of the projective space is $d \ge 3$, this curved surface can be studied purely by geometric axioms as well.
 
-_**Generalized Quadrangle (`o === o`):** A rank 2 point-line geometry that has no triangles, and satisfies the "One-or-All" axiom: given any line $\ell$ and any point $P \notin \ell$, there is at most $1$ point on $\ell$ collinear with $P$ (in fact, for a generalized quadrangle, there is always a unique point $Q \in \ell$ and a unique line $P \vee Q$ connecting $P$ to $\ell$). A simple square is a thin generalized quadrangle ($2$ points per line, $2$ lines per point). A hyperbolic quadric $Q^+(3, q)$ in $PG(3, q)$ (two reguli of $q+1$ lines each) is a grid generalized quadrangle ($q+1$ points per line, $2$ lines per point)._
-
 ### One-or-All Axiom
 
 We showed why if two isotropic points are orthogonal, all pairs of points on the line formed by them will also be orthogonal. This sets up the stage for the famous One-or-All axiom (called the Buekenhout-Shult axiom) of abstract polar spaces.
@@ -2437,6 +2435,104 @@ Therefore, its Witt index is always the maximum possible value: $r = n = \frac{d
 Special Geometric Property (All Points Are Absolute): Because $f(x, x) = 0$ for every vector $x \in V$, EVERY point of the ambient projective space $PG(2n-1, K)$ is a point of the symplectic polar space $W(2n-1, K)$.
 
 Geometrically, every point $P$ lies inside its own polar hyperplane ($P \in P^\pi$). What makes $W(2n-1, K)$ a non-trivial polar space is that NOT every line of $PG(2n-1, K)$ is a line of $W(2n-1, K)$: through any point $P$, only the lines lying inside the hyperplane $P^\pi$ belong to the polar space.
+
+#### Example: Building the Symplectic Form $W(3, 3)$ in $PG(3, 3)$
+
+To build a non-trivial symplectic polar space, we cannot use a 2D projective plane $PG(2, q)$. A nondegenerate alternating bilinear form requires an even-dimensional vector space (because skew-symmetric matrices of odd size always have determinant $0$). Thus, the smallest non-trivial symplectic polar space lives in 3D projective space $PG(3, q)$ (vector dimension $4$).
+
+Let us construct the symplectic polar space $W(3, 3)$ in $PG(3, 3)$ over the finite field $\mathbb{F}_3 = \{0, 1, 2\}$ (where $2 \equiv -1 \pmod 3$).
+
+Let's start with the alternating bilinear form and matrix. In a symplectic space, the field automorphism is trivial ($\sigma = \text{id}$) and the sign constant is $\varepsilon = -1$, meaning the bilinear form $f(x, y)$ is alternating:
+
+$$f(x, x) = 0 \quad \text{and} \quad f(y, x) = -f(x, y)$$
+
+On $V = \mathbb{F}_3^4$, the standard nondegenerate alternating form splits the four coordinates into two hyperbolic pairs $(x_0, x_1)$ and $(x_2, x_3)$ using the skew-symmetric block matrix:
+
+$$M = \begin{pmatrix} 0 & 1 & 0 & 0 \\ -1 & 0 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & -1 & 0 \end{pmatrix}$$
+
+Multiplying $x^T M y$ gives the explicit equation of the symplectic form:
+
+$$f(x, y) = (x_0 y_1 - x_1 y_0) + (x_2 y_3 - x_3 y_2)$$
+
+We could add $(x_1 y_2 - x_2 y_1)$ and similar terms to the formula, and the resulting form is still alternating, reflexive, and nondegenerate. It would also define an isomorphic symplectic polar space $W(3, 3)$, just written in a less convenient basis.
+
+Adding $(x_1 y_2 - x_2 y_1)$ changes the matrix of the form to:
+
+$$M' = \begin{pmatrix} 0 & 1 & 0 & 0 \\ -1 & 0 & 1 & 0 \\ 0 & -1 & 0 & 1 \\ 0 & 0 & -1 & 0 \end{pmatrix}$$
+
+Because $M'$ is skew-symmetric ($M'^T = -M'$) with zero diagonal and determinant $1 \neq 0$, it is a valid nondegenerate alternating form.
+
+However, a fundamental theorem of linear algebra (Darboux's / Witt's theorem for alternating forms) states that every nondegenerate alternating bilinear form on a $2n$-dimensional vector space is equivalent, via a change of basis, to the standard block-diagonal form:
+
+$$f(x, y) = (x_0 y_1 - x_1 y_0) + (x_2 y_3 - x_3 y_2) + \dots + (x_{2n-2} y_{2n-1} - x_{2n-1} y_{2n-2})$$
+
+In fact, if you take this modified form $f'(x, y) = (x_0 y_1 - x_1 y_0) + (x_1 y_2 - x_2 y_1) + (x_2 y_3 - x_3 y_2)$ and rewrite it as:
+
+$$f'(x, y) = x_0 y_1 - x_1(y_0 - y_2) + (x_1 + x_2)y_2 - x_2(y_1 - y_3) + \dots \implies (x_0 - x_2)y_1 - x_1(y_0 - y_2) + x_2 y_3 - x_3 y_2$$
+
+then defining new coordinates $X_0 = x_0 - x_2$,  $X_1 = x_1$,  $X_2 = x_2$,  $X_3 = x_3$ turns $f'$ right back into $(X_0 Y_1 - X_1 Y_0) + (X_2 Y_3 - X_3 Y_2)$. We use the two-term decoupled form as our canonical coordinates because it pairs $(x_0, x_1)$ and $(x_2, x_3)$ cleanly without cross-talk.
+
+Plug $y = x$ into $f(x, y)$ to find the points of the symplectic polar space $W(3, 3)$:
+
+$$f(x, x) = (x_0 x_1 - x_1 x_0) + (x_2 x_3 - x_3 x_2) = 0 + 0 = 0$$
+
+Unlike a quadric or a Hermitian variety, which carves out a curved surface of points inside the ambient space, a symplectic form vanishes on every vector in $V$. Therefore, the point set of $W(3, 3)$ is the entire ambient projective space $PG(3, 3)$:
+
+$$\text{Total Points} = \frac{3^4 - 1}{3 - 1} = 3^3 + 3^2 + 3 + 1 = 40 \text{ points}$$
+
+Where does the geometry come from if every point is included? It comes from the lines. Only a fraction of the lines of $PG(3, 3)$ are totally isotropic lines ($f(x, y) = 0$).
+
+Thus there are two kinds of lines in the ambient projective space and in every polar hyperplane: symplectic lines which are lines belonging to the polar space (where each pair of points is orthogonal, and every point is isotropic anyway in symplectic forms); and lines that belong just to the ambient space. 
+
+Take the point $P = \langle (1, 0, 0, 0) \rangle$. What is its polar hyperplane $P^\pi$? Set $f(P, y) = 0$:
+
+$$(1)y_1 - (0)y_0 + (0)y_3 - (0)y_2 = 0 \implies y_1 = 0$$
+
+Notice that the coordinates of $P = (1, 0, 0, 0)$ satisfy $y_1 = 0$, confirming that $P \in P^\pi$. In a symplectic polarity, every point in $PG(3, q)$ lies inside its own polar plane (these are called null polarities in classical geometry).
+
+Look at what lines in $PG(3, 3)$ pass through $P = \langle (1, 0, 0, 0) \rangle$:
+
+* In $PG(3, 3)$, there are $3^2 + 3 + 1 = 13$ projective lines passing through $P$.
+* A line $PQ$ is a line of the symplectic polar space $W(3, 3)$ if and only if $f(P, Q) = 0$, which means $Q$ must lie inside the polar plane $P^\pi$ ($y_1 = 0$).
+* Inside the 2D plane $P^\pi$ ($y_1 = 0$), the lines passing through $P$ form a flat pencil of $3 + 1 = 4$ lines.
+
+This gives the signature geometric visual of $W(3, q)$: at every point $P$ in 3D space, the symplectic lines passing through $P$ do not point in all directions—they form a flat 2D fan (pencil) of $q + 1 = 4$ lines lying inside the plane $P^\pi$. As you move the point $P$ around 3D space, this flat plane of lines twists like a propeller (in continuum mechanics and optics, this structure is called a linear line complex).
+
+Let us test two lines inside the polar plane $y_1 = 0$:
+
+**A Totally Isotropic Line (Line of $W(3, 3)$) through $P = \langle (1, 0, 0, 0) \rangle$:**
+
+Pick any point $Q$ in the plane $y_1 = 0$, say $Q = \langle (0, 0, 1, 0) \rangle$. Since $f(P, Q) = 0$, the entire projective line $PQ$ consists of points satisfying $f(x, y) = 0$. Its $q + 1 = 4$ points over $\mathbb{F}_3$ are:
+
+$$\langle (1, 0, 0, 0) \rangle, \quad \langle (0, 0, 1, 0) \rangle, \quad \langle (1, 0, 1, 0) \rangle, \quad \langle (1, 0, 2, 0) \rangle$$
+
+In fact, as we saw, any line (of the 4) through $P$ lying on this plane will be a symplectic line. How do we find these 4 lines without difficulty? Geometrically, in any 2D projective plane $E$, if you want to list all lines passing through a fixed point $P \in E$ without counting the same line twice, you pick any line $L \subset E$ that does not pass through $P$ to act as a "screen" (a transversal line). Because two lines in a projective plane always intersect in a unique point, every line through $P$ hits the screen line $L$ at a unique point $Q_i$, so the lines through $P$ are simply $PQ_1, PQ_2, \dots, PQ_{q+1}$.
+
+Let's do this now. Inside the plane $y_1 = 0$, the simplest line missing $P = \langle (1, 0, 0, 0) \rangle$ is the line formed by setting the first coordinate $y_0$ to zero as well:  $y_0 = y_1 = 0$. The points on $y_0 = y_1 = 0$ are all vectors of the form $\langle (0, 0, y_2, y_3) \rangle$ (and so $P$ does not satisfy it), which over $\mathbb{F}_3$ gives the $3 + 1 = 4$ points:
+
+$$Q_1 = \langle (0, 0, 1, 0) \rangle, \quad Q_2 = \langle (0, 0, 0, 1) \rangle, \quad Q_3 = \langle (0, 0, 1, 1) \rangle, \quad Q_4 = \langle (0, 0, 1, 2) \rangle$$
+
+The four symplectic lines through $P$ can be spanned by connecting $P$ to these four points.
+
+**A Non-Isotropic (Hyperbolic) Line NOT in $W(3, 3)$:**
+
+What if we take a line $L$ that lives inside the plane $y_1 = 0$, but does not pass through $P$? Take $R = \langle (0, 0, 1, 0) \rangle$ and $S = \langle (0, 0, 0, 1) \rangle$. Both $R$ and $S$ lie in $P^\pi$ ($y_1 = 0$) and pass through $P$, so $PR$ and $PS$ are symplectic lines.
+
+Now check whether the line $RS$ connecting them is a symplectic line by computing $f(R, S)$: $f(R, S) = (0)(0) - (0)(0) + (1)(1) - (0)(0) = 1 \neq 0$.
+
+Because $f(R, S) = 1 \neq 0$, the line $RS$ is not a line of the symplectic polar space! Even though $P^\pi$ is a plane in $PG(3, 3)$, it is not a totally isotropic plane—only the lines in $P^\pi$ that pass through the pole $P$ are symplectic lines.
+
+Now let's check if the One-or-All axiom is satisfied by these lines. Because the maximum dimension of a totally isotropic subspace in $V = \mathbb{F}_3^4$ is $\frac{1}{2}(4) = 2$ (which is a projective line of dimension $1$), $W(3, 3)$ contains no totally isotropic planes. Thus, $W(3, 3)$ has rank 2 and is a Generalized Quadrangle $GQ(3, 3)$:
+
+* Every symplectic line has $s + 1 = 4$ points.
+* Every point lies on $t + 1 = 4$ symplectic lines (the flat pencil inside $P^\pi$).
+* Total number of symplectic lines in $W(3, 3)$: We can calculate this by equating the flags formed by points and lines via double counting. Since there are $40$ points, each on $4$ lines, and each line has $4$ points, there are $\frac{40 \times 4}{4} = 40$ symplectic lines in total (out of the $130$ total lines of $PG(3, 3)$).
+
+Let us verify the One-or-All axiom on our points $P, R, S$. Take the symplectic line $g = PS = \langle (1, 0, 0, 0), (0, 0, 0, 1) \rangle$ and the external point $R = \langle (0, 0, 1, 0) \rangle \notin g$. Which points $Y = (1, 0, 0, 0) + \lambda(0, 0, 0, 1) = (1, 0, 0, \lambda)$ on the line $g$ are collinear with $R$ in $W(3, 3)$?
+
+Set $f(R, Y) = 0$: $f\big((0, 0, 1, 0), (1, 0, 0, \lambda)\big) = (0)(0) - (0)(1) + (1)(\lambda) - (0)(0) = \lambda = 0$
+
+The unique solution is $\lambda = 0$, which corresponds to the single point $P = \langle (1, 0, 0, 0) \rangle$ on $g$. Thus $R$ is joined by a symplectic line to $P$ ($f(R, P) = 0$), and to no other point on $g$ (preventing the triangle $PRS$ from forming).
 
 ### Unitary (Hermitian) Spaces $\mathcal{H}(n, q^2)$
 #### The Field Automorphism
@@ -2915,6 +3011,52 @@ More generally, for a polar space of rank $n$, if we fix a generator (node), all
 If we fix a flag of low-dimensional subspaces and look at the last two nodes, they form a rank $2$ polar space, which is a Generalized Quadrangle (a thick square `o === o`, because the "1-or-all" axiom forbids triangles).
 
 If you fix a point $p$ in a nondegenerate polar space $S$ of rank $n \ge 3$, and look at all the lines, planes, and higher subspaces of $S$ passing through $p$ (the residue $S_p$), they form a nondegenerate polar space of rank $n - 1$. This makes sense if you look at the diagram. Drop the leftmost node (points), and it looks pretty much like a polar space, provided $n \ge 3$.
+
+### Generalized Quadrangles (`o === o`)
+
+As we saw in the diagram, the rank-2 geometry we get from the residue of a flag containing all but the two highest dimensional elements is a generalized quadrangle. What exactly is a generalized quadrangle? It is a rank 2 point-line geometry that has no triangles, and satisfies the "One" in the One-or-All axiom: given any line $\ell$ and any point $P \notin \ell$, there is at most $1$ point on $\ell$ collinear with $P$. In fact, for a generalized quadrangle, there is always a unique point $Q \in \ell$ and a unique line $P \vee Q$ connecting $P$ to $\ell$. Because there are no planes inside the geometry, the "All" case of the One-or-All axiom can never occur. 
+
+In fact, for a generalized quadrangle, two points are joined by either zero or one line (at most one line) and two lines intersect at either zero or one point (at most one point). But given any line $g$ and any point $p$ not on $g$, there is exactly one point $q$ on $g$ that is collinear with $p$ (and therefore exactly one line $t = pq$ in the geometry passing through $p$ and meeting $g$).
+
+Why "Generalized"? In an ordinary single square (4 points and 4 lines), every line has only 2 points and every point lies on 2 lines. A generalized quadrangle keeps the exact same "no triangles, unique projection onto any line" rule, while allowing every line to have $s + 1$ points and every point to have $t + 1$ lines passing through it (denoted $GQ(s, t)$). 
+
+A simple square is a thin generalized quadrangle ($2$ points per line, $2$ lines per point). A hyperbolic quadric $Q^+(3, q)$ in $PG(3, q)$ (two reguli of $q+1$ lines each) is a grid generalized quadrangle ($q+1$ points per line, $2$ lines per point).
+
+As we saw earlier, there are no hollow triangles in a polar space. In rank $\ge 3$ (e.g., the Klein quadric $Q^+(5, K)$, where planes exist in the polar space), you can have three lines $AB, BC, CA$ forming a triangle on the quadric, because the point $A$ chooses the "all" option with respect to the line $BC$. Every line joining $A$ to any point $D \in BC$ lies on the quadric, so the triangle is filled in to form a complete projective plane $\langle A, B, C \rangle$ lying inside the polar space. Thus, triangles exist, as long as they are filled in (no hollow triangles).
+
+In rank $2$ polar spaces, where no planes exist in the polar space (such as the hyperbolic quadric $Q^+(5, K)$), there can be no filled triangles, and since there anyway cannot be hollow triangles either, there are no triangles at all. Thus, we end up generalized quadrangles which have no triangles in them.
+
+Let us check how the regulus grid $Q^+(3, K)$ fits this definition:
+
+-   Points: The points on the hyperbolic quadric $Q^+(3, K)$.
+
+-   Lines: The lines in the two rulings $\mathcal{R} \cup \mathcal{T}$ (no secant or external lines from $PG(3, K)$ are included—only the grid lines lying on the surface).
+
+-   Check the GQ rule: Pick any line $g$ on the hyperboloid (say, a vertical line in $\mathcal{R}$) and any point $p$ on the hyperboloid not on $g$. Through $p$, there are exactly two lines of the surface: one vertical line $g' \in \mathcal{R}$ (which is skew to $g$ and never meets it) and one horizontal transversal line $t \in \mathcal{T}$ (which crosses $g$ at a single unique point $q$).
+    
+-   Thus, from $p \notin g$, there is a unique line $t$ on the surface that meets $g$ at a unique point $q$. Over a finite field $\mathbb{F}_q$, every line has $q + 1$ points ($s = q$) and every point has $2$ lines through it ($t = 1$), so the regulus grid is the generalized quadrangle $GQ(q, 1)$.
+
+---
+
+**Aside:** The difference between a "hollow" triangle and a "filled" triangle comes down to whether the interior points and interior lines of the plane $\langle A, B, C \rangle$ actually belong to the polar space $S$, or only to the ambient projective space $PG(d, K)$.
+
+Suppose $A, B, C$ are three non-collinear points of a polar space $S$, and the three boundary lines $AB$,  $BC$, and $CA$ all belong to $S$. Now pick an intermediate point $D$ on the line $BC$ (different from $B$ and $C$), and consider the line $AD$ in the ambient projective space $PG(d, K)$ that cuts across the middle of the triangle:
+
+```
+           A
+          /|\
+         / | \
+        /  |  \      <-- Does this interior line AD belong to the polar space S,
+       /   |   \         or does it poke out into the ambient space?
+      B----D----C
+
+```
+
+What a "Hollow" Triangle Would Be (Impossible in a Polar Space): A triangle $ABC$ would be "hollow" if the three outer boundary lines $AB$,  $BC$, and $CA$ belonged to the polar space $S$ (for instance, lying on the surface of a quadric), while the interior cross-lines like $AD$ poked _off_ the quadric into the ambient projective space (so $AD$ is only a secant line meeting the quadric at $A$ and $D$, and the points in the middle of $AD$ are not on the quadric). Why is this impossible? Because $A$ is already joined by lines of $S$ to two points on $BC$ (namely $B$ and $C$). By the One-or-All axiom,  $A$ must be collinear in $S$ with _every_ point $D$ on $BC$—meaning the entire line $AD$ is forced to lie inside $S$.
+    
+What a "Filled" Triangle Is (A Projective Plane inside $S$): Because every line $AD$ joining $A$ to any point $D \in BC$ lies completely inside the polar space $S$, and every line joining a point on $AB$ to a point on $AC$ also lies completely inside $S$, the polar space $S$ contains not just the three outer boundary lines $AB, BC, CA$, but every single point and every single line of the 2D projective plane $\langle A, B, C \rangle$.
+    
+In algebra, if the three vectors $v_A, v_B, v_C$ are isotropic ($q(v_A)=q(v_B)=q(v_C)=0$) and pairwise orthogonal ($f(v_A, v_B) = f(v_B, v_C) = f(v_C, v_A) = 0$ so that the three boundary lines lie on the quadric), then by linearity _every_ linear combination $\alpha v_A + \beta v_B + \gamma v_C$ in their 3-dimensional vector span satisfies $q(\alpha v_A + \beta v_B + \gamma v_C) = 0$. Thus, you can never have just the three boundary lines of a triangle lying on a quadric without the entire 2D flat plane $\langle A, B, C \rangle$ lying on the quadric.
 
 ### The Classical Tits-Veldkamp Definition of Polar Spaces
 This definition is superseded by the One-or-All axiom but it tells us quite a bit about the properties of polar spaces. So let's go through it here. Additionally, it ties back to the diagram in its first point about projective spaces. 
