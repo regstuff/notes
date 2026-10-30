@@ -2985,6 +2985,41 @@ Because the three outer prongs of $D_4$ (Points, Generator Family 1, Generator F
 
 Outside of those special low-rank coincidences ($n = 2$ with $e = 1$, and $n = 3, 4$ with $e = 0$ splitting the generators into two families), a polar space does not have equal numbers of points and generators; flipping a polar space diagram backwards creates a distinct geometry known as a Dual Polar Space.
 
+### How Many Polar Spaces Can Exist In An Ambient Space
+There are many distinct polar spaces living inside the same ambient projective space $PG(n, K)$, just as you can draw many different circles of radius 1 on the same 2D plane. However, we have only one canonical form. Calling the form "canonical" does not mean there is only one physical set of lines in $PG(n, K)$; it means that all nondegenerate polar spaces (of the same family and index) in $PG(n, K)$ are projectively isomorphic to one another, and any one of them can be written using that exact same standard equation once you choose the right basis (coordinate system) for $V$.
+
+Thus two polar spaces in $PG(n, \mathbb{F}_q)$ of the same family and the same rank (Witt index) can always be mapped onto one another by a collineation of $PG(n, \mathbb{F}_q)$. (Note that a hyperbolic quadric $Q^+(3, q)$ of rank 2 and an elliptic quadric $Q^-(3, q)$ of rank 1 have different Witt indices, so no change of coordinates over $\mathbb{F}_q$ can ever turn one into the other—which is why each gets its own separate canonical form.)
+
+We will discuss symplectic paces as an example here. Suppose we fix a basis $\{e_0, e_1, e_2, e_3\}$ of $V = K^4$ ($PG(3, K)$) and write down two different alternating bilinear forms in those fixed coordinates:
+    
+$$f_1(x, y) = (x_0 y_1 - x_1 y_0) + (x_2 y_3 - x_3 y_2)$$
+    
+$$f_2(x, y) = (x_0 y_2 - x_2 y_0) + (x_1 y_3 - x_3 y_1)$$
+    
+As subsets of lines in $PG(3, K)$, the polar spaces $W_1$ and $W_2$ defined by $f_1$ and $f_2$ are different! For example, take the line $L$ passing through $\langle e_0 \rangle = \langle (1, 0, 0, 0) \rangle$ and $\langle e_2 \rangle = \langle (0, 0, 1, 0) \rangle$:    
+
+-   In $W_1$,  $f_1(e_0, e_2) = 0$, so $L$ is a symplectic line of $W_1$.
+    
+-   In $W_2$,  $f_2(e_0, e_2) = 1 \neq 0$, so $L$ is not a symplectic line of $W_2$.
+    
+But both Share the same canonical form (Gram–Schmidt for Bilinear Forms). Why do we say $f_1(x, y) = (x_0 y_1 - x_1 y_0) + (x_2 y_3 - x_3 y_2)$ is _the_ canonical form if $f_2$ looks different? Because if we simply swap the labels of our second and third basis vectors ($e_1' = e_2$ and $e_2' = e_1$), the equation for $f_2$ in the new basis $\{e_0, e_1', e_2', e_3\}$ becomes $(x_0' y_1' - x_1' y_0') + (x_2' y_3' - x_3' y_2')$, which is identical to $f_1$.
+
+More generally,  any nondegenerate alternating form $f$ on $V = K^{2m}$ can be put into this exact canonical equation by building a symplectic basis step by step (the symplectic analogue of Gram–Schmidt orthogonalization):
+
+Pick any non-zero vector $u_1 \in V$. Since $f$ is nondegenerate,  $u_1$ cannot be orthogonal to the entire space, so there exists some vector $v_1 \in V$ such that $f(u_1, v_1) = c \neq 0$.
+    
+Rescale $v_1$ by $1/c$ so that $f(u_1, v_1) = 1$. Now the 2D subspace $H_1 = \langle u_1, v_1 \rangle$ is a hyperbolic plane where $f$ has the matrix $\begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$ and equation $x_0 y_1 - x_1 y_0$.
+    
+Slice out the orthogonal complement $H_1^\perp = \{ w \in V \mid f(u_1, w) = f(v_1, w) = 0 \}$. Because $H_1$ is nondegenerate,  $V$ splits cleanly as $V = H_1 \oplus H_1^\perp$, and $f$ restricted to $H_1^\perp$ is again nondegenerate of dimension $2m - 2$.
+    
+Repeat this process $m$ times on $H_1^\perp$ to get a basis $\{u_1, v_1, u_2, v_2, \dots, u_m, v_m\}$ in which the matrix of $f$ is the block-diagonal canonical matrix:
+
+$$J = \text{diag}\left(\begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}, \dots, \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}\right)$$
+    
+What This Means Geometrically (Projective Equivalence / Collineations): In linear algebra, saying any nondegenerate alternating matrix $M$ can be brought to the canonical matrix $J$ by a change of basis matrix $A \in GL(2m, K)$ means: $A^T M A = J$.
+
+In projective geometry, an invertible matrix $A \in GL(2m, K)$ induces a projective collineation (an automorphism of $PG(2m-1, K)$ that maps points to points and lines to lines). Therefore any two symplectic polar spaces $W_1$ and $W_2$ in $PG(n, K)$ can be mapped onto each other by a projective transformation $A$ of the ambient space $PG(n, K)$.
+
 ### Polar Spaces Have the Same Diagram ($C_n$) as a Cube
 
 Let us trace how the diagram of a polar space of rank $3$ (types $0 = \text{points}$, $1 = \text{lines}$, $2 = \text{planes lying inside the polar space}$) is built by taking residues, and compare it directly to the 3D cube:
