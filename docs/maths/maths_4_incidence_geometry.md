@@ -197,7 +197,7 @@ Graphs come first, because the tools of later chapters work on graphs.
 
 #### Neighbours and regularity
 
-A graph $\Gamma = (V, E)$ is a nonempty set $V$ of vertices and a set $E$ of edges, each edge being a set of two vertices; the letters $V$ and $E$ are local to this definition. So there are no loops (an edge from a vertex to itself) and no repeated edges. Two vertices joined by an edge are **adjacent**, or **neighbours**, and we write $x \sim y$. The number of neighbours of $x$ is its **valency**, also called its degree. The graph is **regular** with valency $k$ when every vertex has exactly $k$ neighbours. An isomorphism of graphs is a bijection of the vertices that maps the edges exactly onto the edges, and an isomorphism of a graph to itself is an automorphism.
+A graph $\Gamma = (V, E)$ is a nonempty set $V$ of vertices and a set $E$ of edges, each edge being a set of two vertices. The letters $V$ and $E$ name the vertices and edges only in this definition, because later chapters need them for other things: $V$ for a vector space, and $E$ for a projector, as in the prologue. After this we say "vertices" and "edges" in words. Because an edge is a set of two vertices, there are no loops (an edge from a vertex to itself) and no repeated edges. Two vertices joined by an edge are **adjacent**, or **neighbours**, and we write $x \sim y$. The number of neighbours of $x$ is its **valency**, also called its degree. The graph is **regular** with valency $k$ when every vertex has exactly $k$ neighbours. An isomorphism of graphs is a bijection of the vertices that maps the edges exactly onto the edges, and an isomorphism of a graph to itself is an automorphism.
 
 Some names save words. $C_n$ is the $n$-cycle: $n$ vertices round a ring, each joined to the next. $K_n$ is the complete graph on $n$ vertices, with every pair joined. $2K_3$ is two separate triangles: two copies of $K_3$ side by side with no edge between them. Figure 1 shows the triangle $C_3 = K_3$, the hexagon $C_6$ and $2K_3$.
 
@@ -206,6 +206,10 @@ Some names save words. $C_n$ is the $n$-cycle: $n$ vertices round a ring, each j
 *Figure 1. Three graphs in which every vertex has exactly two neighbours: the triangle $C_3 = K_3$, the hexagon $C_6$ and two separate triangles $2K_3$.*
 
 All three are regular with valency $2$, yet they are different graphs. The hexagon and the two triangles even have the same numbers of vertices and edges, yet one is a single ring and the other falls apart. Valency is local information, and it cannot tell these graphs apart.
+
+**Cliques.** A **clique** is a set of mutually adjacent vertices. A **maximal clique** is a clique that no larger clique contains. In the two triangles, each triangle is a maximal clique. The hexagon has no triangles, so its maximal cliques are its six edges. Maximal does not mean largest. Take a triangle on the vertices $1, 2, 3$ and add a fourth vertex $4$ joined only to $3$. The edge $\{3, 4\}$ is then a maximal clique, because no vertex is adjacent to both $3$ and $4$, even though the triangle is a bigger clique.
+
+Cliques come back three times. A disjoint union of cliques is one of the trivial cases of [strongly regular graphs](#complements-cliques-and-the-trivial-cases). And the lines of most [generalized polygons](#what-is-being-generalized), like the [generators of a polar space](#back-to-titss-axioms), turn out to be exactly the maximal cliques of a graph built from the geometry, so the geometry can be rebuilt from that graph.
 
 #### Paths, geodesics and distance
 
@@ -296,7 +300,7 @@ Check the table: the connected, bipartite hexagon has $2$ once and pairs $\pm 2$
 
 ---
 
-More graph words, such as complements, cliques, multipartite graphs and distance-regular graphs, arrive where they are first used, in [strongly regular and distance-regular graphs](#strongly-regular-and-distance-regular-graphs).
+More graph words, such as complements, multipartite graphs and distance-regular graphs, arrive where they are first used, in [strongly regular and distance-regular graphs](#strongly-regular-and-distance-regular-graphs).
 
 ### Point-line geometries
 
@@ -673,7 +677,7 @@ A generalized 2-gon is a digon, and a **generalized polygon** is a generalized $
 
 ## Strongly Regular and Distance-Regular Graphs
 
-<!-- terms checked: strongly regular; distance-regular; complement; clique; walk; standard sequence; minimal idempotents; primitive -->
+<!-- terms checked: strongly regular; distance-regular; complement; walk; standard sequence; minimal idempotents; primitive -->
 
 Take a generalized quadrangle with 3 points on every line and 4 lines through every point, so that its order is $(s,t) = (2,3)$. The counts from [the first look at generalized quadrangles](#generalized-quadrangles-a-first-look) give it $(s+1)(st+1) = 21$ points and $(t+1)(st+1) = 28$ lines. Each point is collinear with $s(t+1) = 8$ others and non-collinear with the remaining 12.
 
@@ -756,7 +760,7 @@ To see $\bar\lambda$, take $x$, $y$ non-adjacent in $\Gamma$. Of the other $v - 
 
 Two families satisfy the definition for a dull reason.
 
-- A **clique** is a set of mutually adjacent vertices. The disjoint union of $r \ge 2$ cliques of size $m \ge 2$ is $\mathrm{srg}(rm, m-1, m-2, 0)$. Conversely, $\mu = 0$ forces this shape. Two vertices at distance 2 would have a common neighbour, so no two vertices are at distance 2. Each connected component is then a clique, and regularity makes the cliques equal in size. So a strongly regular graph is disconnected exactly when $\mu = 0$.
+- A [clique](#neighbours-and-regularity) is a set of mutually adjacent vertices. The disjoint union of $r \ge 2$ cliques of size $m \ge 2$ is $\mathrm{srg}(rm, m-1, m-2, 0)$. Conversely, $\mu = 0$ forces this shape. Two vertices at distance 2 would have a common neighbour, so no two vertices are at distance 2. Each connected component is then a clique, and regularity makes the cliques equal in size. So a strongly regular graph is disconnected exactly when $\mu = 0$.
 - A **complete multipartite** graph has its vertices split into $r \ge 2$ parts of size $m \ge 2$, with two vertices adjacent exactly when they lie in different parts. It is the complement of $r$ disjoint cliques, and it is $\mathrm{srg}(rm, (r-1)m, (r-2)m, (r-1)m)$, with $\mu = k$. Conversely, $\mu = k$ forces this shape. Two non-adjacent vertices then have the same $k$ neighbours, so non-adjacency is an equivalence relation, and its classes are the parts. Two examples: $T(4) = \mathrm{srg}(6, 4, 2, 4)$, whose parts are the complementary pairs $\{12, 34\}$, $\{13, 24\}$, $\{14, 23\}$; and the complete bipartite graph $K_{3,3}$ ([defined in the gallery](#small-geometries-that-test-the-definitions)), which is $\mathrm{srg}(6, 3, 0, 3)$.
 
 A strongly regular graph is **primitive**, or nontrivial, if neither it nor its complement is a disjoint union of cliques. By the two characterizations, that means $0 < \mu < k$, or equivalently that both $\Gamma$ and $\overline{\Gamma}$ are connected. The others are imprimitive, or trivial. The absolute bound in the next section fails for them, and the paragraph "Why primitive" there shows how.
@@ -1303,7 +1307,7 @@ The two smallest cases are old friends.
 - **$n = 3$.** These are the projective planes, possibly degenerate (a degenerate one is a near-pencil, see [small geometries that test the definitions](#small-geometries-that-test-the-definitions)). Two points lie in a common triangle, so some line joins them; two lines lie in a common triangle, so they meet.
 - **$n = 4$.** These are the generalized quadrangles, and for them the axioms simplify to the two in [the first look at generalized quadrangles](#generalized-quadrangles-a-first-look): two disjoint lines exist, and for every anti-flag $(x, L)$ exactly one point of $L$ is collinear with $x$.
 
-From $n = 4$ on, the point graph carries everything. With no triangles in the geometry, a set of mutually collinear points (a clique, as in [strongly regular graphs](#strongly-regular-graphs)) cannot spread over two lines, because three mutually collinear points not on one line form a triangle. So the maximal cliques of the point graph are exactly the lines, and the geometry can be rebuilt from its graph: the points are the vertices and the lines are the maximal cliques. Two generalized $n$-gons with $n \ge 4$ are isomorphic exactly when their point graphs are. This does not even need an order: in the $2 \times 3$ grid, a quadrangle with lines of two sizes, the maximal cliques are exactly its 2 rows and 3 columns.
+From $n = 4$ on, the point graph carries everything. With no triangles in the geometry, a set of mutually collinear points (a [clique](#neighbours-and-regularity)) cannot spread over two lines, because three mutually collinear points not on one line form a triangle. So the maximal cliques of the point graph are exactly the lines, and the geometry can be rebuilt from its graph: the points are the vertices and the lines are the maximal cliques. Two generalized $n$-gons with $n \ge 4$ are isomorphic exactly when their point graphs are. This does not even need an order: in the $2 \times 3$ grid, a quadrangle with lines of two sizes, the maximal cliques are exactly its 2 rows and 3 columns.
 
 This fails for $n = 3$. In a projective plane any two points are collinear, so the point graph is complete and remembers only the number of points. There are four projective planes of order 9, no two of them isomorphic, and all four have the same point graph $K_{91}$, since $9^2 + 9 + 1 = 91$. So from $n = 4$ on we may work with the point graph alone, and the Feit–Higman theorem is a theorem about that graph.
 
@@ -1723,7 +1727,7 @@ Why rank one less? Every line through $a$ has exactly one point collinear with $
 
 These are steps 3 and 4.
 
-**Cliques fill subspaces.** The subspace generated by a set is built in rounds ([Point-line geometries](#point-line-geometries)), each adding every point on a line through two points already present. If the points so far are pairwise collinear, so are the new ones: an old point sees the two points spanning a new point's line, hence the new point, and two new points are handled by the same argument twice. So a clique (pairwise collinear points, [Strongly regular graphs](#strongly-regular-graphs)) generates a singular subspace. On the Klein quadric, the pairwise collinear points $e_0$, $e_2$, $e_4$ gain $e_0+e_2$, $e_0+e_4$ and $e_2+e_4$ in the first round and $e_0+e_2+e_4$ in the second, filling the singular Fano plane $x_1 = x_3 = x_5 = 0$: the earlier notes' "no hollow triangles".
+**Cliques fill subspaces.** The subspace generated by a set is built in rounds ([Point-line geometries](#point-line-geometries)), each adding every point on a line through two points already present. If the points so far are pairwise collinear, so are the new ones: an old point sees the two points spanning a new point's line, hence the new point, and two new points are handled by the same argument twice. So a [clique](#neighbours-and-regularity) of pairwise collinear points generates a singular subspace. On the Klein quadric, the pairwise collinear points $e_0$, $e_2$, $e_4$ gain $e_0+e_2$, $e_0+e_4$ and $e_2+e_4$ in the first round and $e_0+e_2+e_4$ in the second, filling the singular Fano plane $x_1 = x_3 = x_5 = 0$: the earlier notes' "no hollow triangles".
 
 **A point outside.** Let $S$ be a singular subspace and $x$ a point outside it. Then $x^\perp \cap S$ is a subspace of $S$ that meets every line of $S$, by one-or-all, so it is $S$ or a hyperplane of $S$ in the sense of [Point-line geometries](#point-line-geometries). If $S$ is a generator, it cannot be all of $S$, or $x$ and $S$ would span a bigger singular subspace. So $x$ sees a hyperplane $Y$ of $S$, and $x$ and $Y$ span another generator $M$. To check that $M$ is maximal, suppose a point $z$ outside $M$ saw all of $M$, and take $s$ in $S$ outside $Y$. Then $s$ does not see $x$, so it sees one point $w \neq x$ of the line $xz$. That point sees $Y$ (as $x$ and $z$ do) and $s$, hence all of $S$; and $w$ is not in $S$, since otherwise $w$ would lie in $x^\perp \cap S = Y \subseteq M$ and pull $z$ into $M$. So $S$ was not maximal, a contradiction. That is Tits's third axiom, waiting for dimensions.
 
