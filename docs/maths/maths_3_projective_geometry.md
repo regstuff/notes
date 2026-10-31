@@ -1253,6 +1253,8 @@ A point, a line, a plane etc. are each elements of a different geometric type. W
 
 A chamber is a maximal flag of a geometry, a flag whose type set equals the entire type set $I$ of the geometry ($\text{type}(F) = I$). Because a flag can contain at most one element of each type, a chamber contains exactly one element of every available type in $I$, all mutually incident with one another. Consequently, its corank is $0$ (there are no missing types left to add).
 
+We'll also define an antiflag for completeness. It is a pair of any elements of the geometry that are not incident on each other. Antiflags are always pairs of elements unlike flags, which can have more than two elements. This is because incidence is transitive. $V_1 \subset V_2$ and $V_2 \subset V_3$ implies $V_1 \subset V_3$. This is not the case with antiflags.
+
 Note that a flag does not need to include elements that are of successive dimensions i.e. a point on a line or a line on a plane. A point on a plane or a point on a hyperplane are also valid flags. Only a chamber (a maximal flag of type $I$) is required to contain every type without skipping any.
 
 A flag can be extended to a chamber by iteratively finding higher-dimensional elements containing lower-dimensional ones all the way to the maximal dimension, and also filling in any missing lower-dimensional elements and intermediate-dimensional elements. Because a starting flag $F$ can contain any subset of types in $I$, extending $F$ to a chamber means finding one element for every missing type in $I \setminus \text{type}(F)$ so that the entire collection is mutually incident.
