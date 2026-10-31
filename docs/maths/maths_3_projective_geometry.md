@@ -1491,14 +1491,11 @@ Find the connection between Node $1$ (edges) and Node $2$ (faces): Fix the remai
 
 Find the connection between Node $0$ (vertices) and Node $2$ (faces): Fix the remaining type: pick a single Edge (type $1$). What are the vertices on that edge, and what are the faces through that edge? There are $2$ vertices at the ends of the edge and $2$ faces meeting along that edge. Every vertex on that edge automatically lies in every face containing that edge. That is a generalized digon. So between Node $0$ and Node $2$, we draw no edge at all.
 
-Putting these together gives the diagram of the cube (called the $B_3$ / $C_3$ diagram):
+Putting these together gives the diagram of the cube (called the $B_3$ / $C_3$ diagram), shown in Figure 1:
 
-```
-   0 (Vertices)          1 (Edges)          2 (Faces)
-       o =================== o ----------------- o
-          (Square / 4-gon)      (Triangle / PP)
+![Buekenhout-Tits diagram of the 3D cube with three 3D residue insets showing a square face, a triangular vertex figure, and an edge digon](figures/maths3_diagrams_cube.png)
 
-```
+*Figure 1. Buekenhout-Tits ($B_3 / C_3$) diagram of the 3D cube over types $0$ (vertices), $1$ (edges), and $2$ (faces), together with the three rank-$2$ residues that determine its bonds. (a) Fixing a face leaves its $4$ vertices and $4$ edges, which form a square ($4$-gon, double bond between $0$ and $1$). (b) Fixing a vertex $v$ leaves the $3$ edges and $3$ faces meeting at that corner, whose cross-section is a triangle (thin projective plane, single bond between $1$ and $2$). (c) Fixing an edge leaves its $2$ endpoint vertices and $2$ incident faces, every vertex lying in every face (generalized digon, no edge between $0$ and $2$).*
 
 Notice why Node $0$ and Node $2$ are placed on opposite ends with Node $1$ in the middle: because Node $0$ and Node $2$ have no edge between them, placing Node $1$ in the middle makes the diagram a clean straight line.
 
@@ -1512,14 +1509,11 @@ Now let us do the exact same 4 steps for $PG(3, q)$, where $I = \{0 \text{ (poin
 
 - Between $0$ (points) and $2$ (planes) — Fix a Line (type $1$): Every point on the fixed line automatically lies inside every plane passing through that line. That is a generalized digon, so we draw no edge between $0$ and $2$.
 
-This gives the $A_3$ diagram for $PG(3, q)$:
+This gives the $A_3$ diagram for $PG(3, q)$, shown in Figure 2:
 
-```
-   0 (Points)            1 (Lines)          2 (Planes)
-       o ----------------- o ----------------- o
-         (Projective Plane)  (Projective Plane)
+![Buekenhout-Tits A3 diagram of 3D projective space PG(3, q) with three residue insets for a fixed plane, fixed point, and fixed line](figures/maths3_diagrams_pg3.png)
 
-```
+*Figure 2. Buekenhout-Tits ($A_3$) diagram of $3$-dimensional projective space $\mathrm{PG}(3, q)$ over types $0$ (points), $1$ (lines), and $2$ (planes), paired with its three rank-$2$ residues. (a) Fixing a plane $\Pi$ leaves the points and lines inside $\Pi$, which form a projective plane $\mathrm{PG}(2, q)$ (illustrated at $q = 2$ by the Fano plane; single bond between $0$ and $1$). (b) Fixing a point $P$ leaves the star of lines and planes through $P$, which also forms $\mathrm{PG}(2, q)$ (single bond between $1$ and $2$). (c) Fixing a line $\ell$ leaves the $q + 1$ points on $\ell$ and the pencil of $q + 1$ planes containing $\ell$, forming a generalized digon (no edge between $0$ and $2$).*
 
 ---
 
@@ -1537,13 +1531,11 @@ Let us test this on the cube diagram `o === o --- o` (Nodes $0, 1, 2$):
 
 Let's do another example, the 4-dimensional projective space $PG(4, q)$, which has rank $4$ over the type set: $I = \{0 \text{ (points)}, 1 \text{ (lines)}, 2 \text{ (planes)}, 3 \text{ (3-spaces / solids)}\}$
 
-Its diagram is a 4-node chain ($A_4$):
+Its diagram is a 4-node chain ($A_4$), shown at the top of Figure 3:
 
-```
-   0 (Points)       1 (Lines)       2 (Planes)       3 (Solids)
-       o -------------- o -------------- o -------------- o
+![Four-node A4 diagram of PG(4, q) and three node-deletion rows showing the residues of a solid, a plane-solid flag, and a line-plane flag](figures/maths3_diagrams_deleting_nodes.png)
 
-```
+*Figure 3. The four-node $A_4$ diagram of $\mathrm{PG}(4, q)$ over types $0$ (points), $1$ (lines), $2$ (planes), and $3$ (solids), showing how erasing the nodes of a fixed flag immediately yields the diagram of its residue. Erasing node $3$ (fixing a solid $S$) leaves the three-node $A_3$ chain of $\mathrm{PG}(3, q)$ inside $S$; erasing nodes $2$ and $3$ (fixing a flag $\{\Pi, S\}$ with $\Pi \subset S$) leaves the single bond $0 - 1$ of $\mathrm{PG}(2, q)$ inside $\Pi$; and erasing the middle nodes $1$ and $2$ (fixing $\{\ell, \Pi\}$ with $\ell \subset \Pi$) leaves disconnected nodes $0$ and $3$, a generalized digon because every point $P \in \ell$ lies in every solid $S \supset \Pi$.*
 
 Let us see how we read the different parts of this 4-node diagram by deleting nodes.
 
@@ -1570,7 +1562,7 @@ What if we delete the middle two nodes ($1$ and $2$)? Fix a flag $F = \{\ell, \P
 | Projective Plane $PG(2, q)$ | $0$ (pts), $1$ (lines) | `o ----- o` | Only 2 types; they form a projective plane. |
 | 3D Projective Space $PG(3, q)$ | $0$ (pts), $1$ (lines), $2$ (planes) | `o --- o --- o` | Fixing a plane gives a projective plane; fixing a point gives a projective plane; fixing a line gives a digon. |
 | $d$-Dim Projective Space $PG(d, q)$ | $0, 1, \dots, d-1$ | `o --- o --- ... --- o` | A chain of $d$ nodes connected by single strokes ($A_d$ diagram). |
-| 3D Cube (or Polar Space of Rank 3) | $0, 1, 2$ | `o --- o === o` | Fixing type $2$ gives a projective plane; fixing type $0$ gives a generalized quadrangle ($B_3 / C_3$ diagram). |
+| Polar Space of Rank 3 | $0$ (pts), $1$ (lines), $2$ (planes) | `o --- o === o` | Fixing a plane gives a projective plane; fixing a point gives a generalized quadrangle ($C_3$ diagram). The 3D cube, with types vertices, edges and faces, has the same diagram read backwards, `o === o --- o`. |
 | Affine Space $AG(3, q)$ | $0$ (pts), $1$ (lines), $2$ (planes) | `o --L-- o ----- o` | Fixing a plane gives an affine plane (which is a linear space $L$, not a projective plane); fixing a point gives a projective plane of lines and planes through that point. |
 
 
@@ -1587,7 +1579,7 @@ For a single 3D cube, we obviously do not need a diagram to know what a cube loo
 Can we glue squares and triangles together in some weird, arbitrary way to get thousands of different irregular polyhedra that all obey this local rule? No. Tits proved that if the geometry is simply connected (doesn't wrap around on itself like a quotient), there is one and only one thin geometry in the universe with the diagram `o === o --- o`: the 3D cube (and its dual, the octahedron, obtained by reading the diagram backwards).
 
 More importantly, what if we thicken the diagram over a finite field $\mathbb{F}_q$ (so each triangle becomes a thick projective plane $PG(2, q)$ with $q+1$ points per line, and each square becomes a thick generalized quadrangle with $q+1$ points per line)?
-With zero coordinate equations, the diagram `o === o --- o` immediately tells us that the global space is a Polar Space of rank $3$ (such as a non-degenerate quadric of Witt index $t = 3$, where the 3 types are points, lines, and planes lying entirely on the quadric).
+With zero coordinate equations, the diagram, read from the other end as `o --- o === o`, immediately tells us that the global space is a Polar Space of rank $3$ (such as a non-degenerate quadric of Witt index $t = 3$, where the 3 types are points, lines, and planes lying entirely on the quadric).
 
 **Instant Dualities and Hidden Isomorphisms (Reading the Diagram)**
 
@@ -1595,17 +1587,11 @@ Because the diagram encodes the entire axiom system visually, any symmetry of th
 
 * Dualities (Flipping the Diagram Left-to-Right): Look at the cube diagram `o === o --- o`. If we reverse the order of the types (read it from right to left, swapping vertices $0$ and faces $2$), the diagram becomes `o --- o === o`. Geometrically, swapping vertices and faces turns the cube into the regular octahedron (where faces are triangles and $4$ faces meet at every vertex). Because it is the exact same diagram just read right-to-left, the cube and the octahedron are isomorphic as incidence geometries and have the exact same symmetry group. The cube and the octahedron are dual polyhedra, as the cube's 8 vertices and 6 faces perfectly mirror the octahedron's 6 vertices and 8 faces.
 
-* Triality (Three-Way Symmetry in $D_4$): When we look at the hyperbolic quadric $Q^+(7, q)$ in 7D projective space (Witt index $t = 4$), its diagram is not a straight line—it is a 4-node Y-shaped star ($D_4$):
+* Triality (Three-Way Symmetry in $D_4$): When we look at the hyperbolic quadric $Q^+(7, q)$ in 7D projective space (Witt index $t = 4$), its diagram is not a straight line—it is a 4-node Y-shaped star ($D_4$), shown in Figure 4:
 
-```
-                    o  (Type 2: + Solids)
-                   /
-   0 (Points)     1 (Lines)
-       o -------- o
-                   \
-                    o  (Type 3: - Solids)
+![Symmetric Y-shaped D4 diagram of the hyperbolic quadric Q+(7, q) with central node 1 (Lines) and order-3 triality cycle on outer nodes 0 (Points), 2 (+ Solids), and 3 (- Solids)](figures/maths3_diagrams_d4_triality.png)
 
-```
+*Figure 4. Symmetric $D_4$ diagram of the hyperbolic quadric $Q^+(7, q)$ of Witt index $4$ in $\mathrm{PG}(7, q)$. Node $1$ (lines) sits at the central hub, joined by single projective-plane bonds at $120^\circ$ to three outer nodes: node $0$ ($0$-dimensional points) and nodes $2$ and $3$ (the two families of $3$-dimensional solids lying on the quadric). The three-fold rotational symmetry of the diagram makes Cartan's triality visible without coordinates: an order-$3$ outer automorphism of $\mathrm{P}\Omega^+(8, q)$ permutes points, $+$ solids, and $-$ solids cyclically around lines.*
 
 Just by looking at this Y-shaped diagram, we can see that the three outer branches (Points of dimension $0$, and the two families of $3$-dimensional solids on the quadric) are completely symmetric around the central node (Lines).
 
@@ -2144,7 +2130,7 @@ If $P$ is isotropic, then $P$ lies directly on $P^\pi$, which means the hyperpla
 
 To build a totally isotropic subspace, typically you start with an isotropic point $P$. To extend $P$ to a 1-dimensional totally isotropic subspace/line you pick another point $Q = \langle y \rangle \in P^\pi$ that is itself isotropic. As we saw, the line $\langle P, Q \rangle$ will be contained in $P^\pi$ and by the same logic of a line being a linear subspace, will be totally isotropic. Continue this process inside $P^\pi$ to build higher-dimensional totally isotropic subspaces.
 
-Here's a concrete example: a sphere in $PG(3, \mathbb{R})$. Consider the quadratic form $f(x, y) = x_0 y_0 + x_1 y_1 + x_2 y_2 - x_3 y_3 = 0$ in $PG(3, \mathbb{R})$. The isotropic points form a sphere/cone: $x_0^2 + x_1^2 + x_2^2 - x_3^3 = 0$.
+Here's a concrete example: a sphere in $PG(3, \mathbb{R})$. Consider the quadratic form $f(x, y) = x_0 y_0 + x_1 y_1 + x_2 y_2 - x_3 y_3 = 0$ in $PG(3, \mathbb{R})$. The isotropic points form a sphere/cone: $x_0^2 + x_1^2 + x_2^2 - x_3^2 = 0$.
 
 Let $P = \langle (0, 0, 1, 1) \rangle$. Check isotropy:  $0^2 + 0^2 + 1^2 - 1^2 = 0 \implies P$ is isotropic.
     
@@ -2175,22 +2161,11 @@ Note that if $x$ and $y$ are two absolute points, the line $xy$ joining them is 
 -   Some rays pierce right through the sphere at two points (secants).
 -   A glowing ring of boundary rays just graze the edge of the sphere at a single point (tangents)—this ring of grazing points is the horizon of the sphere as seen from the satellite $P$.
 
-Now ask: Where do all those grazing points $T_1, T_2, T_3, \dots$ lie? Every single point $T$ where a ray from $P$ is tangent to $\mathcal{Q}$ lies on one flat hyperplane—and that flat hyperplane slicing through the sphere along the horizon ring is $P^\pi$.
+Now ask: Where do all those grazing points $T_1, T_2, T_3, \dots$ lie? Every single point $T$ where a ray from $P$ is tangent to $\mathcal{Q}$ lies on one flat hyperplane—and that flat hyperplane slicing through the sphere along the horizon ring is $P^\pi$. Figure 5 shows this in a plane slice.
   
-```
-                         . T_1 (Tangent touchpoint: P lies in T_1^pi, so T_1 lies in P^pi)
-                      . ' |
-                   . '    |
-                . '     ( | )
-       P *----.'-------(  |  )-------> Secant line (hits Q at A and B)
-                ' .     ( | )
-                   ' .    |   Quadric / Polar Space Q
-                      ' . |
-                         ' T_2 (Tangent touchpoint)
-                          |
-                        P^pi (The Polar Hyperplane of P: the flat plane
-                              passing through all tangent touchpoints T_i)
-```
+![Exact planar slice of a quadric Q with external point P, passant ray, tangent lines touching Q at T1 and T2, polar hyperplane P^pi passing through T1 and T2, and secant line meeting Q at A and B](figures/maths3_polarity_tangent_polar.png)
+
+*Figure 5. Geometric construction of the polar hyperplane $P^\pi$ of a non-isotropic external point $P$ with respect to a quadric $\mathcal{Q}$ (plotted exactly for $x^2 + y^2 = 1$ and $P = (-2.4, 0)$, giving $P^\pi : x = -5/12$). Rays through $P$ divide into passants missing $\mathcal{Q}$, secants piercing $\mathcal{Q}$ in two points $A$ and $B$, and boundary tangent rays grazing $\mathcal{Q}$ at $T_1$ and $T_2$. Because $T_i^\pi$ is the tangent hyperplane at $T_i$, polarity reciprocity ($P \in T_i^\pi \Leftrightarrow T_i \in P^\pi$) forces $P^\pi$ to slice $\mathcal{Q}$ through the exact locus of tangent touchpoints.*
 Why does this happen mathematically? Remember the symmetry rule of a polarity ($\pi^2 = \text{id}$): $T \in P^\pi \iff P \in T^\pi$.
 
 Look at what the right-hand side ($P \in T^\pi$) says when $T$ is an isotropic point on the quadric $\mathcal{Q}$. Since $T$ is on the quadric,  $T^\pi$ is the tangent hyperplane to the quadric at $T$. Saying $P \in T^\pi$ means the tangent hyperplane at $T$ passes through $P$—which means the line $P \vee T$ is tangent to the quadric at $T$. By $T \in P^\pi \iff P \in T^\pi$, the polar hyperplane $P^\pi$ cuts the quadric $\mathcal{Q}$ in the exact locus of points $T \in \mathcal{Q}$ whose tangent lines pass through $P$.
@@ -2201,14 +2176,11 @@ What if we push the point $P$ inside the Earth? You can no longer shine tangent 
 
 The other way to visualize this is a mirror reflection. What if we look at a secant line through $P$ that pierces the quadric at two points $A$ and $B$ (or what if $P$ is inside the sphere so there are no real tangent lines from $P$)? How does $P^\pi$ distinguish itself then?
   
-Draw any secant line $\ell$ through $P$ that hits the quadric $\mathcal{Q}$ at two points $A$ and $B$, and passes through the hyperplane $P^\pi$ at a point $M = \ell \cap P^\pi$:
+Draw any secant line $\ell$ through $P$ that hits the quadric $\mathcal{Q}$ at two points $A$ and $B$, and passes through the hyperplane $P^\pi$ at a point $M = \ell \cap P^\pi$, as in Figure 6:
   
-```
-                        | P^pi (Polar Hyperplane)
-                        |
-      P *-------A-------M-------B------->  Secant line through P
-                        |
-```
+![Quadric Q with external centre P, mirror axis P^pi, secant rays swapping A and B across M = ell cap P^pi, and an exact 1D harmonic-division scale](figures/maths3_polarity_harmonic_secant.png)
+
+*Figure 6. Top: every secant line $\ell$ through an external point $P$ meets the quadric $\mathcal{Q}$ at two points $A$ and $B$ and crosses the polar hyperplane $P^\pi$ at $M = \ell \cap P^\pi$; the central reflection $\rho_P$ with centre $P$ and fixed mirror axis $P^\pi$ swaps $A \leftrightarrow B$ along every secant ray, mapping $\mathcal{Q}$ onto itself. Bottom: true arc-length positions along $\ell$ (for $x^2 + y^2 = 1$, $P = (-2.4, 0)$, slope $0.16$), showing that $M$ and $P$ divide the chord $AB$ internally and externally in the same ratio $|MA| / |MB| = |PA| / |PB| \approx 0.4384$, so the cross-ratio satisfies $(P, M; A, B) = (A, B; M, P) = -1$.*
 Where on the segment $AB$ does the hyperplane $P^\pi$ cross the line?
   
 -   If $P$ were infinitely far away,  $M$ would be the exact midpoint between $A$ and $B$.
@@ -2326,19 +2298,11 @@ The ambient space $PG(3, K)$ has lots of points, lines, and planes. Now [restric
 
 * In all of $PG(3, K)$, any two points have a line joining them.
 * Inside $Q$, two points on the surface might NOT have a line of $Q$ joining them (because the line through them in $PG(3, K)$ pokes outside the surface).
-* Instead, if you pick any line $\ell$ lying on the surface $Q$ and any point $P$ on $Q$ (not on $\ell$), how many lines of $Q$ pass through $P$ and intersect $\ell$? Exactly one, a line of the opposite regulus.
+* Instead, if you pick any line $\ell$ lying on the surface $Q$ and any point $P$ on $Q$ (not on $\ell$), how many lines of $Q$ pass through $P$ and intersect $\ell$? Exactly one, a line of the opposite regulus. Figure 7 shows this case beside the "all" case of a polar space of higher rank.
 
-```
-         P  (Point on the polar space, outside line L)
-        /|\
-       / | \
-      /  |  \   <-- Out of all points on line L, either:
-     /   |   \      (1) P is joined by a line of the polar space
-    /    |    \         to AT MOST ONE point Q on L, OR
-   *-----Q-----*    (2) P is joined to EVERY point on L.
-  Line L (lying inside the polar space)
+![Two-panel real geometry of the Buekenhout-Shult One-or-All axiom: (a) 3D hyperboloid of one sheet showing the unique opposite-regulus line PQ meeting L while ambient chord PR pokes off the surface, and (b) rank >= 3 polar space showing all lines PQ_i spanning a singular plane inside Q](figures/maths3_polar_one_or_all.png)
 
-```
+*Figure 7. The two cases of the Buekenhout-Shult One-or-All axiom for a point $P$ and a line $L$ of a polar space ($P \notin L$). (a) The "One" case on the doubly ruled hyperboloid $Q^+(3, \mathbb{R}) : x^2 + y^2 - z^2 = 1$ (rank $2$): out of all points on a ruling $L \subset \mathcal{Q}$, exactly one point $Q \in L$ is joined to $P$ by a line $PQ$ lying completely on the surface (the unique transversal from the opposite regulus), whereas the ambient line $PR$ to any other point $R \in L$ cuts off the surface through the hollow interior. (b) The "All" case in rank $\ge 3$ (such as the Klein quadric $Q^+(5, K)$): when $P$ is collinear inside $\mathcal{Q}$ with every point $Q_i \in L$, the connecting lines sweep out a totally isotropic projective plane $\Pi = P \vee L \cong \mathrm{PG}(2, K)$ contained entirely in $\mathcal{Q}$.*
 
 #### Example: Klein Quadric $\mathcal{Q}^+(5, K)$ in $\mathrm{PG}(5, K)$
 When can $P$ be collinear with all of $\ell$? This happens only in polar spaces of rank $\ge 3$, which require ambient projective space of dimension at least 4 or 5. For example, on the Klein quadric $\mathcal{Q}^+(5, K)$ in $\mathrm{PG}(5, K)$, maximal generators are projective planes. Entire planes are embedded in the quadric. Pick a line $\ell$ and a point $P \notin \ell$ that both lie inside the same totally isotropic plane. Then $P$ is collinear to every point on $\ell$.
@@ -2972,16 +2936,11 @@ Rank $n = 4$ with $e = 0$ (Study's Triality on $Q^+(7, q)$ / Diagram $D_4$): Plu
 - Points:  $\frac{(q^4 - 1)(q^3 + 1)}{q - 1} = (q + 1)(q^2 + 1)(q^3 + 1)$.
 - Generators:  $(q^0 + 1)(q^1 + 1)(q^2 + 1)(q^3 + 1) = 2(q + 1)(q^2 + 1)(q^3 + 1)$. 
 
-Why is there a factor of $2$ on the generators? Because just like the two reguli on $Q^+(3, q)$, the generators (3-spaces) on $Q^+(7, q)$ split into two families of equal size, and each family has $(q + 1)(q^2 + 1)(q^3 + 1)$ generators—the exact same number as the points! This happens because for $Q^+(7, q)$, the double bond at the end of the $C_4$ diagram splits into two single branches, giving the symmetric three-pronged $D_4$ diagram:
+Why is there a factor of $2$ on the generators? Because just like the two reguli on $Q^+(3, q)$, the generators (3-spaces) on $Q^+(7, q)$ split into two families of equal size, and each family has $(q + 1)(q^2 + 1)(q^3 + 1)$ generators—the exact same number as the points! This happens because for $Q^+(7, q)$, the double bond at the end of the $C_4$ diagram splits into two single branches, giving the symmetric three-pronged $D_4$ diagram of Figure 8. The planes drop out as a type of their own: each plane on $Q^+(7, q)$ lies in exactly one solid of each family, so the pair records it, and a solid of one family counts as incident with a solid of the other family when they share a plane.
         
-```
-                      o  (Generator Family 1)
-                     /
-   0 (Points) o --- o (Lines)
-                     \
-                      o  (Generator Family 2)
+![Comparison between the asymmetric 4-node C4 polar-space diagram for e > 0 and the forked D4 diagram of Q+(7, q) where generators split into two families each equal in size to the point set](figures/maths3_polar_d4_generators.png)
 
-```
+*Figure 8. Left: a general rank-$4$ polar space with $e > 0$ has the asymmetric linear diagram $C_4$, so its point count and generator count differ and reversing the diagram yields a distinct dual polar space. Right: for the hyperbolic quadric $Q^+(7, q)$ ($n = 4, e = 0$), the $3$-dimensional generators split into two equal families of size $(q + 1)(q^2 + 1)(q^3 + 1)$ each, matching the number of points $(q + 1)(q^2 + 1)(q^3 + 1)$ and accounting for the factor of $2$ in the total generator count $2(q + 1)(q^2 + 1)(q^3 + 1)$.*
 
 Because the three outer prongs of $D_4$ (Points, Generator Family 1, Generator Family 2) are completely symmetric around the central node (Lines),  $Q^+(7, q)$ possesses a 3-way symmetry called Triality that swaps points with either family of generators.
 
@@ -3024,14 +2983,11 @@ In projective geometry, an invertible matrix $A \in GL(2m, K)$ induces a project
 
 ### Polar Spaces Have the Same Diagram ($C_n$) as a Cube
 
-Let us trace how the diagram of a polar space of rank $3$ (types $0 = \text{points}$, $1 = \text{lines}$, $2 = \text{planes lying inside the polar space}$) is built by taking residues, and compare it directly to the 3D cube:
+Let us trace how the diagram of a polar space of rank $3$ (types $0 = \text{points}$, $1 = \text{lines}$, $2 = \text{planes lying inside the polar space}$) is built by taking residues, and compare it directly to the 3D cube (Figure 9):
 
-```
-   0 (Points)          1 (Lines)          2 (Planes)
-       o ----------------- o ================= o
-          (Proj. Plane)      (Gen. Quadrangle)
+![Rank-3 polar space C3 diagram paired with the thin q = 1 regular octahedron showing a triangular face residue and a square vertex figure](figures/maths3_polar_c3_octahedron.png)
 
-```
+*Figure 9. Top: the $C_3$ diagram of a rank-$3$ polar space over types $0$ (points), $1$ (lines), and $2$ (planes), which reverses the bond order of the dual 3D cube. Bottom: at $q = 1$, the thin rank-$3$ polar space $x_0 x_1 + x_2 x_3 + x_4 x_5 = 0$ is the regular octahedron on three opposite non-collinear vertex pairs $\{N, S\}$, $\{E, W\}$, and $\{F, B\}$. (a) Fixing a triangular face $\{N, E, F\}$ (a thin plane) leaves $3$ vertices and $3$ edges forming a triangle (single bond $0 - 1$). (b) Fixing vertex $N$ leaves the $4$ edges and $4$ faces meeting at $N$, whose vertex figure is a square (thin generalized quadrangle, double bond $1 = 2$).*
 
 Fix a plane $\Pi$ of the polar space (delete node $2$, leaving nodes $0$ and $1$). What do all the points (type $0$) and lines (type $1$) lying inside a single plane $\Pi$ of the polar space look like? As we saw, every plane inside a polar space satisfies the Veblen-Young axiom and so is an ordinary Projective Plane $PG(2, K)$. So the edge between node $0$ and node $1$ is a single stroke `o --- o` (Projective Plane).
     
@@ -3051,7 +3007,7 @@ If you fix a point $p$ in a nondegenerate polar space $S$ of rank $n \ge 3$, and
 
 ### Generalized Quadrangles (`o === o`)
 
-As we saw in the diagram, the rank-2 geometry we get from the residue of a flag containing all but the two highest dimensional elements is a generalized quadrangle. What exactly is a generalized quadrangle? It is a rank 2 point-line geometry that has no triangles, and satisfies the "One" in the One-or-All axiom: given any line $\ell$ and any point $P \notin \ell$, there is at most $1$ point on $\ell$ collinear with $P$. In fact, for a generalized quadrangle, there is always a unique point $Q \in \ell$ and a unique line $P \vee Q$ connecting $P$ to $\ell$. Because there are no planes inside the geometry, the "All" case of the One-or-All axiom can never occur. 
+As we saw in the diagram, the rank-2 geometry we get from the residue of a flag containing all but the two highest dimensional elements is a generalized quadrangle. What exactly is a generalized quadrangle? It is a rank 2 point-line geometry that has no triangles, and satisfies the "One" in the One-or-All axiom: given any line $\ell$ and any point $P \notin \ell$, there is exactly $1$ point on $\ell$ collinear with $P$. So there is always a unique point $Q \in \ell$ and a unique line $P \vee Q$ connecting $P$ to $\ell$. Because there are no planes inside the geometry, the "All" case of the One-or-All axiom can never occur. 
 
 In fact, for a generalized quadrangle, two points are joined by either zero or one line (at most one line) and two lines intersect at either zero or one point (at most one point). But given any line $g$ and any point $p$ not on $g$, there is exactly one point $q$ on $g$ that is collinear with $p$ (and therefore exactly one line $t = pq$ in the geometry passing through $p$ and meeting $g$).
 
@@ -3061,7 +3017,7 @@ A simple square is a thin generalized quadrangle ($2$ points per line, $2$ lines
 
 As we saw earlier, there are no hollow triangles in a polar space. In rank $\ge 3$ (e.g., the Klein quadric $Q^+(5, K)$, where planes exist in the polar space), you can have three lines $AB, BC, CA$ forming a triangle on the quadric, because the point $A$ chooses the "all" option with respect to the line $BC$. Every line joining $A$ to any point $D \in BC$ lies on the quadric, so the triangle is filled in to form a complete projective plane $\langle A, B, C \rangle$ lying inside the polar space. Thus, triangles exist, as long as they are filled in (no hollow triangles).
 
-In rank $2$ polar spaces, where no planes exist in the polar space (such as the hyperbolic quadric $Q^+(5, K)$), there can be no filled triangles, and since there anyway cannot be hollow triangles either, there are no triangles at all. Thus, we end up generalized quadrangles which have no triangles in them.
+In rank $2$ polar spaces, where no planes exist in the polar space (such as the hyperbolic quadric $Q^+(3, K)$), there can be no filled triangles, and since there anyway cannot be hollow triangles either, there are no triangles at all. Thus, we end up generalized quadrangles which have no triangles in them.
 
 Let us check how the regulus grid $Q^+(3, K)$ fits this definition:
 
@@ -3077,17 +3033,11 @@ Let us check how the regulus grid $Q^+(3, K)$ fits this definition:
 
 **Aside:** The difference between a "hollow" triangle and a "filled" triangle comes down to whether the interior points and interior lines of the plane $\langle A, B, C \rangle$ actually belong to the polar space $S$, or only to the ambient projective space $PG(d, K)$.
 
-Suppose $A, B, C$ are three non-collinear points of a polar space $S$, and the three boundary lines $AB$,  $BC$, and $CA$ all belong to $S$. Now pick an intermediate point $D$ on the line $BC$ (different from $B$ and $C$), and consider the line $AD$ in the ambient projective space $PG(d, K)$ that cuts across the middle of the triangle:
+Suppose $A, B, C$ are three points of a polar space $S$, not all on one line, and the three boundary lines $AB$,  $BC$, and $CA$ all belong to $S$. Now pick an intermediate point $D$ on the line $BC$ (different from $B$ and $C$), and consider the line $AD$ in the ambient projective space $PG(d, K)$ that cuts across the middle of the triangle, as in Figure 10:
 
-```
-           A
-          /|\
-         / | \
-        /  |  \      <-- Does this interior line AD belong to the polar space S,
-       /   |   \         or does it poke out into the ambient space?
-      B----D----C
+![Two-panel answer to whether interior line AD of triangle ABC lies in polar space S: (a) impossible hollow triangle where AD pokes into ambient space vs (b) forced filled projective plane <A, B, C> inside S in rank >= 3](figures/maths3_gq_hollow_vs_filled.png)
 
-```
+*Figure 10. Resolving whether an interior cross-line $AD$ ($D \in BC \setminus \{B, C\}$) of three polar-space lines $AB, BC, CA \subset S$ can poke out of $S$ into the ambient projective space $\mathrm{PG}(d, K)$. (a) A "hollow" triangle, in which $AB, BC, CA \subset S$ while $AD$ leaves $S$, is impossible in every polar space: because $A$ is already collinear in $S$ with two points $B$ and $C$ on $BC$, the One-or-All axiom forces $A$ to be collinear in $S$ with every point of $BC$. (b) Consequently, any triangle of lines in $S$ automatically fills in to a full projective plane $\langle A, B, C \rangle \subseteq S$ (which occurs in rank $\ge 3$, such as $Q^+(5, K)$, and cannot occur in rank-$2$ generalized quadrangles such as $Q^+(3, K)$, where no planes exist in $S$).*
 
 What a "Hollow" Triangle Would Be (Impossible in a Polar Space): A triangle $ABC$ would be "hollow" if the three outer boundary lines $AB$,  $BC$, and $CA$ belonged to the polar space $S$ (for instance, lying on the surface of a quadric), while the interior cross-lines like $AD$ poked _off_ the quadric into the ambient projective space (so $AD$ is only a secant line meeting the quadric at $A$ and $D$, and the points in the middle of $AD$ are not on the quadric). Why is this impossible? Because $A$ is already joined by lines of $S$ to two points on $BC$ (namely $B$ and $C$). By the One-or-All axiom,  $A$ must be collinear in $S$ with _every_ point $D$ on $BC$—meaning the entire line $AD$ is forced to lie inside $S$.
     
