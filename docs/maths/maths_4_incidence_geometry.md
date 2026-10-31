@@ -14,7 +14,7 @@ Most of what follows is core linear algebra, with a few items a physics degree m
 
 $$A = \begin{pmatrix} 0 & 1 & 1 \\ 1 & 0 & 1 \\ 1 & 1 & 0 \end{pmatrix}.$$
 
-The next chapter will call it [the adjacency matrix](#the-adjacency-matrix-and-its-eigenvalues) of a triangle.
+Label the corners of a triangle $1, 2, 3$, and put a $1$ in row $x$, column $y$ when corners $x$ and $y$ are joined by an edge, and $0$ otherwise. The result is $A$, which the next chapter calls [the adjacency matrix](#the-adjacency-matrix-and-its-eigenvalues) of the triangle.
 
 ### Eigenvalues and eigenspaces
 
@@ -207,9 +207,15 @@ Some names save words. $C_n$ is the $n$-cycle: $n$ vertices round a ring, each j
 
 All three are regular with valency $2$, yet they are different graphs. The hexagon and the two triangles even have the same numbers of vertices and edges, yet one is a single ring and the other falls apart. Valency is local information, and it cannot tell these graphs apart.
 
-**Cliques.** A **clique** is a set of mutually adjacent vertices. A **maximal clique** is a clique that no larger clique contains. In the two triangles, each triangle is a maximal clique. The hexagon has no triangles, so its maximal cliques are its six edges. Maximal does not mean largest. Take a triangle on the vertices $1, 2, 3$ and add a fourth vertex $4$ joined only to $3$. The edge $\{3, 4\}$ is then a maximal clique, because no vertex is adjacent to both $3$ and $4$, even though the triangle is a bigger clique.
+#### Cliques and subgraphs
+
+A **clique** is a set of mutually adjacent vertices. A **maximal clique** is a clique that no larger clique contains. In the two triangles, each triangle is a maximal clique. The hexagon has no triangles, so its maximal cliques are its six edges. Maximal does not mean largest. Take a triangle on the vertices $1, 2, 3$ and add a fourth vertex $4$ joined only to $3$. The edge $\{3, 4\}$ is then a maximal clique, because no vertex is adjacent to both $3$ and $4$, even though the triangle is a bigger clique.
 
 Cliques come back three times. A disjoint union of cliques is one of the trivial cases of [strongly regular graphs](#complements-cliques-and-the-trivial-cases). And the lines of most [generalized polygons](#what-is-being-generalized), like the [generators of a polar space](#back-to-titss-axioms), turn out to be exactly the maximal cliques of a graph built from the geometry, so the geometry can be rebuilt from that graph.
+
+A **subgraph** is part of a graph: a nonempty set of its vertices, with some of the edges between them. The **subgraph induced** on a nonempty set $X$ of vertices keeps every edge with both ends in $X$. So an induced subgraph is fixed by its vertices alone, while a general subgraph may also drop edges. In the hexagon, with vertices $0, 1, \dots, 5$ round the ring, the subgraph induced on $\{0, 1, 2\}$ has the two edges $\{0, 1\}$ and $\{1, 2\}$. Dropping the edge $\{1, 2\}$ as well gives a subgraph that is not induced. In this language, a clique is a set of vertices whose induced subgraph is complete.
+
+Induced subgraphs are how later chapters ask whether part of a geometry still hangs together. For example, in [generalized quadrangles](#subquadrangles-and-the-three-kinds-of-hyperplane), the points outside a hyperplane, joined when they lie on a common line, form a connected graph.
 
 #### Paths, geodesics and distance
 
@@ -223,9 +229,15 @@ Distance is global information that valency cannot see. It matters most in [gene
 
 A **cycle** of length $k$ is a closed path: vertices $x_0, x_1, \dots, x_k = x_0$ with $k \geq 3$, consecutive vertices adjacent, and $x_0, \dots, x_{k-1}$ distinct. The **girth** is the length of a shortest cycle, and it is $\infty$ if there is no cycle. The hexagon has girth $6$; the two triangles have girth $3$. Girth and diameter are linked: a graph of finite girth $g$ has diameter at least $\lfloor g/2 \rfloor$. A shortest cycle has no shortcuts, since a shortcut would close a shorter cycle, so two opposite vertices on it are $\lfloor g/2 \rfloor$ apart.
 
-A graph is **bipartite** when its vertices split into two sides with every edge crossing from one side to the other. Colour the hexagon's vertices black and white alternately and every edge crosses; round the triangle, alternating colours cannot close up. That is the whole story: a graph is bipartite exactly when it has no cycle of odd length.
+A graph is **bipartite** when its vertices split into two sides with every edge crossing from one side to the other. Colour the hexagon's vertices black and white alternately and every edge crosses; round the triangle, alternating colours cannot close up. The rule is: a graph is bipartite exactly when it has no cycle of odd length.
 
-Along a cycle the colours alternate, so a bipartite graph has only even cycles. Conversely, colour each vertex by the parity of its distance from a base vertex $x$ of its component. An edge $yz$ inside one colour would give a closed walk (a round trip that may revisit vertices) from $x$ to $y$, across to $z$ and back, of odd length $d(x,y) + 1 + d(x,z)$. A shortest odd closed walk is a cycle, since a repeated vertex would split it into two shorter closed walks, one of them odd. So without odd cycles, the colouring works.
+One direction is quick. In a bipartite graph, each step along a cycle crosses to the other side, so a walk round the cycle is back on its starting side only after an even number of steps. Every cycle therefore has even length.
+
+The other direction needs a colouring. Take a graph with no odd cycle, and work in one connected component at a time. Pick a base vertex $x$, and colour each vertex black if its distance from $x$ is even and white if it is odd. Every edge should now join a black vertex to a white one.
+
+Suppose an edge $yz$ joined two vertices of the same colour, so that $d(x,y)$ and $d(x,z)$ are both even or both odd. Go from $x$ to $y$ along a shortest path, cross the edge to $z$, and return to $x$ along a shortest path. This round trip takes $d(x,y) + 1 + d(x,z)$ steps, which is odd. It may pass through a vertex twice, so it is a closed walk (a round trip that may revisit vertices) rather than a cycle.
+
+An odd closed walk always contains an odd cycle. If the walk passes through some vertex twice, cut it there into two shorter closed walks. Their lengths add up to an odd number, so one of them is odd; keep that one and repeat. The walk gets shorter each time, so the process stops at an odd closed walk that visits no vertex twice, which is an odd cycle. The graph has no odd cycle, so no such edge $yz$ exists, and the colouring splits the vertices into two sides.
 
 Bipartite graphs return at once: every [incidence graph](#two-graphs-two-distances-two-matrices) is bipartite, with points on one side and lines on the other. The parity argument returns in [generalized polygons](#basic-properties-of-generalized-polygons).
 
@@ -235,12 +247,21 @@ Here is a puzzle that shows how much simple rules can force. Suppose every verte
 
 Stand at a vertex $x$, with its $3$ neighbours. Each has at most $2$ further neighbours, so at most $3 \cdot 2 = 6$ vertices lie at distance $2$, and nothing is further away: at most $1 + 3 + 6 = 10$ vertices. This count is the **Moore bound** for valency $3$ and diameter $2$.
 
-Reaching $10$ needs all $6$ vertices at distance $2$ to be distinct, each reached from $x$ along exactly one path of length $2$. Since $x$ was any vertex, two things follow everywhere:
+To reach $10$, nothing can be lost in this count. The $3$ neighbours of $x$ and the $6$ vertices at distance $2$ must be $9$ different vertices. Two things could spoil the count:
 
-- no two neighbours of $x$ are adjacent, so there is no triangle, and adjacent vertices have no common neighbour;
-- no vertex is reached twice, so there is no $4$-cycle, and two non-adjacent vertices have exactly one common neighbour.
+- an edge between two neighbours $y$ and $z$ of $x$: then $z$ is one of the two further neighbours of $y$, but $z$ lies at distance $1$ from $x$, not $2$;
+- a vertex $w$ at distance $2$ that is a further neighbour of two different neighbours $y$ and $z$ of $x$: then $w$ is counted twice.
 
-So the girth is at least $5$. Such a graph exists: take as vertices the ten $2$-element subsets of $\{1, 2, 3, 4, 5\}$, and join two subsets when they are disjoint. This is the **Petersen graph**, drawn in Figure 2 in the usual way, as a pentagon and a five-pointed star. Renaming $1, \dots, 5$ turns any adjacent pair into $\{1, 2\}, \{3, 4\}$ and any non-adjacent pair into $\{1, 2\}, \{1, 3\}$, so one check of each kind covers all cases:
+Either way, fewer than $6$ vertices lie at distance $2$, and the total falls below $10$. So neither happens. Since $x$ was any vertex, neither happens anywhere in the graph.
+
+The first fact rules out triangles, and the second rules out $4$-cycles. Each also counts common neighbours.
+
+- **No triangles.** A triangle through $x$ would be $x$ together with two adjacent neighbours of $x$. The same fact shows that adjacent vertices $x$ and $y$ have no common neighbour, since a common neighbour would be a neighbour of $x$ adjacent to $y$.
+- **No $4$-cycles.** In a $4$-cycle $x, y, w, z$, the vertex $w$ opposite $x$ is not adjacent to $x$, or $x, y, w$ would be a triangle. So $w$ lies at distance $2$ and is reached from $x$ through both $y$ and $z$. The same fact shows that two non-adjacent vertices $x$ and $w$ have exactly one common neighbour. Since the diameter is $2$, $w$ lies at distance $2$ from $x$, and each common neighbour is a separate path of length $2$ from $x$ to $w$, of which there is exactly one.
+
+A cycle of length $3$ is a triangle and a cycle of length $4$ is a $4$-cycle, so every cycle has length at least $5$, and the girth is at least $5$.
+
+Such a graph exists: take as vertices the ten $2$-element subsets of $\{1, 2, 3, 4, 5\}$, and join two subsets when they are disjoint. This is the **Petersen graph**, drawn in Figure 2 in the usual way, as a pentagon and a five-pointed star. Renaming $1, \dots, 5$ turns any adjacent pair into $\{1, 2\}, \{3, 4\}$ and any non-adjacent pair into $\{1, 2\}, \{1, 3\}$, so one check of each kind covers all cases:
 
 - valency $3$: the subset $\{1, 2\}$ is disjoint from exactly the three $2$-subsets of $\{3, 4, 5\}$;
 - adjacent vertices share no neighbour: a common neighbour of $\{1, 2\}$ and $\{3, 4\}$ would have to avoid $1, 2, 3, 4$, which leaves only the single element $5$;
@@ -405,7 +426,7 @@ Mind the clash of words: the earlier notes' ovoid was a set of points of $PG(3, 
 
 Hyperplanes need not look flat: a cross looks like a plus sign, and an ovoid like a scatter of points. Yet here they come from flat things: the $15$ hyperplanes are exactly the sections of the quadric by the $15$ planes of $PG(3, 2)$. The $9$ tangent planes cut out crosses; the tangent plane $x_3 = 0$ at $(1{:}0{:}0{:}0)$ meets the quadric in the earlier notes' row $g_1$ and column $h_1$. The other $6$ cut out ovoids, the earlier notes' $3$-point conics; the plane $x_1 + x_2 = 0$ meets it in $(1{:}0{:}0{:}0)$, $(0{:}0{:}0{:}1)$ and $(1{:}1{:}1{:}1)$. Whether the hyperplanes of a geometry always come from hyperplanes of a surrounding space is the question of [giving a geometry coordinates](#giving-a-geometry-coordinates).
 
-**The view from a point.** If every line through a point $x$ has at least three points, the **internal structure** at $x$ has as points the points of $x^\perp$ other than $x$, and as lines the lines through $x$, each keeping its points other than $x$. In a partial linear space that is all it is: the lines through $x$ with $x$ removed, pairwise disjoint, since two lines through $x$ share no other point. (In the Fano plane: $6$ points on $3$ disjoint $2$-point lines.) It becomes interesting for designs, where two blocks through a point can share several points; there it is the [derived design](#designs-a-first-look), the blocks through a point with that point removed, put to work in [new designs from old](#new-designs-from-old). Mind the clash with the earlier notes' residue of a point, whose points were the lines through it: here the lines through $x$ stay lines.
+**The view from a point.** If every line through a point $x$ has at least three points, the **internal structure** at $x$ has as points the points of $x^\perp$ other than $x$, and as lines the lines through $x$, each keeping its points other than $x$. In a partial linear space it is just the lines through $x$ with $x$ removed, and these are pairwise disjoint, since two lines through $x$ share no other point. (In the Fano plane: $6$ points on $3$ disjoint $2$-point lines.) It becomes interesting for designs, where two blocks through a point can share several points; there it is the [derived design](#designs-a-first-look), the blocks through a point with that point removed, put to work in [new designs from old](#new-designs-from-old). Mind the clash with the earlier notes' residue of a point, whose points were the lines through it: here the lines through $x$ stay lines.
 
 With the words in place, [a gallery of geometries](#a-gallery-of-geometries) meets the families that the rest of these notes study, starting with small geometries that test these definitions.
 
@@ -760,7 +781,7 @@ To see $\bar\lambda$, take $x$, $y$ non-adjacent in $\Gamma$. Of the other $v - 
 
 Two families satisfy the definition for a dull reason.
 
-- A [clique](#neighbours-and-regularity) is a set of mutually adjacent vertices. The disjoint union of $r \ge 2$ cliques of size $m \ge 2$ is $\mathrm{srg}(rm, m-1, m-2, 0)$. Conversely, $\mu = 0$ forces this shape. Two vertices at distance 2 would have a common neighbour, so no two vertices are at distance 2. Each connected component is then a clique, and regularity makes the cliques equal in size. So a strongly regular graph is disconnected exactly when $\mu = 0$.
+- A [clique](#cliques-and-subgraphs) is a set of mutually adjacent vertices. The disjoint union of $r \ge 2$ cliques of size $m \ge 2$ is $\mathrm{srg}(rm, m-1, m-2, 0)$. Conversely, $\mu = 0$ forces this shape. Two vertices at distance 2 would have a common neighbour, so no two vertices are at distance 2. Each connected component is then a clique, and regularity makes the cliques equal in size. So a strongly regular graph is disconnected exactly when $\mu = 0$.
 - A **complete multipartite** graph has its vertices split into $r \ge 2$ parts of size $m \ge 2$, with two vertices adjacent exactly when they lie in different parts. It is the complement of $r$ disjoint cliques, and it is $\mathrm{srg}(rm, (r-1)m, (r-2)m, (r-1)m)$, with $\mu = k$. Conversely, $\mu = k$ forces this shape. Two non-adjacent vertices then have the same $k$ neighbours, so non-adjacency is an equivalence relation, and its classes are the parts. Two examples: $T(4) = \mathrm{srg}(6, 4, 2, 4)$, whose parts are the complementary pairs $\{12, 34\}$, $\{13, 24\}$, $\{14, 23\}$; and the complete bipartite graph $K_{3,3}$ ([defined in the gallery](#small-geometries-that-test-the-definitions)), which is $\mathrm{srg}(6, 3, 0, 3)$.
 
 A strongly regular graph is **primitive**, or nontrivial, if neither it nor its complement is a disjoint union of cliques. By the two characterizations, that means $0 < \mu < k$, or equivalently that both $\Gamma$ and $\overline{\Gamma}$ are connected. The others are imprimitive, or trivial. The absolute bound in the next section fails for them, and the paragraph "Why primitive" there shows how.
@@ -1307,7 +1328,7 @@ The two smallest cases are old friends.
 - **$n = 3$.** These are the projective planes, possibly degenerate (a degenerate one is a near-pencil, see [small geometries that test the definitions](#small-geometries-that-test-the-definitions)). Two points lie in a common triangle, so some line joins them; two lines lie in a common triangle, so they meet.
 - **$n = 4$.** These are the generalized quadrangles, and for them the axioms simplify to the two in [the first look at generalized quadrangles](#generalized-quadrangles-a-first-look): two disjoint lines exist, and for every anti-flag $(x, L)$ exactly one point of $L$ is collinear with $x$.
 
-From $n = 4$ on, the point graph carries everything. With no triangles in the geometry, a set of mutually collinear points (a [clique](#neighbours-and-regularity)) cannot spread over two lines, because three mutually collinear points not on one line form a triangle. So the maximal cliques of the point graph are exactly the lines, and the geometry can be rebuilt from its graph: the points are the vertices and the lines are the maximal cliques. Two generalized $n$-gons with $n \ge 4$ are isomorphic exactly when their point graphs are. This does not even need an order: in the $2 \times 3$ grid, a quadrangle with lines of two sizes, the maximal cliques are exactly its 2 rows and 3 columns.
+From $n = 4$ on, the point graph carries everything. With no triangles in the geometry, a set of mutually collinear points (a [clique](#cliques-and-subgraphs)) cannot spread over two lines, because three mutually collinear points not on one line form a triangle. So the maximal cliques of the point graph are exactly the lines, and the geometry can be rebuilt from its graph: the points are the vertices and the lines are the maximal cliques. Two generalized $n$-gons with $n \ge 4$ are isomorphic exactly when their point graphs are. This does not even need an order: in the $2 \times 3$ grid, a quadrangle with lines of two sizes, the maximal cliques are exactly its 2 rows and 3 columns.
 
 This fails for $n = 3$. In a projective plane any two points are collinear, so the point graph is complete and remembers only the number of points. There are four projective planes of order 9, no two of them isomorphic, and all four have the same point graph $K_{91}$, since $9^2 + 9 + 1 = 91$. So from $n = 4$ on we may work with the point graph alone, and the Feit–Higman theorem is a theorem about that graph.
 
@@ -1454,7 +1475,7 @@ Counting lines shows that an ovoid of a quadrangle of order $(s,t)$ has $st + 1$
 
 ---
 
-**Note: what does a hyperplane leave behind?** The points outside a hyperplane $H$, joined when collinear (this is not the complement graph of the strongly regular graphs chapter), form a connected graph of diameter at most 3, unless the quadrangle is a dual grid. Here is the idea when lines have at least three points (the remaining case, a grid with two-point columns, is a short check). Take two outside points $y_1, y_2$ at distance 2 whose common neighbours $z_1, z_2, \dots$ all lie in $H$. A third point $y_2'$ on the line $y_2z_2$ is outside $H$ and collinear with neither $z_1$ nor $y_1$, so the point $y_1'$ of the line $y_1z_1$ collinear with $y_2'$ is outside $H$ too, and $y_1, y_1', y_2', y_2$ avoids $H$. Dual grids really are exceptions: in $K_{3,3}$, viewed as a dual grid, one side is an ovoid and leaves behind three points with no edges between them. The case $H = x^\perp$ says that the points opposite $x$ form a connected graph of diameter at most 3.
+**Note: what does a hyperplane leave behind?** The points outside a hyperplane $H$, joined when collinear (the [subgraph](#cliques-and-subgraphs) of the collinearity graph induced on them, not the complement graph of the strongly regular graphs chapter), form a connected graph of diameter at most 3, unless the quadrangle is a dual grid. Here is the idea when lines have at least three points (the remaining case, a grid with two-point columns, is a short check). Take two outside points $y_1, y_2$ at distance 2 whose common neighbours $z_1, z_2, \dots$ all lie in $H$. A third point $y_2'$ on the line $y_2z_2$ is outside $H$ and collinear with neither $z_1$ nor $y_1$, so the point $y_1'$ of the line $y_1z_1$ collinear with $y_2'$ is outside $H$ too, and $y_1, y_1', y_2', y_2$ avoids $H$. Dual grids really are exceptions: in $K_{3,3}$, viewed as a dual grid, one side is an ovoid and leaves behind three points with no edges between them. The case $H = x^\perp$ says that the points opposite $x$ form a connected graph of diameter at most 3.
 
 ---
 
@@ -1727,7 +1748,7 @@ Why rank one less? Every line through $a$ has exactly one point collinear with $
 
 These are steps 3 and 4.
 
-**Cliques fill subspaces.** The subspace generated by a set is built in rounds ([Point-line geometries](#point-line-geometries)), each adding every point on a line through two points already present. If the points so far are pairwise collinear, so are the new ones: an old point sees the two points spanning a new point's line, hence the new point, and two new points are handled by the same argument twice. So a [clique](#neighbours-and-regularity) of pairwise collinear points generates a singular subspace. On the Klein quadric, the pairwise collinear points $e_0$, $e_2$, $e_4$ gain $e_0+e_2$, $e_0+e_4$ and $e_2+e_4$ in the first round and $e_0+e_2+e_4$ in the second, filling the singular Fano plane $x_1 = x_3 = x_5 = 0$: the earlier notes' "no hollow triangles".
+**Cliques fill subspaces.** The subspace generated by a set is built in rounds ([Point-line geometries](#point-line-geometries)), each adding every point on a line through two points already present. If the points so far are pairwise collinear, so are the new ones: an old point sees the two points spanning a new point's line, hence the new point, and two new points are handled by the same argument twice. So a [clique](#cliques-and-subgraphs) of pairwise collinear points generates a singular subspace. On the Klein quadric, the pairwise collinear points $e_0$, $e_2$, $e_4$ gain $e_0+e_2$, $e_0+e_4$ and $e_2+e_4$ in the first round and $e_0+e_2+e_4$ in the second, filling the singular Fano plane $x_1 = x_3 = x_5 = 0$: the earlier notes' "no hollow triangles".
 
 **A point outside.** Let $S$ be a singular subspace and $x$ a point outside it. Then $x^\perp \cap S$ is a subspace of $S$ that meets every line of $S$, by one-or-all, so it is $S$ or a hyperplane of $S$ in the sense of [Point-line geometries](#point-line-geometries). If $S$ is a generator, it cannot be all of $S$, or $x$ and $S$ would span a bigger singular subspace. So $x$ sees a hyperplane $Y$ of $S$, and $x$ and $Y$ span another generator $M$. To check that $M$ is maximal, suppose a point $z$ outside $M$ saw all of $M$, and take $s$ in $S$ outside $Y$. Then $s$ does not see $x$, so it sees one point $w \neq x$ of the line $xz$. That point sees $Y$ (as $x$ and $z$ do) and $s$, hence all of $S$; and $w$ is not in $S$, since otherwise $w$ would lie in $x^\perp \cap S = Y \subseteq M$ and pull $z$ into $M$. So $S$ was not maximal, a contradiction. That is Tits's third axiom, waiting for dimensions.
 
