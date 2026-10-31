@@ -383,25 +383,31 @@ The dual of the grid looks quite different. Its points are the $3$ rows and $3$ 
 
 Each geometry carries two graphs. The **collinearity graph**, also called the point graph, has the points as vertices, with two distinct points adjacent when they are collinear. The **incidence graph** has the points and the lines as vertices, with a point adjacent to a line when they are incident; its edges are the flags. The incidence graph is bipartite, with points on one side and lines on the other.
 
+The simplest picture of both graphs comes from a hexagon read as a geometry, as in Figure 3: its six corners are the points, and its six sides are the lines, each holding two points (the [ordinary hexagon](#small-geometries-that-test-the-definitions) of the next chapter). Every line holds just two points, so each line becomes a single edge of the collinearity graph, and the collinearity graph is the hexagon $C_6$ again. In the incidence graph each side gets a vertex of its own, sitting between its two points, so the ring of $6$ becomes a ring of $12$ in which points and lines alternate. A step from one point to the next becomes two steps, point to line to point, so $p_0$ and $p_3$ are $3$ steps apart in the collinearity graph and $6$ in the incidence graph. The incidence graph has girth $12$ and diameter $6$, the two numbers that will make the hexagon a [generalized hexagon](#generalized-polygons-a-first-look).
+
+![A hexagon with its six corners as points and six sides as lines, beside its collinearity graph, a 6-cycle, and its incidence graph, a 12-cycle of alternating points and lines](figures/maths4_graphs_hexagon.png)
+
+*Figure 3. (a) A hexagon as a geometry: the points $p_0, \dots, p_5$ are its corners, and the line $L_{01}$ is the side holding $p_0$ and $p_1$, and so on round the ring. (b) Its collinearity graph is the $6$-cycle; a shortest path from $p_0$ to $p_3$ (orange) has $3$ steps. (c) Its incidence graph is the $12$-cycle, with circles for points and squares for lines; the same path now passes through a line between each two points and has $6$ steps.*
+
 The incidence graph is the collinearity graph of the **double** of $\mathcal{S}$, whose points are all the points and lines of $\mathcal{S}$ and whose lines are the flags, each written as the set $\{x, L\}$ of its two points. A geometry and its dual have the same double, and so the same incidence graph with the sides swapped. The grid and $K_{3,3}$ share a double with $9 + 6 = 15$ points and $18$ lines, one for each flag of the grid. Doubles return in [generalized polygons](#basic-properties-of-generalized-polygons), where doubling a polygon doubles its number of sides, and in [which polygons exist](#which-polygons-exist).
 
 The two graphs keep different information. The collinearity graph forgets the lines: in the Fano plane any two points are collinear, so its collinearity graph is $K_7$, which is also the collinearity graph of a single line with $7$ points. The incidence graph forgets nothing: once we know which side holds the points, the geometry can be read straight off it.
 
-Figure 3 shows the Fano plane beside its incidence graph, the Heawood graph of the earlier notes, with $14$ vertices, $21$ edges and valency $3$.
+Figure 4 shows the Fano plane beside its incidence graph, the Heawood graph of the earlier notes, with $14$ vertices, $21$ edges and valency $3$.
 
 ![The Fano plane with points labelled by binary triples, beside the Heawood graph with point vertices as dots and line vertices as squares](figures/maths4_graphs_fano_heawood.png)
 
-*Figure 3. Left: the Fano plane, with each point labelled by its coordinates over $\mathbb{F}_2$; the circle is the seventh line. Right: its incidence graph, the Heawood graph. Dots are points, squares are lines, and the square $[a_0a_1a_2]$ is the line $a_0x_0 + a_1x_1 + a_2x_2 = 0$. Edges join each line to its three points; crossings of edges are not vertices.*
+*Figure 4. Left: the Fano plane, with each point labelled by its coordinates over $\mathbb{F}_2$; the circle is the seventh line. Right: its incidence graph, the Heawood graph. Dots are points, squares are lines, and the square $[a_0a_1a_2]$ is the line $a_0x_0 + a_1x_1 + a_2x_2 = 0$. Edges join each line to its three points; crossings of edges are not vertices.*
 
 **Two distances.** We need both graphs: generalized polygons are defined through distances in the incidence graph, while eigenvalues see the collinearity graph. Write $d$ for distance in the collinearity graph and $\delta$ (read "delta") for distance in the incidence graph. For a point $x$ and a line $L$, let $d(x, L)$ be the smallest distance from $x$ to a point of $L$; for two lines, let $d(L, M)$ be the smallest distance between a point of $L$ and a point of $M$. Then, for points $x, y$ and distinct lines $L, M$ of a connected geometry (one whose collinearity graph is connected),
 
 $$\delta(x, y) = 2\,d(x, y), \qquad \delta(x, L) = 2\,d(x, L) + 1, \qquad \delta(L, M) = 2\,d(L, M) + 2.$$
 
-Figure 4 shows why. A path $x_0, x_1, \dots, x_k$ in the collinearity graph becomes an alternating path $x_0, L_1, x_1, \dots, L_k, x_k$ in the incidence graph by inserting a line through each consecutive pair, which doubles its length; deleting the lines halves it again. A path to a line runs to its nearest point and takes one more step, and a path between lines takes one more step at each end. In the grid, a point and a line not through it have $d = 1$ and $\delta = 3$, and two rows have $d = 1$ and $\delta = 4$.
+Figure 5 shows why. A path $x_0, x_1, \dots, x_k$ in the collinearity graph becomes an alternating path $x_0, L_1, x_1, \dots, L_k, x_k$ in the incidence graph by inserting a line through each consecutive pair, which doubles its length; deleting the lines halves it again. A path to a line runs to its nearest point and takes one more step, and a path between lines takes one more step at each end. In the grid, a point and a line not through it have $d = 1$ and $\delta = 3$, and two rows have $d = 1$ and $\delta = 4$.
 
 ![A path of two steps in the 3 by 3 grid, and the same path in the incidence graph as point, row, point, column, point](figures/maths4_graphs_alternating_path.png)
 
-*Figure 4. (a) In the grid, $x$ and $y$ lie in different rows and columns, and the path $x, z, y$ has length $d(x, y) = 2$. (b) In the incidence graph, the same path visits the row $R$ through $x$ and $z$ and the column $C$ through $z$ and $y$, so $\delta(x, y) = 4$. Dots are points, squares are lines.*
+*Figure 5. (a) In the grid, $x$ and $y$ lie in different rows and columns, and the path $x, z, y$ has length $d(x, y) = 2$. (b) In the incidence graph, the same path visits the row $R$ through $x$ and $z$ and the column $C$ through $z$ and $y$, so $\delta(x, y) = 4$. Dots are points, squares are lines.*
 
 **Partial linear spaces and order.** A geometry is a **partial linear space** when two distinct points lie on at most one common line; equivalently, two distinct lines share at most one point. In the incidence graph this says that there is no $4$-cycle, since a $4$-cycle $x, L, y, M$ is the digon pattern. We then write $xy$ for the line through two distinct collinear points $x$ and $y$. A **linear space** is a partial linear space in which any two distinct points lie on exactly one line. The Fano plane is one; the grid is not, since two points in different rows and columns share no line.
 
@@ -425,7 +431,7 @@ The generated subspace can be built from below. Start with $X_0 = X$, and get $X
 
 Why count generators? If a geometry sits inside a projective space with its lines as full projective lines, each closure step stays inside the span of the starting points, so the generating index bounds the vector dimension of the space the geometry spans ([giving a geometry coordinates](#giving-a-geometry-coordinates)).
 
-In the Fano plane, with the labels of Figure 3, start from $100, 010, 001$. The three lines joining them add $110, 101, 011$, and the line through $100$ and $011$ adds $111$. Two points generate only their line, so the generating index is $3$, which is $\dim \mathbb{F}_2^3$, and one more than the projective dimension, as for every projective space ([projective spaces revisited](#projective-spaces-revisited)). In the grid, the four points of a $2 \times 2$ corner fill out two rows and two columns, $8$ points, and the ninth lies on a row with two of them. Three points are not enough:
+In the Fano plane, with the labels of Figure 4, start from $100, 010, 001$. The three lines joining them add $110, 101, 011$, and the line through $100$ and $011$ adds $111$. Two points generate only their line, so the generating index is $3$, which is $\dim \mathbb{F}_2^3$, and one more than the projective dimension, as for every projective space ([projective spaces revisited](#projective-spaces-revisited)). In the grid, the four points of a $2 \times 2$ corner fill out two rows and two columns, $8$ points, and the ninth lies on a row with two of them. Three points are not enough:
 
 - three collinear points generate their line;
 - three points with no two collinear are already a subspace;
@@ -441,14 +447,14 @@ A subgeometry keeps some of the points, some of the lines, each with at least tw
 
 When a geometry sits inside a projective space, each hyperplane of the space cuts out a set of its points. Can such sets be recognized from the geometry alone? A projective hyperplane is a proper subspace that meets every line, and the definition carries over: in a partial linear space, a **hyperplane** is a subspace, other than the whole point set, that meets every line. So each line lies inside it or meets it in exactly one point. Unlike a projective hyperplane, it may contain no line at all; it is then an **ovoid**, a set of points meeting every line in exactly one point.
 
-The grid shows how varied hyperplanes can be. It has exactly $15$ of them, of two shapes, shown in Figure 5:
+The grid shows how varied hyperplanes can be. It has exactly $15$ of them, of two shapes, shown in Figure 6:
 
 - $9$ **crosses**, one for each point $x$: the row and the column through $x$, which together form $x^\perp$, with $5$ points;
 - $6$ ovoids, with one point in each row and each column, like three rooks on a $3 \times 3$ board that cannot attack each other; there are $3! = 6$ of them.
 
 ![The 3 by 3 grid twice: once with a cross of five points highlighted, once with an ovoid of three points highlighted](figures/maths4_graphs_grid_hyperplanes.png)
 
-*Figure 5. The two shapes of hyperplane in the $3 \times 3$ grid, whose lines are the three rows and three columns. (a) The cross $x^\perp$: the row and the column through $x$. (b) An ovoid: one point in each row and each column.*
+*Figure 6. The two shapes of hyperplane in the $3 \times 3$ grid, whose lines are the three rows and three columns. (a) The cross $x^\perp$: the row and the column through $x$. (b) An ovoid: one point in each row and each column.*
 
 There is nothing else. A hyperplane $H$ containing a row (or, symmetrically, a column) holds a point $y$ of another row; the column through $y$ then has two points in $H$, giving a cross, and one more point would bring in everything. A hyperplane containing no line is an ovoid.
 
@@ -470,11 +476,11 @@ This chapter is a survey, with few proofs; each family returns later with the to
 
 ### Small geometries that test the definitions
 
-Every definition has edge cases, and the smallest geometries show them. Each example below tests a word from [the first chapter](#point-line-geometries); Figure 6 draws them, and the table at the end names the word each one tests.
+Every definition has edge cases, and the smallest geometries show them. Each example below tests a word from [the first chapter](#point-line-geometries); Figure 7 draws them, and the table at the end names the word each one tests.
 
 ![Nine small point-line geometries drawn side by side](figures/maths4_gallery_small_geometries.png)
 
-*Figure 6. Small geometries that test the definitions. Dark lines are thick (at least three points), grey lines thin (two points). Top: a point; a line; $K_4$ as a linear space. Middle: a digon with two points and three lines; an ordinary 5-gon; a near-pencil on 5 points. Bottom: a (3,3)-cross; a $2 \times 3$ grid; its dual $K_{2,3}$. A crossing without a dot is not a point.*
+*Figure 7. Small geometries that test the definitions. Dark lines are thick (at least three points), grey lines thin (two points). Top: a point; a line; $K_4$ as a linear space. Middle: a digon with two points and three lines; an ordinary 5-gon; a near-pencil on 5 points. Bottom: a (3,3)-cross; a $2 \times 3$ grid; its dual $K_{2,3}$. A crossing without a dot is not a point.*
 
 **Points, lines and graphs.** The simplest geometries are **a point**, with no lines, and **a line**, at least two points on one line. A graph is a geometry whose lines, its edges, are all thin. The complete graph $K_n$ with $n \geq 3$ is then a linear space in which no line has a third point, a **circular space**.
 
@@ -523,11 +529,11 @@ The cross fails the axiom. With $x_1, y_1$ on one thick line of the $(3,3)$-cros
 
 **Why allow thin lines?** Because polar spaces need them. Their singular subspaces must be projective spaces, and in the earlier notes' octahedron, a polar space of rank 3 with two points on every line, the maximal singular subspaces are the $8$ triangles, planes with only thin lines ([polar spaces: a first look](#polar-spaces-a-first-look)). A projective space is **irreducible** if every line is thick, and **reducible** otherwise. For planes the two pairs of words agree: a nondegenerate plane has $q + 1 \geq 3$ points on every line, and a near-pencil has thin lines.
 
-Figure 7 shows a small reducible space. Take two disjoint 3-point lines $A = \{a_1, a_2, a_3\}$ and $B = \{b_1, b_2, b_3\}$, and add the nine thin lines $\{a_i, b_j\}$. That gives $6$ points and $11$ lines, with every two points on exactly one line. The Veblen–Young axiom holds, again for free, since no point lies on two thick lines; yet no $PG(n, \mathbb{F})$ has thin lines.
+Figure 8 shows a small reducible space. Take two disjoint 3-point lines $A = \{a_1, a_2, a_3\}$ and $B = \{b_1, b_2, b_3\}$, and add the nine thin lines $\{a_i, b_j\}$. That gives $6$ points and $11$ lines, with every two points on exactly one line. The Veblen–Young axiom holds, again for free, since no point lies on two thick lines; yet no $PG(n, \mathbb{F})$ has thin lines.
 
 ![Two vertical 3-point lines A and B joined by nine thin lines](figures/maths4_gallery_glued_lines.png)
 
-*Figure 7. Two 3-point lines glued into a reducible projective space: the thick lines $A$ and $B$, and nine thin grey lines joining each $a_i$ to each $b_j$. A crossing that carries no dot is not a point.*
+*Figure 8. Two 3-point lines glued into a reducible projective space: the thick lines $A$ and $B$, and nine thin grey lines joining each $a_i$ to each $b_j$. A crossing that carries no dot is not a point.*
 
 In general, take irreducible projective spaces on disjoint point sets and add a thin line through every pair of points from different pieces. This is their **direct sum**, and every reducible projective space is a direct sum of irreducible ones: the glued pair of two lines, a triangle of three points.
 
@@ -623,11 +629,11 @@ from [the prologue](#bilinear-and-sesquilinear-forms-in-coordinates). A line of 
 
 For a point $a$, the points $b$ with $f(a, b) = 0$ form a plane of $PG(3, 2)$ through $a$: $a$ and six others, pairing up into $3$ lines through $a$. So the order is $(2, 2)$, and the formulas give $15$ points and $15$ lines. The second GQ axiom is linear algebra: for $x$ off a line $L = \{a, b, a + b\}$, the linear map $y \mapsto f(x, y)$ vanishes at one point of $L$ or at all three, and all three would make $\langle x, a, b \rangle$ a 3-dimensional totally isotropic subspace of $\mathbb{F}_2^4$, more than half the dimension. The lines $\{1000, 0010, 1010\}$ and $\{0100, 0001, 0101\}$ are disjoint, so $W(3, 2)$ is a GQ of order $(2, 2)$.
 
-Figure 8 shows its usual drawing, source of the nickname **doily**; $W(3, 2)$ is also written $W(2)$. Read two lines off it. The straight line from $0001$ at the top through the centre passes $1001$ and ends at $1000$: indeed $f(0001, 1000) = 0$ and $0001 + 1000 = 1001$. The arc through $1100$ continues through the inner points $1111$ and $0011$: $f(1100, 0011) = 0$ and $1100 + 0011 = 1111$. But $f(0001, 0010) = 1$, so $0001$ and $0010$ are not collinear in the doily, although they lie on a line of $PG(3, 2)$. As for the earlier notes' $W(3, 3)$, the doily has every point of its ambient space, and only the lines tell the two apart.
+Figure 9 shows its usual drawing, source of the nickname **doily**; $W(3, 2)$ is also written $W(2)$. Read two lines off it. The straight line from $0001$ at the top through the centre passes $1001$ and ends at $1000$: indeed $f(0001, 1000) = 0$ and $0001 + 1000 = 1001$. The arc through $1100$ continues through the inner points $1111$ and $0011$: $f(1100, 0011) = 0$ and $1100 + 0011 = 1111$. But $f(0001, 0010) = 1$, so $0001$ and $0010$ are not collinear in the doily, although they lie on a line of $PG(3, 2)$. As for the earlier notes' $W(3, 3)$, the doily has every point of its ambient space, and only the lines tell the two apart.
 
 ![The doily: fifteen points labelled by 4-bit strings, with a pentagon, five lines through the centre and five arcs](figures/maths4_gallery_doily.png)
 
-*Figure 8. The doily, the generalized quadrangle $W(3, 2)$. Each point of $PG(3, 2)$ is labelled by its coordinates $x_0x_1x_2x_3$; the labels of the five inner points sit beside their dots. The $15$ lines are the five blue sides of the pentagon, the five green straight lines through the centre and the five orange arcs; each has $3$ points, and each point lies on $3$ lines. The centre and the other crossings without a dot are not points. The drawn triples were checked by computer to be exactly the totally isotropic lines of $f$.*
+*Figure 9. The doily, the generalized quadrangle $W(3, 2)$. Each point of $PG(3, 2)$ is labelled by its coordinates $x_0x_1x_2x_3$; the labels of the five inner points sit beside their dots. The $15$ lines are the five blue sides of the pentagon, the five green straight lines through the centre and the five orange arcs; each has $3$ points, and each point lies on $3$ lines. The centre and the other crossings without a dot are not points. The drawn triples were checked by computer to be exactly the totally isotropic lines of $f$.*
 
 ---
 
@@ -766,11 +772,11 @@ $$
 k(k - \lambda - 1) = (v - k - 1)\mu .
 $$
 
-For the Petersen graph this reads $3 \cdot 2 = 6 \cdot 1$. Figure 9 shows the 6 edges, counted from above and from below.
+For the Petersen graph this reads $3 \cdot 2 = 6 \cdot 1$. Figure 10 shows the 6 edges, counted from above and from below.
 
 ![The Petersen graph drawn in three rows: a vertex x, its three neighbours, and its six non-neighbours, with the edges between the second and third rows highlighted](figures/maths4_srg_petersen_layers.png)
 
-*Figure 9. The Petersen graph (2-subsets of $\{1,\dots,5\}$, joined when disjoint) seen from $x = 12$. The three neighbours of $x$ share no neighbour with $x$ ($\lambda = 0$), so each sends $k - \lambda - 1 = 2$ edges down (orange). Each of the six non-neighbours receives exactly $\mu = 1$ of them. Grey edges join non-neighbours; where two drawn edges cross there is no vertex.*
+*Figure 10. The Petersen graph (2-subsets of $\{1,\dots,5\}$, joined when disjoint) seen from $x = 12$. The three neighbours of $x$ share no neighbour with $x$ ($\lambda = 0$), so each sends $k - \lambda - 1 = 2$ edges down (orange). Each of the six non-neighbours receives exactly $\mu = 1$ of them. Grey edges join non-neighbours; where two drawn edges cross there is no vertex.*
 
 For $\mu > 0$ the identity can be solved for $v$: $v = 1 + k + k(k-\lambda-1)/\mu$. For the Petersen graph that is $1 + 3 + 6 = 10$, the same count as in the puzzle. So once $k$, $\lambda$ and $\mu > 0$ are chosen, the number of vertices is forced, and it has to come out a whole number.
 
@@ -967,11 +973,11 @@ Now stand at a vertex $y$ at distance $i$ from $x$, and sort the neighbours of $
 
 A connected graph of diameter $d$ is **distance-regular** if these three numbers depend only on $i$, not on the choice of $x$ and $y$. The numbers $a_i$, $b_i$, $c_i$ are the **intersection numbers**, or parameters, of the graph; the name records that each counts the intersection of two sets of vertices. As shorthand we list them in the intersection array $\{b_0, \dots, b_{d-1}; c_1, \dots, c_d\}$. Every neighbour goes somewhere, so $c_i + a_i + b_i = k$. At the ends, $c_0 = a_0 = b_d = 0$, and $c_1 = 1$ (a neighbour of $x$ steps back only to $x$).
 
-In the cube, $y$ at distance $i$ differs from $x$ in $i$ coordinates. Flipping one of those $i$ coordinates steps back; flipping one of the other $3 - i$ steps out; no flip keeps the distance. So $c_i = i$, $a_i = 0$, $b_i = 3 - i$, and the array is $\{3, 2, 1; 1, 2, 3\}$. Figure 10 shows the shells and these counts.
+In the cube, $y$ at distance $i$ differs from $x$ in $i$ coordinates. Flipping one of those $i$ coordinates steps back; flipping one of the other $3 - i$ steps out; no flip keeps the distance. So $c_i = i$, $a_i = 0$, $b_i = 3 - i$, and the array is $\{3, 2, 1; 1, 2, 3\}$. Figure 11 shows the shells and these counts.
 
 ![The cube graph drawn in four rows by distance from 000, with the shell sizes and step counts written beside each row](figures/maths4_srg_cube_shells.png)
 
-*Figure 10. The cube graph in shells around $x = 000$. Row $i$ is $\Gamma_i(x)$, the vertices that differ from $x$ in $i$ coordinates. From $y = 110$ two edges step back to $\Gamma_1(x)$ (green) and one steps out to $\Gamma_3(x)$ (orange). The counts beside each row are the same for every vertex of that row and every choice of $x$. Where two drawn edges cross there is no vertex.*
+*Figure 11. The cube graph in shells around $x = 000$. Row $i$ is $\Gamma_i(x)$, the vertices that differ from $x$ in $i$ coordinates. From $y = 110$ two edges step back to $\Gamma_1(x)$ (green) and one steps out to $\Gamma_3(x)$ (orange). The counts beside each row are the same for every vertex of that row and every choice of $x$. Where two drawn edges cross there is no vertex.*
 
 The shell sizes follow from the intersection numbers. Count the edges between $\Gamma_i(x)$ and $\Gamma_{i+1}(x)$: each vertex of the inner shell sends $b_i$ of them out, and each vertex of the outer shell receives $c_{i+1}$. So $k_i b_i = k_{i+1} c_{i+1}$, and
 
@@ -1274,9 +1280,9 @@ When is $\epsilon/\alpha$ again a full embedding? Spanning is automatic. Lines s
 
 ![Two projections: the 3x3 grid with three secants through an outside point, and the 15 lines through the nucleus of Q(4,2)](figures/maths4_embeddings_projection.png)
 
-*Figure 11. (a) The grid $x_0x_3 + x_1x_2 = 0$ in $PG(3,2)$, laid out as in the earlier projective geometry notes (grey: its six lines). The point $c = (1,0,0,1)$ is not on the grid, but it lies on three secants (dashed), each through two grid points of one colour. Projected from $c$, the nine points throw only six shadows. (b) The quadric $Q(4,2)$ and its nucleus $N = (1,0,0,0,0)$. Each of the 15 lines through $N$ has three points: $N$, one point of the quadric (filled) and one point off it (open). No line through $N$ is a secant, so projection from $N$ keeps all 15 points apart.*
+*Figure 12. (a) The grid $x_0x_3 + x_1x_2 = 0$ in $PG(3,2)$, laid out as in the earlier projective geometry notes (grey: its six lines). The point $c = (1,0,0,1)$ is not on the grid, but it lies on three secants (dashed), each through two grid points of one colour. Projected from $c$, the nine points throw only six shadows. (b) The quadric $Q(4,2)$ and its nucleus $N = (1,0,0,0,0)$. Each of the 15 lines through $N$ has three points: $N$, one point of the quadric (filled) and one point off it (open). No line through $N$ is a secant, so projection from $N$ keeps all 15 points apart.*
 
-**A centre that fails.** Take the grid and $c = (1,0,0,1)$. It is not on the grid, since $x_0x_3 + x_1x_2 = 1$. But $c + (1,0,0,0) = (0,0,0,1)$, so $c$ lies on the secant through the grid points $(1,0,0,0)$ and $(0,0,0,1)$. In the same way it lies on the secants $\{(1,0,1,0), (0,0,1,1)\}$ and $\{(1,1,0,0), (0,1,0,1)\}$. Projected from $c$, the nine points give six shadows (Figure 11a). No other centre does better, for a one-line reason: a quotient would live in $PG(2,2)$ or in something smaller, where any two lines meet, while the grid has two disjoint rows, and an injective map cannot make disjoint lines meet.
+**A centre that fails.** Take the grid and $c = (1,0,0,1)$. It is not on the grid, since $x_0x_3 + x_1x_2 = 1$. But $c + (1,0,0,0) = (0,0,0,1)$, so $c$ lies on the secant through the grid points $(1,0,0,0)$ and $(0,0,0,1)$. In the same way it lies on the secants $\{(1,0,1,0), (0,0,1,1)\}$ and $\{(1,1,0,0), (0,1,0,1)\}$. Projected from $c$, the nine points give six shadows (Figure 12a). No other centre does better, for a one-line reason: a quotient would live in $PG(2,2)$ or in something smaller, where any two lines meet, while the grid has two disjoint rows, and an injective map cannot make disjoint lines meet.
 
 **A centre that works: the nucleus.** The earlier projective geometry notes met the nucleus of the parabolic quadric: in characteristic 2 the polar form has a one-dimensional radical, through which all the tangent hyperplanes pass. As in [the prologue](#bilinear-and-sesquilinear-forms-in-coordinates), write the quadratic form as $\Phi(x) = x_0^2 + x_1x_2 + x_3x_4$. Its polar form is
 
@@ -1284,7 +1290,7 @@ $$f(x,y) = \Phi(x+y) - \Phi(x) - \Phi(y) = x_1y_2 + x_2y_1 + x_3y_4 + x_4y_3 ,$$
 
 since $(x_0 + y_0)^2 = x_0^2 + y_0^2$ in characteristic 2. The radical is $N = (1,0,0,0,0)$, and $\Phi(N) = 1$, so $N$ is off the quadric.
 
-For any point $p$, we have $\Phi(p + N) = \Phi(p) + \Phi(N) + f(p,N) = \Phi(p) + 1$. So of the two points other than $N$ on the line through $N$ and $p$, exactly one lies on $Q(4,2)$. Every line through $N$ meets the quadric once: $N$ is on no secant (Figure 11b). A computer check of all 16 points off the quadric shows that $N$ is the only one with this property; each of the other 15 lies on 4 secants.
+For any point $p$, we have $\Phi(p + N) = \Phi(p) + \Phi(N) + f(p,N) = \Phi(p) + 1$. So of the two points other than $N$ on the line through $N$ and $p$, exactly one lies on $Q(4,2)$. Every line through $N$ meets the quadric once: $N$ is on no secant (Figure 12b). A computer check of all 16 points off the quadric shows that $N$ is the only one with this property; each of the other 15 lies on 4 secants.
 
 Projection from $N$ just forgets $x_0$. It sends the 15 points of $Q(4,2)$ bijectively onto the 15 points of $PG(3,2)$. A line of $Q(4,2)$ has $f = 0$ between any two of its points, and $f$ only sees $x_1, \dots, x_4$, so its shadow is a line totally isotropic for $x_1y_2 + x_2y_1 + x_3y_4 + x_4y_3$. That is the doily's symplectic form with the coordinates renamed. So the projection of $Q(4,2)$ from its nucleus is $W(3,2)$, and the doily's embedding in $PG(3,2)$ is a proper quotient of its embedding in $PG(4,2)$.
 
@@ -1379,11 +1385,11 @@ Two vertices of the incidence graph at distance $i < n$ are joined by exactly on
 
 Two elements at incidence distance $n$, the largest possible, are called **opposite**. Since the incidence graph is bipartite, opposite elements have the same type for even $n$ and are a point and a line for odd $n$. In a quadrangle, opposite points are non-collinear points and opposite lines are disjoint lines. In a projective plane, a point is opposite every line not through it.
 
-Opposite elements have the same number of neighbours: as many lines through a point, or points on a line. The reason is that their neighbours pair off (Figure 12). Let $x$ and $y$ be opposite, and let $z$ be a neighbour of $x$. Then $z$ is at distance $n - 1$ from $y$ ($n + 1$ is beyond the diameter, and $n$ has the wrong parity), so there is a unique geodesic from $z$ to $y$, and it reaches $y$ through one neighbour $\psi(z)$ of $y$. Going back, the walk $x, z, \dots, \psi(z)$ has length $n - 1$ and does not backtrack, so it is the geodesic from $\psi(z)$ to $x$, and it arrives through $z$. The same construction run from $y$ therefore undoes $\psi$, and $\psi$ is a bijection between the neighbours of $x$ and those of $y$.
+Opposite elements have the same number of neighbours: as many lines through a point, or points on a line. The reason is that their neighbours pair off (Figure 13). Let $x$ and $y$ be opposite, and let $z$ be a neighbour of $x$. Then $z$ is at distance $n - 1$ from $y$ ($n + 1$ is beyond the diameter, and $n$ has the wrong parity), so there is a unique geodesic from $z$ to $y$, and it reaches $y$ through one neighbour $\psi(z)$ of $y$. Going back, the walk $x, z, \dots, \psi(z)$ has length $n - 1$ and does not backtrack, so it is the geodesic from $\psi(z)$ to $x$, and it arrives through $z$. The same construction run from $y$ therefore undoes $\psi$, and $\psi$ is a bijection between the neighbours of $x$ and those of $y$.
 
 ![Opposite elements pair off their neighbours: two opposite points of a quadrangle, and a point opposite a line in the Fano plane](figures/maths4_polygons_opposite.png)
 
-*Figure 12. (a) Two non-collinear points $x$ and $y$ of a quadrangle of order $(2,2)$, such as the doily. Each line through $x$ (solid) has exactly one point collinear with $y$ (filled), and that point lies on exactly one line through $y$ (dashed), so the three lines through $x$ pair off with the three lines through $y$. Open dots are the third points of the lines. (b) In the Fano plane a point $p$ is opposite every line $L$ not through it; each line through $p$ meets $L$ in one point, so lines through $p$ pair off with points of $L$.*
+*Figure 13. (a) Two non-collinear points $x$ and $y$ of a quadrangle of order $(2,2)$, such as the doily. Each line through $x$ (solid) has exactly one point collinear with $y$ (filled), and that point lies on exactly one line through $y$ (dashed), so the three lines through $x$ pair off with the three lines through $y$. Open dots are the third points of the lines. (b) In the Fano plane a point $p$ is opposite every line $L$ not through it; each line through $p$ meets $L$ in one point, so lines through $p$ pair off with points of $L$.*
 
 #### Thickness gives an order
 
@@ -1474,14 +1480,14 @@ $$|Z| \sum t_z^2 - \Big(\sum t_z\Big)^2 = (t^2-1)\Big[(s^2t - st - s + t)(s+t) -
 
 For $s, t \ge 2$ the first three factors are positive, so $t \le s^2$. Equality holds exactly when the variance is zero, that is, when every $t_z$ equals the mean $(t+1)(t-1)s/|Z|$, which for $t = s^2$ works out to $s + 1$. Since $x$ and $y$ were arbitrary: *$t = s^2$ exactly when every triad has the same number of centres, and that number is then $s + 1$.*
 
-Two examples, both checked by computer over all triads (Figure 13):
+Two examples, both checked by computer over all triads (Figure 14):
 
 - **$Q^-(5,2)$**, of order $(2,4)$, sits on the bound. Here $|Z| = 10$, and every triad has exactly $3 = s + 1$ centres.
 - **The doily**, of order $(2,2)$, sits strictly below it. Here $|Z| = 4$ and the counts are $3, 1, 1, 1$. Check: their sum is $6 = (t+1)(t-1)s$ and the sum of their squares is $12 = (t+1)(t-1)(s+t)$. Triads in the doily have 1 or 3 centres, so the number is not constant: another face of the doily (see its [who's who](#whos-who-of-the-doily)).
 
 ![Triads in the doily and in Q-(5,2): the two points x and y, their common neighbours, and the points of Z with their numbers of centres](figures/maths4_polygons_triad.png)
 
-*Figure 13. Edges join collinear points; only edges between the rows are drawn. Top: two non-collinear points $x$ and $y$. Middle (orange): their $t + 1$ common neighbours, the possible centres. Bottom: the set $Z$ of points collinear with neither, each labelled with its number of centres $t_z$. (a) In the doily ($t = 2 < s^2$) the counts are $3, 1, 1, 1$. (b) In $Q^-(5,2)$ ($t = 4 = s^2$) all ten points of $Z$ see exactly three centres. Computed from the coordinates of both quadrangles.*
+*Figure 14. Edges join collinear points; only edges between the rows are drawn. Top: two non-collinear points $x$ and $y$. Middle (orange): their $t + 1$ common neighbours, the possible centres. Bottom: the set $Z$ of points collinear with neither, each labelled with its number of centres $t_z$. (a) In the doily ($t = 2 < s^2$) the counts are $3, 1, 1, 1$. (b) In $Q^-(5,2)$ ($t = 4 = s^2$) all ten points of $Z$ see exactly three centres. Computed from the coordinates of both quadrangles.*
 
 In the Krein proof, equality $t = s^2$ is exactly where the Krein parameter is zero. The counting proof says what that zero means in the geometry: the number of centres stops fluctuating.
 
@@ -1525,7 +1531,7 @@ Throughout, $\mathcal{S}$ is a finite generalized $n$-gon with $n \ge 4$, order 
 
 #### The polygon fixes its shell counts
 
-Fix a point $x$ and let $\Gamma_i(x)$ be the set of points at distance $i$ from $x$. For $y \in \Gamma_i(x)$, count the neighbours of $y$ one step back, in the same shell, and one step out: the intersection numbers $c_i$, $a_i$, $b_i$ of [distance-regular graphs](#distance-regular-graphs). Unique geodesics settle them (Figure 14).
+Fix a point $x$ and let $\Gamma_i(x)$ be the set of points at distance $i$ from $x$. For $y \in \Gamma_i(x)$, count the neighbours of $y$ one step back, in the same shell, and one step out: the intersection numbers $c_i$, $a_i$, $b_i$ of [distance-regular graphs](#distance-regular-graphs). Unique geodesics settle them (Figure 15).
 
 - **The base point.** All $k = s(t+1)$ neighbours of $x$ are one step out: $b_0 = s(t+1)$.
 - **Middle shells, $1 \le i \le d - 1$.** Exactly one line through $y$ has a point closer to $x$, and it has exactly one such point; its other $s - 1$ points are in the same shell as $y$. The other $t$ lines through $y$ lead outward, $s$ points each. So $c_i = 1$, $a_i = s - 1$, $b_i = st$.
@@ -1536,7 +1542,7 @@ These numbers depend only on $i$, not on $x$ and $y$, so the point graph is dist
 
 ![The lines through a point y in a middle shell, in the last shell for even n, and in the last shell for odd n](figures/maths4_polygons_shells.png)
 
-*Figure 14. The $t + 1 = 3$ lines through a point $y$ at distance $i$ from $x$, in a polygon of order $(2,2)$; grey bands are distance shells around $x$. (a) In a middle shell one line goes back (red) and $t$ lines go out (blue). (b) In the last shell of an even polygon every line goes back. (c) In the last shell of an odd polygon one line goes back and the other $t$ lines (green) stay inside the last shell.*
+*Figure 15. The $t + 1 = 3$ lines through a point $y$ at distance $i$ from $x$, in a polygon of order $(2,2)$; grey bands are distance shells around $x$. (a) In a middle shell one line goes back (red) and $t$ lines go out (blue). (b) In the last shell of an even polygon every line goes back. (c) In the last shell of an odd polygon one line goes back and the other $t$ lines (green) stay inside the last shell.*
 
 The shell sizes follow from $k_{i+1} = k_i b_i / c_{i+1}$:
 

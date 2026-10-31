@@ -2,15 +2,18 @@
 
 Usage: python make_graphs_figures.py OUTPUT_DIR
 
-Writes five PNGs into OUTPUT_DIR:
+Writes six PNGs into OUTPUT_DIR:
   maths4_graphs_valency.png          triangle, hexagon and two triangles (all valency 2)
   maths4_graphs_petersen.png         Petersen graph as pentagon and star, labelled by 2-subsets
+  maths4_graphs_hexagon.png          the hexagon as a geometry, its collinearity and incidence graphs
   maths4_graphs_fano_heawood.png     Fano plane beside its incidence graph (the Heawood graph)
   maths4_graphs_grid_hyperplanes.png the 3x3 grid with a cross and an ovoid
   maths4_graphs_alternating_path.png a collinearity path in the grid and its alternating path
 
 Every drawing is checked by computation before it is drawn:
   * the Petersen drawing is asserted to join exactly the disjoint 2-subsets of {1,...,5};
+  * the hexagon's collinearity graph is asserted to be C6 and its incidence graph C12
+    (girth 12, diameter 6), with the highlighted paths shortest;
   * the Fano lines are the kernels a.x = 0 over F_2, and the Heawood drawing is asserted
     to be the incidence graph (14 vertices, 21 edges, girth 6, diameter 3);
   * the grid's hyperplanes are enumerated (9 crosses, 6 ovoids) and the drawn sets are
@@ -123,6 +126,75 @@ def fig_petersen(out):
     finish(ax)
     fig.tight_layout()
     fig.savefig(os.path.join(out, "maths4_graphs_petersen.png"), dpi=160, facecolor="white")
+    plt.close(fig)
+
+
+# ---------------------------------------------------------------- hexagon: two graphs
+def fig_hexagon(out):
+    pts = [f"p{i}" for i in range(6)]
+    lines = [f"L{i}{(i + 1) % 6}" for i in range(6)]  # line L_{i,i+1} holds p_i and p_{i+1}
+    col = nx.Graph([(pts[i], pts[(i + 1) % 6]) for i in range(6)])
+    inc = nx.Graph()
+    for i, L in enumerate(lines):
+        inc.add_edges_from([(pts[i], L), (L, pts[(i + 1) % 6])])
+    assert nx.is_isomorphic(col, nx.cycle_graph(6)) and nx.is_isomorphic(inc, nx.cycle_graph(12))
+    assert nx.girth(inc) == 12 and nx.diameter(inc) == 6
+    col_path = ["p0", "p1", "p2", "p3"]
+    inc_path = ["p0", "L01", "p1", "L12", "p2", "L23", "p3"]
+    assert nx.is_path(col, col_path) and len(col_path) - 1 == nx.shortest_path_length(col, "p0", "p3") == 3
+    assert nx.is_path(inc, inc_path) and len(inc_path) - 1 == nx.shortest_path_length(inc, "p0", "p3") == 6
+
+    def ring(n, start=90):
+        a = np.radians(start - 360 * np.arange(n) / n)
+        return np.c_[np.cos(a), np.sin(a)]
+
+    def tex(v):
+        return f"${v[0]}_{{{v[1:]}}}$"
+
+    fig, axes = plt.subplots(1, 3, figsize=(13, 4.9))
+    P = ring(6)
+    ax = axes[0]
+    for i in range(6):
+        a, b = P[i], P[(i + 1) % 6]
+        ax.plot(*zip(a, b), color=BLUE, lw=7, alpha=0.35, solid_capstyle="round", zorder=1)
+        ax.text(*((a + b) / 2 * 1.22), tex(lines[i]), color=BLUE, ha="center", va="center", fontsize=13)
+    for i, (x, y) in enumerate(P):
+        node(ax, x, y, tex(pts[i]), r=0.13, fs=12)
+    ax.set_xlim(-1.45, 1.45)
+    ax.set_ylim(-1.3, 1.3)
+    finish(ax, "(a) the hexagon as a geometry")
+
+    ax = axes[1]
+    on = {frozenset(e) for e in zip(col_path, col_path[1:])}
+    for i in range(6):
+        e = frozenset((pts[i], pts[(i + 1) % 6]))
+        ax.plot(*zip(P[i], P[(i + 1) % 6]), **(dict(color=ORANGE, lw=3.4, zorder=2) if e in on else EDGE))
+    for i, (x, y) in enumerate(P):
+        node(ax, x, y, tex(pts[i]), r=0.13, fs=12, face=ORANGE if pts[i] in ("p0", "p3") else "white")
+    ax.text(0, 0, "$p_0$ to $p_3$:\n3 steps", ha="center", va="center", fontsize=12)
+    ax.set_xlim(-1.45, 1.45)
+    ax.set_ylim(-1.3, 1.3)
+    finish(ax, "(b) collinearity graph")
+
+    ax = axes[2]
+    Q = ring(12)
+    order = [v for i in range(6) for v in (pts[i], lines[i])]
+    pos = dict(zip(order, Q))
+    on = {frozenset(e) for e in zip(inc_path, inc_path[1:])}
+    for k in range(12):
+        u, v = order[k], order[(k + 1) % 12]
+        ax.plot(*zip(pos[u], pos[v]), **(dict(color=ORANGE, lw=3.4, zorder=2) if frozenset((u, v)) in on else EDGE))
+    for v, (x, y) in pos.items():
+        if v.startswith("p"):
+            node(ax, x, y, tex(v), r=0.12, fs=11, face=ORANGE if v in ("p0", "p3") else "white")
+        else:
+            node(ax, x, y, tex(v), r=0.12, fs=9.5, square=True, edge=BLUE, lw=2.2)
+    ax.text(0, 0, "$p_0$ to $p_3$:\n6 steps", ha="center", va="center", fontsize=12)
+    ax.set_xlim(-1.45, 1.45)
+    ax.set_ylim(-1.3, 1.3)
+    finish(ax, "(c) incidence graph")
+    fig.tight_layout()
+    fig.savefig(os.path.join(out, "maths4_graphs_hexagon.png"), dpi=160, facecolor="white")
     plt.close(fig)
 
 
@@ -336,6 +408,7 @@ def main():
     os.makedirs(out, exist_ok=True)
     fig_valency(out)
     fig_petersen(out)
+    fig_hexagon(out)
     fig_fano_heawood(out)
     fig_grid_hyperplanes(out)
     fig_alternating_path(out)
