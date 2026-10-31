@@ -295,7 +295,21 @@ Now we turn a graph into a matrix. Let a finite graph have $v$ vertices (as in l
 
 Writing $A$ down needs an order for the vertices. But let's say you changed the order. You would then have $P^TAP$ as the adjacency matrix, where $P$ is a permutation matrix (it changes the order of vertices). This will have the same eigenvalues and multiplicities ([permutation matrices](#the-all-ones-matrix-and-commuting-matrices)). These eigenvalues are therefore the eigenvalues of $\Gamma$ itself. The list of eigenvalues is sometimes called the spectrum of $\Gamma$.
 
-The matrix is easy to read: $(Aw)_y$ is the sum of $w_z$ over the neighbours $z$ of $y$. So $Aw = \theta w$ says that at every vertex, the values at the neighbours add up to $\theta$ times the value at the vertex. On the $n$-cycle, with vertices $0, 1, \dots, n-1$ round the ring, try a Bloch wave $w_y = \omega^{my}$, where $\omega = e^{2\pi i/n}$. Each vertex $y$ has the neighbours $y \pm 1$, so $(Aw)_y = (\omega^m + \omega^{-m})\, w_y$, and the eigenvalues are $2\cos(2\pi m/n)$ for $m = 0, 1, \dots, n-1$. The two triangles have the triangle's eigenvalues twice over, since the adjacency matrix of a graph in pieces is block diagonal. So, for the graphs of Figure 1:
+**Reading the matrix.** A vector $w$ with one entry per vertex can be pictured as a number written on each vertex: $w_y$ is the number on vertex $y$. Multiplying by $A$ gives a new vector. Row $y$ of $A$ has a $1$ in the column of each neighbour of $y$ and $0$ elsewhere, so $(Aw)_y$ is the sum of the numbers on the neighbours of $y$.
+
+Take the triangle with vertices $1, 2, 3$ and put $w = (1, -1, 0)$. Vertex $1$ has the neighbours $2$ and $3$, so $(Aw)_1 = -1 + 0 = -1$. In the same way, $(Aw)_2 = 1 + 0 = 1$ and $(Aw)_3 = 1 - 1 = 0$. So $Aw = (-1, 1, 0) = -w$, and $w$ is an eigenvector with eigenvalue $-1$.
+
+This gives a way to spot eigenvectors without multiplying matrices out. The equation $Aw = \theta w$ says that at every vertex, the numbers on the neighbours add up to $\theta$ times the number on the vertex itself. Put $1$ on every vertex of the triangle: each vertex then sees two neighbours carrying $1$ each, which add up to $2$, so $(1, 1, 1)$ is an eigenvector with eigenvalue $2$. These are the eigenvalues the prologue found from the characteristic polynomial ([eigenvalues and eigenspaces](#eigenvalues-and-eigenspaces)).
+
+**The eigenvalues of a cycle.** Number the vertices of the $n$-cycle $0, 1, \dots, n-1$ round the ring, so that the neighbours of $y$ are $y - 1$ and $y + 1$, counting modulo $n$. Turning the ring by one step does not change the graph. So we look for an eigenvector that changes in the simplest possible way as we go round: each step multiplies the number on the vertex by the same complex number $\zeta$, so that $w_y = \zeta^y$. After $n$ steps we are back where we started, so $\zeta^n = 1$, and $\zeta = \omega^m$ for some $m$ in $0, 1, \dots, n-1$, where $\omega = e^{2\pi i/n}$. This vector is a wave running round the ring, the discrete version of the plane wave $e^{ikx}$ of quantum mechanics; physicists call a wave of this kind on a ring of atoms a Bloch wave. Adding up the numbers on the two neighbours of $y$ gives
+
+$$(Aw)_y = w_{y-1} + w_{y+1} = (\zeta^{-1} + \zeta)\, w_y ,$$
+
+so $w$ is an eigenvector with eigenvalue $\zeta + \zeta^{-1} = 2\cos(2\pi m/n)$. The $n$ choices of $m$ give $n$ eigenvectors. They are independent, because two of them with different $m$ are orthogonal for the complex inner product: their inner product is $\sum_y \eta^y$ with $\eta = \omega^{m'-m}$, an $n$-th root of unity other than $1$, and $1 + \eta + \dots + \eta^{n-1} = (\eta^n - 1)/(\eta - 1) = 0$. So this is the full list. For the hexagon, $m = 0, 1, \dots, 5$ give the eigenvalues $2, 1, -1, -2, -1, 1$. For the triangle, $m = 0, 1, 2$ give $2, -1, -1$, as found above.
+
+**Graphs in pieces.** The two triangles have no edges between them. List the vertices of one triangle first and then the other. The adjacency matrix is then two copies of the triangle's matrix down the diagonal, with zeros everywhere else, so its eigenvalues are the triangle's eigenvalues twice over.
+
+For the graphs of Figure 1:
 
 | Graph | Eigenvalues, with multiplicities |
 | --- | --- |
@@ -732,6 +746,8 @@ A finite graph $\Gamma$ is **strongly regular** with parameters $(v, k, \lambda,
 - any two distinct non-adjacent vertices have exactly $\mu$ common neighbours.
 
 We write $\mathrm{srg}(v,k,\lambda,\mu)$, and read $\lambda$ and $\mu$ as "lambda" and "mu". The graph must have at least one edge and must not be complete. With no edges $\lambda$ would describe nothing, and in a complete graph there are no non-adjacent pairs for $\mu$ to describe. The letters $v$, $k$ and $\lambda$ also name the parameters of a [design](#designs-a-first-look), where they count points, the points in a block, and the blocks through two points. The context always says which is meant.
+
+**Every non-adjacent pair, at any distance.** The last condition is about all pairs of distinct non-adjacent vertices, not only those at distance $2$. In fact it decides the distances. Suppose first that $\mu \geq 1$. Then two non-adjacent vertices always have a common neighbour, so they are at distance exactly $2$. Every pair of vertices is then at distance $1$ or $2$, and the graph is connected with diameter $2$. Now suppose $\mu = 0$. Two vertices at distance $2$ would be non-adjacent with a common neighbour, so no pair is at distance $2$. The graph then falls apart into separate cliques, as [the trivial cases](#complements-cliques-and-the-trivial-cases) below show. In the Petersen graph $\mu = 1$: any two non-adjacent vertices are at distance $2$ and share exactly one neighbour.
 
 We write $\Gamma_1(x)$ for the set of neighbours of a vertex $x$. Later, $\Gamma_i(x)$ will be the set of vertices at distance $i$ from $x$.
 
