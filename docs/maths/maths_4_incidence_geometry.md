@@ -915,7 +915,7 @@ So irrational eigenvalues occur only in this one family. Everywhere else, integr
 
 #### Three eigenvalues and the absolute bound
 
-The converse of the three-eigenvalue result also holds: a connected regular graph with exactly three distinct eigenvalues is strongly regular. So strong regularity can be read off the eigenvalues alone, and the next section extends this to $d + 1$ eigenvalues for diameter $d$.
+The converse of the three-eigenvalue result also holds: a connected regular graph with exactly three distinct eigenvalues is strongly regular. So strong regularity can be read off the eigenvalues alone. The next section shows that a distance-regular graph of diameter $d$ has exactly $d + 1$ eigenvalues, but there the converse fails from $d = 3$ on: some connected regular graphs of diameter $3$ have exactly $4$ eigenvalues without being distance-regular.
 
 The idea goes through [the minimal polynomial](#polynomials-in-a-matrix-and-the-minimal-polynomial). Call the eigenvalues $k$, $\theta_1$ and $\theta_2$. A symmetric matrix is diagonalizable, so its minimal polynomial has one simple root for each distinct eigenvalue, here $(X - k)(X - \theta_1)(X - \theta_2)$. Put $B = (A - \theta_1 I)(A - \theta_2 I)$. Then $(A - kI)B = 0$, so every column of $B$ lies in the eigenspace of $k$, which for a connected $k$-regular graph is spanned by $j$. So every column of $B$ is a multiple of $j$. Since $B$ is symmetric, every row is a multiple of $j^{T}$ as well, and $B = cJ$ for some number $c$. Expanding $B$ shows that $A^2$ is a combination of $I$, $A$ and $J$. The entries of $A^2$ count common neighbours, so those counts depend only on whether the two vertices are equal, adjacent or neither. That is strong regularity.
 
