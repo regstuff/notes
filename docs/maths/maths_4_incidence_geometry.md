@@ -1698,7 +1698,7 @@ $$1,\quad s(t+1) = 10,\quad s^2t(t+1) = 80,\quad s^3t^2(t+1) = 640,\quad s^4t^3 
 
 which add up to 1755 points. It also sits exactly on Higman's bound for octagons, $t \le s^2$, from [the first look at generalized polygons](#generalized-polygons-a-first-look). The arithmetic allows it, and a construction provides it.
 
-Thin polygons add no new examples. A generalized $2d$-gon of order $(1,t)$ with $2d \in \{6, 8, 12\}$ is the double of a generalized $d$-gon of order $(t,t)$ ([near polygons, thin lines and the cube](#near-polygons-thin-lines-and-the-cube)): a projective plane of order $t$, a quadrangle of order $(t,t)$, or a hexagon of order $(t,t)$. Order $(s,1)$ gives the duals of such doubles, $(1,1)$ the ordinary polygons, and the thin quadrangles are the grids and dual grids. So, as far as anyone knows, the thick polygons of the table and the projective planes are the whole story.
+Thin polygons add no new examples. A generalized $2d$-gon of order $(1,t)$ with $2d \in \{6, 8, 12\}$ is the double of a generalized $d$-gon of order $(t,t)$ ([near polygons, thin lines and the cube](#near-polygons-thin-lines-and-the-cube)): a projective plane of order $t$, a quadrangle of order $(t,t)$, or a hexagon of order $(t,t)$. Order $(s,1)$ gives the duals of such doubles, $(1,1)$ the ordinary polygons, and the thin quadrangles are the grids and dual grids. So, as far as anyone knows, every finite generalized polygon is a thick one from the table, a projective plane, or one of these thin ones built from them.
 
 <!-- terms checked: opposite; near polygon; triad; centre; subquadrangle; Moore graph; generalized Moore geometry; non-backtracking walk -->
 
