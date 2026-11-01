@@ -109,6 +109,14 @@ The main text must never depend on an aside, so the reader can skip any of them.
 
 The user supplies the source content. For each chapter, give the plain-English version of the theorems, the definitions and the rest of the chapter, so that it is easy to understand what the author is saying when the user then reads the source. This is not a rule against mathematical notation. The idea is to put each theorem across in easy-to-read language; if it helps, also state the theorem in the usual formal fashion.
 
+**What plain English means.** It is not the textbook's sentence with a few friendly words swapped in, and it is not casual talk with the notation and names taken out. Both of those have happened. Start from what the object looks like or how it is built, in the order the reader would picture it, and attach the book's symbols and parameters to that picture as labels. Don't let symbolic shorthand do the explaining: instead of reading $L_i \setminus \{p\}$ aloud, say what it means in the picture. There is nothing wrong with terminology if it is clearly explained immediately after or below, so keep the standard names (downward heredity, anti-flag, collinearity graph) and explain each one in the same sentence or the next. The plain version must keep every condition of the formal statement, such as "of order $(s, t)$", "nondegenerate" or "$\mu > 0$"; when exactness matters, give the formal statement after it. Compare a textbook paraphrase:
+
+> Let $k_1, \dots, k_s$ be $s \ge 2$ integers, each at least $2$. A $(k_1, \dots, k_s)$-star is a linear space with a point $p$ incident with $s$ lines $L_1, \dots, L_s$, where $L_i$ contains exactly $k_i$ points, such that every line not through $p$ contains exactly two points.
+
+with the plain-English version:
+
+> A $(k_1, k_2, \dots, k_s)$-star is a linear space built around a central hub point $p$ from which $s$ rays (lines) radiate outward. There are $s$ main lines meeting at the hub $p$. The first line has $k_1$ points in total (including $p$), the second has $k_2$ points, and so on up to $k_s$ points. No two of these rays share any points other than $p$, and there are no other points anywhere in the space. Because this is a linear space, every pair of points must be connected by a unique line. Points lying on the same ray are already connected by that ray. To connect two points that lie on different rays, we simply draw a two-point line (a thin line) directly between them. None of these connecting lines contain a third point.
+
 **Give the notation.** For definitions, and in other places where it matters, be sure to mention the notation of the defined item. For example, strongly regular graphs are denoted $SRG(v, k, \lambda, \mu)$: say so, and explain what each of those parameters is. The reader should become familiar with the important notation of the topic from these notes while reading the relevant material in them.
 
 **Combine a clump that tells one story.** Whenever a clump of theorems or definitions tells one coherent story, combine them into one explanation if that helps the reader.
@@ -129,9 +137,11 @@ A few things to keep in mind:
 - The notes are standalone. Never mention the textbook's section numbers or theorem numbers. The textbook is accompanying learning material and may change, so it must not be load-bearing.
 - Do not give exercises or do-it-yourself prompts. Where doing something would be illuminating, actually do it fully for the reader.
 - Use figures wherever they illustrate something better than text, or help the reader visualise or intuitively understand something.
+- Do not use exclamation marks in the prose. The notes are read on a reader that is not very wide, so keep indentation shallow, and use numbered or bulleted lists only where they help clarity; otherwise write paragraphs.
 
 <!-- Mathematics section changelog. One line per round: date, what was added or changed, and the chapter or problem that prompted it.
 2026-11-01: section created from the owner's instructions, replacing the earlier "Mathematics: tell the story" and "Model notes to learn from" sections.
+2026-11-01: added "What plain English means" (textbook paraphrase and casual over-correction, keep terms and conditions, star example in the owner's wording) and the no-exclamation-marks, shallow-indentation, few-lists rule, from the De Bruyn chapter 2 rewrite.
 -->
 
 ## Block formats
