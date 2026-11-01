@@ -14,7 +14,7 @@ As a matter of notation, we define a triple $(P, L, I)$ to be a set $P$ whose el
 
 For example, the Euclidean plane is a triple $(P, L, I)$, where $P = \{(x, y) \mid x, y \in \mathbb{R}\}$, $L = \{[a, b, c] \mid a, b, c \in \mathbb{R}, a, b \text{ not both zero}\}$; $I$ : point $(x, y)$ lies on line $[a, b, c]$ if and only if $ax + by + c = 0$.
 
-It is sometimes convenient, particularly when $P$ and $L$ are finite sets, to express $I$ as a subset of $P \times L$. For example, consider the triple $(P, L, I)$ given by: $P = \{1, 2, 3, 4\}$; $L = \{a, b, c, d, e, f\}$; I = \{(1, a),(2, a),(3, b),(4, b),(1, c),(3, c),(2, d),(4, d),(1, e),(4, e),(2, f),(3, f)\}$.
+It is sometimes convenient, particularly when $P$ and $L$ are finite sets, to express $I$ as a subset of $P \times L$. For example, consider the triple $(P, L, I)$ given by: $P = \{1, 2, 3, 4\}$; $L = \{a, b, c, d, e, f\}$; $I = \{(1, a),(2, a),(3, b),(4, b),(1, c),(3, c),(2, d),(4, d),(1, e),(4, e),(2, f),(3, f)\}$.
 
 This means that points $1$ and $2$ lie on line $a$, points $3$ and $4$ lie on line $b$, and so on.
 
@@ -168,7 +168,7 @@ Remember that in projective geometry, the empty set has dimension $\dim(\emptyse
 
 $$k - c \ge 0 \iff \mathbf{k \ge c} \quad (\text{Dimension} \ge \text{Codimension})$$
 
-Let's look at some examples. A $\text{codim } c = 1$ subspace is forced to intersect a line $K ($\dim k = 1$) because dimension $1$ and codimension $1$ "fill each other out" (their vector space dimensions are $2$ and $m$ inside an $(m+1)$-dimensional vector space, summing to $m + 2 > m + 1$).
+Let's look at some examples. A $\text{codim } c = 1$ subspace is forced to intersect a line $K$ ($\dim K = 1$) because dimension $1$ and codimension $1$ "fill each other out" (their vector space dimensions are $2$ and $m$ inside an $(m+1)$-dimensional vector space, summing to $m + 2 > m + 1$).
 
 But $\text{codim } c = 2$ will not be filled out by $\dim k = 1$ (a line), leaving "wiggle room" for them to miss each other completely (just like two skew lines in $PG(3, F)$, where a line has $\dim 1$ but $\text{codim } 3 - 1 = 2$).
         
@@ -287,7 +287,7 @@ When a finite projective space of dimension $n$ over a field of order $q$, denot
 
 Points ($v$) of the block design are the geometric points ($1$-dimensional vector subspaces of $\mathbb{F}_q^{n+1}$) of $\text{PG}(n, q)$.
     
-Blocks ($b$), each with $k$ points$ are all $d$-dimensional projective subspaces (subspaces of a fixed projective dimension $1 \le d \le n-1$). For instance, blocks are frequently chosen to be the lines ($d=1$) or hyperplanes ($d=n-1$) of the space. As we have seen, a line contains $q+1=k$ points.
+Blocks ($b$), each with $k$ points, are all $d$-dimensional projective subspaces (subspaces of a fixed projective dimension $1 \le d \le n-1$). For instance, blocks are frequently chosen to be the lines ($d=1$) or hyperplanes ($d=n-1$) of the space. As we have seen, a line contains $q+1=k$ points.
     
 Balance ($\lambda$) property of a $2$-BIBD states that any pair of distinct points must appear together in $\lambda$ blocks. In projective geometry, any two distinct points uniquely determine a line, or more broadly, lie together in a constant number of higher-dimensional subspaces.
     
@@ -390,6 +390,7 @@ Notice that using cosets for lines is unique to affine geometry. We never saw co
 A line in the affine space is a set of the form:
   
 $$u + \langle v \rangle = \{ u + t v \mid t \in \mathbb{F} \}$$
+
 where $u, v \in \mathbb{F}^d$ and $v \neq \mathbf{0}$.
   
 In linear algebra and group theory $\langle v \rangle = \{ t v \mid t \in \mathbb{F} \}$ is a 1-dimensional vector subspace. Geometrically, it is a straight line passing directly through the origin $\mathbf{0}$ in the direction of vector $v$.
@@ -442,7 +443,7 @@ What is the size of the hyperboloid throat? Suppose your top and bottom circular
 
 Where does this straight rod pass through the central waist plane $z = 0$? Exactly at the midpoint $M = \frac{1}{2}(A + B)$ between the top and bottom endpoints. 
 
-$$M = \left( R \frac{1 + \cos \phi}{2}, \; R \frac{\sin \phi}{2}, \; 0 \right)$$.
+$$M = \left( R \frac{1 + \cos \phi}{2}, \; R \frac{\sin \phi}{2}, \; 0 \right).$$
 
 Now calculate the distance $r_{\text{throat}}$ of this midpoint $M$ from the central $z$-axis $(0,0,0)$ using the half-angle trig identities ($1 + \cos \phi = 2\cos^2(\phi/2)$ and $\sin \phi = 2\sin(\phi/2)\cos(\phi/2)$):
 
@@ -467,6 +468,7 @@ For example, in the real 3D model, we used $\cos \phi$ and $\sin \phi$ to create
 In projective geometry over any field $F$ (including $\mathbb{F}_q$), we don't need trigonometry to twist a line. We can write the family of lines using a purely algebraic "twist parameter" $k \in F$.
 
 For each parameter $t \in F$ (which selects which rod you are looking at around the rim), connect a point on the bottom plane to a "twisted" point on the top plane:
+
 * Regulus $\mathcal{R}_k$ (twisted by $+k$): Connect $(1 : t : 0 : 0)$ to $(0 : 0 : 1 : k t)$.
 * Opposite Regulus $\mathcal{R}'_k$ (twisted by $-k$): Connect $(1 : s : 0 : 0)$ to $(0 : 0 : k s : 1)$.
 
@@ -1314,7 +1316,7 @@ Here's an example. Consider the 3D cube as a rank 3 incidence geometry $\Gamma$ 
 
 $$I = \{\text{vertices (0)}, \text{edges (1)}, \text{faces (2)}\}$$
 
-The top face is formed by vertices numbered $1234$ and the bottom face directly underneath it is $8765$ (with $1$ above $8$,  $2$ above $7$,  $3$ above $6$, and $4$ above $5$, or more specifically from the edges given:  $1$ is connected to $2$,  $4$, and $5$, so $5$ is directly below $1$).
+The top face is formed by vertices numbered $1234$ and the bottom face directly underneath it is $5678$, with $1$ above $5$, $2$ above $6$, $3$ above $7$ and $4$ above $8$. So vertex $1$ is joined by edges to $2$, $4$ and $5$, and the four side faces are $1256$, $2367$, $3478$ and $1458$.
 
 Now let us find the residue $\Gamma_1$ of the single-element flag $F = \{\text{vertex } 1\}$:
 
@@ -1648,6 +1650,7 @@ Take the cube diagram `0 === 1 --- 2`:
 $$\vert{}\text{Chambers}\vert{} = 2^3 \times 3! = 8 \times 6 = 48$$
 
 And from $48$ chambers:
+
 * Since each vertex residue (triangle `1 --- 2`) has $3 \times 2 = 6$ chambers, the cube must have $48 / 6 = 8$ vertices.
 * Since each face residue (square `0 === 1`) has $4 \times 2 = 8$ chambers, the cube must have $48 / 8 = 6$ faces.
 * Since each edge residue (digon `0   2`) has $2 \times 2 = 4$ chambers, the cube must have $48 / 4 = 12$ edges.
@@ -2182,13 +2185,14 @@ Note that a point lies on $\frac{q^d - 1}{q - 1}$ hyperplanes of the projective 
 
 Also note that a general map between points and hyperplanes that reverses inclusion ($\langle x \rangle \subseteq \langle y \rangle \implies \langle y \rangle^\pi \subseteq \langle x \rangle^\pi$) is called a correlation (or duality). To be a polarity, a correlation must be an involution ($\pi^2 = \text{id}$). Without requiring $\pi^2 = \text{id}$, you would just have an arbitrary correlation, where taking the polar hyperplane of $P$, and then taking the pole of that hyperplane, might land you on a completely different point $Q \neq P$. We saw this happen with the Fano plane example for collineations some time ago.
 
-The involutory property $(P^\pi)^\pi = P$ holds if and only if $f$ is reflexive: $f(x, y) = 0 \iff f(y, x) = 0$. Because $f$ is reflexive, if $Y \in P^\pi$ (meaning $f(x, y) = 0$), then $f(y, x) = 0$, which means $X \in Y^\pi$. This mutual orthogonality is what guarantees: $(P^\pi)^\pi = P$. Another way of seeing this is that if point $y \in $(P^\pi)$, and we now want to take the pole of the hyperplane $(P^\pi)$, we do so by taking the intersection of all polar hyperplanes of the points in $(P^\pi)$. From the reflexive property, this will turn out to be the point $P$ alone.
+The involutory property $(P^\pi)^\pi = P$ holds if and only if $f$ is reflexive: $f(x, y) = 0 \iff f(y, x) = 0$. Because $f$ is reflexive, if $Y \in P^\pi$ (meaning $f(x, y) = 0$), then $f(y, x) = 0$, which means $X \in Y^\pi$. This mutual orthogonality is what guarantees: $(P^\pi)^\pi = P$. Another way of seeing this is that if point $y \in (P^\pi)$, and we now want to take the pole of the hyperplane $(P^\pi)$, we do so by taking the intersection of all polar hyperplanes of the points in $(P^\pi)$. From the reflexive property, this will turn out to be the point $P$ alone.
 
 Note that if $x$ and $y$ are two absolute points, the line $xy$ joining them is an absolute line if and only if $y \in \pi(x)$ (i.e., $x$ and $y$ are orthogonal). Extending this, Let $U = \langle a_1, a_2, \dots, a_k \rangle$ be the subspace spanned by the isotropic (absolute) points $a_1, a_2, \dots, a_k$. $U$ is an absolute subspace ($U \subseteq \pi(U)$) if and only if the spanning points are pairwise orthogonal, meaning $a_j \in \pi(a_i)$ for all $i$ and $j$.Moreover, because $\pi$ is a polarity (so $a_j \in \pi(a_i) \iff a_i \in \pi(a_j)$), you only need to check this in one direction for each pair ($i < j$).
 
 ---
 
 **Aside:** The polar hyperplanes of isotropic points are their tangent hyperplanes. What do the polar hyperplanes of non-isotropic points look like? There are two direct geometric ways to visualize this. Imagine the polar space $\mathcal{Q}$ is a solid sphere or planet floating in 3D space $PG(3, \mathbb{R})$, and $P$ is a point outside the sphere (say, the sun or a flashlight at $P$). If you shine light rays (straight lines) in all directions from $P$ toward the sphere $\mathcal{Q}$:
+
 -   Some rays miss the sphere completely (passants).
 -   Some rays pierce right through the sphere at two points (secants).
 -   A glowing ring of boundary rays just graze the edge of the sphere at a single point (tangents)—this ring of grazing points is the horizon of the sphere as seen from the satellite $P$.
@@ -2763,10 +2767,12 @@ Over a Finite Field $\mathbb{F}_q$ (Chevalley-Warning Theorem), any quadratic fo
 1. Hyperbolic Quadric $Q^+(2n-1, q)$ in odd projective dimension $d = 2n-1$ (even vector dimension $2n$):
 Canonical equation: $x_0 x_1 + x_2 x_3 + \dots + x_{2n-2} x_{2n-1} = 0$.
 Anisotropic core has dimension $0$. Witt index is $r = n$.
+
 2. Parabolic Quadric $Q(2n, q)$ in even projective dimension $d = 2n$ (odd vector dimension $2n+1$):
 Canonical equation: $x_0 x_1 + \dots + x_{2n-2} x_{2n-1} + x_{2n}^2 = 0$.
 Anisotropic core has dimension $1$ ($x_{2n}^2$). Witt index is $r = n$.
 *(Note in characteristic $2$: When $q = 2^h$, the polar bilinear form $f(x, y)$ of $Q(2n, q)$ has a 1-dimensional radical $N = \langle (0, \dots, 0, 1) \rangle$ called the nucleus of the quadric, where all tangent hyperplanes intersect. Quotienting out the nucleus gives an isomorphism between the polar space $Q(2n, 2^h)$ and the symplectic space $W(2n-1, 2^h)$)*
+
 3. Elliptic Quadric $Q^-(2n+1, q)$ in odd projective dimension $d = 2n+1$ (even vector dimension $2n+2$):
 Canonical equation: $x_0 x_1 + \dots + x_{2n-2} x_{2n-1} + (x_{2n}^2 + a x_{2n} x_{2n+1} + b x_{2n+1}^2) = 0$ (where $t^2 + at + b$ is irreducible over $\mathbb{F}_q$).
 Anisotropic core has dimension $2$. Witt index is $r = n$.
@@ -2854,6 +2860,7 @@ In terms of the "quotient / star" geometry at $P$: the isotropic lines of $\math
 We can count the total number of points $\vert{}\mathcal{P}_d\vert{}$ directly from this $d \to d-2$ cone structure by partitioning all points $X \in \mathcal{P}_d$ into two disjoint sets relative to $P^\perp$:
 
 Points inside the tangent hyperplane ($X \in P^\perp \cap \mathcal{P}_d$). This is the cone $P \mathcal{P}_{d-2}$. It consists of:
+
 - The vertex $P$ itself: $1$ point.
 - For each of the $\vert{}\mathcal{P}_{d-2}\vert{}$ points $Y \in \mathcal{P}_{d-2}$, the projective line $\langle P, Y \rangle$ contains $Q + 1$ points total, which gives $Q$ points other than $P$: $Q \cdot \vert{}\mathcal{P}_{d-2}\vert{}$ points.
 
@@ -3335,6 +3342,7 @@ Figure 19 places a simple quadrangle beside a complete quadrangle $(4_3, 6_2)$ a
 ---
 
 ## References
+
 - Projective Geometry: An Introduction by Rey Casse (First & perhaps only edition sections 3.1, 3.2, 3.3, 3.4, 4.1, 4.2, 4.3, 4.7, 4.8, 8.2, 8.3)
 - Projective Geometry: From Foundations to Applications by Albrecht Beutelspacher, Ute Rosenbaum (First & perhaps only edition sections 1.2, 1.3, 1.5, 1.6, 2.1, 2.3, 2.4, 3.4, 3.6, 4.1, 4.2, 4.3, 4.4, 4.5, 4.7)
 - Foundations of Incidence Geometry: Projective and Polar Spaces by Johannes Ueberberg (First & perhaps only edition sections 1.4, 1.7, 1.8, 2.4, 3.2, 3.3, 3.4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 5.1, 5.2, 5.3, 5.4, 5.6)
