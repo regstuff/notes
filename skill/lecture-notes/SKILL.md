@@ -31,6 +31,10 @@ Collect what's missing in one round of questions; don't ask about what you alrea
    - note the textbook's conventions wherever texts differ, such as left or right vector spaces, the metric signature, or which slot of a sesquilinear form carries the automorphism.
 
    If you can't tell which convention the textbook uses, because you don't have the text or it isn't clear, ask before writing.
+
+   **Cut the book into chapter PDFs.** When the user gives a whole book and the list of sections they want, first cut one PDF per chapter that holds only those sections, and write each chapter from its own PDF. The user reads these PDFs too, so put them where the user will find them: in a folder beside the book, named after it, such as `debruyn_chapters/debruyn_ch2.pdf`. Keep every page of a wanted section whole, including a page where it ends and the next section begins. Add a `sections.md` to the folder giving, for each PDF, its chapter, its sections with their titles, and its printed and PDF page numbers. Printed page numbers differ from PDF page numbers, and the difference can change from chapter to chapter, so read the printed number off each page with `pdftotext` instead of adding a fixed offset. Poppler's `pdfseparate` and `pdfunite` do the cutting.
+
+   **Use the whole book when the chapter PDF is not enough.** The wanted sections sometimes rely on something outside them: a definition, a result or a piece of notation from a section that was cut. Look it up in the whole book rather than guessing. If a review finds a mistake that came from missing context, redo that part with the whole book. Either way, the list of sections in `sections.md` still decides what the notes cover; the rest of the book is only for looking things up.
 3. **The output.** The notes are one file. Every chapter goes into the same file, unless the user says otherwise. Ask where the file lives and where figures and scripts go. If the file already exists, match its conventions: heading case, block formats, figure numbering.
 
    **Name the file and title from the subject and its number.** The user numbers their notes by subject: "physics file number 6 on stellar evolution", "maths 4, incidence geometry". Two examples:
@@ -39,6 +43,13 @@ Collect what's missing in one round of questions; don't ask about what you alrea
    - Maths file 4 on incidence geometry: the file is `maths_4_incidence_geometry.md` and its title line is `# Maths 4 - Incidence Geometry`.
 
    The file name is lowercase with underscores. The title capitalises the subject and each main word of the topic, with a spaced hyphen after the number. If the user hasn't given the subject, the number or the topic name, ask.
+4. **What the notes already cover.** Before writing a chapter, find out what the notes already define, so that the chapter doesn't define anything a second time. This is easy to miss when each chapter is written from its own PDF, and it has happened. Look in this order:
+
+   - the user's notes file, such as `maths_4_incidence_geometry.md`. It is the record, because the user edits it and their version is what the reader reads;
+   - earlier chapters that are written but not yet merged into that file, in their own files;
+   - if there is no notes file yet, the files of the earlier chapters.
+
+   Don't read them from end to end. List their headings and the terms they define with `check_notes.py --terms <files>`, then read in full the sections the new chapter builds on. Note the symbols they use and keep using them. When the chapter needs a term that is already defined, link back to it instead of defining it again (see your subject's section). Before handing over, run the checker with `--earlier` on the same files to catch any that slipped through.
 
 Write one chapter at a time and hand it over for review before starting the next. The user's corrections on one chapter usually apply to every later one, so record them and apply them from then on.
 
@@ -134,6 +145,7 @@ A few things to keep in mind:
 - It may also help to summarise a section or subsection where many diverse threads are present, though use this sparingly.
 - Wherever different things are compared, tables can be used. Again, this is not a rule; use your judgement about what is reader-friendly.
 - Do not explain things such that the reader suddenly encounters terminology they are unfamiliar with. Make sure the notes build up to each point. Where new terms are introduced that the reader may not know, add a definition. It is fine to clump two or three definitions together if they are going to be used together straight away.
+- When a term, result or piece of notation from an earlier chapter comes back, do not define it again. Link back to the section where it was introduced, and add a sentence reminding the reader what it means if that was a while back. If the source now defines it more generally or differently, say how the new version relates to the earlier one. "What the notes already cover" under "Before writing" says how to find what is already defined.
 - The notes are standalone. Never mention the textbook's section numbers or theorem numbers. The textbook is accompanying learning material and may change, so it must not be load-bearing.
 - Do not give exercises or do-it-yourself prompts. Where doing something would be illuminating, actually do it fully for the reader.
 - Use figures wherever they illustrate something better than text, or help the reader visualise or intuitively understand something.
@@ -142,6 +154,7 @@ A few things to keep in mind:
 <!-- Mathematics section changelog. One line per round: date, what was added or changed, and the chapter or problem that prompted it.
 2026-11-01: section created from the owner's instructions, replacing the earlier "Mathematics: tell the story" and "Model notes to learn from" sections.
 2026-11-01: added "What plain English means" (textbook paraphrase and casual over-correction, keep terms and conditions, star example in the owner's wording) and the no-exclamation-marks, shallow-indentation, few-lists rule, from the De Bruyn chapter 2 rewrite.
+2026-11-01: added the bullet on not defining again what an earlier chapter defined, after Gemini's De Bruyn chapter 3 and 4 notes redefined terms already in maths_4. The shared "Before writing" steps also gained chapter PDFs cut by section (whole book for lookups) and "What the notes already cover"; the checker gained --terms and --earlier.
 -->
 
 ## Block formats
@@ -245,12 +258,12 @@ When a sentence feels dense, ask who is doing what, and in what order, then rewr
    python3 <skill folder>/scripts/check_notes.py <notes.md>
    ```
 
-   Add `--anchors` to list every heading's link target. Read each warning and decide whether it matters.
+   Add `--anchors` to list every heading's link target. If earlier chapters are in other files (the notes file, or chapters not yet merged into it), add `--earlier <files>` after the notes file: it warns when this chapter defines in bold a term one of them already defines. Read each warning and decide whether it matters.
 2. Run the gap checks in `references/gap-checks.md` on the chapter:
    - keep the term ledger up to date;
    - make a purpose table, giving the prerequisites and purpose of every example, result and definition;
    - get a cold read from a fresh reader who has only the background and the text so far;
-   - resolve every "defined here but already used" warning from the checker.
+   - resolve every "defined here but already used" and "already defined in" warning from the checker.
 3. Confirm that every number is recomputed or sourced, every link opens the right paper, and every figure matches its caption and the output of its script.
 4. Tell the user, briefly:
    - what the chapter covers;

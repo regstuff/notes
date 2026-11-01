@@ -87,7 +87,7 @@ The user found every kind of gap below in a plan that looked complete. They are 
 - INTRODUCED: at a named earlier point in these notes;
 - GAP: neither.
 
-Search the reader's earlier notes rather than guessing. Keep the ledger while writing, so later chapters can check against it.
+Search the reader's earlier notes rather than guessing: start from `check_notes.py --terms` on the notes file and on any earlier chapters not yet merged into it. Keep the ledger while writing, so later chapters can check against it.
 
 **Purpose table.** For every example, result, definition, opening, transition, proof idea, aside and table, record three things:
 - its prerequisites, with where each is defined;
@@ -113,6 +113,8 @@ If no fresh reader is available, read the text yourself as the reader would, one
 A mention inside a link is treated as a deliberate forward reference: once a term has been mentioned in a link, its later mentions aren't flagged either.
 
 When you review a warning and the use is fine, add the term to a hidden comment anywhere in the file: `<!-- terms checked: term one; term two -->`. A use is fine when it is glossed in place, known from the background, or a false alarm such as an ordinary word. The comment doesn't render on the site, and the next run stays quiet.
+
+With `--earlier` and the files of earlier chapters, the checker also warns when this chapter defines in bold a term that one of them already defines in bold. Link back to the earlier definition instead, with a reminder if it was far back. If the restatement is deliberate, for example because the term now means something more general, say so in the text and list the term in the same `terms checked` comment.
 
 ## What the plan must show
 

@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Check a lecture-notes markdown file before handing it over.
 
-Usage: python3 check_notes.py NOTES.md [--anchors]
+Usage: python3 check_notes.py NOTES.md [--anchors] [--earlier EARLIER.md ...]
+       python3 check_notes.py --terms FILE.md [FILE.md ...]
 
 1. Source checks for things that break Python-Markdown + pymdownx.arithmatex, the standalone rule,
    and figure numbering. Each finding is printed with its line number.
@@ -9,14 +10,20 @@ Usage: python3 check_notes.py NOTES.md [--anchors]
    (Material theme, toc permalinks, arithmatex generic) and adds `validation: links: anchors: warn`,
    so a link to a missing #section fails the build. Without that setting MkDocs only logs it.
 3. Checks of the built HTML: stray $ outside math, LaTeX leaking into text, h5+ headings.
+4. With --earlier, a check against the notes of earlier chapters: each term this file defines in bold
+   that an earlier file already defines in bold is reported with where it was defined, so that it can
+   be linked back to instead of defined again. Put NOTES.md first, then --earlier and the files.
 
 --anchors prints every heading with the id MkDocs gives it, to copy into back-links.
+--terms checks nothing. It lists each file's headings and the terms it defines in bold, with line
+numbers, to show what earlier notes already cover before a new chapter is written.
 
 MkDocs runs from the .venv folder inside this skill's folder. If that venv is missing or broken
 (for example after the skill folder was copied somewhere else), it is rebuilt and mkdocs-material
 installed into it, which needs network access once.
 Exit status is 1 if the build fails or any error-level finding is reported.
 """
+import argparse
 import re
 import shutil
 import subprocess
@@ -119,21 +126,31 @@ def figure_checks(lines):
         errors.append(f"figures: text mentions Figure {f}, which has no caption")
 
 
-def term_order_checks(lines):
-    # The notes bold a term where they define it. Warn when such a term already appears in the
-    # prose above its definition: the reader meets the word before being told what it means.
-    # Bold at the start of a line is a lead-in or block title, not a definition, so it is skipped.
-    # A term is not flagged if an earlier mention links forward to its definition, or if it is listed
-    # in a hidden comment such as <!-- terms checked: scale factor; metric --> (reviewed by hand:
-    # glossed where first used, known from the background, or a false alarm).
+def norm(t):
     # Compare terms with their maths removed and spaces collapsed, so a comment can name
     # "generalized $n$-gon" and match the bolded term however its maths is written.
-    def norm(t):
-        return " ".join(re.sub(r"\$[^$]*\$", " ", t).split()).lower()
+    return " ".join(re.sub(r"\$[^$]*\$", " ", t).split()).lower()
 
+
+def stem(key):
+    # Drop a plural s from the last word, so "hyperplanes" in one chapter matches "hyperplane" in another.
+    words = key.split()
+    if words and len(words[-1]) > 3 and words[-1].endswith("s") and not words[-1].endswith("ss"):
+        words[-1] = words[-1][:-1]
+    return " ".join(words)
+
+
+def checked_terms(lines):
+    # Terms listed in hidden comments such as <!-- terms checked: scale factor; metric -->.
     checked = set()
     for block in re.findall(r"<!--\s*terms checked:(.*?)-->", "\n".join(lines), re.S | re.I):
         checked |= {norm(t) for t in block.split(";") if t.strip()}
+    return checked
+
+
+def prose_of(lines):
+    # The prose of each line, with maths, code and whole links removed, and headings, figures and
+    # comments blanked; plus the text of every link, normalised.
     prose, links, in_code = [], [], False
     for n, line in enumerate(lines, 1):
         if line.lstrip().startswith("```"):
@@ -142,27 +159,108 @@ def term_order_checks(lines):
             prose.append((n, ""))
             continue
         links += [(n, norm(t)) for t in re.findall(r"\[([^\]]*)\]\([^)]*\)", line)]
-        # drop maths, code and whole links from the prose that is searched
         text = re.sub(r"\$\$.*?\$\$|\$[^$]*\$|`[^`]*`|\[[^\]]*\]\([^)]*\)", " ", line)
         prose.append((n, text))
-    seen = set()
+    return prose, links
+
+
+def bold_definitions(prose):
+    # The notes bold a term where they define it. Bold at the start of a line is a lead-in or block
+    # title, not a definition, so it is skipped. Yields (line, term, normalised term).
     for n, text in prose:
         body = re.sub(r"^\s*(?:>\s*)?(?:[-*+]\s+|\d+[.)]\s+)?\*\*[^*]+\*\*", "", text)
         for term in re.findall(r"\*\*([^*$]{3,40})\*\*", body):
             key = norm(term)
-            if key in seen or len(key.split()) > 5 or key.endswith((".", ":", "?")) or len(key) < 6:
-                continue
-            seen.add(key)
-            if key in checked or any(m < n and key in t for m, t in links):
-                continue
-            words = r"\s+".join(re.escape(w) for w in key.split())
-            pattern = re.compile(r"\b" + words + r"(?:s|es)?\b", re.I)
-            for m_line, earlier in prose:
-                if m_line >= n - 5:  # a lead-in sentence just above the definition is fine
-                    break
-                if pattern.search(earlier.replace("**", "")):
-                    warn(n, f"'{term.strip()}' is defined here but already used on line {m_line}")
-                    break
+            if len(key.split()) <= 5 and not key.endswith((".", ":", "?")):
+                yield n, term.strip(), key
+
+
+def term_order_checks(lines):
+    # Warn when a term defined in bold already appears in the prose above its definition: the reader
+    # meets the word before being told what it means.
+    # A term is not flagged if an earlier mention links forward to its definition, or if it is listed
+    # in a hidden comment such as <!-- terms checked: scale factor; metric --> (reviewed by hand:
+    # glossed where first used, known from the background, or a false alarm).
+    checked = checked_terms(lines)
+    prose, links = prose_of(lines)
+    seen = set()
+    for n, term, key in bold_definitions(prose):
+        if key in seen or len(key) < 6:
+            continue
+        seen.add(key)
+        if key in checked or any(m < n and key in t for m, t in links):
+            continue
+        words = r"\s+".join(re.escape(w) for w in key.split())
+        pattern = re.compile(r"\b" + words + r"(?:s|es)?\b", re.I)
+        for m_line, earlier in prose:
+            if m_line >= n - 5:  # a lead-in sentence just above the definition is fine
+                break
+            if pattern.search(earlier.replace("**", "")):
+                warn(n, f"'{term}' is defined here but already used on line {m_line}")
+                break
+
+
+def headings_at(lines):
+    # For each line, the heading above it.
+    current, at, in_code = "(top of file)", {}, False
+    for n, line in enumerate(lines, 1):
+        if line.lstrip().startswith("```"):
+            in_code = not in_code
+        elif not in_code and re.match(r"#{1,6}\s", line):
+            current = line.strip()
+        at[n] = current
+    return at
+
+
+def definitions_in(path):
+    # Each term a notes file defines in bold, keyed by its stem: (line, heading above it), first one only.
+    lines = path.read_text().splitlines()
+    at, found = headings_at(lines), {}
+    for n, _, key in bold_definitions(prose_of(lines)[0]):
+        found.setdefault(stem(key), (n, at[n]))
+    return found
+
+
+def earlier_checks(lines, md_path, earlier_paths):
+    # A term that an earlier chapter's notes already define should not be defined a second time:
+    # link back to the earlier definition instead, with a reminder if it was far back. Terms listed
+    # in a "terms checked" comment are skipped, for a deliberate restatement.
+    checked = checked_terms(lines)
+    earlier = []
+    for path in earlier_paths:
+        path = path.resolve()
+        if path == md_path:
+            continue
+        if not path.exists():
+            errors.append(f"earlier file not found: {path}")
+            continue
+        earlier.append((path, definitions_in(path)))
+    seen = set()
+    for n, term, key in bold_definitions(prose_of(lines)[0]):
+        if stem(key) in seen or key in checked:
+            continue
+        seen.add(stem(key))
+        for path, found in earlier:
+            if stem(key) in found:
+                m, heading = found[stem(key)]
+                warn(n, f"'{term}' is already defined in {path.name} line {m} ({heading}): link back to it instead of defining it again")
+                break
+
+
+def list_terms(path):
+    lines = path.read_text().splitlines()
+    defs = {}
+    for n, term, _ in bold_definitions(prose_of(lines)[0]):
+        defs.setdefault(n, []).append(term)
+    print(f"{path}:")
+    in_code = False
+    for n, line in enumerate(lines, 1):
+        if line.lstrip().startswith("```"):
+            in_code = not in_code
+        elif not in_code and re.match(r"#{1,6}\s", line):
+            print(f"  {n:5d}  {line.strip()}")
+        for term in defs.get(n, []):
+            print(f"  {n:5d}      {term}")
 
 
 def ensure_mkdocs():
@@ -234,15 +332,27 @@ def build(md_path, lines, show_anchors):
 
 
 def main():
-    args = [a for a in sys.argv[1:] if not a.startswith("--")]
-    if len(args) != 1:
-        sys.exit(__doc__)
-    md_path = Path(args[0]).resolve()
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("files", nargs="+", type=Path, metavar="NOTES.md")
+    parser.add_argument("--anchors", action="store_true", help="print every heading's link target")
+    parser.add_argument("--terms", action="store_true", help="only list headings and bold-defined terms")
+    parser.add_argument("--earlier", nargs="+", type=Path, default=[], metavar="EARLIER.md",
+                        help="notes of earlier chapters, to flag terms defined again here")
+    args = parser.parse_args()
+    if args.terms:
+        for path in args.files:
+            list_terms(path.resolve())
+        return
+    if len(args.files) != 1:
+        parser.error("give one notes file to check; with --earlier, put the notes file first")
+    md_path = args.files[0].resolve()
     lines = md_path.read_text().splitlines()
     source_checks(lines)
     figure_checks(lines)
     term_order_checks(lines)
-    build(md_path, lines, "--anchors" in sys.argv)
+    if args.earlier:
+        earlier_checks(lines, md_path, args.earlier)
+    build(md_path, lines, args.anchors)
     for title, items in (("ERRORS", errors), ("WARNINGS (review by hand)", warnings)):
         print(f"{title}: {len(items)}")
         for item in items:
