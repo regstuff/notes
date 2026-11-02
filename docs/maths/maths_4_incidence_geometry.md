@@ -101,7 +101,7 @@ Commuting symmetric matrices can be diagonalized together: if $AB = BA$ and $Av 
 
 **Permutation matrices.** A permutation matrix $P$ has exactly one $1$ in each row and each column, and $0$ elsewhere. It is orthogonal, $P^T = P^{-1}$, and $PJ = JP = J$. Renumbering the rows and columns of $A$ by the same permutation replaces $A$ by the similar matrix $P^TAP$, with the same eigenvalues. And $P$ commutes with $A$ exactly when $P^TAP = A$, as every permutation of three indices does for the running example.
 
-**Where it is used.** Relabelling a graph is conjugation by a permutation matrix ([the adjacency matrix and its eigenvalues](#the-adjacency-matrix-and-its-eigenvalues)). The matrix $2I + J$ counts incidences in the Fano plane ([point-line geometries](#point-line-geometries)), and a relative of it gives Fisher's inequality<!-- relink once Fisher's inequality is in these notes -->. Dropping $J$ on $j^\perp$ is the first step for [strongly regular graphs](#the-adjacency-matrix-of-a-strongly-regular-graph). The permutation matrices commuting with $A$ are the symmetries of a graph, and the matrices commuting with all of them form the commutant you know from group theory, which returns in [distance-regular graphs](#distance-regular-graphs).
+**Where it is used.** Relabelling a graph is conjugation by a permutation matrix ([the adjacency matrix and its eigenvalues](#the-adjacency-matrix-and-its-eigenvalues)). The matrix $2I + J$ counts incidences in the Fano plane ([point-line geometries](#point-line-geometries)), and a relative of it gives [Fisher's inequality](#the-incidence-matrix-and-fishers-inequality). Dropping $J$ on $j^\perp$ is the first step for [strongly regular graphs](#the-adjacency-matrix-of-a-strongly-regular-graph). The permutation matrices commuting with $A$ are the symmetries of a graph, and the matrices commuting with all of them form the commutant you know from group theory, which returns in [distance-regular graphs](#distance-regular-graphs).
 
 ### Rank, determinants and Gram matrices
 
@@ -131,7 +131,7 @@ the rule for the inner product of two product states of a pair of qubits. For in
 
 One more identity is needed only for the Krein conditions in [distance-regular graphs](#distance-regular-graphs): for symmetric $B$ and $C$, the sum of all the entries of $B \circ C$ is $\operatorname{tr}(BC)$. For $E_{-1} \circ E_{-1}$ both sides equal $2$.
 
-**Where it is used.** The rank argument is Fisher's inequality<!-- relink once Fisher's inequality is in these notes -->. Gram matrices give the absolute bound for [strongly regular graphs](#the-adjacency-matrix-of-a-strongly-regular-graph), and the Schur product theorem gives the Krein conditions for [distance-regular graphs](#distance-regular-graphs).
+**Where it is used.** The rank argument is [Fisher's inequality](#the-incidence-matrix-and-fishers-inequality). Gram matrices give the absolute bound for [strongly regular graphs](#the-adjacency-matrix-of-a-strongly-regular-graph), and the Schur product theorem gives the Krein conditions for [distance-regular graphs](#distance-regular-graphs).
 
 ### Linear algebra over finite fields
 
@@ -186,7 +186,7 @@ In coordinates, $f(x, y) = (x^\sigma)^T G y$, where $x^\sigma$ applies $\sigma$ 
 
 <!-- terms checked: degree; automorphism; geometry; points; subspace; hyperplane -->
 
-How can linear algebra prove that a finite geometry does not exist? The bridge goes through graphs. Every [point-line geometry](#point-line-geometries) gives rise to two natural graphs (one recording which points share a line, the other recording which points lie on which lines). Once we encode a graph in a real symmetric $0/1$ matrix, those local counts turn into polynomial equations for its [eigenvalues](#eigenvalues-and-eigenspaces), whose multiplicities are the dimensions of the corresponding eigenspaces and whose non-vanishing counts give the matrix rank. Because a vector space cannot have a fractional dimension, any hypothetical geometry whose counts force a non-integer eigenspace dimension cannot exist: that single integrality test will rule out impossible quadrangles in [Strongly Regular and Distance-Regular Graphs](#strongly-regular-and-distance-regular-graphs) and restrict finite [generalized polygons](#generalized-polygons) (with at least three points per line and three lines per point) to $3$-, $4$-, $6$- and $8$-gons in [The Feit–Higman theorem](#the-feithigman-theorem-and-order-bounds), while a two-line rank check on [the incidence matrix](#collinearity-graphs-incidence-graphs) will bound block counts in [Designs](#combinatorial-designs). First we build the graph language, then the geometry language that feeds into it.
+How can linear algebra prove that a finite geometry does not exist? The bridge goes through graphs. Every [point-line geometry](#point-line-geometries) gives rise to two natural graphs (one recording which points share a line, the other recording which points lie on which lines). Once we encode a graph in a real symmetric $0/1$ matrix, those local counts turn into polynomial equations for its [eigenvalues](#eigenvalues-and-eigenspaces), whose multiplicities are the dimensions of the corresponding eigenspaces and whose non-vanishing counts give the matrix rank. Because a vector space cannot have a fractional dimension, any hypothetical geometry whose counts force a non-integer eigenspace dimension cannot exist: that single integrality test will rule out impossible quadrangles in [Strongly Regular and Distance-Regular Graphs](#strongly-regular-and-distance-regular-graphs) and restrict finite [generalized polygons](#generalized-polygons) (with at least three points per line and three lines per point) to $3$-, $4$-, $6$- and $8$-gons in [The Feit–Higman theorem](#the-feithigman-theorem-and-order-bounds), while a two-line rank check on [the incidence matrix](#collinearity-graphs-incidence-graphs) will bound block counts in [Designs](#the-incidence-matrix-and-fishers-inequality). First we build the graph language, then the geometry language that feeds into it.
 
 ### Graphs
 
@@ -324,7 +324,7 @@ From any geometry $S$, we have three derived geometries:
 
 Notice carefully that in $S_x = (x^\perp \setminus \{x\}, \mathcal{L}_x, I_x)$, the lines are only the lines through $x$. If $S$ is a partial linear space, two lines through $x$ cannot meet anywhere else, so in $S_x$ the lines $\mathcal{L}_x$ simply partition $x^\perp \setminus \{x\}$ into disjoint sets of points. Later, when studying polar spaces or near polygons, we enrich this local view by either looking at how lines not through $x$ cut across $\mathcal{L}_x$ (turning the lines through $x$ into points and planes through $x$ into lines, which gives the residue at $x$), or looking at the induced subgeometry on $x^\perp \setminus \{x\}$.
 
-On the $3 \times 3$ grid in figure 5, $\mathcal{S}_x$ is $4$ points on two disjoint $2$-point lines. **Do not confuse $\mathcal{S}_x$ with the residue at $x$** from the earlier projective geometry notes (and Quotient polar spaces<!-- relink to the ch7 section once it is merged -->), where lines through $x$ become *points* and planes through $x$ become *lines*; $\mathcal{S}_x$ keeps neighbouring points as points, which is how we will build [derived designs](#unitals-inversive-planes-and-witt-mathieu-designs) in [Designs: a first look](#combinatorial-designs) and [New designs from old](#unitals-inversive-planes-and-witt-mathieu-designs).
+On the $3 \times 3$ grid in figure 5, $\mathcal{S}_x$ is $4$ points on two disjoint $2$-point lines. **Do not confuse $\mathcal{S}_x$ with the residue at $x$** from the earlier projective geometry notes (and Quotient polar spaces<!-- relink to the ch7 section once it is merged -->), where lines through $x$ become *points* and planes through $x$ become *lines*; $\mathcal{S}_x$ keeps neighbouring points as points, which is how we will build [derived designs](#unitals-inversive-planes-and-witt-mathieu-designs) in [Designs: a first look](#combinatorial-designs) and [New designs from old](#building-new-designs-from-old-ones).
 
 Here are a few examples:
 
@@ -434,7 +434,7 @@ Check both on $\mathrm{PG}(2, 2)$ in Figure 4. Its collinearity graph is $K_7$, 
 
 $$M M^T = 3 I_7 + (J_7 - I_7) = 2 I_7 + J_7$$
 
-without writing down a single entry of $M$. Products like $M M^T$ and $A^2$ turn incidence counts into eigenvalue equations ([The adjacency matrix of a strongly regular graph](#the-adjacency-matrix-of-a-strongly-regular-graph) and Fisher's inequality<!-- relink once Fisher's inequality is in these notes -->).
+without writing down a single entry of $M$. Products like $M M^T$ and $A^2$ turn incidence counts into eigenvalue equations ([The adjacency matrix of a strongly regular graph](#the-adjacency-matrix-of-a-strongly-regular-graph) and [Fisher's inequality](#the-incidence-matrix-and-fishers-inequality)).
 
 This will give us two algebraic weapons that prove theorems and rule out impossible geometries without ever having to draw or search for them. We will look at this in a little while. 
 
@@ -556,7 +556,7 @@ Projective and affine planes have the striking uniformity that *every* pair of d
 
 #### Definition and notations: $t$-designs and Steiner systems
 
-We will be covering this in detail later, so we will not bother about it here.
+We will be covering this in detail in [Designs](#designs), so we will not bother about it here.
 
 #### Unitals, inversive planes, and Witt (Mathieu) designs
 
@@ -1657,3 +1657,210 @@ Look at why the hypothesis $s \neq 1$ is genuinely needed in Higman's inequality
 
 Note that a generalized $n$-gon with $n \ge 5$ is never a partial geometry, and for $n \ge 6$ its collinearity graph has diameter at least $3$, so it is not a strongly regular graph. (For $n = 5$ the only finite examples with an order are the ordinary pentagons, and their collinearity graph $C_5$ is strongly regular.) Instead, the collinearity graph of a generalized $n$-gon of order $(s, t)$ is a distance-regular graph of diameter $d = \lfloor n/2 \rfloor$, which means you apply the exact same Krein parameter machinery ($q_{ij}^k \ge 0$) inside the larger $(d + 1)$-dimensional Bose-Mesner algebra to get the generalized polygon bounds. We will look at this later.
 
+## Designs
+
+In earlier chapters (such as [partial geometries](#partial-geometries-and-their-collinearity-graphs) and [generalized quadrangles](#generalized-quadrangles)), we required two lines to intersect in *at most one* point (a [partial linear space](#partial-linear-spaces)). **Design theory** relaxes this intersection rule and shifts the focus entirely to **combinatorial balance**: instead of asking how lines intersect, we ask that every subset of $t$ points lies inside the exact same number of blocks. Because two blocks in a design $\mathcal{S} = (\mathcal{P}, \mathcal{B}, \mathrm{I})$ are allowed to share $2, 3,$ or more points, lines are traditionally called **blocks**, which is why the line set is written $\mathcal{B}$ rather than $\mathcal{L}$.
+
+Let $v, k, t, \lambda$ be positive integers satisfying $v \ge k \ge t$ and $k \ge 2$. A finite [point-line geometry](#point-line-geometries) $\mathcal{S} = (\mathcal{P}, \mathcal{B}, \mathrm{I})$ is called a **$t$-design with parameters $(v, k, \lambda)$**, or shortly a **$t$-$(v, k, \lambda)$-design**, if it has $v$ points in total, $\mathcal{B}$ is nonempty with every block incident with $k$ points, every $t$ distinct points of $\mathcal{P}$ lie together in $\lambda$ blocks, and no two distinct blocks have the exact same set of points (written $\{x \in \mathcal{P} \mid x\,\mathrm{I}\,B_1\} \neq \{x \in \mathcal{P} \mid x\,\mathrm{I}\,B_2\}$ for $B_1 \neq B_2$). Some texts allow duplicate blocks, which are called designs with repeated blocks; here they are excluded, so we usually treat each block $B \in \mathcal{B}$ directly as a $k$-element subset of $\mathcal{P}$, with set membership $x \in B$ as incidence $x\,\mathrm{I}\,B$.
+
+When $\lambda = 1$, every set of $t$ distinct points lies in a *unique* block of size $k$. A $t$-$(v, k, 1)$-design is called a **Steiner system** and denoted by **$S(t, k, v)$**. Notice the swap in parameter order between the two notations: $t$-$(v, k, \lambda)$ puts the total point count $v$ before $k$, whereas $S(t, k, v)$ lists the sizes from smallest to largest ($t \le k \le v$). Sometimes $S_\lambda(t, k, v)$ is also written for a general $t$-$(v, k, \lambda)$-design.
+
+Two small cases have standard names. An $S(2, 3, v)$ is called a **Steiner triple system**, where blocks have size $3$, and every $2$ points lie in a unique triple, so it is a finite [linear space](#partial-linear-spaces) with lines of size $3$. An $S(3, 4, v)$ is called a **Steiner quadruple system** where blocks have size $4$, and every $3$ points lie in a unique quadruple.
+
+Three basic facts govern $t$-designs and tie their $t = 2$ Steiner systems to projective and affine geometry. First, if a design is a $t$-design, it is also a $(t-1)$-design and so on i.e. an $s$-design where $s \in \{1, 2, \dots, t\}$. For example, in any $3$-design, not only does every triple of points lie in $\lambda$ blocks, every *pair* of points also lies in a fixed number of blocks, and every *single* point lies in a fixed number of blocks. This is called **downward heredity**.
+
+Second, for each $n \ge 2$, the Steiner systems $S(2, n + 1, n^2 + n + 1)$ are precisely the [projective planes of order $n$](#projective-planes-degenerate-vs-nondegenerate).
+
+Third, for each $n \ge 2$, the Steiner systems $S(2, n, n^2)$ are precisely the **affine planes of order $n$**. An **affine plane** is a [linear space](#partial-linear-spaces) in which, for every [anti-flag](#definition-and-why-both-axioms-matter) $(x, L)$, exactly one line through $x$ misses $L$, and which has three noncollinear points; lines are **parallel** if they are equal or disjoint, and an affine plane has **order $n$** when its lines have $n$ points. Recall that you get an affine plane of order $n$ from a projective plane of order $n$ by deleting one "line at infinity" along with all $n + 1$ of its points: $(n^2 + n + 1) - (n + 1) = n^2$ points remain, and every other line loses its single point at infinity and drops to size $n$, creating parallel classes of disjoint lines. Over a finite field $\mathbb{F}_q$ in any dimension $n \ge 2$, the **Desarguesian affine space** [$\mathrm{AG}(n, q)$](maths_3_projective_geometry.md#projective-affine-spaces) takes the vector space $\mathbb{F}_q^n$ ($q^n$ points) as its point set and all shifted $1$-dimensional cosets $a + \langle u \rangle$ ($u \neq 0$, each of size $q$) as its lines.
+
+For every dimension $n \ge 2$, both $\mathrm{PG}(n, 2)$ (projective lines over $\mathbb{F}_2$ have $2 + 1 = 3$ points, giving $v = 2^{n+1} - 1$) and $\mathrm{AG}(n, 3)$ (affine lines over $\mathbb{F}_3$ have $3$ points, giving $v = 3^n$) are linear spaces with lines of size $3$, so both are Steiner triple systems. At $n = 2$, $\mathrm{PG}(2, 2)$ is the [Fano plane](#points-lines-duals-and-doubles) $S(2, 3, 7)$, and $\mathrm{AG}(2, 3)$ is $S(2, 3, 9)$, whose $12$ blocks split into $4$ parallel classes of $3$ disjoint lines each (drawn in panel (a) of Figure 9).
+
+### The downward cascade
+
+We mentioned this above. Let's look closer. Any $t$-$(v, k, \lambda)$-design is also an **$s$-$(v, k, \lambda_s)$-design** for every $s \in \{1, 2, \dots, t\}$, where the number of blocks containing any set $X$ of $s$ points is the constant:
+
+$$\lambda_s = \frac{\binom{v-s}{t-s}}{\binom{k-s}{t-s}}\lambda$$
+
+If we take $s = 1$ we see that every single point in a $t$-design lies in the exact same number of blocks. In a $2$-$(v, k, \lambda)$-design, this constant number of blocks through each point (denoted $\lambda_1$) is universally denoted by **$r$** (the replication number).
+
+$$r = \lambda_1 = \frac{\binom{v-1}{2-1}}{\binom{k-1}{2-1}}\lambda = \frac{v - 1}{k - 1}\lambda_2 \quad (\lambda_2 = \lambda)$$
+
+Additionally, although the theorem states $s \in \{1, \dots, t\}$, the formula works for $s = 0$ ($X = \emptyset$, which is contained in *every* block). Plugging in $s = 0$ gives the total number of blocks $b = \vert{}\mathcal{B}\vert{} = \lambda_0$:
+
+$$b = \frac{\binom{v}{t}}{\binom{k}{t}}\lambda$$
+
+For a $2$-$(v, k, \lambda)$-design, substituting $r = \frac{v-1}{k-1}\lambda$ into $b = \frac{v(v-1)}{k(k-1)}\lambda = \frac{v}{k}r$ (or double-counting flags in the next subsection) gives another fundamental formula: $vr = bk$.
+
+To prove the general result that a $t$-design is also an $s$-design for any $s \le t$, fix an $s$-point subset $X \subseteq \mathcal{P}$ and write $\lambda_X$ for the number of blocks containing $X$. We need to show that $\lambda_X$ depends only on $s$, so $\lambda_X = \lambda_s$ is the exact same number for every $s$-point subset.
+
+Let us count the $\lambda_X$ blocks $B$ containing $X$ by extending $X$ to a $t$-point set $Y$. Start with $s$ points in $X$. Take $t - s$ extra points from outside $X$ to build a $t$-point set $Y$ containing $X$. There are $\binom{v-s}{t-s}$ ways to build such a $t$-point set $Y$.
+
+For each such $Y$, the $t$-design rule triggers and gives you $\lambda$ blocks $B$ containing $Y$ and since $X \subset Y \subset B$, those blocks also contain $X$. So across all choices of $Y$, we find $\binom{v-s}{t-s}\lambda$ block occurrences. But this isn't the final answer for the number of blocks containing $X$ because the exact same block $B$ gets found over and over again by different sets $Y$. Look at a single block $B$ of size $k$ that contains $X$. Besides the $s$ points of $X$, that block $B$ has $k - s$ other points sitting inside it. Whenever you picked your $t - s$ extra points from inside that same block $B$ to form $Y$, the $t$-design rule handed you back that exact same block $B$.
+
+How many different $t$-point sets $Y$ (with $X \subset Y$) sit inside that single block $B$? Exactly $\binom{k-s}{t-s}$. That means in the total tally of $\binom{v-s}{t-s}\lambda$, every single valid block $B$ containing $X$ was counted $\binom{k-s}{t-s}$ times (once for each $Y$ sitting inside $B$).
+
+To fix the overcounting, simply divide the total tally by how many times each block was counted:
+
+$$\lambda_X = \text{Number of distinct blocks containing } X = \frac{\text{Total tally of }(Y, B)\text{ matches}}{\text{Times each block } B \text{ was counted}} = \frac{\binom{v-s}{t-s}\lambda}{\binom{k-s}{t-s}}$$
+
+Because the right-hand side depends only on the size $s = \vert{}X\vert{}$ and not on which $s$ points we chose, $\lambda_X = \lambda_s$ is constant across all $s$-subsets $X$.
+
+Because $\lambda_s$ counts the number of blocks containing an $s$-element set $X$, $\lambda_s$ must be an integer for every single $s \in \{0, 1, \dots, t\}$. This gives $t$ separate arithmetic divisibility rules that the four parameters $(t, v, k, \lambda)$ must satisfy before a $t$-design can possibly exist:
+
+$$\binom{k - s}{t - s} \;\Bigg\vert{}\; \binom{v - s}{t - s}\lambda \quad \text{for every } s = 0, 1, \dots, t - 1$$
+
+Look at what this forces for a Steiner Triple System $S(2, 3, v)$ (where $t = 2$, $k = 3$, $\lambda = 1$):
+
+$s = 1$ condition ($r \in \mathbb{Z}$): $\binom{3-1}{2-1} \mid \binom{v-1}{2-1}(1) \implies 2 \mid (v - 1)$, so $v$ must be odd ($v \equiv 1, 3, 5 \pmod 6$).
+
+$s = 0$ condition ($b \in \mathbb{Z}$): $\binom{3}{2} \mid \binom{v}{2}(1) \implies 3 \mid \frac{v(v-1)}{2} \implies 6 \mid v(v - 1)$, which rules out $v \equiv 5 \pmod 6$ since $5 \cdot 4 = 20$ is not divisible by $6$.
+
+Combining those two double-counting divisibility checks immediately proves that a Steiner Triple System $S(2, 3, v)$ can only exist if $v \equiv 1 \text{ or } 3 \pmod 6$ (e.g., $v = 3, 7, 9, 13, 15, 19, \dots$).
+
+We can also determine $\lambda_s$ via double counting. This is pretty much the same thing as above, but is a lot easier to formulate. Before doing so, let's look at how we choose our double counting variables.
+
+#### The principle of double counting
+
+Let's start with the flag count behind $vr = bk$ (we met the same kind of count for partial geometries in [divisibility conditions](#divisibility-conditions), where it gave the number of lines). In a design where every block has $k$ points and every point lies in $r$ blocks, suppose you know the number of blocks $b$, the block size $k$, and the replication number $r$, and your one unknown is the total number of points $v$.
+
+We have two types of objects: points ($p$, where the unknown $v$ lives) and blocks ($B$, where the known total $b$ lives). Because you know the local degree from both sides, how many blocks hit a point ($r$) and how many points sit on a block ($k$), you form the [bipartite graph](#bipartite-graphs) between points and blocks and count the edges (the flags $(p, B)$ with $p \in B$):
+
+$$\underbrace{v}_{\text{unknown}} \cdot r = \text{Total Flags }(p, B) = \underbrace{b}_{\text{known}} \cdot k$$
+
+So the principle is to find two objects that we can split into bipartite sets and then link up via edges. For the designs situation, we only know the relationship between $Y$ and $B$ i.e. how many blocks does a subset of points $Y$ occur in. So we take the number of subsets $Y$ on one side and the number of blocks on the other side. How do we form edges i.e. flags like we did in the point-block case above? By looking for incidence i.e. the subsets that lie in the blocks. But there is no parameter of $X$ here, which is what we are interested in.
+
+So instead, we use the sets $Y$ containing $X$ on one side of the bipartite graph and the blocks $B$ containing $X$ on the other. The incidence relation is $Y$ contained in $B$.
+
+$$(\text{Subsets } Y \text{ with } X \subseteq Y) \times (\text{Blocks per } Y) = \text{Total Flags }(Y, B) = (\text{Total blocks } B) \times (\text{Subsets } Y \text{ per block } B)$$
+
+$$\binom{v-s}{t-s} \times \lambda = \text{Total Flags }(Y, B) = \lambda_X \times \binom{k-s}{t-s}$$
+
+Pinning the chain at $X$ ($X \subseteq Y \subseteq B$) is simply the algebraic way of saying: "restrict our universe to the blocks containing $X$, so that the total number of blocks in our restricted universe is $\lambda_X$, and the $s$ locked-in points of $X$ subtract $s$ from $v$, $k$, and $t$."
+
+To see this double count and the downward cascade on a concrete $3$-design, take the affine space $\mathrm{AG}(3, 2)$ over $\mathbb{F}_2$, whose $v = 8$ points are the binary triples $\mathbb{F}_2^3$ (the vertices of the $3$-cube) and whose blocks are the affine planes ($2$-dimensional cosets of size $k = 4$, which are the four-point subsets with coordinate sum $000$ mod $2$: the $6$ cube faces, $6$ diagonal planes, and $2$ parity tetrahedra). Any $3$ points in $\mathbb{F}_2^3$ are automatically noncollinear (since affine lines over $\mathbb{F}_2$ have size $2$) and span a unique affine plane ($4$-point coset $\{x, y, z, x + y + z\}$), so the planes of $\mathrm{AG}(3, 2)$ form the Steiner quadruple system $S(3, 4, 8)$ with $\lambda_3 = \lambda = 1$. Running the downward cascade gives $\lambda_2 = \frac{\binom{8-2}{3-2}}{\binom{4-2}{3-2}}(1) = \frac{6}{2} = 3$ blocks through every pair of points, $\lambda_1 = r = \frac{\binom{7}{2}}{\binom{3}{2}}(1) = \frac{21}{3} = 7$ blocks through every point, and $\lambda_0 = b = \frac{\binom{8}{3}}{\binom{4}{3}}(1) = \frac{56}{4} = 14$ blocks in total. Figure 14 shows the $s = 2$ step for the edge $X = \{000, 001\}$.
+
+![Double counting triples Y and blocks B containing X={000,001} in AG(3,2)=S(3,4,8)](figures/maths4_designs_double_count.png)
+
+*Figure 14. Double counting $(Y, B)$ flags above $X = \{000, 001\}$ ($s = 2$) in the Steiner quadruple system $\mathrm{AG}(3, 2) = S(3, 4, 8)$, whose points are the $8$ vertices of the cube $\mathbb{F}_2^3$ and whose $14$ blocks are the four-point subsets with coordinate sum $000$. (a) The $\lambda_2 = 3$ blocks containing $X = \{000, 001\}$, shown on three copies of the cube: the front face $B_1$, the left face $B_2$, and the diagonal plane $B_3$. (b) The bipartite flag graph between the $\binom{8-2}{3-2} = 6$ triples $Y \supseteq X$ (left, each in $\lambda = 1$ block) and the $\lambda_2 = 3$ blocks $B \supseteq X$ (right, each containing $\binom{4-2}{3-2} = 2$ such triples): $6 \times 1 = 6$ edges $= 3 \times 2$, giving $\lambda_2 = 6/2 = 3$.*
+
+### The incidence matrix and Fisher's inequality
+
+We look at a few properties of $2$-designs. The first comes from the seemingly paradoxical question, can a non-trivial $2$-design (where blocks are smaller than the whole point set, $v > k$) have fewer blocks than points ($b < v$)? Never. In any $2$-$(v, k, \lambda)$-design with $v > k$, there are always at least as many blocks as points ($b \ge v$). This is **Fisher's Inequality**, and its proof is one of the first triumphs of linear algebra in combinatorics. Recall the [incidence matrix](#collinearity-graphs-incidence-graphs) of a geometry. For a design it is the $v \times b$ matrix $M$ with rows indexed by the points $p_1, \dots, p_v$, columns indexed by the blocks $B_1, \dots, B_b$, and entry $M_{ij} = 1$ when $p_i \,\mathrm{I}\, B_j$ and $0$ otherwise. We show that $M$ has rank $v$, and since the rank of a $v \times b$ matrix cannot exceed its number of columns $b$, we immediately get $b \ge v$.
+
+The proof takes three steps:
+
+$r > \lambda$: Every point lies in strictly more than $\lambda$ blocks. Why? Pick a block $B$ containing $x$. Since $v > k$, there is a point $y \notin B$. The pair $\{x, y\}$ lies in $\lambda$ blocks, none of which can be $B$ because $y \notin B$. Together with $B$, that gives at least $\lambda + 1$ blocks through $x$, so $r \ge \lambda + 1 > \lambda$.
+
+$\operatorname{rank}(M) = v$: First, the [Gram matrix](#rank-determinants-and-gram-matrices) $M M^T$ is given by
+
+$$M M^T = (r - \lambda)I + \lambda J \qquad \text{and} \qquad \det(M M^T) = \bigl(r + (v - 1)\lambda\bigr)(r - \lambda)^{v - 1}$$
+
+Why is $M M^T = (r - \lambda)I + \lambda J$? Entry $(i, j)$ of $M M^T$ is the dot product of row $p_i$ and row $p_j$, which counts how many mutual neighbours they have i.e. how many blocks contain both $p_i$ and $p_j$. On the diagonal ($p_i = p_j$), a single point lies in $r$ blocks. Off the diagonal ($p_i \neq p_j$), two distinct points lie in $\lambda$ blocks.
+
+There is also an intuition behind the determinant from [the all-ones matrix and commuting matrices](#the-all-ones-matrix-and-commuting-matrices) in the prologue. The all-ones matrix $J = jj^T$ has eigenvalue $v$ (multiplicity $1$, on the all-ones vector $j$) and eigenvalue $0$ (multiplicity $v - 1$, on vectors in $j^\perp$ orthogonal to $j$), so $\lambda J$ has eigenvalues $\lambda v$ (multiplicity $1$) and $0$ (multiplicity $v - 1$). Adding $(r - \lambda)I$ shifts those eigenvalues by $r - \lambda$, giving $r - \lambda + v\lambda = r + (v - 1)\lambda$ (multiplicity $1$) and $r - \lambda$ (multiplicity $v - 1$). Multiplying the eigenvalues gives $\det(M M^T) = \bigl(r + (v - 1)\lambda\bigr)(r - \lambda)^{v-1}$. For the Fano plane ($r = 3$, $\lambda = 1$), this is the matrix $M M^T = 2I + J$ met in the prologue.
+
+Because $r > \lambda$, our determinant $\det(M M^T) = \bigl(r + (v - 1)\lambda\bigr)(r - \lambda)^{v-1}$ is strictly positive ($\neq 0$). Thus the $v \times v$ matrix $M M^T$ is invertible and has full rank $v$; since $\operatorname{rank}(M M^T) \le \operatorname{rank}(M) \le v$ (in fact $\operatorname{rank}(M M^T) = \operatorname{rank}(M)$ over $\mathbb{R}$, as shown in [rank, determinants and Gram matrices](#rank-determinants-and-gram-matrices)), this forces $\operatorname{rank}(M) = v$.
+
+Fisher's Inequality ($b \ge v$): Since $M$ is a $v \times b$ matrix of rank $v$, and the rank of a matrix cannot exceed its number of columns $b$, we must have $b \ge \operatorname{rank}(M) = v$. Figure 15 illustrates this rank argument on $\mathrm{AG}(2, 3) = S(2, 3, 9)$, where $M$ is $9 \times 12$ and $M M^T = 3I + J$ has full rank $9 \le 12 = b$.
+
+![Incidence matrix M and Gram matrix MM^T = 3I + J for AG(2,3) = S(2,3,9)](figures/maths4_designs_fisher_ag23.png)
+
+*Figure 15. Fisher's inequality on $\mathrm{AG}(2, 3) = S(2, 3, 9)$ ($v = 9$, $b = 12$, $k = 3$, $r = 4$, $\lambda = 1$). (a) The $9 \times 12$ incidence matrix $M$, with columns grouped into the four parallel classes of Figure 9(a) (slopes $0$, $\infty$, $1$, and $2$ mod $3$). Highlighted rows $p_1 = (0, 0)$ and $p_2 = (1, 0)$ each have $r = 4$ ones and overlap in $\lambda = 1$ column ($B_1$). (b) The $9 \times 9$ Gram matrix $M M^T = 3I + J$, with $r = 4$ on the diagonal and $\lambda = 1$ off the diagonal; its eigenvalues are $4 + 8(1) = 12$ (once, on $j$) and $4 - 1 = 3$ (eight times, on $j^\perp$), giving $\det(M M^T) = 12 \cdot 3^8 = 78{,}732 > 0$ and $\operatorname{rank}(M) = 9 \le 12 = b$.*
+
+Because $r > \lambda \ge 1$ when $v > k$, every point is incident with at least $r \ge 2$ blocks. We know that a point-line geometry has at least $2$ points on every line; therefore, when we swap points and blocks to form the [point-line dual](#points-lines-duals-and-doubles) $\mathcal{S}^D$, every "line" of $\mathcal{S}^D$ (which is a point of $\mathcal{S}$) has $r \ge 2$ "points" (blocks of $\mathcal{S}$), ensuring $\mathcal{S}^D$ is a valid point-line geometry.
+
+### Projective and affine planes as Steiner systems
+
+[As we said](#designs), the Steiner systems $S(2, n + 1, n^2 + n + 1)$ (with $n \ge 2$) are precisely the projective planes of order $n$. In the forward direction, a [projective plane of order $n$](#projective-planes-degenerate-vs-nondegenerate) is a linear space ($\lambda = 1$) with $k = n + 1$ points on every line and $v = n^2 + n + 1$ points in total, so it is an $S(2, n + 1, n^2 + n + 1)$. For the converse, there is a subtlety: a $2$-$(v, k, 1)$ Steiner system $S(2, k, v)$ only guarantees that every two points lie on a unique line and every line has $k$ points. It says nothing directly about whether every two lines intersect (projective plane) or whether each anti-flag has a unique parallel (affine plane). The total number of points $v$ alone decides which of the two behaviours occurs, through $r$. Let's see how.
+
+Here $v = n^2 + n + 1$ and $k = n + 1$. By our formula for $r$, the number of lines through any point $x$ is $r = \frac{(n^2 + n + 1) - 1}{(n + 1) - 1} = n + 1$. Take any two distinct lines $L_1$ and $L_2$, and pick a point $x \in L_2 \setminus L_1$. Then $x$ must send a connecting line to each of the $n + 1$ points on $L_1$, and these $n + 1$ connecting lines are all distinct (if two of them were equal, that line would contain $x$ and two points of $L_1$, so it would have to be $L_1$ itself, contradicting $x \notin L_1$). That uses up all $r = n + 1$ lines through $x$. So *every* line through $x$, including $L_2$, is forced to hit $L_1$, and no parallel lines can exist. The plane also has four points with no three collinear, which a nondegenerate projective plane needs: pick two points $a, b$ of $L_1$; pick a line $M$ through $x$ meeting $L_1$ in a third point $c$ (possible because $L_1$ has $n + 1 \ge 3$ points); and pick a point $d$ of $M$ other than $x$ and $c$ (possible because $M$ has $n + 1 \ge 3$ points). Then no three of $a, b, x, d$ are collinear: the only line through $a$ and $b$ is $L_1$, which misses $x$ and $d$, and the only line through $x$ and $d$ is $M$, which misses $a$ and $b$. Its lines have $n + 1$ points, so its order is $n$.
+
+Similarly, the Steiner systems **$S(2, n, n^2)$** (with $n \ge 2$) are precisely the affine planes of order $n$. In the forward direction, an affine plane of order $n$ is a linear space ($\lambda = 1$) with $k = n$ points per line; fixing a point $x$ and a line $L$ of size $n$ not through $x$, $x$ lies on $n$ lines meeting $L$ plus $1$ line missing $L$, so $r = n + 1$ lines pass through $x$, each holding $n - 1$ other points and giving $v = 1 + (n + 1)(n - 1) = n^2$ points in total, an $S(2, n, n^2)$. Conversely, in any $S(2, n, n^2)$, we have $v = n^2$ and $k = n$, so the number of lines through any point $x$ is $r = \frac{n^2 - 1}{n - 1} = n + 1$. Now if you take a line $L$ (which has $n$ points) and a point $x \notin L$, $x$ sends $n$ distinct connecting lines to hit the $n$ points of $L$. Since $x$ has $r = n + 1$ lines in total, there is $(n + 1) - n = 1$ line left over through $x$ that misses $L$ completely, and since $r = n + 1 \ge 3$, two distinct lines through $x$ immediately supply three noncollinear points. Figure 16 compares this line count for $n = 3$.
+
+![Line-budget comparison for PG(2,3) = S(2,4,13) and AG(2,3) = S(2,3,9)](figures/maths4_designs_planes_count.png)
+
+*Figure 16. Why $r$ decides the parallel postulate at $n = 3$. (a) Local schematic of $\mathrm{PG}(2, 3) = S(2, 4, 13)$ (showing only one line $L_1$ and the lines through $x \notin L_1$): $L_1$ has $k = 4$ points, and joining $x$ to each of them uses all $r = 4$ lines through $x$, so every line through $x$ meets $L_1$. (b) In $\mathrm{AG}(2, 3) = S(2, 3, 9)$ on the $3 \times 3$ grid of Figure 9(a), the bottom row $L$ has $k = 3$ points; from the centre point $x = (1, 1)$, three lines (the middle column and the two diagonals) join $x$ to the three points of $L$, leaving $(n + 1) - n = 1$ line through $x$ (the middle row) disjoint from $L$.*
+
+### Building new designs from old ones
+
+Once you have a design $\mathcal{S}$, there are three natural surgical operations you can perform on it to get new designs, defined in turn below:
+
+Zoom in at a point $x$ ($\mathcal{S}_x$): keep only the blocks passing through $x$, and delete $x$ from them.
+
+Delete a point $x$ and its blocks ($\mathcal{S}^x$): keep only the blocks that *miss* $x$.
+
+Flip every entry of the incidence matrix ($\overline{\mathcal{S}}$, sending $M \mapsto J - M$): replace every block $B$ with its complement $\mathcal{P} \setminus B$.
+
+Here are the exact parameters and definitions of each.
+
+**Internal Structure / Derived Design $\mathcal{S}_x$:** Let $\mathcal{S}$ be a $t$-$(v, k, \lambda)$-design with $t \ge 2$ and $k \ge 3$, and fix a point $x \in \mathcal{P}$. The [internal structure](#points-lines-duals-and-doubles) $\mathcal{S}_x$ (also called the [derived design](#unitals-inversive-planes-and-witt-mathieu-designs) at $x$) has point set $\mathcal{P} \setminus \{x\}$ and blocks $\{B \setminus \{x\} \mid x \in B \in \mathcal{B}\}$: because $t \ge 2$ puts every point $y \neq x$ in $\lambda_2 \ge 1$ blocks with $x$, the general internal-structure point set $x^\perp \setminus \{x\}$ becomes all of $\mathcal{P} \setminus \{x\}$, and blocks shortened at $x$ stay distinct because $B = (B \setminus \{x\}) \cup \{x\}$.
+
+Deleting $x$ leaves $v - 1$ points, shrinks every block through $x$ to size $k - 1$, and any $t - 1$ points in $\mathcal{P} \setminus \{x\}$ join with $x$ to form a $t$-point set in $\mathcal{S}$, which lies in $\lambda$ blocks through $x$. Thus $\mathcal{S}_x$ is a $(t - 1)$-$(v - 1, k - 1, \lambda)$-design (for instance, deriving $\mathrm{AG}(3, 2) = S(3, 4, 8)$ at any point $x$ gives the Fano plane $\mathrm{PG}(2, 2) = S(2, 3, 7)$, just like the derived-design steps in the extension towers of Figure 9(b)).
+
+**External Structure $\mathcal{S}^x$:** Let $\mathcal{S}$ be a $t$-$(v, k, \lambda)$-design with $t \ge 2$ and $v > k$, and fix a point $x \in \mathcal{P}$. The **external structure $\mathcal{S}^x = (\mathcal{P}^x, \mathcal{B}^x, \mathrm{I}^x)$** (often called the *residual design* in design theory) takes $\mathcal{B}^x$ to be all blocks of $\mathcal{S}$ *not* containing $x$, and $\mathcal{P}^x$ to be all points incident with at least one such block.
+
+Take any $t - 1$ points $X \subset \mathcal{P} \setminus \{x\}$. By [the downward cascade](#the-downward-cascade), $X$ lies in $\lambda_{t-1}$ blocks of $\mathcal{S}$ in total. How many of those blocks also contain $x$? Those are the blocks containing the $t$-point set $X \cup \{x\}$, which is $\lambda$. Subtracting the $\lambda$ blocks that hit $x$ leaves $\lambda_{t-1} - \lambda$ blocks that miss $x$. Here $\lambda_{t-1} > \lambda$ because $X \cup \{x\}$ already lies in $\lambda \ge 1$ blocks, so at least one block $B$ through $X$ exists; then $v > k$ gives a point $y \notin B$, and the $\lambda$ blocks through $X \cup \{y\}$ are all distinct from $B$, giving at least $\lambda + 1$ blocks through $X$. Moreover, since $v > k \ge t$, every point $y \in \mathcal{P} \setminus \{x\}$ belongs to at least one $(t - 1)$-subset $X \subseteq \mathcal{P} \setminus \{x\}$, which lies in $\lambda_{t-1} - \lambda \ge 1$ blocks missing $x$, forcing $\mathcal{P}^x = \mathcal{P} \setminus \{x\}$.
+
+$\mathcal{S}^x$ has point set $\mathcal{P}^x = \mathcal{P} \setminus \{x\}$ and is a **$(t - 1)$-$(v - 1, k, \lambda_{t-1} - \lambda)$-design**, where $\lambda_{t-1} > \lambda$ is the constant number of blocks of $\mathcal{S}$ containing any $(t - 1)$-point set.
+
+**Complementary Design $\overline{\mathcal{S}}$:** Let $\mathcal{S} = (\mathcal{P}, \mathcal{B}, \mathrm{I})$ be a $2$-$(v, k, \lambda)$-design with $v - k \ge 2$ (so every block misses at least $2$ points). The **complementary design $\overline{\mathcal{S}} = (\overline{\mathcal{P}}, \overline{\mathcal{B}}, \overline{\mathrm{I}})$** keeps the same points and blocks ($\overline{\mathcal{P}} = \mathcal{P}, \overline{\mathcal{B}} = \mathcal{B}$) but flips the incidence relation: a point $p$ is incident with $B$ in $\overline{\mathcal{S}}$ if and only if $p$ is not in $B$ in $\mathcal{S}$.
+
+$\overline{\mathcal{S}}$ is a $2$-$(v, v - k, b - 2r + \lambda)$-design (with $b - 2r + \lambda \ge 1$).
+
+Why is the new $\overline{\lambda}$ equal to $b - 2r + \lambda \ge 1$ (by inclusion-exclusion)? Take any two distinct points $x_1, x_2$. We want to know how many blocks $B \in \mathcal{B}$ miss both $x_1$ and $x_2$ out of $b$ total blocks.
+
+In $\mathcal{S}$, $\lambda$ blocks contain both $x_1$ and $x_2$; $r - \lambda$ blocks contain $x_1$ but not $x_2$; and $r - \lambda$ blocks contain $x_2$ but not $x_1$. Subtracting these from $b$ leaves $b - (r - \lambda) - (r - \lambda) - \lambda = b - 2r + \lambda$ blocks that miss both $x_1$ and $x_2$. To see that $b - 2r + \lambda \ge 1$, pick any block $B \in \mathcal{B}$; since $v - k \ge 2$, there exist two distinct points $x_1, x_2 \in \mathcal{P} \setminus B$, and $B$ itself is one of the $b - 2r + \lambda$ blocks missing both $x_1$ and $x_2$.
+
+We can do a bit more here. Fix two disjoint sets of points, a set $U$ of size $i$ and a set $W$ of size $j$ (with $i + j \le t$), and ask: how many blocks $B$ contain all of $U$ and none of $W$? Remarkably, in any $t$-$(v, k, \lambda)$-design, this number is also a constant $\lambda_i^j$ (independent of which points you pick for $U$ and $W$), given by
+
+$$\lambda_i^j = \frac{\binom{v - i - j}{k - i}}{\binom{v}{k}} b = \sum_{m=0}^j (-1)^m \binom{j}{m} \lambda_{i+m}.$$
+
+Both expressions follow from the downward cascade. For the alternating sum, apply inclusion-exclusion over the $j$ conditions "$z \in B$" for $z \in W$: for each $m$-element subset $Z \subseteq W$ ($\binom{j}{m}$ choices), the set $U \cup Z$ has size $i + m \le t$ and lies in $\lambda_{i+m}$ blocks, giving $\lambda_i^j = \sum_{m=0}^j (-1)^m \binom{j}{m} \lambda_{i+m}$. For the single binomial quotient, move one point $z \in W$ out of $W$: the $\lambda_i^{j-1}$ blocks containing $U$ and missing $W \setminus \{z\}$ split into the $\lambda_i^j$ blocks that also miss $z$ and the $\lambda_{i+1}^{j-1}$ blocks that contain $U \cup \{z\}$ and miss $W \setminus \{z\}$, giving the Pascal-triangle recurrence $\lambda_i^j = \lambda_i^{j-1} - \lambda_{i+1}^{j-1}$ (or $\lambda_i^{j-1} = \lambda_i^j + \lambda_{i+1}^{j-1}$). At $j = 0$, $\lambda_i^0 = \lambda_i = \frac{\binom{v-i}{t-i}}{\binom{k-i}{t-i}}\lambda = \frac{\binom{v-i}{k-i}}{\binom{v}{k}}b$, and induction on $j$ using $\binom{v-i-(j-1)}{k-i} - \binom{v-(i+1)-(j-1)}{k-(i+1)} = \binom{v-i-j}{k-i}$ gives $\lambda_i^j = \frac{\binom{v-i-j}{k-i}}{\binom{v}{k}}b$.
+
+Look at the special cases of this rule for a $2$-$(v, k, \lambda)$-design ($t = 2$):
+
+$i = 2, j = 0$ (Blocks containing $x_1$ and $x_2$): $\lambda_2^0 = \lambda$.
+
+$i = 1, j = 1$ (Blocks containing $x_1$ but missing $x_2$): $\lambda_1^1 = \lambda_1 - \lambda_2 = r - \lambda$.
+
+$i = 0, j = 2$ (Blocks missing both $x_1$ and $x_2$): $\lambda_0^2 = \lambda_0 - 2\lambda_1 + \lambda_2 = b - 2r + \lambda$ (which is the exact parameter of the complementary design).
+
+$i = 0, j = 1$ (Blocks missing a single point $x$): $\lambda_0^1 = b - r$ (which is the number of blocks in the external structure $\mathcal{S}^x$).
+
+Figure 17 shows how splitting the incidence matrix at a point $x$ carves out $\mathcal{S}_x$ and $\mathcal{S}^x$ simultaneously, and how the numbers $\lambda_i^j$ sit inside a Pascal-like triangle where each entry is the sum of the two entries directly below it ($\lambda_i^{j-1} = \lambda_{i+1}^{j-1} + \lambda_i^j$).
+
+![Split incidence matrix of AG(3,2)=S(3,4,8) at x=000 and Pascal triangles of lambda_i^j](figures/maths4_designs_building.png)
+
+*Figure 17. (a) The $8 \times 14$ incidence matrix of $\mathrm{AG}(3, 2) = S(3, 4, 8)$ split at $x = 000$: the $r = 7$ blocks containing $x$ on the left give the derived design $\mathcal{S}_x = \mathrm{PG}(2, 2) = S(2, 3, 7)$ on the $7$ rows $\mathcal{P} \setminus \{x\}$, and the $b - r = 7$ blocks missing $x$ on the right give the external structure $\mathcal{S}^x$, a $2$-$(7, 4, 2)$-design. Placing each block missing $x$ in the same column order as its parallel partner through $x$ makes the bit flip $B \mapsto \mathcal{P} \setminus B$ visible: in this design (though not in a general $t$-design), $\mathcal{S}^x$ is the complement of $\mathcal{S}_x$ because every plane of $\mathrm{AG}(3, 2)$ through $x$ has a unique parallel plane missing $x$. (b) The triangles of block-avoidance numbers $\lambda_i^j$ for $S(3, 4, 8)$ and $\mathrm{AG}(2, 3) = S(2, 3, 9)$, with $b = \lambda_0^0$, $r = \lambda_1^0$, $b - r = \lambda_0^1$, $r - \lambda = \lambda_1^1$, and $b - 2r + \lambda = \lambda_0^2$ labelled; each entry equals the sum of the two entries below it.*
+
+Why stop here? Let's go further with $2$-designs. Up to now, we fixed a set of points $X$ and double-counted flags with blocks. What if we turn the tables, fix a single block $B_0$, and double-count flags between the points of $B_0$ and the other $b - 1$ blocks $B \neq B_0$?
+
+For each other block $B \neq B_0$, let $n_B = \vert{}B \cap B_0\vert{}$ be the number of points where $B$ intersects $B_0$. First, we double-count pairs $(x, B)$ where $x \in B_0 \cap B$ and $B \neq B_0$.
+
+From the points $x \in B_0$: There are $k$ points in $B_0$, and each lies in $r - 1$ blocks other than $B_0$.
+
+From the blocks $B \neq B_0$: Each block $B$ contributes $n_B$ points in $B_0 \cap B$.
+
+$$\sum_{B \neq B_0} n_B = k(r - 1)$$
+
+Now let's double-count triples $(\{x, y\}, B)$ where $\{x, y\} \subseteq B_0 \cap B$ and $B \neq B_0$.
+
+From pairs $\{x, y\} \subseteq B_0$: There are $\binom{k}{2}$ pairs of points in $B_0$, and each pair lies in $\lambda - 1$ blocks other than $B_0$.
+
+From blocks $B \neq B_0$: Each block $B$ with $n_B$ points in $B_0$ contains $\binom{n_B}{2}$ pairs inside $B_0 \cap B$.
+
+$$\sum_{B \neq B_0} \binom{n_B}{2} = \binom{k}{2}(\lambda - 1)$$
+
+For a quick check on $\mathrm{AG}(2, 3) = S(2, 3, 9)$ ($b = 12, k = 3, r = 4, \lambda = 1$), fix any line $B_0$: the $2$ other lines in $B_0$'s parallel class meet $B_0$ in $n_B = 0$ points, while the $9$ lines in the other three parallel classes each meet $B_0$ in $n_B = 1$ point, giving $\sum_{B \neq B_0} n_B = 2(0) + 9(1) = 9 = 3(4 - 1) = k(r - 1)$ and $\sum_{B \neq B_0} \binom{n_B}{2} = 0 = \binom{3}{2}(1 - 1) = \binom{k}{2}(\lambda - 1)$.
+
+This last pair of double-counting equations (measuring the first and second moments of block intersections $n_B$) is the classical combinatorial engine behind block-intersection bounds, and it gives an alternative variance proof of Fisher's Inequality $b \ge v$. Write $\bar{n} = \frac{1}{b-1}\sum_{B \neq B_0} n_B = \frac{k(r-1)}{b-1}$ for the average intersection size. Using $n_B^2 = 2\binom{n_B}{2} + n_B$, the two moment sums combine to give
+
+$$\sum_{B \neq B_0} n_B^2 = 2\sum_{B \neq B_0} \binom{n_B}{2} + \sum_{B \neq B_0} n_B = k(k - 1)(\lambda - 1) + k(r - 1).$$
+
+Because $(b - 1)\sum_{B \neq B_0} (n_B - \bar{n})^2 = (b - 1)\sum_{B \neq B_0} n_B^2 - \bigl(\sum_{B \neq B_0} n_B\bigr)^2 \ge 0$ (equivalently, by Cauchy-Schwarz on the $b - 1$ numbers $n_B$), substituting $b = \frac{vr}{k}$ and $\lambda(v - 1) = r(k - 1)$ (so $\lambda = \frac{r(k-1)}{v-1}$) into the left-hand side factors it cleanly:
+
+$$(b - 1)\sum_{B \neq B_0} n_B^2 - \left(\sum_{B \neq B_0} n_B\right)^2 = \frac{r(r - k)(v - k)^2}{v - 1} = \frac{kr(v - k)^2}{v(v - 1)}(b - v) \ge 0.$$
+
+When $v > k$, the factor $\frac{kr(v - k)^2}{v(v - 1)}$ is strictly positive, forcing $b \ge v$ (equivalently $r \ge k$), with equality $b = v$ if and only if $n_B = \bar{n}$ for every block $B \neq B_0$ (in which case $r = k$ gives $n_B = \frac{k(k-1)}{v-1} = \lambda$ for every $B \neq B_0$).
+
+<!-- terms checked: design theory; blocks; Steiner system; Steiner triple system; Steiner quadruple system; affine plane; parallel -->
