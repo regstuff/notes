@@ -3347,4 +3347,4 @@ Figure 19 places a simple quadrangle beside a complete quadrangle $(4_3, 6_2)$ a
 - Projective Geometry: From Foundations to Applications by Albrecht Beutelspacher, Ute Rosenbaum (First & perhaps only edition sections 1.2, 1.3, 1.5, 1.6, 2.1, 2.3, 2.4, 3.4, 3.6, 4.1, 4.2, 4.3, 4.4, 4.5, 4.7)
 - Foundations of Incidence Geometry: Projective and Polar Spaces by Johannes Ueberberg (First & perhaps only edition sections 1.4, 1.7, 1.8, 2.4, 3.2, 3.3, 3.4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 5.1, 5.2, 5.3, 5.4, 5.6)
 - An Introduction to Incidence Geometry by Bart De Bruyn (First & perhaps only edition sections 1.1, 1.2, 2.1, 2.2, 2.6, 2.7, 2.8, 2.14, 3.1, 3.2, 3.3, 3.4, 4.5, 5.1, 5.2, 5.3, 5.4, 5.6, 5.8, 7.2, 7.5, 7.8, 9.1)
-- The Geometry of the Classical Groups by DE Taylor
+- The Geometry of the Classical Groups by DE Taylor (From the [online version](https://www.maths.usyd.edu.au/u/don/papers/gcg.pdf) Ch. 1 pp. 1–3, Ch. 7 pp. 54–60, Ch. 8 pp. 68–72, Ch. 10 pp. 114–117 → 120–123, Ch. 11 pp. 136–144 150–153, 170–172 selectively, Ch. 9 pp. 87–91)
