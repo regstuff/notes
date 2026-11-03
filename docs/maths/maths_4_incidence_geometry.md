@@ -145,7 +145,7 @@ This section is used only from [the chapter on hyperplanes and projective embedd
 
 For example, take $V = \mathbb{F}_2^4$ and $U = \langle c \rangle$ with $c = (1,1,1,0)^T$; any nonzero $c$ would do, and this one returns as the projection centre in [the 3-vane fan example](#the-3-vane-fan-universal-embedding-in-pg3-2-and-fano-quotient-in-pg2-2). Then $V/U \cong \mathbb{F}_2^3$. A point of the quotient is a line of $PG(3, 2)$ through the point $\langle c \rangle$. Each such line holds two points $p$ and $p + c$ besides $c$, so the $14$ other points fall into $7$ pairs, the $7$ points of a Fano plane. This is projection from $c$: each pair looks like one point when seen from $c$.
 
-**Where it is used.** A hyperplane of $PG(n, q)$, the kernel of a single functional, cuts out a hyperplane of any geometry sitting inside $PG(n, q)$, and projection from a point is a quotient (see [full and quotient projective embeddings](#full-and-quotient-projective-embeddings) and [hyperplanes arising from an embedding](#hyperplanes-arising-from-an-embedding)). Quotients also build quotient polar spaces<!-- relink to the ch7 section once it is merged -->.
+**Where it is used.** A hyperplane of $PG(n, q)$, the kernel of a single functional, cuts out a hyperplane of any geometry sitting inside $PG(n, q)$, and projection from a point is a quotient (see [full and quotient projective embeddings](#full-and-quotient-projective-embeddings) and [hyperplanes arising from an embedding](#hyperplanes-arising-from-an-embedding)). Quotients also build quotient polar spaces, the [residues of points](maths_3_projective_geometry.md#residues-give-local-to-global-classification-and-induction) of the earlier projective geometry notes.
 
 ### Bilinear and sesquilinear forms in coordinates
 
@@ -178,7 +178,7 @@ just as Dirac's $\langle v | w \rangle$ is antilinear in the bra. The earlier pr
 
 In coordinates, $f(x, y) = (x^\sigma)^T G y$, where $x^\sigma$ applies $\sigma$ to each entry, and a change of basis gives $G' = (P^\sigma)^T G P$. The form is Hermitian when $f(w, v) = f(v, w)^\sigma$ for all $v, w$. For example, let $\mathbb{F}_4 = \{0, 1, \omega, \omega^2\}$ with $\omega^2 = \omega + 1$, and let $\sigma(a) = a^2$, which swaps $\omega$ and $\omega^2$ and fixes $0$ and $1$. The form $f(x, y) = x_0^2 y_0 + x_1^2 y_1$ on $\mathbb{F}_4^2$ has $G = I$ and is Hermitian. A vector is isotropic when $f(x, x) = x_0^3 + x_1^3 = 0$. Every nonzero element of $\mathbb{F}_4$ has cube $1$ (the multiplicative group has order $3$), so $x_0^3 + x_1^3$ is $1 + 1 = 0$ when both coordinates are nonzero and $1$ otherwise. Of the $5$ points of $PG(1, 4)$, the $3$ points $\langle (1, a)^T \rangle$ with $a \neq 0$ are isotropic.
 
-**Where it is used.** Forms in coordinates are the language of [polar spaces from sesquilinear forms](maths_3_projective_geometry.md#polar-spaces-polarity) and [the classical polar spaces](maths_3_projective_geometry.md#polar-spaces-polarity), and the radical of a polar form is the nucleus used in the polar spaces chapter<!-- relink to the ch7 section once it is merged -->.
+**Where it is used.** Forms in coordinates are the language of [polar spaces from sesquilinear forms](maths_3_projective_geometry.md#polar-spaces-polarity) and [the classical polar spaces](maths_3_projective_geometry.md#polar-spaces-polarity), and the radical of a polar form is the nucleus used in [the polar spaces chapter](#isomorphism-between-parabolic-and-symplectic-polar-spaces).
 
 <!-- terms checked: positive semidefinite; minimal polynomial; entrywise product -->
 
@@ -324,7 +324,7 @@ From any geometry $S$, we have three derived geometries:
 
 Notice carefully that in $S_x = (x^\perp \setminus \{x\}, \mathcal{L}_x, I_x)$, the lines are only the lines through $x$. If $S$ is a partial linear space, two lines through $x$ cannot meet anywhere else, so in $S_x$ the lines $\mathcal{L}_x$ simply partition $x^\perp \setminus \{x\}$ into disjoint sets of points. Later, when studying polar spaces or near polygons, we enrich this local view by either looking at how lines not through $x$ cut across $\mathcal{L}_x$ (turning the lines through $x$ into points and planes through $x$ into lines, which gives the residue at $x$), or looking at the induced subgeometry on $x^\perp \setminus \{x\}$.
 
-On the $3 \times 3$ grid in figure 5, $\mathcal{S}_x$ is $4$ points on two disjoint $2$-point lines. **Do not confuse $\mathcal{S}_x$ with the residue at $x$** from the earlier projective geometry notes (and Quotient polar spaces<!-- relink to the ch7 section once it is merged -->), where lines through $x$ become *points* and planes through $x$ become *lines*; $\mathcal{S}_x$ keeps neighbouring points as points, which is how we will build [derived designs](#unitals-inversive-planes-and-witt-mathieu-designs) in [Designs: a first look](#combinatorial-designs) and [New designs from old](#building-new-designs-from-old-ones).
+On the $3 \times 3$ grid in figure 5, $\mathcal{S}_x$ is $4$ points on two disjoint $2$-point lines. **Do not confuse $\mathcal{S}_x$ with the residue at $x$** from the earlier projective geometry notes (and [quotient polar spaces](maths_3_projective_geometry.md#residues-give-local-to-global-classification-and-induction)), where lines through $x$ become *points* and planes through $x$ become *lines*; $\mathcal{S}_x$ keeps neighbouring points as points, which is how we will build [derived designs](#unitals-inversive-planes-and-witt-mathieu-designs) in [Designs: a first look](#combinatorial-designs) and [New designs from old](#building-new-designs-from-old-ones).
 
 Here are a few examples:
 
@@ -693,9 +693,6 @@ Take $s = 2, t = 2$ (the "doily" $W(3, 2)$ drawn in Figure 10, with $15$ points 
 What if someone asks whether a thick GQ of order $(s, t) = (2, 5)$ can exist? $s + t = 7$ fails to divide $10 \cdot 3 \cdot 6 = 180$, but a quicker way is Higman's inequality which kills it at a glance: $t = 5 > 2^2 = s^2$, impossible. What about $(s, t) = (2, 3)$? It satisfies Higman's inequality ($3 \le 4$), *but* $s + t = 5$ does not divide $st(s+1)(t+1) = 6 \cdot 3 \cdot 4 = 72$. Thus **no generalized quadrangle of order $(2, 3)$ can exist**, jumping straight from $(2, 2)$ to $(2, 4)$ (where $2 + 4 = 6$ divides $8 \cdot 3 \cdot 5 = 120$, and indeed a classical GQ $Q^-(5, 2)$ of order $(2, 4)$ exists).
 
 ---
-
-### Polar spaces
-We will not speak about these as they are covered in the projective geometry notes.
 
 ### Generalized polygons
 
@@ -1919,6 +1916,391 @@ Could $\mathrm{AG}(2, 3)$ have a *full* projective embedding into some other pro
 | $3$-vane fan | $7$ pts, $3$ lines | $15$ | $\mathrm{PG}(3, 2)$ ($\lvert \mathcal{H}_{\tilde{\epsilon}} \rvert = 15$); quotient $\mathrm{PG}(2, 2)$ ($\lvert \mathcal{H}_{\tilde{\epsilon}/\alpha} \rvert = 7$) |
 | Grid $Q^+(3, 2)$ | $9$ pts, $6$ lines | $15$ | $\mathrm{PG}(3, 2)$ ($\lvert \mathcal{H}_{\tilde{\epsilon}} \rvert = 15$); no proper quotients |
 | $\mathrm{AG}(2, 3)$ | $9$ pts, $12$ lines | $0$ | None |
+
+## Polar Spaces
+
+In the earlier projective geometry notes we met [polar spaces from sesquilinear forms](maths_3_projective_geometry.md#polar-spaces-polarity), their [one-or-all axiom](maths_3_projective_geometry.md#one-or-all-axiom), and [the Veldkamp-Tits axioms](maths_3_projective_geometry.md#the-classical-tits-veldkamp-definition-of-polar-spaces) expressed in terms of singular subspaces. This chapter answers three questions that take the theory from finite coordinate examples to general incidence geometry. First, if we forget the ambient projective space and keep only the points and lines of a polar space, why do three simple point-line axioms suffice to rebuild all singular subspaces and their projective geometry? Second, when we define a polar space from a sesquilinear form over an arbitrary skew field, what symmetry and diagonal conditions on the form are required so that its isotropic points and lines satisfy those axioms? Third, how do the classical families of polar spaces behave over general fields, and why do finite fields collapse them into so few canonical models?
+
+<!-- terms checked: Veblen-Young theorem; nonsingular; perfect -->
+
+### Buekenhout-Shult polar spaces
+
+#### Axioms and equivalence with Veldkamp-Tits polar spaces
+
+The geometric meaning of [the one-or-all axiom](maths_3_projective_geometry.md#one-or-all-axiom), its "no hollow triangles" consequence, and the subspace-based [Veldkamp-Tits definition of polar spaces](maths_3_projective_geometry.md#the-classical-tits-veldkamp-definition-of-polar-spaces) are introduced in the earlier projective geometry notes. Here we package the point-line version into a three-axiom system on a [partial linear space](#partial-linear-spaces) and show that it carries the same information as the Veldkamp-Tits system.
+
+A **Buekenhout-Shult polar space** is a [partial linear space](#partial-linear-spaces) $\mathcal{S} = (\mathcal{P}, \mathcal{L}, \mathrm{I})$ with $|\mathcal{P}| > 1$ satisfying three axioms.
+
+**$\mathrm{(BS1)}$ (one-or-all axiom).** For every line $L$ and every point $x \notin L$, $x$ is collinear with either one or all points of $L$.
+
+**$\mathrm{(BS2)}$ (non-degeneracy).** No point of $\mathcal{S}$ is collinear with all other points of $\mathcal{S}$.
+
+**$\mathrm{(BS3)}$ (finite rank).** Every strictly ascending chain $S_0 \subsetneq S_1 \subsetneq \cdots \subsetneq S_k$ of [singular subspaces](#partial-linear-spaces) of $\mathcal{S}$ has finite length.
+
+Each axiom rules out a specific degeneracy. Axiom $\mathrm{(BS1)}$ forces the neighbourhood $x^\perp$ of any point $x$ to meet every line $L$ either in a single point or in all of $L$. Axiom $\mathrm{(BS2)}$ excludes cones: if a point $c$ were collinear with every point of $\mathcal{S}$, $c$ would sit in the radical of the underlying form and every maximal singular subspace would pass through $c$. Axiom $\mathrm{(BS3)}$ ensures that every singular subspace lies in a maximal singular subspace of finite dimension, matching the finite-rank assumption in the Veldkamp-Tits axioms.
+
+To pass between the subspace and point-line viewpoints, we truncate or rebuild the singular subspaces. Given a Veldkamp-Tits polar space $\Pi = (\mathcal{P}, \Sigma)$ of rank $n \ge 1$, its **point-line truncation** $\mathcal{S}_\Pi = (\mathcal{P}, \mathcal{L})$ takes $\mathcal{P}$ as its point set and the projective lines in $\Sigma$ as its line set (so $\mathcal{L} = \emptyset$ when $n = 1$). Conversely, given a Buekenhout-Shult polar space $\mathcal{S} = (\mathcal{P}, \mathcal{L})$, we form the system $\Pi_{\mathcal{S}} = (\mathcal{P}, \Sigma)$, where $\Sigma$ is the collection of all [singular subspaces](#partial-linear-spaces) of $\mathcal{S}$ with the induced point-line structure $\widetilde{S}$ on each $S \in \Sigma$.
+
+For every Veldkamp-Tits polar space $\Pi$ of rank $n \ge 1$, the point-line geometry $\mathcal{S}_\Pi$ is a Buekenhout-Shult polar space whose singular subspaces are precisely the members of $\Sigma$. Conversely, for every Buekenhout-Shult polar space $\mathcal{S}$, the singular-subspace system $\Pi_{\mathcal{S}} = (\mathcal{P}, \Sigma)$ is a Veldkamp-Tits polar space of some finite rank $n \ge 1$; all maximal singular subspaces of $\mathcal{S}$ are [projective spaces](#projective-spaces-of-arbitrary-dimension-and-the-veblenyoung-axiom) of the same projective dimension $n - 1$, and this integer $n \ge 1$ is the **rank** of $\mathcal{S}$ (matching [the rank of a polar space](maths_3_projective_geometry.md#the-rank-of-a-polar-space) in the earlier projective geometry notes). These two constructions invert each other up to isomorphism: for any Veldkamp-Tits polar space $\Pi$ and Buekenhout-Shult polar space $\mathcal{S}$,
+
+$$\mathcal{S}_\Pi \cong \mathcal{S} \Longleftrightarrow \Pi \cong \Pi_{\mathcal{S}}.$$
+
+The subsections below assemble the geometric pieces needed to build $\Pi_{\mathcal{S}}$ from $\mathcal{S}$: why every clique generates a singular projective space, why $x^\perp$ cuts any generator in a hyperplane, and why two disjoint generators exist.
+
+In fact, even the line set $\mathcal{L}$ can be recovered from the [collinearity graph](#collinearity-graphs-incidence-graphs) $\Gamma$ of $\mathcal{S}$: two Buekenhout-Shult polar spaces $\mathcal{S}_1$ and $\mathcal{S}_2$ are isomorphic if and only if their collinearity graphs $\Gamma_1$ and $\Gamma_2$ are isomorphic. Why does the graph remember the lines? In any Buekenhout-Shult polar space, a subset of $\mathcal{P}$ is a maximal singular subspace (a generator) if and only if it is a [maximal clique](#neighbours-valency-and-why-local-counts-miss-global-shape) of $\Gamma$, and in a Veldkamp-Tits polar space every non-maximal singular subspace (including every line) is the intersection of the generators containing it. Any graph isomorphism $\Gamma_1 \to \Gamma_2$ preserves maximal cliques and their intersections, so it maps lines of $\mathcal{S}_1$ bijectively onto lines of $\mathcal{S}_2$.
+
+When $n = 1$, a Buekenhout-Shult polar space has $|\mathcal{P}| \ge 2$ points and no lines ($\mathcal{L} = \emptyset$), so its collinearity graph is edgeless. As soon as $\mathcal{S}$ contains at least one line ($n \ge 2$), its collinearity graph $\Gamma$ is connected and has [diameter](#paths-geodesics-and-distance) $2$. Indeed, $\mathrm{(BS2)}$ ensures that not all points are collinear, and by $\mathrm{(BS1)}$ every point lies on a line; for any two noncollinear points $x, y$, taking a line through $x$ and a point $z$ on it collinear with $y$ gives a path $x \sim z \sim y$ of length $2$.
+
+#### Disjoint lines and opposite lines
+
+How can two disjoint lines $L_1$ and $L_2$ sit inside a Buekenhout-Shult polar space $\mathcal{S}$? Applying $\mathrm{(BS1)}$ between points of $L_1$ and $L_2$ restricts their mutual collinearity pattern to three possibilities.
+
+**Case 1 (all-to-all collinear).** Every point of $L_1$ is collinear with every point of $L_2$.
+
+**Case 2 (a unique hub on each line).** There is a unique point $x_1 \in L_1$ collinear with all points of $L_2$, and a unique point $x_2 \in L_2$ collinear with all points of $L_1$. Every other point $y_1 \in L_1 \setminus \{x_1\}$ has $x_2$ as its unique neighbour on $L_2$, and every other point $y_2 \in L_2 \setminus \{x_2\}$ has $x_1$ as its unique neighbour on $L_1$.
+
+**Case 3 (bijective projection, opposite lines).** Every point $x_1 \in L_1$ is collinear with a unique point $\pi_{1,2}(x_1) \in L_2$, every point $x_2 \in L_2$ is collinear with a unique point $\pi_{2,1}(x_2) \in L_1$, and the maps $\pi_{1,2} : L_1 \to L_2$ and $\pi_{2,1} : L_2 \to L_1$ are mutual inverses (hence bijections).
+
+To see why no other pattern can occur, count the points of $L_1$ that are collinear with all of $L_2$. Two or more give case 1 (then every point of $L_2$ sees at least two points of $L_1$, and hence all of $L_1$ by $\mathrm{(BS1)}$); one gives case 2; none means every point of $L_1$ sees a unique point of $L_2$, and these choices are all distinct (since a shared neighbour on $L_2$ would see two points of $L_1$ and hence all of $L_1$), giving case 3.
+
+Case 3 occurs for every line of $\mathcal{S}$: for every line $L_1$ of a Buekenhout-Shult polar space $\mathcal{S}$, there exists a disjoint line $L_2$ such that $L_1$ and $L_2$ stand in the bijective projection of case 3. As an immediate consequence, for every line $L$ of $\mathcal{S}$ and every point $x \in L$, there exists a point $y \in \mathcal{P}$ collinear with $x$ and noncollinear with every point of $L \setminus \{x\}$ (namely $y = \pi_{1,2}(x)$ on an opposite line $L_2$).
+
+**Worked example (all three disjoint-line patterns in $Q^+(7, 2)$):** Why do we go up to the hyperbolic quadric $Q^+(7, 2)$ of rank $4$ in $\mathrm{PG}(7, 2)$ (defined over $\mathbb{F}_2$ by $q(X) = X_1X_2 + X_3X_4 + X_5X_6 + X_7X_8 = 0$, with $135$ points and $1575$ lines of $3$ points each) to see all three cases at once? Because case 1 requires two disjoint lines inside a common singular subspace, which spans a projective $3$-space $\mathrm{PG}(3, 2)$ and therefore requires rank $n \ge 4$.
+
+Fix the standard basis $e_1, \dots, e_8$ of $\mathbb{F}_2^8$, where $B(X, Y) = X_1Y_2 + X_2Y_1 + \cdots + X_7Y_8 + X_8Y_7$, and fix the totally singular line
+
+$$L_1 = \langle e_1, e_3 \rangle = \{e_1,\; e_3,\; e_1 + e_3\}.$$
+
+Choosing three different totally singular lines $L_2$ disjoint from $L_1$ realizes all three cases (Figure 18):
+
+**Case 1 (All-to-all):** Take $L_2 = \langle e_5, e_7 \rangle = \{e_5, e_7, e_5 + e_7\}$. Every basis vector in $\{e_1, e_3\}$ is orthogonal to every vector in $\{e_5, e_7\}$, so all $3 \times 3 = 9$ pairs between $L_1$ and $L_2$ are collinear and $\langle L_1 \cup L_2 \rangle = \langle e_1, e_3, e_5, e_7 \rangle \cong \mathrm{PG}(3, 2)$ is a generator.
+
+**Case 2 (Unique hub on each line):** Take $L_2 = \langle e_5, e_4 \rangle = \{e_5, e_4, e_4 + e_5\}$. Since $B(e_1, e_4) = B(e_1, e_5) = 0$, the point $x_1 = e_1 \in L_1$ is collinear with all $3$ points of $L_2$. Symmetrically, $x_2 = e_5 \in L_2$ is collinear with all $3$ points of $L_1$. Meanwhile $B(e_3, e_4) = 1$, so neither $e_3$ nor $e_1 + e_3$ is collinear with $e_4$ or $e_4 + e_5$, leaving $5$ collinear pairs in a double star centered at $x_1 = e_1$ and $x_2 = e_5$.
+
+**Case 3 (Bijective projection):** Take $L_2 = \langle e_4, e_2 \rangle = \{e_4, e_2, e_2 + e_4\}$. Here $B(e_1, e_2) = 1$ and $B(e_3, e_4) = 1$, so each point of $L_1$ has a unique orthogonal partner on $L_2$:
+
+$$\pi_{1,2}(e_1) = e_4, \qquad \pi_{1,2}(e_3) = e_2, \qquad \pi_{1,2}(e_1 + e_3) = e_2 + e_4.$$
+
+![Three collinearity patterns between two disjoint lines in Q+(7, 2)](figures/maths4_polar_disjoint_lines.png)
+
+*Figure 18. The three collinearity patterns between two disjoint lines $L_1 = \langle e_1, e_3 \rangle$ and $L_2$ in a Buekenhout-Shult polar space, realized in $Q^+(7, 2)$ over $\mathbb{F}_2$: (a) all $9$ point pairs are collinear and span a singular $3$-space $\mathrm{PG}(3, 2)$; (b) a unique hub $x_1 = e_1 \in L_1$ is collinear with all of $L_2$ and a unique hub $x_2 = e_5 \in L_2$ is collinear with all of $L_1$; (c) orthogonal projection defines a bijection $\pi_{1,2} : L_1 \to L_2$.*
+
+#### Common neighbours, distance-2 subgraphs, and the complement graph
+
+Take two noncollinear points $a$ and $b$ in a Buekenhout-Shult polar space $\mathcal{S}$ that contains lines, and look at their set of common neighbours
+
+$$S_{a,b} := \Gamma_1(a) \cap \Gamma_1(b) = a^\perp \cap b^\perp.$$
+
+Because $a^\perp$ and $b^\perp$ are [subspaces](#partial-linear-spaces) of $\mathcal{S}$ by $\mathrm{(BS1)}$, their intersection $S_{a,b}$ is a subspace of $\mathcal{S}$, and the induced geometry $\widetilde{S_{a,b}}$ is itself a Buekenhout-Shult polar space of rank $n - 1$ (Figure 19). Indeed, lines inside $S_{a,b}$ are full lines of $\mathcal{S}$, so $\mathrm{(BS1)}$ and $\mathrm{(BS3)}$ are inherited directly, while $\mathrm{(BS2)}$ follows from the single-touch property on lines through $a$ and $b$. Up to isomorphism, this common-neighbour polar space $\widetilde{S_{a,b}}$ is the same rank-$(n-1)$ polar space that the earlier projective geometry notes reach as the [residue of a point](maths_3_projective_geometry.md#residues-give-local-to-global-classification-and-induction).
+
+![Common-neighbour subspace S_{a,b} = a^perp cap b^perp in W(5, 2)](figures/maths4_polar_common_neighbours.png)
+
+*Figure 19. For two noncollinear points $a = e_1$ and $b = e_2$ in $W(5, 2)$, the common-neighbour subspace $S_{a,b} = a^\perp \cap b^\perp$ carries the $15$-point, $15$-line polar space $W(3, 2)$ of rank $2$; each $3$-point line through $a$ meets $S_{a,b}$ in a unique point $y = L \cap b^\perp$, while its third point $a + y$ lies in $a^\perp \setminus S_{a,b}$.*
+
+When every line of $\mathcal{S}$ is **thick** (contains at least $3$ points), both the distance-$2$ sphere around a point and the non-collinearity relation across $\mathcal{S}$ are connected. First, if $\mathcal{S}$ contains lines and every line has at least $3$ points, then for every point $x$ the subgraph $\Gamma_x$ induced by $\Gamma$ on the distance-$2$ sphere $\Gamma_2(x) = \mathcal{P} \setminus x^\perp$ is connected and has diameter at most $3$ (generalizing the distance-$2$ connectedness proved for generalized quadrangles in the chapter on generalized polygons).<!-- relink to the ch5 section once it is merged --> Second, if every line of $\mathcal{S}$ has at least $3$ points, the [complement graph](#neighbours-valency-and-why-local-counts-miss-global-shape) $\Gamma^C$ of the collinearity graph $\Gamma$ (where two points are adjacent when they are *noncollinear* in $\mathcal{S}$) is connected. Noncollinear points $x, y$ are already adjacent in $\Gamma^C$; for collinear $x, y$, take a third point $z$ on the line $xy$ and a point $u$ collinear with $z$ but with no other point of $xy$, so that $x, u, y$ is a path of noncollinear steps.
+
+#### Singular subspaces, projective structure, and opposite generators
+
+Four structural properties of singular subspaces explain why every Buekenhout-Shult polar space $\mathcal{S}$ satisfies the Veldkamp-Tits subspace axioms $\mathrm{(VT1)}$–$\mathrm{(VT4)}$.
+
+First, cliques generate singular subspaces: if $X \subseteq \mathcal{P}$ is any set of mutually collinear points of $\mathcal{S}$, the [generated subspace](#partial-linear-spaces) $\langle X \rangle$ is a singular subspace of $\mathcal{S}$. Recall from [partial linear spaces](#partial-linear-spaces) that $\langle X \rangle = \bigcup_{i \in \mathbb{N}} X_i$, where $X_0 = X$ and $X_{i+1}$ adds all points on lines through two points of $X_i$; applying $\mathrm{(BS1)}$ to a line in $X_i$ and a point in $X_i$ shows by induction on $i$ that all points of $X_i$ remain mutually collinear.
+
+Second, a point outside a singular subspace cuts it in a hyperplane and swaps generators. For any singular subspace $S$ of $\mathcal{S}$ and any point $x \in \mathcal{P} \setminus S$, the set $x^\perp \cap S$ of points of $S$ collinear with $x$ is either all of $S$ or a [hyperplane](#partial-linear-spaces) of $\widetilde{S}$ (as seen for classical polar spaces in [the algebraic hyperplane cut](maths_3_projective_geometry.md#tying-back-to-algebra)). When $S$ is a *maximal* singular subspace, $x^\perp \cap S$ is a hyperplane of $\widetilde{S}$ and $\langle x, x^\perp \cap S \rangle$ is also a maximal singular subspace of $\mathcal{S}$: if $\langle x, x^\perp \cap S \rangle$ were properly contained in a larger singular subspace, a line through $x$ inside that larger subspace would contain a point outside $S$ collinear with every point of $S$, contradicting the maximality of $S$.
+
+Third, every singular subspace is a projective space. Define a **plane** of $\mathcal{S}$ to be the singular subspace $\pi(x, L) := \langle \{x\} \cup L \rangle$ generated by a line $L$ and a point $x \notin L$ collinear with all points of $L$. Given any plane $\pi = \pi(x, L)$, one can first find a point $y'$ collinear with all of $L$ and not with $x$, and then refine that choice to a point $y \in \mathcal{P}$ whose orthogonal set cuts the plane in the single line $y^\perp \cap \pi(x, L) = L$. Because $y \notin \pi$, the hyperplane-cut property says that $y^\perp \cap \pi = L$ is a hyperplane of $\widetilde{\pi}$, so every line of $\widetilde{\pi}$ meets $L$. By the Veblen-Young theorem for [projective spaces of arbitrary dimension](#projective-spaces-of-arbitrary-dimension-and-the-veblenyoung-axiom), the induced geometry $\widetilde{S}$ on every singular subspace $S$ of $\mathcal{S}$ is a projective space (and every plane $\widetilde{\pi}$ is a projective plane).
+
+Fourth, disjoint maximal singular subspaces always exist and force all generators to have the same dimension: if $\mathcal{S}$ has a maximal singular subspace $S$ of projective dimension $n - 1$, then there exists a second singular subspace $S'$ of dimension $n - 1$ disjoint from $S$. To find $S'$, take two generators of dimension $n - 1$ meeting in as small a subspace as possible; if they still meet, swapping one of them through a point noncollinear with a point of the intersection gives a smaller intersection. Together, these four properties verify all four Veldkamp-Tits axioms $\mathrm{(VT1)}$–$\mathrm{(VT4)}$ for $\Pi_{\mathcal{S}}$.
+
+### Polar spaces from sesquilinear forms
+
+#### Skew fields, anti-automorphisms, and rescaling sesquilinear forms
+
+Why we work with right vector spaces $V$ over a skew field $\mathbb{F}$ and how Wedderburn's theorem makes every finite skew field commutative are explained in [linear algebra over finite fields](#linear-algebra-over-finite-fields). Coordinate Gram matrices $G$, congruence $P^T G P$, and the radical $\operatorname{rad}(f)$ are introduced in [bilinear and sesquilinear forms in coordinates](#bilinear-and-sesquilinear-forms-in-coordinates) and [forms and orthogonality](maths_3_projective_geometry.md#forms-orthogonality) in the earlier projective geometry notes. Here we develop the general skew-field algebra that explains why only $(\sigma, \epsilon)$-Hermitian forms can produce polar spaces.
+
+When $\mathbb{F}$ is a skew field (division ring) whose multiplication is not necessarily commutative, we need three algebraic notions. The **opposite skew field** $\mathbb{F}^\circ$ has the same additive group as $\mathbb{F}$ but reverses the order of multiplication: $x \cdot_{\mathbb{F}^\circ} y := yx$. The **centre** of $\mathbb{F}$ is the commutative subfield $Z(\mathbb{F}) := \{x \in \mathbb{F} \mid xy = yx \text{ for all } y \in \mathbb{F}\}$ (so $Z(\mathbb{F}) = \mathbb{F}$ whenever $\mathbb{F}$ is a field). An **anti-automorphism** of $\mathbb{F}$ is a bijection $\sigma : \mathbb{F} \to \mathbb{F}$ (equivalently, an isomorphism $\mathbb{F} \to \mathbb{F}^\circ$) satisfying
+
+$$(x + y)^\sigma = x^\sigma + y^\sigma \qquad \text{and} \qquad (xy)^\sigma = y^\sigma x^\sigma \qquad \text{for all } x, y \in \mathbb{F}.$$
+
+Notice the reversed order $(xy)^\sigma = y^\sigma x^\sigma$: over a commutative field an anti-automorphism is just a field automorphism, whereas over a noncommutative skew field the identity map $\sigma = 1$ is *not* an anti-automorphism. Conjugating an anti-automorphism $\sigma$ by any nonzero scalar $\mu \in \mathbb{F}^*$ produces another anti-automorphism $\sigma' : \mathbb{F} \to \mathbb{F}$ defined by
+
+$$x^{\sigma'} := \mu x^\sigma \mu^{-1} \qquad (\text{for all } x \in \mathbb{F}).$$
+
+Let $V$ be a right vector space over a skew field $\mathbb{F}$ and let $\sigma$ be an anti-automorphism of $\mathbb{F}$. A **$\sigma$-sesquilinear form** on $V$ is a map $f : V \times V \to \mathbb{F}$ that is additive in each argument and satisfies
+
+$$f(v_1 \lambda_1,\; v_2 \lambda_2) = \lambda_1^\sigma f(v_1, v_2) \lambda_2 \qquad \text{for all } v_1, v_2 \in V \text{ and } \lambda_1, \lambda_2 \in \mathbb{F}.$$
+
+As in [bilinear and sesquilinear forms in coordinates](#bilinear-and-sesquilinear-forms-in-coordinates), $\sigma$ acts on the first scalar $\lambda_1$ pulled out on the left, while $\lambda_2$ pulls out on the right so that $\lambda_1^\sigma f(v_1, v_2)\lambda_2$ respects the reversed multiplication of $\sigma$. A **sesquilinear form** on $V$ is a $\sigma$-sesquilinear form for some anti-automorphism $\sigma$; when $\sigma = 1$ (which requires $\mathbb{F}$ to be a field), $f$ is a bilinear form, and the identically zero map $f = 0$ is the **trivial** sesquilinear form.
+
+If $f_1$ and $f_2$ are $\sigma$-sesquilinear forms on $V$, their pointwise sum $(f_1 + f_2)(v, w) := f_1(v, w) + f_2(v, w)$ is again a $\sigma$-sesquilinear form. Left multiplication by a nonzero scalar $\mu \in \mathbb{F}^*$, however, twists $\sigma$: the rescaled form $(\mu f)(v, w) := \mu f(v, w)$ is a $\sigma'$-sesquilinear form with twisted anti-automorphism $x^{\sigma'} = \mu x^\sigma \mu^{-1}$, because $(\mu f)(v_1 \lambda_1, v_2 \lambda_2) = \mu \lambda_1^\sigma f(v_1, v_2) \lambda_2 = (\mu \lambda_1^\sigma \mu^{-1}) \mu f(v_1, v_2) \lambda_2 = \lambda_1^{\sigma'} (\mu f)(v_1, v_2) \lambda_2$. In particular, when $\mu \in Z(\mathbb{F}) \setminus \{0\}$ (and therefore for every $\mu \in \mathbb{F}^*$ when $\mathbb{F}$ is a field), $\mu x^\sigma \mu^{-1} = x^\sigma$ and $\mu f$ remains a $\sigma$-sesquilinear form with the same $\sigma$.
+
+#### Reflexive forms and the ($\sigma, \epsilon$)-Hermitian classification
+
+As introduced in [forms and orthogonality](maths_3_projective_geometry.md#forms-orthogonality) and [bilinear and sesquilinear forms in coordinates](#bilinear-and-sesquilinear-forms-in-coordinates), a sesquilinear form $f$ is reflexive when $f(v, w) = 0 \iff f(w, v) = 0$ (so orthogonality is symmetric), its radical is $\operatorname{rad}(f) = \{v \in V \mid f(v, w) = 0 \text{ for all } w \in V\}$, and $f$ is nondegenerate when $\operatorname{rad}(f) = \{0\}$.
+
+Why is symmetry of orthogonality enough to pin down the algebraic shape of $f$? Fix an anti-automorphism $\sigma$ of $\mathbb{F}$ and a nonzero scalar $\epsilon \in \mathbb{F}^*$. A $\sigma$-sesquilinear form $f$ on $V$ is called a **$(\sigma, \epsilon)$-Hermitian form** if
+
+$$f(w, v) = f(v, w)^\sigma \epsilon \qquad \text{for all } v, w \in V.$$
+
+Every $(\sigma, \epsilon)$-Hermitian form is immediately reflexive, because $f(v, w) = 0 \implies f(w, v) = 0^\sigma \epsilon = 0$. If $f$ is a $(\sigma, \epsilon)$-Hermitian form and $\mu \in \mathbb{F}^*$, then the rescaled form $\mu f$ is a $(\sigma', \epsilon')$-Hermitian form with
+
+$$x^{\sigma'} = \mu x^\sigma \mu^{-1} \qquad \text{and} \qquad \epsilon' = \mu (\mu^\sigma)^{-1} \epsilon.$$
+
+Moreover, if $f$ is a *nontrivial* $(\sigma, \epsilon)$-Hermitian form on $V$, swapping $v$ and $w$ twice gives $f(v, w) = f(w, v)^\sigma \epsilon = (f(v, w)^\sigma \epsilon)^\sigma \epsilon = \epsilon^\sigma f(v, w)^{\sigma^2} \epsilon$, which forces the three identities
+
+$$\epsilon^{\sigma + 1} := \epsilon^\sigma \epsilon = 1, \qquad \epsilon^{\sigma^2} = \epsilon, \qquad \text{and} \qquad \lambda^{\sigma^2} = \epsilon \lambda \epsilon^{-1} \quad \text{for all } \lambda \in \mathbb{F}.$$
+
+In particular, $\sigma^2$ is an inner automorphism of $\mathbb{F}$, so $\sigma^2 = 1$ whenever $\mathbb{F}$ is a commutative field. Conversely, when $\dim(V) \ge 2$, the nondegenerate reflexive $\sigma$-sesquilinear forms on $V$ are precisely the nondegenerate $(\sigma, \epsilon)$-Hermitian forms on $V$ for some $\epsilon \in \mathbb{F}^*$: for each $v \in V$, the two linear functionals $w \mapsto f(v, w)$ and $w \mapsto f(w, v)^{\sigma^{-1}}$ have the same kernel $\langle v \rangle^\perp$ by reflexivity and are therefore scalar multiples of each other, and comparing linearly independent vectors shows that the scalar $\epsilon$ is independent of $v$.
+
+Now assume $\mathbb{F}$ is a commutative field. Then $\sigma^2 = 1$ for every nontrivial $(\sigma, \epsilon)$-Hermitian form, and the classification splits into $\sigma = 1$ versus $\sigma \neq 1$, giving [the Birkhoff-von Neumann three-family split](maths_3_projective_geometry.md#3-types-of-polar-spaces) from the earlier projective geometry notes.
+
+When $\sigma = 1$, a $(1, -1)$-Hermitian form with $f(v, v) = 0$ for all $v \in V$ is an alternating bilinear form, and a $(1, 1)$-Hermitian form ($f(w, v) = f(v, w)$) is a symmetric bilinear form (both written in coordinates in [bilinear and sesquilinear forms in coordinates](#bilinear-and-sesquilinear-forms-in-coordinates)). Every $(\sigma, \epsilon)$-Hermitian form with $\sigma = 1$ is either alternating or symmetric, and so is every reflexive bilinear form on $V$. Notice why the condition $f(v, v) = 0$ must be stated explicitly for alternating forms: when $\sigma = 1$, $\epsilon^2 = 1$ gives $\epsilon \in \{1, -1\}$, and if $\operatorname{char}(\mathbb{F}) \neq 2$ then $\epsilon = -1$ automatically forces $f(v, v) = -f(v, v) \implies f(v, v) = 0$, whereas in characteristic $2$ we have $-1 = 1$, so a symmetric bilinear form satisfies $f(w, v) = f(v, w)$ without necessarily satisfying $f(v, v) = 0$.
+
+When $\sigma \neq 1$ and $\sigma^2 = 1$, a $(\sigma, 1)$-Hermitian form is a Hermitian form ($f(w, v) = f(v, w)^\sigma$), and a $(\sigma, -1)$-Hermitian form is called an **anti-Hermitian form** ($f(w, v) = -f(v, w)^\sigma$). For any nontrivial $(\sigma, \epsilon)$-Hermitian form $f$ with $\sigma \neq 1$ over a field $\mathbb{F}$, there exist nonzero scalars $\mu_1, \mu_2 \in \mathbb{F}^*$ such that $\mu_1 f$ is Hermitian ($\epsilon' = 1$) and $\mu_2 f$ is anti-Hermitian ($\epsilon'' = -1$). Because rescaling $f$ by a nonzero scalar does not change which vectors are orthogonal, anti-Hermitian and general $(\sigma, \epsilon)$-Hermitian forms over a field produce the same polar spaces as Hermitian forms.
+
+**Worked example (rescaling an anti-Hermitian form to a Hermitian form over $\mathbb{F}_9$):** Take $\mathbb{F}_9 = \mathbb{F}_3[i]/(i^2 + 1)$ with $i^2 = -1 = 2$ and the order-$2$ Frobenius automorphism $\sigma(a + bi) = (a + bi)^3 = a + b i^3 = a - bi$. Suppose $f$ is an anti-Hermitian form ($\epsilon = -1$) on $V = \mathbb{F}_9^2$, so $f(w, v) = -f(v, w)^\sigma$.
+
+Multiply $f$ by $\mu = i \in \mathbb{F}_9^*$. Since $i^\sigma = -i$, the new multiplier is
+
+$$\epsilon' = \mu (\mu^\sigma)^{-1} \epsilon = i (-i)^{-1} (-1) = (-1)(-1) = 1.$$
+
+Thus $if$ is an ordinary Hermitian form ($(if)(w, v) = ((if)(v, w))^\sigma$) with the same isotropic points and orthogonal pairs as $f$.
+
+#### Trace-valued forms and the characteristic 2 obstruction
+
+To build a polar space from a nondegenerate $(\sigma, \epsilon)$-Hermitian form $f$, we need one further condition called being **trace-valued**. For any $(\sigma, \epsilon)$-Hermitian form $f$ on $V$, the following three conditions are equivalent, and a form satisfying them is called a **trace-valued** $(\sigma, \epsilon)$-Hermitian form.
+
+**Condition 1.** There exists a $\sigma$-sesquilinear form $g$ on $V$ such that
+
+$$f(v, w) = g(v, w) + g(w, v)^\sigma \epsilon \qquad \text{for all } v, w \in V.$$
+
+**Condition 2.** For every vector $v \in V$, the diagonal value $f(v, v)$ lies in the trace-like subgroup
+
+$$T_{\sigma, \epsilon} := \{\eta + \eta^\sigma \epsilon \mid \eta \in \mathbb{F}\}.$$
+
+**Condition 3.** For some basis $B$ of $V$ (and hence for every basis), $f(b, b) \in T_{\sigma, \epsilon}$ for all $b \in B$.
+
+Condition 3 suffices because expanding $v = \sum_i b_i \lambda_i$ pairs the off-diagonal terms into sums $\lambda_i^\sigma f(b_i, b_j) \lambda_j + \lambda_j^\sigma f(b_j, b_i) \lambda_i$ of the form $\eta + \eta^\sigma \epsilon$. Rescaling preserves this property: for any $\mu \in \mathbb{F}^*$, $\mu f$ is trace-valued if and only if $f$ is trace-valued.
+
+Over a commutative field $\mathbb{F}$, almost every $(\sigma, \epsilon)$-Hermitian form is automatically trace-valued. Every alternating bilinear form ($\sigma = 1, \epsilon = -1$, where $\eta - \eta = 0$ and $f(v, v) = 0$) is trace-valued; every symmetric bilinear form ($\sigma = 1, \epsilon = 1$) in characteristic $\operatorname{char}(\mathbb{F}) \neq 2$ is trace-valued because $f(v, v) = \eta + \eta$ for $\eta = \frac{1}{2} f(v, v)$; and every $(\sigma, \epsilon)$-Hermitian form with $\sigma \neq 1$ is trace-valued. The sole exception over a field is a symmetric bilinear form in characteristic $\operatorname{char}(\mathbb{F}) = 2$ that is *not* alternating ($f(v, v) \neq 0$ for some $v$), because in characteristic $2$ with $\sigma = 1, \epsilon = 1$ we have $\eta + \eta^\sigma \epsilon = 2\eta = 0$, so $T_{1, 1} = \{0\}$.
+
+Why must non-alternating symmetric bilinear forms in characteristic $2$ be excluded? Look at how lines meet the set $X_f$ of isotropic points $\langle v \rangle$ ($f(v, v) = 0$) of $\mathrm{PG}(V)$. If $f$ is a nondegenerate *trace-valued* $(\sigma, \epsilon)$-Hermitian form on $V$ and $v_1 \in V \setminus \{0\}$ is an isotropic vector ($f(v_1, v_1) = 0$) with orthogonal hyperplane $W_{v_1} := \{w \in V \mid f(v_1, w) = 0\}$, then every projective line $L$ through $\langle v_1 \rangle$ not contained in $\mathrm{PG}(W_{v_1})$ contains at least one more isotropic point besides $\langle v_1 \rangle$. Indeed, pick $\langle v_2 \rangle \in L \setminus \mathrm{PG}(W_{v_1})$, scaled so that $f(v_1, v_2) = 1$; then $f(v_2, v_1) = f(v_1, v_2)^\sigma \epsilon = \epsilon$, so for any scalar $\mu \in \mathbb{F}$,
+
+$$f(v_1 \mu + v_2,\; v_1 \mu + v_2) = \mu^\sigma + \epsilon \mu + f(v_2, v_2).$$
+
+Because $f$ is trace-valued, $-f(v_2, v_2) = \eta + \eta^\sigma \epsilon$ for some $\eta \in \mathbb{F}$ (the set $T_{\sigma, \epsilon}$ is closed under negation), and setting $\mu = \epsilon^{-1}\eta$ gives $\epsilon\mu = \eta$ and $\mu^\sigma = \eta^\sigma (\epsilon^\sigma)^{-1} = \eta^\sigma \epsilon$ (because $\epsilon^\sigma \epsilon = 1$), so $\mu^\sigma + \epsilon\mu = \eta + \eta^\sigma \epsilon = -f(v_2, v_2)$, producing a second isotropic point $\langle v_1 \mu + v_2 \rangle \in L$. By contrast, for a non-alternating symmetric form in $\operatorname{char}(\mathbb{F}) = 2$, $\mu^\sigma + \epsilon \mu = 2\mu = 0$, so $f(v_1 \mu + v_2, v_1 \mu + v_2) = f(v_2, v_2) \neq 0$ for all $\mu$, and the isotropic points sit inside a single hyperplane instead of forming a polar space; in $\operatorname{char}(\mathbb{F}) = 2$, orthogonal polar spaces must be defined by quadratic forms rather than symmetric bilinear forms, as explained in [quadrics in characteristic 2](maths_3_projective_geometry.md#quadrics-redux). As an immediate consequence of the second-isotropic-point property, for any nondegenerate trace-valued $(\sigma, \epsilon)$-Hermitian form $f$ with $X_f \neq \emptyset$, the isotropic points span the ambient projective space ($\langle X_f \rangle = \mathrm{PG}(V)$).
+
+**Here's a simpler explanation of all this.** Consider that we only know *one isotropic point* $\langle v_1 \rangle$ ($f(v_1, v_1) = 0$), and we pick an *arbitrary second point* $\langle v_2 \rangle$ on $L$ that is probably *not* isotropic ($f(v_2, v_2) \neq 0$). We then try to slide along the line $L$ using the parameter $\mu$ to *find* a second isotropic point $\langle v_1\mu + v_2 \rangle$.
+
+**How the two line equations connect.** Suppose you stand at an isotropic point $\langle v_1 \rangle$ ($f(v_1, v_1) = 0$) and shoot a line $L$ out in a direction that does not lie in the hyperplane $\mathrm{PG}(W_{v_1})$ of points orthogonal to $\langle v_1 \rangle$. You grab *any* other point $\langle v_2 \rangle$ on that line to help you write coordinates on $L$, normalized so $f(v_1, v_2) = 1$. (This normalization is always possible: $f(v_1, v_2) \neq 0$, since otherwise $f(v_1, \cdot)$ would vanish on both $v_1$ and $v_2$ and so on all of $L$, putting $L$ inside $\mathrm{PG}(W_{v_1})$.)
+
+Because you grabbed $\langle v_2 \rangle$ at random, $f(v_2, v_2)$ is likely some nonzero "error" value, not $0$. Now look at what happens when you move along the line to a general point $\langle v_1\mu + v_2 \rangle$:
+
+$$f(v_1 \mu + v_2,\; v_1 \mu + v_2) = \mu^\sigma \underbrace{f(v_1, v_1)}_{0} \mu + \underbrace{(\mu^\sigma + \epsilon\mu)}_{\text{cross-term}} + \underbrace{f(v_2, v_2)}_{\text{error to cancel}}.$$
+
+For $\langle v_1\mu + v_2 \rangle$ to be a second isotropic point on $L$, this sum must equal $0$:
+
+$$\mu^\sigma + \epsilon\mu = -f(v_2, v_2).$$
+
+Look closely at the left side versus the right side.
+
+**The left side** ($\mu^\sigma + \epsilon\mu$). As you vary $\mu \in \mathbb{F}$ to slide along the line $L$, the cross-term between $v_1$ and $v_2$ can *only* produce values of the shape $\mu^\sigma + \epsilon\mu$. This is exactly the shape $\eta + \eta^\sigma\epsilon$: putting $\eta = \epsilon\mu$ gives $\eta + \eta^\sigma\epsilon = \epsilon\mu + \mu^\sigma\epsilon^\sigma\epsilon = \epsilon\mu + \mu^\sigma$, because $\epsilon^\sigma\epsilon = 1$. So the cross-term takes every value in $T_{\sigma, \epsilon}$ and no other values.
+
+**The right side** ($-f(v_2, v_2)$). This is the diagonal value of $v_2$, with a minus sign, that you *need* the cross-term to cancel out.
+
+If $-f(v_2, v_2)$ is *not* of the shape $\eta + \eta^\sigma\epsilon$, then no choice of $\mu$ can ever cancel $f(v_2, v_2)$, and your line $L$ fails to hit a second isotropic point.
+
+**What does "trace-valued" actually mean?** Why is the set $T_{\sigma, \epsilon} = \{\eta + \eta^\sigma\epsilon \mid \eta \in \mathbb{F}\}$ called "trace-like", and a form whose diagonal values lie in it "trace-valued"? The name comes from field theory and Galois theory.
+
+**Field trace.** In a quadratic field extension (like $\mathbb{C}/\mathbb{R}$ where $\sigma(z) = \bar{z}$, or $\mathbb{F}_{q^2}/\mathbb{F}_q$ where $\sigma(x) = x^q$), the **field trace** of an element $\eta$ is defined as the sum of $\eta$ and its conjugate:
+
+$$\mathrm{Tr}(\eta) = \eta + \eta^\sigma.$$
+
+Notice that when $\epsilon = 1$, the set $T_{\sigma, 1} = \{\eta + \eta^\sigma \mid \eta \in \mathbb{F}\}$ is literally the set of all field traces. (And when $\sigma = 1$, $\epsilon = 1$ in characteristic $\neq 2$, $\eta + \eta = 2\eta$, which can produce any element of the field.)
+
+**Matrix symmetrization (Condition 1).** Similarly, in matrix terms, take any matrix $G = (g_{ij})$, the Gram matrix of a $\sigma$-sesquilinear form $g$ in a basis (as in [bilinear and sesquilinear forms in coordinates](#bilinear-and-sesquilinear-forms-in-coordinates)), and let $G^\dagger$ be its transpose with $\sigma$ applied to every entry. The Gram matrix of $f(v, w) = g(v, w) + g(w, v)^\sigma \epsilon$ is $F = G + G^\dagger \epsilon$, with entries $g_{ij} + g_{ji}^\sigma \epsilon$, so every diagonal entry of $F$ automatically becomes $g_{ii} + g_{ii}^\sigma \epsilon \in T_{\sigma, \epsilon}$.
+
+So a form $f$ is called trace-valued if all of its diagonal values $f(v, v)$ are guaranteed to live inside $T_{\sigma, \epsilon}$.
+
+Geometrically, *"trace-valued" means: the diagonal self-product $f(v_2, v_2)$ never produces a value that the off-diagonal cross-term $(\mu^\sigma + \epsilon\mu)$ cannot cancel.* Because the cross-term takes every value in $T_{\sigma, \epsilon}$, requiring $f(v_2, v_2) \in T_{\sigma, \epsilon}$ guarantees you can always solve $\mu^\sigma + \epsilon\mu = -f(v_2, v_2)$ and find a second isotropic point on every line through $\langle v_1 \rangle$ that does not lie in $\mathrm{PG}(W_{v_1})$.
+
+**What goes wrong in characteristic 2?** Over a commutative field $\mathbb{F}$, $T_{\sigma, \epsilon}$ is big enough to contain every possible $f(v,v)$ in almost every case, *except one*: a symmetric bilinear form ($\sigma = 1, \epsilon = 1$) in characteristic $2$ ($\operatorname{char}(\mathbb{F}) = 2$, such as $\mathbb{F}_2$) where $f(v, v)$ is not identically zero.
+
+Take $\mathbb{F}_2$ (where $1 + 1 = 0$ and $-1 = 1$), with $\sigma = 1$ and $\epsilon = 1$.
+
+**The cross-term dies completely.** For any $\mu \in \mathbb{F}_2$, the cross-term is
+
+$$\mu^\sigma + \epsilon\mu = \mu + \mu = 2\mu = 0.$$
+
+So the trace-like subgroup is completely trivial: $T_{1, 1} = \{0\}$. Being trace-valued in this case requires $f(v, v) \in \{0\}$ for all $v$, meaning $f(v, v) = 0$ everywhere (which is called an *alternating* or *symplectic* form).
+
+**What if $f$ is not trace-valued in $\operatorname{char}(\mathbb{F}) = 2$?** Suppose we take the nondegenerate symmetric bilinear form (dot product) on $V = \mathbb{F}_2^3$:
+
+$$f(x, y) = x_1 y_1 + x_2 y_2 + x_3 y_3 \pmod 2.$$
+
+Let's check its diagonal values $f(x, x)$ using the fact that $x_i^2 = x_i$ in $\mathbb{F}_2$:
+
+$$f(x, x) = x_1^2 + x_2^2 + x_3^2 = x_1 + x_2 + x_3 \pmod 2.$$
+
+This form has two notable features.
+
+It is not trace-valued: for $v_2 = (1, 0, 0)$, $f(v_2, v_2) = 1 \notin T_{1, 1} = \{0\}$.
+
+Its isotropic points $X_f$ are trapped in a single hyperplane. The equation $f(x, x) = x_1 + x_2 + x_3 = 0$ is a *linear* equation in characteristic $2$, because $(x_1 + x_2 + x_3)^2 = x_1^2 + x_2^2 + x_3^2$ (squaring a sum in characteristic $2$ leaves no cross terms, since each cross term $2x_ix_j$ is $0$; this is sometimes called the "freshman's dream"). So the isotropic points $X_f$ form the line $x_1 + x_2 + x_3 = 0$ of $\mathrm{PG}(2, 2)$, made of the three points $(1, 1, 0)$, $(1, 0, 1)$ and $(0, 1, 1)$, completely failing to span $\mathrm{PG}(2, 2)$ even though $f$ is nondegenerate.
+
+**Why did the argument above break here?** Take the isotropic point $v_1 = (1, 1, 0)$ (since $1 + 1 + 0 = 0$) and a non-orthogonal point $v_2 = (1, 0, 0)$ (so $f(v_1, v_2) = 1$ and $f(v_2, v_2) = 1$). Now try to find a second isotropic point on the line $L = \langle v_1, v_2 \rangle$:
+
+$$f(v_1\mu + v_2,\; v_1\mu + v_2) = \underbrace{2\mu}_{0} + f(v_2, v_2) = 0 + 1 = 1 \neq 0.$$
+
+Because the cross-term $2\mu$ vanishes in characteristic $2$, varying $\mu$ does *nothing* to cancel $f(v_2, v_2) = 1$. The line $L$ does not lie in $\mathrm{PG}(W_{v_1})$ (as $f(v_1, v_2) = 1 \neq 0$), yet it meets $X_f$ in only $1$ point, $\langle v_1 \rangle$.
+
+That is why non-alternating symmetric bilinear forms in $\operatorname{char}(\mathbb{F}) = 2$ are excluded by the trace-valued condition: in characteristic $2$, bilinear symmetrization kills the cross-terms of $f(x, x)$ ($x_i x_j + x_j x_i = 2 x_i x_j = 0$), so $f(x, x) = \sum_i f(e_i, e_i)\, x_i^2$ adds up like a linear form ($f(x + y, x + y) = f(x, x) + f(y, y)$), and its zero locus collapses into a subspace instead of curving across the space. Over a finite field, where every element is a square, $f(x, x)$ is the square of a linear form and the subspace is a hyperplane, as in the example.
+
+#### Polar spaces, polarities, and the four line classes
+
+Why a projective line $\langle v_1, v_2 \rangle$ is totally isotropic if and only if $f(v_1, v_1) = f(v_2, v_2) = f(v_1, v_2) = 0$, and how a nondegenerate reflexive form defines a [polarity](maths_3_projective_geometry.md#polarity) $\zeta : \mathrm{PG}(V) \to \mathrm{PG}(V)^*$ sending each subspace $\mathrm{PG}(U)$ to $\mathrm{PG}(U^\perp)$, are covered in the earlier projective geometry notes.
+
+Let $f$ be a nondegenerate trace-valued $(\sigma, \epsilon)$-Hermitian form on a right vector space $V$ with $\dim(V) \ge 2$, let $\mathcal{P} = X_f$ be the set of isotropic points of $\mathrm{PG}(V)$, and let $\mathcal{L}$ be the set of totally isotropic lines of $\mathrm{PG}(V)$, forming the point-line incidence structure $\mathcal{S}_f = (\mathcal{P}, \mathcal{L})$. Whenever $\mathcal{P} \neq \emptyset$, $\mathcal{S}_f$ satisfies $\mathrm{(BS1)}$ and $\mathrm{(BS2)}$, and the singular subspaces of $\mathcal{S}_f$ are precisely the **totally isotropic subspaces** of $\mathrm{PG}(V)$ (subspaces $\alpha = \mathrm{PG}(U)$ on which $f|_{U \times U} = 0$, equivalently $\alpha \subseteq \alpha^\zeta$ under the polarity $\zeta$). If every totally isotropic subspace of $\mathrm{PG}(V)$ is finite-dimensional (in particular, whenever $\dim(V) < \infty$) and $\mathcal{P} \neq \emptyset$, then $\mathcal{S}_f = (\mathcal{P}, \mathcal{L})$ is a Buekenhout-Shult polar space and the collection $\Sigma$ of totally isotropic subspaces of $\mathrm{PG}(V)$ forms a Veldkamp-Tits polar space $(\mathcal{P}, \Sigma)$.
+
+Because the line through two isotropic points is totally isotropic precisely when those two points are orthogonal, the form $f$ partitions all lines of the ambient projective space $\mathrm{PG}(V)$ into four classes (Figure 20):
+
+- **$\mathcal{L}_1$ (Totally isotropic lines):** Lines of $\mathrm{PG}(V)$ wholly contained in $\mathcal{P}$ on which any two points are mutually orthogonal ($L \in \mathcal{L}$).
+
+- **$\mathcal{L}_2$ (Tangent lines):** Lines of $\mathrm{PG}(V)$ meeting $\mathcal{P}$ in a single point ($|L \cap \mathcal{P}| = 1$).
+
+- **$\mathcal{L}_3$ (Exterior / passant lines):** Lines of $\mathrm{PG}(V)$ disjoint from $\mathcal{P}$ ($L \cap \mathcal{P} = \emptyset$).
+
+- **$\mathcal{L}_4$ (Hyperbolic / secant lines):** Lines of $\mathrm{PG}(V)$ containing at least two isotropic points that are *not* mutually orthogonal ($L \notin \mathcal{L}_1$ and $|L \cap \mathcal{P}| \ge 2$).
+
+For every isotropic point $x = \langle v_1 \rangle \in \mathcal{P}$, the lines through $x$ belonging to $\mathcal{L}_1 \cup \mathcal{L}_2$ are precisely the lines through $x$ contained in the **tangent hyperplane** $T_x := \mathrm{PG}(W_{v_1}) = x^\zeta$, while every line through $x$ not contained in $T_x$ belongs to $\mathcal{L}_4$.
+
+Which points of a hyperbolic line $L \in \mathcal{L}_4$ are isotropic? Such a line is spanned by two of its isotropic points $\langle v_1 \rangle$ and $\langle v_2 \rangle$ that are not orthogonal, with $v_2$ rescaled so that
+
+$$f(v_1, v_1) = 0, \quad f(v_2, v_2) = 0, \quad f(v_1, v_2) = 1.$$
+
+Every projective point on $L$ can be written as $\langle v_1 + v_2\eta \rangle$, where $\eta \in \mathbb{F}$ is a scalar from the field, written on the right because $V$ is a right vector space. Of course, $\langle v_2 \rangle$ itself doesn't fit into this expression but it does lie on the line (think of this as the "point at infinity" on the line).
+
+As $\eta$ ranges over all elements of the field $\mathbb{F}$, the expression $\langle v_1 + v_2\eta \rangle$ sweeps through every other point on the line $L$, starting from $\langle v_1 \rangle$ at $\eta = 0$.
+
+Now we test the remaining points $\langle v_1 + v_2\eta \rangle$ by plugging $v_1 + v_2\eta$ into the $(\sigma, \epsilon)$-Hermitian form $f$. Because $\sigma$ acts on the first slot, a scalar $\eta$ pulled out of the first slot becomes $\eta^\sigma$ on the left, while one pulled out of the second slot stays $\eta$ on the right:
+
+$$f(v_1 + v_2\eta,\; v_1 + v_2\eta) = f(v_1, v_1) + f(v_1, v_2)\eta + \eta^\sigma f(v_2, v_1) + \eta^\sigma f(v_2, v_2)\eta.$$
+
+Using $f(v_1, v_1) = 0$, $f(v_2, v_2) = 0$, $f(v_1, v_2) = 1$, and the $(\sigma, \epsilon)$-Hermitian symmetry $f(v_2, v_1) = f(v_1, v_2)^\sigma \epsilon = 1^\sigma \epsilon = \epsilon$, the first and last terms vanish, leaving
+
+$$f(v_1 + v_2\eta,\; v_1 + v_2\eta) = \eta + \eta^\sigma \epsilon.$$
+
+So $\langle v_1 + v_2\eta \rangle$ is isotropic exactly when $\eta + \eta^\sigma \epsilon = 0$, and the isotropic points of $L$ are $\langle v_2 \rangle$ together with one point $\langle v_1 + v_2\eta \rangle$ for each solution $\eta$ of this equation ($\eta = 0$ gives $\langle v_1 \rangle$):
+
+$$L \cap \mathcal{P} = \{\langle v_2 \rangle\} \cup \{\langle v_1 + v_2 \eta \rangle \mid \eta \in \mathbb{F},\; \eta + \eta^\sigma \epsilon = 0\}.$$
+
+**Worked example (comparing $\eta + \eta^\sigma \epsilon = 0$ across the three classical families):** Look at how the single equation $\eta + \eta^\sigma \epsilon = 0$ explains the different secant-line (also called hyperbolic) sizes in Figure 20(b):
+
+**Orthogonal ($Q^+(3, 3)$ in $\mathrm{PG}(3, 3)$, $\sigma = 1, \epsilon = 1$ over $\mathbb{F}_3$):** Here $\eta + \eta^\sigma \epsilon = 2\eta = 0 \implies \eta = 0$ only. Thus every hyperbolic line $L \in \mathcal{L}_4$ meets $Q^+(3, 3)$ in *precisely $2$ points* ($\langle v_1 \rangle$ and $\langle v_2 \rangle$) out of the $4$ points on $L$. Across the $130$ lines of $\mathrm{PG}(3, 3)$, there are $8$ totally isotropic lines in $\mathcal{L}_1$, $32$ tangent lines in $\mathcal{L}_2$, $18$ exterior lines in $\mathcal{L}_3$, and $72$ hyperbolic lines in $\mathcal{L}_4$.
+
+**Hermitian ($H(3, 4)$ in $\mathrm{PG}(3, 4)$, $\sigma(\eta) = \eta^2, \epsilon = 1$ over $\mathbb{F}_4 = \{0, 1, \omega, \omega^2\}$):** Here $\eta + \eta^2 = 0 \implies \eta \in \mathbb{F}_2 = \{0, 1\}$. Thus every hyperbolic line $L \in \mathcal{L}_4$ meets $H(3, 4)$ in $1 + 2 = 3$ points ($\langle v_2 \rangle$, $\langle v_1 \rangle$, and $\langle v_1 + v_2 \rangle$), forming a Baer subline $\mathrm{PG}(1, 2)$ inside $\mathrm{PG}(1, 4)$.
+
+**Symplectic ($W(3, 3)$ in $\mathrm{PG}(3, 3)$, $\sigma = 1, \epsilon = -1$ over $\mathbb{F}_3$):** Here $\eta + \eta^\sigma \epsilon = \eta - \eta = 0$ holds for *every* $\eta \in \mathbb{F}_3$. Thus every hyperbolic line $L \in \mathcal{L}_4$ contains all $4$ of its points in $\mathcal{P}$ (since every point of $\mathrm{PG}(3, 3)$ is isotropic), so $\mathcal{L}_2 = \mathcal{L}_3 = \emptyset$, while the $130$ lines of $\mathrm{PG}(3, 3)$ split into $40$ totally isotropic lines in $\mathcal{L}_1$ (where $f(v_1, v_2) = 0$) and $90$ hyperbolic lines in $\mathcal{L}_4$ (where $f(v_1, v_2) \neq 0$).
+
+![Partition of ambient lines into L_1, L_2, L_3, L_4 and trace equation on hyperbolic lines](figures/maths4_polar_line_classes.png)
+
+*Figure 20. (a) Partition of the lines of $\mathrm{PG}(V)$ into $\mathcal{L}_1$ (totally isotropic), $\mathcal{L}_2$ (tangent, $|L \cap \mathcal{P}| = 1$), $\mathcal{L}_3$ (exterior, $L \cap \mathcal{P} = \emptyset$), and $\mathcal{L}_4$ (hyperbolic, $|L \cap \mathcal{P}| \ge 2$), with $\mathcal{L}_1 \cup \mathcal{L}_2$ at $x = \langle v_1 \rangle$ lying in the tangent hyperplane $T_x = \mathrm{PG}(W_{v_1})$ and $L \in \mathcal{L}_4$ meeting $T_x$ only at $x$. (b) On a normalized hyperbolic line $L = \langle v_1, v_2 \rangle \in \mathcal{L}_4$, the equation $\eta + \eta^\sigma \epsilon = 0$ selects $2$ points in $Q^+(3, 3)$, $3$ points (a Baer subline) in $H(3, 4)$, and all $4$ points in $W(3, 3)$.*
+
+### Classical families of polar spaces
+
+#### Finite field norm, trace, and square identities
+
+The Frobenius automorphism $x \mapsto x^p$ of $\mathbb{F}_q$ ($q = p^h$) and why $\mathbb{F}_q$ has a unique order-$2$ automorphism $x \mapsto x^{\sqrt{q}}$ if and only if $q$ is a square are covered in [the field automorphism](maths_3_projective_geometry.md#the-field-automorphism) in the earlier projective geometry notes. To see why finite fields admit far fewer non-isomorphic quadratic and Hermitian forms than infinite fields, we record two elementary counting facts about squares in $\mathbb{F}_q$ and norms and traces in $\mathbb{F}_{q^2}$.
+
+First, consider squares in $\mathbb{F}_q$. When $q$ is even ($\operatorname{char}(\mathbb{F}_q) = 2$), the squaring map $x \mapsto x^2$ is the Frobenius automorphism of $\mathbb{F}_q$, so every element of $\mathbb{F}_q$ is a square (with a unique square root). When $q$ is odd, the squaring homomorphism $\mathbb{F}_q^* \to \mathbb{F}_q^*$, $x \mapsto x^2$, has kernel $\{1, -1\}$ of size $2$, so $\mathbb{F}_q$ has $(q - 1)/2$ nonzero squares, $1$ zero square (giving $(q + 1)/2$ squares in total), and $(q - 1)/2$ nonsquares, and the product of any two nonsquares is a square. Moreover, *every* element $\lambda \in \mathbb{F}_q$ is a sum of two squares: when $q$ is odd, both $S = \{x^2 \mid x \in \mathbb{F}_q\}$ and $\lambda - S := \{\lambda - y^2 \mid y \in \mathbb{F}_q\}$ have size $(q + 1)/2$, and since $(q + 1)/2 + (q + 1)/2 = q + 1 > |\mathbb{F}_q|$, the pigeonhole principle forces $S \cap (\lambda - S) \neq \emptyset$, giving $x^2 + y^2 = \lambda$.
+
+Second, let $\sigma(\lambda) = \lambda^q$ be the unique order-$2$ automorphism of $\mathbb{F}_{q^2}$ with fixed field $\mathbb{F}_q$. As shown in [the Witt index and norm calculation](maths_3_projective_geometry.md#index-or-rank) in the earlier projective geometry notes, the norm map $\lambda \mapsto \lambda^{q+1}$ from $\mathbb{F}_{q^2}$ onto $\mathbb{F}_q$ is surjective ($\mathbb{F}_q = \{\lambda^{q+1} \mid \lambda \in \mathbb{F}_{q^2}\}$). Similarly, for every $\eta \in \mathbb{F}_q$, the trace equation $x^q + x = \eta$ has *precisely $q$ solutions* $x \in \mathbb{F}_{q^2}$: the map $T(x) = x^q + x$ is $\mathbb{F}_q$-linear from $\mathbb{F}_{q^2}$ into $\mathbb{F}_q$, and as a polynomial of degree $q$ its kernel $\ker(T) = \{x \in \mathbb{F}_{q^2} \mid x^q + x = 0\}$ has at most $q$ elements, so rank-nullity $|\operatorname{im}(T)| = q^2 / |\ker(T)| \ge q$ forces $|\ker(T)| = q$ and $\operatorname{im}(T) = \mathbb{F}_q$.
+
+#### Uniform rank reduction across symplectic, orthogonal, and Hermitian families
+
+The standard coordinate equations, canonical bases, and point and generator counts for [symplectic polar spaces](maths_3_projective_geometry.md#symplectic-spaces-antisymmetric-bilinear-forms), [unitary and Hermitian polar spaces](maths_3_projective_geometry.md#unitary-hermitian-spaces-mathcalhn-q2), [orthogonal quadrics](maths_3_projective_geometry.md#orthogonal-polar-spaces-non-degenerate-quadrics-mathcalq), and [the finite classical comparison table](maths_3_projective_geometry.md#comparison-finite-classical-polar-spaces-over-mathbbf_q-or-mathbbf_q2) are established in the earlier projective geometry notes.
+
+Over an arbitrary field $\mathbb{F}$, each classical family of rank $n \ge 1$ is defined by adding $n$ orthogonal [hyperbolic pairs](maths_3_projective_geometry.md#example-building-the-symplectic-form-w3-3-in-pg3-3) (each spanned by two isotropic vectors with $f = 1$ between them) to a rank-$0$ [anisotropic core](maths_3_projective_geometry.md#other-properties_2) (what is left over: a subspace with no isotropic vectors at all, of dimension $0$, $1$, or $2$ here). Taking the two noncollinear points $a = \langle e_{2n-1} \rangle$ and $b = \langle e_{2n} \rangle$ of the last hyperbolic pair (or $a = \langle e_{2n+1} \rangle$ and $b = \langle e_{2n+2} \rangle$ in the elliptic family), their span is a hyperbolic line $L = \langle a, b \rangle$, and intersecting $a^\perp \cap b^\perp = \mathrm{PG}(L^\perp)$ strips off the last hyperbolic pair and drops the rank by $1$ in the same way across every family (as illustrated for $W(5, 2)$ in Figure 19):
+
+| Polar space family $\mathcal{S}$ of rank $n$ | Ambient space | Defining form / isotropic equation | Common-neighbour space $\widetilde{S_{a,b}}$ |
+| --- | --- | --- | --- |
+| Symplectic $W(2n-1, \mathbb{F})$ | $\mathrm{PG}(2n-1, \mathbb{F})$ | $f(X,Y) = \sum_{i=1}^n (X_{2i-1}Y_{2i} - X_{2i}Y_{2i-1})$ | $W(2n-3, \mathbb{F})$ |
+| Hyperbolic quadric $Q^+(2n-1, \mathbb{F})$ | $\mathrm{PG}(2n-1, \mathbb{F})$ | $\sum_{i=1}^n X_{2i-1}X_{2i} = 0$ | $Q^+(2n-3, \mathbb{F})$ |
+| Parabolic quadric $Q(2n, \mathbb{F})$ | $\mathrm{PG}(2n, \mathbb{F})$ | $X_0^2 + \sum_{i=1}^n X_{2i-1}X_{2i} = 0$ | $Q(2n-2, \mathbb{F})$ |
+| Elliptic quadric $Q^-(2n+1, \mathbb{F}'/\mathbb{F})$ | $\mathrm{PG}(2n+1, \mathbb{F})$ | $X_1^2 + t_1 X_1X_2 + t_2 X_2^2 + \sum_{i=2}^{n+1} X_{2i-1}X_{2i} = 0$ | $Q^-(2n-1, \mathbb{F}'/\mathbb{F})$ |
+| Odd-dim Hermitian $H(2n-1, \mathbb{F}/\mathbb{F}_\sigma)$ | $\mathrm{PG}(2n-1, \mathbb{F})$ | $\sum_{i=1}^n (X_{2i-1}^\sigma X_{2i} + X_{2i}^\sigma X_{2i-1}) = 0$ | $H(2n-3, \mathbb{F}/\mathbb{F}_\sigma)$ |
+| Even-dim Hermitian $H(2n, \mathbb{F}/\mathbb{F}_\sigma)$ | $\mathrm{PG}(2n, \mathbb{F})$ | $X_0^{\sigma+1} + \sum_{i=1}^n (X_{2i-1}^\sigma X_{2i} + X_{2i}^\sigma X_{2i-1}) = 0$ | $H(2n-2, \mathbb{F}/\mathbb{F}_\sigma)$ |
+
+In every row of the table, induction on $n$ from the rank-$1$ base case ($W(1, \mathbb{F})$, $Q^+(1, \mathbb{F})$, $Q(2, \mathbb{F})$, $Q^-(3, \mathbb{F}'/\mathbb{F})$, $H(1, \mathbb{F}/\mathbb{F}_\sigma)$, or $H(2, \mathbb{F}/\mathbb{F}_\sigma)$, each of which has no lines and therefore has maximal singular subspaces of dimension $0$) confirms that every generator has projective dimension $n - 1$.
+
+#### Quadrics over arbitrary and finite fields
+
+For a quadric $Q$ defined by a quadratic form $q$ with associated bilinear polar form $f(v, w) = q(v + w) - q(v) - q(w)$, a point $x = \langle v \rangle \in Q$ is called a **singular point of the quadric $Q$** if $v \in \operatorname{rad}(f)$ (so every line through $x$ is tangent or contained in $Q$, making $Q$ a cone), and $Q$ is **nonsingular** when $Q \cap \mathrm{PG}(\operatorname{rad}(f)) = \emptyset$. Do not confuse a singular point of $Q$ (a cone apex) with a *totally singular subspace* of $Q$ (a subspace $\mathrm{PG}(U) \subseteq Q$, which is a singular subspace of the polar space). Why the polar form $f$ of the parabolic quadric $Q(2n, \mathbb{F}) : X_0^2 + X_1X_2 + \cdots + X_{2n-1}X_{2n} = 0$ is nondegenerate when $\operatorname{char}(\mathbb{F}) \neq 2$, and why in $\operatorname{char}(\mathbb{F}) = 2$ it has a $1$-dimensional radical $\operatorname{rad}(f) = \langle e_0 \rangle$ whose projective point $p = \langle e_0 \rangle \notin Q(2n, \mathbb{F})$ is the nucleus, are explained in [bilinear and sesquilinear forms in coordinates](#bilinear-and-sesquilinear-forms-in-coordinates), [quadratic sets in finite projective spaces](maths_3_projective_geometry.md#quadratic-sets-in-finite-projective-spaces), and [the characteristic-2 nucleus and symplectic projection](maths_3_projective_geometry.md#other-properties_2) in the earlier projective geometry notes.
+
+Over an arbitrary field $\mathbb{F}$, three phenomena appear for quadrics that are invisible if one looks only at finite fields. First, consider lines through the nucleus $p = \langle e_0 \rangle = (1:0:\cdots:0)$ of $Q(2n, \mathbb{F})$ in $\operatorname{char}(\mathbb{F}) = 2$. Every line $L$ of $\mathrm{PG}(2n, \mathbb{F})$ through $p$ passes through a unique point $(0:a_1:\cdots:a_{2n})$ in the hyperplane $X_0 = 0$, and a general point $(X_0:a_1:\cdots:a_{2n})$ on $L \setminus \{p\}$ lies on $Q(2n, \mathbb{F})$ if and only if
+
+$$X_0^2 = a_1 a_2 + \cdots + a_{2n-1} a_{2n}.$$
+
+Since $x \mapsto x^2$ is injective in characteristic $2$, this equation has *at most one* solution $X_0 \in \mathbb{F}$ on every line through $p$. A field $\mathbb{F}$ of characteristic $p > 0$ is called **perfect** if the Frobenius map $x \mapsto x^p$ is surjective (so in characteristic $2$, $\mathbb{F}$ is perfect if and only if every element of $\mathbb{F}$ is a square; every finite field $\mathbb{F}_{2^h}$ is perfect, whereas the rational function field $\mathbb{F}_2(t)$ is not because $t$ has no square root in $\mathbb{F}_2(t)$). Thus in $\operatorname{char}(\mathbb{F}) = 2$, every line of $\mathrm{PG}(2n, \mathbb{F})$ through the nucleus $p$ meets $Q(2n, \mathbb{F})$ in at most one point, and *every* line through $p$ meets $Q(2n, \mathbb{F})$ in *precisely one point* if and only if $\mathbb{F}$ is a perfect field.
+
+Second, elliptic quadrics depend on a quadratic field extension $\mathbb{F}'/\mathbb{F}$. Adding an irreducible homogeneous binary quadratic polynomial
+
+$$p(X_1, X_2) = X_1^2 + t_1 X_1 X_2 + t_2 X_2^2 \in \mathbb{F}[X_1, X_2]$$
+
+to $n$ hyperbolic pairs defines $Q^-(2n+1, \mathbb{F}'/\mathbb{F}) : p(X_1, X_2) + X_3X_4 + \cdots + X_{2n+1}X_{2n+2} = 0$ in $\mathrm{PG}(2n+1, \mathbb{F})$. Two irreducible binary quadratics $p_1(X_1, X_2)$ and $p_2(X_1, X_2)$ over $\mathbb{F}$ are equivalent up to an invertible linear change of variables and a nonzero scalar multiple if and only if their roots in an algebraic closure $\overline{\mathbb{F}}$ generate the same quadratic field extension $\mathbb{F}' = \mathbb{F}(\theta_1) = \mathbb{F}(\theta_2) \subseteq \overline{\mathbb{F}}$. A quadratic extension $\mathbb{F}'/\mathbb{F}$ generated by a root of $X^2 + t_1 X + t_2 = 0$ is **separable** if the polynomial has two distinct roots in $\overline{\mathbb{F}}$, and **inseparable** if its two roots coincide (which occurs only when $\operatorname{char}(\mathbb{F}) = 2$ and $t_1 = 0$, with $t_2 \in \mathbb{F} \setminus \mathbb{F}^2$ a nonsquare over an imperfect field). When $\mathbb{F}'/\mathbb{F}$ is separable, the polar form $f$ is nondegenerate across all $2n + 2$ coordinates and defines the **elliptic quadric** $Q^-(2n+1, \mathbb{F}'/\mathbb{F})$. Over a finite field $\mathbb{F}_q$, there is a unique quadratic extension $\mathbb{F}_{q^2}/\mathbb{F}_q$ in $\overline{\mathbb{F}_q}$ (and it is separable), giving a unique elliptic quadric $Q^-(2n+1, q)$ in $\mathrm{PG}(2n+1, q)$. Over the rationals $\mathbb{Q}$, by contrast, different square-free integers $d$ give distinct quadratic extensions $\mathbb{Q}(\sqrt{d})/\mathbb{Q}$ and quadrics that no linear change of coordinates can match.
+
+---
+
+**Note (pseudo-elliptic quadrics over imperfect fields of characteristic $2$).** If $\operatorname{char}(\mathbb{F}) = 2$ and $\mathbb{F}$ is *not* perfect (such as $\mathbb{F} = \mathbb{F}_2(t)$), one can choose $t_1 = 0$ and a nonsquare $t_2 \in \mathbb{F} \setminus \mathbb{F}^2$ to form an **inseparable** quadratic extension $\mathbb{F}' = \mathbb{F}(\sqrt{t_2})$. The resulting nonsingular quadric $Q^-(2n+1, \mathbb{F}'/\mathbb{F}) : X_1^2 + t_2 X_2^2 + X_3X_4 + \cdots + X_{2n+1}X_{2n+2} = 0$ is called a **pseudo-elliptic quadric**: because $t_1 = 0$, the alternating polar form $f$ vanishes on the entire line $\mathrm{PG}(\langle e_1, e_2 \rangle)$, giving a $2$-dimensional radical disjoint from $Q$. Over finite fields, every field of characteristic $2$ is perfect, so pseudo-elliptic quadrics never occur in $\mathrm{PG}(m, q)$.
+
+---
+
+Third, how does the classification of nonsingular quadrics of Witt index $n \ge 1$ over an arbitrary field compare with the finite classification? As shown in [the Witt decomposition into hyperbolic planes and an anisotropic core](maths_3_projective_geometry.md#other-properties_2) and [the hyperbolic-pair basis construction](maths_3_projective_geometry.md#example-building-the-symplectic-form-w3-3-in-pg3-3) in the earlier projective geometry notes, pairing two disjoint generators of projective dimension $n - 1$ splits off an orthogonal sum $U = U_1 \oplus U_2$ of $n$ hyperbolic planes of vector dimension $2n$, leaving an anisotropic subspace $U^\perp$ ($Q \cap \mathrm{PG}(U^\perp) = \emptyset$). Over an infinite field like $\mathbb{R}$, the anisotropic core $U^\perp$ can have arbitrarily large dimension (since $X_1^2 + \cdots + X_k^2 = 0$ has no nonzero real solutions), which is why the general classification restricts to $\dim(V) \in \{2n, 2n+1, 2n+2\}$: $Q \cong Q^+(2n-1, \mathbb{F})$ when $\dim(V) = 2n$, $Q \cong Q(2n, \mathbb{F})$ when $\dim(V) = 2n + 1$, and $Q \cong Q^-(2n+1, \mathbb{F}'/\mathbb{F})$ when $\dim(V) = 2n + 2$. Over a finite field $\mathbb{F}_q$, Chevalley-Warning guarantees that every conic in $\mathrm{PG}(2, q)$ has a point (for odd $q$, after diagonalizing a ternary form, two of the three coefficients lie in the same square class since there are only two classes of nonzero elements, so rescaling a variable makes them equal and reduces the equation to $X^2 + Y^2 = cZ^2$, which the sum-of-two-squares fact solves); this forces $\dim(U^\perp) \le 2$ automatically and recovers the three finite families $Q^+(2n-1, q)$, $Q(2n, q)$, and $Q^-(2n+1, q)$.
+
+#### Hermitian varieties over arbitrary and finite fields
+
+The finite Hermitian varieties $H(m, q^2)$ over $\mathbb{F}_{q^2}$ with involution $\sigma(x) = x^q$, their canonical equations, and why secant lines meet $H(m, q^2)$ in Baer sublines $\mathrm{PG}(1, q)$ are introduced in [unitary and Hermitian polar spaces](maths_3_projective_geometry.md#unitary-hermitian-spaces-mathcalhn-q2) in the earlier projective geometry notes. Here we state what generalizes to arbitrary fields with an order-$2$ automorphism $\sigma$.
+
+Let $\mathbb{F}$ be a commutative field equipped with an automorphism $\sigma$ of order $2$ ($\sigma \neq 1, \sigma^2 = 1$), and let $\mathbb{F}_\sigma := \{\lambda \in \mathbb{F} \mid \lambda^\sigma = \lambda\}$ be its **fixfield** (so $\mathbb{F}$ is a quadratic extension of $\mathbb{F}_\sigma$, and when $\mathbb{F} = \mathbb{F}_{q^2}$ we have $\mathbb{F}_\sigma = \mathbb{F}_q$). Inside any projective line $\mathrm{PG}(1, \mathbb{F})$, choosing two linearly independent vectors $v_1, v_2$ and fanning out all $\mathbb{F}_\sigma$-combinations $\langle v_1 \lambda_1 + v_2 \lambda_2 \rangle$ with $(\lambda_1, \lambda_2) \in \mathbb{F}_\sigma^2 \setminus \{(0, 0)\}$ defines a **Baer-$\mathbb{F}_\sigma$-subline** $\mathrm{PG}(1, \mathbb{F}_\sigma)$.
+
+For a nonzero Hermitian form $f$ on a vector space $V$ over $\mathbb{F}$ ($f(w, v) = f(v, w)^\sigma$), the isotropic point set $\mathcal{H}_f := X_f$ in $\mathrm{PG}(V)$ is a **Hermitian variety** (and a **Hermitian curve** when $\dim(\mathrm{PG}(V)) = 2$), which is **nonsingular** when $\operatorname{rad}(f) = \{0\}$. On the projective line $\mathrm{PG}(1, \mathbb{F})$, the rank-$1$ base case $H(1, \mathbb{F}/\mathbb{F}_\sigma)$ defined by $X_1^\sigma Y_2 + X_2^\sigma Y_1$ consists of $(1:0)$ together with the points $(-\eta : 1)$ satisfying $\eta + \eta^\sigma = 0$. Picking $\lambda_1 \in \mathbb{F} \setminus \mathbb{F}_\sigma$ and setting $\lambda_2 = \lambda_1 - \lambda_1^\sigma \neq 0$ gives $\lambda_2 + \lambda_2^\sigma = 0$, so the solutions of $\eta + \eta^\sigma = 0$ are $\eta = -\lambda_2 t$ for $t \in \mathbb{F}_\sigma$; thus the points of $H(1, \mathbb{F}/\mathbb{F}_\sigma)$ are $(1:0)$ and $(\lambda_2 t : 1)$ ($t \in \mathbb{F}_\sigma$), which are the $\mathbb{F}_\sigma$-combinations of the basis vectors $e_1' = (\lambda_2, 0)$ and $e_2' = (0, 1)$, forming a Baer-$\mathbb{F}_\sigma$-subline. Together with the hyperbolic-line formula $\eta + \eta^\sigma = 0$, this shows that every line of $\mathrm{PG}(V)$ meets a nonsingular Hermitian variety $\mathcal{H}_f$ in $0$ points, $1$ point, a Baer-$\mathbb{F}_\sigma$-subline, or the whole line.
+
+For a nonsingular nonempty Hermitian variety $\mathcal{H}_f$ of finite Witt index $n \ge 1$ in $\mathrm{PG}(V)$, pairing two disjoint generators of dimension $n - 1$ again splits off $n$ hyperbolic planes $X_1^\sigma Y_2 + X_2^\sigma Y_1 + \cdots + X_{2n-1}^\sigma Y_{2n} + X_{2n}^\sigma Y_{2n-1}$ of total dimension $2n$, leaving an anisotropic orthogonal complement $U^\perp$. Over an infinite field like $\mathbb{C}/\mathbb{R}$, the anisotropic core $U^\perp$ can have arbitrarily large dimension (since $X_1\bar{X}_1 + \cdots + X_k\bar{X}_k = 0$ has no nonzero complex solutions), so the general classification assumes $\dim(V) \in \{2n, 2n+1\}$. When $\dim(V) = 2n$, $\mathcal{H}_f \cong H(2n-1, \mathbb{F}/\mathbb{F}_\sigma)$. When $\dim(V) = 2n + 1$, $U^\perp = \langle e_0 \rangle$ is $1$-dimensional with $f(e_0, e_0) = a \in \mathbb{F}_\sigma^*$; dividing the entire form $f$ by $a$ normalizes $(a^{-1}f)(e_0, e_0) = 1$, and rescaling the second vector of each hyperbolic pair by $a$ restores $(a^{-1}f)(e_{2i-1}, e_{2i}a) = a^{-1}a = 1$ (since $a^\sigma = a$), so $\mathcal{H}_f \cong H(2n, \mathbb{F}/\mathbb{F}_\sigma)$ holds over *every* field $\mathbb{F}$ without any norm assumption. Over a finite field $\mathbb{F}_{q^2}$, surjectivity of the norm map $\lambda \mapsto \lambda^{q+1}$ onto $\mathbb{F}_q$ ensures that every Hermitian variety on $\mathrm{PG}(1, q^2)$ is nonempty and hence forces $\dim(U^\perp) \le 1$, recovering the unique finite family $H(m, q^2)$ from [the Witt index calculation](maths_3_projective_geometry.md#index-or-rank) in the earlier projective geometry notes.
+
+#### Isomorphism between parabolic and symplectic polar spaces
+
+In [the finite classical comparison table](maths_3_projective_geometry.md#comparison-finite-classical-polar-spaces-over-mathbbf_q-or-mathbbf_q2) of the earlier projective geometry notes, the parabolic quadric $Q(2n, q)$ in $\mathrm{PG}(2n, q)$ and the symplectic polar space $W(2n-1, q)$ in $\mathrm{PG}(2n-1, q)$ have the same rank $n$, the same number of points $(q^{2n} - 1)/(q - 1)$, and the same number of generators $(q + 1)(q^2 + 1)\cdots(q^n + 1)$, and [the characteristic-2 nucleus note](maths_3_projective_geometry.md#other-properties_2) records that $Q(2n, 2^h) \cong W(2n-1, 2^h)$. Over an arbitrary field $\mathbb{F}$ with $n \ge 2$, the exact criterion requires both characteristic $2$ and perfectness:
+
+$$Q(2n, \mathbb{F}) \cong W(2n-1, \mathbb{F}) \Longleftrightarrow \operatorname{char}(\mathbb{F}) = 2 \text{ and } \mathbb{F} \text{ is a perfect field.}$$
+
+In particular, over a finite field $\mathbb{F}_q$ with $n \ge 2$, $Q(2n, q) \cong W(2n-1, q)$ if and only if $q$ is even.
+
+To see how the isomorphism works when $\operatorname{char}(\mathbb{F}) = 2$ and $\mathbb{F}$ is perfect (Figure 21), write $Q(2n, \mathbb{F}) : X_0^2 + X_1X_2 + \cdots + X_{2n-1}X_{2n} = 0$ in $\mathrm{PG}(2n, \mathbb{F})$ with nucleus $p = \langle e_0 \rangle = (1:0:\cdots:0)$, and view $W(2n-1, \mathbb{F})$ inside the hyperplane $H = \{X_0 = 0\} \cong \mathrm{PG}(2n-1, \mathbb{F})$ with coordinates $(X_1 : \cdots : X_{2n})$ and alternating form $f'(X, Y) = X_1Y_2 + X_2Y_1 + \cdots + X_{2n-1}Y_{2n} + X_{2n}Y_{2n-1}$. Projecting from the nucleus $p$ onto $H$ sends each point $x = (X_0 : X_1 : \cdots : X_{2n}) \in Q(2n, \mathbb{F})$ to
+
+$$\theta(x) := (X_1 : X_2 : \cdots : X_{2n}) \in \mathrm{PG}(2n-1, \mathbb{F}).$$
+
+By our nucleus-line theorem above, because $\mathbb{F}$ is a perfect field of characteristic $2$, every line through $p$ meets $Q(2n, \mathbb{F})$ in *precisely one* point, so $\theta$ is a bijection from the point set of $Q(2n, \mathbb{F})$ onto the point set of $W(2n-1, \mathbb{F})$. Moreover, since $e_0$ lies in the radical of the polar form $f$ of $Q(2n, \mathbb{F})$, two points $x, y \in Q(2n, \mathbb{F})$ are orthogonal under $f$ if and only if $\theta(x)$ and $\theta(y)$ are orthogonal under $f'$. By the collinearity-graph theorem at the start of this chapter, a bijection of point sets that preserves collinearity in both directions is an isomorphism of polar spaces $Q(2n, \mathbb{F}) \xrightarrow{\sim} W(2n-1, \mathbb{F})$.
+
+Conversely, why is $Q(2n, \mathbb{F}) \not\cong W(2n-1, \mathbb{F})$ when $\operatorname{char}(\mathbb{F}) \neq 2$ or $\mathbb{F}$ is imperfect? Taking [residues](maths_3_projective_geometry.md#residues-give-local-to-global-classification-and-induction) reduces the question to rank $2$, and in rank $2$ a further combinatorial property of generalized quadrangles tells $Q(4, \mathbb{F})$ and $W(3, \mathbb{F})$ apart unless $\mathbb{F}$ is perfect of characteristic $2$. That argument lies outside these notes.
+
+**Worked example (projecting $Q(4, 2)$ from its nucleus onto the doily $W(3, 2)$):** In $\mathrm{PG}(4, 2)$ ($31$ points over the perfect field $\mathbb{F}_2$), consider the parabolic quadric
+
+$$Q(4, 2) : X_0^2 + X_1X_2 + X_3X_4 = 0$$
+
+with nucleus $p = (1:0:0:0:0)$ (Figure 21). For each of the $15$ points $w = (X_1:X_2:X_3:X_4) \in \mathrm{PG}(3, 2)$, the line of $\mathrm{PG}(4, 2)$ joining $p$ to $(0:X_1:X_2:X_3:X_4)$ contains two non-nucleus points: $(0:X_1:X_2:X_3:X_4)$ and $(1:X_1:X_2:X_3:X_4)$. Since $X_0^2 = X_0$ in $\mathbb{F}_2$, the quadric equation forces
+
+$$X_0 = X_1X_2 + X_3X_4$$
+
+uniquely on every ray through $p$. On the $9$ points of $\mathrm{PG}(3, 2)$ where $X_1X_2 + X_3X_4 = 0$ (the $3 \times 3$ hyperbolic grid $Q^+(3, 2)$ inside $H$), the unique point on $Q(4, 2)$ has $X_0 = 0$ and stays put in $H$; on the $6$ points of $\mathrm{PG}(3, 2)$ where $X_1X_2 + X_3X_4 = 1$, the unique point on $Q(4, 2)$ lies in the lifted layer $X_0 = 1$ and projects down to $H$. For example, the three points
+
+$$u = (0:1:0:0:0), \qquad v = (1:0:0:1:1), \qquad u + v = (1:1:0:1:1)$$
+
+form a totally singular line $L$ of $Q(4, 2)$ meeting $H$ at the hinge point $u$, and $\theta$ projects them onto $(1:0:0:0)$, $(0:0:1:1)$, and $(1:0:1:1)$, which form a totally isotropic line $\theta(L)$ of the doily $W(3, 2)$ (seen earlier in Figure 10 of [generalized quadrangles](#definition-and-why-both-axioms-matter)).
+
+![Nucleus projection Q(4, 2) to W(3, 2) along lines through p in PG(4, 2)](figures/maths4_polar_nucleus_isomorphism.png)
+
+*Figure 21. In $\mathrm{PG}(4, 2)$, projecting from the nucleus $p = (1:0:0:0:0)$ onto the hyperplane $H = \{X_0 = 0\} \cong \mathrm{PG}(3, 2)$ fixes the $9$ points of $Q(4, 2) \cap H$ ($X_0 = 0$, such as $u = (0:1:0:0:0)$) and projects the $6$ lifted points with $X_0 = 1$ (such as $v$ and $u + v$) along rays through $p$ onto $H$, mapping the $15$ lines of $Q(4, 2)$ bijectively onto the $15$ lines of $W(3, 2)$.*
+
+Finally, for the hyperbolic quadric $Q^+(2n-1, \mathbb{F})$, why its maximal singular subspaces split into two families $\mathcal{M}^+$ and $\mathcal{M}^-$ according to the parity of $(n - 1) - \dim(\alpha \cap \beta)$, why every singular subspace of projective dimension $n - 2$ lies in precisely two generators, why $Q^+(3, \mathbb{F})$ is a grid (discussed in [points, lines, duals, and doubles](#points-lines-duals-and-doubles)), and why $Q^+(5, \mathbb{F})$ is the Klein quadric are covered in [properties of hyperbolic quadratic sets](maths_3_projective_geometry.md#some-properties-of-parabolic-elliptic-hyperbolic-quadratic-sets), [counting maximal isotropic subspaces](maths_3_projective_geometry.md#number-of-maximal-isotropic-subspaces), and [the Klein quadric](maths_3_projective_geometry.md#example-klein-quadric-mathcalq5-k-in-mathrmpg5-k) in the earlier projective geometry notes.
 
 ## Designs
 
