@@ -694,7 +694,7 @@ Consider two collections of subgroups:
 
 The Upper Collection: Subgroups of $G$ that fully contain $N$:
 
-$\mathcal{S}_N(G) = \{H \le G \mid N \subseteq H\}$$
+$$\mathcal{S}_N(G) = \{H \le G \mid N \subseteq H\}$$
     
 The Lower Collection: All subgroups of the quotient group $G/N$:
 
@@ -932,7 +932,7 @@ $$\text{Stab}_G(x) = \{e\} \quad \forall x \in \Omega$$
 
 Equivalently:
 
-$$\text{If } x \cdot g = x \text{ for any } x \in \Omega, \quad \text{then } g = e$$
+$$\text{If } g \cdot x = x \text{ for any } x \in \Omega, \quad \text{then } g = e$$
 
 In a free action, group elements move points without "pinning" anything down. There can be multiple separate orbits. But inside every single orbit, the elements of $G$ map points one-to-one without collisions.
     
@@ -942,7 +942,7 @@ $$\vert{}\mathcal{O}_x\vert{} = \frac{\vert{}G\vert{}}{\vert{}\text{Stab}_G(x)\v
 
 Therefore, in any free action, the total size of the set $\vert{}\Omega\vert{}$ must be an exact multiple of the group size: $\vert{}\Omega\vert{} = k \cdot \vert{}G\vert{}$, where $k$ is the number of orbits.
     
-An action is regular (also called simply transitive) if it is both transitive and free. There is only one orbit and the stabilizer is trivial. This means that for any pair of points $x, y \in \Omega$, there exists exactly one element $g \in G$ such that: $x \cdot g = y$.
+An action is regular (also called simply transitive) if it is both transitive and free. There is only one orbit and the stabilizer is trivial. This means that for any pair of points $x, y \in \Omega$, there exists exactly one element $g \in G$ such that: $g \cdot x = y$.
 
 Because it is transitive, $\vert{}\mathcal{O}_x\vert{} = \vert{}\Omega\vert{}$. Because it is free, $\vert{}\mathcal{O}_x\vert{} = \vert{}G\vert{}$. Therefore:
 
@@ -1531,7 +1531,7 @@ A faithful representation means that no two distinct group elements map to the e
 
 An abelian group's representations all decompose into 1-dimensional subspaces over $\mathbb{C}$. Conversely, suppose that $G$ is a finite group such that every irreducible $\mathbb{C}G$-module has dimension 1. Then $G$ is abelian.
 
-A representation matrix of any element $g$ is diagonalizable in some basis, but that does not mean the same basis can give us diagonal matrices for all elements of $G$. This will happen only if the group is abelian. This should remind us of commuting observables in quantum mechanics. The theorem proving that an abelian group's representations all decompose into 1-dimensional subspaces over $\mathbb{C}$ is the exact mathematical mechanism that allows a complete set of commuting observables (CSCO) to uniquely identify every pure state in a quantum system.
+A representation matrix of any element $g$ is diagonalizable in some basis, but that does not mean the same basis can give us diagonal matrices for all elements of $G$. This will happen only if the matrices commute with each other, that is, if the image of the representation is abelian. For a faithful representation, that means $G$ itself is abelian; a non-faithful one can be diagonal even for a non-abelian group (the sign representation of $S_3$ is $1 \times 1$). This should remind us of commuting observables in quantum mechanics. The theorem proving that an abelian group's representations all decompose into 1-dimensional subspaces over $\mathbb{C}$ is the exact mathematical mechanism that allows a complete set of commuting observables (CSCO) to uniquely identify every pure state in a quantum system.
 
 #### $FG$-modules
 
@@ -1564,7 +1564,7 @@ If we have a representation (and its basis vectors) in hand, we don't actually n
 **Does a finite group only have a finite number of representations?** You can build an infinite number of representations by making bigger and bigger direct sums, or by acting on larger and larger sets. However, a finite group only has a finite number of distinct irreducible representations. (In fact, the number of distinct irreducible representations exactly equals the number of conjugacy classes in the group. We will see this down below). Every other representation in the universe for that group is just built by stacking these few fundamental irreducible blocks together.
 
 #### Permutation Modules & Representations
-We define a permutation matrix $P(g)$ of an element $g$. It defines whether $g$ permutes the $i^{th}$ element into the $j{th}$ element of the set. We construct this matrix by placing $1$ in row $i$, column $j$ when $g$ maps the $j$-th element to the $i$-th element, and $)$ everywhere else. 
+We define a permutation matrix $P(g)$ of an element $g$. It defines whether $g$ permutes the $i^{th}$ element into the $j^{th}$ element of the set. We construct this matrix by placing $1$ in row $i$, column $j$ when $g$ maps the $j$-th element to the $i$-th element, and $0$ everywhere else. 
 
  $P(g)$ is not a property of just the group element $g$ alone. The matrix $P(g)$ depends on the set $\Omega$ it is acting on. The exact same group $G$ will yield different matrices $P(g)$ if you let it act on a set of 3 points versus a set of 10 points.
 
@@ -1585,6 +1585,8 @@ In coordinates, $P(g)$ is an $n \times n$ permutation matrix with entries:
 $$(P(g))_{\alpha \beta} = \begin{cases} 1 & \text{if } g\beta = \alpha \\ 0 & \text{otherwise} \end{cases}$$
     
 Because $P(gh) = P(g)P(h)$, the assignment $g \mapsto P(g)$ is a matrix representation of $G$ on $V$.
+
+Note that this passage writes the action on the left ($P(g)e_\alpha = e_{g\alpha}$) and places the $1$s by column. The $FG$-module conventions above act on the right ($v_i g = v_{ig}$) and record $v_i g$ in the $i$-th row, so for the same permutation the two matrices are transposes of each other.
 
 If we look at this as modules instead of matrices, if $G$ is a subgroup of the symmetry group $S_n$, then this module is called the permutation module and $e_{\alpha} \dots e_{\eta}$ are called the natural basis of the vector space. Since the only element of $G$ which fixes every $v_i$ is the identity, we see that the permutation module is a faithful $FG$-module. And from Cayley's theorem, we know that every $G$ is isomorphic to a subgroup of some symmetry group. Thus, any group has a faithful $FG$-module.
 
@@ -1651,6 +1653,7 @@ $$V = \operatorname{im}(\pi) \oplus \ker(\pi) = W \oplus \ker(\pi)$$
 Every vector splits uniquely as $v = v\pi + (v - v\pi)$, where $v\pi \in W$ and $(v - v\pi) \in \ker(\pi)$.
 
 **IMPORTANT!**
+
 * Not every subspace is an $FG$-module, but a subspace that is $G$-invariant is an $FG$-submodule. A vector subspace $W \subseteq V$ is merely closed under addition and scalar multiplication ($F$). For $W$ to be an $FG$-submodule (and hence an $FG$-module in its own right), it must also be closed under the action of the group $G$.
 
 * An $FG$-module need not necessarily be a subspace of $V$. A good example is one we will show below where the quotient is a module, and therefore is a vector space but not a subspace of $V$ (though it is isomorphic to an actual subspace of $V$).
@@ -1705,7 +1708,7 @@ $$(u_i + W)g = u_i g + W = (w + u') + W = u' + W$$
     
 By collapsing $W$ to $0$, the group action becomes well-defined and closed.
 
-**Example in $\mathbb{R}^2**
+**Example in $\mathbb{R}^2$**
 
 Consider $V = \mathbb{R}^2$, and let $W$ be the $x$-axis:
 
@@ -1895,7 +1898,7 @@ $$\begin{pmatrix} X_g & 0 \\ 0 & Z_g \end{pmatrix} $$
 
 i.e. it become block diagonal. The similarity transformation $T [a]_\mathscr{B} T^{-1}$ cleanly removes $Y_g$.
 
-Maschke's Theorem therefore implies that every $FG$-module can be written as a direct sum of irreducible $FG$-submodules. These submodules are called composition factors. Thus, to understand $FG$-modules, we must understand irreducible $FG$-submodules. When $F=\mathbb{C}$, we can say any irreducible submodule must be isomorphic to one of the irreducible submodules in the direct sum.
+Maschke's Theorem therefore implies that every $FG$-module can be written as a direct sum of irreducible $FG$-submodules. These submodules are the irreducible summands of the module, and an irreducible module isomorphic to one of them is called a composition factor. Thus, to understand $FG$-modules, we must understand irreducible $FG$-submodules. When $F=\mathbb{C}$, we can say any irreducible submodule must be isomorphic to one of the irreducible submodules in the direct sum.
 
 What happens when Maschke's Theorem fails? We use Modular Representation Theory. The group algebra $FG$ is not semisimple. Modules can form non-trivial un-splittable chains (extensions) where $Y_g \neq 0$ permanently, leading to non-trivial Jordan block structures.
 
@@ -1926,7 +1929,7 @@ $$V \cong \underbrace{(V_1 \oplus \dots \oplus V_1)}_{m_1 \text{ copies}} \oplus
 
 Note that this is not different from what we saw just a little earlier. 
 
-$$V = W_1 \oplus W_2 \oplus W_3 \oplus W_4 \oplus W_5$
+$$V = W_1 \oplus W_2 \oplus W_3 \oplus W_4 \oplus W_5$$
 
 Where $W_1$ and $W_2$ are both Type $V_1$, $W_3$ is Type $V_2$, and $W_4$ and $W_5$ are both Type $V_3$.
 
@@ -1950,7 +1953,7 @@ $$\mathbb{C}G = U_1 \oplus U_2 \oplus U_3 \oplus U_4$$
 
 where $U_1, U_2$ are non-isomorphic $1$-dimensional $\mathbb{C}G$-modules, and $U_3, U_4$ are isomorphic irreducible $2$-dimensional $\mathbb{C}G$-modules ($U_3 \cong U_4$).
 
-This illustrates the general decomposition theorem (Theorem 11.9) for the regular representation:
+This illustrates the general decomposition theorem for the regular representation:
 
 $$\mathbb{C}G \cong \bigoplus_{i=1}^k d_i V_i$$
 
@@ -1966,7 +1969,7 @@ Summing the dimensions confirms the total dimension of the regular module:
 
 $$\dim(\mathbb{C}G) = \vert{}G\vert{} = 1^2 + 1^2 + 2^2 = 1 + 1 + 4 = 6$$
 
-### Schur’s Lemma
+#### Schur’s Lemma
 
 Let $U$ and $W$ be two irreducible representations of $G$. Loosely, Schur's Lemma says that $U$ and $W$ are either isomorphic or the homomorphism is the zero-map i.e. the kernel is the whole of $U$ . If they are isomorphic, then the map between the two is a scalar multiple of identity 
 
@@ -2504,7 +2507,7 @@ $$(a_1 b_1)(a_2 b_2) = a_1 (b_1 a_2 b_1^{-1}) b_1 b_2 = a_1 \phi_{b_1}(a_2) \cdo
 
 If the action $\phi$ is trivial ($\phi_b(a) = a$ for all $b$, meaning $b$ does not twist $a$), then $b$ commutes with $a$, $B$ becomes normal, and the semidirect product collapses into an ordinary direct product.
 
-If the action $\phi$ is non-trivial (like reflections flipping rotations in $D_4$), $B$ twists $A$.
+If the action $\phi$ is non-trivial (like reflections flipping rotations in $D_8$, the symmetries of a square), $B$ twists $A$.
 
 For both direct and semi-direct products, the order of $G$ is the product of the orders of $A$ and $B$.
 
