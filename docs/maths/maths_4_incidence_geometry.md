@@ -43,7 +43,7 @@ This is the decomposition of an observable in quantum mechanics, with $E_\theta 
 
 In the running example, the projector onto the line through $j$ is $E_2 = jj^T/3$, with every entry $1/3$, and the projector onto the plane is $E_{-1} = I - E_2$, with diagonal entries $2/3$ and off-diagonal entries $-1/3$. Then $2E_2 - E_{-1}$ has diagonal entries $0$ and off-diagonal entries $2/3 + 1/3 = 1$: it is $A$.
 
-**Where it is used.** Adjacency matrices are real and symmetric, which is why a graph's eigenvalues are real ([the adjacency matrix and its eigenvalues](#the-adjacency-matrix-and-its-eigenvalues)). The decomposition $A = \sum_\theta \theta E_\theta$ is the backbone of [distance-regular graphs](#distance-regular-graphs), where $E_\theta$ is also called a minimal idempotent.
+**Where it is used.** Adjacency matrices are real and symmetric, which is why a graph's eigenvalues are real ([the adjacency matrix and its eigenvalues](#the-adjacency-matrix-and-its-eigenvalues)). The decomposition $A = \sum_\theta \theta E_\theta$ is the backbone of [distance-regular graphs](#distance-regular-graphs), where $E_\theta$ is also called a [minimal idempotent](#minimal-idempotents-of-the-bose-mesner-algebra).
 
 ### Projectors, trace and positive semidefinite matrices
 
@@ -184,7 +184,7 @@ In coordinates, $f(x, y) = (x^\sigma)^T G y$, where $x^\sigma$ applies $\sigma$ 
 
 ## Graphs and Point-Line Geometries
 
-<!-- terms checked: degree; automorphism; geometry; points; subspace; hyperplane -->
+<!-- terms checked: degree; automorphism; geometry; points; subspace; hyperplane; opposite -->
 
 How can linear algebra prove that a finite geometry does not exist? The bridge goes through graphs. Every [point-line geometry](#point-line-geometries) gives rise to two natural graphs (one recording which points share a line, the other recording which points lie on which lines). Once we encode a graph in a real symmetric $0/1$ matrix, those local counts turn into polynomial equations for its [eigenvalues](#eigenvalues-and-eigenspaces), whose multiplicities are the dimensions of the corresponding eigenspaces and whose non-vanishing counts give the matrix rank. Because a vector space cannot have a fractional dimension, any hypothetical geometry whose counts force a non-integer eigenspace dimension cannot exist: that single integrality test will rule out impossible quadrangles in [Strongly Regular and Distance-Regular Graphs](#strongly-regular-and-distance-regular-graphs) and restrict finite [generalized polygons](#the-theorem-of-feit-and-higman) (with at least three points per line and three lines per point) to $3$-, $4$-, $6$- and $8$-gons in [The Feit–Higman theorem](#the-feithigman-theorem-and-order-bounds), while a two-line rank check on [the incidence matrix](#collinearity-graphs-incidence-graphs) will bound block counts in [Designs](#the-incidence-matrix-and-fishers-inequality). First we build the graph language, then the geometry language that feeds into it.
 
@@ -335,7 +335,7 @@ Here are a few examples:
 
 #### Partial Linear Spaces
 
-In a projective plane, we say any two lines are incident at exactly one point and any two points are connected by exactly one line. This is a linear space. But recall that our hyperbolic quadric in 3D did not satisfy this rule. Any two points had either 0 or 1 line connecting them.
+In a [projective plane](#projective-planes-degenerate-vs-nondegenerate), we say any two lines are incident at exactly one point and any two points are connected by exactly one line. This is a linear space. But recall that our hyperbolic quadric in 3D did not satisfy this rule. Any two points had either 0 or 1 line connecting them.
 
 So a more general rule is a geometry where any two distinct points lie on at most one common line (equivalently, any two distinct lines intersect in at most one point). This is a partial linear space. Here, no two distinct lines have the exact same set of incident points.
 
@@ -347,7 +347,7 @@ In a partial linear space $S = (\mathcal{P}, \mathcal{L}, I)$:
 
 * Subspace: A subset of points $X \subseteq \mathcal{P}$ with the "two-point closure rule": whenever a line of $S$ has at least two of its points inside $X$, the entire line (all of its points) must lie inside $X$. Every nonempty subspace $X$ naturally forms a full subgeometry $\tilde{X}$ using the lines contained in $X$.
 
-* Singular Subspace: A subspace where every pair of points is collinear. (Because $X$ is also a subspace, for any two points in a singular subspace, the unique line joining them exists in $S$ and lies completely inside $X$. Thus, singular subspaces look like projective spaces: points, lines, planes, etc., where all points are mutually collinear.)
+* Singular Subspace: A subspace where every pair of points is collinear. (Because $X$ is also a subspace, for any two points in a singular subspace, the unique line joining them exists in $S$ and lies completely inside $X$. Thus, singular subspaces look like [projective spaces](#projective-spaces-of-arbitrary-dimension-and-the-veblenyoung-axiom): points, lines, planes, etc., where all points are mutually collinear.)
 
   In $\mathrm{PG}(n, q)$, if a subset $X$ obeys the two-point line rule ("whenever $x, y \in X$, the line $xy$ is in $X$"), then every pair $x, y \in X$ has a line in $X$, because every pair had a line in $\mathrm{PG}(n, q)$ to begin with.
 
@@ -439,7 +439,7 @@ without writing down a single entry of $M$. Products like $M M^T$ and $A^2$ turn
 
 This will give us two algebraic weapons that prove theorems and rule out impossible geometries without ever having to draw or search for them. We will look at this in a little while. 
 
-<!-- terms checked: subspace; hyperplane -->
+<!-- terms checked: subspace; hyperplane; irreducible; nondegenerate; degenerate; dimension; extension; generalized $n$-gon -->
 
 ## Classes of Point-Line Geometries
 
@@ -455,7 +455,7 @@ Before meeting spaces built from algebra or field theory, it is useful to name e
 
 **Generalized $2$-gons (generalized digons):** A point-line geometry $(\mathcal{P}, \mathcal{L}, \mathrm{I})$ with $|\mathcal{P}| \ge 2$, $|\mathcal{L}| \ge 2$, and $\mathrm{I} = \mathcal{P} \times \mathcal{L}$, meaning **every point is incident with every line**.
 
-A generalized digon is the classic example of a geometry that is *not* a partial linear space and where lines **cannot** be treated as subsets of points. Every line $L \in \mathcal{L}$ has the exact same set of incident points, namely all of $\mathcal{P}$. Keeping $\mathcal{P}$ and $\mathcal{L}$ as abstract disjoint sets linked by $\mathrm{I}$ in the definition of a point-line geometry is what allows generalized digons to exist cleanly.
+A generalized digon is the classic example of a geometry that is *not* a partial linear space and where lines *cannot* be treated as subsets of points. Every line $L \in \mathcal{L}$ has the exact same set of incident points, namely all of $\mathcal{P}$. Keeping $\mathcal{P}$ and $\mathcal{L}$ as abstract disjoint sets linked by $\mathrm{I}$ in the definition of a point-line geometry is what allows generalized digons to exist cleanly.
 
 **Ordinary $n$-gons ($n \ge 3$):** A partial linear space isomorphic to the $n$ vertices $\mathcal{P} = \{1, 2, \dots, n\}$ and $n$ thin edges $\mathcal{L} = \{\{1, 2\}, \{2, 3\}, \dots, \{n - 1, n\}, \{n, 1\}\}$ of an ordinary polygon, with containment as incidence. When $n = 3$, an ordinary $3$-gon (triangle) is the same thing as a circular space on $3$ vertices. Every ordinary $n$-gon is self-dual: swapping vertices and edges of an $n$-sided polygon yields another $n$-sided polygon.
 
@@ -630,7 +630,7 @@ $$(t, k, v) \in \{(4, 5, 11),\; (5, 6, 12),\; (3, 6, 22),\; (4, 7, 23),\; (5, 8,
 
 there is a unique Steiner system $S(t, k, v)$ up to isomorphism. These five Steiner systems are called the **Mathieu** or **Witt designs**. The systems $S(4, 5, 11)$ and $S(5, 6, 12)$ are called the **small Mathieu** (or **small Witt**) designs, while $S(3, 6, 22)$, $S(4, 7, 23)$, and $S(5, 8, 24)$ are called the **large Mathieu** (or **large Witt**) designs.
 
-Notice how the three numbers in each group shift by $1$ together. That comes from zooming in on a single point of a geometry. In any point-line geometry $\mathcal{S}$ where every line through a chosen point $x$ has size at least $3$, the **internal structure** $\mathcal{S}_x$ at $x$ takes $x^\perp \setminus \{x\}$ (all points collinear with $x$, other than $x$ itself) as its points, and takes all lines of $\mathcal{S}$ through $x$ (each with $x$ removed) as its lines.
+Notice how the three numbers in each group shift by $1$ together. That comes from zooming in on a single point of a geometry. In any point-line geometry $\mathcal{S}$ where every line through a chosen point $x$ has size at least $3$, the [internal structure](#points-lines-duals-and-doubles) $\mathcal{S}_x$ at $x$ takes $x^\perp \setminus \{x\}$ (all points collinear with $x$, other than $x$ itself) as its points, and takes all lines of $\mathcal{S}$ through $x$ (each with $x$ removed) as its lines.
 
 Suppose $\mathcal{D}$ is a $t$-$(v, k, \lambda)$-design with $t \ge 2$ and $k \ge 3$, and pick any point $x$ of $\mathcal{D}$. Because $t \ge 2$, $\mathcal{D}$ is at least a $2$-design, so $x$ shares blocks with *every* other point of $\mathcal{D}$; removing $x$ leaves all $v - 1$ remaining points. Keeping only blocks that contained $x$, and deleting $x$ from each of them, trims every kept block from size $k$ down to size $k - 1 \ge 2$. And if you pick any $t - 1$ distinct points among the remaining $v - 1$ points, putting $x$ back beside them gives $t$ distinct points of $\mathcal{D}$, which lie together in $\lambda$ blocks of $\mathcal{D}$ (all containing $x$, so all surviving in $\mathcal{D}_x$).
 
@@ -648,7 +648,7 @@ Panel (b) of Figure 8 shows how the Witt designs stack into two extension towers
 
 ### Generalized quadrangles
 
-In a projective plane, every point $x$ outside a line $L$ is collinear with *all* points of $L$, so triangles are everywhere. What happens if we forbid triangles completely by swinging to the opposite extreme: every point $x$ outside a line $L$ is collinear with **precisely one** point of $L$?
+In a projective plane, every point $x$ outside a line $L$ is collinear with *all* points of $L$, so triangles are everywhere. What happens if we forbid triangles completely by swinging to the opposite extreme: every point $x$ outside a line $L$ is collinear with *precisely one* point of $L$?
 
 #### Definition and why both axioms matter
 
@@ -679,7 +679,7 @@ Within these grids and dual grids, there are two subcases. If $n_1 = n_2$ (symme
 
 But if $n_1 \neq n_2$ (nonsymmetrical), then in a nonsymmetrical grid, rows have size $n_2$ and columns have size $n_1$, so there is no single number $s$ for all lines (even though $t = 1$). Dually, in a nonsymmetrical dual grid, points have either $n_1$ or $n_2$ lines through them, so there is no single number $t$ for all points (even though $s = 1$).
 
-When $\mathcal{S}$ is a **finite** generalized quadrangle of order $(s, t)$, two powerful arithmetic restrictions govern $(s, t)$:
+When $\mathcal{S}$ is a *finite* generalized quadrangle of order $(s, t)$, two powerful arithmetic restrictions govern $(s, t)$:
 
 **Divisibility condition:** $(s + t)$ must divide $st(s + 1)(t + 1)$.
 
@@ -713,7 +713,7 @@ For any integer $n \ge 3$, a **generalized $n$-gon** is a partial linear space $
 
 **Every pair lies in an $n$-gon ("apartment" property):** For *any* two elements $\{A_1, A_2\} \subseteq \mathcal{P} \cup \mathcal{L}$ (two points, two lines, or one point and one line), there exists a subgeometry $\mathcal{S}' = (\mathcal{P}', \mathcal{L}', \mathrm{I}')$ of $\mathcal{S}$ isomorphic to an ordinary $n$-gon that contains both $A_1$ and $A_2$ ($\{A_1, A_2\} \subseteq \mathcal{P}' \cup \mathcal{L}'$).
 
-Combining this with **generalized $2$-gons** (generalized digons, where $|\mathcal{P}|, |\mathcal{L}| \ge 2$ and $\mathrm{I} = \mathcal{P} \times \mathcal{L}$), a point-line geometry is called a **generalized polygon** if it is a generalized $n$-gon for some $n \ge 2$.
+Combining this with [generalized $2$-gons](#classes-of-point-line-geometries) (generalized digons, where $|\mathcal{P}|, |\mathcal{L}| \ge 2$ and $\mathrm{I} = \mathcal{P} \times \mathcal{L}$), a point-line geometry is called a **generalized polygon** if it is a generalized $n$-gon for some $n \ge 2$.
 
 Several immediate consequences and structural connections follow right from the axioms:
 
@@ -738,8 +738,8 @@ If ordinary thin $n$-gons ($s = t = 1$) exist for *every* $n \ge 3$, you might n
 
 **Feit–Higman Theorem.** Let $\mathcal{S}$ be a *finite* generalized $n$-gon ($n \ge 3$) of order $(s, t)$. Then at least one of the following six cases holds:
 
-- $\mathcal{S}$ is an **ordinary $n$-gon**, with $s = t = 1$ (any $n \ge 3$).
-- $\mathcal{S}$ is a **nondegenerate projective plane** ($n = 3$), with $s = t \ge 2$.
+- $\mathcal{S}$ is an [ordinary $n$-gon](#classes-of-point-line-geometries), with $s = t = 1$ (any $n \ge 3$).
+- $\mathcal{S}$ is a [nondegenerate projective plane](#projective-planes-degenerate-vs-nondegenerate) ($n = 3$), with $s = t \ge 2$.
 - $\mathcal{S}$ is a **generalized quadrangle** ($n = 4$).
 - $\mathcal{S}$ is a **generalized hexagon** ($n = 6$); moreover, if $s \neq 1$ and $t \neq 1$, then $st$ must be a perfect square.
 - $\mathcal{S}$ is a **generalized octagon** ($n = 8$); moreover, if $s \neq 1$ and $t \neq 1$, then $2st$ must be a perfect square.
@@ -1163,7 +1163,7 @@ Everything we derived about the shifted indicator vector $x = u - c\mathbf{j}$, 
 
 So in any $k$-regular graph:
 
-If you find a regular subset $S$ where every vertex inside $S$ has $a$ neighbours in $S$ and every vertex outside $S$ has $b$ neighbours in $S$ (what Delsarte called a **completely regular code** of covering radius $1$, or an **intriguing set** / $2$-cell equitable partition), then $x = u - c\mathbf{j}$ is guaranteed to be an eigenvector of $A$ with eigenvalue $\theta = a - b$.
+If you find a regular subset $S$ where every vertex inside $S$ has $a$ neighbours in $S$ and every vertex outside $S$ has $b$ neighbours in $S$ (what Delsarte called a **completely regular code** of covering radius $1$, or an **intriguing set** / $2$-cell [equitable partition](#understanding-the-number-of-eigenvalues)), then $x = u - c\mathbf{j}$ is guaranteed to be an eigenvector of $A$ with eigenvalue $\theta = a - b$.
 
 For an independent set ($a = 0$) where every outside vertex has $b$ neighbours in $S$, $\theta = -b$ must be one of the negative eigenvalues of the graph, and Hoffman's bound $\vert{}S\vert{} \le \frac{v(-\theta_{\min})}{k - \theta_{\min}}$ holds for every $k$-regular graph (where $\theta_{\min}$ is the smallest eigenvalue of $A$), with equality if and only if every vertex outside $S$ has exactly $b = -\theta_{\min}$ neighbours in $S$.
 
@@ -2097,7 +2097,7 @@ and, by duality, $\lvert \mathcal{L} \rvert = (t + 1)(st + 1)$.
 
 #### Classical generalized quadrangles and their dualities
 
-Recall from the projective geometry notes that every [polar space of rank $2$](maths_3_projective_geometry.md#generalized-quadrangles-o-o) (Witt index $2$, whose maximal singular or totally isotropic subspaces are lines) has points and lines forming a generalized quadrangle. Over a commutative field $\mathbb{F}$ (or a quadratic extension $\mathbb{F}' / \mathbb{F}$), these classical families are the [nonsingular quadrics](maths_3_projective_geometry.md#orthogonal-polar-spaces-non-degenerate-quadrics-mathcalq) $Q^+(3, \mathbb{F})$ in $\mathrm{PG}(3, \mathbb{F})$, $Q(4, \mathbb{F})$ in $\mathrm{PG}(4, \mathbb{F})$, and $Q^-(5, \mathbb{F}'/\mathbb{F})$ in $\mathrm{PG}(5, \mathbb{F})$, the [nonsingular $\sigma$-Hermitian varieties](maths_3_projective_geometry.md#unitary-hermitian-spaces-mathcalhn-q2) $H(3, \mathbb{F}'/\mathbb{F})$ in $\mathrm{PG}(3, \mathbb{F}')$ and $H(4, \mathbb{F}'/\mathbb{F})$ in $\mathrm{PG}(4, \mathbb{F}')$ for a separable quadratic extension $\mathbb{F}'/\mathbb{F}$ with involutory automorphism $\sigma$, and the [symplectic generalized quadrangle](maths_3_projective_geometry.md#symplectic-spaces-antisymmetric-bilinear-forms) $W(\mathbb{F}) = W(3, \mathbb{F})$ of all points and totally isotropic lines of a symplectic polarity in $\mathrm{PG}(3, \mathbb{F})$. Over a finite field $\mathbb{F}_q$ (with $\mathbb{F}' = \mathbb{F}_{q^2}$ in the Hermitian cases), their [orders and point-line dualities](maths_3_projective_geometry.md#comparison-finite-classical-polar-spaces-over-mathbbf_q-or-mathbbf_q2) are summarized below:
+Recall from the projective geometry notes that every [polar space of rank $2$](maths_3_projective_geometry.md#generalized-quadrangles-o-o) (Witt index $2$, whose maximal singular or [totally isotropic subspaces](#polar-spaces-polarities-and-the-four-line-classes) are lines) has points and lines forming a generalized quadrangle. Over a commutative field $\mathbb{F}$ (or a quadratic extension $\mathbb{F}' / \mathbb{F}$), these classical families are the [nonsingular quadrics](maths_3_projective_geometry.md#orthogonal-polar-spaces-non-degenerate-quadrics-mathcalq) $Q^+(3, \mathbb{F})$ in $\mathrm{PG}(3, \mathbb{F})$, $Q(4, \mathbb{F})$ in $\mathrm{PG}(4, \mathbb{F})$, and $Q^-(5, \mathbb{F}'/\mathbb{F})$ in $\mathrm{PG}(5, \mathbb{F})$, the [nonsingular $\sigma$-Hermitian varieties](maths_3_projective_geometry.md#unitary-hermitian-spaces-mathcalhn-q2) $H(3, \mathbb{F}'/\mathbb{F})$ in $\mathrm{PG}(3, \mathbb{F}')$ and $H(4, \mathbb{F}'/\mathbb{F})$ in $\mathrm{PG}(4, \mathbb{F}')$ for a [separable](#quadrics-over-arbitrary-and-finite-fields) quadratic extension $\mathbb{F}'/\mathbb{F}$ with involutory automorphism $\sigma$, and the [symplectic generalized quadrangle](maths_3_projective_geometry.md#symplectic-spaces-antisymmetric-bilinear-forms) $W(\mathbb{F}) = W(3, \mathbb{F})$ of all points and totally isotropic lines of a symplectic polarity in $\mathrm{PG}(3, \mathbb{F})$. Over a finite field $\mathbb{F}_q$ (with $\mathbb{F}' = \mathbb{F}_{q^2}$ in the Hermitian cases), their [orders and point-line dualities](maths_3_projective_geometry.md#comparison-finite-classical-polar-spaces-over-mathbbf_q-or-mathbbf_q2) are summarized below:
 
 | Classical finite GQ | Ambient space | Order $(s, t)$ | Point count $(s+1)(st+1)$ | Duality and isomorphism relations |
 | :--- | :--- | :--- | :--- | :--- |
@@ -2386,7 +2386,7 @@ Why must we keep the words "of order $(s, t)$" in that classification? Because d
 
 In the earlier projective geometry notes we met [polar spaces from sesquilinear forms](maths_3_projective_geometry.md#polar-spaces-polarity), their [one-or-all axiom](maths_3_projective_geometry.md#one-or-all-axiom), and [the Veldkamp-Tits axioms](maths_3_projective_geometry.md#the-classical-tits-veldkamp-definition-of-polar-spaces) expressed in terms of singular subspaces. This chapter answers three questions that take the theory from finite coordinate examples to general incidence geometry. First, if we forget the ambient projective space and keep only the points and lines of a polar space, why do three simple point-line axioms suffice to rebuild all singular subspaces and their projective geometry? Second, when we define a polar space from a sesquilinear form over an arbitrary skew field, what symmetry and diagonal conditions on the form are required so that its isotropic points and lines satisfy those axioms? Third, how do the classical families of polar spaces behave over general fields, and why do finite fields collapse them into so few canonical models?
 
-<!-- terms checked: Veblen-Young theorem; nonsingular; perfect -->
+<!-- terms checked: Veblen-Young theorem; nonsingular; perfect; centre -->
 
 ### Buekenhout-Shult polar spaces
 
