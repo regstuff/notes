@@ -2,12 +2,11 @@
 
 A convention used here: Vector spaces are right vector spaces, with scalars written on the right and coordinates as column vectors, whereas the earlier projective geometry notes used left vector spaces. The prologue explains why this changes nothing over a field ([right vector spaces](#linear-algebra-over-finite-fields)).
 
-
 ## Prologue: The Linear Algebra We Need
 
-Incidence geometry is concerned with point-line geometries, which is a fancy way of saying "how points connect to each other with lines." One important aspect is to figure out what sort of point-line geometries (or connections between points via lines) are allowed and not allowed over various fields and within various constraints. Surprisingly, some pretty simple matrics which contain just $1$s and $0$s can tell us a lot when we apply the tools of linear algebra on them.
+Incidence geometry is concerned with point-line geometries, which is a fancy way of saying "how points connect to each other with lines." One important aspect is to figure out what sort of point-line geometries (or connections between points via lines) are allowed and not allowed over various fields and within various constraints. Surprisingly, some pretty simple matrices which contain just $1$s and $0$s can tell us a lot when we apply the tools of linear algebra on them.
 
-Most of what follows is core linear algebra, with a few items a physics degree may have skipped. Each topic gets a small example and a line saying where it is used. One example runs throughout:
+Here's a brief tour of the linear algebra we'll need. One example runs throughout:
 
 $$A = \begin{pmatrix} 0 & 1 & 1 \\ 1 & 0 & 1 \\ 1 & 1 & 0 \end{pmatrix}.$$
 
@@ -29,7 +28,7 @@ Similar matrices $P^{-1}AP$ (where $P$ represents a change of basis and is inver
 
 ### Real symmetric matrices and the spectral theorem
 
-Almost every matrix in the graph chapters is real and symmetric, and such matrices are as well behaved as matrices get. Their eigenvalues are real. Eigenvectors for different eigenvalues are orthogonal: if $Au = \theta u$ and $Av = \tau v$, then
+Almost every matrix we'll deal with here is real and symmetric, and such matrices are as well behaved as matrices get. Their eigenvalues are real. Eigenvectors for different eigenvalues are orthogonal: if $Au = \theta u$ and $Av = \tau v$, then
 
 $$\theta \langle u, v\rangle = \langle Au, v\rangle = \langle u, Av\rangle = \tau \langle u, v\rangle,$$
 
@@ -91,7 +90,7 @@ the Lagrange polynomial that is $1$ at $\theta_i$ and $0$ at the other roots, ev
 
 Write $j$ for the column vector with every entry $1$, and $J = jj^T$ for the square matrix with every entry $1$. The earlier projective geometry notes used $J$ for the matrix of a symplectic form; in these notes $J$ is always the all-ones matrix. For any $x$, $Jx = (x_1 + \dots + x_n)\,j$. So the $n \times n$ matrix $J$ has eigenvalue $n$ on $j$, and eigenvalue $0$ on the $(n-1)$-dimensional space $j^\perp$ of vectors whose entries sum to zero. Also $J^2 = nJ$.
 
-Matrices of the form $aI + bJ$ come up constantly, and their eigenvalues can be read off: $a + nb$ once, on $j$, and $a$ with multiplicity $n - 1$, on $j^\perp$. Hence
+Matrices of the form $aI + bJ$ come up constantly, and their eigenvalues can be read off: $a + nb$ once for eigenvector $j$, and $a$ with multiplicity $n - 1$, for $j^\perp$. Hence
 
 $$\det(aI + bJ) = (a + nb)\,a^{n-1}.$$
 
@@ -107,7 +106,7 @@ Commuting symmetric matrices can be diagonalized together: if $AB = BA$ and $Av 
 
 The rank of a matrix is the dimension of its column space; for a symmetric matrix it is the number of nonzero eigenvalues, counted with multiplicity. The determinant is the product of the eigenvalues, so a square matrix is invertible exactly when its determinant is nonzero.
 
-One rank fact does real work later. For a real matrix $M$,
+For a real matrix $M$,
 
 $$\operatorname{rank}(MM^T) = \operatorname{rank} M.$$
 
@@ -194,26 +193,24 @@ How can linear algebra prove that a finite geometry does not exist? The bridge g
 
 Let's begin by defining a simple undirected graph $\Gamma = (V, E)$, where $V$ is a set of vertices and $E$ is a set of 2-element subsets of $V$ called edges. Because edges are 2-element subsets rather than ordered pairs or multisets, loops (edges from a vertex to itself) and multiple edges between the same two vertices are automatically excluded.
 
-* Empty and Complete graphs: An empty graph has no edges ($E = \emptyset$), whereas a complete graph $K_n$ has every possible edge between its $n$ vertices.
+**Empty and Complete graphs:** An empty graph has no edges ($E = \emptyset$), whereas a complete graph $K_n$ has every possible edge between its $n$ vertices.
 
-* Isomorphism and Automorphism: Two graphs are isomorphic if we can relabel the vertices of one to get the exact edge structure of the other. An automorphism is a symmetry of a single graph: a permutation of its vertices that preserves adjacency and non-adjacency.
+**Isomorphism and Automorphism:** Two graphs are isomorphic if we can relabel the vertices of one to get the exact edge structure of the other. An automorphism is a symmetry of a single graph: a permutation of its vertices that preserves adjacency and non-adjacency.
 
-* Complement: The complement of $\Gamma$ keeps the same vertices $V$ but flips all connections: edges become non-edges ($x \not\sim y$) and non-edges become edges ($x \sim y$).
+**Complement:** The complement of $\Gamma$ keeps the same vertices $V$ but flips all connections: edges become non-edges ($x \not\sim y$) and non-edges become edges ($x \sim y$). Note that this is not a dual, where the edges become vertices and vice versa.
 
-* Valency (or degree) and Regularity: The valency of a vertex is the number of neighbors it has. If every vertex has the same number of neighbors $k$, the graph is regular of valency $k$.
+**Valency (or degree) and Regularity:** The valency of a vertex is the number of neighbors it has. If every vertex has the same number of neighbors $k$, the graph is regular of valency $k$. Valency is purely local; to tell graphs apart, we have to walk further than one step. Look at Figure 1. Every vertex has valency $2$. Even total  counts fail to separate $C_6$ from $2 K_3$: both have $6$ vertices and $6$ edges, yet one is a single ring and the other falls into two pieces. 
 
 ![Three regular graphs of valency 2: a triangle, a hexagon, and two disjoint triangles](figures/maths4_graphs_regular2.png)
 
 *Figure 1. Three graphs that are all regular of valency $2$: (a) the triangle $C_3 = K_3$, (b) the hexagon $C_6$ with alternating blue and orange vertices and top and bottom corners $x, y$, and (c) two disjoint triangles $2 K_3$. Looking one step out from any vertex, all three look identical.*
 
-Every vertex in Figure 1 has valency $2$. Even total counts fail to separate $C_6$ from $2 K_3$: both have $6$ vertices and $6$ edges, yet one is a single ring and the other falls into two pieces. Valency is purely local; to tell graphs apart, we have to walk further than one step.
-
-* Cliques: A clique is a subset of vertices where every vertex is connected to every other vertex in the subset. It is therefore a complete graph sitting inside a larger graph. A maximal clique is one that does not lie within a larger clique i.e. adding any other vertex from the graph cannot enlarge it.
+**Cliques:** A clique is a subset of vertices where every vertex is connected to every other vertex in the subset. It is therefore a complete graph sitting inside a larger graph. A maximal clique is one that does not lie within a larger clique i.e. adding any other vertex from the graph cannot enlarge it. Note that a maximal clique need not be the biggest clique in a graph. For example a single line sticking out of a graph is a clique of the $k$ points on the line. It is maximal because it is not contained in any larger clique. But there may be other cliques in the rest of the geometry bigger than it. By the way, a maximum (not maximal) clique is a clique of the largest possible cardinality in the entire graph, having size equal to the clique number $\omega(G)$.
 
 #### Paths, geodesics and distance
-A path is a walk along edges without repeating vertices. The distance $d(x, y)$ is the length of a shortest path (called a geodesic) between $x$ and $y$. The distance between a set of points or lines and a point or set of points or lines is the shortest distance between two points, one take from each of the two sets.
+A path is a walk along edges without repeating vertices. The distance $d(x, y)$ is the length of a shortest path (called a geodesic) between $x$ and $y$. The distance between a set of point or lines and another set of points or lines is the shortest distance between two points, one take from each of the two sets.
 
-The diameter $\operatorname{diam}(\Gamma)$ is the largest distance between any pair of vertices in the graph (or $\infty$ if $\Gamma$ is disconnected), while the girth $g = \operatorname{girth}(\Gamma)$ is the length of a shortest closed cycle (or $\infty$ if $\Gamma$ has no cycles). In any graph with a cycle, two opposite vertices $x, y$ on a shortest cycle $C$ of length $g$ lie at distance $d(x, y) = \lfloor g / 2 \rfloor$ in $\Gamma$ (any shorter path between them would combine with half of $C$ to create a cycle shorter than $g$). Because $d(x, y) \le \operatorname{diam}(\Gamma)$, girth and diameter always satisfy
+The diameter $\operatorname{diam}(\Gamma)$ is the largest distance between any pair of vertices in the graph (or $\infty$ if $\Gamma$ is disconnected), while the girth $g = \operatorname{girth}(\Gamma)$ is the length of a shortest closed cycle (or $\infty$ if $\Gamma$ has no cycles). In any graph with a cycle, two vertices $x, y$ at opposite ends of a shortest cycle $C$ of length $g$ lie at distance $d(x, y) = \lfloor g / 2 \rfloor$ in $\Gamma$ (because any shorter path between them would combine with half of $C$ to create a cycle shorter than $g$). Because $d(x, y) \le \operatorname{diam}(\Gamma)$, girth and diameter always satisfy
 
 $$\operatorname{girth}(\Gamma) \le 2 \operatorname{diam}(\Gamma) + 1$$
 
@@ -227,9 +224,9 @@ Check Figure 1:
 - In $C_6$, the girth is $6 = 2(3)$ and the top and bottom corners $x$ and $y$ in Figure 1(b) satisfy $d(x, y) = 3$ (the diameter), joined by *two* distinct geodesics of length $3$ (left or right around the ring), whereas closer pairs ($d < 6 / 2 = 3$) have a unique geodesic.
 - $2 K_3$ is disconnected, with $2$ components, girth $3$, and diameter $\infty$.
 
-Valency only tells you what happens in the locality of a vertex. Distance captures global information. Keep that uniqueness switch in $C_6$ in mind: in [Basic properties of generalized polygons](#basic-properties-of-generalized-polygons), geodesics will stay *unique* at every distance below the maximum distance, then close from several directions at once.
+Unlike, valency which only tells you what happens in the locality of a vertex, distance captures global information. Keep that uniqueness switch in $C_6$ in mind: in [Basic properties of generalized polygons](#basic-properties-of-generalized-polygons), geodesics will stay *unique* at every distance below the maximum distance, then close from several directions at once.
 
-* Subgraph vs. Induced Subgraph: A general subgraph takes a subset of vertices $V'$ and some chosen subset of edges between them. An induced subgraph on $V'$ takes the subset of vertices $V'$ and is forced to keep every edge from the original graph whose endpoints both lie in $V'$.
+**Subgraph vs. Induced Subgraph:** A general subgraph takes a subset of vertices $V'$ and some chosen subset of edges between them. An induced subgraph on $V'$ takes the subset of vertices $V'$ and is forced to keep every edge from the original graph whose endpoints both lie in $V'$.
 
 Induced subgraphs vs. cliques in collinearity graphs: Later, when we pass from a graph to a point-line geometry, a line is always a clique in the collinearity graph, but not every maximal clique is a line. Also, the distinction between a general subgraph and an induced subgraph mirrors the later distinction between a general subgeometry and a subspace.
 
@@ -345,13 +342,13 @@ A subgeometry picks a subset of points $\mathcal{P}'$ and a subset of lines $\ma
 
 In a partial linear space $S = (\mathcal{P}, \mathcal{L}, I)$:
 
-* Subspace: A subset of points $X \subseteq \mathcal{P}$ with the "two-point closure rule": whenever a line of $S$ has at least two of its points inside $X$, the entire line (all of its points) must lie inside $X$. Every nonempty subspace $X$ naturally forms a full subgeometry $\tilde{X}$ using the lines contained in $X$.
+**Subspace:** A subset of points $X \subseteq \mathcal{P}$ with the "two-point closure rule": whenever a line of $S$ has at least two of its points inside $X$, the entire line (all of its points) must lie inside $X$. Every nonempty subspace $X$ naturally forms a full subgeometry $\tilde{X}$ using the lines contained in $X$.
 
-* Singular Subspace: A subspace where every pair of points is collinear. (Because $X$ is also a subspace, for any two points in a singular subspace, the unique line joining them exists in $S$ and lies completely inside $X$. Thus, singular subspaces look like [projective spaces](#projective-spaces-of-arbitrary-dimension-and-the-veblenyoung-axiom): points, lines, planes, etc., where all points are mutually collinear.)
+**Singular Subspace:** A subspace where every pair of points is collinear. (Because $X$ is also a subspace, for any two points in a singular subspace, the unique line joining them exists in $S$ and lies completely inside $X$. Thus, singular subspaces look like [projective spaces](#projective-spaces-of-arbitrary-dimension-and-the-veblenyoung-axiom): points, lines, planes, etc., where all points are mutually collinear.)
 
-  In $\mathrm{PG}(n, q)$, if a subset $X$ obeys the two-point line rule ("whenever $x, y \in X$, the line $xy$ is in $X$"), then every pair $x, y \in X$ has a line in $X$, because every pair had a line in $\mathrm{PG}(n, q)$ to begin with.
+In $\mathrm{PG}(n, q)$, if a subset $X$ obeys the two-point line rule ("whenever $x, y \in X$, the line $xy$ is in $X$"), then every pair $x, y \in X$ has a line in $X$, because every pair had a line in $\mathrm{PG}(n, q)$ to begin with.
 
-* Generated Subspace $\langle X \rangle$: Given any starting set of points $X$, there is a unique smallest subspace containing $X$, equal to the intersection of all subspaces containing $X$. How to build this subspace step by step from the bottom up:
+**Generated Subspace $\langle X \rangle$:** Given any starting set of points $X$, there is a unique smallest subspace containing $X$, equal to the intersection of all subspaces containing $X$. How to build this subspace step by step from the bottom up:
 
 Start with $X_0 = X$. To get $X_1$, draw every line that passes through at least two points of $X_0$, and throw all the points on those lines into $X_1$. Repeat: to get $X_i$, take every line passing through at least two points of $X_{i-1}$ together and add all points on those lines. The union $\bigcup_{i \in \mathbb{N}} X_i$ of all these steps is the exact subspace generated by $X$.
 
@@ -359,7 +356,7 @@ Adding all lines through pairs of points in $X_0$ creates new points in $X_1$. A
 
 The generating index is the minimum number of points needed to generate the whole geometry $\mathcal{P}$. For an $n$-dimensional projective space $PG(n, q)$, the generating index is $n + 1$ (a basis of $n + 1$ points in general position generates the entire space in $n$ steps), whereas for polar spaces and generalized quadrangles, computing the generating index tells us the minimum dimension of the ambient vector space into which the geometry can be projectively embedded.
 
-* Hyperplane: A proper subspace ($X \neq \mathcal{P}$) that intersects every single line of the geometry in at least one point. (Because $X$ is a subspace, any line of $S$ either meets the hyperplane $X$ in a single point, or is completely contained inside $X$.)
+**Hyperplane:** A proper subspace ($X \neq \mathcal{P}$) that intersects every single line of the geometry in at least one point. (Because $X$ is a subspace, any line of $S$ either meets the hyperplane $X$ in a single point, or is completely contained inside $X$.)
 
 Unlike projective hyperplanes, a hyperplane of $\mathcal{S}$ need not look flat and may contain *no lines at all*. Let us find every hyperplane $H$ of the $3 \times 3$ grid (Figure 3):
 
@@ -439,7 +436,7 @@ without writing down a single entry of $M$. Products like $M M^T$ and $A^2$ turn
 
 This will give us two algebraic weapons that prove theorems and rule out impossible geometries without ever having to draw or search for them. We will look at this in a little while. 
 
-<!-- terms checked: subspace; hyperplane; irreducible; nondegenerate; degenerate; dimension; extension; generalized $n$-gon -->
+<!-- terms checked: subspace; hyperplane; irreducible; reducible; nondegenerate; degenerate; dimension; extension; generalized $n$-gon -->
 
 ## Classes of Point-Line Geometries
 
@@ -511,8 +508,7 @@ Pause and ask: is requiring *three* noncollinear points enough to give a rich pl
 
 To separate genuine planes from near-pencils, we strengthen "three noncollinear points" to four:
 
-- A projective plane is **irreducible** (or **nondegenerate**) if it contains **four points, no three of which are collinear** (a quadrangle).
-- Otherwise, it is **reducible** (or **degenerate**). The degenerate projective planes are **precisely the near-pencils**.
+A projective plane is **irreducible** (or **nondegenerate**) if it contains **four points, no three of which are collinear** (a quadrangle). Otherwise, it is **reducible** (or **degenerate**). The degenerate projective planes are **precisely the near-pencils**.
 
 We now show why in any nondegenerate projective plane $\mathcal{S}$, every line has the same number of points, which also equals the number of lines in the plane.
 
@@ -544,8 +540,9 @@ $(\star')$ Whenever $x_1, x_2, x_3$ are three noncollinear points of $\mathcal{S
 
 Just as with planes, we distinguish thick projective spaces from glued-together pieces:
 
-- A projective space is **irreducible** if **every line is thick** (incident with at least $3$ points). If at least one line is thin (incident with only $2$ points), the projective space is **reducible**. For a projective space of dimension at least $2$, irreducibility is equivalent to requiring every generated plane $\langle x_1, x_2, x_3 \rangle$ of three noncollinear points to be an *irreducible* projective plane.
-- The **dimension** of a projective space $\mathcal{S}$ is defined via its generating index $N_{\mathcal{S}}$ (the minimum number of points needed to generate $\mathcal{S}$):
+A projective space is **irreducible** if *every line is thick* (incident with at least $3$ points). If at least one line is thin (incident with only $2$ points), the projective space is **reducible**. For a projective space of dimension at least $2$, irreducibility is equivalent to requiring every generated plane $\langle x_1, x_2, x_3 \rangle$ of three noncollinear points to be an *irreducible* projective plane.
+
+The **dimension** of a projective space $\mathcal{S}$ is defined via its generating index $N_{\mathcal{S}}$ (the minimum number of points needed to generate $\mathcal{S}$):
 
 $$\dim(\mathcal{S}) = N_{\mathcal{S}} - 1.$$
 
@@ -1655,7 +1652,6 @@ Look at why the hypothesis $s \neq 1$ is genuinely needed in Higman's inequality
 
 Note that a generalized $n$-gon with $n \ge 5$ is never a partial geometry, and for $n \ge 6$ its collinearity graph has diameter at least $3$, so it is not a strongly regular graph. (For $n = 5$ the only finite examples with an order are the ordinary pentagons, and their collinearity graph $C_5$ is strongly regular.) Instead, the collinearity graph of a generalized $n$-gon of order $(s, t)$ is a distance-regular graph of diameter $d = \lfloor n/2 \rfloor$, which means you apply the exact same Krein parameter machinery ($q_{ij}^k \ge 0$) inside the larger $(d + 1)$-dimensional Bose-Mesner algebra to get the generalized polygon bounds. We will look at this later.
 
-
 ## Hyperplanes and Projective Embeddings of Point-Line Geometries
 
 ### Intuition
@@ -2628,13 +2624,13 @@ Let $f$ be a nondegenerate trace-valued $(\sigma, \epsilon)$-Hermitian form on a
 
 Because the line through two isotropic points is totally isotropic precisely when those two points are orthogonal, the form $f$ partitions all lines of the ambient projective space $\mathrm{PG}(V)$ into four classes (Figure 22):
 
-- **$\mathcal{L}_1$ (Totally isotropic lines):** Lines of $\mathrm{PG}(V)$ wholly contained in $\mathcal{P}$ on which any two points are mutually orthogonal ($L \in \mathcal{L}$).
+**$\mathcal{L}_1$ (Totally isotropic lines):** Lines of $\mathrm{PG}(V)$ wholly contained in $\mathcal{P}$ on which any two points are mutually orthogonal ($L \in \mathcal{L}$).
 
-- **$\mathcal{L}_2$ (Tangent lines):** Lines of $\mathrm{PG}(V)$ meeting $\mathcal{P}$ in a single point ($|L \cap \mathcal{P}| = 1$).
+**$\mathcal{L}_2$ (Tangent lines):** Lines of $\mathrm{PG}(V)$ meeting $\mathcal{P}$ in a single point ($|L \cap \mathcal{P}| = 1$).
 
-- **$\mathcal{L}_3$ (Exterior / passant lines):** Lines of $\mathrm{PG}(V)$ disjoint from $\mathcal{P}$ ($L \cap \mathcal{P} = \emptyset$).
+**$\mathcal{L}_3$ (Exterior / passant lines):** Lines of $\mathrm{PG}(V)$ disjoint from $\mathcal{P}$ ($L \cap \mathcal{P} = \emptyset$).
 
-- **$\mathcal{L}_4$ (Hyperbolic / secant lines):** Lines of $\mathrm{PG}(V)$ containing at least two isotropic points that are *not* mutually orthogonal ($L \notin \mathcal{L}_1$ and $|L \cap \mathcal{P}| \ge 2$).
+**$\mathcal{L}_4$ (Hyperbolic / secant lines):** Lines of $\mathrm{PG}(V)$ containing at least two isotropic points that are *not* mutually orthogonal ($L \notin \mathcal{L}_1$ and $|L \cap \mathcal{P}| \ge 2$).
 
 For every isotropic point $x = \langle v_1 \rangle \in \mathcal{P}$, the lines through $x$ belonging to $\mathcal{L}_1 \cup \mathcal{L}_2$ are precisely the lines through $x$ contained in the **tangent hyperplane** $T_x := \mathrm{PG}(W_{v_1}) = x^\zeta$, while every line through $x$ not contained in $T_x$ belongs to $\mathcal{L}_4$.
 
