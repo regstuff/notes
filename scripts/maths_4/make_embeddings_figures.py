@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-"""Figures 22 to 25 (v3) for the chapter "Hyperplanes and Projective Embeddings of Point-Line Geometries" (Maths 4).
+"""Figures 13 to 16 (v3) for the chapter "Hyperplanes and Projective Embeddings of Point-Line Geometries" (Maths 4).
 
 Usage:
     python3 make_embeddings_figures.py [OUTPUT_DIR]
 
 Writes four PNGs into OUTPUT_DIR (default: docs/maths/figures in this repository):
-  maths4_embeddings_quotient_book.png    (Figure 22) Secant avoidance and the pages-of-a-book quotient Sigma_alpha
-  maths4_embeddings_fan_hyperplanes.png  (Figure 23) All 15 hyperplanes of the 3-vane fan: 7 surviving vs 8 killed
-  maths4_embeddings_quotient.png         (Figure 24) Why proper quotients strictly lose hyperplanes & 3-vane fan quotient
-  maths4_embeddings_ag23_parity.png      (Figure 25) Why AG(2,3) has zero hyperplanes: odd vs even pencil partition
+  maths4_embeddings_quotient_book.png    (Figure 13) Secant avoidance and the pages-of-a-book quotient Sigma_alpha
+  maths4_embeddings_fan_hyperplanes.png  (Figure 14) All 15 hyperplanes of the 3-vane fan: 7 surviving vs 8 killed
+  maths4_embeddings_quotient.png         (Figure 15) Why proper quotients strictly lose hyperplanes & 3-vane fan quotient
+  maths4_embeddings_ag23_parity.png      (Figure 16) Why AG(2,3) has zero hyperplanes: odd vs even pencil partition
 
 Every point, line, secant, and hyperplane is computed from coordinates and asserted before plotting.
 """
@@ -100,7 +100,7 @@ def build_fan3_pg32():
 
 
 def make_figure_22_quotient_book(out_dir: Path) -> Path:
-    """Figure 22: (a) Secant avoidance in PG(3,2); (b) Projecting PG(3,F) from a 1D hinge line ('book of pages')."""
+    """Figure 13: (a) Secant avoidance in PG(3,2); (b) Projecting PG(3,F) from a 1D hinge line ('book of pages')."""
     pts, lines, _, _, _, alpha, beta = build_fan3_pg32()
 
     plt.rcParams.update(plt.rcParamsDefault)
@@ -291,7 +291,7 @@ def make_figure_22_quotient_book(out_dir: Path) -> Path:
 
 
 def make_figure_23_fan_hyperplanes(out_dir: Path) -> Path:
-    """Figure 23: All 15 hyperplanes of the 3-vane fan in PG(3,2), plus a labelled Key fan diagram."""
+    """Figure 14: All 15 hyperplanes of the 3-vane fan in PG(3,2), plus a labelled Key fan diagram."""
     pts, lines, planes, surviving, killed, alpha, _ = build_fan3_pg32()
 
     case_a_surv = sorted([(a, H) for a, H in surviving.items() if "p0" in H], key=lambda x: (len(x[1]), sorted(x[1])))
@@ -490,7 +490,7 @@ def make_figure_23_fan_hyperplanes(out_dir: Path) -> Path:
 
 
 def make_figure_24_quotient(out_dir: Path) -> Path:
-    """Figure 24: Redrawn Panel (a) (3 noncollinear y_i spanning plane through x in alpha) + touched-up Panel (b)."""
+    """Figure 15: Redrawn Panel (a) (3 noncollinear y_i spanning plane through x in alpha) + touched-up Panel (b)."""
     build_fan3_pg32()
 
     plt.rcParams.update(plt.rcParamsDefault)
@@ -763,7 +763,7 @@ def make_figure_24_quotient(out_dir: Path) -> Path:
 
 
 def make_figure_25_ag23_parity(out_dir: Path) -> Path:
-    """Figure 25: Why AG(2,3) has zero hyperplanes — pencil through p in H (odd) vs pencil through q not in H (even=4)."""
+    """Figure 16: Why AG(2,3) has zero hyperplanes — pencil through p in H (odd) vs pencil through q not in H (even=4)."""
     F3 = (0, 1, 2)
     pts = [(x, y) for y in F3 for x in F3]
     assert len(pts) == 9

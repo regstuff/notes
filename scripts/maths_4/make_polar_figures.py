@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-"""Figures 18 to 21 for the chapter "Polar spaces" (Maths 4).
+"""Figures 20 to 23 for the chapter "Polar spaces" (Maths 4).
 
 Usage:
     python3 make_polar_figures.py [OUTPUT_DIR]
 
 Writes four PNGs into OUTPUT_DIR (default: docs/maths/figures in this repository):
-  maths4_polar_disjoint_lines.png       (Figure 18) The three collinearity patterns between two disjoint lines in Q+(7, 2)
-  maths4_polar_common_neighbours.png    (Figure 19) The common-neighbour subspace a^perp cap b^perp in W(5, 2)
-  maths4_polar_line_classes.png         (Figure 20) The four line classes and the trace equation on hyperbolic lines
-  maths4_polar_nucleus_isomorphism.png  (Figure 21) Projecting Q(4, 2) from its nucleus onto W(3, 2)
+  maths4_polar_disjoint_lines.png       (Figure 20) The three collinearity patterns between two disjoint lines in Q+(7, 2)
+  maths4_polar_common_neighbours.png    (Figure 21) The common-neighbour subspace a^perp cap b^perp in W(5, 2)
+  maths4_polar_line_classes.png         (Figure 22) The four line classes and the trace equation on hyperbolic lines
+  maths4_polar_nucleus_isomorphism.png  (Figure 23) Projecting Q(4, 2) from its nucleus onto W(3, 2)
 """
 
 from __future__ import annotations
@@ -63,10 +63,10 @@ def fmt_vec(v: tuple[int, ...], basis_name: str = "e") -> str:
 
 
 # ============================================================================
-# Figure 18: Three configurations of two disjoint lines in a polar space
+# Figure 20: Three configurations of two disjoint lines in a polar space
 # ============================================================================
 def build_figure_18() -> Path:
-    """Verify the three disjoint-line relations in Q+(7, 2) and plot Figure 18."""
+    """Verify the three disjoint-line relations in Q+(7, 2) and plot Figure 20."""
     def q_form(x: tuple[int, ...]) -> int:
         return (x[0] * x[1] + x[2] * x[3] + x[4] * x[5] + x[6] * x[7]) % 2
 
@@ -246,10 +246,10 @@ def build_figure_18() -> Path:
 
 
 # ============================================================================
-# Figure 19: Common neighbours S_{a,b} = a^perp cap b^perp in W(5, 2)
+# Figure 21: Common neighbours S_{a,b} = a^perp cap b^perp in W(5, 2)
 # ============================================================================
 def build_figure_19() -> Path:
-    """Verify S_{a,b} = a^perp cap b^perp in W(5, 2) and plot Figure 19."""
+    """Verify S_{a,b} = a^perp cap b^perp in W(5, 2) and plot Figure 21."""
     def symp(x: tuple[int, ...], y: tuple[int, ...]) -> int:
         return (
             x[0] * y[1] + x[1] * y[0]
@@ -453,10 +453,10 @@ def build_figure_19() -> Path:
 
 
 # ============================================================================
-# Figure 20: Four line classes L_1, L_2, L_3, L_4 and trace equation
+# Figure 22: Four line classes L_1, L_2, L_3, L_4 and trace equation
 # ============================================================================
 def build_figure_20() -> Path:
-    """Verify line-class partition in PG(3,3) for Q+(3,3) and W(3,3) and plot Figure 20."""
+    """Verify line-class partition in PG(3,3) for Q+(3,3) and W(3,3) and plot Figure 22."""
     pts_pg33 = []
     for v in itertools.product((0, 1, 2), repeat=4):
         if any(v):
@@ -730,10 +730,10 @@ def build_figure_20() -> Path:
 
 
 # ============================================================================
-# Figure 21: Nucleus projection Q(4, 2) -> W(3, 2) in characteristic 2
+# Figure 23: Nucleus projection Q(4, 2) -> W(3, 2) in characteristic 2
 # ============================================================================
 def build_figure_21() -> Path:
-    """Verify the nucleus projection Q(4, 2) -> W(3, 2) and plot Figure 21."""
+    """Verify the nucleus projection Q(4, 2) -> W(3, 2) and plot Figure 23."""
     def q_para(x: tuple[int, ...]) -> int:
         return (x[0] + x[1] * x[2] + x[3] * x[4]) % 2
 

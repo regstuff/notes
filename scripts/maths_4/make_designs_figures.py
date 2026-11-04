@@ -1,12 +1,12 @@
-"""Figures 14 to 17 for the chapter "Designs" (Maths 4, incidence geometry).
+"""Figures 24 to 27 for the chapter "Designs" (Maths 4, incidence geometry).
 
 Usage: python make_designs_figures.py OUTPUT_DIR
 
 Writes four PNGs into OUTPUT_DIR:
-  maths4_designs_double_count.png   (Figure 14) double counting above X={000,001} in AG(3,2)=S(3,4,8)
-  maths4_designs_fisher_ag23.png    (Figure 15) incidence matrix M and Gram matrix MM^T=3I+J of AG(2,3)
-  maths4_designs_planes_count.png   (Figure 16) projective vs affine line budget at n=3: PG(2,3) vs AG(2,3)
-  maths4_designs_building.png       (Figure 17) split incidence matrix of AG(3,2) and lambda_i^j triangles
+  maths4_designs_double_count.png   (Figure 24) double counting above X={000,001} in AG(3,2)=S(3,4,8)
+  maths4_designs_fisher_ag23.png    (Figure 25) incidence matrix M and Gram matrix MM^T=3I+J of AG(2,3)
+  maths4_designs_planes_count.png   (Figure 26) projective vs affine line budget at n=3: PG(2,3) vs AG(2,3)
+  maths4_designs_building.png       (Figure 27) split incidence matrix of AG(3,2) and lambda_i^j triangles
 
 Every count, block, incidence matrix, eigenvalue, determinant, and block-avoidance number is
 computed from first principles and asserted before plotting.
@@ -75,11 +75,11 @@ def build_ag32():
 
 
 def build_ag23():
-    """Return points and blocks of AG(2,3) = S(2,3,9) in Figure 9(a) order."""
+    """Return points and blocks of AG(2,3) = S(2,3,9) in Figure 8(a) order."""
     # Points ordered row-by-row from y=0 to y=2, x=0 to x=2
     pts = [(x, y) for y in range(3) for x in range(3)]
     assert len(pts) == 9
-    # 4 parallel classes in Figure 9(a) order:
+    # 4 parallel classes in Figure 8(a) order:
     # Slope 0: y = c (c = 0, 1, 2)
     slope_0 = [frozenset((x, c) for x in range(3)) for c in range(3)]
     # Slope inf: x = c (c = 0, 1, 2)
@@ -123,7 +123,7 @@ def lambda_ij_ie(v, k, t, lam, i, j):
     return total
 
 
-# ---------------------------------------------------------------- Figure 14
+# ---------------------------------------------------------------- Figure 24
 def fig14_double_count(out):
     pts, blocks = build_ag32()
     X = frozenset({(0, 0, 0), (0, 0, 1)})
@@ -392,7 +392,7 @@ def fig14_double_count(out):
     plt.close(fig)
 
 
-# ---------------------------------------------------------------- Figure 15
+# ---------------------------------------------------------------- Figure 25
 def fig15_fisher_ag23(out):
     pts, blocks, classes = build_ag23()
     v, b = len(pts), len(blocks)
@@ -553,7 +553,7 @@ def fig15_fisher_ag23(out):
     plt.close(fig)
 
 
-# ---------------------------------------------------------------- Figure 16
+# ---------------------------------------------------------------- Figure 26
 def fig16_planes_count(out):
     # Check parameters for n = 3:
     # PG(2,3) = S(2, 4, 13): v = 13, k = 4, r = (13-1)/(4-1) = 4, leftover = 4 - 4 = 0
@@ -700,7 +700,7 @@ def fig16_planes_count(out):
     plt.close(fig)
 
 
-# ---------------------------------------------------------------- Figure 17
+# ---------------------------------------------------------------- Figure 27
 def fig17_building(out):
     pts, blocks = build_ag32()
     x0 = (0, 0, 0)
