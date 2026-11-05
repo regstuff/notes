@@ -1484,7 +1484,15 @@ If rank = 2, $G_\alpha$ has only two orbits: $\{\alpha\}$ and $\Omega \setminus 
 
 Looking at it conversely, because $G$ is 2-transitive, for any two distinct points $\beta, \gamma \in \Omega \setminus \{\alpha\}$, there exists $g \in G$ fixing $\alpha$ and sending $\beta \mapsto \gamma$. That means $G_\alpha$ acts transitively on the remaining points $\Omega \setminus \{\alpha\}$. Therefore, $G_\alpha$ partitions $\Omega$ into exactly two orbits: $\{\alpha\}$ and $\Omega \setminus \{\alpha\}$.
 
-Every $2$-transitive action is strictly primitive. (A block is a subset $B \subseteq \Omega$ that every $g \in G$ either maps onto itself or moves completely off itself: $gB = B$ or $gB \cap B = \emptyset$. The single points and $\Omega$ itself are always blocks, the trivial ones. A transitive action is primitive if it has no other blocks. If it has a non-trivial block, the images of that block split $\Omega$ into a system of blocks, as described a few paragraphs below.) The hierarchy of transitivity properties runs strictly in this order:
+#### Blocks
+A block is a subset $B \subseteq \Omega$ that every $g \in G$ either maps onto itself or moves completely off itself: $gB = B$ or $gB \cap B = \emptyset$. The single points and $\Omega$ itself are always blocks, the trivial ones. A transitive action is primitive if it has no other blocks, and imprimitive otherwise. If it has a non-trivial block, the images of that block split $\Omega$ into a system of blocks. The whole set $\Omega$ is acted on by $G$ transitively and so the whole set is already one single orbit (any point can reach any other point). However, $\Omega$ splits into smaller clumps $B_1, B_2, \dots, B_m$ that swap places with each other as whole units ($g \cdot B_1 = B_2$).
+
+
+For example, take $D_8$ on a square. Every corner can reach every other corner (so $\{1, 2, 3, 4\}$ is one single orbit). Inside that single orbit, $B_1 = \{1, 3\}$ and $B_2 = \{2, 4\}$ are blocks because a $90^\circ$ rotation moves the entire pair $\{1, 3\}$ onto $\{2, 4\}$ without ever splitting opposite corners apart.
+
+Imprimitivity is the exact opposite extreme of $k$-homogeneity, because both look at how $G$ moves $k$-element subsets around but $k$-Homogeneity represents maximum mixing. The group $G$ acts transitively on the set of all $\binom{n}{k}$ possible $k$-element subsets. Any $k$-subset can be mapped to any other $k$-subset, so no $k$-subset is special. (Note: $k$-homogeneity is for unordered $k$-subsets; $k$-transitivity is for ordered $k$-tuples). Imprimitivity with blocks of size $k$ represents minimum mixing. Out of all $\binom{n}{k}$ possible $k$-subsets, there is a tiny, closed collection of just $m = n/k$ disjoint $k$-subsets (the blocks $\{B_1, B_2, \dots, B_m\}$) that only map to each other under every $g \in G$, never mixing with the remaining $\binom{n}{k} - m$ subsets. Because a $2$-homogeneous group can map any pair inside a block to a pair that straddles two different blocks, $2$-homogeneity (and thus $2$-transitivity) automatically forces the action to be primitive.
+
+The hierarchy of transitivity properties runs strictly in this order:
 
 $$\dots \implies 3\text{-transitive} \implies 2\text{-transitive} \implies \text{Primitive} \implies 1\text{-transitive}$$
 
@@ -2123,6 +2131,12 @@ Over $\mathbb{C}$ the table is square, since there the number of irreducible rep
 The character of the representation is the function $\chi: G \to \mathbb{C}$ tracking the traces of the matrices (in this formula $\rho g$ is the matrix of $g$, written $g\rho$ or $\rho(g)$ elsewhere):
 
 $$\chi(g) = \operatorname{Tr}(\rho g)$$
+
+A character is literally an $n$-dimensional ($n$ is the number of elements in $G$) vector where each coordinate corresponds to one group element:
+
+$$\vec{\chi} = \big(\chi(g_1), \; \chi(g_2), \; \dots, \; \chi(g_n)\big) \in \mathbb{C}^{\vert{}G\vert{}}$$
+
+So you can take the inner product of two characters $\chi$ and $\psi$ with their standard complex dot product. This will come in handy soon.
 
 **Do many representations have the same character?** No! This is one of the most powerful theorems in the subject: over $\mathbb{C}$ (more generally, over any field of characteristic $0$), two representations of a finite group have the exact same character if and only if they are isomorphic (equivalent) (Note that this fails in characteristic $p$: over $\mathbb{F}_2$, the regular module of $C_2$ and the 2-dimensional trivial module both have character $(0, 0)$, yet they are not isomorphic). The character is a perfect mathematical fingerprint. If the characters match, the representations are built out of the exact same irreducible blocks in the exact same quantities.   
 
