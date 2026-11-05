@@ -424,7 +424,17 @@ If you take a set of $n$ points, say $\{1, 2, \dots, n\}$, and write out all the
 
 Usually, a permutation is written out in the cycle notation, which tells us which element each element is sent to, until it returns to itself. A cycle such as $(1, 2, 3)$ means that each listed point goes to the next one and the last goes back to the first, $1 \mapsto 2 \mapsto 3 \mapsto 1$, while points that are not listed stay put; so $(1, 3, 2)$ is $1 \mapsto 3 \mapsto 2 \mapsto 1$, and the 2-cycle $(1, 2)$ just swaps $1$ and $2$. A permutation may involve multiple cycles working together because it may not be possible for one element to permute into all other elements. If that were possible, we would have a single cycle. For example, $S_3$ consists of the six elements which permute the 3 items $1$, $2$, $3$ in the following way (in cycle notation): $(1)$ (the identity, so nothing is permuted), $(1, 2, 3)$, $(1, 3, 2)$, $(1, 2)$, $(2, 3)$, and $(1, 3)$. A 2-cycle like (2 3) is a transposition.
 
-To multiply permutations, we read the product from left to right: $gh$ means first do $g$, then do $h$. For example, $(1\,2)(1\,2\,3) = (1\,3)$: following each point, $1 \to 2 \to 3$, $2 \to 1 \to 2$ and $3 \to 3 \to 1$. Some books read products from right to left, like composing functions, and get $(2\,3)$ instead, so it is worth checking which convention a text uses.
+To multiply permutations, we read the product from left to right: $gh$ means first do $g$, then do $h$. To work out a product, follow each point through the factors in turn. For $(1\,2)(1\,2\,3)$, we first apply $(1\,2)$ and then $(1\,2\,3)$:
+
+| start | after $(1\,2)$ | after $(1\,2\,3)$ | result |
+|---|---|---|---|
+| $1$ | $2$ | $3$ | $1 \to 3$ |
+| $2$ | $1$ | $2$ | $2$ stays put |
+| $3$ | $3$ | $1$ | $3 \to 1$ |
+
+So $1$ and $3$ swap, $2$ does not move, and the product is $(1\,3)$. When we write the answer in cycle notation, we start each cycle with its lowest number, and we leave out the points that do not move, so $2$ does not appear. (Writing $(3\,1)$ or $(1\,3)(2)$ would describe the same permutation.)
+
+Some books read products from right to left, like composing functions. There $(1\,2)(1\,2\,3)$ means first $(1\,2\,3)$ and then $(1\,2)$, and following the points in that order gives $1 \to 2 \to 1$, $2 \to 3 \to 3$ and $3 \to 1 \to 2$, so the product is $(2\,3)$ instead. The two answers differ because permutations do not commute in general, so it is worth checking which convention a text uses.
 
 A Cayley table is like an operation table with the group elements listed on top and to the left, horizontally and vertically. Each slot in the table is filled with the group element produced by the composition of those two elements. This means any row or column will contain only one instance of any element, and every element must be present. This is like Sudoku and is generally called a Latin Square.
 
@@ -478,7 +488,13 @@ So a normal subgroup commutes with every element of $G$ as a whole set ($gN = Ng
 
 One difference from ideals in rings is that while the ideal has the absorption property, there is nothing like that in the normal subgroup. In a ring, absorption works perfectly because you are absorbing a second operation (multiplication) into a subgroup built on the first operation (addition). $r \cdot 0 = 0$, so multiplying by the additive identity doesn't force $r$ into the ideal. But in a group, you only have one operation. The only subgroup that absorbs the group operation is the entire group itself. However, the normal subgroup does absorb perspective shifts (which we will explain shortly). 
 
-A geometric way of thinking of normal subgroups is through conjugation. Two elements $x$ and $y$ are conjugate if $y = g^{-1}xg$. They are said to belong to the same conjugacy class, which is an equivalence relation. This is the mathematical formulation of a change of perspective or a change of basis/coordinates. (We will encounter something very similar when we look at Representation Theory and change of basis later.)
+[Figure 3](#figure-3) shows the Cayley table of $S_3$ coloured first by the normal subgroup $N = A_3$ (the three even permutations $e$, $(1\,2\,3)$ and $(1\,3\,2)$), which gives solid $3 \times 3$ coset blocks, and then by the non-normal subgroup $H = \{e, (1\,2)\}$, where the $2 \times 2$ blocks split across two cosets.
+
+<a id="figure-3"></a>![Normal vs non-normal coset blocks in the Cayley table of S_3](figures/maths2_s3_cosets_normality.png)
+
+*Figure 3. Coset blocks in the Cayley table of $S_3$, with products read left to right ($gh$ means first $g$, then $h$). (a) For the normal subgroup $N = A_3 = \{e, (1\,2\,3), (1\,3\,2)\}$, left and right cosets agree and the table splits into four solid $3 \times 3$ blocks that form the quotient $S_3/N$. (b) For the non-normal subgroup $H = \{e, (1\,2)\}$, left and right cosets differ on $(1\,3)$ and $(2\,3)$, and six of the nine $2 \times 2$ blocks split across two cosets.*
+
+A geometric way of thinking of normal subgroups is through conjugation. Two elements $x$ and $y$ are conjugate if $y = g^{-1}xg$. They are said to belong to the same conjugacy class, which is an equivalence relation. This is the mathematical formulation of a change of perspective or a change of basis/coordinates. (We will encounter something very similar when we look at Representation Theory and change of basis later.) Conjugacy classes partition the entire group $G$ into disjoint subsets of elements that are structurally the same type of operation.
 
 Imagine you are standing in a room.
 
@@ -543,20 +559,14 @@ $$b^{-1} n_1 b = n_3$$
 
 This is the normality condition. We want our final error to fall in the same coset, because then we can somehow figure out how to correct for the error. If it fell into another coset, because we don't know what the error is and whether it even occurred, we wouldn't know whether we need to stay in this same new coset or actually shift back to some other coset.
 
-[Figure 3](#figure-3) shows the Cayley table of $S_3$ coloured first by the normal subgroup $N = A_3$ (the three even permutations $e$, $(1\,2\,3)$ and $(1\,3\,2)$), which gives solid $3 \times 3$ coset blocks, and then by the non-normal subgroup $H = \{e, (1\,2)\}$, where the $2 \times 2$ blocks split across two cosets.
 
-<a id="figure-3"></a>![Normal vs non-normal coset blocks in the Cayley table of S_3](figures/maths2_s3_cosets_normality.png)
-
-*Figure 3. Coset blocks in the Cayley table of $S_3$, with products read left to right ($gh$ means first $g$, then $h$). (a) For the normal subgroup $N = A_3 = \{e, (1\,2\,3), (1\,3\,2)\}$, left and right cosets agree and the table splits into four solid $3 \times 3$ blocks that form the quotient $S_3/N$. (b) For the non-normal subgroup $H = \{e, (1\,2)\}$, left and right cosets differ on $(1\,3)$ and $(2\,3)$, and six of the nine $2 \times 2$ blocks split across two cosets.*
-
-For any subgroup $H$ of $G$ and any element $g$ of $G$, the conjugate set $g^{-1}hg$ for $h \in H$ is a subgroup of $G$. This means if there is only one subgroup of a certain order, it must be normal.
 
 #### Conditions Implying a Normal Subgroup
 Each of the following conditions implies that $H$ is a normal subgroup:
 
 a.) $G$ is abelian;
 
-b.) $H$ is finite and is the only subgroup of $G$ of its order;
+b.) $H$ is finite and is the only subgroup of $G$ of its order; because for any subgroup $H$ of $G$ and any element $g$ of $G$, the conjugate set $g^{-1}hg$ for $h \in H$ is a subgroup of $G$. This means if there is only one subgroup of a certain order, it must be normal.
 
 c.) $H$ has index 2 in $G$.
 
@@ -1668,13 +1678,15 @@ How do orbitals, subgroups, actions and transitivity fit together? Assume $G$ ac
 
 While Cayley proved every group is a permutation group, permutations are notoriously difficult to do calculus or continuous mathematics on. You cannot easily take the derivative or find the eigenvectors of a permutation.
 
-Mathematicians wanted to port the powerful tools of Linear Algebra (matrices, traces, determinants) into abstract groups. This created Representation Theory.
+We would like to port the powerful tools of Linear Algebra (matrices, traces, determinants) into abstract groups. This leads to Representation Theory.
 
-A group mathematically captures the "symmetries" of a system (like rotations or permutations). When we write a representation, we are drawing matrices that show exactly how those symmetries move vectors around in a space. 
+A group mathematically captures the "symmetries" of a system (like rotations or permutations). When we write a representation, we are drawing matrices that show exactly how those symmetries move vectors around in a space. So $(gh)r$ and $gr$ are the notation for the matrices of the group elements $gh$ and $g$ in the representation $r$.
 
 A representation of $G$ over $F$ is a homomorphism $r$ from $G$ to $GL(n, F)$, for some $n$. The degree of $r$ is the integer $n$. Thus if $r$ is a function from $G$ to $GL(n, F)$, then $r$ is a representation if and only if:
 
 $$(gh)r = (gr)(hr) \quad \text{for all } g, h \in G$$
+
+Concretely, the matrices representing group elements $g$ and $h$: $gr$ and $hr$, must compose into the matrix for the group element $gh$, which is $(gh)r$. 
 
 Here, and often from now on, maps are written to the right of their arguments, as the module sections below do ($vg$): $gr$ means $r(g)$, the matrix that $r$ gives to $g$ (not a product of $g$ and $r$). Likewise $(g)\rho$ means $\rho(g)$ and $w\pi$ means $\pi(w)$; where a later passage writes $\rho(g)$, it means the same matrix.
 
@@ -1714,7 +1726,23 @@ For a finite group over $\mathbb{C}$ (more generally, over a field whose charact
 
 #### $FG$-modules
 
-A module represents abstract operations of group elements over a vector space. It isn't really different from a representation, which is the same thing but with a concrete choice of basis vectors. Modules are very much like tensors. A tensor $T$ is an intrinsic, geometric multilinear object. When you select a coordinate basis, $T$ reveals itself as a multidimensional array of numbers (components $T^{i}_{\ j}$). If you perform a coordinate transformation, the numbers change according to the transformation rule, but the tensor itself remains unchanged.
+A module represents abstract linear operations of group elements on a vector space. It isn't really different from a representation. Matrix representations just have a concrete choice of basis vectors. Modules are very much like tensors. A tensor $T$ is an intrinsic, geometric multilinear object. When you select a coordinate basis, $T$ reveals itself as a multidimensional array of numbers (components $T^{i}_{\ j}$). If you perform a coordinate transformation, the numbers change according to the transformation rule, but the tensor itself remains unchanged.
+
+Note that a module can give many representations based on different choices of basis vectors to write our representation matrices in. 
+
+For example, say an $FG$-module (its formal conditions follow a little further down) defines an abstract linear action of each group element $g \in G$ on the space $V$ via $v \mapsto vg$. Once you choose an ordered basis of vectors $\mathscr{B} = \{v_1, \dots, v_n\}$, each basis vector transforms under $g$ into some new vector $v_i g \in V$. Because $\mathscr{B}$ is a basis, that resulting vector can be written uniquely as a linear combination of the basis vectors: $v_i g = \sum_{j=1}^n a_{ij} v_j$.
+    
+The coefficients $a_{ij} \in F$ form the entries of the matrix $[g]_{\mathscr{B}}$:
+
+$$[g]_{\mathscr{B}} = \begin{pmatrix} a_{11} & a_{12} & \dots & a_{1n} \\ a_{21} & a_{22} & \dots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{n1} & a_{n2} & \dots & a_{nn} \end{pmatrix} \in \operatorname{GL}(n, F)$$
+
+The underlying $FG$-module $V$ is a single coordinate-free object. However, there are many choices of ordered basis $\mathscr{B}, \mathscr{B}', \dots$ for $V$, each made of $n$ vectors. Over $\mathbb{C}$ there are infinitely many, while over a finite field there are only finitely many ($\mathbb{F}_2^2$, for instance, has just 6 ordered bases). Each choice gives its own matrices $[g]_{\mathscr{B}}$, so one module gives many representations.
+
+These resulting representations are related by a change-of-basis matrix $P$ (an invertible matrix, not to be confused with the permutation matrices $P(g)$ [below](#permutation-modules-representations)):
+
+$$[g]_{\mathscr{B}'} = P^{-1} [g]_{\mathscr{B}} P \quad \forall g \in G$$
+
+From this, we can see that all such representations are equivalent, with $P$ playing the role of $T$ in the [definition of equivalence](#a-little-representation-theory).
 
 Modules are powerful and come with many tools, like character tables (tables of the traces of the representation matrices, [below](#character-tables-isomorphism-and-grouping-into-multiplicities)), that allow us to determine the many aspects of the interaction between groups, fields and vector spaces without having to resort to matrix manipulations.
 
@@ -1740,14 +1768,13 @@ In the conditions above, if you just think of the element $g$ as being a matrix 
 
 If we have a representation (and its basis vectors) in hand, we don't actually need to test the conditions for a module for each $v$. We can just test that the conditions hold for the basis vectors $v_i$ and extend them linearly to span the whole vector space. 
 
-**Does a finite group only have a finite number of representations?** You can build an infinite number of representations by making bigger and bigger direct sums, or by acting on larger and larger sets. However, a finite group only has a finite number of distinct irreducible representations. (In fact, over $\mathbb{C}$ the number of distinct irreducible representations exactly equals the number of conjugacy classes in the group. This is a standard theorem that these notes use but do not prove; see [the centre of the group algebra](#the-centre-of-the-group-algebra-zmathbbcg) below.) Over $\mathbb{C}$ (more generally, when the characteristic of $F$ does not divide $\vert{}G\vert{}$), every other representation in the universe for that group is just built by stacking these few fundamental irreducible blocks together; this is [Maschke's theorem](#maschkes-theorem) below.
+**Does a finite group only have a finite number of representations?** You can build an infinite number of representations by making bigger and bigger direct sums, or by acting on larger and larger sets. However, a finite group only has a finite number of distinct irreducible representations. (In fact, over $\mathbb{C}$ the number of distinct irreducible representations exactly equals the number of conjugacy classes in the group. See [the centre of the group algebra](#the-centre-of-the-group-algebra-zmathbbcg) below.) Over $\mathbb{C}$ (more generally, when the characteristic of $F$ does not divide $\vert{}G\vert{}$), every other representation in the universe for that group is just built by stacking these few fundamental irreducible blocks together; this is [Maschke's theorem](#maschkes-theorem) below.
 
 #### Permutation Modules & Representations
 We define a permutation matrix $P(g)$ of an element $g$. It defines whether $g$ permutes the $j^{th}$ element into the $i^{th}$ element of the set. We construct this matrix by placing $1$ in row $i$, column $j$ when $g$ maps the $j$-th element to the $i$-th element, and $0$ everywhere else. 
 
- $P(g)$ is not a property of just the group element $g$ alone. The matrix $P(g)$ depends on the set $\Omega$ it is acting on. The exact same group $G$ will yield different matrices $P(g)$ if you let it act on a set of 3 points versus a set of 10 points.
+ $P(g)$ is not a property of just the group element $g$ alone. A permutation representation specifically comes from the group acting on a finite set $\Omega$ (like permuting the 8 corners of a cube), which we then convert into vector matrices. So the matrix $P(g)$ depends on the set $\Omega$ it is acting on. The exact same group $G$ will yield different matrices $P(g)$ if you let it act on a set of 3 points versus a set of 10 points.
 
-A permutation representation specifically comes from the group acting on a finite set $\Omega$ (like permuting the 8 corners of a cube), which we then convert into vector matrices. 
 
 Let a finite group $G$ act on a finite set $\Omega = \{1, 2, \dots, n\}$. To analyze a permutation action with linear algebra, convert the set $\Omega$ into a complex vector space $V = \mathbb{C}^\Omega \cong \mathbb{C}^n$.
 
@@ -1768,20 +1795,6 @@ Because $P(gh) = P(g)P(h)$, the assignment $g \mapsto P(g)$ is a matrix represen
 Note that this passage writes the action on the left ($P(g)e_\alpha = e_{g\alpha}$) and places the $1$s by column. Like the rule $g \cdot (h \cdot x) = (gh) \cdot x$ in the [group actions](#group-actions-and-the-orbit-stabilizer-theorem) section, this reads $gh$ right to left (first $h$, then $g$), and that is what makes $P(gh) = P(g)P(h)$. The $FG$-module conventions above act on the right instead: for a permutation module, $v_i g = v_{ig}$, where $ig$ is the image of $i$ under $g$ written on the right. Since these notes read products left to right, $i(gh) = (ig)h$, which is exactly condition 2, $v(gh) = (vg)h$. The module convention records $v_i g$ in the $i$-th row, so for the same permutation the two matrices are transposes of each other.
 
 If we look at this as modules instead of matrices, if $G$ is a subgroup of the symmetric group $S_n$, then this module is called the permutation module and $e_{\alpha} \dots e_{\eta}$ are called the natural basis of the vector space. Since the only element of $G$ which fixes every $e_\alpha$ is the identity, we see that the permutation module is a faithful $FG$-module. And from Cayley's theorem, we know that every $G$ is isomorphic to a subgroup of some symmetric group. Thus, any group has a faithful $FG$-module.
-
-Note that a module can give many representations based on different choices of basis vectors to write our representation matrices in. 
-
-For example, say an $FG$-module defines an abstract linear action of each group element $g \in G$ on the space $V$ via $v \mapsto vg$. Once you choose an ordered basis of vectors $\mathscr{B} = \{v_1, \dots, v_n\}$, each basis vector transforms under $g$ into some new vector $v_i g \in V$. Because $\mathscr{B}$ is a basis, that resulting vector can be written uniquely as a linear combination of the basis vectors: $v_i g = \sum_{j=1}^n a_{ij} v_j$.
-    
-The coefficients $a_{ij} \in F$ form the entries of the matrix $[g]_{\mathscr{B}}$:
-
-$$[g]_{\mathscr{B}} = \begin{pmatrix} a_{11} & a_{12} & \dots & a_{1n} \\ a_{21} & a_{22} & \dots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{n1} & a_{n2} & \dots & a_{nn} \end{pmatrix} \in \operatorname{GL}(n, F)$$
-
-The underlying $FG$-module $V$ is a single coordinate-free object. However, there are infinitely many choices of $n$x$n$ vector bases $\mathscr{B}, \mathscr{B}', \dots$ for $V$. From this, we can see that all such representations are equivalent.
-
-These resulting representations are related by a change-of-basis matrix $P$ (an invertible matrix, not the permutation matrix $P(g)$ above):
-
-$$[g]_{\mathscr{B}'} = P^{-1} [g]_{\mathscr{B}} P \quad \forall g \in G$$
 
 #### Subspaces
     
@@ -2087,20 +2100,31 @@ $$\begin{pmatrix} X_g & 0 \\ 0 & Z_g \end{pmatrix} $$
 
 i.e. it becomes block diagonal. The similarity transformation $T [g]_\mathscr{B} T^{-1}$ cleanly removes $Y_g$.
 
-Maschke's Theorem therefore implies that, for a finite group $G$ with char($F$) not dividing $\vert{}G\vert{}$, every $FG$-module can be written as a direct sum of irreducible $FG$-submodules. These submodules are the irreducible summands of the module, and an irreducible module isomorphic to one of them is called a composition factor. (That is the special case. In general, a composition factor of $V$ is one of the irreducible quotients $V_i/V_{i-1}$ in a chain of submodules $0 = V_0 < V_1 < \dots < V_t = V$ in which every quotient is irreducible, like the composition series of a group in [Jordan-Hölder](#the-jordan-holder-theorem-the-periodic-table-of-groups). When Maschke's Theorem applies, these quotients are exactly the irreducible summands up to isomorphism; in the modular case below they need not be summands at all.) Thus, to understand $FG$-modules, we must understand irreducible $FG$-submodules. When $F=\mathbb{C}$, we can say any irreducible submodule must be isomorphic to one of the irreducible submodules in the direct sum.
+Maschke's Theorem therefore implies that, for a finite group $G$ with char($F$) not dividing $\vert{}G\vert{}$, every $FG$-module can be written as a direct sum of irreducible $FG$-submodules. Modules that split up like this are called semisimple modules. The submodules are the irreducible summands of the module, and an irreducible module isomorphic to one of them is called a composition factor. (That is the special case. In general, a composition factor of $V$ is one of the irreducible quotients $V_i/V_{i-1}$ in a chain of submodules $0 = V_0 < V_1 < \dots < V_t = V$ in which every quotient is irreducible, like the composition series of a group in [Jordan-Hölder](#the-jordan-holder-theorem-the-periodic-table-of-groups). When Maschke's Theorem applies, these quotients are exactly the irreducible summands up to isomorphism; in the modular case below they need not be summands at all.) Thus, to understand $FG$-modules, we must understand irreducible $FG$-submodules. When $F=\mathbb{C}$, we can say any irreducible submodule must be isomorphic to one of the irreducible submodules in the direct sum.
 
-What happens when Maschke's Theorem fails? We use Modular Representation Theory. The group algebra $FG$ is not semisimple (semisimple means every module splits into a direct sum of irreducible pieces, which is what Maschke's Theorem guarantees when char($F$) does not divide $\vert{}G\vert{}$). Modules can form non-trivial un-splittable chains (extensions) where $Y_g \neq 0$ permanently, leading to non-trivial Jordan block structures.
+What happens when Maschke's Theorem fails? We use Modular Representation Theory. The group algebra $FG$ is not semisimple (that is, not every $FG$-module is semisimple). Modules can form non-trivial un-splittable chains (extensions) where $Y_g \neq 0$ permanently, leading to non-trivial Jordan block structures.
 
 #### Character Tables, Isomorphism and Grouping into Multiplicities
-A representation translates abstract group elements into matrices, turning abstract group multiplication into standard matrix multiplication. However, matrices hold too much data. A $10 \times 10$ matrix has 100 entries. Mathematicians discovered that almost all the vital structural data of the representation is captured by the traces of its matrices (the sums of their diagonal elements), taken over all the group elements together. The trace of one matrix says little about that matrix, but over $\mathbb{C}$ the whole list of traces determines the representation up to isomorphism (though not the matrices themselves). This list of traces, as a function on $G$, is called the Character of the representation.
+A representation translates abstract group elements into matrices, turning abstract group multiplication into standard matrix multiplication. However, matrices hold too much data. A $10 \times 10$ matrix has 100 entries. But in effect, almost all the vital structural data of the representation is captured by the traces of its matrices (the sums of their diagonal elements), taken over all the group elements together. The trace of one matrix says little about that matrix, but over $\mathbb{C}$ the whole list of traces determines the representation up to isomorphism (though not the matrices themselves). This list of traces, as a function on $G$, is called the Character of the representation.
 
-A Character Table is a grid that records these traces for the irreducible representations of the group (one row for each irreducible character) across its conjugacy classes (one column for each class). Over $\mathbb{C}$ the table is square, since there the number of irreducible representations equals the number of conjugacy classes ([above](#fg-modules)). It acts as the structural DNA of the group. It compresses the complex non-commutative structure of the group into a simple spreadsheet of numbers, allowing mathematicians to identify normal subgroups, centers, and factoring properties just by looking at the rows and columns.
+A Character Table is a grid that records these traces for the irreducible representations of the group (one row for each irreducible character) across its conjugacy classes (one column for each class). Why use conjugacy classes instead of every element $g \in G$? Suppose $x$ and $y$ are in the same conjugacy class, meaning $y = gxg^{-1}$ for some $g \in G$.
+In any representation $r$, their matrices are related by a similarity transformation:
+
+$$yr = (gxg^{-1})r = (gr)(xr)(gr)^{-1}$$
+
+A fundamental property of matrices is that cyclic shifts inside a trace do not change the trace: $\operatorname{tr}(ABC) = \operatorname{tr}(CAB)$. Taking $A = gr$, $B = xr$ and $C = (gr)^{-1}$ gives
+
+$$\operatorname{tr}(yr) = \operatorname{tr}\big((gr)^{-1}(gr)(xr)\big) = \operatorname{tr}(xr)$$
+
+So every element of a conjugacy class has the same trace, and we just need to know the trace for any one element of the whole conjugacy class. 
+
+Over $\mathbb{C}$ the table is square, since there the number of irreducible representations equals the number of conjugacy classes ([above](#fg-modules)). It acts as the structural DNA of the group. It compresses the complex non-commutative structure of the group into a simple spreadsheet of numbers, allowing us to identify normal subgroups, centers, and factoring properties just by looking at the rows and columns.
 
 The character of the representation is the function $\chi: G \to \mathbb{C}$ tracking the traces of the matrices (in this formula $\rho g$ is the matrix of $g$, written $g\rho$ or $\rho(g)$ elsewhere):
 
 $$\chi(g) = \operatorname{Tr}(\rho g)$$
 
-**Do many representations have the same character?** No! This is one of the most powerful theorems in the subject: over $\mathbb{C}$ (more generally, over any field of characteristic $0$), two representations of a finite group have the exact same character if and only if they are isomorphic (equivalent). This fails in characteristic $p$: over $\mathbb{F}_2$, the regular module of $C_2$ and the 2-dimensional trivial module both have character $(0, 0)$, yet they are not isomorphic. The character is a perfect mathematical fingerprint. If the characters match, the representations are built out of the exact same irreducible blocks in the exact same quantities.   
+**Do many representations have the same character?** No! This is one of the most powerful theorems in the subject: over $\mathbb{C}$ (more generally, over any field of characteristic $0$), two representations of a finite group have the exact same character if and only if they are isomorphic (equivalent) (Note that this fails in characteristic $p$: over $\mathbb{F}_2$, the regular module of $C_2$ and the 2-dimensional trivial module both have character $(0, 0)$, yet they are not isomorphic). The character is a perfect mathematical fingerprint. If the characters match, the representations are built out of the exact same irreducible blocks in the exact same quantities.   
 
 If $x$ and $y$ are conjugate elements of the group $G$, then they have the same character in all representations of $G$. 
 
@@ -2743,7 +2767,7 @@ By turning the abelian group $A$ into a module over the group ring $\mathbb{Z}B$
 
 **The First Cohomology Group ($H^1(\mathbb{Z}B, A)$):** If the extension *does* split cleanly, there might be multiple different geometric ways to slice the complement group out of the whole (a complement of $A$ in $G$ is a subgroup $B'$ with $A \cap B' = \{1\}$ and $AB' = G$, like $B$ in a semidirect product). $H^1$ exactly counts the number of conjugacy classes of these complements.
 
-Homological algebra allows mathematicians to measure the "glue" holding groups together using the exact same machinery used to count multi-dimensional holes in a donut.
+Homological algebra allows us to measure the "glue" holding groups together using the exact same machinery used to count multi-dimensional holes in a donut.
 
 ## Some Theorems of Abstract Algebra
 These are the main theorems from PJ Cameron's [Introduction to Algebra](https://webspace.maths.qmul.ac.uk/p.j.cameron/algebra/)
