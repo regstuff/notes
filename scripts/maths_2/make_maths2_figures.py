@@ -2,19 +2,23 @@
 
 Usage: python make_maths2_figures.py OUTPUT_DIR
 
-Writes ten PNGs into OUTPUT_DIR:
+Writes twelve PNGs into OUTPUT_DIR (numbered as the figures in the notes):
   1. maths2_tape_quotient_isomorphism.png
   2. maths2_f9_field.png
   3. maths2_s3_cosets_normality.png
-  4. maths2_class_equation.png
-  5. maths2_fourth_isomorphism_fibration.png
-  6. maths2_orbit_stabilizer_square.png
-  7. maths2_orbitals_blocks_primitivity.png
-  8. maths2_subspace_quotient_shear.png
-  9. maths2_coherent_intersection_pentagon.png
-  10. maths2_extensions_mortar.png
+  4. maths2_cosets_conjugacy_s4.png
+  5. maths2_class_equation.png
+  6. maths2_fourth_isomorphism_fibration.png
+  7. maths2_orbit_stabilizer_square.png
+  8. maths2_orbits_blocks_suborbits_hexagon.png
+  9. maths2_orbitals_blocks_primitivity.png
+  10. maths2_subspace_quotient_shear.png
+  11. maths2_coherent_intersection_pentagon.png
+  12. maths2_extensions_mortar.png
 
-Reproduces the published PNGs byte for byte with matplotlib 3.5.1 (drawn by Gemini, 2026-11-05).
+Reproduces the published PNGs byte for byte with matplotlib 3.5.1 (drawn by Gemini, 2026-11-05;
+Figures 3 and 7 switched to left-to-right products the same day, to match the text; Figures 4 and 8
+were added by Claude the same day; the other function names keep the original numbering).
 """
 
 import itertools as it
@@ -359,6 +363,11 @@ def fig2_f9_field(out):
 # Figure 3 (P3): S_3 Cayley tables stacked vertically
 # =========================================================================
 def fig3_s3_cosets(out):
+    # Figure 3 multiplies left to right, as the text of the notes does:
+    # gh means first g, then h, so (gh)(x) = h(g(x)).
+    def mul(g, h):
+        return compose(h, g)
+
     e = (0, 1, 2)
     r1 = (1, 2, 0)   # (1 2 3)
     r2 = (2, 0, 1)   # (1 3 2)
@@ -400,7 +409,7 @@ def fig3_s3_cosets(out):
 
     for i, g in enumerate(order_a):
         for j, h in enumerate(order_a):
-            prod = compose(g, h)
+            prod = mul(g, h)
             fc, ec = col_a(prod)
             cx = ox + j * cw
             cy = oy + (5 - i) * ch
@@ -441,10 +450,10 @@ def fig3_s3_cosets(out):
                    fontsize=12.5, pad=4)
 
     # --- Panel (b): Non-normal subgroup H = {e, (1 2)} ---
-    order_b = [e, s12, r1, s13, r2, s23]
+    order_b = [e, s12, r1, s23, r2, s13]
     H0 = {e, s12}
-    H1 = {r1, s13}
-    H2 = {r2, s23}
+    H1 = {r1, s23}
+    H2 = {r2, s13}
 
     def col_b(g):
         if g in H0:
@@ -460,13 +469,13 @@ def fig3_s3_cosets(out):
 
     left_boxes = [
         ("$eH = \\{e, (1\\,2)\\}$", GREY_LIGHT, GREY),
-        ("$(1\\,2\\,3)H = \\{(1\\,2\\,3), (1\\,3)\\}$", BLUE_LIGHT, BLUE),
-        ("$(1\\,3\\,2)H = \\{(1\\,3\\,2), (2\\,3)\\}$", ORANGE_LIGHT, ORANGE),
+        ("$(1\\,2\\,3)H = \\{(1\\,2\\,3), (2\\,3)\\}$", BLUE_LIGHT, BLUE),
+        ("$(1\\,3\\,2)H = \\{(1\\,3\\,2), (1\\,3)\\}$", ORANGE_LIGHT, ORANGE),
     ]
     right_boxes = [
         ("$He = \\{e, (1\\,2)\\}$", GREY_LIGHT, GREY),
-        ("$H(1\\,2\\,3) = \\{(1\\,2\\,3), (2\\,3)\\}$", "#f7f7f7", DARK),
-        ("$H(1\\,3\\,2) = \\{(1\\,3\\,2), (1\\,3)\\}$", "#f7f7f7", DARK),
+        ("$H(1\\,2\\,3) = \\{(1\\,2\\,3), (1\\,3)\\}$", "#f7f7f7", DARK),
+        ("$H(1\\,3\\,2) = \\{(1\\,3\\,2), (2\\,3)\\}$", "#f7f7f7", DARK),
     ]
     bx_positions = [1.25, 3.55, 6.45]
     bx_widths = [2.1, 2.7, 2.7]
@@ -491,7 +500,7 @@ def fig3_s3_cosets(out):
 
     for i, g in enumerate(order_b):
         for j, h in enumerate(order_b):
-            prod = compose(g, h)
+            prod = mul(g, h)
             fc, ec = col_b(prod)
             cx = ox + j * cw
             cy = oy_b + (5 - i) * ch
@@ -725,6 +734,8 @@ def fig5_fourth_isomorphism(out):
 # Figure 6 (P6): Orbit-Stabilizer on the four corners of a square (D_8)
 # =========================================================================
 def fig6_orbit_stabilizer(out):
+    # Left-to-right products (gh = first g, then h): the coset {g, (2 4)g} of
+    # elements sending corner 1 to the same corner is the right coset G_1 g.
     D8, names = get_d8()
     G_0 = {g for g in D8 if g[0] == 0}
     assert G_0 == {names["e"], names["d13"]}
@@ -732,12 +743,12 @@ def fig6_orbit_stabilizer(out):
     fig, ax = plt.subplots(figsize=(8.8, 5.1))
 
     coset_rows = [
-        (3.25, "$e G_1 = \\{e,\\; (2\\,4)\\}$", "send $1 \\mapsto 1$", GREY_LIGHT, GREY, 1),
-        (2.20, "$r G_1 = \\{(1\\,2\\,3\\,4),\\; (1\\,2)(3\\,4)\\}$", "send $1 \\mapsto 2$", BLUE_LIGHT, BLUE, 2),
-        (1.15, "$r^2 G_1 = \\{(1\\,3)(2\\,4),\\; (1\\,3)\\}$", "send $1 \\mapsto 3$", ORANGE_LIGHT, ORANGE, 3),
-        (0.10, "$r^3 G_1 = \\{(1\\,4\\,3\\,2),\\; (1\\,4)(2\\,3)\\}$", "send $1 \\mapsto 4$", GREEN_LIGHT, GREEN, 4),
+        (3.25, "$G_1 e = \\{e,\\; (2\\,4)\\}$", "send $1 \\mapsto 1$", GREY_LIGHT, GREY, 1),
+        (2.20, "$G_1 r = \\{(1\\,2\\,3\\,4),\\; (1\\,2)(3\\,4)\\}$", "send $1 \\mapsto 2$", BLUE_LIGHT, BLUE, 2),
+        (1.15, "$G_1 r^2 = \\{(1\\,3)(2\\,4),\\; (1\\,3)\\}$", "send $1 \\mapsto 3$", ORANGE_LIGHT, ORANGE, 3),
+        (0.10, "$G_1 r^3 = \\{(1\\,4\\,3\\,2),\\; (1\\,4)(2\\,3)\\}$", "send $1 \\mapsto 4$", GREEN_LIGHT, GREEN, 4),
     ]
-    ax.text(1.75, 4.30, "Left cosets $G / G_1$ ($4 \\times 2 = 8$ elements)",
+    ax.text(1.75, 4.30, "Right cosets $G_1 g$ ($4 \\times 2 = 8$ elements)",
             ha="center", va="center", fontsize=11.5, color=DARK, fontweight="bold")
 
     sq_cx, sq_cy, sq_r = 6.55, 2.0, 0.96
@@ -767,7 +778,7 @@ def fig6_orbit_stabilizer(out):
         draw_node(ax, cx, cy, f"${c_idx}$", r=0.24, face=fc, edge=ec, fs=12, lw=2.3, zorder=4)
         ax.text(cx + dx, cy + dy, stab_t, ha="center", va="center", fontsize=10.2, color=ec, fontweight="bold")
 
-    ax.text(sq_cx, 4.30, "Orbit $\\Omega = \\{1, 2, 3, 4\\}$ and stabilizers $G_\\beta = g G_1 g^{-1}$",
+    ax.text(sq_cx, 4.30, "Orbit $\\Omega = \\{1, 2, 3, 4\\}$ and stabilizers $G_\\beta = g^{-1} G_1 g$",
             ha="center", va="center", fontsize=11.5, color=DARK, fontweight="bold")
 
     # Route arrows cleanly through the open gap between corners 1 and 4
@@ -1233,6 +1244,244 @@ def fig10_extensions_mortar(out):
     plt.close(fig)
 
 
+# =========================================================================
+# Cosets of a centralizer and the conjugacy class (S_4, x = (1 2))
+# =========================================================================
+def fig_cosets_conjugacy(out):
+    # Permutations of {0,1,2,3} as tuples p with p[i] = image of i.
+    # Products are read left to right, as in the notes: gh = first g, then h.
+    def mul(g, h):
+        return compose(h, g)
+
+    def cyc(p):
+        seen, parts = set(), []
+        for s in range(len(p)):
+            if s in seen or p[s] == s:
+                seen.add(s)
+                continue
+            c, x = [s], p[s]
+            seen.add(s)
+            while x != s:
+                c.append(x)
+                seen.add(x)
+                x = p[x]
+            parts.append("(" + "\\,".join(str(i + 1) for i in c) + ")")
+        return "$" + ("".join(parts) if parts else "e") + "$"
+
+    S4 = list(it.permutations(range(4)))
+    e = (0, 1, 2, 3)
+    x = (1, 0, 2, 3)                          # (1 2)
+    C = [g for g in S4 if mul(g, x) == mul(x, g)]
+    assert len(C) == 4
+    C.sort(key=lambda p: (p != e, p != x, p))  # e, (1 2), then the rest
+
+    def transposition(a, b):
+        p = list(range(4))
+        p[a], p[b] = b, a
+        return tuple(p)
+
+    targets = [(0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)]
+    rows = []
+    for a, b in targets:
+        g = next(g for g in S4 if g[0] == a and g[1] == b)   # 1g = a+1, 2g = b+1
+        coset = [mul(c, g) for c in C]                       # right coset C g
+        conj = mul(mul(invert(g), x), g)                     # g^{-1} x g
+        assert conj == transposition(a, b)
+        assert all(mul(mul(invert(y), x), y) == conj for y in coset)
+        rows.append((coset, conj))
+    assert len({y for row, _ in rows for y in row}) == 24
+
+    def cls(p):
+        return tuple(sorted((len(part) for part in cycle_parts(p)), reverse=True))
+
+    def cycle_parts(p):
+        seen, parts = set(), []
+        for s in range(4):
+            if s in seen:
+                continue
+            c, y = [s], p[s]
+            seen.add(s)
+            while y != s:
+                c.append(y)
+                seen.add(y)
+                y = p[y]
+            parts.append(c)
+        return parts
+
+    class_style = {
+        (1, 1, 1, 1): ("identity $e$ (1)", GREY_LIGHT, GREY),
+        (2, 1, 1): ("transpositions (6)", BLUE_LIGHT, BLUE),
+        (2, 2): ("double swaps (3)", GREEN_LIGHT, GREEN),
+        (3, 1): ("3-cycles (8)", ORANGE_LIGHT, ORANGE),
+        (4,): ("4-cycles (6)", PURPLE_LIGHT, PURPLE),
+    }
+    counts = {}
+    for p in S4:
+        counts[cls(p)] = counts.get(cls(p), 0) + 1
+    assert counts == {(1, 1, 1, 1): 1, (2, 1, 1): 6, (2, 2): 3, (3, 1): 8, (4,): 6}
+
+    fig = plt.figure(figsize=(8.4, 10.0))
+    ax_a = fig.add_axes([0.03, 0.50, 0.94, 0.46])
+    ax_b = fig.add_axes([0.03, 0.02, 0.94, 0.44])
+
+    bw, bh, gap = 1.12, 0.52, 0.10
+    x0 = 0.55
+
+    def grid_box(ax, col, row, label, face, edge, lw=1.5):
+        bx = x0 + col * (bw + gap)
+        by = (5 - row) * (bh + gap) + 0.2
+        ax.add_patch(plt.Rectangle((bx, by), bw, bh, facecolor=face, edgecolor=edge, lw=lw, zorder=2))
+        ax.text(bx + bw / 2, by + bh / 2, label, ha="center", va="center", fontsize=9.6, color=DARK, zorder=3)
+        return bx, by
+
+    # Panel (a): rows are the 6 right cosets of C = C_G(x); each row gives one conjugate of x.
+    row_cols = [(GREY_LIGHT, GREY)] + [(BLUE_LIGHT, BLUE)] * 5
+    for r, (coset, conj) in enumerate(rows):
+        fc, ec = row_cols[r]
+        for c, y in enumerate(coset):
+            bx, by = grid_box(ax_a, c, r, cyc(y), fc, ec)
+        lab = "$C_G(x)$" if r == 0 else f"coset {r + 1}"
+        ax_a.text(x0 - 0.12, by + bh / 2, lab, ha="right", va="center", fontsize=9.6, color=ec)
+        ax_a.annotate("", xy=(6.55, by + bh / 2), xytext=(5.45, by + bh / 2),
+                      arrowprops=dict(arrowstyle="-|>", color=ec, lw=1.6, mutation_scale=13))
+        draw_node(ax_a, 7.15, by + bh / 2, cyc(conj), r=0.28, face=BLUE_LIGHT, edge=BLUE,
+                  fs=10, square=True, lw=1.6)
+    ax_a.text(3.0, 4.15, "24 elements of $S_4$ = 6 cosets of $C_G(x)$, 4 elements each",
+              ha="center", va="center", fontsize=11, color=DARK, fontweight="bold")
+    ax_a.text(7.15, 4.15, "class of $x$", ha="center", va="center", fontsize=11, color=BLUE, fontweight="bold")
+    ax_a.text(6.0, 3.82, "$g^{-1}xg$", ha="center", va="center", fontsize=10, color=DARK)
+    ax_a.set_xlim(-0.6, 7.8)
+    ax_a.set_ylim(0.0, 4.45)
+    ax_a.axis("off")
+    ax_a.set_title("(a) $x = (1\\,2)$: each coset $C_G(x)\\,g$ gives one conjugate $g^{-1}xg$ (6 cosets, 6 conjugates)",
+                   fontsize=11.5, pad=2)
+
+    # Panel (b): the same 24 boxes coloured by conjugacy class.
+    for r, (coset, conj) in enumerate(rows):
+        for c, y in enumerate(coset):
+            _, fc, ec = class_style[cls(y)]
+            grid_box(ax_b, c, r, cyc(y), fc, ec)
+    ly = 3.55
+    for k, key in enumerate([(1, 1, 1, 1), (2, 1, 1), (2, 2), (3, 1), (4,)]):
+        txt, fc, ec = class_style[key]
+        ax_b.add_patch(plt.Rectangle((5.75, ly - k * 0.62), 0.32, 0.32, facecolor=fc, edgecolor=ec, lw=1.5))
+        ax_b.text(6.18, ly - k * 0.62 + 0.16, txt, ha="left", va="center", fontsize=9.8, color=DARK)
+    ax_b.text(6.75, 0.35, "$24 = 1 + 6 + 3 + 8 + 6$", ha="center", va="center", fontsize=11, color=DARK)
+    ax_b.set_xlim(-0.6, 7.8)
+    ax_b.set_ylim(0.0, 4.2)
+    ax_b.axis("off")
+    ax_b.set_title("(b) The same 24 elements coloured by conjugacy class: classes are not cosets",
+                   fontsize=11.5, pad=2)
+
+    fig.savefig(os.path.join(out, "maths2_cosets_conjugacy_s4.png"), dpi=160, facecolor="white")
+    plt.close(fig)
+
+
+# =========================================================================
+# Orbits, blocks and sub-orbits (D_12 on the hexagon and its long diagonals)
+# =========================================================================
+def fig_orbits_blocks_suborbits(out):
+    # D_12 as permutations of the vertices 0..5 (labelled 1..6).
+    rot = tuple((i + 1) % 6 for i in range(6))
+    ref = tuple((-i) % 6 for i in range(6))       # reflection through vertices 1 and 4
+    D12 = {tuple(range(6))}
+    frontier = [tuple(range(6))]
+    while frontier:
+        g = frontier.pop()
+        for s in (rot, ref):
+            h = compose(s, g)
+            if h not in D12:
+                D12.add(h)
+                frontier.append(h)
+    assert len(D12) == 12
+
+    def is_block(B):
+        return all(set(g[i] for i in B) == set(B) or not (set(g[i] for i in B) & set(B)) for g in D12)
+
+    nontrivial = {frozenset(B) for k in (2, 3) for B in it.combinations(range(6), k) if is_block(B)}
+    assert nontrivial == {frozenset({0, 3}), frozenset({1, 4}), frozenset({2, 5}),
+                          frozenset({0, 2, 4}), frozenset({1, 3, 5})}
+    stab = [g for g in D12 if g[0] == 0]
+    assert sorted(stab) == sorted([tuple(range(6)), ref])
+    suborbits = {frozenset(g[i] for g in stab) for i in range(6)}
+    assert suborbits == {frozenset({0}), frozenset({1, 5}), frozenset({2, 4}), frozenset({3})}
+
+    fig, axes = plt.subplots(2, 2, figsize=(8.4, 8.6))
+    R, s = 1.0, 0.17
+
+    def pos(i, cx=0.0, cy=0.0):
+        ang = np.pi / 2 - i * np.pi / 3
+        return cx + R * np.cos(ang), cy + R * np.sin(ang)
+
+    def hexagon(ax, styles, title, lines=(), extra=None):
+        for i in range(6):
+            a, b = pos(i), pos((i + 1) % 6)
+            ax.plot([a[0], b[0]], [a[1], b[1]], color="#bbbbbb", lw=1.6, zorder=1)
+        for (i, j, col, ls) in lines:
+            a, b = pos(i), pos(j)
+            ax.plot([a[0], b[0]], [a[1], b[1]], color=col, lw=1.8, ls=ls, zorder=1)
+        for i in range(6):
+            fc, ec, lw = styles[i]
+            x, y = pos(i)
+            draw_node(ax, x, y, f"${i + 1}$", r=s, face=fc, edge=ec, fs=12, square=True, lw=lw)
+        if extra:
+            extra(ax)
+        ax.set_xlim(-1.75, 1.75)
+        ax.set_ylim(-1.6, 1.55)
+        ax.set_aspect("equal")
+        ax.axis("off")
+        ax.set_title(title, fontsize=11.5, pad=4)
+
+    # (a) Orbits: the 6 vertices and the 3 long diagonals A, B, C.
+    def diag_boxes(ax):
+        for k, name in enumerate("ABC"):
+            a, b = pos(k), pos(k + 3)
+            ax.plot([a[0], b[0]], [a[1], b[1]], color=ORANGE, lw=1.2, ls="--", zorder=0)
+            end = pos([0, 4, 2][k])          # A towards 1, B towards 5, C towards 3
+            t = 0.55
+            x, y = end[0] * t, end[1] * t
+            draw_node(ax, x, y, f"${name}$", r=0.15, face=ORANGE_LIGHT, edge=ORANGE, fs=11, square=True, lw=1.6)
+        ax.text(0, -1.45, "orbit of size 6 (vertices) and orbit of size 3 (diagonals)",
+                ha="center", va="center", fontsize=9.8, color=DARK)
+
+    hexagon(axes[0, 0], [(BLUE_LIGHT, BLUE, 1.6)] * 6, "(a) Two orbits of $D_{12}$", extra=diag_boxes)
+
+    # (b) Blocks of size 2: opposite vertices.
+    pair_cols = {0: (BLUE_LIGHT, BLUE), 3: (BLUE_LIGHT, BLUE), 1: (ORANGE_LIGHT, ORANGE),
+                 4: (ORANGE_LIGHT, ORANGE), 2: (GREEN_LIGHT, GREEN), 5: (GREEN_LIGHT, GREEN)}
+    hexagon(axes[0, 1], [(pair_cols[i][0], pair_cols[i][1], 1.8) for i in range(6)],
+            "(b) Blocks $\\{1,4\\}, \\{2,5\\}, \\{3,6\\}$",
+            lines=[(0, 3, BLUE, "--"), (1, 4, ORANGE, "--"), (2, 5, GREEN, "--")],
+            extra=lambda ax: ax.text(0, -1.45, "3 blocks of size 2 (opposite vertices)",
+                                     ha="center", va="center", fontsize=9.8, color=DARK))
+
+    # (c) Blocks of size 3: alternate vertices.
+    tri_cols = {i: ((BLUE_LIGHT, BLUE) if i % 2 == 0 else (ORANGE_LIGHT, ORANGE)) for i in range(6)}
+    hexagon(axes[1, 0], [(tri_cols[i][0], tri_cols[i][1], 1.8) for i in range(6)],
+            "(c) Blocks $\\{1,3,5\\}, \\{2,4,6\\}$",
+            lines=[(0, 2, BLUE, "--"), (2, 4, BLUE, "--"), (4, 0, BLUE, "--"),
+                   (1, 3, ORANGE, "--"), (3, 5, ORANGE, "--"), (5, 1, ORANGE, "--")],
+            extra=lambda ax: ax.text(0, -1.45, "2 blocks of size 3 (alternate vertices)",
+                                     ha="center", va="center", fontsize=9.8, color=DARK))
+
+    # (d) Sub-orbits of the stabilizer of vertex 1.
+    sub_cols = {0: (GREY_LIGHT, DARK, 2.8), 1: (BLUE_LIGHT, BLUE, 1.8), 5: (BLUE_LIGHT, BLUE, 1.8),
+                2: (ORANGE_LIGHT, ORANGE, 1.8), 4: (ORANGE_LIGHT, ORANGE, 1.8), 3: (GREEN_LIGHT, GREEN, 1.8)}
+
+    def axis_line(ax):
+        a, b = pos(0), pos(3)
+        ax.plot([a[0], b[0]], [a[1] + 0.25, b[1] - 0.25], color=GREY, lw=1.2, ls=":", zorder=0)
+        ax.text(0, -1.45, "sub-orbits $\\{1\\}, \\{2,6\\}, \\{3,5\\}, \\{4\\}$ (distance 0, 1, 2, 3 from 1)",
+                ha="center", va="center", fontsize=9.8, color=DARK)
+
+    hexagon(axes[1, 1], [sub_cols[i] for i in range(6)],
+            "(d) Fix $1$: $G_1 = \\{e, (2\\,6)(3\\,5)\\}$", extra=axis_line)
+
+    fig.tight_layout(h_pad=1.2, w_pad=0.6)
+    fig.savefig(os.path.join(out, "maths2_orbits_blocks_suborbits_hexagon.png"), dpi=160, facecolor="white")
+    plt.close(fig)
+
+
 def main():
     if len(sys.argv) != 2:
         sys.exit(__doc__)
@@ -1241,9 +1490,11 @@ def main():
     fig1_tape_quotient(out)
     fig2_f9_field(out)
     fig3_s3_cosets(out)
+    fig_cosets_conjugacy(out)
     fig4_class_equation(out)
     fig5_fourth_isomorphism(out)
     fig6_orbit_stabilizer(out)
+    fig_orbits_blocks_suborbits(out)
     fig7_orbitals_pipeline(out)
     fig8_subspace_quotient_shear(out)
     fig9_coherent_pentagon(out)

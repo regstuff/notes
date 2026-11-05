@@ -4,14 +4,14 @@
 
 The main strategies in proofs are by:
 
--   Counterexample, where given a general statement $P$, to show that $P$ is true it is necessary to give a general proof; but to show that $P$ is false, we have to give one specific instance in which it fails.
-    
--   Contradiction, where to prove that $P$ is true, we assume it is false and then show some contradiction. For e.g. if $n \in \mathbb{N}$, $2n$ must be even. Let's assume $2n$ is odd. Then $2n = 2m + 1$ for some $m \in \mathbb{N}$, which implies $n-m = \frac{1}{2}$, i.e. an integer is a fraction, which is a contradiction!
-    
--   Contrapositive. The contrapositive of the statement ‘if $P$, then $Q$’ is the statement ‘if not $Q$, then not $P$’. They are logically equivalent. We can prove this if it is more convenient.
-    
--   Induction. Prove a statement $P(n)$ for $n=0$. Then show that if $P(n)$ is assumed true, $P(n+1)$ is true. A variation is the Strong Induction principle where we assume $P(m)$ is true for all $m<n$ and then show that it must hold for $P(n)$ also. For example, you could use this to prove that any natural number greater than 1 has a prime factor.
-    
+Counterexample, where given a general statement $P$, to show that $P$ is true it is necessary to give a general proof; but to show that $P$ is false, we have to give one specific instance in which it fails.
+
+Contradiction, where to prove that $P$ is true, we assume it is false and then show some contradiction. For e.g. if $n \in \mathbb{N}$, $2n$ must be even. Let's assume $2n$ is odd. Then $2n = 2m + 1$ for some $m \in \mathbb{N}$, which implies $n-m = \frac{1}{2}$, i.e. an integer is a fraction, which is a contradiction!
+
+Contrapositive. The contrapositive of the statement ‘if $P$, then $Q$’ is the statement ‘if not $Q$, then not $P$’. They are logically equivalent. We can prove this if it is more convenient.
+
+Induction. Prove a statement $P(n)$ for $n=0$. Then show that if $P(n)$ is assumed true, $P(n+1)$ is true. A variation is the Strong Induction principle where we assume $P(m)$ is true for all $m<n$ and then show that it must hold for $P(n)$ also. For example, you could use this to prove that any natural number greater than 1 has a prime factor.
+
 
 Now for Logical Conditions. We say that $P$ is a sufficient condition for $Q$ if the truth of $P$ implies the truth of $Q$; that is, $P$ implies $Q$, which is the same as "if $P$, then $Q$", or "$Q$ if $P$".
 
@@ -41,7 +41,7 @@ Surprisingly, you can use logical operations to prove stuff about sets. We alrea
 
 A binary operation is a mapping from $A \times A$ to $A$ i.e. it takes two elements of set $A$ and outputs one element. Addition and multiplication are examples. You can have n-ary operations.
 
-A binary relation is a mapping from $A \times A$ to an output that is either true or false. Greater than and less than are examples.
+A binary relation is a mapping from $A \times A$ to an output that is either true or false. Greater than and less than are examples. Equivalently, a relation $R$ on $A$ is the subset $R \subseteq A \times A$ of pairs for which the output is true, and we write $(a, b) \in R$ when $a$ is related to $b$.
 
 An equivalence relation is a binary relation $R$ on $A$ that is reflexive, or $(a,a) \in R$ for all $a \in A$; symmetric i.e. if $(a, b) \in R$ then $(b, a) \in R$; transitive i.e. if $(a, b) \in R$ and $(b, c) \in R$ then $(a, c) \in R$.
 
@@ -49,13 +49,13 @@ The relation mod 4 between two numbers is an equivalence relation.
 
 An equivalence relation results in a partition of the set $A$. A partition is a set of subsets of $A$ where none of them is empty and each element of $A$ lies in only one of these subsets. Thus the equivalence relation between $a$ and $b$ essentially comes down to are we or are we not in the same subset of the partition. The subsets are called equivalence classes.
 
-A non-constant polynomial is called irreducible if it cannot be written as the product of two polynomials of smaller degree. Any linear polynomial is obviously irreducible. Irreducible polynomials play a similar role to prime numbers: any non-constant polynomial can be factorised into irreducible polynomials. With coefficients in a field, the factors are unique up to their order and up to multiplying them by non-zero constants, just as the prime factors of an integer are unique up to order and sign. For example, $x^2 - 1 = (x - 1)(x + 1) = (2x - 2)(\tfrac{1}{2}x + \tfrac{1}{2})$ is the same factorisation twice.
+A non-constant polynomial with coefficients in a field $F$ (such as $\mathbb{R}$ or $\mathbb{C}$; fields are [defined below](#establishing-more-mathematical-properties)) is called irreducible over $F$ if it cannot be written as the product of two polynomials of smaller degree with coefficients in $F$. So irreducibility depends on the field: $x^2 + 1$ is irreducible over $\mathbb{R}$, but over $\mathbb{C}$ it factors as $(x - i)(x + i)$. Any linear polynomial is obviously irreducible. Irreducible polynomials play a similar role to prime numbers: any non-constant polynomial can be factorised into irreducible polynomials. With coefficients in a field, the factors are unique up to their order and up to multiplying them by non-zero constants, just as the prime factors of an integer are unique up to order and sign. For example, $x^2 - 1 = (x - 1)(x + 1) = (2x - 2)(\tfrac{1}{2}x + \tfrac{1}{2})$ is the same factorisation twice.
 
 ## Rings & Fields
 
-Rings were originally conceptualized to help solve Fermat's Last Theorem, but we don't need to bother about that now. As a starting point, a ring is literally a ring or a circular series of numbers that wraps around after reaching a particular point. You know this for modulo functions already, such as modulo 4 where the remainders are $\{0, 1, 2, 3\}$. Then all the integers wrap around again. So modular arithmetic isn't a separate thing from the integers. A lot of our work with rings is via modular arithmetic, modulo functions, and their algebras. But rings in abstract algebra are not exclusively about modular arithmetic.  
+Rings were originally conceptualized to help solve Fermat's Last Theorem, but we don't need to bother about that now. As a starting point, you can picture a ring as literally a ring or a circular series of numbers that wraps around after reaching a particular point. (This is only a motivating picture; the actual definition comes [below](#the-algebraic-rules), and many rings do not wrap around at all.) You know this for modulo functions already, such as modulo 4 where the remainders are $\{0, 1, 2, 3\}$. Then all the integers wrap around again. So modular arithmetic isn't a separate thing from the integers. A lot of our work with rings is via modular arithmetic, modulo functions, and their algebras. But rings in abstract algebra are not exclusively about modular arithmetic.  
 
-Even the integers $\mathbb{Z}$ are a ring. They don't wrap around, but you could look at it as an infinitely large ring. In fact, modern geometry and algebra view $\mathbb{Z}$ as the "parent ring" from which every other ring inherits its basic characteristics. Every modular ring $\mathbb{Z}/n\mathbb{Z}$ is a slice of the infinite integers. You create them by taking the infinite ring $\mathbb{Z}$ and collapsing it at a certain interval $n$. We can also go the other way around and attempt to construct an "infinitely large ring" using a concept called the inverse limit. We chain together larger and larger modular rings, looking at $\mathbb{Z}/2\mathbb{Z}$, then $\mathbb{Z}/4\mathbb{Z}$, then $\mathbb{Z}/8\mathbb{Z}$, and so on out to infinity. You don't quite get $\mathbb{Z}$, but you get a closely related infinite ring called the $2$-adic integers (a specific instance of the $p$-adic integers, $\mathbb{Z}_p$). In these rings, numbers can be infinitely long, effectively allowing you to work with modular arithmetic at an infinite scale.  
+Even the integers $\mathbb{Z}$ are a ring. They don't wrap around, but you could look at it as an infinitely large ring. In fact, modern geometry and algebra view $\mathbb{Z}$ as the "parent ring" from which every other ring inherits its basic characteristics. Every modular ring $\mathbb{Z}/n\mathbb{Z}$ (the integers mod $n$; the slash notation for a quotient ring is explained in [the intuitive picture](#the-intuitive-picture) below) is a slice of the infinite integers. You create them by taking the infinite ring $\mathbb{Z}$ and collapsing it at a certain interval $n$. We can also go the other way around and attempt to construct an "infinitely large ring" using a concept called the inverse limit. We chain together larger and larger modular rings, looking at $\mathbb{Z}/2\mathbb{Z}$, then $\mathbb{Z}/4\mathbb{Z}$, then $\mathbb{Z}/8\mathbb{Z}$, and so on out to infinity. You don't quite get $\mathbb{Z}$, but you get a closely related infinite ring called the $2$-adic integers (a specific instance of the $p$-adic integers, $\mathbb{Z}_p$). In these rings, numbers can be infinitely long, effectively allowing you to work with modular arithmetic at an infinite scale.  
 
 ### The Intuitive Picture
 
@@ -65,7 +65,7 @@ Now we want to build up the rules for mathematics in this ring. For example, how
 
 Let's say you take a circle that is 4 units in circumference and wrap all your integers around that circle. You keep lapping around again and again. So modular arithmetic is kind of like going in circles, while the integers are like going to infinity. It's very spiritual!
 
-Now when you keep wrapping around the circle, you will see that numbers start to cluster up one above the other. $\{\dots, -8, -4, \mathbf{0}, 4, 8, 12, \dots\}$ would be one stack. Similarly, $\{\dots, -7, -3, \mathbf{1}, 5, 9, \dots\}$ etc. You would get 4 such stacks. Each of these stacks is now called a coset. It is a partition, which is a very literal description: all the integers will be present in exactly one partition. We say they are in an equivalence relation, which is also pretty much what it says. They are equivalent for all practical purposes while working in this ring. This process is technically called gluing i.e. you say this set of points from the integers are all equivalent in this subring (a subring is a subset that is itself a ring under the same addition and multiplication; more on subrings below). You glued them together into one thing! They are also called equivalence classes and are subsets of the main ring. Only one of them, the stack of $0$ (which is $4\mathbb{Z}$ itself), is a subring. The other stacks do not contain $0$ and are not closed under addition: $1 + 1 = 2$ is not in the stack of $1$.
+Now when you keep wrapping around the circle, you will see that numbers start to cluster up one above the other. $\{\dots, -8, -4, \mathbf{0}, 4, 8, 12, \dots\}$ would be one stack. Similarly, $\{\dots, -7, -3, \mathbf{1}, 5, 9, \dots\}$ etc. You would get 4 such stacks. Each of these stacks is now called a coset. Together the cosets form a partition, which is a very literal description: all the integers will be present in exactly one coset. We say they are in an equivalence relation, which is also pretty much what it says. They are equivalent for all practical purposes while working in this ring. This process is technically called gluing i.e. you say this set of points from the integers are all equivalent in the new ring of stacks (the quotient ring, defined below). You glued them together into one thing! They are also called equivalence classes and are subsets of the main ring. Only one of them, the stack of $0$ (which is $4\mathbb{Z}$ itself), is a subring (a subset that is itself a ring under the same addition and multiplication; more on subrings below). The other stacks do not contain $0$ and are not closed under addition: $1 + 1 = 2$ is not in the stack of $1$.
 
 $I = 4\mathbb{Z} = \{\dots, -8, -4, \mathbf{0}, 4, 8, 12, \dots\}$ is a bit special. These are the numbers that stack with $0$. They are equivalent to it. This set (subring actually) of numbers is called an ideal. The most important thing is, if you multiply any integer by any element in this stack, the result is also found in this stack. Nothing surprising here. The stack is all the multiples of 4. $4$ multiplied by an integer will be a multiple of $4$ and so it will be part of the stack.
 
@@ -73,17 +73,17 @@ But conceptually, as far as the ring goes, this entire set, i.e. every number in
 
 Now, pick up the entire $I$ and shift it to the right by 1, then 2, then 3.
 
--   Shift by $0$ (This is called the zero coset / The Ideal itself): $0 + I = \{\dots, -8, -4, \mathbf{0}, 4, 8, \dots\}$
-     
--   Shift by $1$ (The coset $1 + I$): $1 + I = \{\dots, -7, -3, \mathbf{1}, 5, 9, \dots\}$
-     
--   Shift by $2$ (The coset $2 + I$): $2 + I = \{\dots, -6, -2, \mathbf{2}, 6, 10, \dots\}$
+Shift by $0$ (This is called the zero coset / The Ideal itself): $0 + I = \{\dots, -8, -4, \mathbf{0}, 4, 8, \dots\}$
 
--   Shift by $3$ (The coset $3 + I$): $3 + I = \{\dots, -5, -1, \mathbf{3}, 7, 11, \dots\}$
-      
--   Shift by $4$: $4 + I = \{\dots, -4, 0, \mathbf{4}, 8, 12, \dots\} = 0 + I$
-    
-Shifting by $4$ just lands the grid back on top of itself. So what we have here is the 4 partitions or cosets we talked about earlier. Since we have a $0$ coset, we can also see that the other cosets are essentially just the remainders we get when we divide an integer by the modulus, in this case: $4$. Any integer with the same remainder gets bracketed into the same coset or equivalence class i.e. the $k$-coset consists of all elements $a$ where $a - k$ is in the ideal, which means for any two elements $a$ and $b$ in the same coset, $a - b \in I$.  
+Shift by $1$ (The coset $1 + I$): $1 + I = \{\dots, -7, -3, \mathbf{1}, 5, 9, \dots\}$
+
+Shift by $2$ (The coset $2 + I$): $2 + I = \{\dots, -6, -2, \mathbf{2}, 6, 10, \dots\}$
+
+Shift by $3$ (The coset $3 + I$): $3 + I = \{\dots, -5, -1, \mathbf{3}, 7, 11, \dots\}$
+
+Shift by $4$: $4 + I = \{\dots, -4, 0, \mathbf{4}, 8, 12, \dots\} = 0 + I$
+
+Shifting by $4$ just lands the grid back on top of itself. So what we have here is the 4 cosets (the 4 parts of the partition) we talked about earlier. Since we have a $0$ coset, we can also see that the other cosets are essentially just the remainders we get when we divide an integer by the modulus, in this case: $4$. Any integer with the same remainder gets bracketed into the same coset or equivalence class i.e. the $k$-coset consists of all elements $a$ where $a - k$ is in the ideal, which means for any two elements $a$ and $b$ in the same coset, $a - b \in I$.  
 
 The set of 4 cosets (think of them as co-sets) is called a quotient or factor ring $R/I$. Why they are not called the remainder ring is a bit confusing because that is what they are built from, but never mind. 
 
@@ -93,13 +93,13 @@ The set of 4 cosets is a ring in the sense that they satisfy all the rules of ad
 
 It's good to have the intuitive picture in your head, but the algebraic rules given below make it easy to manipulate and work with rings.
 
-A ring is a set where we define an addition and a multiplication operation. Addition must be closed, commutative and associative. There is a zero and every element in $R$ has an additive inverse. Regarding multiplication, we require closure and the operation should be associative. Multiplication and addition should together follow the Distributive Law. 
+A ring is a set where we define an addition and a multiplication operation. Addition must be closed, commutative and associative. There is a zero and every element in $R$ has an additive inverse. Regarding multiplication, we require closure and the operation should be associative. Multiplication and addition should together follow the Distributive Law on both sides: $a(b + c) = ab + ac$ and $(a + b)c = ac + bc$ (we need both, because multiplication need not be commutative). 
 
 Note that the familiar addition and multiplication we already know are just special cases. We could redefine them however we want provided they follow the above rules.
 
 In our definition of a ring, we required neither the multiplicative identity nor inverse, nor even that multiplication be commutative. Some conventions require a ring to have a multiplicative identity. Rings without an identity are termed rng, without the $i$. If the identity is present, it becomes a ring (with the $i$). We won't bother with that here. Note that any rng can be shown to be a subring (without the identity of course) of a r**i**ng.  
 
-**Examples of Rings:** Natural numbers are not a ring as they do not contain negative integers and so the positive integers have no additive inverse. The integers however form a ring. $n\mathbb{Z}$ for some $n \in \mathbb{N}$ is also a ring, as is the set of all polynomials with coefficients in $R$, for any ring $R$. Note that a set with an upper limit on the degree of polynomials allowed is not a ring as the multiplication operation will result in a polynomial of higher degree, which means we have no closure.
+**Examples of Rings:** Natural numbers are not a ring as they do not contain negative integers and so the positive integers have no additive inverse. The integers however form a ring. $n\mathbb{Z}$ for some $n \in \mathbb{N}$ is also a ring, as is the set of all polynomials with coefficients in $R$, for any ring $R$. Note that, with integer coefficients, a set with an upper limit $d \geq 1$ on the degree of polynomials allowed is not a ring as the multiplication operation will result in a polynomial of higher degree ($x^d \cdot x = x^{d+1}$), which means we have no closure. With the limit $d = 0$ we just get the constant polynomials, which do form a ring (we use them below).
 
 The Cancellation Law holds for rings. If $a + c = b + c$, then $a = b$.
 
@@ -111,7 +111,7 @@ If you are asked to prove that something is a ring, it is usually much easier to
 
 The set of 4 cosets we talked about earlier is a ring because we used the ideal to partition the ring. Note that you could make cosets using any subring, but the set of cosets becomes a ring only when the subring used in partitioning is an ideal.  
 
-Why do we care so much about the ideal and this absorption property? Because it ensures that multiplication results in the same result irrespective of which integer you use from a coset. So $6 \times 5 = 30 \equiv 2 \pmod{4}$, which is what you get when you do $2 \times 1$ or $10 \times 9$. As mentioned, the ideal includes all the multiples of the number you used while wrapping around ($4$ in our case). That ensures that any two numbers of the type $4 + x$ and $4 + y$, when multiplied, result in $(4 + x)(4 + y) = 16 + 4(x + y) + xy$. Since we then take modulo 4 of this product, we are left with $xy$ always, irrespective of which numbers from an equivalence class were multiplied. The mathematics of multiplication is consistent. You can treat all numbers in an equivalence class as the same. So you have ensured one criterion needed to create a ring.  
+Why do we care so much about the ideal and this absorption property? Because it ensures that multiplication results in the same result irrespective of which integer you use from a coset. So $6 \times 5 = 30 \equiv 2 \pmod{4}$, which is what you get when you do $2 \times 1$ or $10 \times 9$. As mentioned, the ideal includes all the multiples of the number you used while wrapping around ($4$ in our case). That ensures that any two numbers of the type $x + 4k$ and $y + 4l$ (any members of the classes of $x$ and $y$, for integers $k$ and $l$), when multiplied, result in $(x + 4k)(y + 4l) = xy + 4(xl + ky) + 16kl$. Since we then take modulo 4 of this product, we are left with $xy$ always, irrespective of which numbers from an equivalence class were multiplied. The mathematics of multiplication is consistent. You can treat all numbers in an equivalence class as the same. So you have ensured one criterion needed to create a ring.  
 
 That's nice but how do we know this wouldn't hold if I used a subring other than an ideal to create my coset partitions? With integers, every subring is an ideal so we can't investigate this property. But let's look at a ring where subrings and ideals are different: the polynomial ring $\mathbb{R}[x]$ or the ring $\mathbb{Z}[x]$ of polynomials in one variable with integer coefficients.  
 
@@ -125,7 +125,7 @@ $S$ is a genuine subring because you can add two integers: you get an integer. Y
 
 Now, when we "glue" this subring $S$ to zero, every integer becomes zero. Now let's multiply some polynomial $x$ by "two zeroes" $0$ and $5$. $0 \cdot x = \mathbf{0}$ and $5 \cdot x = \mathbf{5x}$. Both of these should give the same result up to equivalence class i.e. their difference must be in the glued set $S$. But $5x - 0 = 5x$ which is not an integer and so not in $S$. Multiplication is broken. You can't multiply with certainty.
 
-The failure happened because an element inside our glued set ($5 \in S$), when multiplied by an element outside ($x \in \mathbb{Z}[x]$), escaped outside the glued set ($5x \notin S$). Looking back at our previous example where we multiplied integers using the glued set $4\mathbb{Z}$, we saw that the multiplication results in terms like $16$ and $4(x+y)$, which need to be "cancelled out" so that every product of the equivalence classes results in $xy$. What does cancelling out mean? It means they go to $0$ or that they should fall into the ideal.
+The failure happened because an element inside our glued set ($5 \in S$), when multiplied by an element outside ($x \in \mathbb{Z}[x]$), escaped outside the glued set ($5x \notin S$). Looking back at our previous example where we multiplied integers using the glued set $4\mathbb{Z}$, we saw that the multiplication results in terms like $16kl$ and $4(xl + ky)$, which need to be "cancelled out" so that every product of the equivalence classes results in $xy$. What does cancelling out mean? It means they go to $0$ or that they should fall into the ideal.
 
 ### Algebra Redux
 So to rigorously define an ideal, an ideal is a subring $S$ of $R$ such that if $s \in S$, then $sr \in S$ and $rs \in S$ for all $r \in R$. This is kind of like a "0" because anything multiplied by 0 is 0.
@@ -136,7 +136,7 @@ You needn't write out the entire set of elements in an ideal. Most times, you ca
 
 $$\langle g_1, g_2 \rangle = \{ r_1 g_1 + r_2 g_2 \mid r_1, r_2 \in R \}$$
 
-This will ensure closure when any element of the ideal is multiplied by some element of $R$. 
+This will ensure closure when any element of the ideal is multiplied by some element of $R$. This formula needs $R$ to be commutative and to have an identity $1$, so that each generator $g_i = 1 \cdot g_i$ is included; in $2\mathbb{Z}$, which has no $1$, it would give $\{2r \mid r \in 2\mathbb{Z}\} = 4\mathbb{Z}$, which misses the generator $2$ itself. 
 
 **Example:** For our previous examples with integers and 4Z, the ideal is simply written as \<4\>, which is equivalent to $\{\dots, -8, -4, \mathbf{0}, 4, 8, \dots\}$.
 
@@ -146,7 +146,7 @@ $$\forall f(x) \in R[x], \quad f(x) = f(x) \cdot 1 \in \langle 1, x \rangle \imp
 
 Quotienting out by $\langle 1, x \rangle$ sets $1 = 0$, collapsing the entire ring into the zero ring $\{0\}$.
 
-To get a non-trivial factor ring, an ideal cannot contain any non-zero constants (units, that is, elements with a multiplicative inverse; more on units [below](#establishing-more-mathematical-properties)). In $R = \mathbb{R}[x]$, the ideal generated by the single polynomial $x$:
+To get a non-trivial factor ring, an ideal cannot contain any units (elements with a multiplicative inverse, which needs the ring to have an identity $1$; more on units [below](#establishing-more-mathematical-properties)): a unit $u$ in the ideal would put $u^{-1}u = 1$ in it. In $\mathbb{R}[x]$ the units are exactly the non-zero constants, but in $\mathbb{Z}[x]$ the constant $2$ is not a unit, and $\langle 2 \rangle$ does give a non-trivial quotient. In $R = \mathbb{R}[x]$, the ideal generated by the single polynomial $x$:
 
 $$\langle x \rangle = \{ f(x) \cdot x \mid f(x) \in \mathbb{R}[x] \} = \{ a_1 x + a_2 x^2 + \dots + a_n x^n \}$$
 
@@ -174,11 +174,11 @@ This contains all polynomials whose constant term is $0$. Setting both $x = 0$ a
 
 ### Establishing More Mathematical Properties
 
-So we've figured out how to do consistent multiplication. Now we need to work towards consistency in division. The first step is to eliminate zero divisors, i.e., some non-zero element $k \in R$ such that $k \cdot a = 0$ for some non-zero $a \in R$. Ideally, you don't want multiplication going to $0$ when two non-zero numbers are multiplied. Additionally, it's nice to have commutation in multiplication. If a ring has no zero divisors and is commutative, the ring is called an Integral Domain.
+So we've figured out how to do consistent multiplication. Now we need to work towards consistency in division. The first step is to eliminate zero divisors, i.e., some non-zero element $k \in R$ such that $k \cdot a = 0$ for some non-zero $a \in R$. Ideally, you don't want multiplication going to $0$ when two non-zero numbers are multiplied. Additionally, it's nice to have commutation in multiplication. If a ring has no zero divisors and is commutative, the ring is called an Integral Domain (here we also need the ring to have an identity $1 \neq 0$; otherwise $2\mathbb{Z}$ and the zero ring $\{0\}$ would count).
 
-Now, with the integers, every integer has a unique set of prime factors. A ring which has this property (unique up to ordering and multiplication by units) is a Unique Factorization Domain (UFD). From a UFD we move up to a Principal Ideal Domain (PID). A PID is one where every ideal is principal, i.e., it has only one generator. PIDs have some nice properties not found in UFDs. For example, GCDs are linear combinations. In a PID, every non-zero prime ideal (an ideal $P \neq R$ such that whenever a product $ab$ lies in $P$, $a$ or $b$ already lies in $P$) is automatically a maximal ideal (an ideal $I \neq R$ with no ideal strictly between $I$ and $R$). We look at both more closely below. This means if you quotient a PID by a non-zero prime ideal, you are guaranteed to get a field. The zero ideal has to be left out: in $\mathbb{Z}$ it is prime, but $\mathbb{Z}/\{0\} = \mathbb{Z}$ is not a field. PIDs also have some nice properties when it comes to vector spaces.
+Now, with the integers, every integer has a unique set of prime factors. A ring which has this property (unique up to ordering and multiplication by units) is a Unique Factorization Domain (UFD; like the PIDs below, a UFD is an integral domain, so it has the identity $1$ that units need). From a UFD we move up to a Principal Ideal Domain (PID). A PID is one where every ideal is principal, i.e., it has only one generator. PIDs have some nice properties not found in UFDs. For example, GCDs are linear combinations. In a PID, every non-zero prime ideal (an ideal $P \neq R$ such that whenever a product $ab$ lies in $P$, $a$ or $b$ already lies in $P$) is automatically a maximal ideal (an ideal $I \neq R$ with no ideal strictly between $I$ and $R$). We look at both more closely below. This means if you quotient a PID by a non-zero prime ideal, you are guaranteed to get a field. The zero ideal has to be left out: in $\mathbb{Z}$ it is prime, but $\mathbb{Z}/\{0\} = \mathbb{Z}$ is not a field. PIDs also have some nice properties when it comes to modules, which are like vector spaces but with scalars from a ring instead of a field: every module over a PID that is generated by finitely many elements splits into cyclic modules (modules generated by a single element). This is how abelian groups generated by finitely many elements are classified, since they are the modules over the PID $\mathbb{Z}$.
 
-Upgrading to a field means every non-zero element is invertible. Actually, if a ring has a (multiplicative) identity, and every non-zero element has a (multiplicative) inverse, it is called a Division ring. If a division ring is also commutative, it is a field.
+Upgrading to a field means every non-zero element is invertible. Actually, if a ring has a (multiplicative) identity $1 \neq 0$, and every non-zero element has a (multiplicative) inverse, it is called a Division ring. (The condition $1 \neq 0$ just rules out the zero ring $\{0\}$.) If a division ring is also commutative, it is a field.
 
 Since every non-zero element of a field has an inverse, say $a^{-1}$, it means multiplying any other element by this inverse gives a valid element of the field. This is the same as saying dividing an element by another non-zero element gives another element of the field. So every non-zero element divides every other element without leaving a remainder. Because of this property, fields allow for the definition of Vector Spaces. You can divide by scalars, talk about exact dimensions, find bases, and solve systems of linear equations without worrying about remainders or fractions.
 
@@ -186,29 +186,29 @@ Note that a field has only two ideals, both trivial:  $\{0\}$ and the entire fie
 
 Let's see what it takes to replicate all this mathematics in a ring. But first, in standard school arithmetic, we know that a prime number has only $1$ and itself as factors. They are irreducible into smaller factors. We also know that if a prime $p$ divides a product $ab$, i.e.,  $p \mid ab$, then at least one of $p \mid a$ and $p \mid b$ holds true. These two definitions are collapsed into the same definition.
 
-However, this doesn't always hold in a ring. An element $p$ is irreducible if it cannot be factored into two non-units:  $p = ab \implies a \text{ is a unit or } b \text{ is a unit}$. This is the familiar notion. Wait a minute! What is a unit?
+However, this doesn't always hold in a ring. An element $p$ that is non-zero and not itself a unit is irreducible if it cannot be factored into two non-units:  $p = ab \implies a \text{ is a unit or } b \text{ is a unit}$. This is the familiar notion. Wait a minute! What is a unit?
 
 In elementary arithmetic and geometry, the word "unit" is commonly used in two ways:
 
-1.  The unit scale / unit length: The minimal step ($1$) used to measure or generate all other integers via repeated addition ($1 + 1 + 1 = 3$).
-    
-2.  The multiplicative identity: The number $1$, which leaves other numbers unchanged under multiplication ($x \cdot 1 = x$).
-    
-When algebraists generalized arithmetic to arbitrary rings, they already had standard terms for those concepts: the additive generator and the multiplicative identity. The word unit was repurposed to mean any element that possesses a multiplicative inverse within the ring:  $u \cdot v = 1$.
+The unit scale / unit length: The minimal step ($1$) used to measure or generate all other integers via repeated addition ($1 + 1 + 1 = 3$).
 
-In $\mathbb{Z}$, the only numbers with multiplicative inverses happen to be $1$ and $-1$. Because $\pm 1$ also happen to be the numbers that generate the ticks on the tape by addition, everyday intuition conflates the two ideas. In a general ring, however, elements can have multiplicative inverses without having anything to do with a "step size": In $\mathbb{Z}_{12}$, the number $5$ is a unit because $5 \times 5 = 25 \equiv 1 \pmod{12}$. It has an exact inverse ($5^{-1} = 5$), yet it is not a "minimal step size" in the geometric sense.
+The multiplicative identity: The number $1$, which leaves other numbers unchanged under multiplication ($x \cdot 1 = x$).
+
+When algebraists generalized arithmetic to arbitrary rings, they already had standard terms for those concepts: the additive generator and the multiplicative identity. The word unit was repurposed to mean any element that possesses a multiplicative inverse within the ring:  $u \cdot v = 1$. (So units, and the associates, irreducible and prime elements built from them below, only make sense in a ring with an identity $1$.)
+
+In $\mathbb{Z}$, the only numbers with multiplicative inverses happen to be $1$ and $-1$. Because $\pm 1$ also happen to be the numbers that generate the ticks on the tape by addition, everyday intuition conflates the two ideas. In a general ring, however, elements can have multiplicative inverses without having anything to do with a "step size": In $\mathbb{Z}_{12}$ (the integers mod $12$; from here on $\mathbb{Z}_n$ means the integers mod $n$, that is, the quotient ring $\mathbb{Z}/n\mathbb{Z}$, not the $p$-adic integers $\mathbb{Z}_p$ mentioned earlier), the number $5$ is a unit because $5 \times 5 = 25 \equiv 1 \pmod{12}$. It has an exact inverse ($5^{-1} = 5$), yet it is not a "minimal step size" in the geometric sense.
 
 In modern algebra: the Unity / Identity is the single element $1$. The Unit: any element that can be divided by (has an inverse that lands back in $1$).
 
-In a finite ring, every element is either a unit or a zero divisor. This also means that if you take a unit and multiply it by all the elements in the ring, the set of products will cover all the elements of the ring.
+In a finite ring with an identity $1$, every non-zero element is either a unit or a zero divisor. This also means that if you take a unit and multiply it by all the elements in the ring, the set of products will cover all the elements of the ring.
 
 If two elements of a ring $a$ and $b$ are related such that $a = u \cdot b$ where $u$ is a unit (i.e., it has an inverse),  $a$ and $b$ are called associates. This will be important in terms of factorization as we'll see below. Now you see why units are called units. They are similar to $1$ in integers in that if we multiply some element of a ring by a unit, it lands up at some equivalent element called its associate.
 
-Now getting back to primes and irreducibles, an element $p$ is irreducible if it cannot be factored into two non-units: $p = ab \implies a \text{ is a unit or } b \text{ is a unit}$. An element $p$ is prime if: $p \mid ab \implies p \mid a \quad \text{or} \quad p \mid b$. Whenever $p$ divides a product, it must divide at least one of the factors. 
+Now getting back to primes and irreducibles, in a commutative ring with $1$, a non-zero non-unit element $p$ is irreducible if it cannot be factored into two non-units: $p = ab \implies a \text{ is a unit or } b \text{ is a unit}$. A non-zero non-unit element $p$ is prime if: $p \mid ab \implies p \mid a \quad \text{or} \quad p \mid b$. Whenever $p$ divides a product, it must divide at least one of the factors. (Units are left out on purpose, just as $1$ is not a prime number: a unit $u$ would pass both tests, since $u = ab$ forces $a$ and $b$ to be units, and $u$ divides everything.) 
 
 In terms of ideals, this means the principal ideal $\langle p \rangle$ is a prime ideal: $ab \in \langle p \rangle \implies a \in \langle p \rangle \text{ or } b \in \langle p \rangle$.
 
-Now what does unique factorization entail in a ring? A UFD means that every non-zero, non-unit element $x$ can be written as a product of irreducibles, and that factorization is unique up to the order of factors and multiplication by units (basically our equivalence classes or partitions from modulo discussed sometime above). 
+Now what does unique factorization entail in a ring? A UFD means that every non-zero, non-unit element $x$ can be written as a product of irreducibles, and that factorization is unique up to the order of factors and multiplication by units (being associates is an equivalence relation, so this again sorts the elements into equivalence classes, as modulo did above; but the classes are different: in $\mathbb{Z}$, the classes of associates are the pairs $\{n, -n\}$, not the remainder classes). 
 
 Formally, if $x$ is factored into irreducibles in two ways:
 
@@ -228,29 +228,29 @@ $$p_1 \mid (q_1 q_2 \dots q_s)$$
 
 Now you want to cancel $p_1$ with one of the factors on the right.
 
--   **If $p_1$ is PRIME:**
-    
-    By definition of prime, $p_1 \mid (AB) \implies p_1 \mid A \text{ or } p_1 \mid B$.
-    
-    Extending this to $s$ terms, $p_1$ must divide at least one specific $q_j$.
-    
-    Since $q_j$ is irreducible, its only divisors are units and associates. Therefore, $p_1$ and $q_j$ must be associates:
-    
-    $$q_j = u \cdot p_1$$
-    
-    You cancel $p_1$ from both sides, leaving a smaller equation. By induction, every factor matches up.
-    
--   **If $p_1$ is ONLY IRREDUCIBLE (Not Prime):**
-    
-    Knowing that $p_1 \mid (q_1 \cdots q_s)$ does NOT guarantee that $p_1$ divides any individual $q_j$!
-    
-    It could divide the whole product without dividing any piece.
+**If $p_1$ is PRIME:**
+
+By definition of prime, $p_1 \mid (AB) \implies p_1 \mid A \text{ or } p_1 \mid B$.
+
+Extending this to $s$ terms, $p_1$ must divide at least one specific $q_j$.
+
+Since $q_j$ is irreducible, its only divisors are units and associates. Therefore, $p_1$ and $q_j$ must be associates:
+
+$$q_j = u \cdot p_1$$
+
+You cancel $p_1$ from both sides, leaving a smaller equation. (Cancelling a non-zero factor is allowed in an integral domain: $ab = ac$ with $a \neq 0$ gives $a(b - c) = 0$, so $b = c$ because there are no zero divisors. In $\mathbb{Z}_6$, which has zero divisors, it fails: $2 \cdot 1 = 2 \cdot 4$.) By induction, every factor matches up.
+
+**If $p_1$ is ONLY IRREDUCIBLE (Not Prime):**
+
+Knowing that $p_1 \mid (q_1 \cdots q_s)$ does NOT guarantee that $p_1$ divides any individual $q_j$!
+
+It could divide the whole product without dividing any piece.
 
 In short: We factor into irreducibles (unbreakable blocks), but we need those blocks to be prime (divisibility-passing) so that the factorization is guaranteed to be unique.
 
 This is a UFD. We'll skip looking at what it takes to jump to a PID and just look at what is needed to go from PID to a field. To build a field out of a PID, you quotient by a principal ideal $I = \langle p \rangle$.
 
-In any commutative ring: $R/I \text{ is a field} \iff I \text{ is a }\textbf{maximal ideal}$
+In any commutative ring with an identity $1$ (without one this fails: $4\mathbb{Z}$ is a maximal ideal of $2\mathbb{Z}$, but in $2\mathbb{Z}/4\mathbb{Z}$ we have $2 \cdot 2 = 4 \equiv 0$, so it is not a field): $R/I \text{ is a field} \iff I \text{ is a }\textbf{maximal ideal}$
 
 "Maximal" means there is no other ideal strictly squeezed between $I$ and $R$:
 
@@ -314,11 +314,11 @@ Now let's look at the **Second Isomorphism Theorem**. Structurally, the theorem 
 
 Let $R$ be a ring, $S$ a subring of $R$, and $I$ an ideal of $R$. Then:
 
-1.  The sum $S + I = \{s + i \mid s \in S, i \in I\}$ is a subring of $R$.
-    
-2.  The intersection $S \cap I$ is an ideal of $S$.
-    
-3.  $(S + I) / I \cong S / (S \cap I)$    
+The sum $S + I = \{s + i \mid s \in S, i \in I\}$ is a subring of $R$.
+
+The intersection $S \cap I$ is an ideal of $S$.
+
+$(S + I) / I \cong S / (S \cap I)$
 
 Let's look at an example. $R = \mathbb{Z}$, with the ideal grid $I = 6\mathbb{Z} = \{\dots, -12, -6, 0, 6, 12, \dots\}$. So $R/I = \mathbb{Z}_6$.
 
@@ -332,7 +332,7 @@ Modding out by $I = 6\mathbb{Z}$ gives $\{0, 2, 4\}$. So $(S + I)/I$ is the 3-el
 
 The Right side: $S / (S \cap I)$. Look only at the subring $S = 2\mathbb{Z}$, what part of $I = 6\mathbb{Z}$ lives inside $S$? $6\mathbb{Z}$ itself! So if we quotient by this, what do we get: $0 \pmod 6$, $2 \pmod 6$, and $4 \pmod 6$.
 
-What this means is, the elements of $I$ that don't belong to $S$ contribute nothing to $S$, so modding out by the whole ideal $I$ has the exact same effect as modding out only by the shared overlap $S \cap I$. The only algebraic issue is that you cannot technically form the quotient $S/I$ unless $I$ is entirely contained within $S$ (it must be an ideal of $S$). By adding $I$ to $S$ on the left (creating $S+I$), or taking the intersection on the right ($S \cap I$), we ensure the quotient fractions are perfectly legal.
+What this means is, the elements of $I$ that don't belong to $S$ contribute nothing to $S$, so modding out by the whole ideal $I$ has the exact same effect as modding out only by the shared overlap $S \cap I$. The only algebraic issue is that you cannot technically form the quotient $S/I$ unless $I$ is entirely contained within $S$ (it must be an ideal of $S$). By adding $I$ to $S$ on the left (creating $S+I$), or taking the intersection on the right ($S \cap I$), we ensure the quotient fractions are perfectly legal. In our example, $I = 6\mathbb{Z}$ happens to lie inside $S$ already, so $S + I = S$, $S \cap I = I$, and both sides are simply $2\mathbb{Z}/6\mathbb{Z}$. To see the theorem do real work, take $I = 3\mathbb{Z}$ instead: then $S + I = \mathbb{Z}$ (because $1 = 3 - 2$) and $S \cap I = 6\mathbb{Z}$, so the theorem says $\mathbb{Z}/3\mathbb{Z} \cong 2\mathbb{Z}/6\mathbb{Z}$, even though $S/I$ itself cannot be formed.
 
 Now for the **Third Isomorphism Theorem**. Structurally, this is like the fraction rule in elementary arithmetic:
 
@@ -340,9 +340,9 @@ $$\frac{a/c}{b/c} = \frac{a}{b}$$
 
 The theorem states: Let $R$ be a ring, and let $I$ and $J$ be ideals of $R$ with $I \subseteq J \subseteq R$. Then:
 
-1.  $J / I$ is an ideal of the quotient ring $R / I$.
-    
-2.  $(R / I) \,/\, (J / I) \cong R / J$   
+$J / I$ is an ideal of the quotient ring $R / I$.
+
+$(R / I) \,/\, (J / I) \cong R / J$
 
 Here's an example. Let the tape be $R = \mathbb{Z}$. Choose $I = 12\mathbb{Z}$. Choose a wider seam that contains $I$: $J = 4\mathbb{Z}$ (every multiple of $12$ is a multiple of $4$, so $12\mathbb{Z} \subseteq 4\mathbb{Z}$).
 
@@ -372,7 +372,7 @@ $$3 \times 3 = 9 \equiv 0 \pmod 9$$
 
 The number $3$ is a "zero divisor" and has no multiplicative inverse ($1/3$ does not exist mod $9$). Division fails.
 
-When the size is a prime power $p^n$, you must build $\mathbb{F}_{p^n}$ as an $n$-dimensional vector space over the prime field $\mathbb{F}_p$ (the integers mod $p$, the smallest field sitting inside $\mathbb{F}_{p^n}$) by adjoining a root of an irreducible degree-$n$ polynomial, the exact same way you build the 2-dimensional complex numbers $\mathbb{C}$ from the real numbers $\mathbb{R}$ by adjoining $i = \sqrt{-1}$.    
+When the size is a prime power $p^n$, you must build $\mathbb{F}_{p^n}$ as an $n$-dimensional vector space over the prime field $\mathbb{F}_p$ (the integers mod $p$, the smallest field sitting inside $\mathbb{F}_{p^n}$) by adjoining a root of a degree-$n$ polynomial that is irreducible over $\mathbb{F}_p$, the exact same way you build the 2-dimensional complex numbers $\mathbb{C}$ from the real numbers $\mathbb{R}$ by adjoining $i = \sqrt{-1}$.    
 
 Since $x^2 + 1 = 0$ has no solution in $\mathbb{F}_3 = \{0, 1, 2\}$ (plugging in $0, 1, 2$ gives $0^2+1=1$,  $1^2+1=2$,  $2^2+1 = 5 \equiv 2 \neq 0$), we invent a symbol $i$ satisfying $i^2 = -1 \equiv 2 \pmod 3$. Then the $9$ elements of the field $\mathbb{F}_9$ are all combinations $a + bi$ where $a, b \in \{0, 1, 2\}$, with all arithmetic done modulo $3$:
 
@@ -402,7 +402,7 @@ In the language of finite fields, this says that for every element $a \in \mathb
 
 In ring theory, we studied systems with two operations (addition and multiplication). A ring models environments where things can be scaled, added, and multiplied, like polynomials or numbers.
 
-Group theory strips away one operation. A group is a set with a single operation (denoted $\circ$). Why do this? Because in the physical world, the most fundamental mathematical object is not a "number," but an action or a transformation. Think of a rotation. You can do one rotation and then another. There isn't any other operation really. You cannot multiply two rotations. So we have just one operation which we call a composition: do one action, then do the next.
+Group theory strips away one operation. A group is a set with a single operation (denoted $\circ$). Why do this? Because in the physical world, the most fundamental mathematical object is not a "number," but an action or a transformation. Think of a rotation. You can do one rotation and then another. There isn't any other operation really. You cannot add two rotations and get a rotation. So we have just one operation which we call a composition: do one action, then do the next.
 
 To really make this useful, you must be able to reverse actions, you must be able to do nothing, and a composition of operations should result in another recognizable operation. Accordingly, a group is defined as a set of elements with an associated operation, which is closed under that operation, is associative and has an identity. Every element must also have an inverse. Note that the inverse of a composition (usually a composition is also simply called a product) is $(gh)^{-1} = h^{-1}g^{-1}$, i.e., you invert in the reverse order in which you applied the operations. That makes sense. It is very much like the order in which you put on and take off shoes and socks.
 
@@ -410,23 +410,25 @@ Because a group has inverses, it obeys the Cancellation Laws: $gx = gy \implies 
 
 Groups need not be commutative because actions in space generally depend on the order in which they are performed: rotating a book around the X-axis then the Y-axis yields a different orientation than Y then X. If commutativity holds ($ab = ba$), such groups are called Abelian. It is customary to use $+$ instead of $\circ$ in abelian groups.
 
-**Example:** The set of all integers, with the operation $+$, is a group. In fact, if $R$ is any ring, we get a group with the operation $+$. It is an abelian group which is the same thing as saying it is the additive group of a ring. Conversely, given any abelian group $R$, where the group operation is written as $+$ and the identity as $0$, we obtain a ring (a zero ring) by defining the ring multiplication by the rule $ab = 0$ for all $a, b \in R$.
+**Example:** The set of all integers, with the operation $+$, is a group. In fact, if $R$ is any ring, we get a group with the operation $+$. It is an abelian group which is the same thing as saying it is the additive group of a ring. Conversely, given any abelian group $R$, where the group operation is written as $+$ and the identity as $0$, we obtain a ring (called a zero ring, or a ring with zero multiplication; not to be confused with the one-element zero ring $\{0\}$ from earlier) by defining the ring multiplication by the rule $ab = 0$ for all $a, b \in R$.
 
-Similarly, the set of units of a ring with the operation of multiplication is a group. This is called the group of units of the ring $R$.
+Similarly, the set of units of a ring with an identity $1$, with the operation of multiplication, is a group. This is called the group of units of the ring $R$.
 
-Similarly, with a field $F$, $F \setminus \{0\}$ is a group, the multiplicative group of $F$, written as $F^*$.
+Similarly, with a field $F$, $F \setminus \{0\}$ is a group, the multiplicative group of $F$, written as $F^*$ (or $F^\times$, as in Figure 2; the two symbols mean the same).
 
 The set of invertible $n \times n$ matrices ($\det(A) \neq 0$) over a field $F$, with the operation of matrix multiplication, is a group, the General Linear group $GL(n, F)$.
 
 A fundamental aspect behind groups is permutation, i.e., taking a set and permuting it or switching some of the elements. Every permutation can be written as a series of swaps between two elements. If there are an even number of these swaps, the parity of the permutation is even. Otherwise, it is odd.
 
-If you take a set and write out all the possible permutations of its elements, these form a group called the symmetric group $S_n$. It has $n!$ elements.
+If you take a set of $n$ points, say $\{1, 2, \dots, n\}$, and write out all the possible permutations of its elements, these form a group called the symmetric group $S_n$: the group of all permutations of $n$ points. It has $n!$ elements.
 
-Usually, a permutation is written out in the cycle notation, which tells us which element each element swaps with, until it returns to itself. A permutation may involve multiple cycles working together because it may not be possible for one element to permute into all other elements. If that were possible, we would have a single cycle. For example, $S_3$ consists of the six elements which permute the 3 items of $S_3$ in the following way (in cycle notation): $(1)$ (the identity, so nothing is permuted), $(1, 2, 3)$, $(1, 3, 2)$, $(1, 2)$, $(2, 3)$, and $(1, 3)$. A 2-cycle like (2 3) is a transposition.
+Usually, a permutation is written out in the cycle notation, which tells us which element each element is sent to, until it returns to itself. A cycle such as $(1, 2, 3)$ means that each listed point goes to the next one and the last goes back to the first, $1 \mapsto 2 \mapsto 3 \mapsto 1$, while points that are not listed stay put; so $(1, 3, 2)$ is $1 \mapsto 3 \mapsto 2 \mapsto 1$, and the 2-cycle $(1, 2)$ just swaps $1$ and $2$. A permutation may involve multiple cycles working together because it may not be possible for one element to permute into all other elements. If that were possible, we would have a single cycle. For example, $S_3$ consists of the six elements which permute the 3 items $1$, $2$, $3$ in the following way (in cycle notation): $(1)$ (the identity, so nothing is permuted), $(1, 2, 3)$, $(1, 3, 2)$, $(1, 2)$, $(2, 3)$, and $(1, 3)$. A 2-cycle like (2 3) is a transposition.
+
+To multiply permutations, we read the product from left to right: $gh$ means first do $g$, then do $h$. For example, $(1\,2)(1\,2\,3) = (1\,3)$: following each point, $1 \to 2 \to 3$, $2 \to 1 \to 2$ and $3 \to 3 \to 1$. Some books read products from right to left, like composing functions, and get $(2\,3)$ instead, so it is worth checking which convention a text uses.
 
 A Cayley table is like an operation table with the group elements listed on top and to the left, horizontally and vertically. Each slot in the table is filled with the group element produced by the composition of those two elements. This means any row or column will contain only one instance of any element, and every element must be present. This is like Sudoku and is generally called a Latin Square.
 
-Let $R$ be a ring. An automorphism of $R$ is an isomorphism $\theta : R \to R$; in other words, it is a permutation of $R$ which happens also to be a homomorphism satisfying $(x + y)\theta = x\theta + y\theta$ and $(xy)\theta = (x\theta)(y\theta)$. $\operatorname{Aut}(R)$ is the set of all automorphisms of $R$. It is a group: the automorphism group of $R$.
+Let $R$ be a ring. An automorphism of $R$ is an isomorphism $\theta : R \to R$; in other words, it is a permutation of $R$ which happens also to be a homomorphism satisfying $(x + y)\theta = x\theta + y\theta$ and $(xy)\theta = (x\theta)(y\theta)$. (Here the map is written on the right of its argument, so $x\theta$ means $\theta(x)$; group theory books often do this because it fits reading products left to right: $x\theta\phi$ means first $\theta$, then $\phi$.) $\operatorname{Aut}(R)$ is the set of all automorphisms of $R$. It is a group: the automorphism group of $R$.
 
 ### The Rosetta Stone: Rings vs. Groups
 
@@ -437,7 +439,7 @@ The structural theorems we learned for rings were ported directly into group the
 | **Base Environment** | Ring $R$ | Group $G$ |
 | **Neutral Element** | Zero ($0$) | Identity ($1$ or $e$) |
 | **Smaller enclosed system** | Subring $S$ | Subgroup $H$ |
-| **One-step closure test** | $a - b \in S$ | $ab^{-1} \in H$ |
+| **One-step closure test** (non-empty subset) | $a - b \in S$, plus $ab \in S$ | $ab^{-1} \in H$ |
 | **System that permits quotients** | Ideal $I$ (absorbs $r \cdot i$) | Normal Subgroup $N$ (absorbs $g^{-1}ng$) |
 | **Equivalence bundles** | Cosets $x + I$ | Left/Right Cosets $gN$ or $Ng$ |
 | **Quotient construction** | Factor Ring $R/I$ | Factor Group $G/N$ |
@@ -447,7 +449,7 @@ The structural theorems we learned for rings were ported directly into group the
 ### Subgroups
 Given a group, there's a few things we'd like to do. We'd like to see if we can break that group into pieces called subgroups, which would make it easier to understand and analyse its behaviour. The other thing we would like to do is to use that group and combine with other groups to form bigger groups. Let's look at the first item.
 
-A subgroup is a subset of a larger group, with the same operation as the parent, which is also a group. As with rings, the simple condition to test whether a subset is a subgroup is to check inversion (subtraction in rings) and composition (addition in rings) in one shot with $gh^{-1} \in H$ for all $g$ and $h$ in $H$. Unlike rings though, every subgroup will contain the identity. (Well, even in rings, the additive identity is always present).
+A subgroup is a subset of a larger group, with the same operation as the parent, which is also a group. As with rings, the simple condition to test whether a subset is a subgroup is to check inversion (subtraction in rings) and composition (addition in rings) in one shot with $gh^{-1} \in H$ for all $g$ and $h$ in $H$, provided $H$ is non-empty (the empty set passes this test because it has no elements to check, but it is not a group). Unlike rings though, every subgroup will contain the identity. (Well, even in rings, the additive identity is always present).
 
 As with rings, we can partition a group by a subgroup $H$, creating bundles or cosets, which are equivalence classes. However, since commutativity need _not_ hold, we have right and left cosets: $Hg = \{xg \mid x \in H\}$ and $gH = \{gx \mid x \in H\}$, which are: execute any action of $H$, then some element $g$ of $G$; and execute $g$, then any action of $H$.
 
@@ -464,7 +466,7 @@ $$\vert{}G\vert{} = \vert{}H\vert{} \cdot [G:H]$$
 This is a rigid quantization rule. A group of 15 elements physically cannot contain a self-contained subsystem of 4 elements.
 
 ### Normal Subgroups
-In rings, we built a quotient ring $R/I$ by partitioning with an ideal. In groups, we build a quotient group $G/N$ by partitioning by a subgroup that is called a Normal Subgroup. We needed an ideal to ensure multiplication of any elements of equivalence classes always produces the same product. Similarly, we want to look at what properties a subgroup must have to allow multiplication of elements of cosets consistently. For example, $(a)(b) = ab$. Now $a$ is an element of the coset $aN$ and $b$ of $bN$, while $ab$ is an element of coset $(ab)N$. We want this relationship of belonging to this same coset $(ab)N$ to hold for the product of any elements of the first two cosets. In other words, we want:
+In rings, we built a quotient ring $R/I$ by partitioning with an ideal. In groups, we build a quotient group $G/N$ by partitioning by a subgroup that is called a Normal Subgroup. We needed an ideal to ensure multiplication of any elements of equivalence classes always produces the same product. Similarly, we want to look at what properties a subgroup must have to allow multiplication of elements of cosets consistently. For example, $(a)(b) = ab$. Now $a$ is an element of the coset $aN$ and $b$ of $bN$, while $ab$ is an element of coset $(ab)N$. We want this relationship of belonging to this same coset $(ab)N$ to hold for the product of any elements of the first two cosets. In other words, we want (the product of two subsets of a group is the set of all products of an element of the first with an element of the second, $XY = \{xy \mid x \in X, y \in Y\}$):
 
 $$(aN)(bN) = abN$$
 
@@ -472,7 +474,7 @@ To make $a \cdot N \cdot b \cdot N$ equal $abN$, you need to be able to swap the
 
 $$Nb = bN$$
 
-So a normal subgroup commutes with every element of $G$ as a whole set ($gN = Ng$), even though $gn$ and $ng$ can be different elements for a particular $n \in N$. Its right and left cosets are the same. Another way of writing this is $g^{-1}Ng = N$ for every $g \in G$. Or in other words, $g^{-1}xg \in N$ for every $g$ in $G$ and every $x$ in $N$. As an aside, this means that in an Abelian group every single subgroup is a normal subgroup. The converse fails, so this does not characterise Abelian groups: the quaternion group $Q_8 = \{\pm 1, \pm i, \pm j, \pm k\}$ is not Abelian ($ij = k$ but $ji = -k$), yet every one of its subgroups is normal.
+So a normal subgroup commutes with every element of $G$ as a whole set ($gN = Ng$), even though $gn$ and $ng$ can be different elements for a particular $n \in N$. Its right and left cosets are the same. Another way of writing this is $g^{-1}Ng = N$ for every $g \in G$. Or in other words, $g^{-1}xg \in N$ for every $g$ in $G$ and every $x$ in $N$. As an aside, this means that in an Abelian group every single subgroup is a normal subgroup. The converse fails, so this does not characterise Abelian groups: the quaternion group $Q_8 = \{\pm 1, \pm i, \pm j, \pm k\}$ (multiplied by the rules $i^2 = j^2 = k^2 = ijk = -1$, with $-1$ commuting with everything) is not Abelian ($ij = k$ but $ji = -k$), yet every one of its subgroups is normal.
 
 One difference from ideals in rings is that while the ideal has the absorption property, there is nothing like that in the normal subgroup. In a ring, absorption works perfectly because you are absorbing a second operation (multiplication) into a subgroup built on the first operation (addition). $r \cdot 0 = 0$, so multiplying by the additive identity doesn't force $r$ into the ideal. But in a group, you only have one operation. The only subgroup that absorbs the group operation is the entire group itself. However, the normal subgroup does absorb perspective shifts (which we will explain shortly). 
 
@@ -480,22 +482,22 @@ A geometric way of thinking of normal subgroups is through conjugation. Two elem
 
 Imagine you are standing in a room.
 
--   Let $x$ be the action: "Step one meter forward."
-    
--   Let $g$ be the action: "Rotate your body 90 degrees to the right."
+Let $x$ be the action: "Step one meter forward."
+
+Let $g$ be the action: "Rotate your body 90 degrees to the right."
 
 What does $g^{-1}xg$ mean?
 
-1.  **$g^{-1}$:** Rotate 90 degrees to the left (undoing $g$).
-    
-2.  **$x$:** Step one meter forward.
-    
-3.  **$g$:** Rotate 90 degrees to the right.
-    
+**$g^{-1}$:** Rotate 90 degrees to the left (undoing $g$).
+
+**$x$:** Step one meter forward.
+
+**$g$:** Rotate 90 degrees to the right.
+
 
 If you execute $g^{-1}xg$, the net physical result is that you stepped one meter to the left. The action $x$ (stepping forward) was executed _from a different rotational perspective_.
 
-Conjugate elements are exactly the same physical action, just operating on a different axis or starting state. In the symmetric group $S_n$, two permutations are conjugate if and only if they have the exact same cycle structure (e.g., both are swaps, or both are 3-cycles). They do the same "shape" of shuffling, just to different items.
+Conjugate elements are exactly the same physical action, just operating on a different axis or starting state. In the symmetric group $S_n$, two permutations are conjugate if and only if they have the exact same cycle structure (the same number of cycles of each length; e.g., both are swaps, or both are 3-cycles). They do the same "shape" of shuffling, just to different items.
 
 Saying a subgroup $N$ is normal means that the collection of actions in $N$ is completely blind to orientation. If you take any internal action from $N$ and execute it from a twisted, alien perspective, the resulting physical action might be a different element than the one you started with, but it is guaranteed to still be an action belonging to the set $N$. The internal elements of $N$ might shuffle around under conjugation, but the boundaries of $N$ remain perfectly rigid across all reference frames.
 
@@ -511,7 +513,7 @@ $$[g, h] = g^{-1} \cdot (h^{-1}gh)$$
 
 It takes the inverse of $g$, and multiplies it by $g$ _as viewed from the orientation of $h$_. If changing the orientation to $h$ doesn't alter how $g$ behaves, then $h^{-1}gh = g$, and the commutator collapses: $g^{-1}g = 1$. The loop closes perfectly. This is the defining feature of the centralizer group (the elements that commute with a given element; more on that [later](#centralizers-and-the-center)). 
 
-If instead, in a finite group $G$ with a subgroup $N$, we have: $[G, N] \subseteq N$ (where $[G, N]$ is the subgroup generated by all the commutators $[g, n]$ with $g \in G$ and $n \in N$), then $N$ is a normal subgroup of $G$ i.e. it can absorb the group commutator with any external element.
+If instead, in a finite group $G$ with a subgroup $N$, we have: $[G, N] \subseteq N$ (where $[G, N]$ is the smallest subgroup containing all the commutators $[g, n]$ with $g \in G$ and $n \in N$), then $N$ is a normal subgroup of $G$ i.e. it can absorb the group commutator with any external element.
 
 Another way to think of cosets is as macroscopic actions, while individual elements of the coset are microscopic actions. For example, "Drive 50 miles North" and then "drift 1 inch left".
 
@@ -519,13 +521,13 @@ A coset like $aN$ is a "fuzzy" command. It means: Execute the macro-jump $a$, an
 
 Let's look at the physical timeline of executing $(aN)$ followed by $(bN)$:
 
-1.  Execute macro-jump $a$.
-    
-2.  Suffer a random micro-error $n_1$.
-    
-3.  Execute macro-jump $b$.
-    
-4.  Suffer a random micro-error $n_2$.    
+Execute macro-jump $a$.
+
+Suffer a random micro-error $n_1$.
+
+Execute macro-jump $b$.
+
+Suffer a random micro-error $n_2$.
 
 To guarantee that this sequence is indistinguishable from the clean macroscopic command $(ab)N$, we need to prove that the sequence $[a \to n_1 \to b \to n_2]$ can be perfectly rewritten as $[a \to b \to \text{some final micro-error}]$.
 
@@ -545,7 +547,7 @@ This is the normality condition. We want our final error to fall in the same cos
 
 <a id="figure-3"></a>![Normal vs non-normal coset blocks in the Cayley table of S_3](figures/maths2_s3_cosets_normality.png)
 
-*Figure 3. Coset blocks in the Cayley table of $S_3$, using right-to-left composition $(gh)(x) = g(h(x))$. (a) For the normal subgroup $N = A_3 = \{e, (1\,2\,3), (1\,3\,2)\}$, left and right cosets agree and the table splits into four solid $3 \times 3$ blocks that form the quotient $S_3/N$. (b) For the non-normal subgroup $H = \{e, (1\,2)\}$, left and right cosets differ on $(1\,3)$ and $(2\,3)$, and six of the nine $2 \times 2$ blocks split across two cosets.*
+*Figure 3. Coset blocks in the Cayley table of $S_3$, with products read left to right ($gh$ means first $g$, then $h$). (a) For the normal subgroup $N = A_3 = \{e, (1\,2\,3), (1\,3\,2)\}$, left and right cosets agree and the table splits into four solid $3 \times 3$ blocks that form the quotient $S_3/N$. (b) For the non-normal subgroup $H = \{e, (1\,2)\}$, left and right cosets differ on $(1\,3)$ and $(2\,3)$, and six of the nine $2 \times 2$ blocks split across two cosets.*
 
 For any subgroup $H$ of $G$ and any element $g$ of $G$, the conjugate set $g^{-1}hg$ for $h \in H$ is a subgroup of $G$. This means if there is only one subgroup of a certain order, it must be normal.
 
@@ -570,7 +572,7 @@ $$\Omega = G/H = \{xH \mid x \in G\}$$
 
 Since $[G : H] = p$, the set has size $\vert{}\Omega\vert{} = p$.
 
-Let $G$ act on $\Omega$ by left multiplication (an action of $G$ on a set $\Omega$ lets each $g \in G$ permute the points, $x \mapsto g \cdot x$, so that $e \cdot x = x$ and $g \cdot (h \cdot x) = (gh) \cdot x$; [group actions](#group-actions-and-the-orbit-stabilizer-theorem) get their own section below):
+Let $G$ act on $\Omega$ by left multiplication (an action of $G$ on a set $\Omega$ lets each $g \in G$ permute the points of $\Omega$, compatibly with the multiplication in $G$; the exact rules are in [group actions](#group-actions-and-the-orbit-stabilizer-theorem) below):
 
 $$g \cdot (xH) = (gx)H$$
 
@@ -584,11 +586,11 @@ $$\phi(G) \le S_p$$
 
 Let $K = \ker(\phi)$.
 
-By the First Isomorphism Theorem:
+By the First Isomorphism Theorem (for groups it reads just as for rings; see [below](#homomorphisms-and-the-isomorphism-theorems)):
 
 $$G/K \cong \phi(G) \le S_p$$
 
-Because $K$ is the kernel of a homomorphism, $K$ is automatically a normal subgroup of $G$ ($K \trianglelefteq G$).
+Because $K$ is the kernel of a homomorphism, $K$ is automatically a normal subgroup of $G$ ($K \trianglelefteq G$), just as a ring kernel is an ideal: if $\phi(k)$ is the identity, then so is $\phi(g^{-1}kg) = \phi(g)^{-1}\phi(k)\phi(g)$ (this is also stated [below](#homomorphisms-and-the-isomorphism-theorems)).
 
 What elements live in $K$?
 
@@ -660,6 +662,12 @@ There is a bijection between the conjugacy class of an element $x$ of $G$ and th
 
 Because of this bijection, the size of the conjugacy class of $x$ is exactly equal to the index of its centralizer: $\vert{}Cl(x)\vert{} = [G : C_G(x)] = \frac{\vert{}G\vert{}}{\vert{}C_G(x)\vert{}}$. This is a direct application of the Orbit-Stabilizer Theorem ([below](#orbit-stabilizer-theorem-orbit-counting-lemma): the size of an orbit times the size of a stabilizer is $\vert{}G\vert{}$), where the group acts on itself by conjugation.
 
+[Figure 4](#figure-4) shows this for $S_4$ and $x = (1\,2)$: the 24 elements split into 6 cosets of the centralizer, and each coset gives one of the 6 transpositions. Colouring the same elements by conjugacy class shows that the classes themselves are not cosets.
+
+<a id="figure-4"></a>![Cosets of the centralizer of (1 2) in S_4 and the conjugacy classes of S_4](figures/maths2_cosets_conjugacy_s4.png)
+
+*Figure 4. Cosets of a centralizer and a conjugacy class in $S_4$, with products read left to right. (a) The centralizer of $x = (1\,2)$ is $C_G(x) = \{e, (1\,2), (3\,4), (1\,2)(3\,4)\}$, and the 24 elements fall into 6 right cosets $C_G(x)g$ of 4 elements each; every element of a coset conjugates $x$ to the same transposition $g^{-1}xg$, so the class of $x$ has $24/4 = 6$ members. (b) The same elements coloured by conjugacy class, $24 = 1 + 6 + 3 + 8 + 6$.*
+
 Since conjugacy classes perfectly partition the group, the sum of the sizes of all distinct conjugacy classes must equal the total size of the group. This is called the class equation. Elements in the center of the group, $Z(G)$, have conjugacy classes of size 1 (they commute with everything, so they only conjugate to themselves). Grouping these together, we get the standard Class Equation:
 
 $$\vert{}G\vert{} = \vert{}Z(G)\vert{} + \sum_{i=1}^k [G : C_G(x_i)]$$
@@ -682,13 +690,13 @@ $$1 + 3 + 4 + 4 = 12$$
 
 The total order of the group is 12. There is only one conjugacy class with a single element, and so that must be the identity.
 
-The possible size of a non-trivial proper normal subgroup is only $1+3 = 4$. Adding any of the other conjugacy classes will mean the order of the proposed subgroup is no longer a divisor of 12. ($1+4 = 5$, $1+4+4 = 9$, $1+3+4 = 8$; none of these divide 12). So, $A_4$ has exactly one proper non-trivial normal subgroup, and it has order 4.
+The possible size of a non-trivial proper normal subgroup is only $1+3 = 4$. Adding any of the other conjugacy classes will mean the order of the proposed subgroup is no longer a divisor of 12. ($1+4 = 5$, $1+4+4 = 9$, $1+3+4 = 8$; none of these divide 12). That leaves one candidate, and we still have to check that it is a subgroup. The class of size 3 consists of the three products of two disjoint swaps, $(1\,2)(3\,4)$, $(1\,3)(2\,4)$ and $(1\,4)(2\,3)$; each is its own inverse, and the product of any two different ones is the third, so together with $e$ they are closed under products. So, $A_4$ has exactly one proper non-trivial normal subgroup, and it has order 4.
 
-[Figure 4](#figure-4) shows the classes of $D_8$ (the dihedral group of the square, [defined below](#types-of-groups): its 8 symmetries are the rotations $e, r, r^2, r^3$ by multiples of $90^\circ$ and four reflections) and $A_4$ as tiles; a normal subgroup has to be built from whole tiles.
+[Figure 5](#figure-5) shows the classes of $D_8$ (the dihedral group of the square, [defined below](#types-of-groups): its 8 symmetries are the rotations $e, r, r^2, r^3$ by multiples of $90^\circ$ and four reflections) and $A_4$ as tiles; a normal subgroup has to be built from whole tiles.
 
-<a id="figure-4"></a>![Conjugacy classes and the class equation in D_8 and A_4](figures/maths2_class_equation.png)
+<a id="figure-5"></a>![Conjugacy classes and the class equation in D_8 and A_4](figures/maths2_class_equation.png)
 
-*Figure 4. Conjugacy classes and the class equation. (a) In $D_8$, the class equation is $8 = 1 + 1 + 2 + 2 + 2$, with two singletons $\{e\}$ and $\{r^2\}$ forming the center $Z(D_8)$ and three classes of size $2$. (b) In $A_4$, the class equation is $12 = 1 + 3 + 4 + 4$, and $C_1 \cup C_2$ of size $1 + 3 = 4$ is the only proper union of whole classes with $C_1$ whose size divides $12$.*
+*Figure 5. Conjugacy classes and the class equation. (a) In $D_8$, the class equation is $8 = 1 + 1 + 2 + 2 + 2$, with two singletons $\{e\}$ and $\{r^2\}$ forming the center $Z(D_8)$ and three classes of size $2$. (b) In $A_4$, the class equation is $12 = 1 + 3 + 4 + 4$, and $C_1 \cup C_2$ of size $1 + 3 = 4$ is the only proper union of whole classes with $C_1$ whose size divides $12$.*
 
 The same logic is the standard way to prove that $A_5$ (and by extension, the unsolvability of the quintic polynomial) is a Simple Group (a group whose only normal subgroups are $\{e\}$ and the group itself; see [below](#types-of-groups)). The class equation for $A_5$ is $1 + 15 + 20 + 12 + 12 = 60$. A normal subgroup is a union of whole conjugacy classes that includes the class $\{e\}$ of size $1$. If you add $1$ to any combination of the other class sizes, short of taking all of them, you will never find a sum that divides $60$. ($1$ on its own gives the trivial subgroup, and all the classes together give $A_5$ itself.) Therefore, $A_5$ has no normal subgroups other than $\{e\}$ and $A_5$.
 
@@ -698,7 +706,7 @@ A group homomorphism $\phi: G \to H$ preserves the single group operation:
 
 $$\phi(ab) = \phi(a)\phi(b)$$
 
-Because there is no separate addition and multiplication, the mapping naturally forces the identity to map to the identity ($\phi(1_G) = 1_H$) and inverses to map to inverses ($\phi(a^{-1}) = \phi(a)^{-1}$).
+Because every element of $H$ has an inverse, the mapping naturally forces the identity to map to the identity ($\phi(1_G) = \phi(1_G 1_G) = \phi(1_G)\phi(1_G)$, and multiplying by $\phi(1_G)^{-1}$ gives $\phi(1_G) = 1_H$) and inverses to map to inverses ($\phi(a)\phi(a^{-1}) = \phi(1_G) = 1_H$, so $\phi(a^{-1}) = \phi(a)^{-1}$). For rings this argument breaks down, because the target ring need not have multiplicative inverses, and indeed a ring homomorphism need not send $1$ to $1$: the map sending everything to $0$ is a ring homomorphism.
 
 The core theorems map perfectly to their ring counterparts, merely swapping the additive vocabulary for multiplicative vocabulary:
 
@@ -761,7 +769,7 @@ In modern geometry and algebra, we describe this property by calling the sequenc
 
 $$1 \longrightarrow N \hookrightarrow G \stackrel{\pi}{\longrightarrow} G/N \longrightarrow 1$$
 
-a fibration or an exact sequence (a chain of homomorphisms in which the image of each map is exactly the kernel of the next; the hooked arrow $\hookrightarrow$ marks an injective homomorphism, an embedding).
+a fibration or a short exact sequence (a chain of homomorphisms in which the image of each map is exactly the kernel of the next; the $1$ at each end stands for the trivial group $\{1\}$, and the hooked arrow $\hookrightarrow$ marks an injective homomorphism, an embedding). The word fibration is borrowed from topology and is used here only as a picture, explained below; in algebra, $G$ is then called an [extension](#extensions-2) of $N$ by $G/N$.
 
 Everything strictly inside $N$ represents internal degrees of freedom that get crushed to a single point by the projection map $\pi$. If a subgroup $K$ sits inside $N$ ($K \subset N$), the quotient map cannot resolve it independently: it collapses into the identity pixel.
 
@@ -773,25 +781,25 @@ If $N$ were merely a subgroup and not normal, shifting perspective by some macro
 
  Why do we call them fibers and fibration? The base space ($G/N$) is the low-resolution map. Every element in $G/N$ is a single "point" on the spine of the map. The point on the spine corresponding to the identity element of $G/N$ has a bristle sticking out of it. That bristle is made of exactly the elements inside the normal subgroup $N$. If you pick any other point on the spine (a macroscopic coordinate like $gN$), the bristle sticking out of it is the coset $gN$.
 
-The word "fibration" implies that this structure is perfectly uniform, smooth, and untangled. If you map a random, unstructured set of data down to a smaller set, the fibers will be chaotic. The fiber over point $A$ might contain 100 elements, the fiber over point $B$ might contain 2 elements, and the fibers might twist unpredictably. Because $N$ is a normal subgroup, the group $G$ forms a perfect, rigid fibration. Every single fiber (coset) has the exact same number of elements. They are all perfect geometric copies of $N$. The cosets strictly partition the group. No two fibers ever cross or share an element. Because $g^{-1}Ng = N$, the fibers don't "shear" when you multiply them. They don't jump ship to another point on the spine.
+The word "fibration" implies that this structure is perfectly uniform, smooth, and untangled. If you map a random, unstructured set of data down to a smaller set, the fibers will be chaotic. The fiber over point $A$ might contain 100 elements, the fiber over point $B$ might contain 2 elements, and the fibers might twist unpredictably. Because $N$ is a normal subgroup, the group $G$ forms a perfect, rigid fibration. (Part of this, the equal and disjoint fibers described next, holds for the cosets of any subgroup, as we saw with the index formula; normality is what stops the fibers from shearing, as explained at the end of this paragraph.) Every single fiber (coset) has the exact same number of elements. They are all perfect geometric copies of $N$. The cosets strictly partition the group. No two fibers ever cross or share an element. Because $g^{-1}Ng = N$, the fibers don't "shear" when you multiply them: $(aN)(bN) = abN$, so $G/N$ is a group and $\pi$ is a homomorphism. They don't jump ship to another point on the spine.
 
-[Figure 5](#figure-5) shows this fibration for $D_8$ over $N = \{e, r^2\}$ together with the matching subgroup lattices (all the subgroups, arranged by inclusion) of $D_8$ above $N$ and of the Klein four-group $V_4$ (the group of order 4 in which every element is its own inverse).
+[Figure 6](#figure-6) shows this fibration for $D_8$ over $N = \{e, r^2\}$ together with the matching subgroup lattices (all the subgroups, arranged by inclusion) of $D_8$ above $N$ and of the Klein four-group $V_4$ (the group of order 4 in which every element is its own inverse).
 
-<a id="figure-5"></a>![Fibration and subgroup correspondence for D_8 over N](figures/maths2_fourth_isomorphism_fibration.png)
+<a id="figure-6"></a>![Fibration and subgroup correspondence for D_8 over N](figures/maths2_fourth_isomorphism_fibration.png)
 
-*Figure 5. Fibration and the Fourth Isomorphism Theorem for $D_8$ over $N = \{e, r^2\}$. (a) The four cosets of $N$ stand as 2-element fibers over the four points of the quotient spine $D_8/N \cong V_4$. (b) In the subgroup lattice of $D_8$, the five highlighted subgroups containing $N$ match the five subgroups of $V_4$ one-to-one.*
+*Figure 6. Fibration and the Fourth Isomorphism Theorem for $D_8$ over $N = \{e, r^2\}$. (a) The four cosets of $N$ stand as 2-element fibers over the four points of the quotient spine $D_8/N \cong V_4$. (b) In the subgroup lattice of $D_8$, the five highlighted subgroups containing $N$ match the five subgroups of $V_4$ one-to-one.*
 
 ### Sylow's Theorems and The Anatomy of Prime Blocks
 
-In our quest to break larger groups into simpler constituents, taking some inspiration from the prime factorization of integers is helpful. Prime factors are fundamental and unique components of an integer. In group theory, the $p$-groups play that role where $p$ is a prime number. These groups are highly layered and come with several restrictive properties, such as their order and how they relate to the larger group's order, which helps us put very tight constraints on how a large group can split into smaller ones. These tight constraints help us reduce our search space of the smaller constituent groups so we can find them sooner. 
+In our quest to break larger groups into simpler constituents, taking some inspiration from the prime factorization of integers is helpful. Prime factors are fundamental and unique components of an integer. In group theory, the $p$-groups (groups whose order is a power of a prime $p$) play a part of that role, though not all of it: the true analogue of prime factors is the simple groups (see [below](#the-jordan-holder-theorem-the-periodic-table-of-groups)), while the $p$-groups are the prime-power pieces that every finite group contains. These groups are highly layered and come with several restrictive properties, such as their order and how they relate to the larger group's order, which helps us put very tight constraints on how a large group can split into smaller ones. These tight constraints help us reduce our search space of the smaller constituent groups so we can find them sooner. 
 
 Let's look at their nature for a bit. A $p$-group is a group whose entire size is a power of a single prime ($p^a$). Because they are made of a single prime "substance," they possess incredibly rigid, crystalline internal symmetries that mixed-mass groups do not.
 
 We have Cauchy’s Theorem, which says if a prime number $p$ divides the order of a finite group $G$, then $G$ contains an element of order $p$, i.e., it has a cyclic subgroup of order $p$. (The order of an element $g$ is the smallest $n \geq 1$ with $g^n = e$, and the cyclic subgroup it generates is $\{e, g, g^2, \dots, g^{n-1}\}$.)
 
-The defining feature of any $p$-group is that its center is never trivial ($Z(P) \ne \{1\}$). There is always at least one non-identity action that commutes with absolutely everything else in the group. Because the center is non-trivial, you can safely quotient the group by its center, creating a smaller $p$-group, which also has a non-trivial center, and repeat the process. This guarantees that $p$-groups can be thoroughly layered and perfectly dismantled down to the identity.
+A key property of any non-trivial finite $p$-group $P$ is that its center is never trivial ($Z(P) \ne \{1\}$). (This is a property, not the definition: many other groups, such as every non-trivial abelian group, also have a non-trivial center.) There is always at least one non-identity action that commutes with absolutely everything else in the group. Because the center is non-trivial, you can safely quotient the group by its center, creating a smaller $p$-group, which (unless it is trivial) also has a non-trivial center, and repeat the process. This guarantees that $p$-groups can be thoroughly layered and perfectly dismantled down to the identity.
 
-So, if $G$ is a group of order $p^a m$, where $p$ is a prime not dividing $m$, then for $0 \le i \le a$, $G$ contains a subgroup of order $p^i$. Furthermore, if $i < a$, then any subgroup of order $p^i$ is contained normally in a subgroup of order $p^{i+1}$. This means you can construct a nested sequence of subgroups $P_0 \subset P_1 \subset \dots \subset P_a$ such that $\vert{}P_i\vert{} = p^i$, and each subgroup is a normal subgroup of the next one in the chain ($P_i \triangleleft P_{i+1}$).
+Building on this layering, one can prove the following standard theorem (we do not prove it here; its case $i = a$ is Sylow's First Theorem below): if $G$ is a group of order $p^a m$, where $p$ is a prime not dividing $m$, then for $0 \le i \le a$, $G$ contains a subgroup of order $p^i$. Furthermore, if $i < a$, then any subgroup of order $p^i$ is contained normally in a subgroup of order $p^{i+1}$. This means you can construct a nested sequence of subgroups $P_0 \subset P_1 \subset \dots \subset P_a$ such that $\vert{}P_i\vert{} = p^i$, and each subgroup is a normal subgroup of the next one in the chain ($P_i \triangleleft P_{i+1}$).
 
 Sylow's theorems establish important rules about these $p$-groups. Lagrange’s Theorem is a restrictive law: it tells you that the order of a subgroup must divide the order of the group. If your group has 12 elements, you cannot have a subgroup of size 5. But Lagrange provides no positive guarantees. Just because 6 divides 12 does not mean a subgroup of size 6 actually exists (and in the alternating group $A_4$, it doesn't).
 
@@ -803,11 +811,11 @@ If the order of a group is $p^a \cdot m$ (where $p$ is a prime that doesn't divi
 
 **The Third Sylow Theorem (Counting):** The number of Sylow $p$-subgroups (which are the maximal $p$-subgroups of order $p^a$) is $\equiv 1 \pmod p$. That is, if the order of the parent group is $\vert{}G\vert{} = n = p^a m$ (where $p$ does not divide $m$), then the number of these subgroups, denoted as $n_p$, must leave a remainder of $1$ when divided by $p$ (meaning $n_p = 1 + kp$ for some integer $k$). Additionally, $n_p$ must be a divisor of $m$ (and therefore a divisor of the total group order $n$).
 
-By guaranteeing the existence of these prime-power subgroups, we can disassemble any unknown finite group into its fundamental $p$-group components, study them in isolation, and then figure out how they interlock.
+By guaranteeing the existence of these prime-power subgroups, we can find $p$-group pieces inside any unknown finite group, study them in isolation, and then try to figure out how they interlock. These pieces do not determine the group on their own: the cyclic group $C_6$ (all powers of one element of order 6; see [below](#types-of-groups)) and $S_3$ have the same kinds of Sylow subgroups (cyclic of order 2 and cyclic of order 3), yet they are different groups, since one is abelian and the other is not.
 
 The Third Sylow Theorem is the primary weapon used to prove that a group is _not_ simple. If your constraints ($n_p \equiv 1 \pmod p$ and $n_p \mid m$) leave $1$ as the only mathematically possible value for $n_p$, it means there is exactly _one_ Sylow $p$-subgroup. Because it is unique, it is invariant under conjugation, which guarantees that it is a Normal Subgroup!
     
-When you scale up to studying finite simple groups like $PSL(2,7)$ or $G_2(q)$ where $q \geq 3$ is prime ($G_2(2)$ itself is not simple: it has a normal subgroup of index $2$), this theorem dictates the structural "skeleton" of the group. For these groups to remain simple, the Sylow counts ($n_2$, $n_3$, $n_7$) must strictly be greater than 1, forcing multiple conjugate subgroups to perfectly interlock without any of them becoming normal.
+When you scale up to studying finite simple groups like $PSL(2,7)$ (built from $2 \times 2$ matrices over the field with $7$ elements, as described [below](#the-jordan-holder-theorem-the-periodic-table-of-groups)) or $G_2(q)$ (an exceptional group of Lie type built over the field with $q$ elements; we do not define it in these notes), where $q \geq 3$ is a prime power ($G_2(2)$ itself is not simple: it has a normal subgroup of index $2$), this theorem dictates the structural "skeleton" of the group. For these groups to remain simple, the Sylow counts ($n_2$, $n_3$, $n_7$) must strictly be greater than 1, forcing multiple conjugate subgroups to perfectly interlock without any of them becoming normal.
 
 ### Types of Groups
 
@@ -823,7 +831,7 @@ This leads us to Cauchy's Theorem. Let $G$ be a finite group, and $p$ a prime nu
 
 The map sending a permutation to its parity ($+1$ for even, $-1$ for odd) is a homomorphism from $S_n$ to the multiplicative group $\{+1, -1\}$. The kernel of this map is the set of all even permutations. This kernel is a normal subgroup called the Alternating Group ($A_n$). Because the target group has size 2, the kernel splits the original group exactly in half, meaning $\vert{}A_n\vert{} = n! / 2$.
 
-**Symmetry and Dihedral Groups ($D_{2n}$):** These groups represent the rigid physical symmetries of an $n$-sided regular polygon, and there are $2n$ of them (so $D_8$ is the group of the square). There are $n$ rotations (forming a cyclic, normal subgroup). There are $n$ reflections (axes of symmetry). Multiplying a rotation by a reflection flips the direction of the rotation ($r \cdot f = f \cdot r^{-1}$). This demonstrates why physical symmetries are strictly non-commutative.
+**Symmetry and Dihedral Groups ($D_{2n}$):** These groups represent the rigid physical symmetries of an $n$-sided regular polygon, and there are $2n$ of them (so $D_8$ is the group of the square). There are $n$ rotations (forming a cyclic, normal subgroup). There are $n$ reflections (axes of symmetry). Multiplying a rotation by a reflection flips the direction of the rotation ($r \cdot f = f \cdot r^{-1}$). For $n \geq 3$ we have $r^{-1} \neq r$, so $r \cdot f \neq f \cdot r$: this demonstrates why physical symmetries are generally non-commutative. (They need not always be: the rotations on their own commute with each other.)
 
 **Simple Groups (The Atoms of Symmetry):** You've studied prime numbers (atoms of integers) and irreducible polynomials (atoms of rings). In groups, the "atoms" are groups that have _no_ normal subgroups except the two that every group has: the trivial subgroup $\{e\}$ and the whole group. These are called Simple Groups. Because they have no other normal subgroups, they cannot be quotiented or broken down any further. The Alternating Group $A_n$ (for $n \geq 5$) is simple!
 
@@ -831,7 +839,7 @@ According to Cayley's theorem, every group is in fact a subgroup of a permutatio
 
 ### The Jordan-Hölder Theorem (The Periodic Table of Groups)
 
-If groups are molecules, how do we find their atoms? You take a group $G$ and find a maximal normal subgroup $G_1$ (a normal subgroup other than $G$ with no normal subgroup strictly between it and $G$; it is a seam that allows a clean quotient, and maximality makes $G/G_1$ simple). You split $G$ into the quotient group $G/G_1$ and the remainder $G_1$. You then take $G_1$ and smash it again along its own maximal normal subgroup $G_2$. You repeat this until you are left with pieces that have no normal subgroups other than $\{e\}$ and themselves, that is, simple groups.
+If groups are molecules, how do we find their atoms? You take a group $G$ and find a maximal normal subgroup $G_1$ (a normal subgroup other than $G$ with no normal subgroup strictly between it and $G$; it is a seam that allows a clean quotient, and maximality makes $G/G_1$ simple). You split $G$ into the quotient group $G/G_1$ and the remainder $G_1$. You then take $G_1$ and smash it again along its own maximal normal subgroup $G_2$. (Here $G_1, G_2, \dots$ are just names for the successive subgroups in the chain; this $G_2$ has nothing to do with the group of Lie type $G_2(q)$ above.) You repeat this until you are left with pieces that have no normal subgroups other than $\{e\}$ and themselves, that is, simple groups.
 
 These unbreakable, indivisible pieces are called Simple Groups. The sequence of smashes is called a Composition Series.
 
@@ -839,9 +847,9 @@ The Jordan-Hölder Theorem is the Fundamental Theorem of Arithmetic for groups. 
 
 This theorem broke the study of all finite groups into two distinct massive research programs:
 
-1. **The Classification Problem:** Find and catalogue every single Simple Group in the universe (the periodic table of elements).
+**The Classification Problem:** Find and catalogue every single Simple Group in the universe (the periodic table of elements).
 
-2. **The Extension Problem:** Figure out how to chemically bond those simple groups back together.
+**The Extension Problem:** Figure out how to chemically bond those simple groups back together.
 
 When you run a group through a composition series, the "atoms" you are left with via the Jordan-Hölder theorem fall into two categories:
 
@@ -849,19 +857,19 @@ When you run a group through a composition series, the "atoms" you are left with
 
 **Non-Abelian Simple Groups:** These are massively complex, multi-dimensional, interwoven structures and fall into three buckets:
 
-- **The Alternating Groups ($A_n$ for $n \ge 5$):** The group of all even permutations of $n$ items. We can prove $A_5$ is simple because its conjugacy classes (sizes 1, 15, 20, 12, 12) cannot be summed to divide 60. There is no normal subgroup to quotient out.
+**The Alternating Groups ($A_n$ for $n \ge 5$):** The group of all even permutations of $n$ items. We can prove $A_5$ is simple because its conjugacy classes (sizes 1, 15, 20, 12, 12) cannot be summed to divide 60. There is no normal subgroup to quotient out.
 
-- **Groups of Lie Type (e.g., $PSL(n, q)$):** These are [matrix groups over finite fields](maths_3_projective_geometry.md#the-picture-from-group-theory). If you take all $n \times n$ matrices with determinant 1 over a finite field (the Special Linear group), and quotient out the scalar matrices or the multiples of Identity (the Center), you get the Projective Special Linear group. Except for two exceptions, these are always simple.
+**Groups of Lie Type (e.g., $PSL(n, q)$):** These are [matrix groups over finite fields](maths_3_projective_geometry.md#the-picture-from-group-theory). If you take all $n \times n$ matrices with determinant 1 over the finite field $\mathbb{F}_q$ with $q$ elements (the Special Linear group), and quotient out the scalar matrices or the multiples of Identity (the Center), you get the Projective Special Linear group. Except for two exceptions, these are always simple.
 
-- **The 26 Sporadic Groups:** These are the anomalies. They do not fit into any infinite family. They are isolated, highly symmetrical geometric monsters that just happen to exist. The smallest has 7920 elements. The largest, the "Monster Group," has $\sim 10^{54}$ elements and represents the symmetries of a 196,883-dimensional space.
+**The 26 Sporadic Groups:** These are the anomalies. They do not fit into any infinite family. They are isolated, highly symmetrical geometric monsters that just happen to exist. The smallest has 7920 elements. The largest, the "Monster Group," has $\sim 10^{54}$ elements and represents the symmetries of a 196,883-dimensional space.
 
 If a group shatters entirely into 1D prime cyclic groups ($C_p$), the group is called Soluble (or Solvable). A soluble group can be highly non-commutative overall, but its non-commutativity is superficial. You can measure this using commutators: $[x, y] = x^{-1}y^{-1}xy$. 
 
-If you gather all these errors into a subgroup (the Derived Subgroup), and then measure the errors of the errors, and so on, a Soluble group's errors will eventually vanish to $1$. In contrast, a non-abelian simple group like $A_5$ is purely non-commutative: the errors of $A_5$ are the entirety of $A_5$.
+If you gather all these errors and take the subgroup they generate (the Derived Subgroup $[G, G]$, the smallest subgroup containing all the commutators; the commutators on their own need not form a subgroup), and then measure the errors of the errors (the derived subgroup of $[G, G]$), and so on, a Soluble group's errors will eventually vanish to $1$. In contrast, a non-abelian simple group like $A_5$ is purely non-commutative: the errors of $A_5$ are the entirety of $A_5$.
 
 ### Group Actions and the Orbit-Stabilizer Theorem
 
-A group can be treated as a closed universe of abstract elements. But historically, groups were invented to do things: to shuffle roots, rotate polyhedra, or permute sets. This is the idea of a Group Action. Formally, an action of $G$ on a set $\Omega$ assigns to each $g \in G$ and $x \in \Omega$ a point $g \cdot x \in \Omega$, so that $e \cdot x = x$ and $g \cdot (h \cdot x) = (gh) \cdot x$. If $\Omega$ is the set that $G$ acts on, then $\operatorname{deg}(G, \Omega) = \vert{}\Omega\vert{}$ is called the degree of the action.
+A group can be treated as a closed universe of abstract elements. But historically, groups were invented to do things: to shuffle roots, rotate polyhedra, or permute sets. This is the idea of a Group Action. Formally, an action of $G$ on a set $\Omega$ assigns to each $g \in G$ and $x \in \Omega$ a point $g \cdot x \in \Omega$, so that $e \cdot x = x$ and $g \cdot (h \cdot x) = (gh) \cdot x$. In this rule $h$ acts first and then $g$, which is the right-to-left reading of $gh$. Permutations, which we multiply left to right, therefore act most naturally on the right: writing $x \cdot g$ for the image of $x$ under $g$, the rule becomes $(x \cdot g) \cdot h = x \cdot (gh)$, and this is the form the module sections use ($vg$). If $\Omega$ is the set that $G$ acts on, then $\operatorname{deg}(G, \Omega) = \vert{}\Omega\vert{}$ is called the degree of the action.
 
 When you apply a group to a physical object or set of elements, two structural questions immediately arise for any specific point/element of the set $x$:
 
@@ -871,19 +879,21 @@ The other question is, what part of $G$ leaves $x$ completely alone? The set of 
 
 $G_x$ is generally not a normal subgroup of $G$. As we will see just below, the stabilizers of points in one orbit are conjugate to each other, so a normal $G_x$ would fix every point of the orbit of $x$. Suppose $G$ is transitive (it has a single orbit) and faithful (only the identity fixes every point; see [faithfulness](#kernels-cores-faithfulness) below). Then $G_x$ is normal only when $G_x = \{e\}$. Such an action is called regular, or sharply 1-transitive: exactly one element of $G$ takes any given point to any other ([regular actions](#transitive-regular-k-transitive-actions) are treated below). Without faithfulness a normal stabilizer can be larger: $C_4$ acting on the two cosets of its subgroup $C_2$ has stabilizer $C_2$, which is normal.
 
-Normal or not, $G_x$ partitions $G$ into a set of cosets $G / G_x = \{ g G_x \mid g \in G \}$, which is isomorphic to the orbit of $x$ under $G$ action. Essentially, the "representative" of each coset can be seen as the point that $x$ shifts to during its orbit traversal. Every element $g$ inside the coset $g G_x$ moves the base point $x$ to the exact same target.
+Normal or not, $G_x$ partitions $G$ into a set of cosets $G / G_x = \{ g G_x \mid g \in G \}$, which is in bijection with the orbit of $x$ under $G$ action, through $gG_x \mapsto g \cdot x$. (This bijection also matches the way $G$ moves the cosets with the way it moves the points of the orbit. It is not an isomorphism of groups: $G/G_x$ is only a set of cosets, and it is a group only when $G_x$ is normal.) Essentially, the "representative" of each coset can be seen as the point that $x$ shifts to during its orbit traversal. Every element $g$ inside the coset $g G_x$ moves the base point $x$ to the exact same target.
 
-The stabilizers of elements of the set are conjugates $G_\beta = g G_\alpha g^{-1}$ when $g(\alpha) = \beta$ i.e. conjugacy classes of stabilizers are given by the different orbits. If $G$ acts transitively, all stabilizers are conjugates of each other because there is only one orbit.
+The stabilizers of elements of the set are conjugates $G_\beta = g G_\alpha g^{-1}$ when $g(\alpha) = \beta$ i.e. points in the same orbit have conjugate stabilizers. The converse fails: points in different orbits can also have conjugate, or even equal, stabilizers. For example, if every element of $G$ fixes two points, those points form two orbits of size $1$, and both of their stabilizers are all of $G$. If $G$ acts transitively, all stabilizers are conjugates of each other because there is only one orbit.
 
 For transitive actions, since conjugate subgroups are isomorphic, every point stabilizer has the exact same order:
 
 $$\vert{}G_\alpha\vert{} = \vert{}G_\beta\vert{} = \frac{\vert{}G\vert{}}{\vert{}\Omega\vert{}}$$
 
-[Figure 6](#figure-6) shows this bijection for $D_8$ acting on the four corners of a square, matching the four left cosets of $G_1$ to the four corners and their conjugate stabilizers.
+**Note on left and right.** The text above writes the action on the left ($g \cdot x$, left cosets $gG_x$, $G_\beta = gG_\alpha g^{-1}$), which goes with reading products right to left. Figure 7 follows the convention of these notes, products read left to right, so the same sets appear there as right cosets $G_1g$, and the conjugate stabilizer is written $G_\beta = g^{-1}G_1g$. Here $G_1$ is the stabilizer of the corner $1$ (the $G_x$ above with $x = 1$), not the subgroup $G_1$ of a [composition series](#the-jordan-holder-theorem-the-periodic-table-of-groups). The cosets, corners and stabilizers are exactly the same sets in both; only the way the products are written differs.
 
-<a id="figure-6"></a>![Orbit-stabilizer bijection and conjugate stabilizers for D_8 on a square](figures/maths2_orbit_stabilizer_square.png)
+[Figure 7](#figure-7) shows this bijection for $D_8$ acting on the four corners of a square, matching the four right cosets $G_1g$ (products read left to right) to the four corners and their conjugate stabilizers.
 
-*Figure 6. The Orbit-Stabilizer Theorem for $D_8$ acting on the four corners $\Omega = \{1, 2, 3, 4\}$ of a square. The stabilizer of corner $1$ is $G_1 = \{e, (2\,4)\}$, and each of its four 2-element left cosets $gG_1$ sends corner $1$ to one corner $\beta = g(1)$. Moving to corner $\beta$ conjugates the stabilizer to $G_\beta = gG_1g^{-1}$, which fixes the diagonal through $\beta$.*
+<a id="figure-7"></a>![Orbit-stabilizer bijection and conjugate stabilizers for D_8 on a square](figures/maths2_orbit_stabilizer_square.png)
+
+*Figure 7. The Orbit-Stabilizer Theorem for $D_8$ acting on the four corners $\Omega = \{1, 2, 3, 4\}$ of a square. The stabilizer of corner $1$ is $G_1 = \{e, (2\,4)\}$, and, with products read left to right, each of its four 2-element right cosets $G_1g$ sends corner $1$ to one corner $\beta$, the image of $1$ under $g$. Moving to corner $\beta$ conjugates the stabilizer to $G_\beta = g^{-1}G_1g$, which fixes the diagonal through $\beta$.*
 
 **Aside:** Note the difference between the stabilizer and the centralizer, which seem to do similar things. The stabilizer is applied when a group $G$ acts on an arbitrary set $\Omega$. The centralizer is applied to elements within the group $G$ itself. The centralizer of an element $a \in G$ is the subgroup of all elements in $G$ that commute with $a$.
 
@@ -910,8 +920,9 @@ For example, if you paint the faces of a cube with 3 colours, there are $3^6 = 7
 
 The Orbit-Counting Lemma (often called Burnside's Lemma) provides a shortcut using fixed points. Instead of trying to track every colouring as it spins through space, you ask each of the 24 rotational actions of the cube: "How many of the 729 colourings do you leave perfectly unchanged (fixed)?"
 
-* The identity action fixes all 729.
-* A 90-degree face rotation only fixes colorings where the 4 spinning side-faces are painted the exact same color.
+The identity action fixes all 729.
+
+A 90-degree face rotation only fixes colorings where the 4 spinning side-faces are painted the exact same color.
 
 **The Lemma states:** The number of unique orbits is the average number of fixed points across all group actions.
 
@@ -923,14 +934,14 @@ The proof of Burnside's Lemma uses a standard combinatorial trick. When we need 
 
 Let the two sets be $G$ and $\Omega$. Define an edge between $g \in G$ and $x \in \Omega$ if and only if $g \cdot x = x$. We count the total number of edges $E$ in two ways:
 
-1.  **Summing across $G$:** For each $g \in G$, the number of edges incident to $g$ is the number of points in $\Omega$ fixed by $g$, namely $\vert{}\text{fix}(g)\vert{}$. Summing over all $g$:
-    
-    $$E = \sum_{g \in G} \vert{}\text{fix}(g)\vert{}$$
-    
-2.  **Summing across $\Omega$:** For each $x \in \Omega$, the number of edges incident to $x$ is the number of group elements in $G$ that fix $x$, which is the size of its stabilizer $\vert{}G_x\vert{}$. Summing over all $x$:
-    
-    $$E = \sum_{x \in \Omega} \vert{}G_x\vert{}$$
-    
+**Summing across $G$:** For each $g \in G$, the number of edges incident to $g$ is the number of points in $\Omega$ fixed by $g$, namely $\vert{}\text{fix}(g)\vert{}$. Summing over all $g$:
+
+$$E = \sum_{g \in G} \vert{}\text{fix}(g)\vert{}$$
+
+**Summing across $\Omega$:** For each $x \in \Omega$, the number of edges incident to $x$ is the number of group elements in $G$ that fix $x$, which is the size of its stabilizer $\vert{}G_x\vert{}$. Summing over all $x$:
+
+$$E = \sum_{x \in \Omega} \vert{}G_x\vert{}$$
+
 
 Equating the two counts gives:
 
@@ -965,7 +976,7 @@ $$m_{\mathbf{1}} = \langle \pi, \mathbf{1} \rangle$$
 By Burnside's Lemma (Orbit-Counting Lemma), this integer is precisely the number of orbits of $G$ on the set $\Omega$.
 
 #### Jordan's Theorem
-A direct consequence of this averaging is Jordan's Theorem. If a group acts transitively i.e. can move any point to any other point of the set, there must exist at least one action in the group that fixes nothing. If there is a transitive action, there is only 1 orbit. Because the identity action fixes everything, it heavily skews the average upward. For the average number of fixed points to drop all the way down to 1, some action needs to fix nothing.
+A direct consequence of this averaging is Jordan's Theorem. If a group acts transitively on a finite set $\Omega$ with at least two points, i.e. can move any point to any other point of the set, there must exist at least one element of the group that fixes nothing. If there is a transitive action, there is only 1 orbit. Because the identity element fixes everything, it heavily skews the average upward. For the average number of fixed points to drop all the way down to 1, some element needs to fix nothing. Both conditions on $\Omega$ are needed. On a single point, every element fixes that point. On an infinite set there is no average to take, and the theorem fails: the permutations of $\mathbb{N}$ that move only finitely many points form a group that acts transitively, yet each of them fixes infinitely many points.
 
 #### Transitive, Regular & $k$-transitive Actions
 
@@ -1034,7 +1045,7 @@ Similar to transitivity, we have: let $\Omega$ be a transitive $G$-space and $\a
 
 #### Orbit Decomposition
 
-Transitive actions are the fundamental building blocks of permutation group theory. If you understand how groups act transitively on individual orbits (which are classified purely as coset spaces $G/\text{Stab}(x)$), you can analyze any arbitrary permutation group by studying its transitive pieces and how they are wired together inside the subdirect product (a subgroup of the direct product of the pieces that still projects onto each piece; see the [example below](#example-of-building-a-larger-group)). Towards this, we first look at how a group decomposes into orbits.
+Transitive actions are the fundamental building blocks of permutation group theory. If you understand how groups act transitively on individual orbits (which are classified purely as coset spaces $G/\text{Stab}(x)$), you can analyze any arbitrary permutation group by studying its transitive pieces and how they are wired together inside the subdirect product (a subgroup of the direct product of the pieces that still projects onto each piece; the direct product $H_1 \times \dots \times H_k$ of groups is the group of tuples $(h_1, \dots, h_k)$ with $h_i \in H_i$, multiplied entry by entry, and is treated properly in [extensions](#extensions); see the [example below](#example-of-building-a-larger-group)). Towards this, we first look at how a group decomposes into orbits.
 
 Every point $x \in \Omega$ belongs to at least one orbit (since $x \in \mathcal{O}_x$). If two orbits share even a single common point ($z \in \mathcal{O}_x \cap \mathcal{O}_y$), they must be completely identical ($\mathcal{O}_x = \mathcal{O}_y$). So two orbits are either strictly disjoint or equal. Therefore:
 
@@ -1044,7 +1055,7 @@ A $G$-space $\Omega$ breaks down into orbits in exactly one way because being in
 
 A point $x$ cannot belong to orbit $A$ and also to a distinct orbit $B$. Every single point in the space is accounted for. Each orbit is a minimal $G$-invariant subset (a subset that every element of $G$ maps onto itself). You cannot slice an orbit into smaller $G$-invariant pieces, nor can you merge two orbits without breaking transitivity.
 
-This theorem helps us further in our foundational "divide and conquer" theorem of permutation groups: any arbitrary permutation group can be decomposed into independent transitive pieces.
+This theorem helps us further in our foundational "divide and conquer" theorem of permutation groups: any arbitrary permutation group can be decomposed into transitive pieces, one on each orbit. The pieces need not move independently of each other, as we will see.
 
 $\Omega$ partitions uniquely into disjoint orbits:
 
@@ -1175,9 +1186,9 @@ Now let's look at why we care about these tools, starting with finding normal su
 
 $$\text{Core}_G(H) = \bigcap_{g \in G} g H g^{-1} \trianglelefteq G$$
 
-Because $\text{Core}_G(H) \le H$, it guarantees the existence of a non-trivial normal subgroup under very light conditions.
+The core can be trivial, though: the three conjugates of $H = \langle (1\,2) \rangle$ in $S_3$ meet only in $e$, so $\text{Core}_{S_3}(H) = \{e\}$. What $\text{Core}_G(H) \le H$ does give is this: if $H \neq G$ and the core is not $\{e\}$, then the core is a normal subgroup other than $\{e\}$ and $G$. The next theorem gives a simple condition that forces this.
 
-**Example (Poincaré’s Theorem):** If $G$ has a subgroup $H$ of finite index $[G : H] = n$, the core $K = \text{Core}_G(H)$ is a normal subgroup of $G$ whose index $[G : K]$ divides $n!$.
+**Example (Poincaré’s Theorem):** If $G$ has a subgroup $H$ of finite index $[G : H] = n$, the core $K = \text{Core}_G(H)$ is a normal subgroup of $G$ whose index $[G : K]$ divides $n!$. So if $G$ is finite, $H \neq G$, and $\vert{}G\vert{}$ does not divide $n!$, then $K \neq \{e\}$ (otherwise $\vert{}G\vert{} = [G : K]$ would divide $n!$), and $G$ has a normal subgroup other than $\{e\}$ and $G$.
 
 This is the exact mechanism behind the theorem you looked at earlier: finding a prime-index subgroup $H$ and showing that $H = \text{Core}_G(H)$, which immediately proves $H$ is normal.
 
@@ -1223,15 +1234,14 @@ Because the action $\phi: G \to \text{Sym}(\Omega)$ is faithful, its kernel is t
 
 #### Example of Building a Larger Group
 
-Suppose a group $G$ permutes a 10-point set $\Omega = \Omega_1 \sqcup \Omega_2$, where $\vert{}\Omega_1\vert{} = 4$ and $\vert{}\Omega_2\vert{} = 6$.
+Suppose a group $G$ permutes a 10-point set $\Omega = \Omega_1 \sqcup \Omega_2$, where $\vert{}\Omega_1\vert{} = 4$ and $\vert{}\Omega_2\vert{} = 6$. Suppose also that every element of $G$ maps $\Omega_1$ to itself and $\Omega_2$ to itself, and that the $6$ points of $\Omega_2$ are the vertices of a regular hexagon, which every element of $G$ moves by a symmetry of the hexagon. So $G$ acts on $\Omega_1$ through $S_4$ and on $\Omega_2$ through the dihedral group $D_{12}$ (a general group acting on $6$ points need not do this).
 
 When you pick any element $g \in G$:
 
--   $g$ does something to the 4 points in $\Omega_1$. Call that transformation $g_1 \in S_4$.
+$g$ does something to the 4 points in $\Omega_1$. Call that transformation $g_1 \in S_4$.
     
--   Simultaneously, $g$ does something to the 6 points in $\Omega_2$. Call that transformation $g_2 \in D_{12}$.
+Simultaneously, $g$ does something to the 6 points in $\Omega_2$. Call that transformation $g_2 \in D_{12}$.
     
-
 So every element $g \in G$ can be written as an ordered pair:
 
 $$g = (g_1, g_2) \in S_4 \times D_{12}$$
@@ -1244,31 +1254,33 @@ If the two are somehow coupled, whenever you do something to $\Omega_1$, it forc
 
 Before looking at the Lemma, we look at a definition. Let $A$ and $B$ be two groups. A subgroup $G \le A \times B$ is called a subdirect product if:
 
-1.  $G$ has at least one element $(a, b)$ for every $a \in A$ i.e. every element of $A$ appears as the first coordinate of at least one element in $G$ (the projection $\pi_1: G \to A$ is surjective).
+$G$ has at least one element $(a, b)$ for every $a \in A$ i.e. every element of $A$ appears as the first coordinate of at least one element in $G$ (the projection $\pi_1: G \to A$ is surjective).
     
-2.  $G$ has at least one element $(a, b)$ for every $b \in B$ i.e. every element of $B$ appears as the second coordinate of at least one element in $G$ (the projection $\pi_2: G \to B$ is surjective).
+$G$ has at least one element $(a, b)$ for every $b \in B$ i.e. every element of $B$ appears as the second coordinate of at least one element in $G$ (the projection $\pi_2: G \to B$ is surjective).
     
 In our case, the action on $\Omega_1$ is all of $S_4$. The action on $\Omega_2$ is all of $D_{12}$.    
 
 That is literally saying that $G \le S_4 \times D_{12}$ is a subdirect product.
 
+Now for the concept behind Goursat's Lemma. We will find that finer actions, such as the actions of a normal subgroup of $S_4$ and a normal subgroup of $D_{12}$, are independent. But when we quotient by these normal subgroups, the coarser actions in the two quotients lock together and are not independent. So we cannot simply use the direct product formula unless the common quotient is the trivial group alone (meaning the normal subgroups are the full groups $N_1 = G_1$ and $N_2 = G_2$; in this paragraph $G_1$ and $G_2$ are the two groups being combined, called $A$ and $B$ below and $S_4$ and $D_{12}$ in our example, not point stabilizers). We will see that the way to build the combined group (a subdirect product) is to search for normal subgroups $N_1 \trianglelefteq G_1$ and $N_2 \trianglelefteq G_2$ such that they give an isomorphic common quotient $Q \cong G_1/N_1 \cong G_2/N_2$ when quotienting their respective groups. We then couple the two normal subgroups via a direct product $N_1 \times N_2$ because they act independently, and extend this base by the locked common quotient $Q$ (which is a group extension, and specifically a semidirect product $(N_1 \times N_2) \rtimes Q$ when the quotient splits in both groups). Briefly, a group extension of $N$ by $Q$ is a group that contains $N$ as a normal subgroup with quotient $Q$ (see [extensions](#extensions-2)). It is split, and is then a semidirect product $N \rtimes Q$ (see [direct and semidirect products](#extensions)), when it also contains a subgroup that meets $N$ only in the identity and maps onto the quotient, a copy of $Q$ sitting inside it. Saying that the quotient splits in both groups means that each $G_i$ is split over $N_i$ in this sense. Looking at the arithmetic of group orders, this works out to $(\vert{}G_1\vert{}/\vert{}Q\vert{} \cdot \vert{}G_2\vert{}/\vert{}Q\vert{})\cdot \vert{}Q\vert{} = \frac{\vert{}G_1\vert{}\cdot \vert{}G_2\vert{}}{\vert{}Q\vert{}}$, where we divide out the order of the common quotient to prevent it from being counted twice. This arithmetic directly gives the order of the resulting group from the orders of the constituent groups involved.
+
 Now for Goursat's Lemma. Look at the elements that fix one orbit entirely:
 
--   Let $N_1$ be the set of transformations on $\Omega_1$ that can occur while leaving $\Omega_2$ completely unmoved:
+Let $N_1$ be the set of transformations on $\Omega_1$ that can occur while leaving $\Omega_2$ completely unmoved:
     
-    $$N_1 = \{ g_1 \in A \mid (g_1, e_B) \in G \}$$
+$$N_1 = \{ g_1 \in A \mid (g_1, e_B) \in G \}$$
     
--   Let $N_2$ be the set of transformations on $\Omega_2$ that can occur while leaving $\Omega_1$ completely unmoved:
+Let $N_2$ be the set of transformations on $\Omega_2$ that can occur while leaving $\Omega_1$ completely unmoved:
     
-    $$N_2 = \{ g_2 \in B \mid (e_A, g_2) \in G \}$$
+$$N_2 = \{ g_2 \in B \mid (e_A, g_2) \in G \}$$
 
 $N_1$ is a normal subgroup of $A$, and $N_2$ is a normal subgroup of $B$.
 
 Now, what is left over once you ignore the independent movements inside $N_1$ and $N_2$?
 
--   In $A$, the "coarse" behavior is given by the quotient group $A / N_1$.
-    
--   In $B$, the "coarse" behavior is given by the quotient group $B / N_2$.
+In $A$, the "coarse" behavior is given by the quotient group $A / N_1$.
+
+In $B$, the "coarse" behavior is given by the quotient group $B / N_2$.
 
 The reason the quotient group $A / N_1$ is the coupling mechanism is that the second coordinate depends only on which coset of $N_1$ you are in. Suppose $(a, b) \in G$. What happens if you modify $a$ by any internal, independent motion $n_1 \in N_1$?
 
@@ -1306,33 +1318,57 @@ Let us see this machine in action on $S_4 \times D_{12}$:
 
 **Case 1: Quotient $Q = \{1\}$ (Zero coupling)**
 
--   We choose $N_1 = S_4$ and $N_2 = D_{12}$.
-    
--   Quotients: $S_4/S_4 \cong \{1\}$ and $D_{12}/D_{12} \cong \{1\}$.
-    
--   Condition: $\theta(g_1 N_1) = g_2 N_2$ is vacuously true for every pair.
-    
--   **Result:** No restrictions. $G = S_4 \times D_{12}$. Both orbits move with complete independence.
+We choose $N_1 = S_4$ and $N_2 = D_{12}$.
+
+Quotients: $S_4/S_4 \cong \{1\}$ and $D_{12}/D_{12} \cong \{1\}$.
+
+Condition: $\theta(g_1 N_1) = g_2 N_2$ is vacuously true for every pair.
+
+**Result:** No restrictions. $G = S_4 \times D_{12}$. Both orbits move with complete independence.
 
 **Case 2: Quotient $Q = C_2$ (Odd/Even Parity coupling)**
 
--   In $S_4$, there is only one normal subgroup of index 2: $N_1 = A_4$ (the even permutations). The quotient $S_4 / A_4 \cong \{+1, -1\}$ just records whether a permutation is even or odd.
-    
--   In $D_{12}$, is there a normal subgroup of index 2? Yes!
-    
-    Take $N_2 = \langle r \rangle \cong C_6$ (the 6 rotations of the hexagon).
-    
-    The quotient $D_{12} / \langle r \rangle \cong \{+1, -1\}$ records whether a symmetry is a pure rotation or includes a reflection.
-    
--   Both quotients are $C_2$. They match!
-    
--   What is the group $G$?
-    
-    Goursat says: pair them up via the isomorphism $\theta$:
-    
-    $$(g_1, g_2) \in G \iff \operatorname{sgn}(g_1) = \begin{cases} +1 & \text{if } g_2 \text{ is a rotation} \\ -1 & \text{if } g_2 \text{ is a reflection} \end{cases}$$
-    
+In $S_4$, there is only one normal subgroup of index 2: $N_1 = A_4$ (the even permutations). The quotient $S_4 / A_4 \cong \{+1, -1\}$ just records whether a permutation is even or odd.
+
+In $D_{12}$, is there a normal subgroup of index 2? Yes! In fact there are three. Write $r$ for the rotation by $60^\circ$ and $s$ for a reflection of the hexagon (a reflection was written $f$ in [types of groups](#types-of-groups); here it is $s$). The three are the rotations $\langle r \rangle \cong C_6$ and two subgroups isomorphic to $S_3$, namely $\langle r^2, s \rangle$ and $\langle r^2, rs \rangle$. So Goursat's recipe gives three different parity couplings with $S_4$, one for each of them. We follow the one that uses the rotations.
+
+Take $N_2 = \langle r \rangle \cong C_6$ (the 6 rotations of the hexagon).
+
+The quotient $D_{12} / \langle r \rangle \cong \{+1, -1\}$ records whether a symmetry is a pure rotation or includes a reflection.
+
+Both quotients are $C_2$. They match!
+
+What is the group $G$?
+
+Goursat says: pair them up via the isomorphism $\theta$:
+
+$$(g_1, g_2) \in G \iff \operatorname{sgn}(g_1) = \begin{cases} +1 & \text{if } g_2 \text{ is a rotation} \\ -1 & \text{if } g_2 \text{ is a reflection} \end{cases}$$
+
 **What this means in plain English:** You can shuffle the 4 points however you want, and you can move the hexagon however you want, except: If you do an even shuffle on the 4 points, you are forced to do a rotation on the hexagon. If you do an odd shuffle on the 4 points, you are forced to do a reflection on the hexagon. The two orbits are tied together by a parity "gear."
+
+**More details:** The resulting group $G$ is the fiber product (or subdirect product) $S_4 \times_{C_2} D_{12}$, an index-$2$ subgroup of $S_4 \times D_{12}$ of order $144$. (When two groups $A$ and $B$ each map onto a common group $Q$, their fiber product $A \times_Q B$ is the set of pairs $(a, b)$ whose images in $Q$ are equal. Here the maps are the sign $S_4 \to C_2$ and the map $D_{12} \to C_2$ that records rotation or reflection, so the fiber product is exactly the subdirect product that Goursat's recipe builds. The notation does not show the maps, so it has a definite meaning only once they are fixed.)
+
+**Exact element structure of $G$:** The full direct product $S_4 \times D_{12}$ has order $24 \times 12 = 288$ and splits into four blocks of $12 \times 6 = 72$ pairs based on the two cosets of $A_4$ in $S_4$ ($\text{Even}, \text{Odd}$) and the two cosets of $C_6$ in $D_{12}$ ($\text{Rot}, \text{Ref}$). The parity-coupling condition selects two of those four blocks:
+
+$$G = \underbrace{(A_4 \times C_6)}_{\substack{\text{Even } \times \text{ Rotation} \\ (12 \times 6 = 72 \text{ elements})}} \;\sqcup\; \underbrace{\big((S_4 \setminus A_4) \times (D_{12} \setminus C_6)\big)}_{\substack{\text{Odd } \times \text{ Reflection} \\ (12 \times 6 = 72 \text{ elements})}}$$
+
+Block 1 (The Normal Core $N_1 \times N_2 = A_4 \times C_6$): All $72$ pairs $(g_1, g_2)$ where $g_1$ is an even permutation in $A_4$ and $g_2$ is a pure rotation $r^k \in C_6$.
+
+Block 2 (The Coupled Coset): All $72$ pairs $(g_1, g_2)$ where $g_1$ is an odd permutation (like a transposition $(12)$ or $4$-cycle $(1234)$) and $g_2$ is a reflection $sr^k$. You are forbidden from pairing an even permutation with a reflection, or an odd permutation with a pure rotation. Every time you flip the hexagon, you must simultaneously apply an odd permutation to the $4$ points, and vice versa.
+
+We can identify $G$ as a semidirect product (see [extensions](#extensions)) by noticing that the normal subgroup $N = A_4 \times C_6$ has index $2$ in $G$. Pick the coupled element $t = ((12), s) \in G$, where $(12) \in S_4 \setminus A_4$ is an odd transposition and $s \in D_{12} \setminus C_6$ is a reflection.
+
+Notice its order: $t^2 = ((12)^2, s^2) = (e, e)$, so $\langle t \rangle \cong C_2$. Since $t \notin A_4 \times C_6$, the group $G$ splits as a semidirect product:
+
+$$G \cong (A_4 \times C_6) \rtimes C_2$$
+
+where the generator $t$ of $C_2$ acts simultaneously on both factors by conjugation: it acts on $A_4$ as the outer automorphism $(12)$ (creating $S_4$) and acts on $C_6$ by inversion $r \mapsto r^{-1}$ (creating $D_{12}$).
+
+Because $D_{12} \cong S_3 \times C_2$ (where the central $180^\circ$ rotation $r^3$ generates a direct factor $C_2 = \{e, r^3\}$ inside the rotation group $C_6$), that central $C_2$ is completely unaffected by the reflection parity. Factoring it out gives:
+
+$$G \cong \big(S_4 \times_{C_2} S_3\big) \times C_2$$
+
+Here, $S_4 \times_{C_2} S_3$ is the parity-coupled group of order $72$ (where even/odd permutations in $S_4$ are locked to even/odd permutations in $S_3$), and $G$ is simply the direct product of that $72$-element group with $C_2$.
 
 **Case 3: Quotient $Q = S_3$ (3-fold symmetry coupling)**
 
@@ -1345,18 +1381,60 @@ Quotienting out the $180^\circ$ rotation collapses opposite vertices of the hexa
 So $D_{12} / \langle r^3 \rangle \cong S_3$. Both quotients are $S_3$. They match!
     
 **What this means in plain English:** $S_4$ permutes the 3 coordinate axes of the tetrahedron/cube via $S_3$, while $D_{12}$ permutes the 3 main diagonals of the hexagon via $S_3$. The group $G$ locks these two 3-element actions together so that whatever permutation occurs on the 3 axes of $\Omega_1$ must match the permutation on the 3 diagonals of $\Omega_2$.
+
+**More Details:** Think of $S_4 \times D_{12}$ as a $6 \times 6$ chessboard of coset blocks, corresponding to the $6$ elements of $Q = S_3$:
+
+Rows ($S_4 / V_4$): $S_4$ (size $24$) splits into $6$ cosets of $V_4$, where each coset has size $\vert{}V_4\vert{} = 4$.
+
+Columns ($D_{12} / \langle r^3 \rangle$): $D_{12}$ (size $12$) splits into $6$ cosets of $\langle r^3 \rangle$, where each coset has size $\vert{}\langle r^3 \rangle\vert{} = 2$.
+
+Grid Cells: There are $6 \times 6 = 36$ cells in the full direct product, and each cell contains $\vert{}V_4\vert{} \times \vert{}\langle r^3 \rangle\vert{} = 4 \times 2 = 8$ element pairs ($36 \times 8 = 288$).
+
+Goursat's isomorphism $\theta: S_4/V_4 \stackrel{\sim}{\longrightarrow} D_{12}/\langle r^3 \rangle$ locks each row to one specific matching column, selecting only the $6$ diagonal cells out of the $36$ cells:
+
+$$\vert{}G\vert{} = \underbrace{6}_{\text{matching cells } (\vert{}Q\vert{})} \times \underbrace{(4 \times 2)}_{\text{size of } N_1 \times N_2} = 6 \times 8 = 48 = \frac{288}{6}$$ 
+
+Partition the $4$ numbers $\{1, 2, 3, 4\}$ into pairs in all $3$ possible ways (the $3$ matchings of $4$ points, or the $3$ pairs of opposite edges of a tetrahedron):
+
+Matching $\alpha$: $\{1,2\} \cup \{3,4\}$
+
+Matching $\beta$: $\{1,3\} \cup \{2,4\}$
+
+Matching $\gamma$: $\{1,4\} \cup \{2,3\}$
+
+Every permutation in $S_4$ permutes the $3$ labels $\{\alpha, \beta, \gamma\}$ among themselves, which induces a map $S_4 \to \text{Sym}(\{\alpha, \beta, \gamma\}) \cong S_3$.
+
+Which permutations in $S_4$ leave all $3$ matchings $\alpha, \beta, \gamma$ fixed in place? Precisely the identity $e$ and the three double-transpositions $(12)(34), (13)(24), (14)(23)$, which is the normal subgroup $N_1 = V_4$. Thus, each of the $6$ cosets of $V_4$ corresponds to one of the $6$ permutations of $\{\alpha, \beta, \gamma\}$ in $S_3$.
+
+Label the $6$ vertices of a regular hexagon $1, 2, 3, 4, 5, 6$ in order, and group the $3$ pairs of opposite vertices (the $3$ main diagonals of the hexagon):
+
+Diagonal $A$: $\{1, 4\}$
+
+Diagonal $B$: $\{2, 5\}$
+
+Diagonal $C$: $\{3, 6\}$
+
+Every symmetry in $D_{12}$ permutes the $3$ diagonals $\{A, B, C\}$, inducing a map $D_{12} \to \text{Sym}(\{A, B, C\}) \cong S_3$.
+
+Which symmetries in $D_{12}$ leave all $3$ diagonals $A, B, C$ in their exact original positions? Only the identity $e$ and the $180^\circ$ rotation $r^3$ (which swaps $1 \leftrightarrow 4$, $2 \leftrightarrow 5$, and $3 \leftrightarrow 6$, keeping each diagonal on top of itself). That kernel is $N_2 = \{e, r^3\} = \langle r^3 \rangle$. Thus, each of the $6$ cosets of $\langle r^3 \rangle$ corresponds to one of the $6$ permutations of the $3$ diagonals $\{A, B, C\}$ in $S_3$.
+
+Under the Goursat coupling $\theta$ (matching $\alpha \leftrightarrow A$, $\beta \leftrightarrow B$, $\gamma \leftrightarrow C$; this is one of $6$ possible choices of $\theta$, one for each way of matching $\{\alpha, \beta, \gamma\}$ with $\{A, B, C\}$, since $S_3$ has $6$ automorphisms (isomorphisms from $S_3$ to itself), and each choice gives a different subgroup $G$ of order $48$), a pair $(g_1, g_2) \in S_4 \times D_{12}$ belongs to $G$ if and only if $g_1$ shuffles the $3$ matchings $\{\alpha, \beta, \gamma\}$ in the exact same way that $g_2$ shuffles the $3$ hexagon diagonals $\{A, B, C\}$. For each of the $6$ possible shuffles in $S_3$, you have $4$ choices in $S_4$ (one coset of $V_4$) and $2$ choices in $D_{12}$ (either $g_2$ or $g_2 r^3$), giving $6 \times (4 \times 2) = 48$ elements. Furthermore, $D_{12} = S_3 \times \langle r^3 \rangle$, where $S_3 = \langle r^2, s \rangle$ meets $\langle r^3 \rangle$ only in $e$, so each coset of $\langle r^3 \rangle$ contains exactly one element of this $S_3$. The coupling only involves the $S_3$ factor. For each $g_1 \in S_4$ there is exactly one $x \in \langle r^2, s \rangle$ that shuffles the diagonals the way $g_1$ shuffles the matchings, and these pairs $(g_1, x)$ form a subgroup isomorphic to $S_4$. Every element of $G$ is such a pair times $(e, e)$ or $(e, r^3)$, and $(e, r^3)$ commutes with everything, so $G = \{(g_1, x) : x \text{ matches } g_1\} \times \langle (e, r^3) \rangle$, and this $48$-element group is isomorphic to:
+
+$$G \cong S_4 \times C_2$$
+
+(which happens to be the full octahedral group $O_h$, the $48$-element symmetry group of a cube).
     
 **The Big Picture Takeaway**
 
 Whenever an action has two orbits $\Omega_1$ and $\Omega_2$:
 
-1.  $G$ is always a subgroup of $\operatorname{Sym}(\Omega_1) \times \operatorname{Sym}(\Omega_2)$.
-    
-2.  The orbits define normal subgroups of "unassisted" internal motions.
-    
-3.  The cross-talk between the two orbits is governed entirely by a shared quotient group $Q$.
-    
-4.  Goursat's Lemma is just the classification of all possible gear-locks between two independent mechanisms.
+$G$ is always a subgroup of $\operatorname{Sym}(\Omega_1) \times \operatorname{Sym}(\Omega_2)$.
+
+The orbits define normal subgroups of "unassisted" internal motions.
+
+The cross-talk between the two orbits is governed entirely by a shared quotient group $Q$.
+
+Goursat's Lemma is just the classification of all possible gear-locks between two independent mechanisms.
 
 #### Sub-orbits, Orbitals, Blocks & Primitives
 
@@ -1368,7 +1446,7 @@ An orbital $\Gamma$ is simply an orbit of this action on pairs:
 
 $$\Gamma = \{ (g \cdot \alpha, g \cdot \beta) \mid g \in G \}$$
 
-The set of pairs with identical elements, $\Delta = \{(\alpha, \alpha) \mid \alpha \in \Omega\}$, is always an orbital. It is the trivial diagonal orbital. Non-diagonal orbitals are the interesting relations between distinct points.
+The set of pairs with identical elements, $\Delta = \{(\alpha, \alpha) \mid \alpha \in \Omega\}$, is an orbital when $G$ is transitive. (If $G$ has several orbits, $\Delta$ splits into one orbital for each orbit; for $G = \langle (1\,2\,3)(4\,5\,6) \rangle$ these are $\{(1,1),(2,2),(3,3)\}$ and $\{(4,4),(5,5),(6,6)\}$.) It is the trivial diagonal orbital. Non-diagonal orbitals are the interesting relations between distinct points.
     
 An orbital is a $G$-invariant relation. If $(\alpha, \beta)$ is an edge in the orbital, then applying any element of $G$ turns it into another edge in the same orbital.
 
@@ -1396,7 +1474,7 @@ If rank = 2, $G_\alpha$ has only two orbits: $\{\alpha\}$ and $\Omega \setminus 
 
 Looking at it conversely, because $G$ is 2-transitive, for any two distinct points $\beta, \gamma \in \Omega \setminus \{\alpha\}$, there exists $g \in G$ fixing $\alpha$ and sending $\beta \mapsto \gamma$. That means $G_\alpha$ acts transitively on the remaining points $\Omega \setminus \{\alpha\}$. Therefore, $G_\alpha$ partitions $\Omega$ into exactly two orbits: $\{\alpha\}$ and $\Omega \setminus \{\alpha\}$.
 
-Every $2$-transitive action is strictly primitive. (A transitive action is primitive if it preserves no partition of $\Omega$ into blocks other than the two trivial ones; blocks are defined a few paragraphs below.) The hierarchy of transitivity properties runs strictly in this order:
+Every $2$-transitive action is strictly primitive. (A block is a subset $B \subseteq \Omega$ that every $g \in G$ either maps onto itself or moves completely off itself: $gB = B$ or $gB \cap B = \emptyset$. The single points and $\Omega$ itself are always blocks, the trivial ones. A transitive action is primitive if it has no other blocks. If it has a non-trivial block, the images of that block split $\Omega$ into a system of blocks, as described a few paragraphs below.) The hierarchy of transitivity properties runs strictly in this order:
 
 $$\dots \implies 3\text{-transitive} \implies 2\text{-transitive} \implies \text{Primitive} \implies 1\text{-transitive}$$
 
@@ -1410,17 +1488,23 @@ Permutation group theory uses a geometric and combinatorial hierarchy based on t
 
 $$\text{All Actions} \xrightarrow{\text{orbits}} \text{Transitive} \xrightarrow{\text{blocks}} \text{Primitive} \xrightarrow{\text{O'Nan-Scott}} \text{Affine / Almost Simple / Product Action}$$
 
-1.  **Intransitive $\to$ Transitive:** Any permutation action breaks into disjoint transitive components (its orbits).
-    
-2.  **Transitive $\to$ Primitive:** A transitive group is imprimitive if it preserves a non-trivial partition of $\Omega$ (called a system of blocks, like suits in a deck of cards). If no non-trivial partition is preserved, the group is primitive. Imprimitive groups embed into wreath products $H \wr K$ (the group that permutes the blocks among themselves by $K$ and, independently, acts inside each block by its own copy of $H$), reducing their study to primitive components.
-    
-3.  **Primitive $\to$ Almost Simple / Basic Types:** By the O'Nan-Scott Theorem, every finite primitive permutation group belongs to one of five explicit structural classes (e.g., affine type, almost simple, product action, diagonal type).
+**Intransitive $\to$ Transitive:** Any permutation action breaks into disjoint transitive components (its orbits).
+
+**Transitive $\to$ Primitive:** A transitive group is imprimitive if it preserves a non-trivial partition of $\Omega$ (called a system of blocks, like suits in a deck of cards). If no non-trivial partition is preserved, the group is primitive. Imprimitive groups embed into wreath products $H \wr K$ (the group that permutes the blocks among themselves by $K$ and, independently, acts inside each block by its own copy of $H$), reducing their study to primitive components.
+
+**Primitive $\to$ Almost Simple / Basic Types:** By the O'Nan-Scott Theorem, every finite primitive permutation group belongs to one of five explicit structural classes (e.g., affine type, almost simple, product action, diagonal type). Roughly, affine type means that $\Omega$ can be taken to be a vector space $\mathbb{F}_p^d$ on which $G$ acts by maps $x \mapsto Ax + b$, with all the translations $x \mapsto x + b$ in $G$; almost simple means that $T \le G \le \operatorname{Aut}(T)$ for some non-abelian simple group $T$ (with $T$ identified with the automorphisms of $T$ given by conjugation); diagonal type and product action are built from several copies of one non-abelian simple group, acting on the cosets of a diagonal subgroup and on the $k$-tuples of points of a smaller set respectively. We will not need the details.
 
 This yields a completely independent structural ladder where primitive groups play the role of "irreducible" objects. Here, "primitive" refers to prime.
 
+[Figure 8](#figure-8) shows orbits, blocks and sub-orbits on one small example, the symmetries $D_{12}$ of a regular hexagon. The opposite-vertex blocks in panel (b) are exactly the long diagonals that form the second orbit in panel (a).
+
+<a id="figure-8"></a>![Orbits, blocks and sub-orbits of D_12 on a hexagon](figures/maths2_orbits_blocks_suborbits_hexagon.png)
+
+*Figure 8. Orbits, blocks and sub-orbits for the symmetry group $D_{12}$ of a regular hexagon. (a) Acting on the 6 vertices and the 3 long diagonals $A = \{1, 4\}$, $B = \{2, 5\}$, $C = \{3, 6\}$, the group has two orbits, of sizes 6 and 3. (b, c) On the vertices it has two systems of blocks, the opposite pairs and the two alternate triangles, and every symmetry maps each block onto a block. (d) The stabilizer of vertex $1$ splits the vertices into the sub-orbits $\{1\}$, $\{2, 6\}$, $\{3, 5\}$ and $\{4\}$, the points at distance 0, 1, 2 and 3 from $1$.*
+
 Permutation group theory provides the natural language for symmetry in external mathematical structures:
 
-**Rank and Orbitals $\leftrightarrow$ Graph Theory:** Every orbital $\Delta$ of a transitive group $G$ defines an orbital digraph (directed graph) $\Gamma = (\Omega, \Delta)$. If the orbital is self-paired (it contains $(\beta, \alpha)$ whenever it contains $(\alpha, \beta)$), $\Gamma$ is an undirected graph. Studying the orbitals of rank 3 permutation groups directly constructs and classifies [strongly regular graphs](maths_4_incidence_geometry.md#strongly-regular-and-distance-regular-graphs) (e.g., the Petersen graph from $S_5$, the Higman-Sims graph).
+**Rank and Orbitals $\leftrightarrow$ Graph Theory:** Every orbital $\Delta$ of a transitive group $G$ defines an orbital digraph (directed graph) $\Gamma = (\Omega, \Delta)$, with an arrow $\alpha \to \beta$ for each pair $(\alpha, \beta) \in \Delta$. (In this paragraph $\Delta$ is any orbital and $\Gamma$ is its graph; above, $\Gamma$ named an orbital and $\Delta$ the diagonal orbital.) If the orbital is self-paired (it contains $(\beta, \alpha)$ whenever it contains $(\alpha, \beta)$), $\Gamma$ is an undirected graph. For a rank 3 permutation group of even order, both non-trivial orbitals are self-paired, and each of their graphs is a [strongly regular graph](maths_4_incidence_geometry.md#strongly-regular-and-distance-regular-graphs): every vertex has the same number $k$ of neighbours, every two adjacent vertices have the same number $\lambda$ of common neighbours, and every two non-adjacent vertices have the same number $\mu$ (see also [a little graph theory](#a-little-graph-theory)). So rank 3 groups construct many strongly regular graphs (e.g., the Petersen graph from $S_5$, the Higman-Sims graph), and classifying the rank 3 groups classifies the strongly regular graphs that admit one. Most strongly regular graphs admit no rank 3 group, and many have very few symmetries at all.
     
 **Point Stabilizers $\leftrightarrow$ Geometries:** Coset spaces $G / G_\alpha$ allow one to reconstruct incidence geometries, projective planes, and [block designs](maths_4_incidence_geometry.md#combinatorial-designs) purely from subgroup lattice data.
       
@@ -1432,7 +1516,7 @@ For example, **Invariant subset:** $S \subseteq \Omega$ is $G$-invariant if $g(S
 
 **Invariant function:** $f: \Omega \to \mathbb{R}$ is $G$-invariant if $f(g(x)) = f(x)$ for all $g \in G, x \in \Omega$. (The output value does not change when the input is transformed).
         
-**Invariant relation ($G$-congruence):** A relation $\sim$ on $\Omega$ is $G$-invariant if $x \sim y \iff g(x) \sim g(y)$ for all $g \in G$.
+**Invariant relation:** A relation $\sim$ on $\Omega$ is $G$-invariant if $x \sim y \iff g(x) \sim g(y)$ for all $g \in G$. Orbitals are examples. A $G$-invariant equivalence relation is called a **$G$-congruence**. Its classes are blocks, and the partitions of $\Omega$ into the classes of a $G$-congruence are exactly the partitions that $G$ preserves (each $g$ maps every class onto a class), such as the systems of blocks above.
         
 By contrast, a map between two spaces, each equipped with its own $G$-action, is equivariant if applying a group element _before_ the map gives the same result as applying it _after_ the map.    
 
@@ -1446,15 +1530,15 @@ Let $X$ and $Y$ both be $G$-sets. A map $\phi: X \to Y$ is $G$-equivariant (or a
 
 Consider $G = \langle (1 \; 2 \; 3 \; 4 \; 5) \rangle \cong C_5$ acting on $\Omega = \{1, 2, 3, 4, 5\}$. Let us test the orbit of the pair $(1, 4)$ under $g = (1 \; 2 \; 3 \; 4 \; 5)$. Every transformed pair is an edge in the graph:
 
-1.  $g^0(1, 4) = (1, 4) \implies \text{Edge: } 1 \to 4$
-    
-2.  $g^1(1, 4) = (2, 5) \implies \text{Edge: } 2 \to 5$
-    
-3.  $g^2(1, 4) = (3, 1) \implies \text{Edge: } 3 \to 1$
-    
-4.  $g^3(1, 4) = (4, 2) \implies \text{Edge: } 4 \to 2$
-    
-5.  $g^4(1, 4) = (5, 3) \implies \text{Edge: } 5 \to 3$
+$g^0(1, 4) = (1, 4) \implies \text{Edge: } 1 \to 4$
+
+$g^1(1, 4) = (2, 5) \implies \text{Edge: } 2 \to 5$
+
+$g^2(1, 4) = (3, 1) \implies \text{Edge: } 3 \to 1$
+
+$g^3(1, 4) = (4, 2) \implies \text{Edge: } 4 \to 2$
+
+$g^4(1, 4) = (5, 3) \implies \text{Edge: } 5 \to 3$
 
 The graph consists of exactly these 5 directed edges:
 
@@ -1462,15 +1546,15 @@ $$E = \{ (1, 4), \; (2, 5), \; (3, 1), \; (4, 2), \; (5, 3) \}$$
 
 To trace the connected path, match the head of each arrow to the tail of the next:
 
--   Start at $1$: the edge is $1 \to 4$ (you are now at vertex $4$).
-    
--   From $4$: look for the edge starting at $4$, which is $4 \to 2$ (now at vertex $2$).
-    
--   From $2$: the edge is $2 \to 5$ (now at vertex $5$).
-    
--   From $5$: the edge is $5 \to 3$ (now at vertex $3$).
-    
--   From $3$: the edge is $3 \to 1$ (back at vertex $1$).
+Start at $1$: the edge is $1 \to 4$ (you are now at vertex $4$).
+
+From $4$: look for the edge starting at $4$, which is $4 \to 2$ (now at vertex $2$).
+
+From $2$: the edge is $2 \to 5$ (now at vertex $5$).
+
+From $5$: the edge is $5 \to 3$ (now at vertex $3$).
+
+From $3$: the edge is $3 \to 1$ (back at vertex $1$).
 
 Chaining them sequentially gives the closed path:
 
@@ -1480,17 +1564,17 @@ Every single vertex $\{1, 2, 3, 4, 5\}$ is visited in a single continuous cycle,
 
 Suppose instead we had 6 points and $G = \langle (1 \; 2 \; 3 \; 4 \; 5 \; 6) \rangle \cong C_6$. Applying powers of $g$ to the seed pair $(1, 3)$ generates its orbit:
 
-1.  $g^0(1, 3) = (1, 3) \implies 1 \to 3$
-    
-2.  $g^1(1, 3) = (2, 4) \implies 2 \to 4$
-    
-3.  $g^2(1, 3) = (3, 5) \implies 3 \to 5$
-    
-4.  $g^3(1, 3) = (4, 6) \implies 4 \to 6$
-    
-5.  $g^4(1, 3) = (5, 1) \implies 5 \to 1$
-    
-6.  $g^5(1, 3) = (6, 2) \implies 6 \to 2$
+$g^0(1, 3) = (1, 3) \implies 1 \to 3$
+
+$g^1(1, 3) = (2, 4) \implies 2 \to 4$
+
+$g^2(1, 3) = (3, 5) \implies 3 \to 5$
+
+$g^3(1, 3) = (4, 6) \implies 4 \to 6$
+
+$g^4(1, 3) = (5, 1) \implies 5 \to 1$
+
+$g^5(1, 3) = (6, 2) \implies 6 \to 2$
 
 The resulting edge set contains 6 directed edges:
 
@@ -1515,9 +1599,9 @@ A single seed pair $(1, 3)$ generated an edge set whose graph naturally splits i
 
 Let $\Omega = \Delta_1 \sqcup \Delta_2$, where:
 
--   $\Delta_1 = \{1, 2, 3\}$
-    
--   $\Delta_2 = \{4, 5, 6\}$
+$\Delta_1 = \{1, 2, 3\}$
+
+$\Delta_2 = \{4, 5, 6\}$
 
 The total product space $\Omega \times \Omega$ contains $6 \times 6 = 36$ ordered pairs. Because an element $g \in G$ cannot map a point from $\Delta_1$ into $\Delta_2$ (or vice-versa), the product space splits into four disjoint, $G$-invariant quadrants:
 
@@ -1547,15 +1631,15 @@ If your goal is to understand the full group structure of $G$ (as a subdirect pr
 
 The choice between taking the intra-orbitals (orbit-by-orbit analysis) versus the global cross-orbitals corresponds directly to whether you are analyzing the internal structure of an individual code/system or analyzing entanglement, correlations, and cross-talk across multi-component systems.
 
-You care about intra-orbitals ($\Delta_i \times \Delta_i$) and primitivity when analyzing a single space where your group acts transitively. In classical error-correcting codes, the automorphism group of a code, $\text{Aut}(C)$ (the coordinate permutations that map codewords to codewords), acts transitively on the coordinate positions $\{1, 2, \dots, n\}$.
+You care about intra-orbitals ($\Delta_i \times \Delta_i$) and primitivity when analyzing a single space where your group acts transitively. In classical error-correcting codes, the automorphism group of a code, $\text{Aut}(C)$ (the coordinate permutations that map codewords to codewords), acts on the coordinate positions $\{1, 2, \dots, n\}$, and for many important codes, such as cyclic codes (which the cyclic shift of the coordinates maps to themselves) and Reed-Muller codes, it acts transitively. This is a property of the code, not a general fact: for $C = \{00, 10\}$, swapping the two coordinates sends $10$ to $01 \notin C$, so $\text{Aut}(C)$ is trivial and not transitive.
 
-If $\text{Aut}(C)$ acts primitively on the bit positions, the code has no non-trivial block structure. It cannot be decomposed into a direct sum or a non-trivial concatenated code over coordinates.
+If $\text{Aut}(C)$ acts primitively on the bit positions, the code has no non-trivial block structure. It cannot be decomposed into a direct sum (for linear codes, $C = C_1 \oplus C_2$ means that the coordinates split into two non-empty sets and $C$ consists of all words whose part on the first set is a codeword of $C_1$ and whose part on the second set is a codeword of $C_2$; we leave aside the trivial codes $\{0\}$ and $\mathbb{F}_2^n$, which are direct sums of one-coordinate pieces) or a non-trivial concatenated code over coordinates.
 
 For example, the affine group $\text{AGL}(m, 2)$ (the maps $x \mapsto Ax + b$ on $\mathbb{F}_2^m$, with $A$ invertible) acting on Reed-Muller codes $\mathcal{RM}(r, m)$ acts 2-transitively (and hence primitively) on the affine space $\mathbb{F}_2^m$. Its orbital graph is complete, meaning every coordinate is completely symmetric to every other coordinate with no clustered "islands."
 
 If $\text{Aut}(C)$ is imprimitive, the vertices cluster into blocks of imprimitivity. Those blocks pinpoint coordinate sub-blocks, revealing that the code is equivalent to an interleaved code or a generalized concatenated architecture.
 
-In Quantum Information Theory & QEC, consider a [stabilizer code](../quantum/quantum_2_quantum_information_theory.md#stabilizer-formalism) $[[n, k, d]]$. The permutation symmetries of the physical qubits correspond to transversal operations that map the code space to itself. In topological codes (like the Toric code or surface codes), stabilizer generators are local. If you analyze the symmetries of the syndrome graph, primitive actions mean there are no invariant sub-lattices. Fixing a base qubit $\alpha$, the sub-orbits of the stabilizer group on the remaining qubits partition the physical qubits into distance shells. The weight distribution of Pauli errors that map into stabilizers is constrained by these sub-orbits.
+In Quantum Information Theory & QEC, consider a [stabilizer code](../quantum/quantum_2_quantum_information_theory.md#stabilizer-formalism) $[[n, k, d]]$. The permutations of the physical qubits that map the code space to itself act as logical operations. They are not transversal operations (a transversal operation is a tensor product of single-qubit gates, one on each qubit), but when they are done by relabelling or moving the qubits they share the useful property of transversal gates: an error on one qubit stays an error on one qubit. In topological codes (like the Toric code or surface codes), stabilizer generators are local. If you analyze the symmetries of the syndrome graph, primitive actions mean there are no invariant sub-lattices. Fixing a base qubit $\alpha$, the sub-orbits of the point stabilizer $G_\alpha$ partition the remaining qubits into shells. (Here $G$ is the group of qubit permutations and $G_\alpha$ is its stabilizer of $\alpha$. This is not the stabilizer group of the code, the Pauli operators that fix every code state, which does not permute qubits at all.) If $G$ preserves the distance between qubits, each sub-orbit lies inside one distance shell around $\alpha$. The sub-orbits are exactly the distance shells only when $G$ is distance-transitive (it can move any pair of qubits to any other pair at the same distance); in general they are finer. The weight distribution of Pauli errors that map into stabilizers is constrained by these sub-orbits.
 
 On the other hand, you care about global cross-orbitals ($\Delta_1 \times \Delta_2$) when your space naturally breaks into multiple distinct sectors or physical subsystems, and you need to measure coupling vs. independence. In classical error correction, suppose you transmit data across two separate parallel channels, $\Delta_1$ and $\Delta_2$. If the symmetry group acts as a full direct product ($G^{\Delta_1} \times G^{\Delta_2}$), there is only one giant cross-orbital, and the symmetries of channel 1 and channel 2 are independent of each other. One cross-orbital on its own is not proof of this, though, as the $S_3$ example above shows.
 
@@ -1565,18 +1649,20 @@ In generalized low-density parity-check (LDPC) codes or turbo codes, parity chec
     
 In Quantum Information Theory & QEC, in Quantum Entanglement and Bipartite Systems ($\mathcal{H}_A \otimes \mathcal{H}_B$): Let $\Delta_1$ index a basis for system $A$ and $\Delta_2$ index a basis for system $B$. A joint state $\vert{}\psi_{AB}\rangle = \sum_{\alpha, \beta} c_{\alpha, \beta} \vert{}\alpha\rangle \vert{}\beta\rangle$ has a density matrix $\rho_{AB}$ acted on by a symmetry group $G$.
         
-If the group action creates multiple, small cross-orbitals, the basis pairs $(\alpha, \beta)$ are locked together in invariant sub-spaces. By Schur’s Lemma (a linear map that commutes with every matrix of an irreducible representation is a multiple of the identity; see [Schur's lemma](#schurs-lemma) below), the density matrix $\rho_{AB}$ decomposes into blocks matching these cross-orbitals, proving the existence of entanglement or classical correlations that cannot be disrupted by symmetric local operations. This last step is too strong. Symmetry restricts the shape of an invariant density matrix, but it cannot by itself prove entanglement or even correlation. The maximally mixed state $\rho_{AB} = I/n$ is invariant under every permutation of the basis, yet it equals $(I_A/n_A) \otimes (I_B/n_B)$, a product state with no correlations at all. Whether an invariant state is entangled depends on its actual entries, not only on the orbitals.
+If the group action creates multiple, small cross-orbitals, the basis pairs $(\alpha, \beta)$ are locked together in invariant sub-spaces. By Schur’s Lemma (a linear map that commutes with every matrix of an irreducible representation is a multiple of the identity; see [Schur's lemma](#schurs-lemma) below), a density matrix $\rho_{AB}$ that is invariant under $G$ (it commutes with the permutation matrix of every $g \in G$) maps each isotypic component (the sum of all copies of one irreducible representation) into itself. So it is block-diagonal in a basis adapted to those components, but the blocks follow the types of irreducible representation, not the cross-orbitals. The span of every cross-orbital contains a copy of the trivial representation, so different cross-orbitals can mix. For the group of Example A, $G = \langle (1 \; 2 \; 3)(4 \; 5 \; 6) \rangle$, and $\vert{}u\rangle = \tfrac13 \sum_{\alpha \in \Delta_1, \beta \in \Delta_2} \vert{}\alpha\rangle \vert{}\beta\rangle$, the invariant state $\vert{}u\rangle\langle u\vert{}$ has the entry $1/9$ between $\vert{}1\rangle\vert{}4\rangle$ and $\vert{}1\rangle\vert{}5\rangle$, which lie in different cross-orbitals. What invariance does give is that an entry of $\rho_{AB}$ does not change when the same $g$ is applied to the labels of its row and of its column. One might hope that this structure proves the existence of entanglement or classical correlations that cannot be disrupted by symmetric local operations. This last step is too strong. Symmetry restricts the shape of an invariant density matrix, but it cannot by itself prove entanglement or even correlation. The maximally mixed state $\rho_{AB} = I/n$ is invariant under every permutation of the basis, yet it equals $(I_A/n_A) \otimes (I_B/n_B)$, a product state with no correlations at all. Whether an invariant state is entangled depends on its actual entries, not only on the orbitals.
         
 In flag-fault-tolerant architectures, you introduce auxiliary "flag" qubits ($\Delta_2$) to monitor data qubits ($\Delta_1$).
 
-The joint stabilizer-syndrome operations act intransitively: data qubits remain data qubits, and flag qubits remain flag qubits. The cross-orbitals in $\Delta_1 \times \Delta_2$ describe which specific data errors trigger which specific flag measurements. A single cross-orbital connecting a weight-2 data error to a specific flag indicates that the error is uniquely identifiable and will not propagate into an uncorrectable fault.
+The joint stabilizer-syndrome operations act intransitively: data qubits remain data qubits, and flag qubits remain flag qubits. The cross-orbitals in $\Delta_1 \times \Delta_2$ sort the (data qubit, flag qubit) pairs into classes that the symmetry treats alike, and if the circuit is symmetric under $G$, the set of data-flag pairs that interact is a union of such classes. A single cross-orbital means that every data qubit stands in the same relation to every flag qubit, so the symmetry alone singles out no specific flag. Whether a weight-2 data error can be uniquely identified, and kept from spreading into an uncorrectable fault, depends on the actual circuit and its syndromes, not on the orbitals alone.
+
+One fact links orbital graphs to primitivity, Higman's criterion: a finite transitive group is primitive if and only if every non-trivial orbital graph is connected. Here an orbital digraph counts as connected when any two points are joined by a chain of arrows, ignoring their directions (connected graphs are treated in [a little graph theory](#a-little-graph-theory)). For the orbital digraphs of a finite transitive group this is the same as being strongly connected, where the arrows must be followed forwards; that is a standard fact we do not prove here. The criterion itself has a short proof. If $B$ is a non-trivial block and $\alpha \neq \beta$ both lie in $B$, every arrow $(g \cdot \alpha, g \cdot \beta)$ of the orbital of $(\alpha, \beta)$ joins two points of the same block $gB$, so that orbital graph is disconnected, as in the $C_6$ example above. Conversely, $G$ maps arrows to arrows, so it permutes the connected components of any orbital graph, and each component is a block. A component has at least two points, because every point has an arrow leaving it, so a disconnected non-trivial orbital graph gives a non-trivial block. For $S_4$ on four points, the only non-trivial orbital is the set of all pairs of distinct points, whose graph is the complete graph $K_4$ (every two of the four points are joined), and it is connected.
 
 How do orbitals, subgroups, actions and transitivity fit together? Assume $G$ acts transitively on $\Omega$.
-[Figure 7](#figure-7) traces this pipeline step by step, contrasting $D_8$ and $S_4$ on the four corners $\Omega = \{1, 2, 3, 4\}$.
+[Figure 9](#figure-9) traces this pipeline step by step, contrasting $D_8$ and $S_4$ on the four corners $\Omega = \{1, 2, 3, 4\}$.
 
-<a id="figure-7"></a>![Pipeline from group action on Omega to orbitals, sub-orbits, orbital graphs, and primitivity](figures/maths2_orbitals_blocks_primitivity.png)
+<a id="figure-9"></a>![Pipeline from group action on Omega to orbitals, sub-orbits, orbital graphs, and primitivity](figures/maths2_orbitals_blocks_primitivity.png)
 
-*Figure 7. Pipeline from a transitive action on $\Omega = \{1, 2, 3, 4\}$ to primitivity, comparing $D_8$ (left) and $S_4$ (right). The action on $\Omega \times \Omega$ partitions the $16$ ordered pairs into orbitals $\Gamma_i$, and slicing row $\alpha = 1$ gives the sub-orbits $\Gamma_i(1)$ of the stabilizer $G_1$. Drawing each non-trivial orbital as a graph shows that $D_8$ is imprimitive because $\Gamma_2$ splits into the two blocks $\{1, 3\}$ and $\{2, 4\}$, whereas $S_4$ is primitive because its only non-trivial orbital graph, the complete graph $K_4$, is connected.*
+*Figure 9. Pipeline from a transitive action on $\Omega = \{1, 2, 3, 4\}$ to primitivity, comparing $D_8$ (left) and $S_4$ (right). The action on $\Omega \times \Omega$ partitions the $16$ ordered pairs into orbitals $\Gamma_i$, and slicing row $\alpha = 1$ gives the sub-orbits $\Gamma_i(1)$ of the stabilizer $G_1$. Drawing each non-trivial orbital as a graph shows that $D_8$ is imprimitive because $\Gamma_2$ splits into the two blocks $\{1, 3\}$ and $\{2, 4\}$, whereas $S_4$ is primitive because its only non-trivial orbital graph, the complete graph $K_4$, is connected.*
     
 ### A Little Representation Theory
 
@@ -1589,6 +1675,8 @@ A group mathematically captures the "symmetries" of a system (like rotations or 
 A representation of $G$ over $F$ is a homomorphism $r$ from $G$ to $GL(n, F)$, for some $n$. The degree of $r$ is the integer $n$. Thus if $r$ is a function from $G$ to $GL(n, F)$, then $r$ is a representation if and only if:
 
 $$(gh)r = (gr)(hr) \quad \text{for all } g, h \in G$$
+
+Here, and often from now on, maps are written to the right of their arguments, as the module sections below do ($vg$): $gr$ means $r(g)$, the matrix that $r$ gives to $g$ (not a product of $g$ and $r$). Likewise $(g)\rho$ means $\rho(g)$ and $w\pi$ means $\pi(w)$; where a later passage writes $\rho(g)$, it means the same matrix.
 
 Since a representation is a homomorphism, it follows that for every representation $r: G \to GL(n, F)$, we have:
 
@@ -1620,9 +1708,9 @@ A representation is said to be faithful if $\ker(\rho) = \{1\}$; that is, if the
 
 A faithful representation means that no two distinct group elements map to the exact same matrix. The group structure is perfectly preserved without any "crushing" or loss of information. In quantum mechanics, a faithful representation means every distinct physical symmetry operation (like rotating 90 degrees vs. 180 degrees) corresponds to a strictly unique matrix operator acting on your state vectors. If a representation is unfaithful (say, mapping every element to the $1 \times 1$ identity matrix), it means your state space is entirely blind to that specific symmetry.
 
-An abelian group's representations all decompose into 1-dimensional subspaces over $\mathbb{C}$. Conversely, suppose that $G$ is a finite group such that every irreducible $\mathbb{C}G$-module (one with no $G$-invariant subspace other than $\{0\}$ and itself, as defined [below](#subspaces)) has dimension 1. Then $G$ is abelian.
+A finite abelian group's representations all decompose into 1-dimensional subspaces over $\mathbb{C}$. Conversely, suppose that $G$ is a finite group such that every irreducible $\mathbb{C}G$-module (one with no $G$-invariant subspace other than $\{0\}$ and itself, as defined [below](#subspaces)) has dimension 1. Then $G$ is abelian.
 
-A representation matrix of any element $g$ is diagonalizable in some basis, but that does not mean the same basis can give us diagonal matrices for all elements of $G$. This will happen only if the matrices commute with each other, that is, if the image of the representation is abelian. For a faithful representation, that means $G$ itself is abelian; a non-faithful one can be diagonal even for a non-abelian group (the sign representation of $S_3$ is $1 \times 1$). This should remind us of commuting observables in quantum mechanics. The theorem proving that an abelian group's representations all decompose into 1-dimensional subspaces over $\mathbb{C}$ is the exact mathematical mechanism that allows a [complete set of commuting observables](../quantum/quantum_1_quantum_physics.md#complete-set-of-compatible-observables) (CSCO) to uniquely identify every pure state in a quantum system.
+For a finite group over $\mathbb{C}$ (more generally, over a field whose characteristic does not divide $\vert{}G\vert{}$ and which contains the needed roots of unity), a representation matrix of any element $g$ is diagonalizable in some basis (over $\mathbb{F}_2$ this fails: sending the generator of $C_2$ to $\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$ gives a representation that is not diagonalizable), but that does not mean the same basis can give us diagonal matrices for all elements of $G$. This will happen only if the matrices commute with each other, that is, if the image of the representation is abelian. For a faithful representation, that means $G$ itself is abelian; a non-faithful one can be diagonal even for a non-abelian group (the sign representation of $S_3$ is $1 \times 1$). This should remind us of commuting observables in quantum mechanics. The theorem proving that a finite abelian group's representations all decompose into 1-dimensional subspaces over $\mathbb{C}$ is the exact mathematical mechanism that allows a [complete set of commuting observables](../quantum/quantum_1_quantum_physics.md#complete-set-of-compatible-observables) (CSCO) to uniquely identify every pure state in a quantum system.
 
 #### $FG$-modules
 
@@ -1652,7 +1740,7 @@ In the conditions above, if you just think of the element $g$ as being a matrix 
 
 If we have a representation (and its basis vectors) in hand, we don't actually need to test the conditions for a module for each $v$. We can just test that the conditions hold for the basis vectors $v_i$ and extend them linearly to span the whole vector space. 
 
-**Does a finite group only have a finite number of representations?** You can build an infinite number of representations by making bigger and bigger direct sums, or by acting on larger and larger sets. However, a finite group only has a finite number of distinct irreducible representations. (In fact, the number of distinct irreducible representations exactly equals the number of conjugacy classes in the group. We will see this down below). Every other representation in the universe for that group is just built by stacking these few fundamental irreducible blocks together.
+**Does a finite group only have a finite number of representations?** You can build an infinite number of representations by making bigger and bigger direct sums, or by acting on larger and larger sets. However, a finite group only has a finite number of distinct irreducible representations. (In fact, over $\mathbb{C}$ the number of distinct irreducible representations exactly equals the number of conjugacy classes in the group. This is a standard theorem that these notes use but do not prove; see [the centre of the group algebra](#the-centre-of-the-group-algebra-zmathbbcg) below.) Over $\mathbb{C}$ (more generally, when the characteristic of $F$ does not divide $\vert{}G\vert{}$), every other representation in the universe for that group is just built by stacking these few fundamental irreducible blocks together; this is [Maschke's theorem](#maschkes-theorem) below.
 
 #### Permutation Modules & Representations
 We define a permutation matrix $P(g)$ of an element $g$. It defines whether $g$ permutes the $j^{th}$ element into the $i^{th}$ element of the set. We construct this matrix by placing $1$ in row $i$, column $j$ when $g$ maps the $j$-th element to the $i$-th element, and $0$ everywhere else. 
@@ -1677,7 +1765,7 @@ $$(P(g))_{\alpha \beta} = \begin{cases} 1 & \text{if } g\beta = \alpha \\ 0 & \t
     
 Because $P(gh) = P(g)P(h)$, the assignment $g \mapsto P(g)$ is a matrix representation of $G$ on $V$.
 
-Note that this passage writes the action on the left ($P(g)e_\alpha = e_{g\alpha}$) and places the $1$s by column. The $FG$-module conventions above act on the right ($v_i g = v_{ig}$) and record $v_i g$ in the $i$-th row, so for the same permutation the two matrices are transposes of each other.
+Note that this passage writes the action on the left ($P(g)e_\alpha = e_{g\alpha}$) and places the $1$s by column. Like the rule $g \cdot (h \cdot x) = (gh) \cdot x$ in the [group actions](#group-actions-and-the-orbit-stabilizer-theorem) section, this reads $gh$ right to left (first $h$, then $g$), and that is what makes $P(gh) = P(g)P(h)$. The $FG$-module conventions above act on the right instead: for a permutation module, $v_i g = v_{ig}$, where $ig$ is the image of $i$ under $g$ written on the right. Since these notes read products left to right, $i(gh) = (ig)h$, which is exactly condition 2, $v(gh) = (vg)h$. The module convention records $v_i g$ in the $i$-th row, so for the same permutation the two matrices are transposes of each other.
 
 If we look at this as modules instead of matrices, if $G$ is a subgroup of the symmetric group $S_n$, then this module is called the permutation module and $e_{\alpha} \dots e_{\eta}$ are called the natural basis of the vector space. Since the only element of $G$ which fixes every $e_\alpha$ is the identity, we see that the permutation module is a faithful $FG$-module. And from Cayley's theorem, we know that every $G$ is isomorphic to a subgroup of some symmetric group. Thus, any group has a faithful $FG$-module.
 
@@ -1691,15 +1779,17 @@ $$[g]_{\mathscr{B}} = \begin{pmatrix} a_{11} & a_{12} & \dots & a_{1n} \\ a_{21}
 
 The underlying $FG$-module $V$ is a single coordinate-free object. However, there are infinitely many choices of $n$x$n$ vector bases $\mathscr{B}, \mathscr{B}', \dots$ for $V$. From this, we can see that all such representations are equivalent.
 
-These resulting representations are related by a change-of-basis matrix $P$:
+These resulting representations are related by a change-of-basis matrix $P$ (an invertible matrix, not the permutation matrix $P(g)$ above):
 
 $$[g]_{\mathscr{B}'} = P^{-1} [g]_{\mathscr{B}} P \quad \forall g \in G$$
 
 #### Subspaces
     
-A subspace $W \subseteq V$ is called $G$-invariant (or a subrepresentation, or an $FG$-submodule) if applying any permutation keeps vectors inside $W$:
+A subspace $W$ of an $FG$-module $V$ is called $G$-invariant (or a subrepresentation, or an $FG$-submodule) if applying any group element keeps vectors inside $W$:
     
-$$w \in W \implies P(g)w \in W \quad \text{for all } g \in G$$
+$$w \in W \implies wg \in W \quad \text{for all } g \in G$$
+
+For the permutation representation above, written on the left, this reads $P(g)w \in W$.
     
 An invariant subspace $W \subseteq V$ is irreducible (or simple) if $W \neq \{0\}$ and its only $G$-invariant subspaces are $\{0\}$ and $W$ itself. It represents a minimal, indivisible building block of symmetry. 
 
@@ -1729,10 +1819,11 @@ $$(v_1 + v_2)a = v_2 + v_3 \notin \operatorname{sp}(v_1 + v_2)$$
 
 Let $V$ be an $FG$-module and let $W$ be an $FG$-submodule of $V$. An $F$-linear map (vector space homomorphism) $\pi: V \to V$ is called a projection from $V$ to $W$ if:
 
-1.  $\operatorname{im}(\pi) = W$
-    
-2.  $w\pi = w$ for all $w \in W$ (meaning $\pi$ acts as the identity on $W$)
-3. Because $w\pi = w$ for any element in the image, applying the map twice yields:
+$\operatorname{im}(\pi) = W$
+
+$w\pi = w$ for all $w \in W$ (meaning $\pi$ acts as the identity on $W$)
+
+Because $w\pi = w$ for any element in the image, applying the map twice yields:
 
 $$v\pi^2 = (v\pi)\pi = v\pi \quad \text{for all } v \in V$$
 
@@ -1746,11 +1837,11 @@ Every vector splits uniquely as $v = v\pi + (v - v\pi)$, where $v\pi \in W$ and 
 
 **IMPORTANT!**
 
-* Not every subspace is an $FG$-module, but a subspace that is $G$-invariant is an $FG$-submodule. A vector subspace $W \subseteq V$ is merely closed under addition and scalar multiplication ($F$). For $W$ to be an $FG$-submodule (and hence an $FG$-module in its own right), it must also be closed under the action of the group $G$.
+Not every subspace is an $FG$-module, but a subspace that is $G$-invariant is an $FG$-submodule. A vector subspace $W \subseteq V$ is merely closed under addition and scalar multiplication ($F$). For $W$ to be an $FG$-submodule (and hence an $FG$-module in its own right), it must also be closed under the action of the group $G$.
 
-* An $FG$-module need not necessarily be a subspace of $V$. A good example is one we will show below where the quotient is a module, and therefore is a vector space but not a subspace of $V$ (though it is isomorphic to an actual subspace of $V$).
+An $FG$-module need not necessarily be a subspace of $V$. A good example is one we will show below where the quotient is a module, and therefore is a vector space but not a subspace of $V$ (though it is isomorphic to an actual subspace of $V$).
 
-* For a general $FG$-module like the quotient $V/W$, whether it is isomorphic (as an $FG$-module, meaning there is an invertible linear map between them that commutes with the action of $G$) to an actual submodule of $V$ depends on whether $V$ is completely reducible (a direct sum of irreducible submodules). We can figure this out from Maschke's Theorem, which we will see below. 
+For a general $FG$-module like the quotient $V/W$, it is guaranteed to be isomorphic (as an $FG$-module, meaning there is an invertible linear map between them that commutes with the action of $G$) to an actual submodule of $V$ when $W$ has a $G$-invariant complement, that is, a submodule $U$ with $V = W \oplus U$, because then $V/W \cong U$. Such a complement always exists when $V$ is completely reducible (a direct sum of irreducible submodules), and we can figure that out from Maschke's Theorem, which we will see below. Complete reducibility is enough but not necessary: $V/W$ can be isomorphic to a submodule of $V$ even when $W$ has no invariant complement.
 
 **Example**
 
@@ -1830,11 +1921,11 @@ The coset moves to itself, giving the representation matrix $Z_g = (1)$ without 
         
 $V/W$ is an abstract vector space isomorphic to $U$, but it lives at a different structural level than a subspace.
 
-[Figure 8](#figure-8) contrasts the complementary $y$-axis $U$, which the shear tilts out of $U$ along $W$, with the horizontal coset lines of $V/W$, which slide along themselves.
+[Figure 10](#figure-10) contrasts the complementary $y$-axis $U$, which the shear tilts out of $U$ along $W$, with the horizontal coset lines of $V/W$, which slide along themselves.
 
-<a id="figure-8"></a>![Complementary subspace spillover vs quotient module coset lines under a shear](figures/maths2_subspace_quotient_shear.png)
+<a id="figure-10"></a>![Complementary subspace spillover vs quotient module coset lines under a shear](figures/maths2_subspace_quotient_shear.png)
 
-*Figure 8. Subspace versus quotient module in $V = \mathbb{R}^2$ under the shear $g$ acting on row vectors. (a) The $x$-axis $W$ is fixed, but $u = (0, 1)$ on the complementary $y$-axis $U$ maps to $ug = (1, 1)$, picking up a horizontal spillover component $Y_g = (1)$ in $W$. (b) In the quotient space $V/W$, the elements are horizontal coset lines $yu + W$, and the shear slides each line along itself without leaving the line.*
+*Figure 10. Subspace versus quotient module in $V = \mathbb{R}^2$ under the shear $g$ acting on row vectors. (a) The $x$-axis $W$ is fixed, but $u = (0, 1)$ on the complementary $y$-axis $U$ maps to $ug = (1, 1)$, picking up a horizontal spillover component $Y_g = (1)$ in $W$. (b) In the quotient space $V/W$, the elements are horizontal coset lines $yu + W$, and the shear slides each line along itself without leaving the line.*
 
 **Example with explicit calculation of transformation matrices**
 
@@ -1940,7 +2031,7 @@ This does feel like a ring or a field, with two operations (addition and multipl
 
 $$\text{Group Algebra } FG = \text{Ring} + \text{Vector Space (over a field } F\text{)}$$
 
-Why not just call it a ring and stop there? Because $FG$ contains two layers of addition and multiplication: Internal ring multiplication: multiplying two group linear combinations via the group's product rule; & external scaling: scaling linear combinations by elements of $F$.
+The two structures must fit together: $\lambda(xy) = (\lambda x)y = x(\lambda y)$ for all $\lambda \in F$ and $x, y \in FG$. This compatibility is what makes a ring that is also a vector space into an algebra. (Although $FG$ feels like a ring or a field, it is never actually a field when $\vert{}G\vert{} > 1$: if $g \neq 1$ has order $t$, then $(1 - g)(1 + g + \dots + g^{t-1}) = 1 - g^t = 0$, so $FG$ has zero divisors.) Why not just call it a ring and stop there? Because $FG$ contains two layers of addition and multiplication: Internal ring multiplication: multiplying two group linear combinations via the group's product rule; & external scaling: scaling linear combinations by elements of $F$.
 
 This allows you to deploy tools that only exist in vector spaces (like dimension, kernels, bases, and linear projections) to solve problems about the multiplicative structure of the group.
 
@@ -1996,20 +2087,20 @@ $$\begin{pmatrix} X_g & 0 \\ 0 & Z_g \end{pmatrix} $$
 
 i.e. it becomes block diagonal. The similarity transformation $T [g]_\mathscr{B} T^{-1}$ cleanly removes $Y_g$.
 
-Maschke's Theorem therefore implies that every $FG$-module can be written as a direct sum of irreducible $FG$-submodules. These submodules are the irreducible summands of the module, and an irreducible module isomorphic to one of them is called a composition factor. Thus, to understand $FG$-modules, we must understand irreducible $FG$-submodules. When $F=\mathbb{C}$, we can say any irreducible submodule must be isomorphic to one of the irreducible submodules in the direct sum.
+Maschke's Theorem therefore implies that, for a finite group $G$ with char($F$) not dividing $\vert{}G\vert{}$, every $FG$-module can be written as a direct sum of irreducible $FG$-submodules. These submodules are the irreducible summands of the module, and an irreducible module isomorphic to one of them is called a composition factor. (That is the special case. In general, a composition factor of $V$ is one of the irreducible quotients $V_i/V_{i-1}$ in a chain of submodules $0 = V_0 < V_1 < \dots < V_t = V$ in which every quotient is irreducible, like the composition series of a group in [Jordan-Hölder](#the-jordan-holder-theorem-the-periodic-table-of-groups). When Maschke's Theorem applies, these quotients are exactly the irreducible summands up to isomorphism; in the modular case below they need not be summands at all.) Thus, to understand $FG$-modules, we must understand irreducible $FG$-submodules. When $F=\mathbb{C}$, we can say any irreducible submodule must be isomorphic to one of the irreducible submodules in the direct sum.
 
 What happens when Maschke's Theorem fails? We use Modular Representation Theory. The group algebra $FG$ is not semisimple (semisimple means every module splits into a direct sum of irreducible pieces, which is what Maschke's Theorem guarantees when char($F$) does not divide $\vert{}G\vert{}$). Modules can form non-trivial un-splittable chains (extensions) where $Y_g \neq 0$ permanently, leading to non-trivial Jordan block structures.
 
 #### Character Tables, Isomorphism and Grouping into Multiplicities
-A representation translates abstract group elements into matrices, turning abstract group multiplication into standard matrix multiplication. However, matrices hold too much data. A $10 \times 10$ matrix has 100 entries. Mathematicians discovered that almost all the vital structural data of the matrix is captured by its trace (the sum of the diagonal elements). This trace is called the Character of the representation.
+A representation translates abstract group elements into matrices, turning abstract group multiplication into standard matrix multiplication. However, matrices hold too much data. A $10 \times 10$ matrix has 100 entries. Mathematicians discovered that almost all the vital structural data of the representation is captured by the traces of its matrices (the sums of their diagonal elements), taken over all the group elements together. The trace of one matrix says little about that matrix, but over $\mathbb{C}$ the whole list of traces determines the representation up to isomorphism (though not the matrices themselves). This list of traces, as a function on $G$, is called the Character of the representation.
 
-A Character Table is a grid that records these traces for different representations across the conjugacy classes of the group. It acts as the structural DNA of the group. It compresses complex non-commutative algebraic geometry into a simple spreadsheet of numbers, allowing mathematicians to identify normal subgroups, centers, and factoring properties just by looking at the rows and columns.
+A Character Table is a grid that records these traces for the irreducible representations of the group (one row for each irreducible character) across its conjugacy classes (one column for each class). Over $\mathbb{C}$ the table is square, since there the number of irreducible representations equals the number of conjugacy classes ([above](#fg-modules)). It acts as the structural DNA of the group. It compresses the complex non-commutative structure of the group into a simple spreadsheet of numbers, allowing mathematicians to identify normal subgroups, centers, and factoring properties just by looking at the rows and columns.
 
-The character of the representation is the function $\chi: G \to \mathbb{C}$ tracking the traces of the matrices:
+The character of the representation is the function $\chi: G \to \mathbb{C}$ tracking the traces of the matrices (in this formula $\rho g$ is the matrix of $g$, written $g\rho$ or $\rho(g)$ elsewhere):
 
 $$\chi(g) = \operatorname{Tr}(\rho g)$$
 
-**Do many representations have the same character?** No! This is one of the most powerful theorems in the subject: Two representations have the exact same character if and only if they are identical (isomorphic). The character is a perfect mathematical fingerprint. If the characters match, the representations are built out of the exact same irreducible blocks in the exact same quantities.   
+**Do many representations have the same character?** No! This is one of the most powerful theorems in the subject: over $\mathbb{C}$ (more generally, over any field of characteristic $0$), two representations of a finite group have the exact same character if and only if they are isomorphic (equivalent). This fails in characteristic $p$: over $\mathbb{F}_2$, the regular module of $C_2$ and the 2-dimensional trivial module both have character $(0, 0)$, yet they are not isomorphic. The character is a perfect mathematical fingerprint. If the characters match, the representations are built out of the exact same irreducible blocks in the exact same quantities.   
 
 If $x$ and $y$ are conjugate elements of the group $G$, then they have the same character in all representations of $G$. 
 
@@ -2057,25 +2148,25 @@ $$\mathbb{C}G \cong \bigoplus_{i=1}^k d_i V_i$$
 
 where each distinct irreducible module $V_i$ appears with multiplicity equal to its dimension $d_i = \dim V_i$:
 
--   $U_1$ occurs once, with $\dim U_1 = 1$;
-    
--   $U_2$ occurs once, with $\dim U_2 = 1$;
-    
--   The $2$-dimensional irreducible module type of $U_3$ occurs twice ($U_3 \oplus U_4$), with $\dim U_3 = 2$.
-    
+$U_1$ occurs once, with $\dim U_1 = 1$;
+
+$U_2$ occurs once, with $\dim U_2 = 1$;
+
+The $2$-dimensional irreducible module type of $U_3$ occurs twice ($U_3 \oplus U_4$), with $\dim U_3 = 2$.
+
 Summing the dimensions confirms the total dimension of the regular module:
 
 $$\dim(\mathbb{C}G) = \vert{}G\vert{} = 1^2 + 1^2 + 2^2 = 1 + 1 + 4 = 6$$
 
 #### Schur’s Lemma
 
-Let $U$ and $W$ be two irreducible representations of $G$. Loosely, Schur's Lemma says that $U$ and $W$ are either isomorphic or the homomorphism is the zero-map i.e. the kernel is the whole of $U$. If they are isomorphic, then the map between the two is a scalar multiple of identity. 
+Let $U$ and $W$ be two irreducible representations of $G$. Loosely, Schur's Lemma says that every homomorphism of representations from $U$ to $W$ (a linear map that commutes with the action of $G$) is either the zero map, whose kernel is the whole of $U$, or an isomorphism; so if $U$ and $W$ are not isomorphic, the zero map is the only one. Over $\mathbb{C}$, a homomorphism from $U$ to itself is a scalar multiple of the identity (and if $U \cong W$, every homomorphism $U \to W$ is a scalar multiple of one fixed isomorphism). 
 
-More formally, let $T: U \to W$ be a linear map satisfying $T P(g) = P(g) T$ for all $g \in G$:
+More formally, let $T: U \to W$ be a linear map satisfying $T P(g) = P(g) T$ for all $g \in G$ (here $P(g)$ is no longer a permutation matrix: it stands for the matrix of $g$ on $U$ on the left side of this equation and on $W$ on the right side, with matrices acting on column vectors from the left, as in the permutation-matrix passage):
 
-1.  If $U \not\cong W$, then $T = 0$ (no non-zero commuting maps exist between distinct irreps, that is, irreducible representations).
-    
-2.  If $U = W$, then $T = \lambda I$ for some scalar $\lambda \in \mathbb{C}$ (the only commuting maps from an irrep to itself are scalar multiplications).
+If $U \not\cong W$, then $T = 0$ (no non-zero commuting maps exist between distinct irreps, that is, irreducible representations).
+
+If $U = W$, then $T = \lambda I$ for some scalar $\lambda \in \mathbb{C}$ (the only commuting maps from an irrep to itself are scalar multiplications).
 
 In terms of the intertwining operator, the lemma is stating that if two representations are  irreducible, any intertwining operator $T$ between them is either the zero matrix or an invertible matrix (making them equivalent). Furthermore, an intertwining operator from an irreducible representation to itself must be a scalar multiple of the identity matrix.
 
@@ -2091,7 +2182,7 @@ To see why, a matrix commuting with the group representation means:
 
 $$A(g\rho) = (g\rho)A \quad \text{for all } g \in G$$
 
-where $g$ is an abstract group element, $\rho$ is the representation map, and therefore $g\rho$ denotes the actual representation matrix. For brevity, let us denote the operator $(g\rho)$ simply by $g$.
+where $g$ is an abstract group element, $\rho$ is the representation map, and therefore $g\rho$ denotes the actual representation matrix. For brevity, let us denote the operator $(g\rho)$ simply by $g$. In this proof the matrices act on column vectors from the left ($Av$, $gv$), as in the permutation-matrix passage, not on row vectors from the right as in the module sections; $g\rho$, $\rho(g)$ and $P(g)$ in this part all mean the matrix of $g$.
 
 Because the field $\mathbb{C}$ is algebraically closed, the linear transformation $A$ has at least one eigenvalue $\lambda \in \mathbb{C}$. Let $V_\lambda$ denote the eigenspace corresponding to $\lambda$:
 
@@ -2141,19 +2232,19 @@ A representation is strictly irreducible if and only if its character's inner pr
 
 The centre is defined abstractly as the set of elements $z$ inside the group algebra $\mathbb{C}G$ that commute with every element $r$ in $\mathbb{C}G$: $zr = rz$.
 
--   It is a subspace of the group algebra itself.
-    
--   It exists entirely independently of any specific matrix representation. It is an intrinsic property of the group $G$.
-    
--   For abelian groups, because everything commutes, the centre is the entire group algebra.
-    
--   The dimension of this subspace exactly equals the number of irreducible representations of $G$. We will show why, shortly.
+It is a subspace of the group algebra itself.
+
+It exists entirely independently of any specific matrix representation. It is an intrinsic property of the group $G$.
+
+For abelian groups, because everything commutes, the centre is the entire group algebra.
+
+The dimension of this subspace equals the number of conjugacy classes of $G$: an element $\sum_{g} c_g g$ is central exactly when its coefficients $c_g$ are constant on each conjugacy class, so the class sums (for each class, the sum of its elements) form a basis. Over $\mathbb{C}$ this number also equals the number of irreducible representations of $G$. That second equality is a standard theorem (it comes from writing $\mathbb{C}G$ as a direct sum of complete matrix algebras, one for each irreducible representation, each with a 1-dimensional centre), which these notes use but do not prove.
 
 #### The Centralizer Algebra of a Representation: $\operatorname{End}_{\mathbb{C}G}(V)$
 
 This is what we were discussing with Schur's Lemma above. This is the set of all $n \times n$ matrices $A$ that commute with the representation matrices $g\rho$. This algebra lives inside the space of physical transformations (matrices acting on a specific vector space $V$). It depends entirely on which representation $\rho$ you are looking at.
 
-Because elements $z \in Z(\mathbb{C}G)$ commute with every group element $g$ in the abstract algebra, when you plug $z$ into any representation $\rho$, the resulting matrix $\rho(z)$ will commute with every representation matrix $\rho(g)$. This means the representation maps the Centre directly into the Centralizer Algebra.
+Because elements $z \in Z(\mathbb{C}G)$ commute with every group element $g$ in the abstract algebra, when you plug $z$ into any representation $\rho$ (extended linearly, as in [group algebras](#group-algebras): for $z = \sum_{g} c_g g$, $\rho(z) = \sum_{g} c_g \rho(g)$), the resulting matrix $\rho(z)$ will commute with every representation matrix $\rho(g)$. This means the representation maps the Centre directly into the Centralizer Algebra.
 
 If the representation is irreducible, Schur's Lemma kicks in immediately. Because $\rho(z)$ commutes with everything, Schur's Lemma forces $\rho(z)$ to be a scalar multiple of the identity:
 
@@ -2204,7 +2295,7 @@ The total subspace holding these copies is $2 \times 3 = 6$-dimensional.
 
 Therefore, the commuting matrix $M^{(k)}$ acting on this whole subspace is a $6 \times 6$ matrix.
 
-But because of Schur's lemma, this $6 \times 6$ matrix is locked into a rigid grid where every $2 \times 2$ block is just a multiple of the identity matrix:
+But because of Schur's lemma, once we choose bases of the three copies that match (so that each $g$ acts by the same $2 \times 2$ matrix on every copy; in the natural basis of a permutation module this needs a change of basis), this $6 \times 6$ matrix is locked into a rigid grid where every $2 \times 2$ block is just a multiple of the identity matrix:
 
 $$M^{(k)} = \begin{pmatrix} c_{11}I_2 & c_{12}I_2 & c_{13}I_2 \\ c_{21}I_2 & c_{22}I_2 & c_{23}I_2 \\ c_{31}I_2 & c_{32}I_2 & c_{33}I_2 \end{pmatrix}$$
 
@@ -2218,18 +2309,18 @@ So, the freedom you have to build the $6 \times 6$ matrix $M^{(k)}$ is exactly e
 
 #### Dimension Formula for the Rank
 
-$\mathcal{A}$ is isomorphic to the direct sum of complete matrix algebras: $\bigoplus_{k=1}^s M_{m_k}(\mathbb{C})$. Every matrix of $M_{m_k}(\mathbb{C})$ can be written as a linear combination of the basis of $r$ adjacency matrices. 
+$\mathcal{A}$ is isomorphic to the direct sum of complete matrix algebras: $\bigoplus_{k=1}^s M_{m_k}(\mathbb{C})$. Every element of $\mathcal{A}$ (not of a single $M_{m_k}(\mathbb{C})$, whose matrices are only $m_k \times m_k$) can be written as a linear combination of the basis of $r$ adjacency matrices. 
 
 To show this, apply Schur’s Lemma to $V = \bigoplus_{k=1}^s V_k^{\oplus m_k}$:
 
--   Between two different constituents $V_j$ and $V_k$ ($j \neq k$), any commuting matrix acts as the zero block.
-    
--   Within the block $V_k^{\oplus m_k} = \underbrace{V_k \oplus \dots \oplus V_k}_{m_k \text{ copies}}$, a linear map can mix the copies. If we write a map on this subspace as an $m_k \times m_k$ block matrix of operators:
-    
-    $$M^{(k)} = \begin{pmatrix} T_{11} & \dots & T_{1 m_k} \\ \vdots & \ddots & \vdots \\ T_{m_k 1} & \dots & T_{m_k m_k} \end{pmatrix}$$
-    
-    each sub-block $T_{ab}: V_k \to V_k$ must commute with $G$. By Schur's Lemma, each $T_{ab} = c_{ab} I_{d_k}$ for some complex number $c_{ab}$.
-    
+Between two different constituents $V_j$ and $V_k$ ($j \neq k$), any commuting matrix acts as the zero block.
+
+Within the block $V_k^{\oplus m_k} = \underbrace{V_k \oplus \dots \oplus V_k}_{m_k \text{ copies}}$, a linear map can mix the copies. If we write a map on this subspace as an $m_k \times m_k$ block matrix of operators:
+
+$$M^{(k)} = \begin{pmatrix} T_{11} & \dots & T_{1 m_k} \\ \vdots & \ddots & \vdots \\ T_{m_k 1} & \dots & T_{m_k m_k} \end{pmatrix}$$
+
+each sub-block $T_{ab}: V_k \to V_k$ must commute with $G$. By Schur's Lemma, each $T_{ab} = c_{ab} I_{d_k}$ for some complex number $c_{ab}$ (again in bases of the copies chosen to match, as in the example above).
+
 Therefore, the matrix of scalars $(c_{ab})$ can be any arbitrary $m_k \times m_k$ matrix with complex entries. The commuting operations on that sector form the full matrix algebra $M_{m_k}(\mathbb{C})$.
 
 Summing across all irreducible constituents gives:
@@ -2254,7 +2345,7 @@ Yes! This is one of the most beautiful dualities in finite group theory. The Cla
 
 $$\vert{}G\vert{} = 1 + \vert{}C_2\vert{} + \vert{}C_3\vert{} + \dots + \vert{}C_k\vert{}$$
 
-If you count the number of "buckets" (terms) in this equation, you get the integer $k$. That $k$ is the number of conjugacy classes, which mathematically guarantees there are exactly $k$ distinct irreducible representations.
+If you count the number of "buckets" (terms) in this equation, you get the integer $k$. That $k$ is the number of conjugacy classes. (Here the class equation has one term for every class, including a term $1$ for each central element, so $k$ counts all the classes; in the [standard class equation](#centralizers-and-the-center) earlier, the central elements were lumped into $\vert{}Z(G)\vert{}$ and $k$ counted only the non-central classes. This $k$ is also not the running index $k$ of $V_k$ and $m_k$ above.) The class equation by itself only counts classes. That there are exactly $k$ distinct irreducible representations over $\mathbb{C}$ is the standard theorem quoted in [the centre of the group algebra](#the-centre-of-the-group-algebra-zmathbbcg), which these notes use but do not prove.
 
 Furthermore, this gives birth to a famous "dual" equation. While the class equation partitions $\vert{}G\vert{}$ using conjugacy class sizes, the representation theory partitions $\vert{}G\vert{}$ using the dimensions ($d_i$) of those $k$ irreducible representations:
 
@@ -2264,23 +2355,23 @@ This equation follows from the $r = \sum_{k=1}^s m_k^2$ formula above if we choo
 
 **The Duality:**
 
--   You have exactly $k$ conjugacy classes (grouping the _group elements_).
-    
--   You have exactly $k$ irreducible representations (grouping the _matrix actions_).
-    
--   The sum of the sizes of the classes equals $\vert{}G\vert{}$.
-    
--   The sum of the squares of the irrep dimensions equals $\vert{}G\vert{}$.
-    
-This is why, if you know the class equation of a group, you instantly know exactly how many irreducible representations exist before you even write down a single matrix.
+You have exactly $k$ conjugacy classes (grouping the _group elements_).
 
-Another aspect of the Centralizer Algebra is that closure under multiplication shows that, if $\mathcal{O}_1, \dots, \mathcal{O}_r$ are the orbitals of $G$ on $\Omega$, then we have:
+You have exactly $k$ irreducible representations (grouping the _matrix actions_).
+
+The sum of the sizes of the classes equals $\vert{}G\vert{}$.
+
+The sum of the squares of the irrep dimensions equals $\vert{}G\vert{}$.
+
+This is why, given that theorem, if you know the class equation of a group, you instantly know exactly how many irreducible complex representations exist before you even write down a single matrix.
+
+Another aspect of the Centralizer Algebra is that closure under multiplication shows that, if $\mathcal{O}_1, \dots, \mathcal{O}_r$ are the orbitals of $G$ on $\Omega$ (the same orbitals as $R_1, \dots, R_r$ above, so $A(\mathcal{O}_i) = A_i$; earlier sections also wrote a single orbital as $\Gamma$ or $\Delta$), then we have:
 
 $$A(\mathcal{O}_i) A(\mathcal{O}_j) = \sum_{k=1}^r p_{ij}^k A(\mathcal{O}_k)$$
 
 for some constants $p_{ij}^k$, where $A$ is the Adjacency Matrix.
 
-This formula also has a combinatorial proof which gives an explicit interpretation to these numbers: $p_{ij}^k$ is the number of points $\gamma \in \Omega$ such that $(\alpha, \gamma) \in \mathcal{O}_i$ and $(\gamma, \beta) \in \mathcal{O}_j$, where $(\alpha, \beta)$ is any fixed pair chosen from the orbital $\mathcal{O}_k$. Essentially, $p_{ij}^k$ is the number of points on orbital $k$ which are also on orbitals $i$ and $j$.
+This formula also has a combinatorial proof which gives an explicit interpretation to these numbers: $p_{ij}^k$ is the number of points $\gamma \in \Omega$ such that $(\alpha, \gamma) \in \mathcal{O}_i$ and $(\gamma, \beta) \in \mathcal{O}_j$, where $(\alpha, \beta)$ is any fixed pair chosen from the orbital $\mathcal{O}_k$. Essentially, $p_{ij}^k$ counts the two-step paths from $\alpha$ to $\beta$ that take an $\mathcal{O}_i$-step and then an $\mathcal{O}_j$-step.
 
 (This follows directly from the definition of matrix multiplication for zero-one adjacency matrices: the $(\alpha, \beta)$ entry of the product matrix $A(\mathcal{O}_i)A(\mathcal{O}_j)$ is given by $\sum_{\gamma \in \Omega} A(\mathcal{O}_i)_{\alpha \gamma} A(\mathcal{O}_j)_{\gamma \beta}$, which simply counts the number of intermediate vertices $\gamma$ where both the $(\alpha, \gamma)$ entry of the first factor and the $(\gamma, \beta)$ entry of the second factor are equal to $1$.)
 
@@ -2296,7 +2387,9 @@ As we just discussed, the group symmetry of a permutation group forces the inter
 
 A coherent configuration is the purely combinatorial generalization of permutation groups: it keeps the regular numerical structure of group orbitals, even if no underlying group actually exists to produce it.
 
-Formally, let the permutation group $G$ have $m$ orbits on $\Omega$, and have rank $r$ (the number of orbits on $\Omega^2 = \Omega \times \Omega$). An orbital is an orbit of $G$ on $\Omega^2$, that is, a set of ordered pairs invariant under the componentwise action of $G$. It is customary to regard such a set of pairs as a binary relation on $\Omega$. Accordingly, we denote the orbitals by $R_1, \dots, R_r$, and regard them as relations on $\Omega$.
+Without a group, the definition reads as follows. A **coherent configuration** on a finite set $\Omega$ is a partition of $\Omega \times \Omega$ into non-empty relations $R_1, \dots, R_r$ (each a set of ordered pairs) with three properties: the diagonal $\{(\alpha, \alpha) \mid \alpha \in \Omega\}$ is a union of some of the $R_i$; the converse $\{(\beta, \alpha) \mid (\alpha, \beta) \in R_i\}$ of each relation is again one of the relations; and for all $i, j, k$, the number of points $\gamma$ with $(\alpha, \gamma) \in R_i$ and $(\gamma, \beta) \in R_j$ is the same for every pair $(\alpha, \beta) \in R_k$. That common number is the intersection number $p_{ij}^k$. Below we check that the orbitals of a permutation group have all these properties.
+
+Formally, let the permutation group $G$ have $m$ orbits on $\Omega$ (this $m$ counts orbits; it is not a multiplicity $m_k$), and have rank $r$ (the number of orbits on $\Omega^2 = \Omega \times \Omega$). An orbital is an orbit of $G$ on $\Omega^2$, that is, the set of all images $(g\alpha, g\beta)$ of one ordered pair $(\alpha, \beta)$ under the componentwise action of $G$. It is a smallest non-empty set of pairs invariant under $G$; a union of several orbitals is also invariant, but it is not an orbital. It is customary to regard such a set of pairs as a binary relation on $\Omega$. Accordingly, we denote the orbitals by $R_1, \dots, R_r$, and regard them as relations on $\Omega$.
 
 If $\Omega_1, \dots, \Omega_m$ are the orbits of $G$ on $\Omega$, we choose the indexing convention so that, for $1 \le i \le m$,
 
@@ -2306,25 +2399,25 @@ is the diagonal relation on the orbit $\Omega_i$. Let $\mathcal{R} = \{R_1, \dot
 
 The relations $R_i \in \mathcal{R}$ satisfy the following fundamental properties:
 
-1.  **Partition of $\Omega^2$:** The orbitals form a partition of the Cartesian product $\Omega \times \Omega$:
-    
-    $$\bigcup_{k=1}^r R_k = \Omega \times \Omega \quad \text{and} \quad R_j \cap R_k = \emptyset \quad \text{for } j \neq k$$
-    
-2.  **Diagonal Subsets:** The diagonal $\Delta = \{(\alpha, \alpha) \mid \alpha \in \Omega\}$ decomposes as the disjoint union of the first $m$ relations:
-    
-    $$\Delta = \bigcup_{i=1}^m R_i$$
-    
-    The number of diagonal orbitals is equal to $m$, the number of orbits of $G$ on $\Omega$. This provides an immediate structural check: $r \ge m$. In particular, if $G$ is transitive ($m = 1$), there is exactly one diagonal orbital $R_1 = \{(\alpha, \alpha) \mid \alpha \in \Omega\}$. 
-    
-3.  **Paired Relations (Converse Orbitals):** For each orbital $R_k \in \mathcal{R}$, the converse relation
-    
-    $$R_k^* = \{(\beta, \alpha) \mid (\alpha, \beta) \in R_k\}$$
-    
-    is also an orbital in $\mathcal{R}$ (often denoted $R_{k^*}$). If $R_k = R_k^*$, the orbital is called self-paired (or symmetric), corresponding to an undirected orbital graph.
+**Partition of $\Omega^2$:** The orbitals form a partition of the Cartesian product $\Omega \times \Omega$:
 
-4. **Intersection Numbers:** The number of intermediate points $\gamma \in \Omega$ with $(\alpha, \gamma) \in R_i$ and $(\gamma, \beta) \in R_j$ depends only on the orbital $R_k$ containing $(\alpha, \beta)$, because $G$ acts transitively on each orbital $R_k$.
+$$\bigcup_{k=1}^r R_k = \Omega \times \Omega \quad \text{and} \quad R_j \cap R_k = \emptyset \quad \text{for } j \neq k$$
 
-In algebraic combinatorics, the partition $\Omega \times \Omega = \bigcup_{k=1}^r R_k$ together with the intersection numbers $p_{ij}^k$ forms a coherent configuration $(\Omega, \mathcal{R})$. If $G$ is the permutation group of $\Omega$ and $\mathcal{R}$ the associated set of orbitals of $G$, then this is called the coherent configuration of $G$.
+**Diagonal Subsets:** The diagonal $\Delta = \{(\alpha, \alpha) \mid \alpha \in \Omega\}$ decomposes as the disjoint union of the first $m$ relations:
+
+$$\Delta = \bigcup_{i=1}^m R_i$$
+
+The number of diagonal orbitals is equal to $m$, the number of orbits of $G$ on $\Omega$. This provides an immediate structural check: $r \ge m$. In particular, if $G$ is transitive ($m = 1$), there is exactly one diagonal orbital $R_1 = \{(\alpha, \alpha) \mid \alpha \in \Omega\}$.
+
+**Paired Relations (Converse Orbitals):** For each orbital $R_k \in \mathcal{R}$, the converse relation
+
+$$R_k^* = \{(\beta, \alpha) \mid (\alpha, \beta) \in R_k\}$$
+
+is also an orbital in $\mathcal{R}$ (often denoted $R_{k^*}$). If $R_k = R_k^*$, the orbital is called self-paired (or symmetric), corresponding to an undirected orbital graph.
+
+**Intersection Numbers:** The number of intermediate points $\gamma \in \Omega$ with $(\alpha, \gamma) \in R_i$ and $(\gamma, \beta) \in R_j$ depends only on the orbital $R_k$ containing $(\alpha, \beta)$, because $G$ acts transitively on each orbital $R_k$.
+
+In algebraic combinatorics, the partition $\Omega \times \Omega = \bigcup_{k=1}^r R_k$ therefore satisfies the definition given above, so $(\Omega, \mathcal{R})$, with its intersection numbers $p_{ij}^k$, is a coherent configuration. For a general partition, the fact that $p_{ij}^k$ is the same for every pair in $R_k$ is an axiom; here the group gave it to us for free. If $G$ is the permutation group of $\Omega$ and $\mathcal{R}$ the associated set of orbitals of $G$, then this is called the coherent configuration of $G$.
 
 When $G$ is transitive ($m = 1$), this coherent configuration is called homogeneous, which means the diagonal is a single orbital.
 
@@ -2340,7 +2433,7 @@ The definition of a coherent configuration can be phrased in the language of mat
 
 Let $I$ denote the identity matrix, and $J$ denote the all-ones matrix of appropriate size ($\vert{}\Omega\vert{} \times \vert{}\Omega\vert{}$). The following translates the four axioms we gave above of a coherent configuration directly into matrix algebra:
 
-Let $\mathcal{A} = \{A_1, \dots, A_r\}$ be a set of non-zero $0\text{--}1$ matrices with rows and columns indexed by $\Omega$. Then $\mathcal{A}$ is the set of basis matrices of a coherent configuration on $\Omega$ if and only if the following conditions are satisfied:
+Let $\mathcal{A} = \{A_1, \dots, A_r\}$ be a set of non-zero $0\text{--}1$ matrices with rows and columns indexed by $\Omega$ (for a moment $\mathcal{A}$ is just this finite set of matrices, not the centralizer algebra of the previous sections; the algebra it spans is $V(\mathcal{A})$ below). Then $\mathcal{A}$ is the set of basis matrices of a coherent configuration on $\Omega$ if and only if the following conditions are satisfied:
 
 1.  Partition of the Complete Graph: $\sum_{i=1}^r A_i = J$
         
@@ -2356,17 +2449,17 @@ Let $\mathcal{A} = \{A_1, \dots, A_r\}$ be a set of non-zero $0\text{--}1$ matri
     
     for non-negative integers $p_{ij}^k$
 
-Let $V(\mathcal{A}) = \operatorname{span}_{\mathbb{C}}(\mathcal{A})$ be the complex linear span of $\mathcal{A}$. Condition 4 asserts that $V(\mathcal{A})$ is closed under matrix multiplication, making it a finite-dimensional associative $\mathbb{C}$-algebra. We call $V(\mathcal{A})$ the basis algebra (or coherent algebra) of the configuration. Condition 2 guarantees that this algebra contains the multiplicative identity $I$, and condition 3 ensures it is a $*$-algebra closed under Hermitian adjoints (transposition and complex conjugation). A matrix algebra closed in this way is called semisimple (it has no non-zero nilpotent ideals, that is, no non-zero ideal $I$ with $I^k = 0$ for some $k$).
+Let $V(\mathcal{A}) = \operatorname{span}_{\mathbb{C}}(\mathcal{A})$ be the complex linear span of $\mathcal{A}$. Condition 4 asserts that $V(\mathcal{A})$ is closed under matrix multiplication, making it a finite-dimensional associative $\mathbb{C}$-algebra. We call $V(\mathcal{A})$ the basis algebra (or coherent algebra) of the configuration. Condition 2 guarantees that this algebra contains the multiplicative identity $I$, and condition 3 ensures it is a $*$-algebra closed under Hermitian adjoints (transposition and complex conjugation). A matrix algebra closed in this way is semisimple: it has no non-zero nilpotent ideals, that is, no non-zero ideal $N$ with $N^t = 0$ for some $t$ (where $N^t$ is spanned by the products of $t$ elements of $N$). Closure is a sufficient condition for this, not the definition. To see why it works, let $X$ lie in a nilpotent ideal $N$. Its conjugate transpose $\overline{X}^T$ is in the algebra, so $\overline{X}^T X$ is in $N$ and is nilpotent; it is also Hermitian, hence diagonalizable with all its eigenvalues equal to $0$, hence $\overline{X}^T X = 0$. The trace of $\overline{X}^T X$ is the sum of $\vert{}x_{\alpha\beta}\vert{}^2$ over all entries of $X$, so this forces $X = 0$. For finite-dimensional algebras with an identity, such as this one, having no non-zero nilpotent ideal is equivalent to the property in [Maschke's theorem](#maschkes-theorem), that every module splits into a direct sum of irreducible pieces.
 
 If the coherent configuration is associated with a group, then this basis algebra is just the centraliser algebra we already encountered.
 
 The centralizer algebra commutes with every permutation matrix of the group, but it need not be commutative itself: as we saw, it is commutative exactly when the permutation character is multiplicity-free. For example, $S_3$ acting on itself by multiplication gives the algebra $\mathbb{C} \oplus \mathbb{C} \oplus M_2(\mathbb{C})$, which is not commutative. A general coherent algebra likewise need not be commutative. It becomes commutative if $p_{ij}^k = p_{ji}^k$ for all $i, j, k$.
 
-Let's look a little deeper at this basis algebra. We can apply something analogous to Schur's Lemma. The basis algebra $\mathcal{A}$ of a coherent configuration decomposes as a direct sum of complete matrix algebras over $\mathbb{C}$:
+Let's look a little deeper at this basis algebra. We can apply something analogous to Schur's Lemma. The basis algebra of a coherent configuration, which from here on we again call $\mathcal{A}$ (now meaning the algebra $V(\mathcal{A})$, not the set of its basis matrices), decomposes as a direct sum of complete matrix algebras over $\mathbb{C}$:
 
 $$\mathcal{A} \cong M_{e_1}(\mathbb{C}) \oplus M_{e_2}(\mathbb{C}) \oplus \dots \oplus M_{e_s}(\mathbb{C})$$
 
-This is an instance of the Artin–Wedderburn Theorem for semisimple finite-dimensional algebras (which we showed holds true for this algebra due to the equality between a matrix and the complex conjugate transpose).
+This is an instance of the Artin–Wedderburn Theorem for semisimple finite-dimensional algebras (which applies to this algebra because it is closed under conjugate transpose, which makes it semisimple, as shown above).
     
 When the coherent configuration comes from a permutation group $G$ acting on $\Omega$ with permutation character $\pi$, the permutation representation decomposes into its distinct irreducible representations $\rho_i$ with multiplicities $m_i$:
     
@@ -2388,7 +2481,7 @@ The algebra is commutative ($A_i A_j = A_j A_i$) if and only if every matrix blo
 
 Now let's apply the stronger condition of a symmetry. Under symmetry $A_i^T = A_i$ for all $i$. This allows us to place further constraints on the intersection numbers. 
 
-Let $v_k = p_{k k^*}^0$ be the valency (degree) of the relation $R_k$. For $p_{ij}^m$, if $m = 0$ that corresponds to the diagonal. Because $m = 0$, the starting and ending vertices must satisfy $(\alpha, \beta) \in R_0$. Since $R_0$ is the diagonal, $\alpha$ and $\beta$ must be the exact same vertex: $\alpha = \beta$. So $p_{k k^*}^0$ is the number of vertices $\gamma \in \Omega$ such that:
+From here on, wherever the diagonal relation of a homogeneous configuration is singled out, we follow the usual numbering for association schemes and call it $R_0$ (so $A_0 = I$), not $R_1$ as above; a plain list of all $r$ basis matrices may still be written $A_1, \dots, A_r$. Let $v_k = p_{k k^*}^0$ be the valency (degree) of the relation $R_k$. For $p_{ij}^m$ (here $m$ is just the index of a relation, not the number of orbits or a multiplicity), if $m = 0$ that corresponds to the diagonal. Because $m = 0$, the starting and ending vertices must satisfy $(\alpha, \beta) \in R_0$. Since $R_0$ is the diagonal, $\alpha$ and $\beta$ must be the exact same vertex: $\alpha = \beta$. So $p_{k k^*}^0$ is the number of vertices $\gamma \in \Omega$ such that:
 
 $$(\alpha, \gamma) \in R_k \quad \text{and} \quad (\gamma, \alpha) \in R_{k^*}$$
 
@@ -2440,13 +2533,13 @@ Now consider what happens when we take a specific basis matrix, say $A_i$, and l
 
 $$A_i M = d_1 A_1 + d_2 A_2 + \dots + d_r A_r$$
 
-This gives us a new $r$-dimensional coordinate vector:
+This gives us a new $r$-dimensional coordinate vector (the $d_j$ here are just coefficients, not the dimensions $d_k$ of irreducible representations from earlier):
 
 $$\vec{d} = \begin{pmatrix} d_1 \\ d_2 \\ \vdots \\ d_r \end{pmatrix}$$
 
 The operation of left-multiplying by $A_i$ maps the old coordinate vector $\vec{c}$ to the new coordinate vector $\vec{d}$. We can define this linear operator as $L_{A_i}: \mathcal{A} \to \mathcal{A}$, where $L_{A_i}(X) = A_i X$. Because matrix multiplication is distributive and associative, this mapping is a linear transformation from $\mathbb{C}^r$ to $\mathbb{C}^r$, which means it can be written as an $r \times r$ matrix.
 
-Let's call the matrix that performs this exact coordinate transformation $P_i$. We can find its entries by looking at how $A_i$ acts on the basis vectors. Multiplying $A_i$ by the $j$-th basis vector $A_j$ gives the $j$-th column of $P_i$. Looking at our multiplication rule above, the coefficient for the $k$-th row is $p_{ij}^k$. Therefore, the entries of $P_i$ are explicitly:
+Let's call the matrix that performs this exact coordinate transformation $P_i$ (no relation to the permutation matrices $P(g)$ or the change-of-basis matrix $P$ earlier). We can find its entries by looking at how $A_i$ acts on the basis vectors. Multiplying $A_i$ by the $j$-th basis vector $A_j$ gives the $j$-th column of $P_i$. Looking at our multiplication rule above, the coefficient for the $k$-th row is $p_{ij}^k$. Therefore, the entries of $P_i$ are explicitly:
 
 $$(P_i)_{kj} = p_{ij}^k$$
 
@@ -2460,27 +2553,27 @@ $$P_i P_j = \sum_{k=1}^r p_{ij}^k P_k$$
 
 This makes the map $A_i \mapsto P_i$ an algebra isomorphism. By extracting the $r$ basis coefficients, we compress the act of matrix multiplication into the $r \times r$ intersection matrices $P_i$. It transfers all eigenvalue equations and algebraic identities from the large $n \times n$ matrices down to the explicit $r \times r$ matrices, allowing us to solve the system without ever computing anything of size $n$.
 
-[Figure 9](#figure-9) works this out for $D_{10}$ acting on the regular pentagon, compressing the $5 \times 5$ adjacency matrix $A_1$ into the $3 \times 3$ intersection matrix $P_1$.
+[Figure 11](#figure-11) works this out for $D_{10}$ acting on the regular pentagon, compressing the $5 \times 5$ adjacency matrix $A_1$ into the $3 \times 3$ intersection matrix $P_1$.
 
-<a id="figure-9"></a>![Coherent configuration and intersection matrix of the pentagon under D_10](figures/maths2_coherent_intersection_pentagon.png)
+<a id="figure-11"></a>![Coherent configuration and intersection matrix of the pentagon under D_10](figures/maths2_coherent_intersection_pentagon.png)
 
-*Figure 9. Coherent configuration and intersection algebra for $D_{10}$ on the regular pentagon ($n = 5$, rank $r = 3$). (a) The three orbitals (diagonal, perimeter edges, and star chords) partition the $5 \times 5$ all-ones matrix as $J_5 = A_0 + A_1 + A_2$, and two-step path counts on the pentagon give the numbers $p_{ij}^k$. (b) Left-multiplying the basis $\{A_0, A_1, A_2\}$ by $A_1$ gives three coefficient columns $(P_1)_{kj} = p_{1j}^k$ that form the $3 \times 3$ intersection matrix $P_1$.*
+*Figure 11. Coherent configuration and intersection algebra for $D_{10}$ on the regular pentagon ($n = 5$, rank $r = 3$). (a) The three orbitals (diagonal, perimeter edges, and star chords) partition the $5 \times 5$ all-ones matrix as $J_5 = A_0 + A_1 + A_2$, and two-step path counts on the pentagon give the numbers $p_{ij}^k$. (b) Left-multiplying the basis $\{A_0, A_1, A_2\}$ by $A_1$ gives three coefficient columns $(P_1)_{kj} = p_{1j}^k$ that form the $3 \times 3$ intersection matrix $P_1$.*
 
-For an association scheme on $n$ vertices, the algebra formed by the association matrices is called the [Bose-Mesner Algebra](maths_4_incidence_geometry.md#distance-matrices-distance-polynomials-and-the-bose-mesner-algebra), which is isomorphic to the intersection algebra. For an association scheme, since it is commutative, the basis matrices $A_i$ of the Bose-Mesner algebra form a commuting family of normal (in the symmetric case, real symmetric) matrices. They are therefore simultaneously diagonalizable via an orthonormal basis of common eigenvectors. This is a statement about the $A_i$. The intersection matrices $P_i$ also commute and have the same eigenvalues as the $A_i$ (each counted once), so they can be diagonalized together too, but in general not by an orthonormal basis: for the complete graph $K_3$, $P_1 = \begin{pmatrix} 0 & 2 \\ 1 & 1 \end{pmatrix}$ is not even symmetric. In this common eigenbasis, every matrix in the algebra decomposes into a diagonal matrix (a direct sum of $1 \times 1$ blocks). 
+For an association scheme on $n$ vertices, the algebra formed by the association matrices is called the [Bose-Mesner Algebra](maths_4_incidence_geometry.md#distance-matrices-distance-polynomials-and-the-bose-mesner-algebra), which is isomorphic to the intersection algebra. For an association scheme, since it is commutative, the basis matrices $A_i$ of the Bose-Mesner algebra form a commuting family of normal (in the symmetric case, real symmetric) matrices. They are therefore simultaneously diagonalizable via an orthonormal basis of common eigenvectors. This is a statement about the $A_i$. The intersection matrices $P_i$ also commute and have the same set of eigenvalues as the $A_i$ (but with different multiplicities: $P_i$ has one eigenvalue for each common eigenspace of the $A_j$, so a value repeats only when $A_i$ takes it on several of those eigenspaces), so they can be diagonalized together too, but in general not by an orthonormal basis: for the complete graph $K_3$, $P_1 = \begin{pmatrix} 0 & 2 \\ 1 & 1 \end{pmatrix}$ is not even symmetric. In this common eigenbasis, every matrix in the algebra decomposes into a diagonal matrix (a direct sum of $1 \times 1$ blocks). 
 
-The Bose-Mesner algebra has two distinguished dual bases:
+The Bose-Mesner algebra has two distinguished dual bases. Here "dual" does not mean a basis of the dual space: both bases lie in the algebra itself, and they trade the roles of the two products, since the $A_i$ are idempotent and mutually orthogonal under the entrywise product $\circ$, while the $E_i$ are idempotent and mutually orthogonal under the ordinary product:
 
-1.  The geometric basis: $\{A_0, A_1, \dots, A_d\}$, where $d = r - 1$ is the number of non-identity relations, under ordinary and [Schur-Hadamard multiplication](maths_4_incidence_geometry.md#rank-determinants-and-gram-matrices) (the entrywise product, $(A \circ B)_{\alpha\beta} = A_{\alpha\beta} B_{\alpha\beta}$):
-    
-    $$A_i A_j = \sum_{k=0}^d p_{ij}^k A_k, \qquad A_i \circ A_j = \delta_{ij} A_i$$
-    
-2.  The spectral basis of primitive idempotents $\{E_0, E_1, \dots, E_d\}$ (the orthogonal projections onto the common eigenspaces of all the $A_j$; primitive means none of them splits into a sum of two smaller such projections):
-    
-    $$E_i E_j = \delta_{ij} E_i, \qquad E_i \circ E_j = \frac{1}{n} \sum_{k=0}^d q_{ij}^k E_k$$
-    
-    where $E_0 = \frac{1}{n} J$.
-    
-The transition matrices between these two dual bases define the first eigenmatrix $P$ and the second eigenmatrix $Q$:
+The geometric basis: $\{A_0, A_1, \dots, A_d\}$, where $d = r - 1$ is the number of non-identity relations, under ordinary and [Schur-Hadamard multiplication](maths_4_incidence_geometry.md#rank-determinants-and-gram-matrices) (the entrywise product, $(A \circ B)_{\alpha\beta} = A_{\alpha\beta} B_{\alpha\beta}$):
+
+$$A_i A_j = \sum_{k=0}^d p_{ij}^k A_k, \qquad A_i \circ A_j = \delta_{ij} A_i$$
+
+The spectral basis of primitive idempotents $\{E_0, E_1, \dots, E_d\}$ (the orthogonal projections onto the common eigenspaces of all the $A_j$; primitive means none of them splits into a sum of two smaller such projections):
+
+$$E_i E_j = \delta_{ij} E_i, \qquad E_i \circ E_j = \frac{1}{n} \sum_{k=0}^d q_{ij}^k E_k$$
+
+where $E_0 = \frac{1}{n} J$, and the numbers $q_{ij}^k$, called the Krein parameters, play the same role for the entrywise product of the $E_i$ that the intersection numbers $p_{ij}^k$ play for the ordinary product of the $A_i$.
+
+The transition matrices between these two dual bases define the first eigenmatrix $P$ and the second eigenmatrix $Q$ (this $P$, with entries $P_{ij}$, is a single $r \times r$ matrix, not one of the intersection matrices $P_i$ above; for $K_3$, $P = \begin{pmatrix} 1 & 2 \\ 1 & -1 \end{pmatrix}$, while $P_1 = \begin{pmatrix} 0 & 2 \\ 1 & 1 \end{pmatrix}$):
 
 $$A_j = \sum_{i=0}^d P_{ij} E_i \quad \Longleftrightarrow \quad E_j = \frac{1}{n} \sum_{i=0}^d Q_{ij} A_i$$
 
@@ -2498,13 +2591,13 @@ In a general coherent configuration (or a non-symmetric association scheme), the
 
 The diameter of a connected graph is the maximum shortest-path distance between any two vertices in the graph.
 
-A complete graph ($K_n$, $n \ge 2$) is one where every vertex is directly connected to every other vertex by an edge, so $d(u, v) = 1$ for all $u \neq v$. The diameter is $1$.
+A complete graph ($K_n$, $n \ge 2$) is one where every vertex is directly connected to every other vertex by an edge, so $d(u, v) = 1$ for all $u \neq v$ (where $d(u, v)$ is the shortest-path distance from $u$ to $v$). The diameter is $1$.
 
-A cycle graph ($C_n$) is one where to reach the farthest vertex along the ring, you traverse at most half the perimeter. For even $n$: diameter is $n / 2$. For odd $n$: diameter is $(n - 1) / 2$.
+A cycle graph ($C_n$, $n \ge 3$; here $C_n$ is a graph, not the cyclic group $C_n$) has vertices $0, 1, \dots, n - 1$, with each $i$ joined to $i + 1$ and $i - 1$ (mod $n$), so the vertices form a ring. To reach the farthest vertex along the ring, you traverse at most half the perimeter. For even $n$: diameter is $n / 2$. For odd $n$: diameter is $(n - 1) / 2$.
         
-A $d$-Dimensional hypercube ($Q_d$) is one where the two antipodal corners differ in all $d$ coordinates, requiring $d$ bit flips. The diameter is $d$.
+A $d$-Dimensional hypercube ($Q_d$) has the $2^d$ binary strings of length $d$ as vertices, with two strings joined when they differ in exactly one place. Two antipodal corners differ in all $d$ coordinates, requiring $d$ bit flips. The diameter is $d$.
 
-There is a particularly important class of symmetric association schemes derived from graphs. Let $\Gamma$ be a connected graph on the vertex set $\Omega$, having diameter $d$. Let $d(x, y)$ be the shortest-path distance between the vertices $x$ and $y$ of $\Gamma$. We let $\Gamma_i(x)$ denote the set of all vertices whose distance from the vertex $x$ is $i$, for $0 \le i \le d$ (so that $\Gamma_0(x) = \{x\}$ and $\Gamma_1(x)$ is the set of neighbours of $x$).
+There is a particularly important class of symmetric association schemes derived from graphs. Let $\Gamma$ be a connected graph on the vertex set $\Omega$, having diameter $d$. Let $d(x, y)$ be the shortest-path distance between the vertices $x$ and $y$ of $\Gamma$ (the function $d(x, y)$ is the distance; the plain letter $d$ stays the diameter). We let $\Gamma_i(x)$ denote the set of all vertices whose distance from the vertex $x$ is $i$, for $0 \le i \le d$ (so that $\Gamma_0(x) = \{x\}$ and $\Gamma_1(x)$ is the set of neighbours of $x$).
 
 We say that $\Gamma$ is distance-transitive if, for $0 \le i \le d$, the automorphism group $G = \operatorname{Aut}(\Gamma)$ (the permutations of the vertices that send edges to edges and non-edges to non-edges) acts transitively on the set of ordered pairs of vertices at distance $i$: $\{(x, y) \in \Omega \times \Omega \mid d(x, y) = i\}$
     
@@ -2520,10 +2613,10 @@ Note that, for a distance-regular graph, the parameters $c_0$ and $b_d$ are unde
 
 The intersection parameters of a distance-regular graph satisfy:
 
-1.  $1 = c_1 \le c_2 \le \dots \le c_d$
-    
-2.  $k = b_0 \ge b_1 \ge \dots \ge b_{d-1} \ge 1$
-    
+$1 = c_1 \le c_2 \le \dots \le c_d$
+
+$k = b_0 \ge b_1 \ge \dots \ge b_{d-1} \ge 1$, where $k = b_0$ is the valency of $\Gamma$, the number of neighbours of each vertex (a new use of the letter $k$)
+
 
 Furthermore, the intersection numbers satisfy $c_i \le b_{d-i}$ for all $i$ such that $i \le d - i$.
 
@@ -2543,7 +2636,7 @@ Also, since every neighbour of $y$ must lie at distance $i-1$, $i$, or $i+1$ fro
     
 $$c_i + a_i + b_i = k \quad \text{for all } 1 \le i \le d-1$$
     
-with $c_1 = 1$ and $a_0 = 0$. In terms of the intersection numbers $p_{1j}^k$ defined earlier, the adjacency matrix of $\Gamma$ acts tridiagonally on the scheme basis:
+with $c_1 = 1$ and $a_0 = 0$. In terms of the intersection numbers defined earlier, $b_{i-1} = p_{1i}^{i-1}$, $a_i = p_{1i}^{i}$ and $c_{i+1} = p_{1i}^{i+1}$ (the superscript is the index of a relation, not the valency $k$), and all other $p_{1i}^{l}$ are $0$, so the adjacency matrix of $\Gamma$ acts tridiagonally on the scheme basis:
     
 $$A_1 A_i = b_{i-1} A_{i-1} + a_i A_i + c_{i+1} A_{i+1}$$
     
@@ -2551,7 +2644,7 @@ This makes the Bose-Mesner algebra of a distance-regular graph a polynomial alge
     
 $$A_i = v_i(A_1)$$
     
-for orthogonal polynomials $v_i(x)$ of degree $i$.
+for orthogonal polynomials $v_i(x)$ of degree $i$. These polynomials are not the valencies $v_k$ from the triangle symmetry above, but the two are linked: the all-ones vector is multiplied by $k$ under $A_1$ and by the valency $v_i$ of $R_i$ under $A_i = v_i(A_1)$, so the polynomial $v_i(x)$ evaluated at $x = k$ gives the number $v_i$. They are called orthogonal because $\operatorname{Tr}(v_i(A_1)\,v_j(A_1)) = \operatorname{Tr}(A_i A_j) = 0$ for $i \neq j$ (the symmetric matrices $A_i$ and $A_j$ have their $1$s in different places), so they are orthogonal for the inner product $\langle f_1, f_2 \rangle = \operatorname{Tr}(f_1(A_1)\,f_2(A_1))$ on polynomials of degree at most $d$.
     
 These are also connected to Strongly Regular Graphs. A strongly regular graph can also be seen as a graph $\Gamma$ on the vertex set $\Omega$ having the property that $(\Omega, \{R_0, R_1, R_2\})$ is an association scheme, where $R_0, R_1, R_2$ are the relations of equality, adjacency, and non-adjacency respectively.
 
@@ -2581,7 +2674,7 @@ When conditions 1 and 2 hold, elements of $A$ and elements of $B$ automatically 
 
 $$a b a^{-1} b^{-1} = \underbrace{(a b a^{-1})}_{\in B} b^{-1} \in B \quad \text{and} \quad a b a^{-1} b^{-1} = a \underbrace{(b a^{-1} b^{-1})}_{\in A} \in A$$
 
-Since the commutator belongs to $A \cap B = \{1\}$, we get $aba^{-1}b^{-1} = 1 \implies ab = ba$.
+Since the commutator belongs to $A \cap B = \{1\}$, we get $aba^{-1}b^{-1} = 1 \implies ab = ba$. (Here the commutator is written $aba^{-1}b^{-1}$, the mirror image of $[g, h] = g^{-1}h^{-1}gh$ from [normal subgroups](#normal-subgroups); either form equals $1$ exactly when the two elements commute.)
 
 For $G$ to be an internal semidirect product $G = A \rtimes B$:
 
@@ -2597,11 +2690,11 @@ Why does having $A \cap B = \{1\}$ with $A \trianglelefteq G$ allow $B$ to act o
 
 $$\phi_b(a) = b a b^{-1} \in A$$
 
-Conjugation by $b$ is an invertible automorphism of $A$. Combining two operations respects group structure:
+Here conjugation is written $bab^{-1}$, not $g^{-1}xg$ as in [normal subgroups](#normal-subgroups); with maps written on the left, as $\phi_b(a)$ is, this is the form for which $\phi_{b_1 b_2} = \phi_{b_1} \circ \phi_{b_2}$ below. Conjugation by $b$ is an invertible automorphism of $A$ (an automorphism of a group is an isomorphism from the group to itself, just as for rings [earlier](#groups)). Combining two operations respects group structure:
 
 $$\phi_{b_1 b_2}(a) = (b_1 b_2) a (b_1 b_2)^{-1} = b_1 (b_2 a b_2^{-1}) b_1^{-1} = \phi_{b_1}(\phi_{b_2}(a))$$
     
-This defines an action homomorphism: $\phi: B \longrightarrow \text{Aut}(A)$.    
+This defines an action homomorphism: $\phi: B \longrightarrow \text{Aut}(A)$, where $\text{Aut}(A)$ is the group of all automorphisms of $A$, with composition as its operation.    
 
 The trivial intersection $A \cap B = \{1\}$ ensures this action is clean: no non-identity element in $B$ can be confused with an element in $A$. It guarantees that every element $g \in G$ factors uniquely as:
 
@@ -2622,27 +2715,33 @@ Now back to extensions. Sylow's Theorems tell us how to break a group apart to s
 
 For example, if $A = C_2$ and $B = C_2$, the resulting group $G$ could be the cyclic group $C_4$ or the Klein four-group $V_4$. To precisely rebuild $G$, you need two pieces of mortar:
 
-1. **The Action:** How does the top layer $B$ physically twist or permute the bottom layer $A$ when you move through the group? (Represented as a homomorphism into the automorphisms of $A$).
+**The Action:** How does the top layer $B$ physically twist or permute the bottom layer $A$ when you move through the group? (Represented as a homomorphism into the automorphisms of $A$. Here $B = G/A$ is not a subgroup of $G$, so $b \in B$ acts on $A$ by conjugation with a chosen element $s(b)$ of the coset $b$. Choosing another element of the same coset changes this automorphism by conjugation with an element of $A$, which does nothing when $A$ is abelian. So for the action to be a well-defined homomorphism $B \to \operatorname{Aut}(A)$ we need $A$ abelian, and from here on we assume it is.)
 
-2. **The Factor Set:** When you multiply two elements in the top layer $B$, they might not land exactly on the expected element in $B$; they might "slip" by a specific element of $A$. This slipping is tracked by a function $f(b_1, b_2)$ called a factor set.
+**The Factor Set:** Take the representatives $s(b) \in G$ from above, one in each coset $b \in B$, chosen with $s(1) = 1$. When you multiply two representatives, $s(b_1)s(b_2)$ lies in the coset $b_1 b_2$, but it need not be the chosen representative $s(b_1 b_2)$; it might "slip" by a specific element of $A$:
+
+$$s(b_1)s(b_2) = f(b_1, b_2)\,s(b_1 b_2), \quad f(b_1, b_2) \in A$$
+
+This slipping is tracked by the function $f(b_1, b_2)$, called a factor set. It depends on which representatives were chosen.
 
 If the factor set is trivial (zero slippage), the group is a clean Semidirect Product (like stacking blocks perfectly on top of each other). Extensions that are semidirect products are called split, and the others non-split. If the factor set is complex, the layers weave together tightly. 
 
-[Figure 10](#figure-10) compares these two pieces of mortar across $C_4 \times C_2$, the semidirect product $D_8 = C_4 \rtimes C_2$, and the non-split extension $C_4$.
+[Figure 12](#figure-12) compares these two pieces of mortar across $C_4 \times C_2$, the semidirect product $D_8 = C_4 \rtimes C_2$, and the non-split extension $C_4$.
 
-<a id="figure-10"></a>![Direct product, semidirect action twist, and factor-set slippage in group extensions](figures/maths2_extensions_mortar.png)
+<a id="figure-12"></a>![Direct product, semidirect action twist, and factor-set slippage in group extensions](figures/maths2_extensions_mortar.png)
 
-*Figure 10. Rebuilding an extension $G$ of $A$ by $B = G/A$ from the action $\phi_b$ and the factor set $f(b_1, b_2)$. (a, b) The arrows in each layer show right multiplication by $r$: in $C_4 \times C_2$ both layers rotate the same way ($\phi_b(r) = r$), whereas in $D_8 = C_4 \rtimes C_2$ the action $\phi_b(r) = brb^{-1} = r^{-1}$ reverses the arrows in the upper layer $Ab$. (c) In $C_4$ over $A = \{0, 2\}$, stepping across $B = \{0, 1\}$ twice from $0$ through $1$ does not return to $0$ as in $V_4$, but slips along $A$ to $2$ by the factor set $f(1, 1) = 2$.*
+*Figure 12. Rebuilding an extension $G$ of $A$ by $B = G/A$ from the action $\phi_b$ and the factor set $f(b_1, b_2)$. (a, b) The arrows in each layer show right multiplication by $r$: in $C_4 \times C_2$ both layers rotate the same way ($\phi_b(r) = r$), whereas in $D_8 = C_4 \rtimes C_2$ the action $\phi_b(r) = brb^{-1} = r^{-1}$ reverses the arrows in the upper layer $Ab$. (c) In $C_4$ over $A = \{0, 2\}$, stepping across $B = \{0, 1\}$ twice from $0$ through $1$ does not return to $0$ as in $V_4$, but slips along $A$ to $2$ by the factor set $f(1, 1) = 2$.*
 
 In group theory, tracking these structural slippages between abstract layers gave birth to Homological Algebra and Cohomology groups, a way to use topology and algebraic grids to map exactly how mathematical structures twist into one another. We take the group $G$ and embed it into a ring, creating the **Group Ring** $\mathbb{Z}G$.
 
-* You are now allowed to formally add group elements with integer coefficients, like $3g_1 - 2g_5$.
-* Multiplication in this ring is called **convolution**, where you multiply out the terms using the group's internal multiplication table and gather the resulting coefficients.
+You are now allowed to formally add group elements with integer coefficients, like $3g_1 - 2g_5$.
 
-By turning the group into a ring module, you can run algebraic topology on it. In topology, **[Cohomology Groups](maths_1_differential_geometry.md#de-rham-cohomology)** ($H^0, H^1, H^2 \dots$) measure the number of "holes" or "twists" in a multi-dimensional shape. In algebra, they measure the twists in the group extensions:
+Multiplication in this ring is called **convolution**, where you multiply out the terms using the group's internal multiplication table and gather the resulting coefficients.
 
-* **The Second Cohomology Group ($H^2(\mathbb{Z}B, A)$):** This is exactly the **Extension Group** $E(B, A)$. It is the mathematical space of all valid factor sets minus the trivial inner factor sets (those that disappear when you choose different representatives in $G$ for the elements of $B$, so they describe the same extension). If $H^2 = 0$, there are no topological "twists" possible, and every extension perfectly splits into a clean semidirect product.
-* **The First Cohomology Group ($H^1(\mathbb{Z}B, A)$):** If the extension *does* split cleanly, there might be multiple different geometric ways to slice the complement group out of the whole (a complement of $A$ in $G$ is a subgroup $B'$ with $A \cap B' = \{1\}$ and $AB' = G$, like $B$ in a semidirect product). $H^1$ exactly counts the number of conjugacy classes of these complements.
+By turning the abelian group $A$ into a module over the group ring $\mathbb{Z}B$, with $B$ acting on $A$ through the action above, you can run algebraic topology on it. In topology, **[Cohomology Groups](maths_1_differential_geometry.md#de-rham-cohomology)** ($H^0, H^1, H^2 \dots$) measure the number of "holes" or "twists" in a multi-dimensional shape. In algebra, they measure the twists in the group extensions:
+
+**The Second Cohomology Group ($H^2(\mathbb{Z}B, A)$):** This is exactly the **Extension Group** $E(B, A)$. It is the mathematical space of all valid factor sets taken modulo the trivial inner factor sets (those that come only from choosing different representatives in $G$ for the elements of $B$, so they describe the same extension). It is a quotient, not a set difference: the factor sets form a group under pointwise multiplication (this uses $A$ abelian), the trivial ones form a subgroup, and two factor sets give the same element of $H^2$ when they differ by a trivial one. Its elements correspond to the different extensions of $A$ by $B$ with the given action (up to equivalence of extensions), which is why it is also called the Extension Group. If $H^2 = 0$, there are no topological "twists" possible, and every extension perfectly splits into a clean semidirect product.
+
+**The First Cohomology Group ($H^1(\mathbb{Z}B, A)$):** If the extension *does* split cleanly, there might be multiple different geometric ways to slice the complement group out of the whole (a complement of $A$ in $G$ is a subgroup $B'$ with $A \cap B' = \{1\}$ and $AB' = G$, like $B$ in a semidirect product). $H^1$ exactly counts the number of conjugacy classes of these complements.
 
 Homological algebra allows mathematicians to measure the "glue" holding groups together using the exact same machinery used to count multi-dimensional holes in a donut.
 
