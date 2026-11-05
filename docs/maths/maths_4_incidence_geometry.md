@@ -100,7 +100,7 @@ Commuting symmetric matrices can be diagonalized together: if $AB = BA$ and $Av 
 
 **Permutation matrices.** A permutation matrix $P$ has exactly one $1$ in each row and each column, and $0$ elsewhere. It is orthogonal, $P^T = P^{-1}$, and $PJ = JP = J$. Renumbering the rows and columns of $A$ by the same permutation replaces $A$ by the similar matrix $P^TAP$, with the same eigenvalues. And $P$ commutes with $A$ exactly when $P^TAP = A$, as every permutation of three indices does for the running example.
 
-**Where it is used.** Relabelling a graph is conjugation by a permutation matrix ([the adjacency matrix and its eigenvalues](#the-adjacency-matrix-and-its-eigenvalues)). The matrix $2I + J$ counts incidences in the Fano plane ([point-line geometries](#point-line-geometries)), and a relative of it gives [Fisher's inequality](#the-incidence-matrix-and-fishers-inequality). Dropping $J$ on $j^\perp$ is the first step for [strongly regular graphs](#the-adjacency-matrix-of-a-strongly-regular-graph). The permutation matrices commuting with $A$ are the symmetries of a graph, and the matrices commuting with all of them form the commutant you know from group theory, which returns in [distance-regular graphs](#distance-regular-graphs).
+**Where it is used.** Relabelling a graph is conjugation by a permutation matrix ([the adjacency matrix and its eigenvalues](#the-adjacency-matrix-and-its-eigenvalues)). The matrix $2I + J$ counts incidences in the Fano plane ([point-line geometries](#point-line-geometries)), and a relative of it gives [Fisher's inequality](#the-incidence-matrix-and-fishers-inequality). Dropping $J$ on $j^\perp$ is the first step for [strongly regular graphs](#the-adjacency-matrix-of-a-strongly-regular-graph). The permutation matrices commuting with $A$ are the symmetries of a graph, and the matrices commuting with all of them form the [commutant you know from group theory](maths_2_fields_groups.md#the-centralizer-algebra-of-a-representation-operatornameend_mathbbcgv), which returns in [distance-regular graphs](#distance-regular-graphs).
 
 ### Rank, determinants and Gram matrices
 
@@ -234,7 +234,7 @@ Induced subgraphs vs. cliques in collinearity graphs: Later, when we pass from a
 
 A graph $\Gamma = (V, E)$ is **bipartite** if $V$ splits into two disjoint subsets $X_1, X_2$ (possibly empty) so every edge has one endpoint in $X_1$ and one in $X_2$. A graph is bipartite if and only if every cycle has even length. To see this, consider the hexagon in [Figure 1(b)](#figure-1). Colour each vertex alternately with two colours, blue and orange. Each edge then passes between the two disjoint sets (one blue and the other orange) of coloured vertices. Check how alternating blue and orange around $C_6$ in [Figure 1(b)](#figure-1) works cleanly, whereas two-colouring $C_3$ fails on the third corner. This is because in odd cycles, we will invariably end up with two vertices of the same colour adjacent to each other.
 
-[Every geometry's incidence graph](#point-line-geometries) is bipartite by construction, and distance-parity will [recover a polygon from its double](#opposite-elements-flag-apartments-doubling-near-polygons-and-orders).
+[Every geometry's incidence graph](#point-line-geometries) is bipartite by construction, and distance-parity will [recover a polygon from its double](#opposite-elements-flag-apartments-doubling-and-orders).
 
 A **multipartite** (or **$k$-partite**) graph partitions the vertex set $V$ into $k$ disjoint sets $X_1, \dots, X_k$ so that every edge crosses between two different sets. It is a **complete $k$-partite graph**, written $K_{n_1, n_2, \dots, n_k}$ when the parts have sizes $|X_i| = n_i$ (and $K_{n_1, n_2}$ for a **complete bipartite graph** when $k = 2$), if every vertex in each $X_i$ is joined by an edge to every vertex in every other $X_j$ ($i \neq j$).
 
@@ -334,21 +334,19 @@ Here are a few examples:
 
 In a [projective plane](#projective-planes-degenerate-vs-nondegenerate), we say any two lines are incident at exactly one point and any two points are connected by exactly one line. This is a linear space. But recall that our hyperbolic quadric in 3D did not satisfy this rule. Any two points had either 0 or 1 line connecting them. Similarly, there were skew lines that never met.
 
-So a more general rule is a geometry where any two distinct points lie on at most one common line (equivalently, any two distinct lines intersect in at most one point). This is a partial linear space. Here, no two distinct lines have the exact same set of incident points.
+So a more general rule is a geometry where any two distinct points lie on at most one common line (equivalently, any two distinct lines intersect in at most one point). This is a partial linear space. This is a major change from projective spaces which are linear, and where every pair of lines are incident and every pair of points are collinear. The "partial" in a partial linear space comes from the fact that this does no hold true. However, it is still linear in the sense that 2 points uniquely determine a line and so if two points of a line lie in the space, the whole line lies in it.
 
 The partial linear space has order $(s, t)$ if every line has $s + 1$ points, and every point lies on $t + 1$ lines. Why $s + 1$ and $t + 1$ instead of $s$ and $t$? This comes from projective geometry over a finite field $\mathbb{F}_q$, where a projective line $PG(1, q)$ has $q + 1$ points (one point at infinity plus $q$ affine points). So for classical geometries over $\mathbb{F}_q$, $s = q$. Also, when you fix a point $x$ on a line, there are exactly $s$ other points on that line, so in a partial linear space of order $(s, t)$, the collinearity graph is regular with valency $k = s(t + 1)$.
 
 A subgeometry picks a subset of points $\mathcal{P}'$ and a subset of lines $\mathcal{L}'$. In a general subgeometry, a line $L \in \mathcal{L}'$ might lose some of its original points if those points were not included in $\mathcal{P}'$ (so the line gets "chopped" or shortened). A subgeometry is called full if every line $L \in \mathcal{L}'$ keeps 100% of the points it had in the ambient geometry $S$. For example, in $PG(2, q) \subset PG(3, q)$, every line in the plane retains all $q + 1$ of its points from the ambient 3-space, making it a full subgeometry.
 
-In a partial linear space $S = (\mathcal{P}, \mathcal{L}, I)$:
+For a partial linear space $S = (\mathcal{P}, \mathcal{L}, I)$ we can define the following:
 
 **Subspace:** A subset of points $X \subseteq \mathcal{P}$ with the "two-point closure rule": whenever a line of $S$ has at least two of its points inside $X$, the entire line (all of its points) must lie inside $X$. Every nonempty subspace $X$ naturally forms a full subgeometry $\tilde{X}$ using the lines contained in $X$.
 
 **Singular Subspace:** A subspace where every pair of points is collinear. (Because $X$ is also a subspace, for any two points in a singular subspace, the unique line joining them exists in $S$ and lies completely inside $X$. Thus, singular subspaces look like [projective spaces](#projective-spaces-of-arbitrary-dimension-and-the-veblenyoung-axiom): points, lines, planes, etc., where all points are mutually collinear.)
 
-In $\mathrm{PG}(n, q)$, if a subset $X$ obeys the two-point line rule ("whenever $x, y \in X$, the line $xy$ is in $X$"), then every pair $x, y \in X$ has a line in $X$, because every pair had a line in $\mathrm{PG}(n, q)$ to begin with.
-
-**Generated Subspace $\langle X \rangle$:** Given any starting set of points $X$, there is a unique smallest subspace containing $X$, equal to the intersection of all subspaces containing $X$. How to build this subspace step by step from the bottom up:
+**Generated Subspace $\langle X \rangle$:** Given any starting set of points $X$, there is a unique smallest subspace containing $X$, equal to the intersection of all subspaces containing $X$. Here is how to build this subspace step by step from the bottom up:
 
 Start with $X_0 = X$. To get $X_1$, draw every line that passes through at least two points of $X_0$, and throw all the points on those lines into $X_1$. Repeat: to get $X_i$, take every line passing through at least two points of $X_{i-1}$ together and add all points on those lines. The union $\bigcup_{i \in \mathbb{N}} X_i$ of all these steps is the exact subspace generated by $X$.
 
@@ -360,8 +358,9 @@ The generating index is the minimum number of points needed to generate the whol
 
 Unlike projective hyperplanes, a hyperplane of $\mathcal{S}$ need not look flat and may contain *no lines at all*. Let us find every hyperplane $H$ of the $3 \times 3$ grid ([Figure 3](#figure-3)):
 
-- **If $H$ contains a line**, say row $R_i$, then $R_i$ alone misses the other two rows, so $H$ needs points in both. Picking points in two different columns would give two columns $2$ points each in $H$, swallowing both columns and then all $9$ points ($H = \mathcal{P}$, not proper). So the extra points must lie in one column $C_k$, giving **$9$ hyperplanes** $x^\perp = R_i \cup C_k$ of $5$ points each ([Figure 3(a)](#figure-3)).
-- **If $H$ contains no line**, it meets every row and every column in *precisely $1$ point*: a permutation pattern. There are $3! = 6$ such $3$-point **transversals** ([Figure 3(b)](#figure-3)), which are subspaces vacuously because no line hits them twice.
+**If $H$ contains a line**, say row $R_i$, then $R_i$ alone misses the other two rows, so $H$ needs points in both. Picking points in two different columns would give two columns $2$ points each in $H$, swallowing both columns and then all $9$ points ($H = \mathcal{P}$, not proper). So the extra points must lie in one column $C_k$, giving **$9$ hyperplanes** $x^\perp = R_i \cup C_k$ of $5$ points each ([Figure 3(a)](#figure-3)).
+
+**If $H$ contains no line**, it meets every row and every column in *precisely $1$ point*: a permutation pattern. There are $3! = 6$ such $3$-point **transversals** ([Figure 3(b)](#figure-3)), which are subspaces vacuously because no line hits them twice.
 
 There are thus 15 hyperplanes in total.
 
@@ -369,7 +368,9 @@ There are thus 15 hyperplanes in total.
 
 *Figure 3. The $15$ hyperplanes of the $3 \times 3$ grid fall into two shapes: (a) $9$ crosses $x^\perp$ ($5$ orange points, two full lines), and (b) $6$ transversals ($3$ blue points, no lines at all, meeting all six lines once).*
 
-A set of points meeting *every line of $\mathcal{S}$ in precisely one point* is an **ovoid** of $\mathcal{S}$ (so every ovoid of a thick-lined partial linear space is a line-free hyperplane, like the $6$ transversals). **Watch the context shift:** in the earlier projective geometry notes, an ovoid of $\mathrm{PG}(3, q)$ was a $(q^2 + 1)$-point cap like $Q^-(3, q)$ missing many ambient lines, whereas an ovoid *of $\mathcal{S}$* meets every line *of $\mathcal{S}$* once. Notice that the $3 \times 3$ grid $Q^+(3, 2) \subset \mathrm{PG}(3, 2)$ has $9 + 6 = 15$ hyperplanes, matching the $15$ planes of $\mathrm{PG}(3, 2)$ ($9$ tangent planes cutting crosses, $6$ non-tangent planes cutting ovoids), a match explained in [the 3-by-3 grid example](#the-3-by-3-grid-universal-embedding-with-no-proper-quotients).
+A set of points meeting *every line of $\mathcal{S}$ in precisely one point* is an **ovoid** of $\mathcal{S}$ (so every ovoid of a thick-lined partial linear space is a line-free hyperplane, like the $6$ transversals). **Watch the context shift:** in the earlier projective geometry notes, an ovoid of $\mathrm{PG}(3, q)$ was a $(q^2 + 1)$-point cap like $Q^-(3, q)$ missing many ambient lines, whereas an ovoid *of $\mathcal{S}$* meets every line *of $\mathcal{S}$* once. The ovoid is fundamentally defined as having unique tangents at every point while containing no line itself. In a hyperplane of a point-line geometry, there are no secants. Every line is a tangent or a full line and so an ovoid cannot miss any lines because they are all tangent. In the projective geometry case, it could miss all the secants and so did not intersect every line.
+
+Notice that the $3 \times 3$ grid $Q^+(3, 2) \subset \mathrm{PG}(3, 2)$ has $9 + 6 = 15$ hyperplanes, matching the $15$ planes of $\mathrm{PG}(3, 2)$ ($9$ tangent planes cutting crosses, $6$ non-tangent planes cutting ovoids), a match explained in [the 3-by-3 grid example](#the-3-by-3-grid-universal-embedding-with-no-proper-quotients).
 
 #### Collinearity Graphs & Incidence Graphs
 
@@ -385,11 +386,7 @@ The Incidence Graph: Vertices are both points and lines ($\mathcal{P} \cup \math
 
 If every line of the geometry has only $2$ points (for example, in a thin geometry or when taking the double $\mathcal{S}'$), the incidence graph is literally obtained from the collinearity graph by inserting one line node in the middle of every edge.
 
-When a line has $3$ or more points (say $L = \{p_1, p_2, p_3\}$), instead of putting $3$ separate line nodes on the $3$ edges of that triangle, all $3$ points connect to one single shared line node $L$ (forming a $3$-spoke star with hub $L$):
-
-$$p_1 - L - p_2 \quad\text{and}\quad p_3 - L.$$
-
-(Putting a separate node on each of the $3$ edges would instead describe three separate $2$-point lines $\{p_1, p_2\}, \{p_2, p_3\}, \{p_1, p_3\}$.)
+When a line has $3$ or more points (say $L = \{p_1, p_2, p_3\}$), in the collinearity graph all three points are mutually collinear, so that one line $L$ creates 3 edges (a triangle $K_3$): $p_1 \text{---} p_2$, $p_2 \text{---} p_3$, and $p_3 \text{---} p_1$.If you inserted a line node in the middle of every edge of $\Gamma$, you would create 3 separate line nodes (one on each side of the triangle), turning the triangle into a $6$-cycle. Instead, for the incidence graph, we replace the entire triangle of $3$ edges with a single central hub node $L$ connected to $p_1, p_2, p_3$ like a 3-pointed star ($K_{1,3}$ claw).
 
 <a id="figure-4"></a>![Comparison of a collinearity path and the corresponding alternating point-line path in the incidence graph](figures/maths4_graphs_alternating.png)
 
@@ -428,13 +425,15 @@ Because the two diagonal blocks are always $0$ and the bottom-left is just $M^T$
 
 *Figure 5. (a) The Fano plane $\mathrm{PG}(2, 2)$ of order $(2, 2)$ ($7$ points, $7$ lines; $L_1$ and $L_4$ meet at $p_1$). (b) Its bipartite incidence graph, the $14$-vertex Heawood graph, drawn as a $14$-cycle alternating blue points and green lines with step-$5$ chords; orange edges mark the flags $(p_1, L_1)$ and $(p_1, L_4)$.*
 
-Check both on $\mathrm{PG}(2, 2)$ in [Figure 5](#figure-5). Its collinearity graph is $K_7$, forgetting which triples are lines; its incidence graph, the **Heawood graph** (also called simply the incidence graph of $\mathrm{PG}(2, 2)$), keeps everything, with $14$ vertices, valency $3$, girth $6$, and diameter $3$ (every two distinct points share a line and every two distinct lines share a point, giving $\delta = 2$, while anti-flags have $d(x, L) = 1$ and $\delta(x, L) = 3$). And multiplying its $7 \times 7$ incidence matrix $M$ by $M^T$ counts lines through both $x$ and $y$ via $(M M^T)_{xy} = \sum_L M_{x, L} M_{y, L}$: $3$ on the diagonal, $1$ off the diagonal (because each point has 3 lines incident on it and any pair of points share one line), giving
+Check the two matrices on $\mathrm{PG}(2, 2)$ in [Figure 5](#figure-5). Its collinearity graph is $K_7$, forgetting which triples are lines; its incidence graph, the **Heawood graph** (also called simply the incidence graph of $\mathrm{PG}(2, 2)$), keeps everything, with $14$ vertices, valency $3$, girth $6$, and diameter $3$ (every two distinct points share a line and every two distinct lines share a point, giving $\delta = 2$, while anti-flags have $d(x, L) = 1$ and $\delta(x, L) = 3$). And multiplying its $7 \times 7$ incidence matrix $M$ by $M^T$ counts lines through both $x$ and $y$ via $(M M^T)_{xy} = \sum_L M_{x, L} M_{y, L}$: $3$ on the diagonal, $1$ off the diagonal (because each point has 3 lines incident on it and any pair of points share one line), giving
 
 $$M M^T = 3 I_7 + (J_7 - I_7) = 2 I_7 + J_7$$
 
 without writing down a single entry of $M$. Products like $M M^T$ and $A^2$ turn incidence counts into eigenvalue equations ([The adjacency matrix of a strongly regular graph](#the-adjacency-matrix-of-a-strongly-regular-graph) and [Fisher's inequality](#the-incidence-matrix-and-fishers-inequality)).
 
 This will give us two algebraic weapons that prove theorems and rule out impossible geometries without ever having to draw or search for them. We will look at this in a little while. 
+
+Notice that the point-line incidence matrix $M$ is almost never symmetric, whereas both of its Gram matrices ($MM^T$ and $M^TM$) are always symmetric and positive semidefinite.
 
 <!-- terms checked: subspace; hyperplane; irreducible; reducible; nondegenerate; degenerate; dimension; extension; generalized $n$-gon -->
 
@@ -472,7 +471,7 @@ A circular space is also a special case. Remember that a circular space is a lin
 
 A $(2, 2, \dots, 2)$-star with $n - 1$ rays of size $2$ connects every pair of outer points by its own separate two-point line rather than putting them on one long line, so a $(2, 2, \dots, 2)$-star is a circular space $K_n$ (matching a near-pencil only when $n = 3$).
 
-**$(n_1 \times n_2)$-grids and dual grids:** Given sets $X_1, X_2$ of sizes $n_1 \ge 2$ and $n_2 \ge 2$, an **$(n_1 \times n_2)$-grid** is a partial linear space isomorphic to the Cartesian product point set $X_1 \times X_2$, whose lines are the $n_1$ "rows" $\{i\} \times X_2$ ($i \in X_1$, each of size $n_2$) and the $n_2$ "columns" $X_1 \times \{j\}$ ($j \in X_2$, each of size $n_1$). Through every point $(i, j)$ pass exactly $2$ lines (its row and its column), so every $(n_1 \times n_2)$-grid has $t = 1$ (where every point is incident with $t+1$ lines). The grid is called **symmetrical** if $n_1 = n_2$ (in which case it has order $(n_1 - 1, 1)$) and **nonsymmetrical** if $n_1 \neq n_2$ (in which case lines have two different sizes, so it has no single parameter $s$ which would say every line has $s+1$ points).
+**$(n_1 \times n_2)$-grids and dual grids:** Picture a graph paper. Lines are simply the $n_1$ horizontal rows (each containing $n_2$ points) and the $n_2$ vertical columns (each containing $n_1$ points). They each meet at a point. Because every point $(i, j)$ sits at the intersection of exactly 2 lines (its horizontal row and its vertical column), every grid automatically has line-degree parameter $t = 1$ (since $t + 1 = 2$ lines pass through every point). A symmetrical grid ($n_1 = n_2$) is a square. Every row and every column contains the exact same number of points ($n_1$), giving the geometry a uniform line-size parameter $s = n_1 - 1$ (since $s + 1 = n_1$). Thus, a square grid has order $(n_1 - 1, 1)$.A nonsymmetrical grid ($n_1 \neq n_2$) is a non-square rectangle. Because horizontal rows have $n_2$ points while vertical columns have $n_1$ points, the lines do not have a uniform size—meaning the geometry has $t = 1$, but no single parameter $s$. A grid is a partial linear space.
 
 Its point-line dual is called a **(symmetrical or nonsymmetrical) dual grid**. What does a dual grid look like? First, note that two row-lines never intersect, and two column-lines never intersect, while every row-line meets every column-line in a unique grid point $(i, j)$. This unique point becomes a thin $2$-point line in the dual. The $n_1$ row-lines and $n_2$ column-lines become two disjoint sets of points of sizes $n_1$ and $n_2$. Therefore, **dual grids are precisely the complete bipartite graphs $K_{n_1, n_2}$ with $n_1, n_2 \ge 2$**, viewed as partial linear spaces with thin lines.
 
@@ -564,7 +563,7 @@ Beyond projective and affine spaces, three celebrated geometric and group-theore
 
 $$X_0^{q+1} + X_1^{q+1} + X_2^{q+1} = 0.$$
 
-We can verify that this is Hermitian with the Frobenius automorphism $\bar{x} = x^q$ by applying $f(X, X) = \sigma(f(X, X))$. There are two ways to check this. The first way is with the underlying two-variable sesquilinear form:
+We can verify that this is Hermitian with the [Frobenius automorphism](maths_2_fields_groups.md#fermats-little-theorem) $\bar{x} = x^q$ by applying $f(X, X) = \sigma(f(X, X))$. There are two ways to check this. The first way is with the underlying two-variable sesquilinear form:
 
 $$f(X, Y) = X_0 Y_0^q + X_1 Y_1^q + X_2 Y_2^q$$
 
@@ -651,8 +650,10 @@ In a projective plane, every point $x$ outside a line $L$ is collinear with *all
 
 A partial linear space $\mathcal{S} = (\mathcal{P}, \mathcal{L}, \mathrm{I})$ is called a **generalized quadrangle** (abbreviated **GQ**) if:
 
-1. There exist two lines that have no points in common (disjoint lines exist).
-2. For every anti-flag $(x, L)$ (a point $x$ not on a line $L$), there exists a *unique* point $y$ on $L$ collinear with $x$.
+There exist two lines that have no points in common (disjoint lines exist).
+For every anti-flag $(x, L)$ (a point $x$ not on a line $L$), there exists a *unique* point $y$ on $L$ collinear with $x$.
+
+In essence, ignoring degeneracy conditions, a point-line geometry is a generalized quadrangle if and only if every point either lies on every line or has exactly one line through it intersecting that line.
 
 <a id="figure-9"></a>![Generalized quadrangle W(3,2) ("the doily") showing unique projection from an anti-flag and an ordinary 4-gon subgeometry](figures/maths4_classes_gq_doily.png)
 
@@ -660,15 +661,17 @@ A partial linear space $\mathcal{S} = (\mathcal{P}, \mathcal{L}, \mathrm{I})$ is
 
 Look closely at what these two axioms accomplish together:
 
-- **No triangles can exist.** Suppose $x, y_1, y_2$ formed three mutually noncollinear-line vertices of a triangle (with $x$ off the line $L = y_1 y_2$, joined by distinct lines $x y_1$ and $x y_2$ to two points of $L$). That would give *two* points on $L$ collinear with $x$, violating Axiom 2. Instead, the smallest closed circuits of lines are $4$-sided quadrangles (as in panel (b) of [Figure 9](#figure-9)), which is why Tits named these geometries *generalized quadrangles*.
-- **Why do we need Axiom 1 (two disjoint lines exist)?** Suppose $\mathcal{S}$ consisted of a single line $L$ (no anti-flags at all, so Axiom 2 holds vacuously), or suppose $\mathcal{S}$ were a tree-like star of lines all meeting at one central hub point $p$ with no thin cross-lines (for any $x \neq p$ and any line $L \not\ni x$, $p \in L$ is the unique point on $L$ collinear with $x$, and $p$ lies on *every* line so $(p, L)$ is never an anti-flag). Axiom 1 rules out these degenerate "pencil" configurations cleanly.
-- **Automatic self-duality of the class:** Let us check why **the point-line dual $\mathcal{S}^D$ of any GQ $\mathcal{S}$ is again a GQ**. First, does every point $x$ of $\mathcal{S}$ lie on at least two lines (so $\mathcal{S}^D$ is well-defined)? By Axiom 1, there exist two disjoint lines $L_1$ and $L_2$; since $L_1 \cap L_2 = \emptyset$, $x$ misses at least one of them, so Axiom 2 gives at least one line through $x$. Suppose for contradiction that $x$ lay on only one line $M$. Because $M$ must intersect any line missing $x$ (by Axiom 2), if $x \in L_1$ then $L_1 = M$, which would intersect $L_2$, impossible. Thus $x$ lies on neither $L_1$ nor $L_2$, and $M$ intersects $L_1$ at a unique point $y$ and $L_2$ at a unique point $z$ ($y \neq z$ since $L_1 \cap L_2 = \emptyset$). Because $L_1$ has at least two points, pick $y' \in L_1 \setminus \{y\}$. By Axiom 2 applied to $(y', L_2)$, some line $N$ connects $y'$ to a point $w \in L_2$. Then $(x, N)$ is an anti-flag (as $y' \notin M$), so $M$ must intersect $N$ at some point collinear with $y'$, which can only be $y$ (by Axiom 2 on $(y', M)$). That forces $y, y' \in L_1 \cap N$ with $y \neq y'$, so $N = L_1$, contradicting $w \in N \cap L_2$ with $L_1 \cap L_2 = \emptyset$. Hence **every point of a GQ lies on at least two lines**. Swapping points and lines turns two noncollinear points (any $p \in L_1$ has a noncollinear point on $L_2$) into two disjoint lines and preserves Axiom 2 on every anti-flag $(L, x)$, so $\mathcal{S}^D$ is always a GQ.
+***No triangles can exist.** Suppose $x, y_1, y_2$ formed three mutually noncollinear-line vertices of a triangle (with $x$ off the line $L = y_1 y_2$, joined by distinct lines $x y_1$ and $x y_2$ to two points of $L$). That would give *two* points on $L$ collinear with $x$, violating Axiom 2. Instead, the smallest closed circuits of lines are $4$-sided quadrangles (as in panel (b) of [Figure 9](#figure-9)), which is why Tits named these geometries *generalized quadrangles*.
+
+**Why do we need Axiom 1 (two disjoint lines exist)?** Suppose $\mathcal{S}$ consisted of a single line $L$ (no anti-flags at all, so Axiom 2 holds vacuously), or suppose $\mathcal{S}$ were a tree-like star of lines all meeting at one central hub point $p$ with no thin cross-lines (for any $x \neq p$ and any line $L \not\ni x$, $p \in L$ is the unique point on $L$ collinear with $x$, and $p$ lies on *every* line so $(p, L)$ is never an anti-flag). Axiom 1 rules out these degenerate "pencil" configurations cleanly.
+
+**Automatic self-duality of the class:** Let us check why **the point-line dual $\mathcal{S}^D$ of any GQ $\mathcal{S}$ is again a GQ**. First, does every point $x$ of $\mathcal{S}$ lie on at least two lines (so $\mathcal{S}^D$ is well-defined)? By Axiom 1, there exist two disjoint lines $L_1$ and $L_2$; since $L_1 \cap L_2 = \emptyset$, $x$ misses at least one of them, so Axiom 2 gives at least one line through $x$. Suppose for contradiction that $x$ lay on only one line $M$. Because $M$ must intersect any line missing $x$ (by Axiom 2), if $x \in L_1$ then $L_1 = M$, which would intersect $L_2$, impossible. Thus $x$ lies on neither $L_1$ nor $L_2$, and $M$ intersects $L_1$ at a unique point $y$ and $L_2$ at a unique point $z$ ($y \neq z$ since $L_1 \cap L_2 = \emptyset$). Because $L_1$ has at least two points, pick $y' \in L_1 \setminus \{y\}$. By Axiom 2 applied to $(y', L_2)$, some line $N$ connects $y'$ to a point $w \in L_2$. Then $(x, N)$ is an anti-flag (as $y' \notin M$), so $M$ must intersect $N$ at some point collinear with $y'$, which can only be $y$ (by Axiom 2 on $(y', M)$). That forces $y, y' \in L_1 \cap N$ with $y \neq y'$, so $N = L_1$, contradicting $w \in N \cap L_2$ with $L_1 \cap L_2 = \emptyset$. Hence **every point of a GQ lies on at least two lines**. Swapping points and lines turns two noncollinear points (any $p \in L_1$ has a noncollinear point on $L_2$) into two disjoint lines and preserves Axiom 2 on every anti-flag $(L, x)$, so $\mathcal{S}^D$ is always a GQ.
 
 #### Orders and parameter restrictions for generalized quadrangles
 
 Does every generalized quadrangle have a uniform order $(s, t)$ i.e. do every point and every line follow the same counts? Almost. Here is how the whole family of generalized quadrangles breaks down:
 
-**Thick generalized quadrangles ($s \ge 2$ and $t \ge 2$):** In these geometries, every line has at least 3 points, and every point has at least 3 lines passing through it. A standard theorem of incidence geometry proves that in any thick generalized quadrangle, every line is forced to have the exact same number of points $s + 1$, and every point is forced to lie on the exact same number of lines $t + 1$. Thus, every thick generalized quadrangle has a uniform order $(s, t)$ with $s, t \ge 2$. (For example, the symplectic space $W(3, q)$ has order $(q, q)$, and the elliptic quadric $Q^-(5, q)$ has order $(q, q^2)$.)
+**Thick generalized quadrangles ($s \ge 2$ and $t \ge 2$):** In these geometries, every line has at least 3 points, and every point has at least 3 lines passing through it. A standard theorem of incidence geometry proves that in any thick generalized quadrangle, every line is forced to have the exact same number of points $s + 1$, and every point is forced to lie on the exact same number of lines $t + 1$. Thus, every thick generalized quadrangle has a uniform order $(s, t)$ with $s, t \ge 2$. (For example, the symplectic space $W(3, q)$ has order $(q, q)$, and the elliptic quadric $Q^-(5, q)$ has order $(q, q^2)$.) When $n$ is odd in the generalized $n$-gon, (such as a projective plane with $n=3$, a generalized pentagon with $n=5$, or a generalized heptagon with $n=7$) it forces $s = t$. ($s=t$ can also hold for even $n$ but it is not guaranteed.)
 
 **Thin generalized quadrangles (where $t = 1$ or $s = 1$):** One can prove that any generalized quadrangle with $t = 1$ (i.e. it has 2 lines through every point) must be an $(n_1 \times n_2)$-grid (where the points are where rows and columns meet and so have only 2 lines through them), and any generalized quadrangle with $s = 1$ (i.e. any line has 2 points) must be a dual grid $K_{n_1, n_2}$ (i.e. a bipartite graph).
 
@@ -698,7 +701,7 @@ Look back at two geometries we have already met. In a **projective plane**, ther
 
 In a **generalized quadrangle**, there are no $2$-gons and no $3$-gons, ordinary $4$-gons exist, and *any two elements* can be placed inside an ordinary $4$-gon subgeometry (as we saw in panel (b) of [Figure 9](#figure-9)).
 
-In 1959, Jacques Tits noticed that this pattern defines an infinite hierarchy of rank-$2$ building blocks for simple groups, one for each polygon number $n \ge 2$.
+In 1959, Jacques Tits noticed that this pattern defines an infinite hierarchy of rank-$2$ building blocks for [simple groups](maths_2_fields_groups.md#the-jordan-holder-theorem-the-periodic-table-of-groups), one for each polygon number $n \ge 2$.
 
 #### Definition via ordinary $n$-gon subgeometries
 
@@ -725,8 +728,6 @@ The **generalized $4$-gons** are precisely the **generalized quadrangles**.
 
 **Diameter, near $n$-gons, and doubles:** Every generalized $n$-gon ($n \ge 2$) has diameter $\lfloor n / 2 \rfloor$ (just like walking halfway around an ordinary $n$-gon from one vertex to an opposite vertex).
 
-A connected partial linear space of diameter $d$ is called a **near $2d$-gon** if for every point $p$ and every line $L$, there is a *unique* point on $L$ nearest to $p$. It is called a **near $(2d + 1)$-gon** ($d \ge 1$) if for every $(p, L)$ at distance $d(p, L) \le d - 1$ there is a unique point on $L$ nearest to $p$, while at least one pair $(p', L')$ achieves $d(p', L') = d$ (all points on $L'$ tied at maximal distance $d$ from $p'$, like a vertex opposite the base of a triangle or pentagon). Every generalized $n$-gon ($n \ge 3$) is a near $n$-gon.
-
 Doubling an ordinary $n$-gon subdivides each of its $n$ edges into two, turning it into an ordinary $2n$-gon, and in general, the double of any generalized $n$-gon ($n \ge 2$) is a generalized $2n$-gon (whose lines are all thin, $s = 1$).
 
 #### The Feit–Higman theorem and order bounds
@@ -746,7 +747,7 @@ If ordinary thin $n$-gons ($s = t = 1$) exist for *every* $n \ge 3$, you might n
 
 Where do the "semithin" generalized dodecagons ($n = 12$ with $s = 1$ or $t = 1$) come from? Remember the double of a point-line geometry. Take any thick finite generalized hexagon ($n = 6$) of order $(q, q)$ (such as the split Cayley hexagon of order $(2, 2)$). Its double is a generalized $2 \times 6 = 12$-gon. In that double, every line is a flag $\{x, L\}$ of size $2$ (so $s + 1 = 2 \implies s = 1$), while every point (coming from an original point or line of the hexagon, each incident with $q + 1$ flags) lies on $t + 1 = q + 1$ lines (so $t = q \ge 2$). Taking its point-line dual swaps $(1, q)$ to $(q, 1)$.
 
-Similarly, doubling a projective plane of order $q$ ($n = 3$) produces a generalized $6$-gon of order $(1, q)$, and doubling a GQ of order $(q, q)$ ($n = 4$) produces a generalized $8$-gon of order $(1, q)$, which explains why the arithmetic conditions "$st$ is a square" ($n = 6$) and "$2st$ is a square" ($n = 8$) explicitly include the hypothesis $s \neq 1 \neq t$. For example, projective planes exist for prime powers, and since $s=1$ for the hexagon we get from doubling it, $q$ must be square but that's impossible for a prime number.
+Similarly, doubling a projective plane of order $q$ ($n = 3$) produces a generalized $6$-gon of order $(1, q)$, and doubling a generalized quadrangle (GQ) of order $(q, q)$ ($n = 4$) produces a generalized $8$-gon of order $(1, q)$, which explains why the arithmetic conditions "$st$ is a square" ($n = 6$) and "$2st$ is a square" ($n = 8$) explicitly include the hypothesis $s \neq 1 \neq t$. For example, projective planes exist for prime powers, and since $s=1$ for the hexagon we get from doubling it, $q$ must be square but that's impossible for a prime number.
 
 There is a parity constraint on $n = 8$. Because $2st$ must be a perfect square in any thick finite generalized octagon ($s, t \ge 2$), $st$ cannot be odd (twice an odd number is never a square), nor can $s = t$. Unlike projective planes, quadrangles, and hexagons, which all admit thick examples with $s = t = q$, **no finite thick generalized octagon can ever have $s = t$** (for example, the classical Ree–Tits octagons have order $(q, q^2)$ with $q = 2^{2e+1}$ an odd power of $2$, making $2st = 2 q^3 = (2^{3e+2})^2$ a perfect square).
 
@@ -1186,10 +1187,6 @@ At diameter $d = 2$, the distance-regular graphs are precisely the connected str
 
 The intersection numbers also fix the size of every distance sphere $\Gamma_i(x)$. Define $k_0 = 1$ and $k_{i+1} = \frac{k_i b_i}{c_{i+1}}$ for $i \in \{0, 1, \dots, d - 1\}$. Counting the edges between $\Gamma_i(x)$ and $\Gamma_{i+1}(x)$ from both sides gives $\lvert \Gamma_i(x) \rvert b_i = \lvert \Gamma_{i+1}(x) \rvert c_{i+1}$; starting from $\lvert \Gamma_0(x) \rvert = 1 = k_0$, induction gives $\lvert \Gamma_i(x) \rvert = k_i$ for every vertex $x$ and every $i \in \{0, 1, \dots, d\}$ (and $v = k_0 + k_1 + \dots + k_d$).
 
-<a id="figure-11"></a>![The 3-cube Q3 in distance layers, and the two bases of its Bose-Mesner algebra](figures/maths4_drg_cube_bose_mesner.png)
-
-*Figure 11. (a) The $3$-cube $Q_3$ drawn in the distance layers $\Gamma_0, \Gamma_1, \Gamma_2, \Gamma_3$ of the vertex $000$, with sphere sizes $k_i = 1, 3, 3, 1$ and intersection numbers $(b_0, b_1, b_2) = (3, 2, 1)$, $(c_1, c_2, c_3) = (1, 2, 3)$, $a_i = 0$. (b) The two bases of its Bose-Mesner algebra: each cell of the left grid names the distance matrix $A_i$ that has a $1$ there, and the right grid is the idempotent $8E_1$ for $\theta_1 = 1$, with entries $3, 1, -1, -3$ at distances $0, 1, 2, 3$.*
-
 #### Distance matrices, distance polynomials, and the Bose-Mesner algebra
 
 Let $\Gamma$ be a distance-regular graph of diameter $d \ge 2$ on $v$ vertices ordered as $(p_1, \dots, p_v)$, with adjacency matrix $A$. For every integer $i \in \mathbb{Z}$, define the $v \times v$ **distance-$i$ matrix** $A_i$ (for $j, k \in \{1, \dots, v\}$) by setting $(A_i)_{jk} = 1$ if $d(p_j, p_k) = i$ and $(A_i)_{jk} = 0$ otherwise. Then $A_0 = I$, $A_1 = A$, $A_i = 0$ for $i \notin \{0, 1, \dots, d\}$, and $A_0 + A_1 + \dots + A_d = J$ because every pair of vertices sits at one unique distance between $0$ and $d$.
@@ -1204,7 +1201,9 @@ When one factor is $A = A_1$, the relation becomes the three-term recurrence, fo
 
 $$A A_i = b_{i-1} A_{i-1} + a_i A_i + c_{i+1} A_{i+1}.$$
 
-To see why, compute the $(j, k)$-entry $(A A_i)_{jk} = \sum_{l=1}^v A_{jl} (A_i)_{lk}$, which counts how many neighbours of $p_j$ lie at distance $i$ from $p_k$ (the neighbours are given by $p_l$). Stand at $p_k$ as the base vertex: by the triangle inequality, $p_j$ has $0$ such neighbours unless $d(p_j, p_k) \in \{i - 1, i, i + 1\}$. When $d(p_j, p_k) = i - 1$ (marked by $A_{i-1}$), $p_j$ has $b_{i-1}$ neighbours one step further out at distance $i$ from $p_k$. When $d(p_j, p_k) = i$ (marked by $A_i$), $p_j$ has $a_i$ neighbours at distance $i$ from $p_k$. And when $d(p_j, p_k) = i + 1$ (marked by $A_{i+1}$), $p_j$ has $c_{i+1}$ neighbours one step closer at distance $i$ from $p_k$.
+Intuitively, $A A_i$ is just examining, relative to a point $x$, where do find the neighbours of a vertex $y$ at distance shell $i$ from $x$. For a DRG, the number of neighbours of $y$ at the same distance, or $d+1$ and $d-1$ is given by the intersection numbers, which is what is presented in this equation.
+
+Now let's compute the $(j, k)$-entry $(A A_i)_{jk} = \sum_{l=1}^v A_{jl} (A_i)_{lk}$, which counts how many neighbours of $p_j$ lie at distance $i$ from $p_k$ (the neighbours are given by $p_l$). Stand at $p_k$ as the base vertex: by the triangle inequality, $p_j$ has $0$ such neighbours unless $d(p_j, p_k) \in \{i - 1, i, i + 1\}$. When $d(p_j, p_k) = i - 1$ (marked by $A_{i-1}$), $p_j$ has $b_{i-1}$ neighbours one step further out at distance $i$ from $p_k$. When $d(p_j, p_k) = i$ (marked by $A_i$), $p_j$ has $a_i$ neighbours at distance $i$ from $p_k$. And when $d(p_j, p_k) = i + 1$ (marked by $A_{i+1}$), $p_j$ has $c_{i+1}$ neighbours one step closer at distance $i$ from $p_k$.
 
 Because $c_{i+1} \ge 1$ for $0 \le i \le d - 1$, we can divide the recurrence by $c_{i+1}$ and solve for $A_{i+1}$ one step at a time as a polynomial in $A$.
 
@@ -1377,9 +1376,13 @@ At the largest eigenvalue $\theta_0 = k = b_0$, we have $k = a_i + b_i + c_i$ fo
 | Distance $A_0, \dots, A_d$ | $A_i \circ A_j = \delta_{ij} A_i$ | $E_j = \frac{1}{v}\sum_{i=0}^d Q_{ij} A_i$ |
 | Idempotents $E_0, \dots, E_d$ | $E_i E_j = \delta_{ij} E_i$ | $A_i = \sum_{j=0}^d p_i(\theta_j) E_j$ |
 
+<a id="figure-11"></a>![The 3-cube Q3 in distance layers, and the two bases of its Bose-Mesner algebra](figures/maths4_drg_cube_bose_mesner.png)
+
+*Figure 11. (a) The $3$-cube $Q_3$ drawn in the distance layers $\Gamma_0, \Gamma_1, \Gamma_2, \Gamma_3$ of the vertex $000$, with sphere sizes $k_i = 1, 3, 3, 1$ and intersection numbers $(b_0, b_1, b_2) = (3, 2, 1)$, $(c_1, c_2, c_3) = (1, 2, 3)$, $a_i = 0$. (b) The two bases of its Bose-Mesner algebra: each cell of the left grid names the distance matrix $A_i$ that has a $1$ there, and the right grid is the idempotent $8E_1$ for $\theta_1 = 1$, with entries $3, 1, -1, -3$ at distances $0, 1, 2, 3$.*
+
 ---
 
-**Aside:** The Bose-Mesner algebra $\mathcal{A}$ is the exact combinatorial generalization of a commutative **centralizer algebra** (for a transitive action with point stabilizer $H$, also known as the **Hecke algebra** of the pair $(G, H)$) from group representation theory.
+**Aside:** The Bose-Mesner algebra $\mathcal{A}$ is the exact combinatorial generalization of a commutative **[centralizer algebra](maths_2_fields_groups.md#the-orbitals-span-mathcala)** (for a transitive action with point stabilizer $H$, also known as the **Hecke algebra** of the pair $(G, H)$) from group representation theory.
 
 When a graph comes from a group action (specifically, when a group $G$ acts transitively on the $v$ vertices such that the orbitals, the orbits of $G$ on pairs of vertices $V \times V$, correspond to the distance relations), the Bose-Mesner algebra $\mathcal{A}$ is literally the centralizer algebra of the permutation representation of $G$.
 
@@ -1405,7 +1408,7 @@ In representation theory, if we decompose the permutation module $\mathbb{R}^v$ 
 
 $$\mathbb{R}^v = V_0 \oplus V_1 \oplus \dots \oplus V_d$$
 
-**Schur's Lemma** tells us what the centralizer algebra $\mathcal{C}(G) = \operatorname{End}_G(\mathbb{R}^v)$ looks like when this decomposition is multiplicity-free (meaning each irreducible $V_\theta$ appears only once, which is equivalent to the centralizer algebra being commutative):
+**[Schur's Lemma](maths_2_fields_groups.md#schurs-lemma)** tells us what the centralizer algebra $\mathcal{C}(G) = \operatorname{End}_G(\mathbb{R}^v)$ looks like when this decomposition is multiplicity-free (meaning each irreducible $V_\theta$ appears only once, which is equivalent to the centralizer algebra being commutative):
 
 Any matrix $M$ that commutes with $G$ cannot mix different irreducible subspaces $V_{\theta_1}$ and $V_{\theta_2}$, and on each irreducible subspace $V_\theta$, $M$ must act as a scalar multiple $\lambda_\theta I_{V_\theta}$.
 
@@ -1848,7 +1851,7 @@ Knowing that every hyperplane of $\mathcal{S}$ arises from a projective hyperpla
 
 **Linearizing the automorphism group $\mathrm{Aut}(\mathcal{S})$ (representation theory).** An abstract point-line geometry $\mathcal{S}$ has an automorphism group $G = \mathrm{Aut}(\mathcal{S})$ of permutations of points and lines. Studying a raw permutation group is hard.
 
-However, if $\mathcal{S}$ has an absolutely universal embedding $\tilde{\epsilon} : \mathcal{S} \to \mathrm{PG}(\widetilde{V})$, the universality property forces *every* automorphism $g \in \mathrm{Aut}(\mathcal{S})$ to lift, uniquely up to a nonzero scalar (and strictly uniquely over $\mathbb{F}_2$), to a linear (or semilinear) transformation of the vector space $\widetilde{V}$. In other words, the universal embedding space $\widetilde{V}$ is a *canonical matrix representation* of $\mathrm{Aut}(\mathcal{S})$ (often related to Weyl modules or spin modules of Lie-type groups: at $q = 2$, for instance, the universal embedding of the symplectic polar space $W(5, 2)$ for $\mathrm{Sp}(6, 2)$ is $15$-dimensional and that of the split Cayley hexagon $H(2)$ for $G_2(2)$ is $14$-dimensional, both larger than their natural $6$- and $7$-dimensional embeddings). The subspaces $\alpha \subset \mathrm{PG}(\widetilde{V})$ that are fixed by $\mathrm{Aut}(\mathcal{S})$ correspond to invariant submodules of $\widetilde{V}$, meaning that projecting by $\alpha$ corresponds to taking quotient modules in representation theory.
+However, if $\mathcal{S}$ has an absolutely universal embedding $\tilde{\epsilon} : \mathcal{S} \to \mathrm{PG}(\widetilde{V})$, the universality property forces *every* automorphism $g \in \mathrm{Aut}(\mathcal{S})$ to lift, uniquely up to a nonzero scalar (and strictly uniquely over $\mathbb{F}_2$), to a linear (or semilinear) transformation of the vector space $\widetilde{V}$. In other words, the universal embedding space $\widetilde{V}$ is a *canonical matrix representation* of $\mathrm{Aut}(\mathcal{S})$ (often related to Weyl modules or spin modules of Lie-type groups: at $q = 2$, for instance, the universal embedding of the symplectic polar space $W(5, 2)$ for $\mathrm{Sp}(6, 2)$ is $15$-dimensional and that of the split Cayley hexagon $H(2)$ for $G_2(2)$ is $14$-dimensional, both larger than their natural $6$- and $7$-dimensional embeddings). The subspaces $\alpha \subset \mathrm{PG}(\widetilde{V})$ that are fixed by $\mathrm{Aut}(\mathcal{S})$ correspond to invariant submodules of $\widetilde{V}$, meaning that projecting by $\alpha$ corresponds to taking [quotient modules](maths_2_fields_groups.md#subspaces) in representation theory.
 
 In short, the universal embedding turns pure combinatorics ($\mathcal{S}$) into linear algebra ($\widetilde{V}$), and for geometries with three points per line, the hyperplanes of $\mathcal{S}$ are the exact coordinate dual vectors ($\widetilde{V}^*$) that measure the dimension of $\widetilde{V}$ and locate every valid centre of projection without ever leaving $\mathcal{S}$.
 
@@ -2001,7 +2004,7 @@ Translating (a)–(d) from $\widetilde{\Gamma}$ to $\Gamma$ via $\delta(x, y) = 
 | Non-backtracking walks | Walk $x_0, \dots, x_k$ with $k \le n$ and $x_{r-1} \neq x_{r+1}$ has $\delta(x_0, x_k) = k$ | Walk $x_0, \dots, x_k$ with $k \le \lfloor \frac{n}{2} \rfloor$ and $x_{r-1}x_r \neq x_r x_{r+1}$ has $d(x_0, x_k) = k$ |
 | Diameter | $\operatorname{diam}(\widetilde{\Gamma}) = n$ | $\operatorname{diam}(\Gamma) = \lfloor \frac{n}{2} \rfloor$ |
 
-#### Opposite elements, flag apartments, doubling, near polygons, and orders
+#### Opposite elements, flag apartments, doubling, and orders
 
 The geodesic rules above unlock five further properties of generalized polygons, illustrated in [Figure 17(b)](#figure-17).
 
@@ -2156,7 +2159,7 @@ Recall that in a partial linear space $\mathcal{S} = (\mathcal{P}, \mathcal{L}, 
 
 **Subspaces and full subquadrangles.** Let $\mathcal{S} = (\mathcal{P}, \mathcal{L}, I)$ be a generalized quadrangle. If $X$ is a subspace of $\mathcal{S}$ containing two disjoint lines $L_1$ and $L_2$, then the full subgeometry $\widetilde{X}$ induced on $X$ is a full subquadrangle of $\mathcal{S}$. Conversely, every full subquadrangle of $\mathcal{S}$ has the form $\widetilde{Y}$ for some subspace $Y$ of $\mathcal{S}$ containing two disjoint lines.
 
-Why are these two aspects connected? Why is it sufficient for a subspace to just have 2 disjoint lines to become a generalized quadrangle in its own right? The two disjoint lines $L_1, L_2$ are only there to give (GQ1), which asks for two lines that do not meet. The real work is (GQ2), and it has to hold for *every* point $x$ of $X$ and *every* line $L$ of $X$ not through $x$, not only for a point $p_1$ on $L_1$ looking back at $L_2$. Since $X$ is a subspace, lines are "imported" with all their points from the main quadrangle. In $\mathcal{S}$, (GQ2) gives a unique point $y$ on $L$ collinear with $x$, and $y$ is present in the subspace because $L$ is imported whole. How do we know the connecting line $xy$ is present in the subspace? It meets $X$ in the two points $x$ and $y$, and since $X$ is a subspace, the entire line must be in $X$. So $y$ is collinear with $x$ inside the subspace too, and no other point of $L$ can be, since it would already be collinear with $x$ in $\mathcal{S}$. For example, a point $p_1$ on $L_1$ keeps its line back to $L_2$ inside the subspace.
+Why are these two aspects connected? Why is it sufficient for a subspace to just have 2 disjoint lines to become a generalized quadrangle in its own right? The two disjoint lines $L_1, L_2$ are only there to give (GQ1), which asks for two lines that do not meet. The real work is (GQ2), and it has to hold for *every* point $x$ of $X$ and *every* line $L$ of $X$ not through $x$. Since $X$ is a subspace, lines are "imported" with all their points from the main quadrangle. In $\mathcal{S}$, (GQ2) gives a unique point $y$ on $L$ collinear with $x$, and $y$ is present in the subspace because $L$ is imported whole. How do we know the connecting line $xy$ is present in the subspace? It meets $X$ in the two points $x$ and $y$, and since $X$ is a subspace, the entire line must be in $X$. So $y$ is collinear with $x$ inside the subspace too, and no other point of $L$ can be, since it would already be collinear with $x$ in $\mathcal{S}$. For example, a point $p_1$ on $L_1$ keeps its line back to $L_2$ inside the subspace.
 
 **Connectivity and diameter of hyperplane complements.** Suppose $\mathcal{S}$ is a generalized quadrangle that is not a dual grid, and let $H$ be a hyperplane of $\mathcal{S}$. Then the subgraph of the collinearity graph $\Gamma$ induced on the complement $\overline{H} = \mathcal{P} \setminus H$ is connected and has diameter at most $3$.
 
@@ -2308,7 +2311,7 @@ Collecting $\theta_0 = s(t + 1)$, the roots-of-unity eigenvalues $\theta_l = s -
 | Generalized hexagon ($2d = 6$) | $3$ | $\theta_0 = s(t + 1),\quad \theta_1 = s - 1 + \sqrt{st},\quad \theta_2 = s - 1 - \sqrt{st},\quad \theta_3 = -t - 1$ |
 | Generalized octagon ($2d = 8$) | $4$ | $\theta_0 = s(t + 1),\quad \theta_1 = s - 1 + \sqrt{2st},\quad \theta_2 = s - 1,\quad \theta_3 = s - 1 - \sqrt{2st},\quad \theta_4 = -t - 1$ |
 
-Compare how Biggs' multiplicity formula behaves on a genuine generalized hexagon of order $(2, 2)$ versus a hypothetical generalized pentagon of order $(2, 2)$. For a generalized hexagon of order $(s, t) = (2, 2)$ ($n = 6, d = 3, st = 4 = 2^2$), the sphere sizes are $k_0 = 1$, $k_1 = 6$, $k_2 = 24$, and $k_3 = 32$, totaling $v = 63$ points. The four eigenvalues from the table are $\theta_0 = 6$, $\theta_1 = 3$, $\theta_2 = -1$, and $\theta_3 = -3$, with denominators $S(1) = 3$, $S(2) = \frac{7}{3}$, and $\sum k_i (-1/2)^{2i} = \frac{9}{2}$, giving the positive integer multiplicities $f(6) = 1$, $f(3) = \frac{63}{3} = 21$, $f(-1) = \frac{63}{7/3} = 27$, and $f(-3) = \frac{63}{9/2} = 14$ ($1 + 21 + 27 + 14 = 63$).
+Compare how Biggs' multiplicity formula behaves on a genuine generalized hexagon of order $(2, 2)$ versus a hypothetical generalized pentagon of order $(2, 2)$. For a generalized hexagon of order $(s, t) = (2, 2)$ ($n = 6, d = 3, st = 4 = 2^2$), the sphere sizes are $k_0 = 1$, $k_1 = 6$, $k_2 = 24$, and $k_3 = 32$, totaling $v = 63$ points. The four eigenvalues from the table are $\theta_0 = 6$, $\theta_1 = 3$, $\theta_2 = -1$, and $\theta_3 = -3$, with denominators $S(1) = 3$, $S(2) = \frac{7}{3}$, and $\sum k_i (-1/2)^{2i} = \frac{9}{2}$, giving the positive integer multiplicities $f(6) = 1$, $f(3) = \frac{63}{3} = 21$, $f(-1) = \frac{63}{7/3} = 27$, and $f(-3) = \frac{63}{9/2} = 14$. Notice that $1 + 21 + 27 + 14 = 63$.
 
 For a hypothetical generalized pentagon of order $(s, t) = (2, 2)$ ($n = 5, d = 2$), the sphere sizes would be $k_0 = 1$, $k_1 = 6$, and $k_2 = 24$ ($v = 31$), with $\theta_1 = 1 + 4\cos\frac{2\pi}{5} = \sqrt{5}$ and
 
@@ -2672,7 +2675,7 @@ $$L \cap \mathcal{P} = \{\langle v_2 \rangle\} \cup \{\langle v_1 + v_2 \eta \ra
 
 The Frobenius automorphism $x \mapsto x^p$ of $\mathbb{F}_q$ ($q = p^h$) and why $\mathbb{F}_q$ has a unique order-$2$ automorphism $x \mapsto x^{\sqrt{q}}$ if and only if $q$ is a square are covered in [the field automorphism](maths_3_projective_geometry.md#the-field-automorphism) in the earlier projective geometry notes. To see why finite fields admit far fewer non-isomorphic quadratic and Hermitian forms than infinite fields, we record two elementary counting facts about squares in $\mathbb{F}_q$ and norms and traces in $\mathbb{F}_{q^2}$.
 
-First, consider squares in $\mathbb{F}_q$. When $q$ is even ($\operatorname{char}(\mathbb{F}_q) = 2$), the squaring map $x \mapsto x^2$ is the Frobenius automorphism of $\mathbb{F}_q$, so every element of $\mathbb{F}_q$ is a square (with a unique square root). When $q$ is odd, the squaring homomorphism $\mathbb{F}_q^* \to \mathbb{F}_q^*$, $x \mapsto x^2$, has kernel $\{1, -1\}$ of size $2$, so $\mathbb{F}_q$ has $(q - 1)/2$ nonzero squares, $1$ zero square (giving $(q + 1)/2$ squares in total), and $(q - 1)/2$ nonsquares, and the product of any two nonsquares is a square. Moreover, *every* element $\lambda \in \mathbb{F}_q$ is a sum of two squares: when $q$ is odd, both $S = \{x^2 \mid x \in \mathbb{F}_q\}$ and $\lambda - S := \{\lambda - y^2 \mid y \in \mathbb{F}_q\}$ have size $(q + 1)/2$, and since $(q + 1)/2 + (q + 1)/2 = q + 1 > |\mathbb{F}_q|$, the pigeonhole principle forces $S \cap (\lambda - S) \neq \emptyset$, giving $x^2 + y^2 = \lambda$.
+First, consider squares in $\mathbb{F}_q$. When $q$ is even ($\operatorname{char}(\mathbb{F}_q) = 2$), the squaring map $x \mapsto x^2$ is the Frobenius automorphism of $\mathbb{F}_q$, so every element of $\mathbb{F}_q$ is a square (with a unique square root). When $q$ is odd, the [squaring homomorphism](maths_2_fields_groups.md#homomorphisms-and-the-isomorphism-theorems) $\mathbb{F}_q^* \to \mathbb{F}_q^*$, $x \mapsto x^2$, has kernel $\{1, -1\}$ of size $2$, so $\mathbb{F}_q$ has $(q - 1)/2$ nonzero squares, $1$ zero square (giving $(q + 1)/2$ squares in total), and $(q - 1)/2$ nonsquares, and the product of any two nonsquares is a square. Moreover, *every* element $\lambda \in \mathbb{F}_q$ is a sum of two squares: when $q$ is odd, both $S = \{x^2 \mid x \in \mathbb{F}_q\}$ and $\lambda - S := \{\lambda - y^2 \mid y \in \mathbb{F}_q\}$ have size $(q + 1)/2$, and since $(q + 1)/2 + (q + 1)/2 = q + 1 > |\mathbb{F}_q|$, the pigeonhole principle forces $S \cap (\lambda - S) \neq \emptyset$, giving $x^2 + y^2 = \lambda$.
 
 Second, let $\sigma(\lambda) = \lambda^q$ be the unique order-$2$ automorphism of $\mathbb{F}_{q^2}$ with fixed field $\mathbb{F}_q$. As shown in [the Witt index and norm calculation](maths_3_projective_geometry.md#index-or-rank) in the earlier projective geometry notes, the norm map $\lambda \mapsto \lambda^{q+1}$ from $\mathbb{F}_{q^2}$ onto $\mathbb{F}_q$ is surjective ($\mathbb{F}_q = \{\lambda^{q+1} \mid \lambda \in \mathbb{F}_{q^2}\}$). Similarly, for every $\eta \in \mathbb{F}_q$, the trace equation $x^q + x = \eta$ has *precisely $q$ solutions* $x \in \mathbb{F}_{q^2}$: the map $T(x) = x^q + x$ is $\mathbb{F}_q$-linear from $\mathbb{F}_{q^2}$ into $\mathbb{F}_q$, and as a polynomial of degree $q$ its kernel $\ker(T) = \{x \in \mathbb{F}_{q^2} \mid x^q + x = 0\}$ has at most $q$ elements, so rank-nullity $|\operatorname{im}(T)| = q^2 / |\ker(T)| \ge q$ forces $|\ker(T)| = q$ and $\operatorname{im}(T) = \mathbb{F}_q$.
 
@@ -2765,7 +2768,7 @@ Finally, for the hyperbolic quadric $Q^+(2n-1, \mathbb{F})$, why its maximal sin
 
 ## Designs
 
-In earlier chapters (such as [partial geometries](#partial-geometries-and-their-collinearity-graphs) and [generalized quadrangles](#generalized-quadrangles)), we required two lines to intersect in *at most one* point (a [partial linear space](#partial-linear-spaces)). **Design theory** relaxes this intersection rule and shifts the focus entirely to **combinatorial balance**: instead of asking how lines intersect, we ask that every subset of $t$ points lies inside the exact same number of blocks. Because two blocks in a design $\mathcal{S} = (\mathcal{P}, \mathcal{B}, \mathrm{I})$ are allowed to share $2, 3,$ or more points, lines are traditionally called **blocks**, which is why the line set is written $\mathcal{B}$ rather than $\mathcal{L}$.
+In earlier geometries (such as [partial geometries](#partial-geometries-and-their-collinearity-graphs) and [generalized quadrangles](#generalized-quadrangles)), we required two lines to intersect in *at most one* point (a [partial linear space](#partial-linear-spaces)). **Design theory** relaxes this intersection rule and shifts the focus entirely to **combinatorial balance**: instead of asking how lines intersect, we ask that every subset of $t$ points lies inside the exact same number of blocks. Because two blocks in a design $\mathcal{S} = (\mathcal{P}, \mathcal{B}, \mathrm{I})$ are allowed to share $2, 3,$ or more points, lines are traditionally called **blocks**, which is why the line set is written $\mathcal{B}$ rather than $\mathcal{L}$.
 
 Let $v, k, t, \lambda$ be positive integers satisfying $v \ge k \ge t$ and $k \ge 2$. A finite [point-line geometry](#point-line-geometries) $\mathcal{S} = (\mathcal{P}, \mathcal{B}, \mathrm{I})$ is called a **$t$-design with parameters $(v, k, \lambda)$**, or shortly a **$t$-$(v, k, \lambda)$-design**, if it has $v$ points in total, $\mathcal{B}$ is nonempty with every block incident with $k$ points, every $t$ distinct points of $\mathcal{P}$ lie together in $\lambda$ blocks, and no two distinct blocks have the exact same set of points (written $\{x \in \mathcal{P} \mid x\,\mathrm{I}\,B_1\} \neq \{x \in \mathcal{P} \mid x\,\mathrm{I}\,B_2\}$ for $B_1 \neq B_2$). Some texts allow duplicate blocks, which are called designs with repeated blocks; here they are excluded, so we usually treat each block $B \in \mathcal{B}$ directly as a $k$-element subset of $\mathcal{P}$, with set membership $x \in B$ as incidence $x\,\mathrm{I}\,B$.
 
@@ -2970,3 +2973,7 @@ $$(b - 1)\sum_{B \neq B_0} n_B^2 - \left(\sum_{B \neq B_0} n_B\right)^2 = \frac{
 When $v > k$, the factor $\frac{kr(v - k)^2}{v(v - 1)}$ is strictly positive, forcing $b \ge v$ (equivalently $r \ge k$), with equality $b = v$ if and only if $n_B = \bar{n}$ for every block $B \neq B_0$ (in which case $r = k$ gives $n_B = \frac{k(k-1)}{v-1} = \lambda$ for every $B \neq B_0$).
 
 <!-- terms checked: design theory; blocks; Steiner system; Steiner triple system; Steiner quadruple system; affine plane; parallel -->
+
+## References
+
+- An Introduction to Incidence Geometry by Bart De Bruyn (First & perhaps only edition sections 1.1, 1.2, 2.1, 2.2, 2.6, 2.7, 2.8, 2.14, 3.1, 3.2, 3.3, 3.4, 4.5, 5.1, 5.2, 5.3, 5.4, 5.6, 5.8, 7.2, 7.5, 7.8, 9.1)

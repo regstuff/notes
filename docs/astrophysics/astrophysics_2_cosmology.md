@@ -564,7 +564,7 @@ These spaces are as symmetric as a 3-dimensional space can be. Each has 6 indepe
 
 Everything above is local. Curvature fixes the geometry of every small region, but not how the regions are glued together globally. Take flat space and declare that points differing by whole multiples of a length $L$ in $x$, $y$ or $z$ are the same point. The result, the **3-torus**, is flat everywhere but has finite volume $L^3$, and a straight line in any of the three axis directions brings you back to your starting point. Mathematically, it is the quotient of $\mathbb R^3$ by a group of translations acting freely. In general one takes $X/\Gamma$, where $\Gamma$ is a discrete group of isometries of $X$ acting freely.
 
-There are exactly ten compact flat 3-manifolds, six orientable and four not, classified by Hantzsche and Wendt in the 1930s. For the 3-sphere, $\Gamma$ must be a finite subgroup of $SO(4)$ acting freely, which is where your finite group theory comes in. $\Gamma = \{\pm 1\}$ identifies antipodal points and gives real projective space $\mathbb{RP}^3$. Cyclic groups give the lens spaces. The binary icosahedral group, of order 120, gives the **Poincaré dodecahedral space**. Its fundamental domain is a regular dodecahedron whose opposite faces are glued after a twist of $36^\circ$. Hyperbolic space has infinitely many compact quotients.
+There are exactly ten compact flat 3-manifolds, six orientable and four not, classified by Hantzsche and Wendt in the 1930s. For the 3-sphere, $\Gamma$ must be a finite subgroup of $SO(4)$ acting freely, which is where your [finite group theory](../maths/maths_2_fields_groups.md#groups) comes in. $\Gamma = \{\pm 1\}$ identifies antipodal points and gives real projective space $\mathbb{RP}^3$. Cyclic groups give the lens spaces. The binary icosahedral group, of order 120, gives the **Poincaré dodecahedral space**. Its fundamental domain is a regular dodecahedron whose opposite faces are glued after a twist of $36^\circ$. Hyperbolic space has infinitely many compact quotients.
 
 ![A flat torus universe tiled with copies of itself](figures/newton_versus_einstein_torus.png)
 
@@ -3217,7 +3217,7 @@ the contribution to the temperature variance per logarithmic interval of $\ell$.
 
 **Aside: isotropy, Schur's lemma and cosmic variance.**
 
-Why is a single number $C_\ell$ enough for each $\ell$? The $Y_{\ell m}$ with fixed $\ell$ span a $(2\ell + 1)$-dimensional space that rotations map into itself, an irreducible representation of the rotation group. If the universe is statistically isotropic, the covariance matrix of the $a_{\ell m}$ must commute with every rotation. By Schur's lemma it is then a multiple of the identity on each irreducible block:
+Why is a single number $C_\ell$ enough for each $\ell$? The $Y_{\ell m}$ with fixed $\ell$ span a $(2\ell + 1)$-dimensional space that rotations map into itself, an irreducible representation of the rotation group. If the universe is statistically isotropic, the covariance matrix of the $a_{\ell m}$ must commute with every rotation. By [Schur's lemma](../maths/maths_2_fields_groups.md#schurs-lemma) it is then a multiple of the identity on each irreducible block:
 
 $$
 \langle a_{\ell m}a^*_{\ell'm'}\rangle = C_\ell\,\delta_{\ell\ell'}\delta_{mm'} .
