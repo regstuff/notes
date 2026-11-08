@@ -349,7 +349,7 @@ $$bk = vr \qquad \text{and} \qquad \lambda(v - 1) = r(k - 1)$$
 
 If $V'$ is a subspace of the vector space $V$ then $P(V')$ is a subspace of $P(V)$. And if $U$ be a subspace of the projective space $P(V)$, there exists a vector subspace $V'$ of $V$ such that $P(V')=U$.
 
-The line of $P(V)$ through the points $v, w$ consists of the point $w$ and the points $v + aw, (a \in \mathbf{F})$. In particular we have: if $\mathbf{F}$ is a finite field with $q$ elements, then any line of $P(V)$ has exactly $q+1$ points. In this case $P(V)$ has order $q$. This implies that for any prime power $q$ ($q = p^a$ where p is prime), and any positive integer $d>2$ there is a projective space of order $q$ and dimension $d$. (Since any prime power $q$ implies there is a [finite field](maths_2_fields_groups.md#lets-build-a-field) $\mathbf{F}$ with $q$ elements.
+The line of $P(V)$ through the points $v, w$ consists of the point $w$ and the points $v + aw, (a \in \mathbf{F})$. In particular we have: if $\mathbf{F}$ is a finite field with $q$ elements, then any line of $P(V)$ has exactly $q+1$ points. In this case $P(V)$ has order $q$. This implies that for any prime power $q$ ($q = p^a$ where p is prime), and any positive integer $d>2$ there is a projective space of order $q$ and dimension $d$. (Since any prime power $q$ implies there is a [finite field](maths_0_vector_calculus_linear_algebra_fields.md#lets-build-a-field) $\mathbf{F}$ with $q$ elements.
 
 Let $H$ be a hyperplane of $\mathbf{P}(V)$. Then the homogeneous coordinates of the points of $H$ are the solutions of a homogeneous linear equation ($c_0 x_0 + c_1 x_1 + \dots + c_r x_r = 0$) with coefficients in $F$. Conversely, any homogeneous linear equation that is different from the ‘zero equation’ (where all coefficients are $0$) describes a hyperplane of $\mathbf{P}(V)$. We already saw this with a line in a projective plane.
 
@@ -1383,7 +1383,7 @@ In the Split Cayley Hexagon $H(2)$, every line contains $q + 1 = 3$ points, and 
 
 ### Motivation
 
-The motivation behind flags, residues, and amalgamation comes down to a single overarching goal instituted by Jacques Tits and Francis Buekenhout: turning abstract group theory (specifically the classification of [finite simple groups](maths_2_fields_groups.md#the-jordan-holder-theorem-the-periodic-table-of-groups) and Lie groups) into concrete, visual geometry, and breaking high-dimensional geometries down into simple 2-dimensional building blocks.
+The motivation behind flags, residues, and amalgamation comes down to a single overarching goal instituted by Jacques Tits and Francis Buekenhout: turning abstract group theory (specifically the classification of [finite simple groups](maths_2_group_theory.md#the-jordan-holder-theorem-the-periodic-table-of-groups) and Lie groups) into concrete, visual geometry, and breaking high-dimensional geometries down into simple 2-dimensional building blocks.
 
 Here is what each of these three tools does for us and what it points toward.
 
@@ -1391,7 +1391,7 @@ Here is what each of these three tools does for us and what it points toward.
 
 Why package a nested chain of subspaces $P \in \ell \subset \Pi$ into a single object called a flag or chamber? Because flags translate symmetry groups directly into geometry.
 
-**Chambers as a Coordinate Frame (Regular Group Action):** In $PG(2, q)$, there are many automorphisms (collineations) that fix a single point $P$, and still many that fix both a point $P$ and a line $\ell$ through $P$. However, if we fix a chamber (a maximal flag) along with a standard frame of reference, we pin down the group elements completely. The automorphism group $G$ of a classic geometry [acts transitively](maths_2_fields_groups.md#transitive-regular-k-transitive-actions) on the set of all chambers.
+**Chambers as a Coordinate Frame (Regular Group Action):** In $PG(2, q)$, there are many automorphisms (collineations) that fix a single point $P$, and still many that fix both a point $P$ and a line $\ell$ through $P$. However, if we fix a chamber (a maximal flag) along with a standard frame of reference, we pin down the group elements completely. The automorphism group $G$ of a classic geometry [acts transitively](maths_2_group_theory.md#transitive-regular-k-transitive-actions) on the set of all chambers.
     
 **Dictionary Between Subgroups and Flags (Parabolic Subgroups):** In group theory, it is often difficult to understand the internal subgroup structure of a large matrix group or simple group $G$. Once $G$ acts on a geometry $\Gamma$:
     
@@ -1705,7 +1705,7 @@ The order of the induced permutation $\alpha_I \in \text{Sym}(I)$ is the smalles
 
 $$(\alpha_I)^k = \text{id}_I \iff \alpha^k \text{ is an automorphism of } \Gamma$$
 
-Because $\alpha \mapsto \alpha_I$ is a [group homomorphism](maths_2_fields_groups.md#homomorphisms-and-the-isomorphism-theorems) from $\text{Cor}(\Gamma)$ to $\text{Sym}(I)$ whose kernel is $\text{Aut}(\Gamma)$, the induced type-order $k = \vert{}\alpha_I\vert{}$ always divides the full order $m = \vert{}\alpha\vert{}$.
+Because $\alpha \mapsto \alpha_I$ is a [group homomorphism](maths_2_group_theory.md#homomorphisms-and-the-isomorphism-theorems) from $\text{Cor}(\Gamma)$ to $\text{Sym}(I)$ whose kernel is $\text{Aut}(\Gamma)$, the induced type-order $k = \vert{}\alpha_I\vert{}$ always divides the full order $m = \vert{}\alpha\vert{}$.
 
 But why do we care about $\alpha_I$? Because if the order of $\alpha_I$ is $1$, then $\alpha$ is an automorphism. Similarly if the order of $\alpha_I$ is $2$, this is called a duality of $PG(d, q)$ where $\alpha_I$ swaps $0 \leftrightarrow d-1$. Then $\alpha^2$ is guaranteed to be an automorphism, even if $\alpha^2$ still permutes the individual points among themselves. If both $\alpha$ and $\alpha_I$ are of order 2, this is called a polarity. We will see shortly, with an example of the Fano Plane, that $\alpha$ could be quite different from $2$ even if $\alpha_I = 2$.
 
@@ -2064,7 +2064,7 @@ This gives us the multiplication rule for pairs $(M, \sigma)$ in the semilinear 
 
 $$(M_1, \sigma_1) \cdot (M_2, \sigma_2) = \big(M_1^{\sigma_2} M_2, \,\, \sigma_2 \circ \sigma_1\big)$$
 
-In group theory, this twisted multiplication rule is called a [semidirect product](maths_2_fields_groups.md#extensions):
+In group theory, this twisted multiplication rule is called a [semidirect product](maths_2_group_theory.md#example-of-building-a-larger-group):
 
 $$\Gamma L(d+1, K) = GL(d+1, K) \rtimes \text{Aut}(K)$$
 
@@ -2610,13 +2610,13 @@ Since $x^2 + 1$ has no roots in $\mathbb{F}_3 = \{0, 1, 2\}$ (where $2 \equiv -1
 
 $$\mathbb{F}_9 = \{ a + bi \mid a, b \in \mathbb{F}_3, \, i^2 = -1 \}$$
 
-We saw this example while [studying fields](maths_2_fields_groups.md#lets-build-a-field).
+We saw this example while [studying fields](maths_0_vector_calculus_linear_algebra_fields.md#lets-build-a-field).
 
 The unique non-trivial field automorphism of order 2 ($\sigma^2 = \text{id}$, $\sigma \neq \text{id}$) is the Frobenius map $\sigma(\lambda) = \lambda^3$. Let us see what $\lambda^3$ does to an element $a + bi \in \mathbb{F}_9$ in characteristic 3:
 
 $$\sigma(a + bi) = (a + bi)^3 = a^3 + b^3 i^3 = a + b(-i) = a - bi$$
 
-By [Fermat's Little Theorem](maths_2_fields_groups.md#fermats-little-theorem), for every element $a \in \mathbb{F}_p$, raising $a$ to the $p$-th power does nothing at all ($a^p = a$). So $0^3 = 0$,  $1^3 = 1$, and $2^3 = 8 \equiv 2 \pmod 3$, which means the Frobenius map $\sigma(x) = x^3$ leaves the "real" part $a \in \mathbb{F}_3$ completely fixed while flipping $i^3 = i^2 \cdot i = -i$. The Frobenius automorphism $\sigma(\lambda) = \lambda^3$ thus acts like complex conjugation $\overline{a + bi} = a - bi$.
+By [Fermat's Little Theorem](maths_0_vector_calculus_linear_algebra_fields.md#fermats-little-theorem), for every element $a \in \mathbb{F}_p$, raising $a$ to the $p$-th power does nothing at all ($a^p = a$). So $0^3 = 0$,  $1^3 = 1$, and $2^3 = 8 \equiv 2 \pmod 3$, which means the Frobenius map $\sigma(x) = x^3$ leaves the "real" part $a \in \mathbb{F}_3$ completely fixed while flipping $i^3 = i^2 \cdot i = -i$. The Frobenius automorphism $\sigma(\lambda) = \lambda^3$ thus acts like complex conjugation $\overline{a + bi} = a - bi$.
 
 Notice also what the norm $\sigma(\lambda)\lambda = \lambda^4$ looks like:
 
@@ -3268,7 +3268,7 @@ In algebra and group theory, all classical matrix groups go through a standard 3
 
 - Start with the full matrix group on the vector space $V$: $GL$ (General Linear), $O$ (Orthogonal), $Sp$ (Symplectic), $U$ (Unitary).
 - Put an "S" in front ("Special" = determinant $1$): $SL$, $SO$, $SU$.
-- Put a "P" in front ("Projective" = quotient out scalar matrices $cI$ so it [acts faithfully](maths_2_fields_groups.md#kernels-cores-faithfulness) on projective space $PG(V)$): $PGL$, $PSL$, $PO$, $PSO$, $PSp$, $PU$, $PSU$.
+- Put a "P" in front ("Projective" = quotient out scalar matrices $cI$ so it [acts faithfully](maths_2_group_theory.md#kernels-cores-faithfulness) on projective space $PG(V)$): $PGL$, $PSL$, $PO$, $PSO$, $PSp$, $PU$, $PSU$.
 
 Here is the exact ladder:
 

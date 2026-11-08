@@ -1,24 +1,28 @@
-"""Figures for Maths 2 (Fields and Groups).
+"""Figures for Maths 0 (Rings & Fields) and Maths 2 (Group Theory).
 
 Usage: python make_maths2_figures.py OUTPUT_DIR
 
-Writes twelve PNGs into OUTPUT_DIR (numbered as the figures in the notes):
-  1. maths2_tape_quotient_isomorphism.png
-  2. maths2_f9_field.png
-  3. maths2_s3_cosets_normality.png
-  4. maths2_cosets_conjugacy_s4.png
-  5. maths2_class_equation.png
-  6. maths2_fourth_isomorphism_fibration.png
-  7. maths2_orbit_stabilizer_square.png
-  8. maths2_orbits_blocks_suborbits_hexagon.png
-  9. maths2_orbitals_blocks_primitivity.png
-  10. maths2_subspace_quotient_shear.png
-  11. maths2_coherent_intersection_pentagon.png
-  12. maths2_extensions_mortar.png
+Writes twelve PNGs into OUTPUT_DIR. The rings-and-fields part moved to Maths 0 on 2026-11-07, so the
+figures now sit as:
+  Maths 0, Figure 2: maths2_tape_quotient_isomorphism.png
+  Maths 0, Figure 3: maths2_f9_field.png
+  Maths 2, Figure 1: maths2_s3_cosets_normality.png
+  Maths 2, Figure 2: maths2_cosets_conjugacy_s4.png
+  Maths 2, Figure 3: maths2_class_equation.png
+  Maths 2, Figure 4: maths2_fourth_isomorphism_fibration.png
+  Maths 2, Figure 6: maths2_orbit_stabilizer_square.png
+  Maths 2, Figure 7: maths2_extensions_mortar.png
+  Maths 2, Figure 9: maths2_orbits_blocks_suborbits_hexagon.png
+  Maths 2, Figure 10: maths2_orbitals_blocks_primitivity.png
+  Maths 2, Figure 11: maths2_subspace_quotient_shear.png
+  Maths 2, Figure 12: maths2_coherent_intersection_pentagon.png
+The other figures come from make_maths2_rep_figures.py, make_maths2_benson_figures.py and
+make_maths0_maths2_extra_figures.py.
 
 Reproduces the published PNGs byte for byte with matplotlib 3.5.1 (drawn by Gemini, 2026-11-05;
-Figures 3 and 7 switched to left-to-right products the same day, to match the text; Figures 4 and 8
-were added by Claude the same day; the other function names keep the original numbering).
+the cosets and orbit-stabilizer figures switched to left-to-right products the same day, to match
+the text; the centralizer-cosets and hexagon figures were added by Claude the same day; the
+function names keep the original numbering).
 """
 
 import itertools as it

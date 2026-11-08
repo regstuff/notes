@@ -1,10 +1,14 @@
 ## Maths
 
+Vector Calculus, Linear Algebra, Rings & Fields
+
 Differential Geometry
 
-Sets, Rings, Fields & Groups
+Group Theory
 
 Projective Geometry
+
+Incidence Geometry
 
 ## General Physics
 
