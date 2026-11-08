@@ -1,0 +1,1438 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../astrophysics/astrophysics_2_cosmology/">
+      
+      
+        <link rel="next" href="../maths_1_differential_geometry/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Maths 0 - Vector Calculus, Linear Algebra, Rings & Fields - Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#maths-0-vector-calculus-linear-algebra-rings-fields" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Notes" class="md-header__button md-logo" aria-label="Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Maths 0 - Vector Calculus, Linear Algebra, Rings &amp; Fields
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Notes" class="md-nav__button md-logo" aria-label="Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Astrophysics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Astrophysics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../astrophysics/astrophysics_1_stellar_astrophysics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Astrophysics 1 - Stellar Astrophysics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../astrophysics/astrophysics_2_cosmology/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Astrophysics 2 - Cosmology
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maths
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Maths
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maths 0 - Vector Calculus, Linear Algebra, Rings &amp; Fields
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maths 0 - Vector Calculus, Linear Algebra, Rings &amp; Fields
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-bit-about-proofs-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Bit About Proofs &amp; Logic
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sets-operations-relations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sets, Operations &amp; Relations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sets, Operations &amp; Relations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operations-relations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operations &amp; Relations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rings-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rings &amp; Fields
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rings &amp; Fields">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-intuitive-picture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Intuitive Picture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-algebraic-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Algebraic Rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intuition-redux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Intuition Redux
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#algebra-redux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Algebra Redux
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#establishing-more-mathematical-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Establishing More Mathematical Properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#homomorphisms-and-isomorphisms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Homomorphisms and Isomorphisms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lets-build-a-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Let's Build A Field!
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fermats-little-theorem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fermat's Little Theorem
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maths_1_differential_geometry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maths 1 - Differential Geometry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maths_2_group_theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maths 2 - Group Theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maths_3_projective_geometry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maths 3 - Projective Geometry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maths_4_incidence_geometry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maths 4 - Incidence Geometry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Physics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Physics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../physics/physics_1_statistical_mechanics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Physics 1 - Statistical Mechanics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../physics/physics_2_special_relativity_classical_field_theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Physics 2 - Special Relativity and Classical Field Theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quantum
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Quantum
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quantum/quantum_1_quantum_physics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quantum Theory 1 - Quantum Physics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quantum/quantum_2_quantum_information_theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quantum Theory 2 - Quantum Information Theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-bit-about-proofs-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Bit About Proofs &amp; Logic
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sets-operations-relations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sets, Operations &amp; Relations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sets, Operations &amp; Relations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operations-relations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operations &amp; Relations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rings-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rings &amp; Fields
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rings &amp; Fields">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-intuitive-picture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Intuitive Picture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-algebraic-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Algebraic Rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intuition-redux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Intuition Redux
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#algebra-redux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Algebra Redux
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#establishing-more-mathematical-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Establishing More Mathematical Properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#homomorphisms-and-isomorphisms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Homomorphisms and Isomorphisms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lets-build-a-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Let's Build A Field!
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fermats-little-theorem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fermat's Little Theorem
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="maths-0-vector-calculus-linear-algebra-rings-fields">Maths 0 - Vector Calculus, Linear Algebra, Rings &amp; Fields<a class="headerlink" href="#maths-0-vector-calculus-linear-algebra-rings-fields" title="Permanent link">&para;</a></h1>
+<h2 id="a-bit-about-proofs-logic">A Bit About Proofs &amp; Logic<a class="headerlink" href="#a-bit-about-proofs-logic" title="Permanent link">&para;</a></h2>
+<p>The main strategies in proofs are by:</p>
+<p>Counterexample, where given a general statement <span class="arithmatex">\(P\)</span>, to show that <span class="arithmatex">\(P\)</span> is true it is necessary to give a general proof; but to show that <span class="arithmatex">\(P\)</span> is false, we have to give one specific instance in which it fails.</p>
+<p>Contradiction, where to prove that <span class="arithmatex">\(P\)</span> is true, we assume it is false and then show some contradiction. For e.g. if <span class="arithmatex">\(n \in \mathbb{N}\)</span>, <span class="arithmatex">\(2n\)</span> must be even. Let's assume <span class="arithmatex">\(2n\)</span> is odd. Then <span class="arithmatex">\(2n = 2m + 1\)</span> for some <span class="arithmatex">\(m \in \mathbb{N}\)</span>, which implies <span class="arithmatex">\(n-m = \frac{1}{2}\)</span>, i.e. an integer is a fraction, which is a contradiction!</p>
+<p>Contrapositive. The contrapositive of the statement ‘if <span class="arithmatex">\(P\)</span>, then <span class="arithmatex">\(Q\)</span>’ is the statement ‘if not <span class="arithmatex">\(Q\)</span>, then not <span class="arithmatex">\(P\)</span>’. They are logically equivalent. We can prove this if it is more convenient.</p>
+<p>Induction. Prove a statement <span class="arithmatex">\(P(n)\)</span> for <span class="arithmatex">\(n=0\)</span>. Then show that if <span class="arithmatex">\(P(n)\)</span> is assumed true, <span class="arithmatex">\(P(n+1)\)</span> is true. A variation is the Strong Induction principle where we assume <span class="arithmatex">\(P(m)\)</span> is true for all <span class="arithmatex">\(m&lt;n\)</span> and then show that it must hold for <span class="arithmatex">\(P(n)\)</span> also. For example, you could use this to prove that any natural number greater than 1 has a prime factor.</p>
+<p>Now for Logical Conditions. We say that <span class="arithmatex">\(P\)</span> is a sufficient condition for <span class="arithmatex">\(Q\)</span> if the truth of <span class="arithmatex">\(P\)</span> implies the truth of <span class="arithmatex">\(Q\)</span>; that is, <span class="arithmatex">\(P\)</span> implies <span class="arithmatex">\(Q\)</span>, which is the same as "if <span class="arithmatex">\(P\)</span>, then <span class="arithmatex">\(Q\)</span>", or "<span class="arithmatex">\(Q\)</span> if <span class="arithmatex">\(P\)</span>".</p>
+<p>We say that <span class="arithmatex">\(P\)</span> is a necessary condition for <span class="arithmatex">\(Q\)</span> if the truth of <span class="arithmatex">\(P\)</span> is implied by the truth of <span class="arithmatex">\(Q\)</span>, that is, <span class="arithmatex">\(Q\)</span> implies <span class="arithmatex">\(P\)</span>. (This is the converse of the statement that <span class="arithmatex">\(P\)</span> implies <span class="arithmatex">\(Q\)</span>.) We also say "<span class="arithmatex">\(Q\)</span> only if <span class="arithmatex">\(P\)</span>".</p>
+<p>We say that <span class="arithmatex">\(P\)</span> is a necessary and sufficient condition if both the above hold true.</p>
+<p>AND (<span class="arithmatex">\(\land\)</span>), OR (<span class="arithmatex">\(\lor\)</span>) and NOT (<span class="arithmatex">\(\neg\)</span>) to combine conditions should be familiar from Boolean operations.</p>
+<h2 id="sets-operations-relations">Sets, Operations &amp; Relations<a class="headerlink" href="#sets-operations-relations" title="Permanent link">&para;</a></h2>
+<h3 id="sets">Sets<a class="headerlink" href="#sets" title="Permanent link">&para;</a></h3>
+<p>A set is a collection of objects. That definition doesn't help much because what is a collection?! No wonder then that the word "set" has 430 definitions in the Oxford Dictionary, which makes it one of the longest entries. But our definition is something we can more or less grasp, so we won't belabour the point. Let's move on.</p>
+<p>Unions, intersections and difference i.e. elements of <span class="arithmatex">\(A\)</span> not in <span class="arithmatex">\(B\)</span>, correspond to the logical operations OR, AND and NOT. The symmetric difference of two sets is any element that is in only one of <span class="arithmatex">\(A\)</span> or <span class="arithmatex">\(B\)</span>. This corresponds to XOR. We can write, <span class="arithmatex">\(A \Delta B = (A \setminus B) \cup (B \setminus A) = (A \cup B) \setminus (A \cap B)\)</span>.</p>
+<p>The Cartesian Product <span class="arithmatex">\(A \times B\)</span> is the set of all ordered pairs with first element in <span class="arithmatex">\(A\)</span> and second element in <span class="arithmatex">\(B\)</span>. You could extend this to a product of <span class="arithmatex">\(n\)</span> sets as well. The name ‘Cartesian’ commemorates Descartes, who unified algebra and geometry by the insight that the Euclidean plane (a geometric object) is essentially the same as the set <span class="arithmatex">\(\mathbb{R} \times \mathbb{R} = \mathbb{R}^2\)</span>: each point of the plane can be represented by its Cartesian coordinates, which are an ordered pair <span class="arithmatex">\((x, y)\)</span> of real numbers.</p>
+<p>The number of elements in a set <span class="arithmatex">\(A\)</span> is called the cardinality of <span class="arithmatex">\(A\)</span>, and written as <span class="arithmatex">\(\vert{}A\vert{}\)</span>. Note that <span class="arithmatex">\(\vert{}A \cup B\vert{} = \vert{}A\vert{} + \vert{}B\vert{} - \vert{}A \cap B\vert{}\)</span> and <span class="arithmatex">\(\vert{}A \times B\vert{} = \vert{}A\vert{} \cdot \vert{}B\vert{}\)</span>.</p>
+<p>The set of all subsets of a set <span class="arithmatex">\(A\)</span>, including <span class="arithmatex">\(A\)</span> and the empty set, is called the Power Set of <span class="arithmatex">\(A\)</span>.</p>
+<p>Surprisingly, you can use logical operations to prove stuff about sets. We already mentioned how unions, intersections etc. are related to logical operations. Now let us say we want to prove: <span class="arithmatex">\(A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\)</span>. This will follow if we can show that the two propositions <span class="arithmatex">\(p \land (q \lor r)\)</span> and <span class="arithmatex">\((p \land q) \lor (p \land r)\)</span> are equivalent. We could just write down the truth tables of both the logical expressions and see if they are equivalent.</p>
+<h3 id="operations-relations">Operations &amp; Relations<a class="headerlink" href="#operations-relations" title="Permanent link">&para;</a></h3>
+<p>A binary operation is a mapping from <span class="arithmatex">\(A \times A\)</span> to <span class="arithmatex">\(A\)</span> i.e. it takes two elements of set <span class="arithmatex">\(A\)</span> and outputs one element. Addition and multiplication are examples. You can have n-ary operations.</p>
+<p>A binary relation is a mapping from <span class="arithmatex">\(A \times A\)</span> to an output that is either true or false. Greater than and less than are examples. Equivalently, a relation <span class="arithmatex">\(R\)</span> on <span class="arithmatex">\(A\)</span> is the subset <span class="arithmatex">\(R \subseteq A \times A\)</span> of pairs for which the output is true, and we write <span class="arithmatex">\((a, b) \in R\)</span> when <span class="arithmatex">\(a\)</span> is related to <span class="arithmatex">\(b\)</span>.</p>
+<p>An equivalence relation is a binary relation <span class="arithmatex">\(R\)</span> on <span class="arithmatex">\(A\)</span> that is reflexive, or <span class="arithmatex">\((a,a) \in R\)</span> for all <span class="arithmatex">\(a \in A\)</span>; symmetric i.e. if <span class="arithmatex">\((a, b) \in R\)</span> then <span class="arithmatex">\((b, a) \in R\)</span>; transitive i.e. if <span class="arithmatex">\((a, b) \in R\)</span> and <span class="arithmatex">\((b, c) \in R\)</span> then <span class="arithmatex">\((a, c) \in R\)</span>.</p>
+<p>The relation mod 4 between two numbers is an equivalence relation.</p>
+<p>An equivalence relation results in a partition of the set <span class="arithmatex">\(A\)</span>. A partition is a set of subsets of <span class="arithmatex">\(A\)</span> where none of them is empty and each element of <span class="arithmatex">\(A\)</span> lies in only one of these subsets. Thus the equivalence relation between <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span> essentially comes down to are we or are we not in the same subset of the partition. The subsets are called equivalence classes.</p>
+<p>A non-constant polynomial with coefficients in a field <span class="arithmatex">\(F\)</span> (such as <span class="arithmatex">\(\mathbb{R}\)</span> or <span class="arithmatex">\(\mathbb{C}\)</span>; fields are <a href="#establishing-more-mathematical-properties">defined below</a>) is called irreducible over <span class="arithmatex">\(F\)</span> if it cannot be written as the product of two polynomials of smaller degree with coefficients in <span class="arithmatex">\(F\)</span>. So irreducibility depends on the field: <span class="arithmatex">\(x^2 + 1\)</span> is irreducible over <span class="arithmatex">\(\mathbb{R}\)</span>, but over <span class="arithmatex">\(\mathbb{C}\)</span> it factors as <span class="arithmatex">\((x - i)(x + i)\)</span>. Any linear polynomial is obviously irreducible. Irreducible polynomials play a similar role to prime numbers: any non-constant polynomial can be factorised into irreducible polynomials. With coefficients in a field, the factors are unique up to their order and up to multiplying them by non-zero constants, just as the prime factors of an integer are unique up to order and sign. For example, <span class="arithmatex">\(x^2 - 1 = (x - 1)(x + 1) = (2x - 2)(\tfrac{1}{2}x + \tfrac{1}{2})\)</span> is the same factorisation twice.</p>
+<h2 id="rings-fields">Rings &amp; Fields<a class="headerlink" href="#rings-fields" title="Permanent link">&para;</a></h2>
+<p>Rings were originally conceptualized to help solve Fermat's Last Theorem, but we don't need to bother about that now. As a starting point, you can picture a ring as literally a ring or a circular series of numbers that wraps around after reaching a particular point. (This is only a motivating picture; the actual definition comes <a href="#the-algebraic-rules">below</a>, and many rings do not wrap around at all.) You know this for modulo functions already, such as modulo 4 where the remainders are <span class="arithmatex">\(\{0, 1, 2, 3\}\)</span>. Then all the integers wrap around again. So modular arithmetic isn't a separate thing from the integers. A lot of our work with rings is via modular arithmetic, modulo functions, and their algebras. But rings in abstract algebra are not exclusively about modular arithmetic.  </p>
+<p>Even the integers <span class="arithmatex">\(\mathbb{Z}\)</span> are a ring. They don't wrap around, but you could look at it as an infinitely large ring. In fact, modern geometry and algebra view <span class="arithmatex">\(\mathbb{Z}\)</span> as the "parent ring" from which every other ring inherits its basic characteristics. Every modular ring <span class="arithmatex">\(\mathbb{Z}/n\mathbb{Z}\)</span> (the integers mod <span class="arithmatex">\(n\)</span>; the slash notation for a quotient ring is explained in <a href="#the-intuitive-picture">the intuitive picture</a> below) is a slice of the infinite integers. You create them by taking the infinite ring <span class="arithmatex">\(\mathbb{Z}\)</span> and collapsing it at a certain interval <span class="arithmatex">\(n\)</span>. We can also go the other way around and attempt to construct an "infinitely large ring" using a concept called the inverse limit. We chain together larger and larger modular rings, looking at <span class="arithmatex">\(\mathbb{Z}/2\mathbb{Z}\)</span>, then <span class="arithmatex">\(\mathbb{Z}/4\mathbb{Z}\)</span>, then <span class="arithmatex">\(\mathbb{Z}/8\mathbb{Z}\)</span>, and so on out to infinity. You don't quite get <span class="arithmatex">\(\mathbb{Z}\)</span>, but you get a closely related infinite ring called the <span class="arithmatex">\(2\)</span>-adic integers (a specific instance of the <span class="arithmatex">\(p\)</span>-adic integers, <span class="arithmatex">\(\mathbb{Z}_p\)</span>). In these rings, numbers can be infinitely long, effectively allowing you to work with modular arithmetic at an infinite scale.  </p>
+<h3 id="the-intuitive-picture">The Intuitive Picture<a class="headerlink" href="#the-intuitive-picture" title="Permanent link">&para;</a></h3>
+<p>Let us build up what goes into a ring step-by-step. Start with the full ring <span class="arithmatex">\(R = \mathbb{Z}\)</span>. Imagine an infinite tape measure marked with ticks at <span class="arithmatex">\(\dots, -2, -1, 0, 1, 2, \dots\)</span>. Addition (<span class="arithmatex">\(a + b\)</span>) is about shifting along the tape. Multiplication (<span class="arithmatex">\(a \cdot b\)</span>) is about scaling the tape. <span class="arithmatex">\(0\)</span> is the anchor point (origin).</p>
+<p>Now we want to build up the rules for mathematics in this ring. For example, how do I add, multiply and whatnot. The rules for addition are pretty straightforward and similar to integers. In terms of the intuitive picture, we'll focus a bit more on other properties, such as multiplication, division and prime numbers, that might trip people up.</p>
+<p>Let's say you take a circle that is 4 units in circumference and wrap all your integers around that circle. You keep lapping around again and again. So modular arithmetic is kind of like going in circles, while the integers are like going to infinity. It's very spiritual!</p>
+<p>Now when you keep wrapping around the circle, you will see that numbers start to cluster up one above the other. <span class="arithmatex">\(\{\dots, -8, -4, \mathbf{0}, 4, 8, 12, \dots\}\)</span> would be one stack. Similarly, <span class="arithmatex">\(\{\dots, -7, -3, \mathbf{1}, 5, 9, \dots\}\)</span> etc. You would get 4 such stacks. Each of these stacks is now called a coset. Together the cosets form a partition, which is a very literal description: all the integers will be present in exactly one coset. We say they are in an equivalence relation, which is also pretty much what it says. They are equivalent for all practical purposes while working in this ring. This process is technically called gluing i.e. you say this set of points from the integers are all equivalent in the new ring of stacks (the quotient ring, defined below). You glued them together into one thing! They are also called equivalence classes and are subsets of the main ring. Only one of them, the stack of <span class="arithmatex">\(0\)</span> (which is <span class="arithmatex">\(4\mathbb{Z}\)</span> itself), is a subring (a subset that is itself a ring under the same addition and multiplication; more on subrings below). The other stacks do not contain <span class="arithmatex">\(0\)</span> and are not closed under addition: <span class="arithmatex">\(1 + 1 = 2\)</span> is not in the stack of <span class="arithmatex">\(1\)</span>.</p>
+<p><span class="arithmatex">\(I = 4\mathbb{Z} = \{\dots, -8, -4, \mathbf{0}, 4, 8, 12, \dots\}\)</span> is a bit special. These are the numbers that stack with <span class="arithmatex">\(0\)</span>. They are equivalent to it. This set (subring actually) of numbers is called an ideal. The most important thing is, if you multiply any integer by any element in this stack, the result is also found in this stack. Nothing surprising here. The stack is all the multiples of 4. <span class="arithmatex">\(4\)</span> multiplied by an integer will be a multiple of <span class="arithmatex">\(4\)</span> and so it will be part of the stack.</p>
+<p>But conceptually, as far as the ring goes, this entire set, i.e. every number in the ideal, functions in multiplication like a <span class="arithmatex">\(0\)</span> does among integers. You multiply any number by <span class="arithmatex">\(0\)</span>, you end up with a <span class="arithmatex">\(0\)</span>. This is called the Absorption Property. We have therefore recreated a property of multiplication in the integers in such a way that it will work in a ring.</p>
+<p>Now, pick up the entire <span class="arithmatex">\(I\)</span> and shift it to the right by 1, then 2, then 3.</p>
+<p>Shift by <span class="arithmatex">\(0\)</span> (This is called the zero coset / The Ideal itself): <span class="arithmatex">\(0 + I = \{\dots, -8, -4, \mathbf{0}, 4, 8, \dots\}\)</span></p>
+<p>Shift by <span class="arithmatex">\(1\)</span> (The coset <span class="arithmatex">\(1 + I\)</span>): <span class="arithmatex">\(1 + I = \{\dots, -7, -3, \mathbf{1}, 5, 9, \dots\}\)</span></p>
+<p>Shift by <span class="arithmatex">\(2\)</span> (The coset <span class="arithmatex">\(2 + I\)</span>): <span class="arithmatex">\(2 + I = \{\dots, -6, -2, \mathbf{2}, 6, 10, \dots\}\)</span></p>
+<p>Shift by <span class="arithmatex">\(3\)</span> (The coset <span class="arithmatex">\(3 + I\)</span>): <span class="arithmatex">\(3 + I = \{\dots, -5, -1, \mathbf{3}, 7, 11, \dots\}\)</span></p>
+<p>Shift by <span class="arithmatex">\(4\)</span>: <span class="arithmatex">\(4 + I = \{\dots, -4, 0, \mathbf{4}, 8, 12, \dots\} = 0 + I\)</span></p>
+<p>Shifting by <span class="arithmatex">\(4\)</span> just lands the grid back on top of itself. So what we have here is the 4 cosets (the 4 parts of the partition) we talked about earlier. Since we have a <span class="arithmatex">\(0\)</span> coset, we can also see that the other cosets are essentially just the remainders we get when we divide an integer by the modulus, in this case: <span class="arithmatex">\(4\)</span>. Any integer with the same remainder gets bracketed into the same coset or equivalence class i.e. the <span class="arithmatex">\(k\)</span>-coset consists of all elements <span class="arithmatex">\(a\)</span> where <span class="arithmatex">\(a - k\)</span> is in the ideal, which means for any two elements <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span> in the same coset, <span class="arithmatex">\(a - b \in I\)</span>.  </p>
+<p>The set of 4 cosets (think of them as co-sets) is called a quotient or factor ring <span class="arithmatex">\(R/I\)</span>. Why they are not called the remainder ring is a bit confusing because that is what they are built from, but never mind. </p>
+<p>The set of 4 cosets is a ring in the sense that they satisfy all the rules of addition and multiplication we expect from a ring (we'll talk about that next). The elements of this quotient ring <span class="arithmatex">\(R/I\)</span> are not individual numbers; they are the 4 distinct stacks of overlapping points (the cosets). </p>
+<h3 id="the-algebraic-rules">The Algebraic Rules<a class="headerlink" href="#the-algebraic-rules" title="Permanent link">&para;</a></h3>
+<p>It's good to have the intuitive picture in your head, but the algebraic rules given below make it easy to manipulate and work with rings.</p>
+<p>A ring is a set where we define an addition and a multiplication operation. Addition must be closed, commutative and associative. There is a zero and every element in <span class="arithmatex">\(R\)</span> has an additive inverse. Regarding multiplication, we require closure and the operation should be associative. Multiplication and addition should together follow the Distributive Law on both sides: <span class="arithmatex">\(a(b + c) = ab + ac\)</span> and <span class="arithmatex">\((a + b)c = ac + bc\)</span> (we need both, because multiplication need not be commutative). </p>
+<p>Note that the familiar addition and multiplication we already know are just special cases. We could redefine them however we want provided they follow the above rules.</p>
+<p>In our definition of a ring, we required neither the multiplicative identity nor inverse, nor even that multiplication be commutative. Some conventions require a ring to have a multiplicative identity. Rings without an identity are termed rng, without the <span class="arithmatex">\(i\)</span>. If the identity is present, it becomes a ring (with the <span class="arithmatex">\(i\)</span>). We won't bother with that here. Note that any rng can be shown to be a subring (without the identity of course) of a r<strong>i</strong>ng.  </p>
+<p><strong>Examples of Rings:</strong> Natural numbers are not a ring as they do not contain negative integers and so the positive integers have no additive inverse. The integers however form a ring. <span class="arithmatex">\(n\mathbb{Z}\)</span> for some <span class="arithmatex">\(n \in \mathbb{N}\)</span> is also a ring, as is the set of all polynomials with coefficients in <span class="arithmatex">\(R\)</span>, for any ring <span class="arithmatex">\(R\)</span>. Note that, with integer coefficients, a set with an upper limit <span class="arithmatex">\(d \geq 1\)</span> on the degree of polynomials allowed is not a ring as the multiplication operation will result in a polynomial of higher degree (<span class="arithmatex">\(x^d \cdot x = x^{d+1}\)</span>), which means we have no closure. With the limit <span class="arithmatex">\(d = 0\)</span> we just get the constant polynomials, which do form a ring (we use them below).</p>
+<p>The Cancellation Law holds for rings. If <span class="arithmatex">\(a + c = b + c\)</span>, then <span class="arithmatex">\(a = b\)</span>.</p>
+<p>A subring of <span class="arithmatex">\(R\)</span> is a subset <span class="arithmatex">\(S \subseteq R\)</span> which itself forms a ring (using the same operations as those in <span class="arithmatex">\(R\)</span>). You need not check all the axioms of a ring to determine if a subset is a ring. A non-empty subset <span class="arithmatex">\(S\)</span> of a ring <span class="arithmatex">\(R\)</span> is a subring provided that, for all <span class="arithmatex">\(a, b \in S\)</span>, we have <span class="arithmatex">\(a - b \in S\)</span> and <span class="arithmatex">\(ab \in S\)</span>.</p>
+<p>If you are asked to prove that something is a ring, it is usually much easier to recognise that it is a subset of a structure known to be a ring, and then apply the subring tests.</p>
+<h3 id="intuition-redux">Intuition Redux<a class="headerlink" href="#intuition-redux" title="Permanent link">&para;</a></h3>
+<p>The set of 4 cosets we talked about earlier is a ring because we used the ideal to partition the ring. Note that you could make cosets using any subring, but the set of cosets becomes a ring only when the subring used in partitioning is an ideal.  </p>
+<p>Why do we care so much about the ideal and this absorption property? Because it ensures that multiplication results in the same result irrespective of which integer you use from a coset. So <span class="arithmatex">\(6 \times 5 = 30 \equiv 2 \pmod{4}\)</span>, which is what you get when you do <span class="arithmatex">\(2 \times 1\)</span> or <span class="arithmatex">\(10 \times 9\)</span>. As mentioned, the ideal includes all the multiples of the number you used while wrapping around (<span class="arithmatex">\(4\)</span> in our case). That ensures that any two numbers of the type <span class="arithmatex">\(x + 4k\)</span> and <span class="arithmatex">\(y + 4l\)</span> (any members of the classes of <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span>, for integers <span class="arithmatex">\(k\)</span> and <span class="arithmatex">\(l\)</span>), when multiplied, result in <span class="arithmatex">\((x + 4k)(y + 4l) = xy + 4(xl + ky) + 16kl\)</span>. Since we then take modulo 4 of this product, we are left with <span class="arithmatex">\(xy\)</span> always, irrespective of which numbers from an equivalence class were multiplied. The mathematics of multiplication is consistent. You can treat all numbers in an equivalence class as the same. So you have ensured one criterion needed to create a ring.  </p>
+<p>That's nice but how do we know this wouldn't hold if I used a subring other than an ideal to create my coset partitions? With integers, every subring is an ideal so we can't investigate this property. But let's look at a ring where subrings and ideals are different: the polynomial ring <span class="arithmatex">\(\mathbb{R}[x]\)</span> or the ring <span class="arithmatex">\(\mathbb{Z}[x]\)</span> of polynomials in one variable with integer coefficients.  </p>
+<p>Consider the ring <span class="arithmatex">\(\mathbb{Z}[x]\)</span> (polynomials with integer coefficients).</p>
+<p>Let <span class="arithmatex">\(S\)</span> be the subring of constant polynomials:  </p>
+<div class="arithmatex">\[S = \mathbb{Z} = \{\dots, -2, -1, 0, 1, 2, \dots\} \subset \mathbb{Z}[x]\]</div>
+<p><span class="arithmatex">\(S\)</span> is a genuine subring because you can add two integers: you get an integer. You can multiply two integers: you get an integer. It has <span class="arithmatex">\(0\)</span> and <span class="arithmatex">\(1\)</span>.  </p>
+<p>Now, when we "glue" this subring <span class="arithmatex">\(S\)</span> to zero, every integer becomes zero. Now let's multiply some polynomial <span class="arithmatex">\(x\)</span> by "two zeroes" <span class="arithmatex">\(0\)</span> and <span class="arithmatex">\(5\)</span>. <span class="arithmatex">\(0 \cdot x = \mathbf{0}\)</span> and <span class="arithmatex">\(5 \cdot x = \mathbf{5x}\)</span>. Both of these should give the same result up to equivalence class i.e. their difference must be in the glued set <span class="arithmatex">\(S\)</span>. But <span class="arithmatex">\(5x - 0 = 5x\)</span> which is not an integer and so not in <span class="arithmatex">\(S\)</span>. Multiplication is broken. You can't multiply with certainty.</p>
+<p>The failure happened because an element inside our glued set (<span class="arithmatex">\(5 \in S\)</span>), when multiplied by an element outside (<span class="arithmatex">\(x \in \mathbb{Z}[x]\)</span>), escaped outside the glued set (<span class="arithmatex">\(5x \notin S\)</span>). Looking back at our previous example where we multiplied integers using the glued set <span class="arithmatex">\(4\mathbb{Z}\)</span>, we saw that the multiplication results in terms like <span class="arithmatex">\(16kl\)</span> and <span class="arithmatex">\(4(xl + ky)\)</span>, which need to be "cancelled out" so that every product of the equivalence classes results in <span class="arithmatex">\(xy\)</span>. What does cancelling out mean? It means they go to <span class="arithmatex">\(0\)</span> or that they should fall into the ideal.</p>
+<p><a href="#figure-1">Figure 1</a> puts the two examples side by side: on the left, the four stacks of the circle of circumference <span class="arithmatex">\(4\)</span>, where a product lands in the same stack whichever representatives we pick; on the right, the constant polynomials glued to <span class="arithmatex">\(0\)</span> inside <span class="arithmatex">\(\mathbb{Z}[x]\)</span>, where multiplying by <span class="arithmatex">\(x\)</span> sends <span class="arithmatex">\(5\)</span> out of the glued set.</p>
+<p><a id="figure-1"></a><img alt="Integers wrapped round a circle of circumference 4 into four coset stacks, beside the constants glued to 0 in Z[x], where 5x escapes the glued set" src="../figures/maths0_ring_circle_ideal.png" /></p>
+<p><em>Figure 1. Why the glued set must be an ideal. (a) Wrapping <span class="arithmatex">\(\mathbb{Z}\)</span> round a circle of circumference <span class="arithmatex">\(4\)</span> sorts the integers into the four stacks (cosets) of <span class="arithmatex">\(I = 4\mathbb{Z}\)</span>; products of representatives from the stacks of <span class="arithmatex">\(2\)</span> and <span class="arithmatex">\(1\)</span>, such as <span class="arithmatex">\(2 \times 1\)</span>, <span class="arithmatex">\(6 \times 5\)</span> and <span class="arithmatex">\(10 \times 9\)</span>, all land in the stack of <span class="arithmatex">\(2\)</span>. (b) In <span class="arithmatex">\(\mathbb{Z}[x]\)</span>, gluing the subring <span class="arithmatex">\(S = \mathbb{Z}\)</span> of constants to <span class="arithmatex">\(0\)</span> makes <span class="arithmatex">\(0\)</span> and <span class="arithmatex">\(5\)</span> equivalent, but <span class="arithmatex">\(0 \cdot x = 0\)</span> stays in <span class="arithmatex">\(S\)</span> while <span class="arithmatex">\(5 \cdot x = 5x\)</span> does not, so the product depends on the representative.</em></p>
+<h3 id="algebra-redux">Algebra Redux<a class="headerlink" href="#algebra-redux" title="Permanent link">&para;</a></h3>
+<p>So to rigorously define an ideal, an ideal is a subring <span class="arithmatex">\(S\)</span> of <span class="arithmatex">\(R\)</span> such that if <span class="arithmatex">\(s \in S\)</span>, then <span class="arithmatex">\(sr \in S\)</span> and <span class="arithmatex">\(rs \in S\)</span> for all <span class="arithmatex">\(r \in R\)</span>. This is kind of like a "0" because anything multiplied by 0 is 0.</p>
+<p>An ideal acts like a black hole. It can pull all elements of <span class="arithmatex">\(R\)</span> into itself by multiplication. When you quotient out by <span class="arithmatex">\(I\)</span>, every element in <span class="arithmatex">\(I\)</span> collapses into the additive identity <span class="arithmatex">\(0\)</span>. An ideal allows you to kill information and compress the ring into a smaller quotient ring <span class="arithmatex">\(R/I\)</span>. Ideals are the algebra of <span class="arithmatex">\(0\)</span> leading to collapsing and singularities.</p>
+<p>You needn't write out the entire set of elements in an ideal. Most times, you can just specify the generators like so <span class="arithmatex">\(\langle g_1, g_2 \rangle\)</span>. Then start adding up linear combinations of the generators to generate your entire ideal. </p>
+<div class="arithmatex">\[\langle g_1, g_2 \rangle = \{ r_1 g_1 + r_2 g_2 \mid r_1, r_2 \in R \}\]</div>
+<p>This will ensure closure when any element of the ideal is multiplied by some element of <span class="arithmatex">\(R\)</span>. This formula needs <span class="arithmatex">\(R\)</span> to be commutative and to have an identity <span class="arithmatex">\(1\)</span>, so that each generator <span class="arithmatex">\(g_i = 1 \cdot g_i\)</span> is included; in <span class="arithmatex">\(2\mathbb{Z}\)</span>, which has no <span class="arithmatex">\(1\)</span>, it would give <span class="arithmatex">\(\{2r \mid r \in 2\mathbb{Z}\} = 4\mathbb{Z}\)</span>, which misses the generator <span class="arithmatex">\(2\)</span> itself. </p>
+<p><strong>Example:</strong> For our previous examples with integers and <span class="arithmatex">\(4\mathbb{Z}\)</span>, the ideal is simply written as <span class="arithmatex">\(\langle 4 \rangle\)</span>, which is equivalent to <span class="arithmatex">\(\{\dots, -8, -4, \mathbf{0}, 4, 8, \dots\}\)</span>.</p>
+<p>Now for something more complicated, <span class="arithmatex">\(\langle 1, x \rangle\)</span> is an ideal of the ring of polynomials, but it is the trivial ideal: the entire polynomial ring itself, because it contains <span class="arithmatex">\(1\)</span>. Any ideal containing the identity <span class="arithmatex">\(1\)</span> absorbs everything:</p>
+<div class="arithmatex">\[\forall f(x) \in R[x], \quad f(x) = f(x) \cdot 1 \in \langle 1, x \rangle \implies \langle 1, x \rangle = R[x]\]</div>
+<p>Quotienting out by <span class="arithmatex">\(\langle 1, x \rangle\)</span> sets <span class="arithmatex">\(1 = 0\)</span>, collapsing the entire ring into the zero ring <span class="arithmatex">\(\{0\}\)</span>.</p>
+<p>To get a non-trivial factor ring, an ideal cannot contain any units (elements with a multiplicative inverse, which needs the ring to have an identity <span class="arithmatex">\(1\)</span>; more on units <a href="#establishing-more-mathematical-properties">below</a>): a unit <span class="arithmatex">\(u\)</span> in the ideal would put <span class="arithmatex">\(u^{-1}u = 1\)</span> in it. In <span class="arithmatex">\(\mathbb{R}[x]\)</span> the units are exactly the non-zero constants, but in <span class="arithmatex">\(\mathbb{Z}[x]\)</span> the constant <span class="arithmatex">\(2\)</span> is not a unit, and <span class="arithmatex">\(\langle 2 \rangle\)</span> does give a non-trivial quotient. In <span class="arithmatex">\(R = \mathbb{R}[x]\)</span>, the ideal generated by the single polynomial <span class="arithmatex">\(x\)</span>:</p>
+<div class="arithmatex">\[\langle x \rangle = \{ f(x) \cdot x \mid f(x) \in \mathbb{R}[x] \} = \{ a_1 x + a_2 x^2 + \dots + a_n x^n \}\]</div>
+<p>This contains every polynomial with no constant term. Multiply any polynomial without a constant term by any arbitrary polynomial, the product has no constant term, so it stays trapped inside <span class="arithmatex">\(\langle x \rangle\)</span>.</p>
+<p>In the quotient ring <span class="arithmatex">\(\mathbb{R}[x]/\langle x \rangle\)</span>, we declare <span class="arithmatex">\(x = 0\)</span>. Every polynomial <span class="arithmatex">\(a_0 + a_1 x + a_2 x^2\)</span> collapses down to just its constant term, so <span class="arithmatex">\(\mathbb{R}[x]/\langle x \rangle \cong \mathbb{R}\)</span>. (The symbol <span class="arithmatex">\(\cong\)</span> means "is isomorphic to": the two rings are the same up to renaming their elements, as <a href="#establishing-more-mathematical-properties">defined below</a>.)</p>
+<p>Another example: <span class="arithmatex">\(\langle x^2 + 1 \rangle\)</span>, the quotient ring of which generates the complex numbers. </p>
+<div class="arithmatex">\[\langle x^2 + 1 \rangle = \{ f(x)(x^2 + 1) \mid f(x) \in \mathbb{R}[x] \}\]</div>
+<p>This contains every polynomial that has <span class="arithmatex">\((x^2 + 1)\)</span> as a factor (i.e., polynomials where <span class="arithmatex">\(f(i) = 0\)</span> and <span class="arithmatex">\(f(-i) = 0\)</span>). If in <span class="arithmatex">\(\mathbb{R}[x]/\langle x^2 + 1 \rangle\)</span>, we declare <span class="arithmatex">\(x^2 + 1 = 0 \implies x^2 = -1\)</span>, then the quotient ring is essentially the remainders we get when a polynomial is divided by <span class="arithmatex">\(x^2 + 1\)</span>. Such a remainder is at most of degree 1. </p>
+<div class="arithmatex">\[r(x) = ax + b \quad (a, b \in \mathbb{R})\]</div>
+<p>Just replace <span class="arithmatex">\(x\)</span> by <span class="arithmatex">\(i\)</span> and you are looking at a complex number!</p>
+<p>A third example is a multi-generator ideal in two variables: <span class="arithmatex">\(\langle x, y \rangle\)</span>.</p>
+<p>In <span class="arithmatex">\(R = \mathbb{R}[x, y]\)</span>:</p>
+<div class="arithmatex">\[\langle x, y \rangle = \{ p(x,y) \cdot x + q(x,y) \cdot y \mid p, q \in \mathbb{R}[x, y] \}\]</div>
+<p>This contains all polynomials whose constant term is <span class="arithmatex">\(0\)</span>. Setting both <span class="arithmatex">\(x = 0\)</span> and <span class="arithmatex">\(y = 0\)</span> gives us a quotient ring which is just the constants: <span class="arithmatex">\(\mathbb{R}[x, y]/\langle x, y \rangle \cong \mathbb{R}\)</span>.</p>
+<h3 id="establishing-more-mathematical-properties">Establishing More Mathematical Properties<a class="headerlink" href="#establishing-more-mathematical-properties" title="Permanent link">&para;</a></h3>
+<p>So we've figured out how to do consistent multiplication. Now we need to work towards consistency in division. The first step is to eliminate zero divisors, i.e., some non-zero element <span class="arithmatex">\(k \in R\)</span> such that <span class="arithmatex">\(k \cdot a = 0\)</span> for some non-zero <span class="arithmatex">\(a \in R\)</span>. Ideally, you don't want multiplication going to <span class="arithmatex">\(0\)</span> when two non-zero numbers are multiplied. Additionally, it's nice to have commutation in multiplication. If a ring has no zero divisors and is commutative, the ring is called an Integral Domain (here we also need the ring to have an identity <span class="arithmatex">\(1 \neq 0\)</span>; otherwise <span class="arithmatex">\(2\mathbb{Z}\)</span> and the zero ring <span class="arithmatex">\(\{0\}\)</span> would count).</p>
+<p>Now, with the integers, every integer has a unique set of prime factors. A ring which has this property (unique up to ordering and multiplication by units) is a Unique Factorization Domain (UFD; like the PIDs below, a UFD is an integral domain, so it has the identity <span class="arithmatex">\(1\)</span> that units need). From a UFD we move up to a Principal Ideal Domain (PID). A PID is one where every ideal is principal, i.e., it has only one generator. PIDs have some nice properties not found in UFDs. For example, GCDs are linear combinations. In a PID, every non-zero prime ideal (an ideal <span class="arithmatex">\(P \neq R\)</span> such that whenever a product <span class="arithmatex">\(ab\)</span> lies in <span class="arithmatex">\(P\)</span>, <span class="arithmatex">\(a\)</span> or <span class="arithmatex">\(b\)</span> already lies in <span class="arithmatex">\(P\)</span>) is automatically a maximal ideal (an ideal <span class="arithmatex">\(I \neq R\)</span> with no ideal strictly between <span class="arithmatex">\(I\)</span> and <span class="arithmatex">\(R\)</span>). We look at both more closely below. This means if you quotient a PID by a non-zero prime ideal, you are guaranteed to get a field. The zero ideal has to be left out: in <span class="arithmatex">\(\mathbb{Z}\)</span> it is prime, but <span class="arithmatex">\(\mathbb{Z}/\{0\} = \mathbb{Z}\)</span> is not a field. PIDs also have some nice properties when it comes to modules, which are like vector spaces but with scalars from a ring instead of a field: every module over a PID that is generated by finitely many elements splits into cyclic modules (modules generated by a single element). This is how abelian groups generated by finitely many elements are classified, since they are the modules over the PID <span class="arithmatex">\(\mathbb{Z}\)</span>.</p>
+<p>Upgrading to a field means every non-zero element is invertible. Actually, if a ring has a (multiplicative) identity <span class="arithmatex">\(1 \neq 0\)</span>, and every non-zero element has a (multiplicative) inverse, it is called a Division ring. (The condition <span class="arithmatex">\(1 \neq 0\)</span> just rules out the zero ring <span class="arithmatex">\(\{0\}\)</span>.) If a division ring is also commutative, it is a field.</p>
+<p>Since every non-zero element of a field has an inverse, say <span class="arithmatex">\(a^{-1}\)</span>, it means multiplying any other element by this inverse gives a valid element of the field. This is the same as saying dividing an element by another non-zero element gives another element of the field. So every non-zero element divides every other element without leaving a remainder. Because of this property, fields allow for the definition of Vector Spaces. You can divide by scalars, talk about exact dimensions, find bases, and solve systems of linear equations without worrying about remainders or fractions.</p>
+<p>Note that a field has only two ideals, both trivial:  <span class="arithmatex">\(\{0\}\)</span> and the entire field. Because every non-zero element has an inverse, any ideal containing a non-zero element will swallow the whole ring. To see why, let's say an ideal has a non-zero element. That element has an inverse in the field. Applying the definition of an ideal, we multiply these two and the product, i.e.,  <span class="arithmatex">\(1\)</span>, must be in the ideal. So <span class="arithmatex">\(1\)</span> is in the ideal, which means any element of the field multiplied by <span class="arithmatex">\(1\)</span>, i.e., that element itself, must also be in the ideal.</p>
+<p>Let's see what it takes to replicate all this mathematics in a ring. But first, in standard school arithmetic, we know that a prime number has only <span class="arithmatex">\(1\)</span> and itself as factors. They are irreducible into smaller factors. We also know that if a prime <span class="arithmatex">\(p\)</span> divides a product <span class="arithmatex">\(ab\)</span>, i.e.,  <span class="arithmatex">\(p \mid ab\)</span>, then at least one of <span class="arithmatex">\(p \mid a\)</span> and <span class="arithmatex">\(p \mid b\)</span> holds true. These two definitions are collapsed into the same definition.</p>
+<p>However, this doesn't always hold in a ring. An element <span class="arithmatex">\(p\)</span> that is non-zero and not itself a unit is irreducible if it cannot be factored into two non-units:  <span class="arithmatex">\(p = ab \implies a \text{ is a unit or } b \text{ is a unit}\)</span>. This is the familiar notion. Wait a minute! What is a unit?</p>
+<p>In elementary arithmetic and geometry, the word "unit" is commonly used in two ways:</p>
+<p>The unit scale / unit length: The minimal step (<span class="arithmatex">\(1\)</span>) used to measure or generate all other integers via repeated addition (<span class="arithmatex">\(1 + 1 + 1 = 3\)</span>).</p>
+<p>The multiplicative identity: The number <span class="arithmatex">\(1\)</span>, which leaves other numbers unchanged under multiplication (<span class="arithmatex">\(x \cdot 1 = x\)</span>).</p>
+<p>When algebraists generalized arithmetic to arbitrary rings, they already had standard terms for those concepts: the additive generator and the multiplicative identity. The word unit was repurposed to mean any element that possesses a multiplicative inverse within the ring:  <span class="arithmatex">\(u \cdot v = 1\)</span>. (So units, and the associates, irreducible and prime elements built from them below, only make sense in a ring with an identity <span class="arithmatex">\(1\)</span>.)</p>
+<p>In <span class="arithmatex">\(\mathbb{Z}\)</span>, the only numbers with multiplicative inverses happen to be <span class="arithmatex">\(1\)</span> and <span class="arithmatex">\(-1\)</span>. Because <span class="arithmatex">\(\pm 1\)</span> also happen to be the numbers that generate the ticks on the tape by addition, everyday intuition conflates the two ideas. In a general ring, however, elements can have multiplicative inverses without having anything to do with a "step size": In <span class="arithmatex">\(\mathbb{Z}_{12}\)</span> (the integers mod <span class="arithmatex">\(12\)</span>; from here on <span class="arithmatex">\(\mathbb{Z}_n\)</span> means the integers mod <span class="arithmatex">\(n\)</span>, that is, the quotient ring <span class="arithmatex">\(\mathbb{Z}/n\mathbb{Z}\)</span>, not the <span class="arithmatex">\(p\)</span>-adic integers <span class="arithmatex">\(\mathbb{Z}_p\)</span> mentioned earlier), the number <span class="arithmatex">\(5\)</span> is a unit because <span class="arithmatex">\(5 \times 5 = 25 \equiv 1 \pmod{12}\)</span>. It has an exact inverse (<span class="arithmatex">\(5^{-1} = 5\)</span>), yet it is not a "minimal step size" in the geometric sense.</p>
+<p>In modern algebra: the Unity / Identity is the single element <span class="arithmatex">\(1\)</span>. The Unit: any element that can be divided by (has an inverse that lands back in <span class="arithmatex">\(1\)</span>).</p>
+<p>In a finite ring with an identity <span class="arithmatex">\(1\)</span>, every non-zero element is either a unit or a zero divisor. This also means that if you take a unit and multiply it by all the elements in the ring, the set of products will cover all the elements of the ring.</p>
+<p>If two elements of a ring <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span> are related such that <span class="arithmatex">\(a = u \cdot b\)</span> where <span class="arithmatex">\(u\)</span> is a unit (i.e., it has an inverse),  <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span> are called associates. This will be important in terms of factorization as we'll see below. Now you see why units are called units. They are similar to <span class="arithmatex">\(1\)</span> in integers in that if we multiply some element of a ring by a unit, it lands up at some equivalent element called its associate.</p>
+<p>Now getting back to primes and irreducibles, in a commutative ring with <span class="arithmatex">\(1\)</span>, a non-zero non-unit element <span class="arithmatex">\(p\)</span> is irreducible if it cannot be factored into two non-units: <span class="arithmatex">\(p = ab \implies a \text{ is a unit or } b \text{ is a unit}\)</span>. A non-zero non-unit element <span class="arithmatex">\(p\)</span> is prime if: <span class="arithmatex">\(p \mid ab \implies p \mid a \quad \text{or} \quad p \mid b\)</span>. Whenever <span class="arithmatex">\(p\)</span> divides a product, it must divide at least one of the factors. (Units are left out on purpose, just as <span class="arithmatex">\(1\)</span> is not a prime number: a unit <span class="arithmatex">\(u\)</span> would pass both tests, since <span class="arithmatex">\(u = ab\)</span> forces <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span> to be units, and <span class="arithmatex">\(u\)</span> divides everything.) </p>
+<p>In terms of ideals, this means the principal ideal <span class="arithmatex">\(\langle p \rangle\)</span> is a prime ideal: <span class="arithmatex">\(ab \in \langle p \rangle \implies a \in \langle p \rangle \text{ or } b \in \langle p \rangle\)</span>.</p>
+<p>Now what does unique factorization entail in a ring? A UFD means that every non-zero, non-unit element <span class="arithmatex">\(x\)</span> can be written as a product of irreducibles, and that factorization is unique up to the order of factors and multiplication by units (being associates is an equivalence relation, so this again sorts the elements into equivalence classes, as modulo did above; but the classes are different: in <span class="arithmatex">\(\mathbb{Z}\)</span>, the classes of associates are the pairs <span class="arithmatex">\(\{n, -n\}\)</span>, not the remainder classes). </p>
+<p>Formally, if <span class="arithmatex">\(x\)</span> is factored into irreducibles in two ways:</p>
+<div class="arithmatex">\[x = p_1 p_2 \dots p_r = q_1 q_2 \dots q_s\]</div>
+<p>then the number of factors is the same: <span class="arithmatex">\(r = s\)</span>. After reordering, each <span class="arithmatex">\(p_i\)</span> is an associate (is in an equivalence relation) of <span class="arithmatex">\(q_i\)</span> (meaning <span class="arithmatex">\(p_i = u_i q_i\)</span> for some unit <span class="arithmatex">\(u_i\)</span>). The "Prime" Property is what proves this uniqueness.</p>
+<p>To prove that the two factorizations are identical:</p>
+<div class="arithmatex">\[p_1 p_2 \dots p_r = q_1 q_2 \dots q_s\]</div>
+<p>You start with the first irreducible building block, <span class="arithmatex">\(p_1\)</span>.</p>
+<p>Clearly, <span class="arithmatex">\(p_1\)</span> divides the left side, so:</p>
+<div class="arithmatex">\[p_1 \mid (q_1 q_2 \dots q_s)\]</div>
+<p>Now you want to cancel <span class="arithmatex">\(p_1\)</span> with one of the factors on the right.</p>
+<p><strong>If <span class="arithmatex">\(p_1\)</span> is PRIME:</strong></p>
+<p>By definition of prime, <span class="arithmatex">\(p_1 \mid (AB) \implies p_1 \mid A \text{ or } p_1 \mid B\)</span>.</p>
+<p>Extending this to <span class="arithmatex">\(s\)</span> terms, <span class="arithmatex">\(p_1\)</span> must divide at least one specific <span class="arithmatex">\(q_j\)</span>.</p>
+<p>Since <span class="arithmatex">\(q_j\)</span> is irreducible, its only divisors are units and associates. Therefore, <span class="arithmatex">\(p_1\)</span> and <span class="arithmatex">\(q_j\)</span> must be associates:</p>
+<div class="arithmatex">\[q_j = u \cdot p_1\]</div>
+<p>You cancel <span class="arithmatex">\(p_1\)</span> from both sides, leaving a smaller equation. (Cancelling a non-zero factor is allowed in an integral domain: <span class="arithmatex">\(ab = ac\)</span> with <span class="arithmatex">\(a \neq 0\)</span> gives <span class="arithmatex">\(a(b - c) = 0\)</span>, so <span class="arithmatex">\(b = c\)</span> because there are no zero divisors. In <span class="arithmatex">\(\mathbb{Z}_6\)</span>, which has zero divisors, it fails: <span class="arithmatex">\(2 \cdot 1 = 2 \cdot 4\)</span>.) By induction, every factor matches up.</p>
+<p><strong>If <span class="arithmatex">\(p_1\)</span> is ONLY IRREDUCIBLE (Not Prime):</strong></p>
+<p>Knowing that <span class="arithmatex">\(p_1 \mid (q_1 \cdots q_s)\)</span> does NOT guarantee that <span class="arithmatex">\(p_1\)</span> divides any individual <span class="arithmatex">\(q_j\)</span>!</p>
+<p>It could divide the whole product without dividing any piece.</p>
+<p>In short: We factor into irreducibles (unbreakable blocks), but we need those blocks to be prime (divisibility-passing) so that the factorization is guaranteed to be unique.</p>
+<p>This is a UFD. We'll skip looking at what it takes to jump to a PID and just look at what is needed to go from PID to a field. To build a field out of a PID, you quotient by a principal ideal <span class="arithmatex">\(I = \langle p \rangle\)</span>.</p>
+<p>In any commutative ring with an identity <span class="arithmatex">\(1\)</span> (without one this fails: <span class="arithmatex">\(4\mathbb{Z}\)</span> is a maximal ideal of <span class="arithmatex">\(2\mathbb{Z}\)</span>, but in <span class="arithmatex">\(2\mathbb{Z}/4\mathbb{Z}\)</span> we have <span class="arithmatex">\(2 \cdot 2 = 4 \equiv 0\)</span>, so it is not a field): <span class="arithmatex">\(R/I \text{ is a field} \iff I \text{ is a }\textbf{maximal ideal}\)</span></p>
+<p>"Maximal" means there is no other ideal strictly squeezed between <span class="arithmatex">\(I\)</span> and <span class="arithmatex">\(R\)</span>:</p>
+<div class="arithmatex">\[I \subseteq J \subseteq R \implies J = I \quad \text{or} \quad J = R\]</div>
+<p>Now translate that into the language of a PID, where every ideal is generated by a single element (<span class="arithmatex">\(I = \langle p \rangle\)</span> and <span class="arithmatex">\(J = \langle d \rangle\)</span>):</p>
+<div class="arithmatex">\[\langle p \rangle \subseteq \langle d \rangle \iff d \mid p\]</div>
+<p>Therefore, saying <span class="arithmatex">\(\langle p \rangle\)</span> is maximal means: If <span class="arithmatex">\(d\)</span> divides <span class="arithmatex">\(p\)</span>, then either <span class="arithmatex">\(\langle d \rangle = \langle p \rangle\)</span> (<span class="arithmatex">\(d\)</span> is an associate of <span class="arithmatex">\(p\)</span>) or <span class="arithmatex">\(\langle d \rangle = R\)</span> (<span class="arithmatex">\(d\)</span> is a unit).</p>
+<p>But that is the definition of an irreducible (or prime) element! In a PID, for a non-zero ideal: </p>
+<div class="arithmatex">\[\text{Maximal Ideal} \iff \text{Prime Ideal} \iff \text{Generated by an Irreducible Element}\]</div>
+<p>This also leads to the condition that a field has only two ideals, both trivial: 0 and the entire field. </p>
+<p>Two rings are isomorphic i.e. essentially the same for the purposes of algebra if we can set up a map between their elements in such a way that addition and multiplication correspond; that is, if <span class="arithmatex">\(a\)</span> corresponds to <span class="arithmatex">\(a'\)</span> and <span class="arithmatex">\(b\)</span> to <span class="arithmatex">\(b'\)</span>, then <span class="arithmatex">\(a + b\)</span> corresponds to <span class="arithmatex">\(a' + b'\)</span> and <span class="arithmatex">\(ab\)</span> to <span class="arithmatex">\(a'b'\)</span>.</p>
+<p>A weaker condition is a homomorphism. We define a homomorphism from a ring <span class="arithmatex">\(R\)</span> to a ring <span class="arithmatex">\(S\)</span> to be a function or map <span class="arithmatex">\(\theta : R \to S\)</span> which satisfies <span class="arithmatex">\(\theta(a + b) = \theta(a) + \theta(b)\)</span> and <span class="arithmatex">\(\theta(ab) = \theta(a)\theta(b)\)</span> for all <span class="arithmatex">\(a, b \in R\)</span>. Note that the addition and multiplication on the left of these equations are the operations in <span class="arithmatex">\(R\)</span>, while those on the right are the operations in <span class="arithmatex">\(S\)</span>. If a homomorphism is bijective, it becomes an isomorphism. A homomorphism is in some way a preservation of the shape of the ring.</p>
+<p>Let <span class="arithmatex">\(\theta : R \to S\)</span> be a homomorphism of rings. The image of <span class="arithmatex">\(\theta\)</span> is <span class="arithmatex">\(\text{Im}(\theta) = \{s \in S : s = \theta(r) \text{ for some } r \in R\}\)</span>, and the kernel of <span class="arithmatex">\(\theta\)</span> is <span class="arithmatex">\(\ker(\theta) = \{r \in R : \theta(r) = 0\}\)</span>.</p>
+<p><span class="arithmatex">\(\text{Im}(\theta)\)</span> is a subring of <span class="arithmatex">\(S\)</span>. <span class="arithmatex">\(\ker(\theta)\)</span> is a subring of <span class="arithmatex">\(R\)</span> which has the additional property that, for any <span class="arithmatex">\(x \in \ker(\theta)\)</span> and <span class="arithmatex">\(r \in R\)</span>, we have <span class="arithmatex">\(rx \in \ker(\theta)\)</span> and <span class="arithmatex">\(xr \in \ker(\theta)\)</span>. Two elements of <span class="arithmatex">\(R\)</span> are mapped to the same element of <span class="arithmatex">\(S\)</span> under <span class="arithmatex">\(\theta\)</span> if and only if they lie in the same coset of <span class="arithmatex">\(\ker(\theta)\)</span>.</p>
+<p>The kernel of a homomorphism <span class="arithmatex">\(\theta : R \to S\)</span> is an ideal of <span class="arithmatex">\(R\)</span>. <span class="arithmatex">\(\text{Im}(\theta)\)</span> is a subring of <span class="arithmatex">\(S\)</span>; <span class="arithmatex">\(R/\ker(\theta) \cong \text{Im}(\theta)\)</span>. This is the first isomorphism theorem.</p>
+<h3 id="homomorphisms-and-isomorphisms">Homomorphisms and Isomorphisms<a class="headerlink" href="#homomorphisms-and-isomorphisms" title="Permanent link">&para;</a></h3>
+<p>Remember back when we took the modulo 4, i.e., we wrapped the integers around the circle. We ended up with the ideal, i.e., all the numbers stacked over <span class="arithmatex">\(0\)</span>. And we got the quotient ring which consisted of the equivalence classes of the remainders. We can generalize this to a map <span class="arithmatex">\(\phi\)</span>, instead of restricting it to just modulo functions.</p>
+<p>Let's first define a ring homomorphism. <span class="arithmatex">\(\phi: R \to S\)</span> is a structure-preserving map:</p>
+<div class="arithmatex">\[\phi(a + b) = \phi(a) + \phi(b) \quad \text{and} \quad \phi(ab) = \phi(a)\phi(b)\]</div>
+<p>We define <span class="arithmatex">\(\ker(\phi) = \{k \in R \mid \phi(k) = 0_S\}\)</span> and the image of <span class="arithmatex">\(\phi\)</span>, denoted <span class="arithmatex">\(\operatorname{im}(\phi)\)</span> (or <span class="arithmatex">\(\phi(R)\)</span>), is the set of all elements in the target ring <span class="arithmatex">\(S\)</span> that are actually reached by applying <span class="arithmatex">\(\phi\)</span> to the elements of the source ring <span class="arithmatex">\(R\)</span>:</p>
+<div class="arithmatex">\[\operatorname{im}(\phi) = \{\phi(r) \mid r \in R\} = \{s \in S \mid \exists r \in R \text{ such that } \phi(r) = s\}\]</div>
+<p>Our earlier modulo operation was actually a homomorphism (well, actually a surjective homomorphism, or epimorphism), where <span class="arithmatex">\(R\)</span> was <span class="arithmatex">\(\mathbb{Z}\)</span> and <span class="arithmatex">\(S\)</span> was <span class="arithmatex">\(\mathbb{Z}_4\)</span>.</p>
+<p>The kernel should remind you of the ideal. It is the set of all elements that get crushed to zero in <span class="arithmatex">\(S\)</span>.</p>
+<p>And when does <span class="arithmatex">\(\phi\)</span> send two different elements <span class="arithmatex">\(x, y \in R\)</span> to the exact same value in <span class="arithmatex">\(S\)</span>?</p>
+<div class="arithmatex">\[\phi(x) = \phi(y) \iff \phi(x) - \phi(y) = 0_S \iff \phi(x - y) = 0_S \iff x - y \in \ker(\phi)\]</div>
+<p>The map <span class="arithmatex">\(\phi\)</span> is literally grouping the elements of <span class="arithmatex">\(R\)</span> into bundles (cosets) based on <span class="arithmatex">\(\ker(\phi)\)</span>. So the way <span class="arithmatex">\(\phi(x)\)</span> groups elements should remind you of the quotient ring.</p>
+<p>This is the content of the <strong>First Isomorphism Theorem for Rings</strong>, which states:</p>
+<p>If <span class="arithmatex">\(\phi: R \to S\)</span> is a ring homomorphism, then:</p>
+<p><span class="arithmatex">\(\ker(\phi)\)</span> is an ideal of <span class="arithmatex">\(R\)</span>.</p>
+<p>The image <span class="arithmatex">\(\operatorname{im}(\phi)\)</span> is a subring of <span class="arithmatex">\(S\)</span>.</p>
+<p><span class="arithmatex">\(R/\ker(\phi) \cong \operatorname{im}(\phi)\)</span>.</p>
+<p>Now let's look at the <strong>Second Isomorphism Theorem</strong>. Structurally, the theorem is equivalent to what we have in arithmetic. For two integers <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span>, <span class="arithmatex">\(a \cdot b = \operatorname{lcm}(a, b) \cdot \gcd(a, b)\)</span>. In the isomorphism relation below, the left side's numerator is the <span class="arithmatex">\(\gcd\)</span> and the right side's denominator is the <span class="arithmatex">\(\operatorname{lcm}\)</span>.</p>
+<p>Let <span class="arithmatex">\(R\)</span> be a ring, <span class="arithmatex">\(S\)</span> a subring of <span class="arithmatex">\(R\)</span>, and <span class="arithmatex">\(I\)</span> an ideal of <span class="arithmatex">\(R\)</span>. Then:</p>
+<p>The sum <span class="arithmatex">\(S + I = \{s + i \mid s \in S, i \in I\}\)</span> is a subring of <span class="arithmatex">\(R\)</span>.</p>
+<p>The intersection <span class="arithmatex">\(S \cap I\)</span> is an ideal of <span class="arithmatex">\(S\)</span>.</p>
+<p><span class="arithmatex">\((S + I) / I \cong S / (S \cap I)\)</span></p>
+<p>Let's look at an example. <span class="arithmatex">\(R = \mathbb{Z}\)</span>, with the ideal grid <span class="arithmatex">\(I = 6\mathbb{Z} = \{\dots, -12, -6, 0, 6, 12, \dots\}\)</span>. So <span class="arithmatex">\(R/I = \mathbb{Z}_6\)</span>.</p>
+<p>Now introduce a subring <span class="arithmatex">\(S\)</span>. Let <span class="arithmatex">\(S = 2\mathbb{Z} = \{\dots, -4, -2, 0, 2, 4, 6, \dots\}\)</span> (all even numbers).</p>
+<p>The left side of the isomorphism: <span class="arithmatex">\((S + I)/I\)</span> involves expanding <span class="arithmatex">\(S\)</span> by <span class="arithmatex">\(I\)</span> and then quotienting by <span class="arithmatex">\(I\)</span>. One reason we would want to do this is because some elements of <span class="arithmatex">\(I\)</span> might not be in <span class="arithmatex">\(S\)</span>, so by adding <span class="arithmatex">\(I\)</span>, we take care of this issue.</p>
+<p>What is <span class="arithmatex">\(S + I\)</span>? Add any multiple of <span class="arithmatex">\(6\)</span> to any even number. Since multiples of <span class="arithmatex">\(6\)</span> are already even, <span class="arithmatex">\(S + I\)</span> is just all even numbers: <span class="arithmatex">\(S + I = 2\mathbb{Z}\)</span>.</p>
+<p>Modding out by <span class="arithmatex">\(I = 6\mathbb{Z}\)</span> gives <span class="arithmatex">\(\{0, 2, 4\}\)</span>. So <span class="arithmatex">\((S + I)/I\)</span> is the 3-element sub-dial inside the 6-hour clock: <span class="arithmatex">\(\{[0], [2], [4]\}\)</span>.</p>
+<p>The Right side: <span class="arithmatex">\(S / (S \cap I)\)</span>. Look only at the subring <span class="arithmatex">\(S = 2\mathbb{Z}\)</span>, what part of <span class="arithmatex">\(I = 6\mathbb{Z}\)</span> lives inside <span class="arithmatex">\(S\)</span>? <span class="arithmatex">\(6\mathbb{Z}\)</span> itself! So if we quotient by this, what do we get: <span class="arithmatex">\(0 \pmod 6\)</span>, <span class="arithmatex">\(2 \pmod 6\)</span>, and <span class="arithmatex">\(4 \pmod 6\)</span>.</p>
+<p>What this means is, the elements of <span class="arithmatex">\(I\)</span> that don't belong to <span class="arithmatex">\(S\)</span> contribute nothing to <span class="arithmatex">\(S\)</span>, so modding out by the whole ideal <span class="arithmatex">\(I\)</span> has the exact same effect as modding out only by the shared overlap <span class="arithmatex">\(S \cap I\)</span>. The only algebraic issue is that you cannot technically form the quotient <span class="arithmatex">\(S/I\)</span> unless <span class="arithmatex">\(I\)</span> is entirely contained within <span class="arithmatex">\(S\)</span> (it must be an ideal of <span class="arithmatex">\(S\)</span>). By adding <span class="arithmatex">\(I\)</span> to <span class="arithmatex">\(S\)</span> on the left (creating <span class="arithmatex">\(S+I\)</span>), or taking the intersection on the right (<span class="arithmatex">\(S \cap I\)</span>), we ensure the quotient fractions are perfectly legal. In our example, <span class="arithmatex">\(I = 6\mathbb{Z}\)</span> happens to lie inside <span class="arithmatex">\(S\)</span> already, so <span class="arithmatex">\(S + I = S\)</span>, <span class="arithmatex">\(S \cap I = I\)</span>, and both sides are simply <span class="arithmatex">\(2\mathbb{Z}/6\mathbb{Z}\)</span>. To see the theorem do real work, take <span class="arithmatex">\(I = 3\mathbb{Z}\)</span> instead: then <span class="arithmatex">\(S + I = \mathbb{Z}\)</span> (because <span class="arithmatex">\(1 = 3 - 2\)</span>) and <span class="arithmatex">\(S \cap I = 6\mathbb{Z}\)</span>, so the theorem says <span class="arithmatex">\(\mathbb{Z}/3\mathbb{Z} \cong 2\mathbb{Z}/6\mathbb{Z}\)</span>, even though <span class="arithmatex">\(S/I\)</span> itself cannot be formed.</p>
+<p>Now for the <strong>Third Isomorphism Theorem</strong>. Structurally, this is like the fraction rule in elementary arithmetic:</p>
+<div class="arithmatex">\[\frac{a/c}{b/c} = \frac{a}{b}\]</div>
+<p>The theorem states: Let <span class="arithmatex">\(R\)</span> be a ring, and let <span class="arithmatex">\(I\)</span> and <span class="arithmatex">\(J\)</span> be ideals of <span class="arithmatex">\(R\)</span> with <span class="arithmatex">\(I \subseteq J \subseteq R\)</span>. Then:</p>
+<p><span class="arithmatex">\(J / I\)</span> is an ideal of the quotient ring <span class="arithmatex">\(R / I\)</span>.</p>
+<p><span class="arithmatex">\((R / I) \,/\, (J / I) \cong R / J\)</span></p>
+<p>Here's an example. Let the tape be <span class="arithmatex">\(R = \mathbb{Z}\)</span>. Choose <span class="arithmatex">\(I = 12\mathbb{Z}\)</span>. Choose a wider seam that contains <span class="arithmatex">\(I\)</span>: <span class="arithmatex">\(J = 4\mathbb{Z}\)</span> (every multiple of <span class="arithmatex">\(12\)</span> is a multiple of <span class="arithmatex">\(4\)</span>, so <span class="arithmatex">\(12\mathbb{Z} \subseteq 4\mathbb{Z}\)</span>).</p>
+<p>Now compare the two ways of reducing the tape. The direct fold (<span class="arithmatex">\(R / J\)</span>) gives <span class="arithmatex">\(\{0, 1, 2, 3\}\)</span>.</p>
+<p>Now for <span class="arithmatex">\((R / I) \,/\, (J / I)\)</span>. First, <span class="arithmatex">\(R/I\)</span> gives <span class="arithmatex">\(\{0, 1, 2, \dots, 11\}\)</span>. And now for <span class="arithmatex">\(J/I\)</span>, which is just <span class="arithmatex">\(\{[0], [4], [8]\}\)</span>. Because <span class="arithmatex">\(J\)</span> is an ideal in the original ring, this subset of ticks forms a legitimate ideal inside the 12-hour ring.</p>
+<p>Now glue the <span class="arithmatex">\(R / I\)</span>, i.e., <span class="arithmatex">\(\{0, 1, 2, \dots, 11\}\)</span>, together along the markers <span class="arithmatex">\(\{0, 4, 8\}\)</span>. <span class="arithmatex">\(0, 4, 8\)</span> fuse into a single zero point. <span class="arithmatex">\(1, 5, 9\)</span> fuse together into <span class="arithmatex">\([1]\)</span>. <span class="arithmatex">\(2, 6, 10\)</span> fuse together into <span class="arithmatex">\([2]\)</span>. <span class="arithmatex">\(3, 7, 11\)</span> fuse together into <span class="arithmatex">\([3]\)</span>. So both sides of the isomorphism are the same.</p>
+<p><a href="#figure-2">Figure 2</a> shows the integer tape marked at <span class="arithmatex">\(12\mathbb{Z}\)</span> and <span class="arithmatex">\(4\mathbb{Z}\)</span>, comparing the two-stage collapse through the 12-hour clock with the direct fold onto the 4-hour clock.</p>
+<p><a id="figure-2"></a><img alt="Tape seams and the Third Isomorphism Theorem" src="../figures/maths2_tape_quotient_isomorphism.png" /></p>
+<p><em>Figure 2. Folding the integer tape <span class="arithmatex">\(R = \mathbb{Z}\)</span> along the nested ideals <span class="arithmatex">\(I = 12\mathbb{Z} \subseteq J = 4\mathbb{Z}\)</span>. (a) Folding first at <span class="arithmatex">\(12\mathbb{Z}\)</span> gives the 12-hour clock <span class="arithmatex">\(R/I\)</span>, where <span class="arithmatex">\(J/I = \{[0], [4], [8]\}\)</span> and its three cosets form four inscribed triangles that collapse to the 4-hour clock <span class="arithmatex">\((R/I)/(J/I)\)</span>. (b) Folding the tape directly every <span class="arithmatex">\(4\)</span> steps gives the same 4-hour clock <span class="arithmatex">\(R/J\)</span>.</em></p>
+<p>Note that when we talk about quotienting and we have glued together a finite number of elements like above, how do we take the remainder; which number do we divide by? The answer is: we don't divide, we shift. Shifting is what taking remainders is. You do not need two separate mental procedures: coset shifting is the geometric definition of remainder arithmetic. In any quotient ring <span class="arithmatex">\(R/K\)</span>, the cosets are generated by taking the base zero-set <span class="arithmatex">\(K\)</span> and shifting it across the ring: <span class="arithmatex">\(x + K = \{x + k \mid k \in K\}\)</span></p>
+<p>These isomorphism theorems were first published by Emmy Noether. There is no standard agreement on the numbering of the above theorems.</p>
+<h3 id="lets-build-a-field">Let's Build A Field!<a class="headerlink" href="#lets-build-a-field" title="Permanent link">&para;</a></h3>
+<p>A finite field can only have a prime-power number of elements. However, there's a bit of a catch when dealing with when the power is anything other than <span class="arithmatex">\(1\)</span>.  Let's actually construct the field <span class="arithmatex">\(\mathbb{F}_9 = \mathbb{F}_{3^2}\)</span> (so <span class="arithmatex">\(q = 3\)</span> and <span class="arithmatex">\(q^2 = 9\)</span>).</p>
+<p>The integers modulo <span class="arithmatex">\(9\)</span> (<span class="arithmatex">\(\mathbb{Z}_9 = \{0, 1, \dots, 8\}\)</span>) are NOT a field because <span class="arithmatex">\(9\)</span> is not a prime number (<span class="arithmatex">\(9 = 3 \times 3\)</span>). In a field, every non-zero element must have a multiplicative inverse, and two non-zero elements can never multiply to give <span class="arithmatex">\(0\)</span>. Look at what happens in <span class="arithmatex">\(\mathbb{Z}_9\)</span> when you multiply <span class="arithmatex">\(3 \times 3\)</span>:</p>
+<div class="arithmatex">\[3 \times 3 = 9 \equiv 0 \pmod 9\]</div>
+<p>The number <span class="arithmatex">\(3\)</span> is a "zero divisor" and has no multiplicative inverse (<span class="arithmatex">\(1/3\)</span> does not exist mod <span class="arithmatex">\(9\)</span>). Division fails.</p>
+<p>When the size is a prime power <span class="arithmatex">\(p^n\)</span>, you must build <span class="arithmatex">\(\mathbb{F}_{p^n}\)</span> as an <span class="arithmatex">\(n\)</span>-dimensional vector space over the prime field <span class="arithmatex">\(\mathbb{F}_p\)</span> (the integers mod <span class="arithmatex">\(p\)</span>, the smallest field sitting inside <span class="arithmatex">\(\mathbb{F}_{p^n}\)</span>) by adjoining a root of a degree-<span class="arithmatex">\(n\)</span> polynomial that is irreducible over <span class="arithmatex">\(\mathbb{F}_p\)</span>, the exact same way you build the 2-dimensional complex numbers <span class="arithmatex">\(\mathbb{C}\)</span> from the real numbers <span class="arithmatex">\(\mathbb{R}\)</span> by adjoining <span class="arithmatex">\(i = \sqrt{-1}\)</span>.    </p>
+<p>Since <span class="arithmatex">\(x^2 + 1 = 0\)</span> has no solution in <span class="arithmatex">\(\mathbb{F}_3 = \{0, 1, 2\}\)</span> (plugging in <span class="arithmatex">\(0, 1, 2\)</span> gives <span class="arithmatex">\(0^2+1=1\)</span>,  <span class="arithmatex">\(1^2+1=2\)</span>,  <span class="arithmatex">\(2^2+1 = 5 \equiv 2 \neq 0\)</span>), we invent a symbol <span class="arithmatex">\(i\)</span> satisfying <span class="arithmatex">\(i^2 = -1 \equiv 2 \pmod 3\)</span>. Then the <span class="arithmatex">\(9\)</span> elements of the field <span class="arithmatex">\(\mathbb{F}_9\)</span> are all combinations <span class="arithmatex">\(a + bi\)</span> where <span class="arithmatex">\(a, b \in \{0, 1, 2\}\)</span>, with all arithmetic done modulo <span class="arithmatex">\(3\)</span>:</p>
+<div class="arithmatex">\[0, \quad 1, \quad 2, \quad i, \quad 1+i, \quad 2+i, \quad 2i, \quad 1+2i, \quad 2+2i\]</div>
+<p>In this system, every single non-zero element can be divided cleanly, and because it is built over <span class="arithmatex">\(\mathbb{F}_3\)</span>, adding anything to itself <span class="arithmatex">\(3\)</span> times gives <span class="arithmatex">\(0\)</span> (<span class="arithmatex">\(\text{Char } \mathbb{F}_9 = 3\)</span>).</p>
+<p><a href="#figure-3">Figure 3</a> shows the nine elements of <span class="arithmatex">\(\mathbb{F}_9\)</span> as a <span class="arithmatex">\(3 \times 3\)</span> additive grid and as a single multiplicative 8-cycle of powers of <span class="arithmatex">\(1 + i\)</span>.</p>
+<p><a id="figure-3"></a><img alt="Additive grid and multiplicative 8-cycle of F_9" src="../figures/maths2_f9_field.png" /></p>
+<p><em>Figure 3. The finite field <span class="arithmatex">\(\mathbb{F}_9 = \mathbb{F}_3(i)\)</span> with <span class="arithmatex">\(i^2 = 2\)</span>. (a) The <span class="arithmatex">\(3 \times 3\)</span> additive grid over the prime subfield <span class="arithmatex">\(\mathbb{F}_3 = \{0, 1, 2\}\)</span>, where adding <span class="arithmatex">\(1\)</span> three times wraps back to <span class="arithmatex">\(0\)</span>. (b) The eight non-zero elements as the powers of <span class="arithmatex">\(\alpha = 1 + i\)</span> (in the language of the next chapter, the multiplicative group <span class="arithmatex">\(\mathbb{F}_9^\times\)</span> is the cyclic group <span class="arithmatex">\(C_8\)</span>); the adjoined root <span class="arithmatex">\(i = \alpha^6\)</span> reaches only the four even powers, whereas <span class="arithmatex">\(1 + i\)</span> cycles through all eight non-zero elements.</em></p>
+<h3 id="fermats-little-theorem">Fermat's Little Theorem<a class="headerlink" href="#fermats-little-theorem" title="Permanent link">&para;</a></h3>
+<p>This theorem comes in handy in many prime power fields like the one we just saw. If <span class="arithmatex">\(p\)</span> is a prime number, then for any integer <span class="arithmatex">\(a\)</span>:</p>
+<div class="arithmatex">\[a^p \equiv a \pmod p\]</div>
+<p>And if <span class="arithmatex">\(a\)</span> is not divisible by <span class="arithmatex">\(p\)</span> (<span class="arithmatex">\(a \not\equiv 0 \pmod p\)</span>), we can divide both sides by <span class="arithmatex">\(a\)</span> to get:</p>
+<div class="arithmatex">\[a^{p-1} \equiv 1 \pmod p\]</div>
+<p>In the language of finite fields, this says that for every element <span class="arithmatex">\(a \in \mathbb{F}_p\)</span>, raising <span class="arithmatex">\(a\)</span> to the <span class="arithmatex">\(p\)</span>-th power does nothing at all (<span class="arithmatex">\(a^p = a\)</span>). In our previous example with <span class="arithmatex">\(p = 3\)</span>, this is why <span class="arithmatex">\(0^3 = 0\)</span>,  <span class="arithmatex">\(1^3 = 1\)</span>, and <span class="arithmatex">\(2^3 = 8 \equiv 2 \pmod 3\)</span>. We will see that this will be very useful in building things like <a href="../maths_3_projective_geometry/#example-building-a-hermitian-form-over-pg2-9">hermitian spaces in projective geometry</a>, where the Frobenius map <span class="arithmatex">\(\sigma(x) = x^3\)</span> will leave the "real" part <span class="arithmatex">\(a \in \mathbb{F}_3\)</span> completely fixed while flipping <span class="arithmatex">\(i^3 = i^2 \cdot i = -i\)</span>.</p>
+<hr />
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Linear Algebra Done Right by Sheldon Axler</li>
+<li>Introduction to Algebra by PJ Cameron</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
