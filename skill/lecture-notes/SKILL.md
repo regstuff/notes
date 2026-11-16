@@ -22,8 +22,9 @@ Collect what's missing in one round of questions; don't ask about what you alrea
    - **Quantum physics:** a one-quarter course built on state vectors, bra–ket notation and density matrices.
    - **General relativity:** a course up to the Schwarzschild metric, covering neither gravitational waves nor cosmology.
    - **Stellar structure:** Onno Pols' lecture notes.
+   - **Coding theory:** the basics (linear codes, dual codes); insights and explanations are welcome. **Smith normal form:** a very basic idea only.
 
-   Known gaps (explain these in place if used): tight-binding models, Markov-chain generators, quantum contextuality (Mermin–Peres), perfect and inseparable field extensions, and the projective picture of the light cone as a celestial sphere. The minimal polynomial of a matrix is not in the list (the reader knows irreducible polynomials); recall it where needed.
+   Known gaps (explain these in place if used): Lie algebras and Lie groups, lattices and root systems (E8, E7, Weyl groups), octonions and loops (Moufang, Paige), tight-binding models, Markov-chain generators, quantum contextuality (Mermin–Peres), perfect and inseparable field extensions, and the projective picture of the light cone as a celestial sphere. The minimal polynomial of a matrix is not in the list (the reader knows irreducible polynomials); recall it where needed.
 
    Ask only about prerequisites of the new topic that this list doesn't settle. When the user reports new study, add it to this list, so that the record travels with the skill.
 2. **The source.** Get the chapter itself (PDF path and pages) and any reading notes or formula sheets the user has. Read the whole chapter before writing the first line, because each section's overview has to know where the section is going. While reading:

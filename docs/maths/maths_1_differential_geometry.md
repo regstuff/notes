@@ -1,5 +1,445 @@
 
 # Maths 1 - Differential Geometry
+## Vector Calculus
+
+We will do a quick review of vector calculus because it plays an important role in what comes next. Vector calculus developed as part of the effort to determine and describe the behaviour of electrostatic and electrodynamic fields. Thus, whenever we need an example for illustrative purposes in this section, we will fall back on electrostatics with the electric field and electrostatic potential (voltage).
+
+First, a few definitions and formulas:
+
+$$\bar{\rho}_{\Delta V} \equiv \frac{\Delta Q}{\Delta V}$$
+
+where $\Delta Q$ is the net charge enclosed within the volume of interest $\Delta V$, and $\bar{\rho}_{\Delta V}$ is the average volumetric charge density in that volume.
+
+$$\mathbf{F}(\mathbf{r}) = \frac{1}{4\pi \varepsilon_0} \frac{q q_0}{r^2} \hat{\mathbf{u}}_r$$
+
+where $\mathbf{F}(\mathbf{r})$ is the electrostatic (Coulomb) force exerted by a source charge $q$ on a test charge $q_0$ separated by a distance $r$,  $\varepsilon_0$ is the permittivity of free space (or $\varepsilon$ in a linear dielectric medium), and $\hat{\mathbf{u}}_r$ is the unit vector pointing radially from the source charge $q$ to the test charge $q_0$.
+
+$$\mathbf{E}(\mathbf{r}) = \frac{\mathbf{F}(\mathbf{r})}{q_0} = \frac{1}{4\pi \varepsilon_0} \frac{q}{r^2} \hat{\mathbf{u}}_r$$
+
+where $\mathbf{E}(\mathbf{r})$ is the electric field at position $\mathbf{r}$ (defined as the electrostatic force per unit test charge $q_0$).
+
+Note that the electrostatic field follows the principle of superposition, i.e., if there are $N$ point charges in a region, the net electric field at any point in the region is simply the vector sum of the individual electric fields produced by each charge:
+
+$$\mathbf{E}(\mathbf{r}) = \sum_{i=1}^{N} \mathbf{E}_i(\mathbf{r}) = \frac{1}{4\pi \varepsilon_0} \sum_{i=1}^{N} \frac{q_i}{\Vert{}\mathbf{r} - \mathbf{r}_i\Vert{}^2} \hat{\mathbf{u}}_i$$
+
+### Scalars & Vector Fields
+
+Think of the temperature in the Earth's atmosphere. At every latitude and longitude and at every height in the atmosphere, there is a value for the temperature. The temperature has no direction, i.e., it makes no sense to say the temperature is $25^\circ\text{C}$ East. It only has a value. This is a scalar. And a function that tells us the value of the scalar at every coordinate is called a scalar field $f(x,y,z)$ (for the Cartesian coordinates).
+
+Similarly, think of the wind in the atmosphere. Once again, at every latitude and longitude and at every height in the atmosphere, there is a value for the wind's velocity. But velocity also has a direction. This is a vector. And a function that tells us the magnitude and the direction of the vector at every coordinate is called a vector field $\mathbf{F}(x,y,z)$ (for the Cartesian coordinates).
+
+$$\mathbf{F}(x,y,z)=F_x(x,y,z)\hat{\mathbf{x}}+F_y(x,y,z)\hat{\mathbf{y}}+F_z(x,y,z)\hat{\mathbf{z}}$$
+
+An important point that becomes important in things like General Relativity is the fact that a scalar field $f$ is invariant under coordinate transformations: $f'(x',y',z') = f(x,y,z)$. The temperature at a physical point in the atmosphere does not change if you rotate your map axes.
+        
+But a vector field $\mathbf{F}$ has components that mix linearly according to the rotation matrix $R_{ij}$:
+        
+$$F'_i(\mathbf{r}')=\sum_{j=1}^3 R_{ij}F_j(\mathbf{r})$$
+
+For example, a vector in the $xy$-plane at 45 degrees to the $x$-axis will have an $x$ and $y$ components. But if we rotate the coordinates by 45 degrees, then the new vector representation will have only an $x$-component. This of course does not mean the vector changed. Only its components as represented in the coordinate system change.
+
+It is worth noting that while a scalar field is simply written as $f(r,\theta,\phi)$, a vector field in spherical coordinates uses local basis vectors $\hat{\mathbf{r}},\hat{\boldsymbol{\theta}},\hat{\boldsymbol{\phi}}$ whose directions themselves change from point to point across the Earth. This position-dependence of the basis vectors is why taking derivatives ($\nabla\cdot\mathbf{F}$ or later $\nabla\times\mathbf{F}$) in spherical coordinates introduces extra scale factors compared to Cartesian coordinates.
+
+### Intuition
+Before going further, let's briefly look at what is coming up. Given a scalar field, we will be interested in how this field changes over the region of interest, i.e., the rates of change along the coordinate axes. This is given by the gradient of the scalar field. Since this rate of change has a magnitude and a direction (the direction of steepest increase) at every point, the gradient will be a vector field. Of course, a vector field need not necessarily only come via taking the gradient of a scalar field. It can exist all by itself as well.
+
+Given a vector field, whether the gradient of a scalar field or otherwise, we will be interested in whether there are any sources or sinks for this field in the region of interest, i.e., does anything cause the flux or the "volume of flow" of a field to increase or decrease at a point. This will lead us to the divergence, which looks at every point and assesses whether the net "outflow" of the field is greater than, less than, or equal to the net "inflow". Since this is only a value and has no direction, the divergence becomes a scalar field.
+
+Given a vector field, we are also interested in how the vector field behaves over a closed loop. Does its line integral add up to $0$ or not? This leads us to the curl, which will link back to the gradient again (since the curl of a gradient is always $\mathbf{0}$). Along the way, we see that all of these are tied to each other through certain fundamental relations that also link what happens over the boundary of a region to what happens within the region.
+
+---
+
+**Aside:** In $3\text{D}$ Euclidean space, gradient, curl, and divergence form an exact sequence of differential operators moving from $0\text{D}$ objects (points/scalars) to $1\text{D}$ (curves), $2\text{D}$ (surfaces), and $3\text{D}$ (volumes), called the de Rham complex:
+
+$$\text{Scalar Fields }(\Omega^0)\xrightarrow{\text{grad }(\nabla)}\text{Vector Fields }(\Omega^1)\xrightarrow{\text{curl }(\nabla\times)}\text{Vector Fields }(\Omega^2)\xrightarrow{\text{div }(\nabla\cdot)}\text{Scalar Fields }(\Omega^3)$$
+
+Notice how taking two steps in a row in this chain always yields zero:
+Step $1\to 2$: $\nabla\times(\nabla f)=\mathbf{0}$ (a gradient field has no curl / closed-loop circulation).
+
+
+**Step $2\to 3$: $\nabla\cdot(\nabla\times\mathbf{F})=0$ (a curl field has no divergence / sources or sinks; its field lines always form closed loops or extend to infinity).
+
+---
+
+### Gauss's Law 
+
+Gauss's Law states:
+
+$$\oint_S \mathbf{E} \cdot \hat{\mathbf{n}}\, dS = \frac{Q_{\text{enc}}}{\varepsilon_0}$$
+
+where $S = \partial V$ is any closed surface enclosing a volume $\Delta V$,  $\hat{\mathbf{n}}$ is the outward-pointing unit normal vector to the infinitesimal surface area element $dS$,  $Q_{\text{enc}} = \Delta Q$ is the total net charge enclosed within the surface $S$, and $\varepsilon_0$ is the permittivity of free space.
+
+This equation represents the experimental fact that the net electric flux crossing a closed surface is directly proportional to the total charge enclosed by that surface.
+
+The LHS represents the flux of the electric field crossing the closed surface. This is why we have the dot product with the unit normal vector. If the electric field is aligned with the normal vector, the flux through that surface patch is maximum. Otherwise, it diminishes by $\cos\theta$, where $\theta$ is the angle between $\mathbf{E}$ and $\hat{\mathbf{n}}$. Intuitively, this makes sense. Think of what happens when a wind is blowing against us. If we stand facing the wind head-on, our body intercepts the maximum airflow. If we turn our body so its surface normal is at an angle to the wind, our cross-sectional area perpendicular to the wind decreases by $\cos\theta$, intercepting less flow.
+
+### Divergence
+We can do something interesting now. Let us write the RHS in terms of the average charge density $\bar{\rho}_{\Delta V}$ in the enclosed volume $\Delta V$:
+
+$$\oint_S \mathbf{E} \cdot \hat{\mathbf{n}}\, dS = \frac{\bar{\rho}_{\Delta V} \Delta V}{\varepsilon_0}$$
+
+$$\frac{1}{\Delta V} \oint_S \mathbf{E} \cdot \hat{\mathbf{n}}\, dS = \frac{\bar{\rho}_{\Delta V}}{\varepsilon_0}$$
+
+The LHS has become the outward flux per unit volume (flux density per unit volume or volumetric flux density) in $\Delta V$. Now let us see what happens as we shrink $\Delta V \to 0$ around a point $P$. The average charge density $\bar{\rho}_{\Delta V}$ becomes $\rho(P)$, the volumetric charge density at the point $P$:
+
+$$\mathbf{Div(E)} \equiv \lim_{\Delta V \to 0} \frac{1}{\Delta V} \oint_S \mathbf{E} \cdot \hat{\mathbf{n}}\, dS = \frac{\rho(P)}{\varepsilon_0}$$
+
+The LHS becomes the net outward flux per unit volume at that point. This is called the divergence of the vector field. Essentially, it tells us the net rate per unit volume at which flux is being generated or absorbed at a point—the difference between how much stuff is flowing out of an infinitesimal volume around the point and how much stuff is flowing in, integrated over all directions rather than along any single direction. Since this is a net scalar flux per unit volume, the divergence is a scalar field.
+
+We represent divergence by $\nabla \cdot$, so the divergence of the electric field becomes $\nabla \cdot \mathbf{E}$. The $\nabla$ notation is not just random. We will see that it "operates" as an "operator" i.e. it can act on fields in its own right. More on this in a little while.
+
+Now we will simply give the formula for divergence here, without actually deriving it. The derivation follows the standard methodology of evaluating the surface integral over the six faces of an infinitesimal coordinate box $\Delta V = \Delta x\, \Delta y\, \Delta z$ and taking the limit as the box shrinks to zero.
+
+In Cartesian coordinates $(x, y, z)$, for a vector field $\mathbf{F} = F_x \hat{\mathbf{e}}_x + F_y \hat{\mathbf{e}}_y + F_z \hat{\mathbf{e}}_z$, the divergence is:
+
+$$\nabla \cdot \mathbf{F} = \frac{\partial F_x}{\partial x} + \frac{\partial F_y}{\partial y} + \frac{\partial F_z}{\partial z}$$
+
+Note that though this is usually given as the primary formula for the divergence, this simple sum of partial derivatives only holds in Cartesian coordinates. In curvilinear coordinates, the basis vectors and side lengths vary with position, so we must either convert via the coordinate transformation rules (using scale factors or the metric tensor) or rederive the relation from the shrinking $\Delta V$ definition above. Thus, it is best to think of the divergence geometrically as the net outward flux per unit volume at a point rather than as a fixed coordinate formula.
+
+In cylindrical coordinates $(r, \phi, z)$ and spherical coordinates $(r, \theta, \phi)$, the divergence is given by:
+
+Cylindrical coordinates $(r, \phi, z)$:
+
+$$\nabla \cdot \mathbf{F} = \frac{1}{r}\frac{\partial}{\partial r}(r F_r) + \frac{1}{r}\frac{\partial F_\phi}{\partial \phi} + \frac{\partial F_z}{\partial z} = \frac{\partial F_r}{\partial r} + \frac{F_r}{r} + \frac{1}{r}\frac{\partial F_\phi}{\partial \phi} + \frac{\partial F_z}{\partial z}$$
+
+Spherical coordinates $(r, \theta, \phi)$:
+
+$$\nabla \cdot \mathbf{F} = \frac{1}{r^2} \frac{\partial}{\partial r}(r^2 F_r) + \frac{1}{r \sin\theta} \frac{\partial}{\partial \theta}(\sin\theta\, F_\theta) + \frac{1}{r \sin\theta} \frac{\partial F_\phi}{\partial \phi}$$
+
+In physics and engineering, we can neglect $\frac{F_r}{r}$ in the cylindrical coordinates compared to $\frac{\partial F_r}{\partial r}$ when the characteristic length scale $\Delta r$ over which $F_r$ changes is much smaller than the radius $r_0$ at which we are evaluating the field:
+
+$$\left\vert{}\frac{\partial F_r}{\partial r}\right\vert{} \sim \frac{\vert{}F_r\vert{}}{\Delta r} \gg \frac{\vert{}F_r\vert{}}{r_0} \iff \frac{\Delta r}{r_0} \ll 1$$
+
+We can also drop $\frac{F_r}{r}$ when the radial component of the field is identically zero ($F_r = 0$). Physically, this means the field lines only circulate around the axis ($F_\phi$) or flow parallel to the axis ($F_z$), never crossing between inner and outer radial shells. Because no flux crosses the curved radial walls of the tube, the expanding surface area of those walls does not affect the divergence.
+
+Now let us go back to the Cartesian coordinate formula since it is easy to get an intuitive feel for divergence from it. Let us take a simpler case of 1 dimension, i.e., just the $x$-axis, and ignore the other two. As we saw above, the divergence is the net outward flux per unit volume (or length, in 1D), i.e., we take the difference between the stuff leaving at point $x + \Delta x$ and the stuff entering at point $x$, and divide by $\Delta x$:
+
+$$\frac{F_x(x + \Delta x) - F_x(x)}{\Delta x}$$
+
+If we take the limit $\Delta x \to 0$, this is nothing but the partial derivative with respect to $x$,  $\frac{\partial F_x}{\partial x}$.
+
+Now let us move this over to 3 dimensions. Instead of a single point, consider an infinitesimal cubical box $\Delta V = \Delta x\, \Delta y\, \Delta z$ centered at our point. Suppose there is a vector field $\mathbf{F}$ flowing in and out across the six faces of this tiny box. 
+
+The field $\mathbf{F}$ has $x$,  $y$, and $z$ components ($F_x, F_y, F_z$). Since we are calculating flux across the faces of the box, notice that the net flux out of the two faces parallel to the $yz$-plane (the planes at $x$ and $x + \Delta x$, whose outward normal vectors are $-\hat{\mathbf{e}}_x$ and $+\hat{\mathbf{e}}_x$) depends only on $F_x$, the component of $\mathbf{F}$ along $x$. The components $F_y$ and $F_z$ are parallel to the $yz$-plane (perpendicular to the normal vectors $\pm\hat{\mathbf{e}}_x$) and so contribute zero flux across those two faces. Comparing the outflow $F_x(x+\Delta x, y, z)\Delta y\Delta z$ on the right face with the inflow $F_x(x, y, z)\Delta y\Delta z$ on the left face and dividing by the volume $\Delta x \Delta y \Delta z$ gives $\frac{\partial F_x}{\partial x}$. Similarly, we can do the exact same thing with $F_y$ across the two $xz$-faces and $F_z$ across the two $xy$-faces. 
+
+Thus, to find the net outward flux per unit volume, we only need to take the partial derivative of $F_x$ with respect to $x$,  $F_y$ with respect to $y$, and $F_z$ with respect to $z$, and add them together. We need not worry about how $F_x$ changes with $y$ or $z$, and so on (those cross-derivatives instead govern the curl of the field).
+
+### Nabla ($\nabla$)
+
+We can now give a more concrete form to $\nabla$. In three-dimensional Cartesian coordinates as the vector differential operator is:
+
+$$\nabla=\hat{\mathbf{x}}\frac{\partial}{\partial x}+\hat{\mathbf{y}}\frac{\partial}{\partial y}+\hat{\mathbf{z}}\frac{\partial}{\partial z}$$
+
+Note that while $\nabla$ transforms like a vector under rotations, it is not a true vector on its own—it has no magnitude or direction until it acts on a field, and it does not commute with functions ($\nabla\cdot\mathbf{E}\neq\mathbf{E}\cdot\nabla$).
+
+### Divergence Theorem
+
+Suppose we have a volume. If we split this into infinitesimally small cubic pieces, we see that the net flux through any piece, let's say along the $x$-axis, is given by $\left(F_x\left(x+\frac{\Delta x}{2}\right)-F_x\left(x-\frac{\Delta x}{2}\right)\right)\Delta y\Delta z$. If we look at the piece of volume right next to this, which shares a common face with it, the flux along the $x$-axis through it is $\left(F_x\left(x+\frac{3\Delta x}{2}\right)-F_x\left(x+\frac{\Delta x}{2}\right)\right)\Delta y\Delta z$. Thus, if we add the flux through both volumes, the $F_x\left(x+\frac{\Delta x}{2}\right)$ term cancels out. 
+
+We can in fact complete this picture to get a derivation of the formula for divergence, which we skipped earlier:
+
+$$F_x\left(x+\frac{\Delta x}{2},y,z\right)-F_x\left(x-\frac{\Delta x}{2},y,z\right)\approx\frac{\partial F_x}{\partial x}\Delta x$$
+    
+Multiplying by the face area $\Delta y\Delta z$ gives $\frac{\partial F_x}{\partial x}\Delta x\Delta y\Delta z=\frac{\partial F_x}{\partial x}\Delta V$. Summing the $x$,  $y$, and $z$ face pairs immediately yields:
+
+$$d\Phi_{\text{cube}}=\left(\frac{\partial F_x}{\partial x}+\frac{\partial F_y}{\partial y}+\frac{\partial F_z}{\partial z}\right)\Delta V=(\nabla\cdot\mathbf{F})\Delta V$$
+
+Cancelling out the $\Delta V$ on both sides gives us the divergence formula.
+
+Now back to the matter at hand, extending our picture of the adjacent small cubes to the whole volume iteratively, we can arrive at the fact that the sum of the flux through all these little pieces is just the flux through the closed bounding surface of the entire volume. But what is the sum of the flux through all these little volumes? In the limit as the pieces shrink, the flux through each little volume is the divergence at that volume, multiplied by the volume $\Delta V$:
+
+$$\sum_i (\nabla\cdot\mathbf{F})_i\Delta V_i\approx\oint_{\partial V}\mathbf{F}\cdot\hat{\mathbf{n}}\,dS$$
+
+The LHS is the usual approximation of a volume integral. Taking the limit $\Delta V_i\to 0$, we can therefore write the equation in the form commonly referred to as the Divergence Theorem:
+
+$$\iiint_V (\nabla\cdot\mathbf{F})\,dV=\oiint_{\partial V}\mathbf{F}\cdot\hat{\mathbf{n}}\,dS$$
+
+The total flux through the closed surface equals the volume integral of the divergence over the entire volume. This is just a "larger" (macroscopic) version of our local formula for divergence, which looks at just a point, an infinitesimally small volume. This formula is quite important because it helps to relate something that operates across a 2D surface to something that operates over a 3D volume. It also provides a relationship between the "bulk" volume and its "boundary" surface. We will encounter something similar later when we look at Stokes' Theorem. These kinds of relations between bulk and boundary are important in various situations including homology and cohomology in mathematics and cochain complexes. We will look at this later.
+
+### Dirac Delta Function
+
+Going back to the divergence formula, in terms of the electrostatic field, we frequently will be intersested in situations where there are charges at specific locations and empty space elsewhere, which means the volumetric charge density spikes to infinity (assuming the charge is a point) where the charge is located and zero elsewhere. 
+
+Go back to the divergence we wrote down in spherical coordinates. The electric field of a single point charge $q$ sitting at the origin is, $\mathbf{E} = \frac{q}{4\pi\varepsilon_0} \frac{\hat{\mathbf{u}}_r}{r^2}$:
+
+At every point $r > 0$, plugging $E_r = \frac{q}{4\pi\varepsilon_0 r^2}$ into the spherical formula $\frac{1}{r^2}\frac{\partial}{\partial r}(r^2 E_r)$ gives $\frac{1}{r^2}\frac{\partial}{\partial r}\left(\frac{q}{4\pi\varepsilon_0}\right) = 0$. That makes physical sense because in the empty space outside the origin ($r > 0$), the charge density is $\rho(\mathbf{r}) = 0$, and every field line that enters a volume element at $r > 0$ also exits it.
+    
+However, at the origin $r = 0$, $E_r$ blows up as $1/r^2$, and the closed surface integral $\oint_S \mathbf{E}\cdot\hat{\mathbf{n}}\,dS$ over any sphere containing the origin is $\frac{q}{\varepsilon_0} \neq 0$.
+    
+We use the Dirac Delta function $\delta^3(\mathbf{r})$, which is exactly what we just described, an infinite spike at the point where the charge is located and zero everywhere else. The fundamental formula is given by:
+    
+$$\nabla \cdot \left(\frac{\hat{\mathbf{u}}_r}{r^2}\right) = 4\pi \delta^3(\mathbf{r}) \implies \nabla \cdot \mathbf{E} = \frac{q}{\varepsilon_0} \delta^3(\mathbf{r}) = \frac{\rho(\mathbf{r})}{\varepsilon_0}$$
+
+
+### Line Integrals
+
+Suppose I have a curved line in a 3D space. Can we calculate the length of this arbitrary curve? Yes, we can simply look at minuscule portions $ds$ of the curve from points $s_1$ to $s_2$, and sum them up. This is the usual trick to arrive at an integral, which gives us the length:
+
+$$\int_{s_1}^{s_2}ds$$
+
+Here,  $s$ is called the arc length parameter, and $ds$ is the infinitesimal arc length element.
+
+Now let's say we had some scalar function $f(x,y,z)$ defined along the curve. We could calculate the integral of this function over the curve with:
+
+$$\int_{s_1}^{s_2}f(x,y,z)\,ds$$
+
+If we write $x$,  $y$, and $z$ in terms of a parameter (usually $s$ itself), this becomes:
+
+$$\int_{s_1}^{s_2}f(x(s),y(s),z(s))\,ds$$
+
+Writing the coordinates in terms of a single parameter is just a fancy way of admitting that the $x$,  $y$, and $z$ that are of interest to us right now, i.e., the $x$,  $y$, and $z$ of the curve, are interdependent on each other's values. In fact, they can all be written in terms of a single variable, which we call a parameter. Choosing $s$ as that parameter makes things a little convenient, but we could just as well have chosen anything. For e.g., we're used to writing a line as $y=mx+c$. Here $y$ is being expressed in terms of $x$, which is the parameter. Thus the coordinates of the line become $(x,mx+c)$. The same technique is being applied in the line integral case.
+
+Can we also integrate over the curve with a vector instead of a scalar? Sure! Let's say a force $\mathbf{F}(x,y,z)$ acts to move something along the path of the line integral/curve. How much work does it do? We know that work for a small step is $\mathbf{F}\cdot d\mathbf{s}$, where $d\mathbf{s}$ is the infinitesimal displacement vector along which the force acts, and we take the dot product between the force and the displacement vectors. Applying this formula to an infinitesimal length, and noting that the displacement vector $d\mathbf{s}=\hat{\mathbf{t}}\,ds$ points along the unit tangent $\hat{\mathbf{t}}$ at every point, we can integrate over the curve to get the work done:
+
+$$\mathcal{W}=\int_{s_1}^{s_2}\mathbf{F}\cdot\hat{\mathbf{t}}\,ds$$
+
+where $\hat{\mathbf{t}}$ is the unit tangent vector at each point of the curve. First, let's figure out the tangent's components. A tangent vector is simply the rate of change of the coordinates of the curve, i.e., how much each of the coordinates changes as we traverse some infinitesimal length of the curve.
+
+Let's look at the $x$-component of the tangent vector first. In the $x$-direction, the change is simply $x(s+\Delta s)-x(s)$, which is the difference in the $x$-coordinates of the two super-close points on the curve, which we then divide by $\Delta s$ to get $\frac{x(s+\Delta s)-x(s)}{\Delta s}$. We can write similar expressions for $y$ and $z$:  $\frac{y(s+\Delta s)-y(s)}{\Delta s}$ and $\frac{z(s+\Delta s)-z(s)}{\Delta s}$. Taking $\Delta s$ to its limit $0$ gives the unit tangent vector as:
+
+$$\hat{\mathbf{t}}=\frac{dx}{ds}\hat{\mathbf{i}}+\frac{dy}{ds}\hat{\mathbf{j}}+\frac{dz}{ds}\hat{\mathbf{k}}$$
+
+If we plug this into our work formula:
+
+$$\mathcal{W}=\int_{s_1}^{s_2}\mathbf{F}\cdot\hat{\mathbf{t}}\,ds$$
+
+$$\mathcal{W}=\int_{s_1}^{s_2}(F_x\,dx+F_y\,dy+F_z\,dz)$$
+
+where $F_x$,  $F_y$, and $F_z$ are the components of force along those directions. Note once again that the integral is taken over the curve from the start point $s_1$ to the finish point $s_2$.
+
+Now what happens when we take the integral from $s_1$ to $s_2$ over two different paths? Do we get the same amount of work? Well, we know from experience that that is not always the case. If you drag a load of bricks against friction in a straight line over 10 meters, compared to dragging it a kilometer and then finally ending up at the same destination, you clearly have done more work in the second case. So work in general is path-dependent. Or put the other way, work is not always path-independent. 
+
+When can we have some vector field whose integral is path-independent? The fact that the expression involves an integral kind of gives things away. If the vector field is the gradient of some scalar field, let's say $\psi$, then we could informally write:
+
+$$\mathcal{W}=\int_{s_1}^{s_2}\left(\frac{\partial\psi}{\partial x}dx+\frac{\partial\psi}{\partial y}dy+\frac{\partial\psi}{\partial z}dz\right)=\int_{s_1}^{s_2}d\psi=\psi(s_2)-\psi(s_1)$$
+
+Now $\mathcal{W}$ depends only on the values of $\psi$ at $s_2$ and $s_1$. It doesn't care what path $\mathcal{W}$ was evaluated over. Thus, if the path is closed, i.e., the start and end points coincide ($s_1$ and $s_2$ represent the same point in space), we have $\mathcal{W}=0$. This applies in electrostatic fields, where if we measure the potential at some point, then walk around in an electric field and keep "accumulating" potential differences due to the field, and gradually return to that point along some closed path, the potential must obviously equal what we measured initially. Thus, the closed-loop integral works out to zero, and voltage (potential difference) is path-independent. The field $\mathbf{E}$, which we get from $\mathbf{E}=-\left(\frac{\partial\psi}{\partial x}\hat{\mathbf{i}}+\frac{\partial\psi}{\partial y}\hat{\mathbf{j}}+\frac{\partial\psi}{\partial z}\hat{\mathbf{k}}\right)$, is called conservative because its line integral is path-independent (and comes from a single-valued scalar potential), and $\mathbf{E}$ is the negative gradient of the electric potential. We'll get back to the gradient shortly, but first let's examine the closed loop a little more.
+
+Note that the circulation of a vector field $\mathbf{F}$ (often denoted by $\Gamma$) is defined as the line integral of the vector field taken around a closed curve  $C$:
+
+$$\Gamma=\oint_C\mathbf{F}\cdot d\mathbf{s}=\oint_C\mathbf{F}\cdot\hat{\mathbf{t}}\,ds=\oint_C(F_x\,dx+F_y\,dy+F_z\,dz)$$
+
+---
+
+**Aside:** In practice, parameterizing a curve by its exact arc length $s$ is often algebraically difficult (for example, on an ellipse,  $s$ leads to elliptic integrals). If we instead use an arbitrary smooth parameter $t\in[t_1,t_2]$ with position vector $\mathbf{r}(t)=(x(t),y(t),z(t))$, the arc length element is obtained via the Euclidean metric (Pythagorean theorem):
+    
+$$ds=\sqrt{dx^2+dy^2+dz^2}=\sqrt{\left(\frac{dx}{dt}\right)^2+\left(\frac{dy}{dt}\right)^2+\left(\frac{dz}{dt}\right)^2}\,dt=\left\Vert{}\frac{d\mathbf{r}}{dt}\right\Vert{}dt$$
+    
+Notice that for a scalar line integral $\int_C f\,ds$, you must explicitly compute the square root speed factor $\left\Vert{}\frac{d\mathbf{r}}{dt}\right\Vert{}$. However, for a _vector_ line integral, the unit tangent is $\hat{\mathbf{t}}=\frac{d\mathbf{r}/dt}{\Vert{}d\mathbf{r}/dt\Vert{}}$, so when you form $d\mathbf{s}=\hat{\mathbf{t}}\,ds$, the speed factors $\left\Vert{}\frac{d\mathbf{r}}{dt}\right\Vert{}$ cancel out cleanly:
+   
+$$\int_C\mathbf{F}\cdot\hat{\mathbf{t}}\,ds=\int_{t_1}^{t_2}\mathbf{F}(\mathbf{r}(t))\cdot\frac{d\mathbf{r}/dt}{\Vert{}d\mathbf{r}/dt\Vert{}}\left\Vert{}\frac{d\mathbf{r}}{dt}\right\Vert{}dt=\int_{t_1}^{t_2}\mathbf{F}(\mathbf{r}(t))\cdot\frac{d\mathbf{r}}{dt}\,dt$$
+    
+This also proves that vector line integrals are invariant under any orientation-preserving reparameterization of the curve (and flip sign if the orientation is reversed), whereas scalar line integrals are completely independent of orientation.
+
+### Curl ($\nabla\times$)
+
+As we mentioned, for an electrostatic field, evaluating $\mathbf{E}$ over a closed loop results in $0$. This would be kind of handy in detecting if a given field can actually be an electrostatic field. Just as we did with the divergence, we'll take the line integral over a closed loop and shrink the loop till its area (and perimeter) approaches zero. Dividing by the area of the loop will give us the value of the circulation per unit area at every point, just as we ended up with the divergence (flux per unit volume) at each point earlier. We will call this pointwise circulation density the curl.
+
+Let's take a minuscule rectangle in the $xy$-plane, centered at $(x,y,z)$ and traversed counter-clockwise, as our loop.
+
+Along the two $x$-edges, we find the line integral to be the difference between the values over the two edges. We take the difference because we travel in opposite directions when traversing the two edges (in the $+\hat{\mathbf{x}}$ direction along the bottom edge at $y-\frac{\Delta y}{2}$, and in the $-\hat{\mathbf{x}}$ direction along the top edge at $y+\frac{\Delta y}{2}$):
+
+$$\int_{x\text{-edges}}\mathbf{F}\cdot\hat{\mathbf{t}}\,ds=-\left(F_x\left(x,y+\frac{\Delta y}{2},z\right)-F_x\left(x,y-\frac{\Delta y}{2},z\right)\right)\Delta x=-\frac{F_x\left(x,y+\frac{\Delta y}{2},z\right)-F_x\left(x,y-\frac{\Delta y}{2},z\right)}{\Delta y}\Delta x\Delta y$$
+
+Similarly, along the $y$-edges (moving in the $+\hat{\mathbf{y}}$ direction along the right edge at $x+\frac{\Delta x}{2}$, and in the $-\hat{\mathbf{y}}$ direction along the left edge at $x-\frac{\Delta x}{2}$), we get:
+
+$$\int_{y\text{-edges}}\mathbf{F}\cdot\hat{\mathbf{t}}\,ds=\left(F_y\left(x+\frac{\Delta x}{2},y,z\right)-F_y\left(x-\frac{\Delta x}{2},y,z\right)\right)\Delta y=\frac{F_y\left(x+\frac{\Delta x}{2},y,z\right)-F_y\left(x-\frac{\Delta x}{2},y,z\right)}{\Delta x}\Delta x\Delta y$$
+
+Adding these two up, dividing by the loop area $\Delta S=\Delta x\Delta y$, and noticing that the expressions in the limit are just the partial derivatives with respect to $x$ and $y$, we get the final expression of the line integral per unit area as the loop shrinks to zero. Note that when shrinking the loop, we shrink both $\Delta x$ and $\Delta y$. If we just shrunk $\Delta x$ but kept $\Delta y$ constant, we wouldn't be able to approximate the field along the edges at a single point as we do here:
+
+$$\lim_{\Delta S\to 0}\frac{1}{\Delta S}\oint\mathbf{F}\cdot\hat{\mathbf{t}}\,ds=\frac{\partial F_y}{\partial x}-\frac{\partial F_x}{\partial y}$$
+
+This, however, is just the value in the $xy$-plane. We could do the same for the $xz$- and $yz$-planes and get the following values:
+
+-   In the $yz$-plane:  $\frac{\partial F_z}{\partial y}-\frac{\partial F_y}{\partial z}$
+    
+-   In the $xz$-plane (oriented with normal $+\hat{\mathbf{j}}$):  $\frac{\partial F_x}{\partial z}-\frac{\partial F_z}{\partial x}$
+    
+These 3 components are called the curl when put together. Note that a plane's orientation can be uniquely determined by its unit normal vector in 3 dimensions (using the right-hand rule), and so we could say the $xy$-plane corresponds to the $\hat{\mathbf{k}}$ (or $\hat{\mathbf{z}}$) vector, the $xz$-plane corresponds to the $\hat{\mathbf{j}}$ (or $\hat{\mathbf{y}}$) vector, and the $yz$-plane corresponds to the $\hat{\mathbf{i}}$ (or $\hat{\mathbf{x}}$) vector.
+
+Thus, we can write the three components of the infinitesimal closed-loop circulation per unit area at each point as the curl:
+
+$$\nabla\times\mathbf{F}=\left(\frac{\partial F_z}{\partial y}-\frac{\partial F_y}{\partial z}\right)\hat{\mathbf{i}}+\left(\frac{\partial F_x}{\partial z}-\frac{\partial F_z}{\partial x}\right)\hat{\mathbf{j}}+\left(\frac{\partial F_y}{\partial x}-\frac{\partial F_x}{\partial y}\right)\hat{\mathbf{k}}$$
+
+If this curl is zero everywhere (in a simply connected region), we can say the field could be an electrostatic field. In general, such fields are called irrotational. $\text{Curl }\mathbf{F}$ in Cartesian coordinates can be remembered via the mnemonic device of the three-by-three determinant:
+
+$$\nabla\times\mathbf{F}=\begin{vmatrix}\hat{\mathbf{i}} & \hat{\mathbf{j}} & \hat{\mathbf{k}} \\ \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\ F_x & F_y & F_z\end{vmatrix}$$
+
+Once again, though the above equation is usually given as the formula for curl, it is only valid in Cartesian coordinates. The best way to think of curl is as the pointwise value of the closed-loop line integral per unit area. In cylindrical coordinates $(r,\phi,z)$ and spherical coordinates $(r,\theta,\phi)$, it is given by:
+
+$$\nabla\times\mathbf{F}_{\text{cyl}}=\left(\frac{1}{r}\frac{\partial F_z}{\partial\phi}-\frac{\partial F_\phi}{\partial z}\right)\hat{\mathbf{r}}+\left(\frac{\partial F_r}{\partial z}-\frac{\partial F_z}{\partial r}\right)\hat{\boldsymbol{\phi}}+\frac{1}{r}\left(\frac{\partial(rF_\phi)}{\partial r}-\frac{\partial F_r}{\partial\phi}\right)\hat{\mathbf{z}}$$
+
+$$\nabla\times\mathbf{F}_{\text{sph}}=\frac{1}{r\sin\theta}\left(\frac{\partial(F_\phi\sin\theta)}{\partial\theta}-\frac{\partial F_\theta}{\partial\phi}\right)\hat{\mathbf{r}}+\frac{1}{r}\left(\frac{1}{\sin\theta}\frac{\partial F_r}{\partial\phi}-\frac{\partial(rF_\phi)}{\partial r}\right)\hat{\boldsymbol{\theta}}+\frac{1}{r}\left(\frac{\partial(rF_\theta)}{\partial r}-\frac{\partial F_r}{\partial\theta}\right)\hat{\boldsymbol{\phi}}$$
+
+The typical way to think of curl is as a field that globally rotates (moves in circles), but that's not quite right and can lead us astray. Take for example a field:
+
+$$\mathbf{v}=\hat{\mathbf{j}}v_0 e^{-y^2/h^2}$$
+
+This is a field, let's say of flowing water, that points in the $y$-direction, is maximum at the $x$-axis ($y=0$), does not change along $x$, and reduces as you move away from the $x$-axis along the $y$-direction. If you do the calculations, you will see that the curl is $\mathbf{0}$:
+
+$$\nabla\times\mathbf{v}=\left(\frac{\partial v_y}{\partial x}-\frac{\partial v_x}{\partial y}\right)\hat{\mathbf{k}}=(0-0)\hat{\mathbf{k}}=\mathbf{0}$$
+
+If you placed a little flat paddle wheel in this water flow, it would not rotate.
+
+Now consider:
+
+$$\mathbf{v}=\hat{\mathbf{j}}v_0 e^{-x^2/h^2}$$
+
+This is a field that points in the $y$-direction, is maximum at the $y$-axis ($x=0$), does not change along $y$, but changes along $x$, and reduces as you move away from the $y$-axis along the $x$-direction. If you do the calculations, you will see that the curl is not $\mathbf{0}$:
+
+$$\nabla\times\mathbf{v}=\frac{\partial v_y}{\partial x}\hat{\mathbf{k}}=-\frac{2xv_0}{h^2}e^{-x^2/h^2}\hat{\mathbf{k}}\neq\mathbf{0}\quad(\text{for }x\neq 0)$$
+
+If you placed a little flat paddle wheel in this water flow (away from $x=0$), it would rotate! So what's up here? Notice that in the previous case, the rate of change of the water's velocity is along the direction of flow (which gives a non-zero divergence,  $\nabla\cdot\mathbf{v}\neq 0$, compressing or stretching the fluid, but zero curl). Whereas in our second case, the rate of change of the water's velocity is perpendicular to the flow (a shear flow). Thus, between two adjacent flowing streams of water, the velocity is different, and this induces a differential velocity (shear) between them, which hits the left and right paddles of the wheel with different forces and becomes the curl. 
+
+Later, once we look at the gradient, we will also be able to say that since the gradient of the water's speed ($\nabla\Vert{}\mathbf{v}\Vert{}$) is perpendicular to its flow direction ($\nabla\Vert{}\mathbf{v}\Vert{}\times\hat{\mathbf{j}}\neq\mathbf{0}$), we have a non-zero curl.
+      
+Now here's another counter-intuitive case that is the converse of the previous one, where curved streamlines have zero curl: a fluid moving in concentric circles can have zero curl. Consider the irrotational vortex (like water draining outside a central vortex core) in cylindrical coordinates:
+    
+$\mathbf{v}(r)=\frac{k}{r}\hat{\boldsymbol{\phi}}\quad(r>0)$$
+    
+Even though all water molecules orbit the $z$-axis in circles, if you compute the $z$-component of the curl using the cylindrical formula above:
+    
+$$(\nabla\times\mathbf{v})_z=\frac{1}{r}\frac{\partial(r v_\phi)}{\partial r}=\frac{1}{r}\frac{\partial(k)}{\partial r}=0$$
+    
+Why doesn't a tiny paddle wheel spin as it orbits the origin? Because the inner edge of the paddle wheel (smaller $r$) gets pushed faster in the counter-clockwise direction by the $\frac{1}{r}$ speed profile, while the outer edge (larger $r$) is pushed slower, and the curvature of the circular streamlines tries to turn the wheel the opposite way—at exactly $v_\phi\propto\frac{1}{r}$, these two torques cancel out, so the paddle wheel translates in a circle while keeping its orientation fixed in space (like a cabin on a Ferris wheel).
+
+### Stoke's Theorem
+Just as our derivation of the divergence led to the divergence theorem, our derivation of the curl via the area enclosed by the closed loop going to zero actually tells us how to derive this very important theorem. We will give the statement followed by the explanation:
+
+inetgral oer surface of curl = integral over boundary loop of the field
+
+Once again, to see how this comes about, analogous to the case of the divergence, look at two tiny loops that share an edge on the surface. By the same logic as with divergence, we will find that all the circulations cancel out except for the components along the boundary of the surface. Thus we end up with this inequality.
+
+Now we kind of glossed over a few aspects here. First, the surface needs to be a capped surface i.e I take a disk and stretch it out from the closed curve so that it covers the entire area enclosed by the curve. We can then deform this whichever way, for eg into a hemisphere, provided it continues to maintain the same complete coverage of the area. This is important to ensure our circulations in the tiny surface loops close up with each other and cancel out.
+
+If for eg. there was a hole in our surface, then Stoke's Theorem does not hold. Let's take the torus for example. If we take a loop around the donut hole, there is no way we can make a capped surface that covers the entire area within the loop because there is a hole in the middle. We cannot bridge that hole. However, note that we can still create a surface out of the loop by simply taking the torus surface itself. Therefore, the condition for Stoke's theorem to hold is that we must have a capped surface, and not just any sirface (like the torus surface). Objects that satisfy this condition are called simply connected. An equivalent condition is that a surface si simply connected if any closed curve can be shrunk down to zero without leaving the surface (something that's impossible with the torus).
+
+### Gradient ($\nabla$)
+We already encountered the gradient when we examined how to arrive at a path independent line integral. We saw that if the field can be written as the derivative of a scalar potential, then the circulation is 0 or the line integral over a closed loop is 0. The gradient denoted by \nabla is defined as:
+
+F = ]nabla psi = dpsi/dx i + ...
+
+This is in cartesian coordinates. We will come to other coordinates shortly.
+
+Essentially, we take the gradient of a scalar potential to get a field. As we saw earlier, the curl of such a field should be zero. This can be seen quite clearly by simply explanding the curl in terms of the scalar potential, where we get mxed partial derivatives for each coordinate component that cancel out
+[WRITE EQUATION[
+
+Let us look at the geometric significance of the gradient. First let's look at the directional derivative along a path parametrized by s. From the Taylor series we can see that the change of f is 
+delta f =  deltax. delf/delx _ ...
+
+we igore the higerorde rterms. The direction detivative is 
+
+delta f/ delta s as dleta s tends to zero. Substitlting this into the previous equation we get
+
+df/ds = delf /del x . dx/ds + ...
+
+As we saw earlier, the tangent vector is t^ = dx/ds i + ...
+
+So the above expression for the directional derivative looks suspiciously like a dot product of the gradient and the tangent vector. In factthat is exactly what it is:
+
+df/ds = delf. t^
+
+NOw see hwt happens when we are on an equipotential surface of f, i.e. the directional derivative goes to 0. We find that the graident must be perpendicular to the tangent vector. Thus, we now can say that the gradient is the normal of an equipotential surface. 
+
+Further more, if we look at how to maximize the directional derivate, we see that this happens when the unit tangent vector aligns with the gradient. Thus, the gradient represents the direction along with the scalar potential f increases at the maximum rate.
+
+Using the above dot product relation also makes it easy for us to derive and write out the expression for the gradient in speherical and cylindrical coordinates, which are given by
+[]
+[]
+
+### Poisson & Laplace Equation
+Now recall the relationship we came to earlier about the divergence of the electric field and the volumetric charge density.
+
+\nabla \cdot E = rho/epsilon.
+
+Lets subsitite E = del psi. We get
+
+\nabla \cdot \nabla psi - rho/epsilon
+
+\nabla ]cdot ]nabla is commonly written as nabla ^2 and the equation takes the form that is called Possion's equation
+[WRITE EQUATION]
+
+nabla^2 is called the laplacian. It represents the divergence of the gradient. Think fo the gradient as a vector field that represents movement along the maximum rate of increase or decrease. Now what is the divergence of that? If we find a very high divergence at a point, it means a whole lot of gradient vectors point at it, meaning it is a high point of the scalar potential field. On the flip side, a low divergence means we have a low point in the scalar potential. Thus the laplacian kind of represents how much the scalar field deviates form its avergae value. 
+
+Now, when we want to evaluatethe elctrostatic field, we usually want to know the value and direction in the spaces between charges i.e. the places where charge density is 0. Accordingly, the RHS of the posioon sequation goes to 0 an we get what is knows a Laplace's equation.
+
+nabla2 psi = 0
+
+which ehwn expanded in cartesian coordinates is
+
+d2psi/dx2 + ... = 0
+
+This is just a single second order differental equation in just one scalar unknown. Unlike our earlier nabla.E equation which had 3 components for x, y, z that we had to figure out from one equation.
+
+Laplace's equation is frequenty used to solve for the elctrostatic field, the gravitation potential and other usch stuff. TO get a unique solution, we of course need to establish the boundary conditions that hold on the boundary $\partial\Omega$ of your domain $\Omega$.
+
+Without boundary conditions, if $\phi_1$ solves $\nabla^2\phi = f$, then $\phi_1 + h$ is also a solution for any harmonic function $h$ ($\nabla^2 h = 0$)—such as a constant, a linear ramp $ax + by + cz$, or a saddle $x^2 - y^2$. Because $\nabla^2$ is a linear operator, uniqueness of $\nabla^2\phi = f$ reduces to asking whether the difference $u = \phi_1 - \phi_2$ (which satisfies $\nabla^2 u = 0$ with zero boundary data) must vanish.
+
+By applying Green’s first identity to the difference $u = \phi_1 - \phi_2$ over a bounded domain $\Omega$, we get:
+
+$$\int_\Omega \vert{}\nabla u\vert{}^2\,dV = \oint_{\partial\Omega} u\,\frac{\partial u}{\partial n}\,dA$$
+
+For the right-hand side to vanish (forcing $\nabla u = \mathbf{0}$ everywhere in $\Omega$), the behavior depends on the boundary condition:
+
+**Dirichlet Boundary Conditions ($\phi$ specified on $\partial\Omega$):** **Strictly unique.** On $\partial\Omega$, $u = \phi_1 - \phi_2 = 0$, so the surface integral vanishes, forcing $\nabla u = \mathbf{0}$ (meaning $u$ is constant in $\Omega$). Since $u=0$ on the boundary, $u=0$ everywhere, so $\phi_1 = \phi_2$.
+    
+**Neumann Boundary Conditions (normal derivative $\frac{\partial\phi}{\partial n}$ specified on $\partial\Omega$):** **Unique only up to an additive constant** (and a solution exists only if the compatibility condition $\int_\Omega f\,dV = \oint_{\partial\Omega}\frac{\partial\phi}{\partial n}\,dA$ holds by the divergence theorem). Here $\frac{\partial u}{\partial n} = 0$ on $\partial\Omega$, which again forces $\nabla u = \mathbf{0}$, so $\phi_1$ and $\phi_2$ can differ by any constant $C$. However, their gradients—the physical electric field $\mathbf{E} = -\nabla\phi$—are **strictly unique**.
+    
+**Mixed or Robin Boundary Conditions:** Specifying $\phi$ on part of the boundary and $\frac{\partial\phi}{\partial n}$ on the rest (or $\alpha\phi + \beta\frac{\partial\phi}{\partial n} = g$ with $\alpha, \beta$ having the same sign) yields a **strictly unique** solution.
+    
+**Unbounded Domains (e.g., all of $\mathbb{R}^3$):** You must also impose an **asymptotic decay condition at infinity** (such as $\phi(\mathbf{r}) \to 0$ as $r \to \infty$). Without it, adding a uniform background field like $\phi_{\text{hom}} = -E_0 z$ still satisfies $\nabla^2\phi = 0$ across all of $\mathbb{R}^3$.
+
+### Common Identities
+
+There are several common identities that tie the gradient, curl and divergence together. We'll start with something that ties back to why the curl in our field that varies along the x-axis but not the y-axis is non-zero.
+
+The identity is the product rule for curl of a scalar function $f(x,y,z)$ multiplying a vector field $\mathbf{u}$:
+    
+$$\nabla\times(f\mathbf{u})=f(\nabla\times\mathbf{u})+(\nabla f)\times\mathbf{u}$$
+    
+In both of our examples (where velocity varies with y and the other where it varies with x), the flow is $\mathbf{v}=f(x,y)\hat{\mathbf{j}}$, where $\mathbf{u}=\hat{\mathbf{j}}$ is a constant unit vector (so $\nabla\times\hat{\mathbf{j}}=\mathbf{0}$). Thus, the formula simplifies directly to:
+    
+$$\nabla\times(f\hat{\mathbf{j}})=(\nabla f)\times\hat{\mathbf{j}}$$
+    
+In the first case,  $f(y)=v_0 e^{-y^2/h^2}$, so the gradient $\nabla f=\frac{\partial f}{\partial y}\hat{\mathbf{j}}$ is parallel to $\hat{\mathbf{j}}$, making the cross product $(\nabla f)\times\hat{\mathbf{j}}=\mathbf{0}$.
+        
+In the second case,  $f(x)=v_0 e^{-x^2/h^2}$, so the gradient $\nabla f=\frac{\partial f}{\partial x}\hat{\mathbf{i}}$ is perpendicular to $\hat{\mathbf{j}}$, making the cross product $(\nabla f)\times\hat{\mathbf{j}}=\frac{\partial f}{\partial x}(\hat{\mathbf{i}}\times\hat{\mathbf{j}})=\frac{\partial f}{\partial x}\hat{\mathbf{k}}\neq\mathbf{0}$.
+
+The other identities are:
+
+$$\nabla\times(\nabla f)=\mathbf{0}$$
+
+We already saw this one when discussing the gradient. 
+
+$$\nabla\cdot(\nabla\times\mathbf{F})=0$$
+
+This should intuitively make sense. A curl represents the circulation. A circulation is closed in on itself so you expect the "input" flowing in to equal the "output flowing" out of an infintesimally small surface. Thus, the divergence of a curl is 0.
+
+$$\nabla(fg)=f\nabla g+g\nabla f$$
+
+$$\nabla(\mathbf{F}\cdot\mathbf{G})=(\mathbf{G}\cdot\nabla)\mathbf{F}+(\mathbf{F}\cdot\nabla)\mathbf{G}+\mathbf{F}\times(\nabla\times\mathbf{G})+\mathbf{G}\times(\nabla\times\mathbf{F})$$
+
+$$\nabla\cdot(f\mathbf{F})=f(\nabla\cdot\mathbf{F})+\mathbf{F}\cdot\nabla f$$
+
+$$\nabla\cdot(\mathbf{F}\times\mathbf{G})=\mathbf{G}\cdot(\nabla\times\mathbf{F})-\mathbf{F}\cdot(\nabla\times\mathbf{G})$$
+
+$$\nabla\times(\mathbf{F}\times\mathbf{G})=(\mathbf{G}\cdot\nabla)\mathbf{F}-(\mathbf{F}\cdot\nabla)\mathbf{G}+\mathbf{F}(\nabla\cdot\mathbf{G})-\mathbf{G}(\nabla\cdot\mathbf{F})$$
+
+$$\nabla\times(\nabla\times\mathbf{F})=\nabla(\nabla\cdot\mathbf{F})-\nabla^2\mathbf{F}$$
+
+Note that the vector Laplacian $\nabla^2\mathbf{F}$ only equals the scalar Laplacian applied to each component $(\nabla^2 F_x,\nabla^2 F_y,\nabla^2 F_z)$ in Cartesian coordinates. In cylindrical or spherical coordinates, the unit basis vectors ($\hat{\mathbf{r}},\hat{\boldsymbol{\theta}},\hat{\boldsymbol{\phi}}$) change direction with position, so differentiating them produces extra cross-terms. In fact, in curvilinear coordinates, this very identity reversed—$\nabla^2\mathbf{F}\equiv\nabla(\nabla\cdot\mathbf{F})-\nabla\times(\nabla\times\mathbf{F})$—is used as the definition of the vector Laplacian.
+
+---
+
+**Aside:** Instead of memorizing the four-term expansions for $\nabla(\mathbf{F}\cdot\mathbf{G})$ and $\nabla\times(\mathbf{F}\times\mathbf{G})$, you can derive all nine identities in two lines using Einstein summation convention and the contracted epsilon identity $\varepsilon_{ijk}\varepsilon_{imn}=\delta_{jm}\delta_{kn}-\delta_{jn}\delta_{km}$. For example, the $i$-th component of $\nabla\times(\mathbf{F}\times\mathbf{G})$ is:
+
+$$[\nabla\times(\mathbf{F}\times\mathbf{G})]_i=\varepsilon_{ijk}\partial_j(\varepsilon_{kmn}F_m G_n)=(\delta_{im}\delta_{jn}-\delta_{in}\delta_{jm})\partial_j(F_m G_n)=\partial_j(F_i G_j)-\partial_j(F_j G_i)$$
+
+Applying the standard Leibniz product rule $\partial_j(AB)=B\partial_j A+A\partial_j B$ immediately yields the four terms:
+
+$$(G_j\partial_j)F_i+F_i(\partial_j G_j)-(F_j\partial_j)G_i-G_i(\partial_j F_j)=[(\mathbf{G}\cdot\nabla)\mathbf{F}+\mathbf{F}(\nabla\cdot\mathbf{G})-(\mathbf{F}\cdot\nabla)\mathbf{G}-\mathbf{G}(\nabla\cdot\mathbf{F})]_i$$
+
+---
 
 ## Intuition
 
