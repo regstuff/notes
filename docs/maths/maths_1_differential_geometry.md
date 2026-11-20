@@ -923,6 +923,8 @@ Integrating $\omega$ over $S$ then reduces to an ordinary double integral over t
 
 $$\int_S\omega=\int_D\varphi^*\omega=\iint_D\left[P(\varphi(u,v))\frac{\partial(x,y)}{\partial(u,v)}+Q(\varphi(u,v))\frac{\partial(y,z)}{\partial(u,v)}+R(\varphi(u,v))\frac{\partial(z,x)}{\partial(u,v)}\right]du\,dv$$
 
+Note that in the RHS, we have a double integral over $dudv$, instead of $du \wedge dv$. We can make this substitution only because we chose $D$ as a flat parameter domain where the product and wedge product coincide.
+
 We can generalize this to $k$-forms on an oriented $k$-dimensional manifold $M\subset\mathbb{R}^n$ parametrized by $\varphi:D\subset\mathbb{R}^k\to M$, where $\varphi(u^1,\dots,u^k)=(x^1(\mathbf{u}),\dots,x^n(\mathbf{u}))$. Writing a general $k$-form as a sum over strictly increasing coordinate indices $1\le i_1<i_2<\dots<i_k\le n$,
 
 $$\omega=\sum_{1\le i_1<\dots<i_k\le n}f_{i_1\dots i_k}(\mathbf{x})\,dx^{i_1}\wedge\dots\wedge dx^{i_k}$$
@@ -941,7 +943,15 @@ The other way is to simply replace each $x^i$ by $x^i(\mathbf{u})$ and expand $d
 
 ### The Derivative of a Differential Form
 
-Suppose $\omega$ is a 1-form on $\mathbb{R}^2$, i.e., a covector field that may vary from point to point. What does it mean to take the derivative of this 1-form? Well, the usual definition of a derivative along a 1D line gives us a clue. We'd like to see how the scalar value of the 1-form, after it eats a vector $V_p$, varies as we move in an infinitesimal neighbourhood of the point $p$. The only issue is that in a 2D space, there are infinitely many directions in which we can strike out from $p$. So we pick a second vector $W_p$ and measure the variation of $\omega(V)$ as we strike out from $p$ along $W_p$ (extending $V_p$ to nearby points $p+tW$ by keeping its Cartesian components constant). Thus, we get the directional derivative of the scalar output $\omega(V)$ along $W_p$:
+In single-variable calculus, the derivative is defined as the boundary change of a 0-form (a function $f$) divided by the size of the 1D interval $[x,x+t]$:
+
+$$df_x(V)=\lim_{t\to 0}\frac{f(x+tV)-f(x)}{t}$$
+
+Notice two things. A 0-form evaluates on 0D points; its boundary difference lives on a 1D segment spanned by one vector $V$, so $df$ is a 1-form.
+    
+The minus sign appears because a 1D interval has two oppositely oriented endpoints ($+$ at the tip, $-$ at the tail). So the 0-form derivative is in fact a closed boundary of 2 points. Evaluating $f$ on the complete boundary gives 1 pair of differences: $f(p+tV)-f(p)$.
+    
+Now step up one dimension. Suppose $\omega$ is a 1-form on $\mathbb{R}^2$, i.e., a covector field that may vary from point to point. A 1-form $\omega$ is an object you integrate over 1D curves. What does it mean to take the derivative of this 1-form? Well, the usual definition of a derivative along a 1D line gives us a clue. We'd like to see how the scalar value of the 1-form, after it eats a vector $V_p$, varies as we move in an infinitesimal neighbourhood of the point $p$. The only issue is that in a 2D space, there are infinitely many directions in which we can strike out from $p$. So we pick a second vector $W_p$ and measure the variation of $\omega(V)$ as we strike out from $p$ along $W_p$ (extending $V_p$ to nearby points $p+tW$ by keeping its Cartesian components constant). Thus, we get the directional derivative of the scalar output $\omega(V)$ along $W_p$:
 
 The variation of $\omega(V_p)$ in the direction of $W_p$ is:
 
@@ -1034,7 +1044,7 @@ By Stokes' theorem ($\int_M d\omega=\int_{\partial M}\omega$), the two options a
 
 This also leads us to the geometric meaning of $d\omega(V_p,W_p)=\nabla_{V_p}\omega(W_p)-\nabla_{W_p}\omega(V_p)$ (Microscopic Stokes' Theorem). 
 
-Why does that specific difference of directional derivatives define the exterior derivative? Picture the infinitesimal parallelogram at $p$ spanned by $\epsilon V_p$ and $\epsilon W_p$, and walk counterclockwise around its four edges to compute the boundary circulation of our 1-form $\omega$:
+Why does that specific difference of directional derivatives define the exterior derivative? Picture a tiny vector $\epsilon V$. This is the higher dimensional analog of the 0D point, which we usually take in high school calculus to calculate the derivative. Now take another vector $\epsilon W$. This is like the line segment in the high school calculus case i.e. the infinitesimal distance we move to arrive at a new point. Now shift $\epsilon V$ by $\epsilon W$. As in the 0-form earlier, where took the closed loop around the 1D boundary, closing this loop for the 1-form gives us a tiny parallelogram $P$ at point $p$ spanned by two scaled vectors $\epsilon V$ and $\epsilon W$. Walk counterclockwise around the four edges of this parallelogram to compute the boundary circulation of our 1-form $\omega$:
 
 Bottom edge from $p$ to $p+\epsilon V$:  $+\omega(V_p)\,\epsilon$
     
@@ -1047,6 +1057,8 @@ Left edge (traversed backward) from $p+\epsilon W$ to $p$:  $-\omega(W_p)\,\epsi
 $$\frac{1}{\epsilon^2}\oint_{\partial P_\epsilon}\omega=\frac{\omega(W_{p+\epsilon V})-\omega(W_p)}{\epsilon}-\frac{\omega(V_{p+\epsilon W})-\omega(V_p)}{\epsilon}\xrightarrow{\epsilon\to 0}\nabla_{V_p}\omega(W_p)-\nabla_{W_p}\omega(V_p)=d\omega(V_p,W_p)$$
     
 Thus,  $d\omega(V_p,W_p)$ is literally the boundary circulation per unit parallelogram at $p$. Generalized Stokes' Theorem ($\int_M d\omega=\int_{\partial M}\omega$) works because $d\omega$ is already defined at the infinitesimal level to equal the boundary integral around each tiny cell.
+
+Every exterior derivative uses the exact same recipe: integrate the $k$-form over the complete boundary of an infinitesimal $(k+1)$-dimensional box, then divide by the box's scale.
 
 **You can convert the 1-form to a flux 2-form (using the 3D metric / Hodge star).** Physically, a 1-form $\omega=F_x\,dx+F_y\,dy+F_z\,dz$ represents work/circulation along a path, whereas integrating a vector field $\mathbf{F}=(x^2,xy,0)$ across a surface measures flux. To compute the flux of that same vector field through the hemisphere, you replace the 1-form with its dual 2-form $*\omega=x^2\,dy\wedge dz+xy\,dz\wedge dx$, which takes two tangent vectors and integrates cleanly over $M$.
 
