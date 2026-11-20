@@ -665,6 +665,393 @@ As we said earlier, a topological space + an atlas = a manifold. We can now modi
 
 ---
 
+## Differential Forms
+
+In the vector calculus section, we looked at work as the dot product of force and displacement. But as we know from Lagrangian and Hamiltonian mechanics, we can arrive at the equations of motion without resorting to force vectors, just working with potential and kinetic energy, or generalized position and conjugate momentum. In conservative situations, we can think of the work done by the system/field as the negative of the change in potential energy,  $-dU$ (or the external work done on the system against the field as $+dU$). We have seen a related energy balance in thermodynamics as well, where the change in internal energy $dU$ is equal to the heat input plus the work done on the system ($dU=\delta Q+\delta W$). In these cases as well, we don't necessarily approach work as force dotted with displacement.  
+
+### 1-Forms
+A more general way of looking at the work done while moving along a curve would be to look at the potential energy itself. From multivariable calculus, we know that  
+
+$$dU=\frac{\partial U}{\partial x}\,dx+\frac{\partial U}{\partial y}\,dy+\frac{\partial U}{\partial z}\,dz$$
+
+This is called the total differential (exterior derivative) of the scalar function $U$. $-dU$ represents the generalized force in the system (whose coefficients $-\frac{\partial U}{\partial x},-\frac{\partial U}{\partial y},-\frac{\partial U}{\partial z}$ are the generalized force components), and evaluating or integrating $-dU$ over a displacement or curve gives the work. We don't need any force vector or a dot product to arrive at this.
+
+In fact, if we take $-dU$ and match it to the final equation we arrived at for the infinitesimal work along a curve,  $F_x\,dx+F_y\,dy+F_z\,dz$, we arrive at the familiar notion that a conservative force is the negative gradient of the potential energy ($\vec{F}=-\nabla U$), and the infinitesimal work is this negative gradient dotted with the infinitesimal displacement vector ($-\nabla U\cdot d\vec{r}$).  
+
+But let's stick to the idea of the total differential for now. Remember that we integrated the above expression for infinitesimal work along a curve. If we now integrate the $-dU$ term above along an oriented curve $C$ from point $1$ to point $2$, we again get the work done by the field along the curve:  
+
+$$\mathcal{W}=U_1-U_2=-\int_{C}\left(\frac{\partial U}{\partial x}\,dx+\frac{\partial U}{\partial y}\,dy+\frac{\partial U}{\partial z}\,dz\right)$$
+
+Now we give the integrand (the full expression inside the integral) a name. We call it a 1-form.  It is a 1-form because we have only upto one differential form in the expression ($dx, dy, dz$ etc.). We will see that a whole lot of things simplify if we can work directly with this 1-form (and more general $k$-forms) instead of having to deal with dot products and what not. 
+
+Note that in writing $dU$ earlier, we needed no concept of a dot product. The connection with the dot product of force and displacement was simply an explanation given to relate this back to a more familiar but limited notion of work. Additionally, we spoke of the conservative force as the negative gradient of the potential energy. In non-conservative systems, there is no scalar potential energy $U$ (so the work 1-form $\omega=F_x\,dx+F_y\,dy+F_z\,dz$ cannot be written as $-dU$), and on general configuration spaces (without a metric if you know what that means), there is no dot product with which to dot a force vector and a displacement vector. Yet looking at work via a general 1-form $\omega$ still makes it possible for us to compute work along any curve (though for non-conservative 1-forms, the integral becomes path-dependent rather than reducing to $U_1-U_2$).  
+
+A 1-form should look pretty familiar. It is just a linear combination of basis covectors (making a 1-form across space a covector field). Feed it a vector to get a scalar. Let's say at a point we have the 1-form $\omega=2\,dx+3\,dy$, then evaluating this on the tangent vector $\langle -1,2\rangle$ and remembering that covectors follow linearity, gives:
+
+$$\omega(\langle -1,2\rangle)=2\cdot dx(\langle -1,2\rangle)+3\cdot dy(\langle -1,2\rangle)$$
+
+$dx$ and $dy$ simply extract the $x$ and $y$ components of the vector, so $dx(\langle -1,2\rangle) = -1$ and $dy(\langle -1,2\rangle) = 2$. So we have:
+
+$$\omega(\langle -1,2\rangle)= 2\cdot(-1)+3\cdot 2=4$$
+
+So a 1-form simply takes a vector, extracts its components along the axes of the coordinate system, multiplies them by a scalar and then sums them. If we were to consider this 1-form in the example as an actual negative potential energy differential $\omega=-dU$ (or if we used $\omega=dU$ to measure the external work $\Delta U$ done against the field), and let's say $\langle -1,2\rangle$ were the displacement vector, then $\omega(\langle -1,2\rangle)=4$ would be the work done in traversing that displacement vector. 
+
+---
+
+**Aside 1: Why Generalized Force Is Naturally a 1-Form on Configuration Space**
+
+Suppose we have a mechanical system described by generalized coordinates $(q^1,q^2)=(r,\theta)$, where $r$ is a radial distance in meters and $\theta$ is an angle in radians. On this configuration manifold $Q$, a tangent vector $\vec{v}=(\dot{r},\dot{\theta})$ has components with completely different physical units ($\text{m/s}$ and $\text{rad/s}$). What would a naive coordinate "dot product" of two vectors in $(r,\theta)$-space even mean? Adding $(\Delta r)^2+(\Delta\theta)^2$ tries to add $\text{m}^2+\text{rad}^2$, which is physically nonsensical unless we introduce an extra geometric structure (the kinetic-energy metric tensor $g_{ij}$). By contrast, look at the work 1-form:
+
+$$\omega=Q_r\,dr+Q_\theta\,d\theta=F_r\,dr+\tau_\theta\,d\theta$$
+
+Here $F_r$ is radial force in Newtons ($\text{N}$) paired with $dr$ ($\text{m}$), and $\tau_\theta$ is torque in Newton-meters ($\text{N}\cdot\text{m}$) paired with $d\theta$ ($\text{rad}$). Both terms directly have units of Joules, with zero metric tensor or dot product needed. 
+    
+**Aside 2: Exact vs. Inexact 1-Forms in Thermodynamics ($dU$ vs.  $\delta Q$ and $\delta W$)**
+
+Our thermodynamic comparison in paragraph 1 ($dU=\delta Q+\delta W$) is actually the single cleanest physical showcase of exact versus non-exact 1-forms. On the thermodynamic state space of a gas (say, with state coordinates $(P,V)$ or $(T,V)$):
+
+Internal energy $U(P,V)$ is a state function ($0$-form), so its differential $dU$ is an exact 1-form ($d(dU)=0$, and $\oint_C dU=0$ around every closed cycle).
+
+Reversible mechanical work $\delta W=-P\,dV$ and heat input $\delta Q$ are genuine 1-forms on state space, which is why we can integrate them along any quasi-static process curve $C$, yet they are not exact differentials of any state function:
+
+$$d(\delta W)=d(-P\,dV)=-dP\wedge dV\neq 0$$
+        
+That is the mathematical reason why thermodynamics uses $\delta W$ and $\delta Q$ instead of $dW$ and $dQ$:  $\delta$ denotes a general (inexact) 1-form, whereas $d$ is reserved for exact 1-forms (exterior derivatives of $0$-forms). And around a closed heat-engine cycle $\partial D$ in the $(P,V)$-plane, Generalized Stokes' Theorem gives the net work extracted as:
+        
+$$\mathcal{W}_{\text{cycle}}=\oint_{\partial D}P\,dV=\iint_D dP\wedge dV$$
+
+---
+
+### Integrating 1-Forms
+
+We can now look at the same thing we did in the vector calculus section. What if we want to find the work along a curve? We would take the 1-form (which may actually be a function of the coordinates i.e. it varies from point to point), evaluate at a single point to get infinitesimal work on a tangent vector, and integrate along the curve. This is where differential forms really start to shine.
+
+Let's briefly recall how we do single-variable integration. Given a function $f(x)$ to integrate over $[x_1,x_2]$, we divide the interval along the $x$-axis into tiny bins, let's say $n$ bins of equal width $\Delta x=\frac{x_2-x_1}{n}$, then we approximate $f(x)$ within each bin by its value at a sample point $x_i^*$ within that interval, multiply that by the bin width, and then sum over all $n$ intervals. The integral can be obtained by taking the limit as $n\to\infty$:
+
+$$\int_{x_1}^{x_2}f(x)\,dx=\lim_{n\to\infty}\sum_{i=1}^{n}f(x_i^*)\left(\frac{x_2-x_1}{n}\right)$$
+
+This is the usual 1D integral $\int_{x_1}^{x_2}f(x)\,dx$, where our domain of integration is along the flat $x$-axis from $x_1$ to $x_2$. Every infinitesimal step is purely horizontal ($\Delta x$).
+
+But what if our spatial steps are not of equal length or do not lie along a flat axis? For example, maybe we want to integrate a 1-form over a curve $C$, as we saw in the above examples for work, where the 1-form became the integrand itself. Now integration directly via sums over some arbitrary curved domain can be pretty messy. Even on a flat interval, working out an integral directly from the summation definition above (called a Riemann sum) is difficult without the Fundamental Theorem of Calculus. For example, how would we compute $\int_0^1 x^2\,dx$ directly via a Riemann sum?
+
+Divide $[0,1]$ into $n$ equal subintervals of width $\Delta x=\frac{1}{n}$ with right endpoints $x_i^*=\frac{i}{n}$. Set up the sum:
+
+$$S_n=\sum_{i=1}^{n}\left(\frac{i}{n}\right)^2\left(\frac{1}{n}\right)=\frac{1}{n^3}\sum_{i=1}^{n}i^2$$
+
+Here, we are lucky to be able to substitute the closed-form algebraic identity for the sum of the first $n$ squares,  $\sum_{i=1}^{n}i^2=\frac{n(n+1)(2n+1)}{6}$:
+
+$$S_n=\frac{n(n+1)(2n+1)}{6n^3}=\frac{2n^3+3n^2+n}{6n^3}$$
+
+Then we take the limit as $n\to\infty$:
+
+$$\lim_{n\to\infty}\left(\frac{1}{3}+\frac{1}{2n}+\frac{1}{6n^2}\right)=\frac{1}{3}$$
+
+Even for a simple polynomial like $x^2$, we need a special summation identity to collapse the sum before taking the limit (whereas the Fundamental Theorem of Calculus gives $\left[\frac{1}{3}x^3\right]_0^1=\frac{1}{3}$ immediately via antiderivatives). For slightly more involved integrands—especially along a curved path where spatial step sizes vary—no closed-form summation identity exists.
+
+
+Now let's integrate a 1-form, say $f(x,y)\,dx$, over some curve $M$ defined by the parametrization of a semicircle, $\varphi:[-1,1]\to M$, $\varphi(a)=(\varphi_1(a),\varphi_2(a))=(a,\sqrt{1-a^2})$, where $-1\le a\le 1$.
+
+Now we need to find the new pulled-back 1-form $g(a)\,da$ that will give us the same sum as $f(x,y)\,dx$ over the curve, when we create equal bins over the parametrization variable $a$ and sum over the whole domain $[-1,1]$. Let's call its unknown coefficient function $g(a)$.
+
+The curve $M$ under the map is approximated by a sequence of straight-line segments. As an example, if we are evaluating the interval $a\in[-1,1]$ over four equidistant subintervals, we get four straight-line segments $\Delta\vec{\varphi}_i=\varphi(a_{i+1})-\varphi(a_i)$ on the semicircle as well, but they will not be of equal lengths or slopes.
+
+When we evaluate the 1-form $f(x,y)\,dx$ on the $i$-th segment, $dx$ extracts the horizontal displacement $\Delta x_i=\varphi_1(a_{i+1})-\varphi_1(a_i)$:
+
+$$\sum_i g(a_i)\,\Delta a=\sum_i f(\varphi(a_i))\,\Delta x_i$$
+
+Here $\Delta x_i=\varphi_1(a_{i+1})-\varphi_1(a_i)$ is the signed horizontal projection of the linear approximation of the curve at the $i$-th subinterval.
+
+So we have $g(a_i)\,\Delta a=f(\varphi(a_i))\,\Delta x_i$, and therefore $g(a_i)=\frac{f(\varphi(a_i))\,\Delta x_i}{\Delta a}$.
+
+When we set $\Delta a\to 0$, what do we get? Using $\Delta x_i=\varphi_1(a_{i+1})-\varphi_1(a_i)$ (without absolute value bars, because a 1-form is sensitive to orientation):
+
+$$\lim_{\Delta a\to 0}g(a_i)=\lim_{\Delta a\to 0}\frac{f(\varphi(a_i))\,\Delta x_i}{\Delta a}=\lim_{\Delta a\to 0}f(\varphi(a_i))\frac{\varphi_1(a_{i+1})-\varphi_1(a_i)}{\Delta a}=f(\varphi(a_i))\lim_{\Delta a\to 0}\frac{\varphi_1(a_{i+1})-\varphi_1(a_i)}{\Delta a}$$
+
+Here $\lim_{\Delta a\to 0}\frac{\varphi_1(a_{i+1})-\varphi_1(a_i)}{\Delta a}$ is simply the derivative of $\varphi_1$ at $a_i$, namely $\varphi_1'(a_i)$.
+
+Thus, to correct for the parametrization and change of variables in $f(x,y)\,dx$, we must accommodate the change in projected bin sizes by introducing the signed scaling factor $\varphi_1'(a)$, giving $g(a)\,da=f(\varphi(a))\,\varphi_1'(a)\,da$. 
+
+Note that by contrast, if we were integrating a scalar function $f(x,y)$ with respect to arc length $ds$ using the unsigned chord lengths $L_i=\Vert{}\varphi(a_{i+1})-\varphi(a_i)\Vert{}$, the scaling factor would be the speed $\Vert{}\varphi'(a)\Vert{}$, or $\vert{}\varphi_1'(a)\vert{}$ for a 1D interval.
+
+Our semicircle $\varphi(a)=(a,\sqrt{1-a^2})$ for $a\in[-1,1]$ illustrates why integrating 1-forms is often much cleaner than integrating scalar functions with respect to arc length:
+
+Arc-length integral of a scalar function $\int_M f(x,y)\,ds$:
+
+Here $\varphi'(a)=\left\langle 1,\frac{-a}{\sqrt{1-a^2}}\right\rangle$, so the chord-length scaling factor is the speed:
+
+$$\Vert{}\varphi'(a)\Vert{}=\sqrt{1+\frac{a^2}{1-a^2}}=\frac{1}{\sqrt{1-a^2}}$$
+
+Even for $f(x,y)=1$, we get an improper square-root integral $\int_{-1}^1\frac{1}{\sqrt{1-a^2}}\,da=\pi$ (the length of the unit semicircle).
+
+By contrast, integrating the 1-form $\omega_1=f(x,y)\,dx$:
+
+Because $\varphi_1(a)=a$, the scaling factor is simply $\varphi_1'(a)=1$ everywhere, even though the curve bends and its chord lengths $L_i$ stretch near $a=\pm 1$. All the vertical stretching in $\varphi_2(a)=\sqrt{1-a^2}$ is invisible to $dx$:
+
+$$\int_M f(x,y)\,dx=\int_{-1}^1 f\big(a,\sqrt{1-a^2}\big)\cdot 1\,da$$
+
+Integrating a general 1-form $\omega=f(x,y)\,dx+h(x,y)\,dy$:
+
+By linearity, $dx$ picks up $\varphi_1'(a)$ and $dy$ picks up $\varphi_2'(a)=\frac{-a}{\sqrt{1-a^2}}$:
+
+$$\int_M\big(f(x,y)\,dx+h(x,y)\,dy\big)=\int_{-1}^1\left[f\big(a,\sqrt{1-a^2}\big)\cdot 1+h\big(a,\sqrt{1-a^2}\big)\left(\frac{-a}{\sqrt{1-a^2}}\right)\right]da$$
+
+Notice that $\varphi_2'(a)$ blows up at the endpoints $a=\pm 1$ because the semicircle becomes vertical at $(\pm 1,0)$ (making graph parametrization in $a=x$ singular at the vertical tangents). Switching to the angular parametrization $\tilde{\varphi}(\theta)=(\cos\theta,\sin\theta)$ for $\theta\in[\pi,0]$ (moving from $(-1,0)$ to $(1,0)$) has smooth derivatives everywhere ($\tilde{\varphi}_1'(\theta)=-\sin\theta$, $\tilde{\varphi}_2'(\theta)=\cos\theta$) and yields the exact same value.
+
+---
+
+**Aside:** The factor of $\varphi_1'$ (or more generally $\varphi_i'$ for each coordinate $x^i$) that we are tacking onto the integral when we introduce the parametrization variable is nothing but the signed Jacobian factor that is used in change of variables. For an elementary 1-form $f\,dx^i$, it is simply the derivative of that old coordinate variable with respect to the new parametrization variable. For $k$-forms in $\mathbb{R}^n$, for each basis $k$-form $dx^{i_1}\wedge\dots\wedge dx^{i_k}$, this becomes the corresponding signed $k\times k$ Jacobian determinant (minor) with the various partial derivatives $\frac{\partial x^{i_p}}{\partial u^q}$ as the elements of the determinant (which reduces to the single full Jacobian determinant when $k=n$).
+
+The presence or absence of absolute value bars around the Jacobian factor separates two fundamentally different geometric objects in physics. 
+
+Scalar densities (like mass density $\rho\,ds$, charge density $\lambda\,ds$, or Riemannian volume $\sqrt{\vert{}g\vert{}}\,d^nx$) transform with the absolute value of the Jacobian ($\vert{}\varphi'(a)\vert{}$ or $\vert{}\det(D\varphi)\vert{}$). Reversing our coordinate axis or traversal direction from $[-1,1]$ to $[1,-1]$ must keep the total mass or arc length of the semicircle positive.
+
+Differential forms (like work $\omega=F_x\,dx+F_y\,dy$ or magnetic circulation) transform with the signed Jacobian ($\varphi_1'(a)$ or $\det(D\varphi)$). Traversing the semicircle from left to right ($a:-1\to 1$) versus right to left ($a:1\to -1$) must negate the work done by the field, and it is this exact sign flip without absolute value bars that allows shared interior boundaries to cancel out in Stokes' Theorem.
+
+---
+### 2-Forms
+
+Now instead of working with curves, we may want to integrate over surfaces or more generally over k-dimensional surfaces. You can only integrate a $k$-form over a $k$-dimensional domain. A 1-form can only be integrated over a 1D curve, and a 2D surface (like a hemisphere) can only integrate a 2-form.
+
+Why does integrating a 1-form over a surface fail? Chopping a 2D surface $M$ into tiny patches via a parameterization $\phi(u,v)$ produces tangent parallelograms spanned by two vectors,  $\frac{\partial\phi}{\partial u}\Delta u$ and $\frac{\partial\phi}{\partial v}\Delta v$. A 1-form $\omega_p(\cdot)$ is a function with only one vector input slot—there is no defined way to feed it a pair of vectors.
+    
+Even with the Riemann sum, partitioning a 2D parameter region into an $N\times N$ grid creates $N^2$ patches with edge lengths $\Delta u,\Delta v\sim\frac{1}{N}$. A 2-form scales bilinearly as $\Delta u\,\Delta v\sim\frac{1}{N^2}$, so summing $N^2$ terms converges to a finite number. A 1-form scales linearly as $\frac{1}{N}$; summing $N^2$ terms of size $\frac{1}{N}$ diverges like $N\to\infty$.
+
+So what is a 2-form. From the above discussion we understand that it must take 2 vectors and produce a scalar. It has to be linear so we can combine the basic 2-forms into larger sums.
+
+To start with, we will write a 2-form as the wedge product of two 1-forms. We'll define wedge products shortly. We will then look at a few general properties of 2-forms and see that every 2-form can be written as the sum of products of two 1-forms. 
+
+The wedge product $dx \wedge dy$ eats two ordered tangent vectors and outputs the area of the parallelogram they span, with a sign. When the two tangent vectors align with the axis, this is the same as the normal product $dxdy$. Otherwise, they are very different. They look identical on an axis-aligned grid only because the extra geometric information baked into $dx \wedge dy$ happens to vanish on horizontal and vertical rectangles. 
+
+As we saw, in differential forms, $dx$ and $dy$ are not tiny lengths; they are linear functionals (1-forms) that take a tangent vector $\mathbf{u}=(u_x,u_y)$ and extract its components:
+
+$$dx(\mathbf{u})=u_x, \qquad dy(\mathbf{u})=u_y$$
+
+If you form a literal "plain product" of these two 1-forms (the tensor product $dx \otimes dy$), it takes an ordered pair of vectors $(\mathbf{u},\mathbf{v})$ and simply multiplies $u_x$ by $v_y$:
+
+$$(dx \otimes dy)(\mathbf{u},\mathbf{v})=dx(\mathbf{u})\,dy(\mathbf{v})=u_x v_y$$
+
+Compare what happens on two different shapes:
+
+**Axis-aligned rectangle:** Set $\mathbf{u}=(a,0)$ and $\mathbf{v}=(0,b)$. Then $(dx \otimes dy)(\mathbf{u},\mathbf{v})=ab$, which equals the area.
+    
+**Tilted parallelogram:** Set $\mathbf{u}=(u_x,u_y)$ and $\mathbf{v}=(v_x,v_y)$. Now $u_x v_y$ is _not_ the area of the parallelogram—it is only the area of a rectangle built from $\mathbf{u}$'s shadow on the $x$-axis and $\mathbf{v}$'s shadow on the $y$-axis. If you collapse the parallelogram into a line by setting $\mathbf{u}=\mathbf{v}=(1,1)$, the area is $0$, yet $u_x v_y=1$.
+
+To measure the signed area of a general parallelogram spanned by $\mathbf{u}$ and $\mathbf{v}$ in the $xy$-plane (or the signed area of its projection onto the $xy$-plane in higher dimensions), we must subtract the cross-term $u_y v_x$:
+
+$$dx(\mathbf{u})\,dy(\mathbf{v})-dy(\mathbf{u})\,dx(\mathbf{v})=u_x v_y-u_y v_x=\det\begin{pmatrix}u_x & v_x \\ u_y & v_y\end{pmatrix}$$
+
+This is precisely the definition of the wedge product of two 1-forms evaluated on $(\mathbf{u},\mathbf{v})$: $(dx\wedge dy)(\mathbf{u},\mathbf{v})$. The subtraction is the geometric meaning of the wedge $\wedge$. It turns a naive product of coordinate projections into a determinant.
+
+Think of the formula for the area of a triangle (which is half a parallelogram). Assuming one vertex is at the origin, we take the product of the $y$-component of one of the other points (say $\mathbf{p}$) with the $x$-component of the third remaining point (say $\mathbf{q}$) and subtract that from the product of the $x$-component of $\mathbf{p}$ and the $y$-component of $\mathbf{q}$. Then we divide by $2$ (multiply by one-half) because it is a triangle. Essentially, before dividing by $2$, we form two rectangles and subtract their areas; this is $(dx\wedge dy)(\mathbf{p},\mathbf{q})$, the 2-form $dx\wedge dy$ evaluated on the two side vectors. 
+
+Notice that depending on what is subtracted from what, we can end up with a plus or minus sign for the area. Generally, for ordinary geometric area we take the absolute value. But with $k$-forms, we retain the sign as it provides us with an orientation, which is important when calculating things like work along a curve or flux through a surface.
+
+Swapping the input vectors flips the sign: $(dx\wedge dy)(\mathbf{v},\mathbf{u})=-(dx\wedge dy)(\mathbf{u},\mathbf{v})$, which also happens when swapping the 1-forms in the wedge product, $dx\wedge dy=-dy\wedge dx$. A form $\omega$ that undergoes a sign flip when we swap the order of any two adjacent input vectors ($\omega(\mathbf{v},\mathbf{u})=-\omega(\mathbf{u},\mathbf{v})$) is called an alternating form. 
+
+Furthermore, if we decompose an input vector into a linear combination of vectors (or scale one of the sides of our parallelogram), the signed area distributes linearly over that input while holding the other input vectors fixed. This means the form must be linear in each input slot separately, making it a multilinear form (bilinear in the case of 2-forms). Note also that when simplifying a general 2-form such as $A\,dx\wedge dy+B\,dx\wedge dz$, we can combine scalar coefficients of like basis planes (such as $dx\wedge dy$ with other $dx\wedge dy$ terms), while linearly independent basis 2-forms like $dx\wedge dy$ and $dx\wedge dz$ remain separate components whose scalar outputs only add together after we plug in a pair of vectors $(\mathbf{u},\mathbf{v})$.
+
+#### Properties of $2$-forms
+The sign flip also implies that $dx\wedge dx=0$. A few other properties of the wedge product and of multilinear alternating $k$-forms also follow from this definition:
+
+Scalar homogeneity (pulling out constants or functions): $(c\,dx)\wedge dy=dx\wedge(c\,dy)=c\,(dx\wedge dy)$
+
+Distributivity over addition of forms: $(\alpha+\beta)\wedge\gamma=\alpha\wedge\gamma+\beta\wedge\gamma$
+
+Associativity of the wedge product: $(\alpha\wedge\beta)\wedge\gamma=\alpha\wedge(\beta\wedge\gamma)$
+
+Graded anticommutativity (for a $p$-form $\alpha$ and a $q$-form $\beta$):
+
+$\alpha\wedge\beta=(-1)^{pq}(\beta\wedge\alpha)$
+
+Multilinearity in each vector slot separately: $\omega(a\mathbf{u}_1+b\mathbf{u}_2,\mathbf{v})=a\,\omega(\mathbf{u}_1,\mathbf{v})+b\,\omega(\mathbf{u}_2,\mathbf{v})$
+
+Vanishing on linearly dependent vectors (and above the ambient dimension): If $\mathbf{v}_1,\dots,\mathbf{v}_k$ are linearly dependent, then $\omega(\mathbf{v}_1,\dots,\mathbf{v}_k)=0$. Consequently, on $\mathbb{R}^n$, every $k$-form with $k>n$ is identically $0$.
+
+Shear invariance: Adding a scalar multiple of one input vector to another leaves the output unchanged: $\omega(\mathbf{u}+c\mathbf{v},\mathbf{v})=\omega(\mathbf{u},\mathbf{v})+c\,\omega(\mathbf{v},\mathbf{v})=\omega(\mathbf{u},\mathbf{v})$ (think of cosets and complementary subspaces in group theory!)
+
+#### Geometric Visualization of 2-forms
+
+Notice that when $\mathbf{u}=\frac{\partial\varphi}{\partial s}$ and $\mathbf{v}=\frac{\partial\varphi}{\partial t}$, the partial derivative tangent vectors of a coordinate map $\varphi(s,t)=(x(s,t),y(s,t))$, the determinant above is precisely the Jacobian determinant. Thus, when applying a change of variables in an integral, pulling back the $k$-form via the wedge product generates the signed Jacobian determinant automatically through wedge algebra, rather than requiring us to tack on an external $\vert{}\det(D\varphi)\vert{}$ factor by hand as in ordinary multivariable integration with plain $dx_1 dx_2\dots dx_k$.
+
+For example, for a map $\varphi(u,v)=(x(u,v),y(u,v))$, pulling back $dx\wedge dy$ gives:
+
+$$\varphi^*(dx\wedge dy)=\left(\frac{\partial x}{\partial u}\,du+\frac{\partial x}{\partial v}\,dv\right)\wedge\left(\frac{\partial y}{\partial u}\,du+\frac{\partial y}{\partial v}\,dv\right)$$
+
+Expanding the four terms, the $du\wedge du$ and $dv\wedge dv$ terms vanish, and flipping $dv\wedge du=-du\wedge dv$ leaves:
+
+$$\varphi^*(dx\wedge dy)=\left(\frac{\partial x}{\partial u}\frac{\partial y}{\partial v}-\frac{\partial x}{\partial v}\frac{\partial y}{\partial u}\right)du\wedge dv=\det\begin{pmatrix}\frac{\partial x}{\partial u}&\frac{\partial x}{\partial v}\\\frac{\partial y}{\partial u}&\frac{\partial y}{\partial v}\end{pmatrix}du\wedge dv$$
+
+This generalizes directly to any $k$-form: expanding the wedge product of $k$ pulled-back 1-forms produces the Leibniz permutation sum defining a $k\times k$ determinant.
+
+Let's look at the $2\times 2$ minors in action on a 2D surface in $\mathbb{R}^3$ ($k=2,n=3$). Suppose we integrate a general 2-form $\omega=P\,dy\wedge dz+Q\,dz\wedge dx+R\,dx\wedge dy$ over a parametrized surface $\varphi(u,v)=(x(u,v),y(u,v),z(u,v))$ in $\mathbb{R}^3$. 
+
+Here the full Jacobian matrix $D\varphi$ has 3 rows and 2 columns, and pulling back each basis 2-form extracts one of its three $2\times 2$ minors:
+
+$$\varphi^*\omega=\left[P\,\frac{\partial(y,z)}{\partial(u,v)}+Q\,\frac{\partial(z,x)}{\partial(u,v)}+R\,\frac{\partial(x,y)}{\partial(u,v)}\right]du\wedge dv$$
+
+Notice that those three $2\times 2$ Jacobian determinants are the exact $x,y,z$ components of the surface normal vector $\frac{\partial\vec{\varphi}}{\partial u}\times\frac{\partial\vec{\varphi}}{\partial v}$ from classical vector calculus flux integrals ($\iint_S\vec{F}\cdot\left(\frac{\partial\vec{\varphi}}{\partial u}\times\frac{\partial\vec{\varphi}}{\partial v}\right)du\,dv$), arising naturally as coordinate projections onto the $yz$-,  $zx$-, and $xy$-planes without needing a 3D cross product or dot product.
+
+Thus, when evaluated on two vectors, a 2-form simply computes a weighted sum of the signed areas of the projections of the parallelogram they span onto the 2-dimensional coordinate planes in the ambient space, where each projection is multiplied by its corresponding scalar coefficient function. That's a mouthful! What we are saying is, let's say we have a general 2-form over $\mathbb{R}^3$: $\omega=F_x\,dy\wedge dz+F_y\,dz\wedge dx+F_z\,dx\wedge dy$. Now if we feed two tangent vectors $\mathbf{u}$ and $\mathbf{v}$ at a point into it, they span a parallelogram in the ambient 3D space. The basis ("component") 2-forms $dy\wedge dz$, $dz\wedge dx$, and $dx\wedge dy$ measure the signed areas $A_{yz}$, $A_{zx}$, and $A_{xy}$ of this parallelogram as it is projected onto the corresponding coordinate planes. The true unoriented geometric area $A$ of the tilted 3D parallelogram satisfies a planar Pythagorean theorem (the Cauchy-Binet identity):
+
+$$A^2=A_{yz}^2+A_{zx}^2+A_{xy}^2$$
+
+(the 2D analogy of the length of a line segment, $L^2=\Delta x^2+\Delta y^2+\Delta z^2$). Meanwhile, the general 2-form $\omega=F_x\,dy\wedge dz+F_y\,dz\wedge dx+F_z\,dx\wedge dy$ takes the linear combination $F_x A_{yz}+F_y A_{zx}+F_z A_{xy}$, which computes the flux of $\vec{F}$ through the parallelogram by summing the fluxes across its three coordinate-plane shadows. This is called Cauchy's tetrahedron principle, which we explain a bit more now. 
+
+Why must the flux of $\vec{F}$ through a tilted triangle equal the sum of the fluxes through its three coordinate-plane shadows ($F_x A_{yz}+F_y A_{zx}+F_z A_{xy}$)? Slice off a tiny corner tetrahedron of characteristic size $\epsilon$ whose slanted face is our tilted triangle and whose other three orthogonal faces are its shadows on the $yz$-,  $zx$-, and $xy$-planes. By the Divergence Theorem, the net flux leaving all four faces equals $\iiint(\nabla\cdot\vec{F})\,dV$. As we shrink $\epsilon\to 0$, the volume integral of $\nabla\cdot\vec{F}$ scales like $\epsilon^3$, whereas the surface fluxes through the four faces scale like $\epsilon^2$. Dividing by $\epsilon^2$ and taking $\epsilon\to 0$, the $\mathcal{O}(\epsilon)$ volume term vanishes completely—meaning at an infinitesimal scale, whatever fluid or flux enters through the three coordinate-plane shadow faces must exit cleanly through the tilted face without loss or accumulation.
+
+From this geometric visualization, we can see that if we are in $\mathbb{R}^3$, we will have $\binom{3}{2}=3$ 2-dimensional coordinate planes. If we are in an $n$-dimensional ambient space $\mathbb{R}^n$, we will have $\binom{n}{2}=\frac{n(n-1)}{2}$ 2-dimensional coordinate planes, each formed by taking any two of the coordinate axes. When looking at a change of variables (or a surface parametrization $\varphi(u,v)$), each of these $\binom{n}{2}$ basis 2-forms produces its own $2\times 2$ Jacobian determinant, which corresponds to a signed projected area scaling factor and contributes to its respective flux component with its proper sign. This count generalizes immediately to any $k$-form on $\mathbb{R}^n$: choosing $k$ distinct coordinate axes out of $n$ gives $\binom{n}{k}=\frac{n!}{k!(n-k)!}$ independent $k$-dimensional coordinate hyperplanes, so the space of $k$-forms at a point has dimension $\binom{n}{k}$.
+
+The general rule for the sign of a wedge product of 1-forms is as follows: fix an agreed reference ordering of the coordinate axes (say $x_1,x_2,\dots,x_n$). Provided no coordinate differential is repeated (if any $dx^i$ appears twice, the wedge product is $0$), any wedge product of distinct coordinate 1-forms can be brought to the reference order by swapping two 1-forms at a time. Each swap flips the sign. Thus, an even number of swaps gives a $+$ sign, while an odd number of swaps gives a $-$ sign (this is the sign, or parity, of the permutation). As an example, consider $dx\wedge dy\wedge dz$ as the agreed reference order: $dy\wedge dx\wedge dz$ requires one swap ($x\leftrightarrow y$) and therefore gets a minus sign ($-dx\wedge dy\wedge dz$), while $dy\wedge dz\wedge dx$ (or $dz\wedge dx\wedge dy$) requires two swaps and therefore gets a plus sign ($+dx\wedge dy\wedge dz$).
+
+Our counting argument above explains a few things about electromagnetism.  In $\mathbb{R}^3$:  $\binom{3}{1}=3$ (1-forms) and $\binom{3}{2}=3$ (2-forms). Because $\binom{3}{1}=\binom{3}{2}=3$, classical vector calculus gets away with disguising both 1-forms (like $\vec{E}$ in work $\int\vec{E}\cdot d\vec{r}$) and 2-forms (like $\vec{B}$ in magnetic flux $\iint\vec{B}\cdot d\vec{A}$) as 3-component vector fields.
+    
+In 4D Minkowski spacetime $(t,x,y,z)$:  $\binom{4}{1}=4$, whereas $\binom{4}{2}=\frac{4\times 3}{2}=6$. A 2-form in 4D has $6$ independent coordinate-plane components—three space-time planes ($dx\wedge dt,dy\wedge dt,dz\wedge dt$) carrying the $3$ components of the electric field $\vec{E}$, and three space-space planes ($dy\wedge dz,dz\wedge dx,dx\wedge dy$) carrying the $3$ components of the magnetic field $\vec{B}$:
+    
+$$F=E_x\,dx\wedge dt+E_y\,dy\wedge dt+E_z\,dz\wedge dt+B_x\,dy\wedge dz+B_y\,dz\wedge dx+B_z\,dx\wedge dy$$
+    
+Because $6\neq 4$, the electromagnetic field $F$ in 4D spacetime cannot be written as a 4-vector; it is intrinsically a 2-form.
+
+### Integrating $k$-forms
+
+Since we've already looked at the Jacobian and pullback, it is straightforward to integrate a 2-form over a curved surface $S\subset\mathbb{R}^3$ using an orientation-preserving parametrization $\varphi:D\subset\mathbb{R}^2\to S$, given by $\varphi(u,v)=(x(u,v),y(u,v),z(u,v))$. As before, pulling back via $\varphi$ introduces the signed $2\times 2$ Jacobian determinants for each coordinate plane so that projected bin areas and orientation are maintained.
+
+For $\omega=P(x,y,z)\,dx\wedge dy+Q(x,y,z)\,dy\wedge dz+R(x,y,z)\,dz\wedge dx$, pulling $\omega$ back to the parameter domain $D$ gives:
+
+$$\varphi^*\omega=\left[P(\varphi(u,v))\det\begin{pmatrix}\frac{\partial x}{\partial u}&\frac{\partial x}{\partial v}\\\frac{\partial y}{\partial u}&\frac{\partial y}{\partial v}\end{pmatrix}+Q(\varphi(u,v))\det\begin{pmatrix}\frac{\partial y}{\partial u}&\frac{\partial y}{\partial v}\\\frac{\partial z}{\partial u}&\frac{\partial z}{\partial v}\end{pmatrix}+R(\varphi(u,v))\det\begin{pmatrix}\frac{\partial z}{\partial u}&\frac{\partial z}{\partial v}\\\frac{\partial x}{\partial u}&\frac{\partial x}{\partial v}\end{pmatrix}\right]du\wedge dv$$
+
+Integrating $\omega$ over $S$ then reduces to an ordinary double integral over the flat parameter domain $D$:
+
+$$\int_S\omega=\int_D\varphi^*\omega=\iint_D\left[P(\varphi(u,v))\frac{\partial(x,y)}{\partial(u,v)}+Q(\varphi(u,v))\frac{\partial(y,z)}{\partial(u,v)}+R(\varphi(u,v))\frac{\partial(z,x)}{\partial(u,v)}\right]du\,dv$$
+
+We can generalize this to $k$-forms on an oriented $k$-dimensional manifold $M\subset\mathbb{R}^n$ parametrized by $\varphi:D\subset\mathbb{R}^k\to M$, where $\varphi(u^1,\dots,u^k)=(x^1(\mathbf{u}),\dots,x^n(\mathbf{u}))$. Writing a general $k$-form as a sum over strictly increasing coordinate indices $1\le i_1<i_2<\dots<i_k\le n$,
+
+$$\omega=\sum_{1\le i_1<\dots<i_k\le n}f_{i_1\dots i_k}(\mathbf{x})\,dx^{i_1}\wedge\dots\wedge dx^{i_k}$$
+
+its integral over $M$ pulls back to an ordinary $k$-fold integral over $D$ where each term picks up its corresponding $k\times k$ Jacobian determinant:
+
+$$\int_M \omega = \int_D \varphi^*\omega = \int \cdots \int_D \left( \sum_{1 \le i_1 < \dots < i_k \le n} f_{i_1 \dots i_k}(\varphi(\mathbf{u})) \, \det \begin{pmatrix} \frac{\partial x^{i_1}}{\partial u^1} & \cdots & \frac{\partial x^{i_1}}{\partial u^k} \\\\ \vdots & \ddots & \vdots \\\\ \frac{\partial x^{i_k}}{\partial u^1} & \cdots & \frac{\partial x^{i_k}}{\partial u^k} \end{pmatrix} \right) du^1 \dots du^k$$
+
+Equivalently, in compact coordinate-free form, this is simply the $k$-form evaluated directly on the $k$ coordinate tangent vectors of the parametrization:
+
+$$\int\_M\omega=\int\cdots\int\_D\omega\_{\varphi(\mathbf{u})}\left(\frac{\partial\varphi}{\partial u^1},\frac{\partial\varphi}{\partial u^2},\dots,\frac{\partial\varphi}{\partial u^k}\right)du^1\dots du^k$$
+
+Note that there are two ways to compute the same pullback: wedge substitution vs. tangent vectors. The typical way is via tangent vectors, as it is in the formula, Compute the $k$ tangent vectors $\mathbf{v}_q=\frac{\partial\varphi}{\partial u^q}$ for $q=1,\dots,k$, plug them straight into $\omega_{\varphi(\mathbf{u})}(\mathbf{v}_1,\dots,\mathbf{v}_k)$, and integrate over $D$. 
+
+The other way is to simply replace each $x^i$ by $x^i(\mathbf{u})$ and expand $dx^i=\sum_{q=1}^k\frac{\partial x^i}{\partial u^q}\,du^q$ directly using wedge rules ($du^q\wedge du^q=0$ and $du^2\wedge du^1=-du^1\wedge du^2$). When $\omega$ only has one or two terms, expanding wedges by hand is usually much faster than writing out determinants.
+
+### The Derivative of a Differential Form
+
+Suppose $\omega$ is a 1-form on $\mathbb{R}^2$, i.e., a covector field that may vary from point to point. What does it mean to take the derivative of this 1-form? Well, the usual definition of a derivative along a 1D line gives us a clue. We'd like to see how the scalar value of the 1-form, after it eats a vector $V_p$, varies as we move in an infinitesimal neighbourhood of the point $p$. The only issue is that in a 2D space, there are infinitely many directions in which we can strike out from $p$. So we pick a second vector $W_p$ and measure the variation of $\omega(V)$ as we strike out from $p$ along $W_p$ (extending $V_p$ to nearby points $p+tW$ by keeping its Cartesian components constant). Thus, we get the directional derivative of the scalar output $\omega(V)$ along $W_p$:
+
+The variation of $\omega(V_p)$ in the direction of $W_p$ is:
+
+$$\nabla_{W_p}\omega(V_p)=\lim_{t\to 0}\frac{\omega(V_{p+tW})-\omega(V_p)}{t}$$
+
+Similarly, we have the variation of $\omega(W_p)$ in the direction of $V_p$ (holding the Cartesian components of $W$ constant as we shift along $V_p$), which is given by:
+
+$$\nabla_{V_p}\omega(W_p)=\lim_{t\to 0}\frac{\omega(W_{p+tV})-\omega(W_p)}{t}$$
+
+(Here we are applying the directional derivative notation $\nabla_{V_p}\varphi$ for a scalar function $\varphi$ to the function $q\mapsto\omega_q(W_q)$.)
+
+The derivative of a differential form is called an exterior derivative. Now we'd like this exterior derivative $d\omega$ of a 1-form to be a 2-form. This means we must obtain a bilinear alternating form, so we take the difference of these two limits:
+
+$$d\omega(V_p,W_p)=\lim_{t\to 0}\frac{\omega(W_{p+tV})-\omega(W_p)}{t}-\lim_{t\to 0}\frac{\omega(V_{p+tW})-\omega(V_p)}{t}$$
+
+Following the directional derivative notation above, this reads:
+
+$$d\omega(V_p,W_p)=\nabla_{V_p}\omega(W_p)-\nabla_{W_p}\omega(V_p)$$
+
+To obtain a 3-form $d\omega$ as the derivative of a 2-form $\omega$, we take the alternating sum of all three directional variations:
+
+$$d\omega(U_p,V_p,W_p)=\nabla_{U_p}\omega(V_p,W_p)-\nabla_{V_p}\omega(U_p,W_p)+\nabla_{W_p}\omega(U_p,V_p)$$
+
+In the general case, suppose $\omega$ is an $n$-form on $\mathbb{R}^m$ and $V_p^1,\dots,V_p^{n+1}$ are $n+1$ tangent vectors at $p$ (extended with constant Cartesian components near $p$). Then we define the $(n+1)$-form $d\omega$ by:
+
+$$d\omega(V_p^1,\dots,V_p^{n+1})=\sum_{i=1}^{n+1}(-1)^{i+1}\nabla_{V_p^i}\omega(V_p^1,\dots,V_p^{i-1},V_p^{i+1},\dots,V_p^{n+1})$$
+
+In other words, $d\omega$ applied to $n+1$ vectors is the alternating sum of the directional variations of $\omega$ applied to $n$ of those vectors in the direction of the remaining one.
+
+Using this logic, we can arrive at an algebraic mechanism to calculate the exterior derivative of a 1-form $\omega=f(x,y,z)\,dx+g(x,y,z)\,dy+h(x,y,z)\,dz$. Let's look at the $f(x,y,z)\,dx$ term. By multilinearity, instead of testing arbitrary vectors, we only need to see how $d(f\,dx)$ behaves on pairs of the standard coordinate basis vectors $\mathbf{e}_x,\mathbf{e}_y,\mathbf{e}_z$. Although $f(x,y,z)$ itself can certainly vary along the $x$-axis ($\frac{\partial f}{\partial x}$ need not be zero), any $x$-variation paired with $dx$ evaluates on $(\mathbf{e}_x,\mathbf{e}_x)$, where the two terms in the alternating difference cancel identically (algebraically corresponding to $dx\wedge dx=0$, since two vectors along the $x$-axis span zero 2D area). Thus, only variations of $f$ in directions transverse to $x$—namely along $y$ and $z$, lying in the $yz$-plane—survive to span non-degenerate 2D coordinate planes with the $x$-axis. Specifically, varying $f\,dx$ along $\mathbf{e}_y$ produces $\frac{\partial f}{\partial y}\,dy\wedge dx=-\frac{\partial f}{\partial y}\,dx\wedge dy$ in the $xy$-plane, while varying $g\,dy$ along $\mathbf{e}_x$ produces $+\frac{\partial g}{\partial x}\,dx\wedge dy$ in the same $xy$-plane. Putting all the surviving components together for each coordinate plane gives us the resulting 2-form:
+
+$$d\omega=\left(\frac{\partial g}{\partial x}-\frac{\partial f}{\partial y}\right)dx\wedge dy+\left(\frac{\partial h}{\partial y}-\frac{\partial g}{\partial z}\right)dy\wedge dz+\left(\frac{\partial h}{\partial x}-\frac{\partial f}{\partial z}\right)dx\wedge dz$$
+
+A simple algebraic rule (mnemonic) is as follows:
+Say we have a single term of a $k$-form in $\mathbb{R}^n$, for instance $f\,dx^1\wedge dx^2\wedge\dots\wedge dx^k$ (or more generally $f\,dx^{j_1}\wedge\dots\wedge dx^{j_k}$). Taking its exterior derivative means replacing $f$ by its total differential $df$ and wedging from the left:
+
+$$d(f\,dx^1\wedge\dots\wedge dx^k)=df\wedge dx^1\wedge\dots\wedge dx^k=\sum_{i=1}^{n}\frac{\partial f}{\partial x^i}\,dx^i\wedge dx^1\wedge\dots\wedge dx^k$$
+
+This is a $(k+1)$-form. Whenever $dx^i$ matches any of $dx^1,\dots,dx^k$, the wedge product repeats a 1-form and evaluates to zero, so we only need to include the coordinates not already present in the wedge product:
+
+$$d(f\,dx^1\wedge\dots\wedge dx^k)=\sum_{i\notin\{1,\dots,k\}}\frac{\partial f}{\partial x^i}\,dx^i\wedge dx^1\wedge\dots\wedge dx^k$$
+
+Note that this also implies that taking the exterior derivative of an exterior derivative always evaluates to $0$ (assuming continuous second partial derivatives). Thus, $d^2\omega=d(d\omega)=0$ because taking the second exterior derivative pairs every mixed second partial derivative $\frac{\partial^2 f}{\partial x^i\partial x^j}$ with $dx^i\wedge dx^j=-dx^j\wedge dx^i$, causing symmetric mixed partials to cancel out by Clairaut's theorem. This is easily seen in our 1-form case above: taking the exterior derivative of the 2-form $d\omega$ (remembering that $dz\wedge dx\wedge dy=+dx\wedge dy\wedge dz$, whereas $dy\wedge dx\wedge dz=-dx\wedge dy\wedge dz$) results in a single $dx\wedge dy\wedge dz$ component given by:
+
+$$d(d\omega)=\left(\frac{\partial^2 g}{\partial z\partial x}-\frac{\partial^2 f}{\partial z\partial y}+\frac{\partial^2 h}{\partial x\partial y}-\frac{\partial^2 g}{\partial x\partial z}-\frac{\partial^2 h}{\partial y\partial x}+\frac{\partial^2 f}{\partial y\partial z}\right)dx\wedge dy\wedge dz=0$$
+
+which, as we can see, cancels pairwise to $0$.
+
+Notice that if we rewrite the third term of our 1-form derivative in cyclic basis order ($dz\wedge dx=-dx\wedge dz$), our formula for $d\omega$ on $\mathbb{R}^3$ becomes:
+
+$$d(f\,dx+g\,dy+h\,dz)=\left(\frac{\partial h}{\partial y}-\frac{\partial g}{\partial z}\right)dy\wedge dz+\left(\frac{\partial f}{\partial z}-\frac{\partial h}{\partial x}\right)dz\wedge dx+\left(\frac{\partial g}{\partial x}-\frac{\partial f}{\partial y}\right)dx\wedge dy$$
+
+Those three parentheses are the exact $x,y,z$ components of $\nabla\times\langle f,g,h\rangle$. In $\mathbb{R}^3$, the single exterior derivative $d$ climbs a four-rung ladder:
+
+$$0\text{-forms}\xrightarrow{d=\text{grad}}1\text{-forms}\xrightarrow{d=\text{curl}}2\text{-forms}\xrightarrow{d=\text{div}}3\text{-forms}\xrightarrow{d}0$$
+
+And the single rule $d^2=0$ between consecutive rungs immediately gives both $\nabla\times(\nabla f)=\vec{0}$ (from $0\to 1\to 2$) and $\nabla\cdot(\nabla\times\vec{F})=0$ (from $1\to 2\to 3$).
+
+#### Properties of Exterior Derivatives
+
+Identities involving $d$. Let $\omega,\omega_1,\omega_2$ be $n$-forms, $\mu$ an $m$-form, and $f$ a $0$-form (a smooth scalar function):
+
+Nilpotency (Poincaré's identity, for $C^2$ forms): $d(d\omega)=0$
+
+Additivity (for two forms $\omega_1,\omega_2$ of the same degree $n$): $$d(\omega_1+\omega_2)=d\omega_1+d\omega_2$
+
+Graded Leibniz (product) rule: $d(\omega\wedge\mu)=d\omega\wedge\mu+(-1)^n\omega\wedge d\mu$
+
+Useful corollary of the Leibniz rule and $d^2\omega=0$: $d(f\,d\omega)=df\wedge d\omega$
+
+Exterior derivative of a $0$-form on $\mathbb{R}^n$: $df=\frac{\partial f}{\partial x^1}\,dx^1+\frac{\partial f}{\partial x^2}\,dx^2+\dots+\frac{\partial f}{\partial x^n}\,dx^n$
+
+### Stoke's Theorem But More Profound!
+Now that we looked at derivatives, we can look at a few things that allows us to sort of "bypass" the restriction mentioned above that you only integrate a $k$-form over a $k$-dimensional surface. There are three mathematically valid operations you can perform instead:
+
+**You can take the exterior derivative $d\omega$ first, then integrate over $M$.** Applying $d$ turns the 1-form $\omega$ into a 2-form $d\omega$, which does match the dimension of the hemisphere.
+
+Take the 1-form $\omega=x^2\,dx+xy\,dy$. Compute the 2-form $d\omega$:
+
+$$d\omega=d(x^2)\wedge dx+d(xy)\wedge dy=2x\,dx\wedge dx+(y\,dx+x\,dy)\wedge dy=y\,dx\wedge dy$$
+
+Parameterize the upper unit hemisphere as $\phi(r,t)=(r\cos t,\,r\sin t,\,\sqrt{1-r^2})$ for $r\in[0,1]$, $t\in[0,2\pi]$, where $(dx\wedge dy)\left(\frac{\partial\phi}{\partial r},\frac{\partial\phi}{\partial t}\right)=r$:
+
+$$\int_M d\omega=\int_0^{2\pi}\int_0^1 (r\sin t)\,r\,dr\,dt=\left(\int_0^{2\pi}\sin t\,dt\right)\left(\int_0^1 r^2\,dr\right)=0$$
+
+**You can integrate $\omega$ over the 1D boundary $\partial M$ (the equator).** The boundary of the upper hemisphere is the 1D unit circle $\psi(t)=(\cos t,\sin t,0)$ for $t\in[0,2\pi]$, which matches the degree of a 1-form:
+$$\int_{\partial M}\omega=\int_0^{2\pi}\left(\cos^2 t(-\sin t)+(\cos t\sin t)(\cos t)\right)dt=\int_0^{2\pi}0\,dt=0$$
+
+By Stokes' theorem ($\int_M d\omega=\int_{\partial M}\omega$), the two options above produce the same result.
+
+This also leads us to the geometric meaning of $d\omega(V_p,W_p)=\nabla_{V_p}\omega(W_p)-\nabla_{W_p}\omega(V_p)$ (Microscopic Stokes' Theorem). 
+
+Why does that specific difference of directional derivatives define the exterior derivative? Picture the infinitesimal parallelogram at $p$ spanned by $\epsilon V_p$ and $\epsilon W_p$, and walk counterclockwise around its four edges to compute the boundary circulation of our 1-form $\omega$:
+
+Bottom edge from $p$ to $p+\epsilon V$:  $+\omega(V_p)\,\epsilon$
+    
+Right edge from $p+\epsilon V$ to $p+\epsilon V+\epsilon W$:  $+\omega(W_{p+\epsilon V})\,\epsilon$
+    
+Top edge (traversed backward) from $p+\epsilon V+\epsilon W$ to $p+\epsilon W$:  $-\omega(V_{p+\epsilon W})\,\epsilon$
+    
+Left edge (traversed backward) from $p+\epsilon W$ to $p$:  $-\omega(W_p)\,\epsilon$ Grouping the right/left edges and top/bottom edges together and dividing by the parameter square $\epsilon^2$ gives:
+    
+$$\frac{1}{\epsilon^2}\oint_{\partial P_\epsilon}\omega=\frac{\omega(W_{p+\epsilon V})-\omega(W_p)}{\epsilon}-\frac{\omega(V_{p+\epsilon W})-\omega(V_p)}{\epsilon}\xrightarrow{\epsilon\to 0}\nabla_{V_p}\omega(W_p)-\nabla_{W_p}\omega(V_p)=d\omega(V_p,W_p)$$
+    
+Thus,  $d\omega(V_p,W_p)$ is literally the boundary circulation per unit parallelogram at $p$. Generalized Stokes' Theorem ($\int_M d\omega=\int_{\partial M}\omega$) works because $d\omega$ is already defined at the infinitesimal level to equal the boundary integral around each tiny cell.
+
+**You can convert the 1-form to a flux 2-form (using the 3D metric / Hodge star).** Physically, a 1-form $\omega=F_x\,dx+F_y\,dy+F_z\,dz$ represents work/circulation along a path, whereas integrating a vector field $\mathbf{F}=(x^2,xy,0)$ across a surface measures flux. To compute the flux of that same vector field through the hemisphere, you replace the 1-form with its dual 2-form $*\omega=x^2\,dy\wedge dz+xy\,dz\wedge dx$, which takes two tangent vectors and integrates cleanly over $M$.
+
+### Hodge & Hodge Duals
+
 ## Mathematical Formalities
 
 ### Vectors & Covectors
