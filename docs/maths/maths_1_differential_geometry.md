@@ -167,7 +167,7 @@ The total flux through the closed surface equals the volume integral of the dive
 
 Going back to the divergence formula, in terms of the electrostatic field, we frequently will be interested in situations where there are charges at specific locations and empty space elsewhere, which means the volumetric charge density spikes to infinity (assuming the charge is a point) where the charge is located and zero elsewhere. 
 
-Go back to the divergence we wrote down in spherical coordinates. The electric field of a single point charge $q$ sitting at the origin is $\mathbf{E} = \frac{q}{4\pi\varepsilon_0} \frac{\hat{\mathbf{r}}}{r^2}$.
+Look at tthe divergence we wrote down in spherical coordinates. The electric field of a single point charge $q$ sitting at the origin is $\mathbf{E} = \frac{q}{4\pi\varepsilon_0} \frac{\hat{\mathbf{r}}}{r^2}$.
 
 At every point $r > 0$, plugging $E_r = \frac{q}{4\pi\varepsilon_0 r^2}$ into the spherical formula $\frac{1}{r^2}\frac{\partial}{\partial r}(r^2 E_r)$ gives $\frac{1}{r^2}\frac{\partial}{\partial r}\left(\frac{q}{4\pi\varepsilon_0}\right) = 0$. That makes physical sense because in the empty space outside the origin ($r > 0$), the charge density is $\rho(\mathbf{r}) = 0$, and every field line that enters a volume element at $r > 0$ also exits it.
     
@@ -179,6 +179,119 @@ $$\nabla \cdot \left(\frac{\hat{\mathbf{r}}}{r^2}\right) = 4\pi \delta^3(\mathbf
 
 The factor $4\pi$ is exactly what the defining property needs. Integrate both sides of the first equation over a ball of radius $R$ around the origin. On the left, the divergence theorem turns the volume integral into the flux of $\hat{\mathbf{r}}/r^2$ through the sphere of radius $R$, which is $\frac{1}{R^2}\cdot 4\pi R^2 = 4\pi$. On the right, we get $4\pi \int \delta^3(\mathbf{r})\,dV = 4\pi$.
 
+It may be easiest to think of the delta function as the limit of a sequence of steps, each of which is higher and narrower than the previous step, such that the area under the step is always one. Think of a rectangle that 0.5 high and 2 long. It's area is 1. Make it taller and less wide i.e. 1 high and 1 long. Next comes 2 high and 0.5 long, and so on till you get a massive spike of infinitesimal width.
+
+The Dirac delta function can be used to pick out the value of a function at any desired point. For instance:
+
+$$\int_{-\infty}^{\infty} f(x)\,\delta(x)\,dx = \int_{-\infty}^{\infty} f(0)\,\delta(x)\,dx = f(0)\int_{-\infty}^{\infty} \delta(x)\,dx = f(0), \quad (f\text{ continuous at }0)$$
+
+We can shift the “spike” in the delta function as usual, obtaining $\delta(x-a)$. This shifted delta function satisfies
+
+$$\int_{-\infty}^{\infty} f(x)\,\delta(x-a)\,dx = f(a), \quad (f\text{ continuous at }a)$$
+
+The three-dimensional version of the delta function, $\delta^3(\vec{r}-\vec{r}_0)$, is $0$ everywhere except at $\vec{r}=\vec{r}_0$ and satisfies:
+
+$$\int_{\text{all space}} \delta^3(\vec{r}-\vec{r}_0)\,d\tau = 1$$
+
+where $\vec{r}=x\hat{x}+y\hat{y}+z\hat{z}$ is the position vector and $\vec{r}_0=x_0\hat{x}+y_0\hat{y}+z_0\hat{z}$ is the position at which the “peak” of the delta function occurs. In rectangular coordinates, it is just the product of three one-dimensional delta functions:
+
+$$\delta^3(\vec{r}-\vec{r}_0) = \delta(x-x_0)\,\delta(y-y_0)\,\delta(z-z_0)$$
+
+so that:
+
+$$\int_{\text{all space}} \delta^3(\vec{r})\,d\tau = \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty} \delta(x)\,\delta(y)\,\delta(z)\,dx\,dy\,dz = 1 \tag{6.5.3}$$
+
+But in orthogonal curvilinear coordinates, with $d\tau=h_u h_v h_w\,du\,dv\,dw$, it has an inverse Jacobian factor in it. Thus, in general,
+
+$$\delta^3(\vec{r}-\vec{r}_0) \neq \delta(u-u_0)\,\delta(v-v_0)\,\delta(w-w_0)$$
+
+but instead:
+
+$$\delta^3(\vec{r}-\vec{r}_0) = \frac{1}{h_u h_v h_w}\,\delta(u-u_0)\,\delta(v-v_0)\,\delta(w-w_0), \quad (h_u h_v h_w \neq 0\text{ at }\vec{r}_0) \tag{6.5.5}$$
+
+In particular, in cylindrical coordinates $(r,\theta,z)$:
+
+$$\delta^3(\vec{r}-\vec{r}_0) = \frac{1}{r}\,\delta(r-r_0)\,\delta(\theta-\theta_0)\,\delta(z-z_0), \quad (r_0 \gt 0) \tag{6.5.6}$$
+
+and in spherical coordinates $(r,\theta,\phi)$:
+
+$$\delta^3(\vec{r}-\vec{r}_0) = \frac{1}{r^2\sin\theta}\,\delta(r-r_0)\,\delta(\theta-\theta_0)\,\delta(\phi-\phi_0), \quad (r_0 \gt 0,\; 0 \lt \theta_0 \lt \pi) \tag{6.5.7}$$
+
+Just as with the delta function in one dimension, when the three-dimensional delta function multiplies a function $f(\vec{r})$ in an integrand over a region containing $\vec{r}_0$, the integral just picks out the value of $f(\vec{r})$ at the point where the delta function has its peak:
+
+$$\int_{\text{all space}} f(\vec{r})\,\delta^3(\vec{r}-\vec{r}_0)\,d\tau = f(\vec{r}_0), \quad (f\text{ continuous at }\vec{r}_0)$$
+
+Note that because $\int \delta(u)\,du = 1$ is dimensionless, any 1D delta function $\delta(u-u_0)$ carries the inverse dimensions of its argument $u$. So $\delta(x-x_0)$ and $\delta(r-r_0)$ have dimensions of $[\text{length}]^{-1}$, whereas $\delta(\theta-\theta_0)$ and $\delta(\phi-\phi_0)$ are dimensionless. Meanwhile, $\delta^3(\vec{r}-\vec{r}_0)$ must have dimensions of $[\text{volume}]^{-1} = [\text{length}]^{-3}$ so that $\int \delta^3\,d\tau = 1$. That immediately tells you $\delta(r-r_0)\,\delta(\theta-\theta_0)\,\delta(z-z_0)$ (dimensions $[\text{length}]^{-2}$) needs a $1/r$ prefactor, and $\delta(r-r_0)\,\delta(\theta-\theta_0)\,\delta(\phi-\phi_0)$ (dimensions $[\text{length}]^{-1}$) needs a $1/r^2$ prefactor.
+
+#### Why $\delta(x)$ cannot be an ordinary function
+
+Most introductory engineering and physics textbooks treat $\delta(x)$ heuristically as an "infinitely tall, infinitely thin spike of area $1$" and state its algebraic rules as recipes. But we need to look at the delta function as a distribution to place them on a proper mathematical foundation.  
+
+Suppose $\delta:\mathbb{R}\to\mathbb{R}$ were an ordinary function with $\delta(x)=0$ for every $x\neq 0$. In both Riemann and Lebesgue integration, changing (or even blowing up) a function at a single isolated point of width zero adds zero area. Thus any such function would satisfy $\int_{-\infty}^{\infty}\delta(x)\,dx=0$, contradicting $\int_{-\infty}^{\infty}\delta(x)\,dx=1$.  
+
+Instead of defining $\delta$ by its value at each point $x$, distribution theory defines it by what it does to smooth functions under an integral. A distribution $T$ is a continuous linear functional—a linear machine that takes a compactly supported smooth test function $\phi(x)$ as input and returns a single number, denoted $\langle T,\phi\rangle$.  
+
+Any ordinary locally integrable function $h(x)$ defines a regular distribution via $\langle h,\phi\rangle=\int_{-\infty}^{\infty}h(x)\phi(x)\,dx$. The Dirac delta is the singular distribution defined directly by the rule:  $\langle\delta,\phi\rangle = \phi(0)$.  
+
+Writing $\int_{-\infty}^{\infty}\delta(x)\phi(x)\,dx=\phi(0)$ is simply convenient integral notation for $\langle\delta,\phi\rangle=\phi(0)$. Two distributions $T_1$ and $T_2$ are equal if and only if $\langle T_1,\phi\rangle=\langle T_2,\phi\rangle$ for every test function $\phi$.
+
+With this perspective, we can now look at the properties of the delta function.
+
+#### Properties of the Dirac Delta Function
+
+$$\delta(x) = \delta(-x)$$
+
+Intuitively, thinking of the delta function as a spike, this makes sense since the function is symmetric about its peak at $x=0$. From the distribution perspective, setting $u=-x \implies du = -dx$, we have $\int_{-\infty}^{\infty}\delta(-x)\phi(x)\,dx=\int_{\infty}^{-\infty}\delta(u)\phi(-u)\,(-du)=\int_{-\infty}^{\infty}\delta(u)\phi(-u)\,du = \phi(0)$.  
+
+Next up, we have:  
+
+$$\delta'(x) = -\delta'(-x)$$
+
+To see this intuitively via the spike perspective, note that the rate of change of the function when $x$ is negative and near $0$ is positive, while it is negative when $x$ is positive and near $0$ (and $0$ elsewhere). Thus the derivative is antisymmetric, which is what this property represents. 
+
+Integration by parts can help us arrive at the next property:  
+
+$$\int_b^c f(x)\,\delta'(x-a)\,dx = -f'(a), \quad b \lt a \lt c,\; f \in C^1\text{ near }a$$
+
+where $C^1$ denotes the class of functions with a continuous first derivative. This property holds because:  
+
+$$\int_b^c f(x)\,\delta'(x-a)\,dx = \Bigl[f(x)\,\delta(x-a)\Bigr]_b^c - \int_b^c f'(x)\,\delta(x-a)\,dx = -f'(a), \quad b \lt a \lt c,\; f \in C^1\text{ near }a$$
+
+since $a$ lies strictly between $b$ and $c$, so $\delta(x-a)=0$ at the endpoints $x=b$ and $x=c$. 
+
+Specifically, set $a=0$ and replace $f(x)$ with $x\phi(x)$ for an arbitrary test function $\phi(x)$ to get $\int_{-\infty}^{\infty}x\,\delta'(x)\phi(x)\,dx = -(x\phi)'(0) = -\phi(0)$, which gives $x\,\delta'(x) = -\delta(x)$. Intuitively, this makes sense since when $x \lt 0$ around $x=0$, the rate of change of the delta function is positive, so multiplying by $x \lt 0$ makes $x\,\delta'(x)$ negative; while when $x \gt 0$ around $x=0$, the rate of change of the delta function is negative, so multiplying by $x \gt 0$ also makes $x\,\delta'(x)$ negative. This explains the minus sign.  
+
+For the next property, see that if we were to shrink or stretch the spike function—for example, at $x=2\epsilon$, we apply the value of the delta function from $x=4\epsilon$, thus shrinking it by a factor of $2$—the area under the spike would halve. Thus, more formally,  
+
+$$\delta(ax) = \frac{1}{\vert a \vert}\,\delta(x), \quad a \neq 0$$
+
+From the distribution perspective, we can test $\delta(ax)$ against an arbitrary $\phi(x)$ and substitute $u=ax$ ($dx=\frac{du}{a}$):  
+
+Case $a\gt 0$: As $x$ runs from $-\infty$ to $+\infty$,  $u$ also runs from $-\infty$ to $+\infty$:  
+
+$$\int_{-\infty}^{\infty}\delta(ax)\phi(x)\,dx = \int_{-\infty}^{\infty}\delta(u)\phi\!\left(\frac{u}{a}\right)\frac{du}{a} = \frac{1}{a}\,\phi(0)$$
+
+Case $a\lt 0$: As $x$ runs from $-\infty$ to $+\infty$,  $u=ax$ runs backward from $+\infty$ to $-\infty$. Flipping the integration limits back to standard order introduces a minus sign:
+
+$$\int_{-\infty}^{\infty}\delta(ax)\phi(x)\,dx = \int_{\infty}^{-\infty}\delta(u)\phi\!\left(\frac{u}{a}\right)\frac{du}{a} = -\frac{1}{a}\int_{-\infty}^{\infty}\delta(u)\phi\!\left(\frac{u}{a}\right)du = \frac{1}{-a}\,\phi(0) = \frac{1}{\lvert a\rvert}\,\phi(0)$$
+
+Both cases combine into $\frac{1}{\lvert a\rvert}\langle\delta,\phi\rangle$, proving $\delta(ax)=\frac{1}{\lvert a\rvert}\,\delta(x)$.
+
+More generally, we can write:
+
+$$\delta\bigl(g(x)\bigr) = \sum_i \frac{1}{\vert g'(x_i) \vert}\,\delta(x-x_i), \quad g(x_i) = 0,\; g'(x_i) \neq 0$$
+
+A few other properties are:
+
+$$\delta(x^2-a^2) = \vert 2a \vert^{-1}\bigl[\delta(x-a) + \delta(x+a)\bigr], \quad a \neq 0$$
+
+$$\delta\bigl((x-a)(x-b)\bigr) = \frac{1}{\vert a-b \vert}\bigl[\delta(x-a) + \delta(x-b)\bigr], \quad a \neq b$$
+
+Both are one-line corollaries of the simple-root formula right above them:
+
+Let $g(x) = (x-a)(x-b)$ with $a \neq b$. Its roots are $x_1 = a$ and $x_2 = b$, and $g'(x) = (x-b) + (x-a) = 2x - a - b$. Evaluating at the roots gives $\lvert g'(a)\rvert = \lvert a-b\rvert$ and $\lvert g'(b)\rvert = \lvert b-a\rvert = \lvert a-b\rvert$, immediately yielding $\frac{1}{\lvert a-b\rvert}\bigl[\delta(x-a)+\delta(x-b)\bigr]$.
+
+Setting $b = -a$ (with $a \neq 0$) turns $(x-a)(x-b)$ into $x^2-a^2$ and $\lvert a-b\rvert$ into $\lvert 2a\rvert$, recovering the previous line automatically.
 
 ### Line Integrals
 
@@ -497,6 +610,15 @@ $$\frac{d\bar{\psi}_R}{dR} = \frac{1}{4\pi R^2}\oint_{\text{sphere}} \nabla\psi\
 The second step is the divergence theorem applied to $\nabla\psi$. When $\nabla^2\psi = 0$ throughout the ball, the right-hand side is $0$, so $\bar{\psi}_R$ does not change as the sphere grows. As $R \to 0$ the average tends to $\psi(\mathbf{r}_0)$, so it equals $\psi(\mathbf{r}_0)$ for every $R$. This is Gauss's Mean Value Theorem: for any harmonic function, the value $\psi(\mathbf{r}_0)$ at the center of any sphere inside the region equals the exact average of $\psi$ over the surface of that sphere.
 
 An immediate physical consequence of the Mean Value Property of Laplace's equation ($\nabla^2 \psi = 0$) is the Maximum Principle: a harmonic function can never have a strict local maximum or local minimum in the interior of a charge-free region (all extrema must occur on the boundary $\partial V$). Why? If $\psi(\mathbf{r}_0)$ were strictly lower than all nearby points, it could not equal the average of $\psi$ over a small sphere around $\mathbf{r}_0$, because every point of that sphere is higher. The second derivatives give a quick check in the common case where they are not zero. If $\psi$ curves up along $x$ and $y$ ($\frac{\partial^2\psi}{\partial x^2}, \frac{\partial^2\psi}{\partial y^2} > 0$), Laplace's equation forces $\frac{\partial^2\psi}{\partial z^2} = -\left(\frac{\partial^2\psi}{\partial x^2} + \frac{\partial^2\psi}{\partial y^2}\right) < 0$, so $\psi$ curves down along $z$ and the critical point is a saddle, not a minimum. This check alone cannot rule out every minimum, because a minimum need not show up in the second derivatives: $x^4 + y^4 + z^4$ has a strict minimum at the origin even though all its second derivatives are zero there. The mean value argument has no such gap, so it is the one that proves the Maximum Principle. Physically, because potential energy $U = q\psi$ has no local minimum in free space, a point charge cannot be held in stable static equilibrium solely by electrostatic forces. This famous result is known as Earnshaw's Theorem.
+
+### Green's Theorem
+Let us use the notation $\partial D$ for the oriented curve $C^+$, that is, the boundary curve of a closed surface $D$. Then we can write Green’s theorem as
+
+$$\int_{\partial D} P\,dx + Q\,dy = \iint_D \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right) dx\,dy, \quad (P, Q \in C^1\text{ on }D,\; \partial D\text{ piecewise }C^1).$$
+
+Green’s theorem is very useful because it relates a line integral around the boundary of a region to an area integral over the interior of the region, and in many cases it is easier to evaluate the line integral than the area integral, or vice versa. For example, if we know that $P$ vanishes on the boundary, we can immediately conclude that $\iint_D (\partial P/\partial y)\,dx\,dy = 0$ even though $\partial P/\partial y$ need not vanish on the interior. 
+
+Note that this looks very similar to the Stoke's Theorem. If we have a vector field with a $x$ component of $P$ and $y$ component $Q$, then the LHS in the above Green's Theorem is just the line integral over a closed loop of some vector field. As we saw in the Stoke's Theorem, this should equal the curl of the vector field over the closed surface bounded by the loop. That is exactly what the RHS is! 
 
 ---
 
@@ -1238,6 +1360,38 @@ In $\mathbb{R}^3$, the numbers of 1-forms and 2-forms match ($\binom{3}{1}=\bino
 For example, $dx\wedge\star dx = dx\wedge dy\wedge dz$, and $(dy\wedge dz)\wedge\star(dy\wedge dz) = dy\wedge dz\wedge dx = dx\wedge dy\wedge dz$. The star is linear, and function coefficients pass straight through it. So in the notation of [Vector Calculus as Differential Forms](#vector-calculus-as-differential-forms) it swaps the work and flux forms, $\star\omega^1_{\vec{F}}=\omega^2_{\vec{F}}$ and $\star\omega^2_{\vec{F}}=\omega^1_{\vec{F}}$, and turns a function into its density form, $\star f=\omega^3_f$. Applying it twice gives back what we started with: $\star\star=1$ on forms of every degree in $\mathbb{R}^3$.
 
 This is the move behind the third option in [Stokes' Theorem But More Profound!](#stokes-theorem-but-more-profound), and the reason classical vector calculus can use one kind of arrow for both $\vec{E}$ (a 1-form) and $\vec{B}$ (a 2-form). The star needs more than the smooth structure, though. "The missing directions" and "the sign that gives the volume form" need lengths, angles and an orientation, so the star depends on the metric. The general definition, for any metric and dimension, is in [Stuff You Can Do With A Metric](#stuff-you-can-do-with-a-metric).
+
+When [the metric](#the-metric-tensor) $g_{\mu\nu}$ is diagonal, $\star\omega$ still sends a basis $p$-form $\omega$ to a multiple of the $(n-p)$ missing coordinate differentials wedged together, fixed by
+
+$$\omega\wedge(\star\omega) = \langle\omega,\omega\rangle\,\mathrm{vol}, \qquad \mathrm{vol} = \sqrt{|g|}\,dx^1\wedge\dots\wedge dx^n$$
+
+Here $\mathrm{vol}$ is the [volume form](#stuff-you-can-do-with-a-metric) in coordinates $(x^1,\dots,x^n)$ ordered by the orientation, with $g = \det(g_{\mu\nu})$, and $\langle\omega,\omega\rangle$ is the pointwise inner product of $\omega$ with itself: on a basis $p$-form, multiply together the inverse-metric entries $g^{\mu\mu} = 1/g_{\mu\mu}$, one for each $dx^\mu$ in $\omega$ (with $\langle 1,1\rangle = 1$). Two things set the sign: the orientation sets the swap sign that reorders $\omega$ wedged with the missing differentials into $dx^1\wedge\dots\wedge dx^n$, and the metric sets the sign of $\langle\omega,\omega\rangle$ via any negative $g_{\mu\mu}$. In Cartesian $\mathbb{R}^3$, $g_{\mu\nu} = \delta_{\mu\nu}$ gives $\sqrt{|g|} = 1$ and $\langle\omega,\omega\rangle = +1$ on every basis form, so both metric factors equal $1$ and drop out. In Minkowski spacetime ($ds^2 = -dt^2+dx^2+dy^2+dz^2$, $\mathrm{vol} = dt\wedge dx\wedge dy\wedge dz$), $g_{tt} = -1$ contributes $-1$ whenever $dt$ appears: for $\omega = dt$, $\langle dt,dt\rangle = -1$, so $dt\wedge(\star dt) = -\,\mathrm{vol}$ flips the bare $\mathbb{R}^3$ sign to $\star dt = -\,dx\wedge dy\wedge dz$ with no swaps. In polar coordinates ($ds^2 = dr^2+r^2\,d\theta^2$), the size changes too: $\mathrm{vol} = r\,dr\wedge d\theta$ and $\langle d\theta,d\theta\rangle = 1/r^2$, so $d\theta\wedge(\star d\theta) = \frac{1}{r}\,dr\wedge d\theta$ gives $\star d\theta = -\frac{1}{r}\,dr$ (and $\star dr = r\,d\theta$).
+
+#### Maxwell's Equations via Hodge Duality
+
+For example, all of Maxwell's equations can be written as:
+
+$dF=0$ and $d\star F=0$ where $F$ is given by:
+
+$$F = E_x\,dx \wedge dt + E_y\,dy \wedge dt + E_z\,dz \wedge dt + B_x\,dy \wedge dz + B_y\,dz \wedge dx + B_z\,dx \wedge dy$$
+
+$d\star F$ is given by:
+
+$$\star F = E_x\,dy \wedge dz + E_y\,dz \wedge dx + E_z\,dx \wedge dy + B_x\,dt \wedge dx + B_y\,dt \wedge dy + B_z\,dt \wedge dz$$
+
+Here we are using the Minkowski Hodge star definition $\omega \wedge (\star\omega) = \langle\omega,\omega\rangle\,\mathrm{vol}$ with volume form $\mathrm{vol} = dt \wedge dx \wedge dy \wedge dz$, we get the Hodge dual $\star\omega$ of $\omega = dx \wedge dt$ (where $\langle dx \wedge dt, dx \wedge dt\rangle = -1$) by setting
+
+$$(dx \wedge dt) \wedge (\star\omega) = -\,dt \wedge dx \wedge dy \wedge dz = dx \wedge dy \wedge dz \wedge dt$$
+
+Shifting $dt$ to the right by $2$ places gives no sign change, so we get the dual as $\star(dx \wedge dt) = dy \wedge dz$.
+
+Now for the $B_x$ term $\omega = dy \wedge dz$, both $y$ and $z$ are spatial coordinates, so $\langle dy \wedge dz, dy \wedge dz\rangle = +1$, and we set
+
+$$(dy \wedge dz) \wedge (\star\omega) = +\,dt \wedge dx \wedge dy \wedge dz$$
+
+Taking $\star\omega = dt \wedge dx$ requires shifting $dt$ and $dx$ past $dy$ and $dz$ ($4$ swaps total, no sign change), so we get $\star(dy \wedge dz) = dt \wedge dx$. That is why we retain the same $+$ sign for $B_x$, for example, in both $F$ and $\star F$.
+
+If we instead take the dual in reverse for $dt \wedge dx$, then since $dt \wedge dx = -\,dx \wedge dt$ (or using $(dt \wedge dx) \wedge (\star\omega) = -\,dt \wedge dx \wedge dy \wedge dz$), we get $\star(dt \wedge dx) = -\,dy \wedge dz$. This minus sign is expected because in 4D Minkowski spacetime, applying the Hodge star twice to a 2-form gives $\star(\star\omega) = -\omega$.
 
 ## Mathematical Formalities
 
