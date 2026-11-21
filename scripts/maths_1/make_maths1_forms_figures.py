@@ -3,7 +3,7 @@
 
 Project Context:
     Illustrates the Differential Forms section of `maths_1_differential_geometry.md`
-    (Figures 7 to 14), matching the visual palette, typography (DejaVu Sans + Computer Modern mathtext),
+    (Figures 9 and 11 to 17), matching the visual palette, typography (DejaVu Sans + Computer Modern mathtext),
     220-dpi white-card style, <= 11-inch width cap, and >= 9-pt minimum text size of
     `make_maths1_figures.py`.
 
@@ -12,14 +12,14 @@ What This Script Does:
     computes every curve, arrow, projection, and area directly from the analytical formulas
     in the text, enforces width/fontsize/aspect/handedness assertions, and prints to stdout
     every numerical value quoted in the figure labels, captions, and subsection text:
-        7.  `maths1_one_form_stacks.png`
-        8.  `maths1_semicircle_pullback_bins.png`
-        9.  `maths1_wedge_area.png`
-        10. `maths1_surface_pullback.png`
-        11. `maths1_flux_shadows.png`
-        12. `maths1_microscopic_stokes.png`
-        13. `maths1_half_disc_cell.png`
-        14. `maths1_cylinder_cap_shadow.png`
+        9.  `maths1_one_form_stacks.png`
+        11. `maths1_semicircle_pullback_bins.png`
+        12. `maths1_wedge_area.png`
+        13. `maths1_surface_pullback.png`
+        14. `maths1_flux_shadows.png`
+        15. `maths1_microscopic_stokes.png`
+        16. `maths1_half_disc_cell.png`
+        17. `maths1_cylinder_cap_shadow.png`
 
 Performance Note:
     Uses vectorized NumPy array operations over compact 2D/3D meshes (< 200 x 200 points),
@@ -278,7 +278,7 @@ def annotate_3d_point(
 
 
 # ===========================================================================
-# Figure 7: maths1_one_form_stacks.png (F7: cleanly label U = 1..7 & crossed sheets)
+# Figure 9: maths1_one_form_stacks.png
 # ===========================================================================
 def make_fig7_one_form_stacks(out_dir: Path) -> None:
     fig = plt.figure(figsize=(10.6, 4.8), dpi=DPI)
@@ -446,7 +446,7 @@ def make_fig7_one_form_stacks(out_dir: Path) -> None:
 
 
 # ===========================================================================
-# Figure 8: maths1_semicircle_pullback_bins.png (UNCHANGED per review)
+# Figure 11: maths1_semicircle_pullback_bins.png
 # ===========================================================================
 def make_fig8_semicircle_pullback_bins(out_dir: Path) -> None:
     fig = plt.figure(figsize=(10.8, 5.0), dpi=DPI)
@@ -690,7 +690,7 @@ def make_fig8_semicircle_pullback_bins(out_dir: Path) -> None:
 
 
 # ===========================================================================
-# Figure 9: maths1_wedge_area.png (UNCHANGED per review)
+# Figure 12: maths1_wedge_area.png
 # ===========================================================================
 def make_fig9_wedge_area(out_dir: Path) -> None:
     fig = plt.figure(figsize=(10.8, 4.8), dpi=DPI)
@@ -841,7 +841,7 @@ def make_fig9_wedge_area(out_dir: Path) -> None:
 
 
 # ===========================================================================
-# Figure 10: maths1_surface_pullback.png (F1: large 3D zoom of curved patch vs tangent parallelogram)
+# Figure 13: maths1_surface_pullback.png
 # ===========================================================================
 def hemi_xyz(r: np.ndarray | float, t: np.ndarray | float) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     ra, ta = np.broadcast_arrays(np.asarray(r, dtype=float), np.asarray(t, dtype=float))
@@ -1219,7 +1219,7 @@ def make_fig10_surface_pullback(out_dir: Path) -> None:
 
 
 # ===========================================================================
-# Figure 11: maths1_flux_shadows.png (F2: floating octant + room walls; F3: shaded face + normal + flow; F4: axis key)
+# Figure 14: maths1_flux_shadows.png
 # ===========================================================================
 def make_fig11_flux_shadows(out_dir: Path) -> None:
     fig = plt.figure(figsize=(10.9, 4.85), dpi=DPI)
@@ -1603,7 +1603,7 @@ def make_fig11_flux_shadows(out_dir: Path) -> None:
 
 
 # ===========================================================================
-# Figure 12: maths1_microscopic_stokes.png (F5: thin space after italic V/W before ), counterclockwise + curved arrow)
+# Figure 15: maths1_microscopic_stokes.png
 # ===========================================================================
 def make_fig12_microscopic_stokes(out_dir: Path) -> None:
     fig = plt.figure(figsize=(10.7, 4.6), dpi=DPI)
@@ -1740,7 +1740,7 @@ def make_fig12_microscopic_stokes(out_dir: Path) -> None:
 
 
 # ===========================================================================
-# Figure 13: maths1_half_disc_cell.png (F6: add r and theta axis labels on panel (a); leave (b) untouched)
+# Figure 16: maths1_half_disc_cell.png
 # ===========================================================================
 def make_fig13_half_disc_cell(out_dir: Path) -> None:
     fig = plt.figure(figsize=(10.7, 4.8), dpi=DPI)
@@ -1892,7 +1892,7 @@ def make_fig13_half_disc_cell(out_dir: Path) -> None:
 
 
 # ===========================================================================
-# Figure 14: maths1_cylinder_cap_shadow.png (F6: "(counterclockwise seen from above)")
+# Figure 17: maths1_cylinder_cap_shadow.png
 # ===========================================================================
 def make_fig14_cylinder_cap_shadow(out_dir: Path) -> None:
     fig = plt.figure(figsize=(8.6, 5.7), dpi=DPI)
