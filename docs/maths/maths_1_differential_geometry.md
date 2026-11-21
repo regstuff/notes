@@ -696,6 +696,12 @@ $$\omega(\langle -1,2\rangle)= 2\cdot(-1)+3\cdot 2=4$$
 
 So a 1-form simply takes a vector, extracts its components along the axes of the coordinate system, multiplies them by a scalar and then sums them. If we were to consider this 1-form in the example as an actual negative potential energy differential $\omega=-dU$ (or if we used $\omega=dU$ to measure the external work $\Delta U$ done against the field), and let's say $\langle -1,2\rangle$ were the displacement vector, then $\omega(\langle -1,2\rangle)=4$ would be the work done in traversing that displacement vector. 
 
+Geometrically, a 1-form at a point can be pictured as a stack of evenly spaced parallel lines (or planes in 3D), the level lines of the linear function it defines on tangent vectors. Evaluating $\omega(\mathbf{v})$ counts the lines the arrow $\mathbf{v}$ crosses, with a sign for direction ($+$ toward higher values, $-$ toward lower values). Figure 7 shows this stack picture first for the constant 1-form $\omega = 2\,dx + 3\,dy$ and then for the position-dependent differential $dU$ of $U = x^2 + y^2$.
+
+![Parallel integer level lines of a constant 1-form pierced by three vectors beside concentric crowding level circles of a varying exact 1-form](figures/maths1_one_form_stacks.png)
+
+*Figure 7. Picturing a 1-form as a stack of level curves. (a) The constant 1-form $\omega = 2\,dx + 3\,dy$ drawn as the parallel integer level lines $2x + 3y = n$ ($n = -3, \dots, 4$ labelled; $n < 0$ dashed). Starting at the origin on line $0$, the arrow $\langle -1, 2\rangle$ goes from line $0$ to line $4$ ($\omega = 4$), $\langle 1, 0\rangle$ goes from line $0$ to line $2$ ($\omega = 2$), and $\langle 3, -2\rangle$ stays on line $0$ ($\omega = 0$). (b) A 1-form that changes from point to point: $dU = 2x\,dx + 2y\,dy$ for $U = x^2 + y^2$. Here the sheets of $dU$ are the level circles $U = 1, 2, \dots, 7$, which crowd closer together further out. For the same step $\mathbf{v} = \langle 0.5, 0\rangle$, going from $(2, 0)$ to $(2.5, 0)$ crosses the two circles $U = 5$ and $U = 6$, whereas going from $(1, 0)$ to $(1.5, 0)$ crosses only $U = 2$; evaluating $dU(\mathbf{v}) = 2x \cdot 0.5$ at the starting points gives $2$ at $(2, 0)$ and $1$ at $(1, 0)$.*
+
 ---
 
 **Aside 1: Why Generalized Force Is Naturally a 1-Form on Configuration Space**
@@ -797,6 +803,12 @@ $$\int_M\big(f(x,y)\,dx+h(x,y)\,dy\big)=\int_{-1}^1\left[f\big(a,\sqrt{1-a^2}\bi
 
 Notice that $\varphi_2'(a)$ blows up at the endpoints $a=\pm 1$ because the semicircle becomes vertical at $(\pm 1,0)$ (making graph parametrization in $a=x$ singular at the vertical tangents). Switching to the angular parametrization $\tilde{\varphi}(\theta)=(\cos\theta,\sin\theta)$ for $\theta\in[\pi,0]$ (moving from $(-1,0)$ to $(1,0)$) has smooth derivatives everywhere ($\tilde{\varphi}_1'(\theta)=-\sin\theta$, $\tilde{\varphi}_2'(\theta)=\cos\theta$) and yields the exact same value.
 
+Figure 8 shows how four equal parameter bins divide the semicircle under $\varphi(a)$ and under $\tilde{\varphi}(\theta)$, comparing the chord lengths with their horizontal and vertical shadows.
+
+![Upper unit semicircle cut into four equal x-bins versus four equal angle-bins comparing chord lengths with horizontal and vertical shadows](figures/maths1_semicircle_pullback_bins.png)
+
+*Figure 8. One-dimensional pull-back on the upper unit semicircle traversed from $(-1, 0)$ to $(1, 0)$. (a) Four equal bins of width $\Delta a = 1/2$ under $\varphi(a) = (a, \sqrt{1 - a^2})$ produce chords of lengths $1, 0.52, 0.52, 1$ (what arc length $ds$ sees) and vertical shadows $\Delta y = +0.87, +0.13, -0.13, -0.87$ that grow steeply near $a = \pm 1$ where $\varphi_2'(a)$ blows up. Yet every chord has the same horizontal shadow $\Delta x = 1/2$, because $dx$ sees only horizontal steps and $\varphi_1'(a) = 1$. (b) Four equal angle bins $\Delta\theta = -\pi/4$ from $\pi$ to $0$ under $\tilde{\varphi}(\theta) = (\cos\theta, \sin\theta)$ give equal chords of length $0.765$, while the horizontal shadows vary across the four bins as $0.29, 0.71, 0.71, 0.29$ because the pull-back factor $\tilde{\varphi}_1'(\theta) = -\sin\theta$ changes from bin to bin.*
+
 ---
 
 **Aside:** The factor of $\varphi_1'$ (or more generally $\varphi_i'$ for each coordinate $x^i$) that we are tacking onto the integral when we introduce the parametrization variable is nothing but the signed Jacobian factor that is used in change of variables. For an elementary 1-form $f\,dx^i$, it is simply the derivative of that old coordinate variable with respect to the new parametrization variable. For $k$-forms in $\mathbb{R}^n$, for each basis $k$-form $dx^{i_1}\wedge\dots\wedge dx^{i_k}$, this becomes the corresponding signed $k\times k$ Jacobian determinant (minor) with the various partial derivatives $\frac{\partial x^{i_p}}{\partial u^q}$ as the elements of the determinant (which reduces to the single full Jacobian determinant when $k=n$).
@@ -843,6 +855,12 @@ $$dx(\mathbf{u})\,dy(\mathbf{v})-dy(\mathbf{u})\,dx(\mathbf{v})=u_x v_y-u_y v_x=
 This is precisely the definition of the wedge product of two 1-forms evaluated on $(\mathbf{u},\mathbf{v})$: $(dx\wedge dy)(\mathbf{u},\mathbf{v})$. The subtraction is the geometric meaning of the wedge $\wedge$. It turns a naive product of coordinate projections into a determinant.
 
 Think of the formula for the area of a triangle (which is half a parallelogram). Assuming one vertex is at the origin, we take the product of the $y$-component of one of the other points (say $\mathbf{p}$) with the $x$-component of the third remaining point (say $\mathbf{q}$) and subtract that from the product of the $x$-component of $\mathbf{p}$ and the $y$-component of $\mathbf{q}$. Then we divide by $2$ (multiply by one-half) because it is a triangle. Essentially, before dividing by $2$, we form two rectangles and subtract their areas; this is $(dx\wedge dy)(\mathbf{p},\mathbf{q})$, the 2-form $dx\wedge dy$ evaluated on the two side vectors. 
+
+Figure 9 shows why the plain product $u_x v_y$ overcounts the parallelogram spanned by $\mathbf{u} = (3, 1)$ and $\mathbf{v} = (1, 2)$, and how subtracting the corner pieces of the $4 \times 3$ bounding box leaves $u_x v_y - u_y v_x = 5$.
+
+![Parallelogram spanned by two vectors compared with the overcounting plain-product rectangle, a collapsed collinear inset, and a bounding-box subtraction into area 5](figures/maths1_wedge_area.png)
+
+*Figure 9. Signed parallelogram area $(dx\wedge dy)(\mathbf{u}, \mathbf{v}) = u_x v_y - u_y v_x$ for $\mathbf{u} = (3, 1)$ and $\mathbf{v} = (1, 2)$. (a) The parallelogram spanned by $\mathbf{u}$ and $\mathbf{v}$ has area $5$, whereas the dashed plain-product rectangle $u_x \times v_y = 3 \times 2 = 6$ overcounts by $1$. In the inset $\mathbf{u} = \mathbf{v} = (1, 1)$, the parallelogram collapses to a line segment of area $0$ while $u_x v_y = 1$. (b) Enclosing the parallelogram in a $4 \times 3 = 12$ bounding box and removing two right triangles of area $3/2$, two right triangles of area $1$, and two corner rectangles of area $u_y v_x = 1$ leaves $12 - 3 - 2 - 2 = 5 = u_x v_y - u_y v_x$. Turning counterclockwise from $\mathbf{u}$ to $\mathbf{v}$ gives $+5$; swapping $\mathbf{u}$ and $\mathbf{v}$ reverses the orientation and gives $-5$.*
 
 Notice that depending on what is subtracted from what, we can end up with a plus or minus sign for the area. Generally, for ordinary geometric area we take the absolute value. But with $k$-forms, we retain the sign as it provides us with an orientation, which is important when calculating things like work along a curve or flux through a surface.
 
@@ -891,6 +909,12 @@ $$\varphi^*\omega=\left[P\,\frac{\partial(y,z)}{\partial(u,v)}+Q\,\frac{\partial
 
 Notice that those three $2\times 2$ Jacobian determinants are the exact $x,y,z$ components of the surface normal vector $\frac{\partial\vec{\varphi}}{\partial u}\times\frac{\partial\vec{\varphi}}{\partial v}$ from classical vector calculus flux integrals ($\iint_S\vec{F}\cdot\left(\frac{\partial\vec{\varphi}}{\partial u}\times\frac{\partial\vec{\varphi}}{\partial v}\right)du\,dv$), arising naturally as coordinate projections onto the $yz$-,  $zx$-, and $xy$-planes without needing a 3D cross product or dot product.
 
+Figure 10 shows how a small parameter cell $(r, t)$ maps onto the hemisphere $\varphi(r, t) = (r\cos t, r\sin t, \sqrt{1 - r^2})$, why a 2-form evaluates on the tangent arrows $\frac{\partial\varphi}{\partial r}\Delta r$ and $\frac{\partial\varphi}{\partial t}\Delta t$, and how their $xy$-shadow gives $\varphi^*(dx\wedge dy) = r\,dr\wedge dt$.
+
+![Parameter cell in polar coordinates mapped onto the upper hemisphere with an enlarged 3D view of the curved patch hugging its tangent parallelogram beside their xy-plane shadows](figures/maths1_surface_pullback.png)
+
+*Figure 10. Two-dimensional pull-back on the upper unit hemisphere $\varphi(r, t) = (r\cos t, r\sin t, \sqrt{1 - r^2})$ for $r \in [0, 1]$ and $t \in [0, 2\pi]$. (a) Parameter grid in $(r, t)$ with highlighted cell $[0.50, 0.75] \times [\pi/6, \pi/3]$ ($\Delta r = 0.25$, $\Delta t = \pi/6$) and a dashed line near the rim at $r = 0.85$. (b) On the hemisphere (shown whole and in an enlarged close-up of the cell), small parameter steps $\Delta r$ and $\Delta t$ from $\varphi(r_0, t_0)$ turn into the tangent arrows $\frac{\partial\varphi}{\partial r}\Delta r$ and $\frac{\partial\varphi}{\partial t}\Delta t$ by the chain rule: for instance, the true radial edge step $\varphi(r_0 + \Delta r, t_0) - \varphi(r_0, t_0)$ (length $0.323$) is approximated by $\frac{\partial\varphi}{\partial r}\Delta r$ (length $0.289$), and the gap shrinks as $\Delta r \to 0$. Those two tangent arrows span a semi-transparent, dashed-outline tangent parallelogram that hugs the blue-edged curved patch, and a 2-form on the surface eats these two arrows. Near the rim ($r = 0.85$), the surface steepens so its 3D area factor $\frac{r}{\sqrt{1 - r^2}}$ grows from $0.58$ (at $r = 0.50$) to $1.61$, whereas its $xy$-shadow factor is just $r$. (c) On the $xy$-plane, the tangent parallelogram's shadow is a rectangle with perpendicular sides $\Delta r$ (radial) and $r_0\Delta t$ (tangential), of area $r_0\,\Delta r\,\Delta t = (dx\wedge dy)\!\left(\frac{\partial\varphi}{\partial r}, \frac{\partial\varphi}{\partial t}\right)\Delta r\,\Delta t = \frac{\pi}{48} \approx 0.065$. Next to it, the curved patch's shadow is the blue ring sector of area $\frac{(r_0 + \Delta r)^2 - r_0^2}{2}\,\Delta t = \frac{5\pi}{192} \approx 0.082$, which agrees to first order as $\Delta r, \Delta t \to 0$. Thus $\varphi^*(dx\wedge dy) = r\,dr\wedge dt$ is the shadow area per unit parameter area (the other two minors are $\frac{r^2\cos t}{\sqrt{1 - r^2}}$ for $dy\wedge dz$ and $\frac{r^2\sin t}{\sqrt{1 - r^2}}$ for $dz\wedge dx$).*
+
 Thus, when evaluated on two vectors, a 2-form simply computes a weighted sum of the signed areas of the projections of the parallelogram they span onto the 2-dimensional coordinate planes in the ambient space, where each projection is multiplied by its corresponding scalar coefficient function. That's a mouthful! What we are saying is, let's say we have a general 2-form over $\mathbb{R}^3$: $\omega=F_x\,dy\wedge dz+F_y\,dz\wedge dx+F_z\,dx\wedge dy$. Now if we feed two tangent vectors $\mathbf{u}$ and $\mathbf{v}$ at a point into it, they span a parallelogram in the ambient 3D space. The basis ("component") 2-forms $dy\wedge dz$, $dz\wedge dx$, and $dx\wedge dy$ measure the signed areas $A_{yz}$, $A_{zx}$, and $A_{xy}$ of this parallelogram as it is projected onto the corresponding coordinate planes. The true unoriented geometric area $A$ of the tilted 3D parallelogram satisfies a planar Pythagorean theorem (the Cauchy-Binet identity):
 
 $$A^2=A_{yz}^2+A_{zx}^2+A_{xy}^2$$
@@ -898,6 +922,12 @@ $$A^2=A_{yz}^2+A_{zx}^2+A_{xy}^2$$
 (the 2D analogy of the length of a line segment, $L^2=\Delta x^2+\Delta y^2+\Delta z^2$). Meanwhile, the general 2-form $\omega=F_x\,dy\wedge dz+F_y\,dz\wedge dx+F_z\,dx\wedge dy$ takes the linear combination $F_x A_{yz}+F_y A_{zx}+F_z A_{xy}$, which computes the flux of $\vec{F}$ through the parallelogram by summing the fluxes across its three coordinate-plane shadows. This is called Cauchy's tetrahedron principle, which we explain a bit more now. 
 
 Why must the flux of $\vec{F}$ through a tilted triangle equal the sum of the fluxes through its three coordinate-plane shadows ($F_x A_{yz}+F_y A_{zx}+F_z A_{xy}$)? Slice off a tiny corner tetrahedron of characteristic size $\epsilon$ whose slanted face is our tilted triangle and whose other three orthogonal faces are its shadows on the $yz$-,  $zx$-, and $xy$-planes. By the Divergence Theorem, the net flux leaving all four faces equals $\iiint(\nabla\cdot\vec{F})\,dV$. As we shrink $\epsilon\to 0$, the volume integral of $\nabla\cdot\vec{F}$ scales like $\epsilon^3$, whereas the surface fluxes through the four faces scale like $\epsilon^2$. Dividing by $\epsilon^2$ and taking $\epsilon\to 0$, the $\mathcal{O}(\epsilon)$ volume term vanishes completely—meaning at an infinitesimal scale, whatever fluid or flux enters through the three coordinate-plane shadow faces must exit cleanly through the tilted face without loss or accumulation.
+
+Figure 11 shows how the shadows of a curved octant and a flat triangle on the three coordinate planes combine with $(F_x, F_y, F_z)$ to give the outward flux.
+
+![Three panels showing a floating sphere octant casting quarter-disc shadows on room walls, a Cauchy corner tetrahedron with shaded slanted face and flow arrows, and an edge-on tilted flat patch](figures/maths1_flux_shadows.png)
+
+*Figure 11. Coordinate-plane shadows and flux in $\mathbb{R}^3$. (a) The eighth of a unit-radius sphere centred at $(0.6, 0.6, 0.6)$ ($x, y, z \ge 0.6$), floating inside the first-octant room corner, casts quarter-disc shadows of area $\pi/4$ each on the $yz$-wall ($x = 0$), $zx$-wall ($y = 0$), and $xy$-floor ($z = 0$). For a constant field $\vec{F}$, the outward flux through this curved shell is $(F_x + F_y + F_z)\,\frac{\pi}{4}$, which equals $\frac{3\pi}{4} \approx 2.36$ when $\vec{F} = (1, 1, 1)$. Summing the whole shadow areas directly gives the flux only when $\vec{F}$ is constant; for a varying field, the 2-form weights the three shadows of each small patch by $(F_x, F_y, F_z)$ at that patch. (b) Corner tetrahedron with vertices at the origin, $(1, 0, 0)$, $(0, 2, 0)$, and $(0, 0, 2)$ (exploded slightly so all four faces are visible): its right-angled shadow faces have areas $A_{yz} = 2$, $A_{zx} = 1$, and $A_{xy} = 1$, and its hatched slanted face has outward normal $\hat{\mathbf{n}} \propto (2, 1, 1)$ and area $A = \sqrt{2^2 + 1^2 + 1^2} = \sqrt{6} \approx 2.45$. A constant $\vec{F}$ enters through the three shadow faces and leaves through the slanted face with flux $2F_x + F_y + F_z$. (c) Edge-on view down the $z$-axis ($x$ right, $y$ up, $z$ out of the page) of a flat rectangular patch of area $A$ whose unit normal $\hat{\mathbf{n}}$ makes angle $\theta$ with the $x$-axis ($\theta = 35^\circ$ shown): its shadow on the $yz$-plane is $A_{yz} = A\cos\theta = A\,n_x$, which is why $F_x A_{yz} + F_y A_{zx} + F_z A_{xy} = \vec{F}\cdot\hat{\mathbf{n}}\,A$.*
 
 From this geometric visualization, we can see that if we are in $\mathbb{R}^3$, we will have $\binom{3}{2}=3$ 2-dimensional coordinate planes. If we are in an $n$-dimensional ambient space $\mathbb{R}^n$, we will have $\binom{n}{2}=\frac{n(n-1)}{2}$ 2-dimensional coordinate planes, each formed by taking any two of the coordinate axes. When looking at a change of variables (or a surface parametrization $\varphi(u,v)$), each of these $\binom{n}{2}$ basis 2-forms produces its own $2\times 2$ Jacobian determinant, which corresponds to a signed projected area scaling factor and contributes to its respective flux component with its proper sign. This count generalizes immediately to any $k$-form on $\mathbb{R}^n$: choosing $k$ distinct coordinate axes out of $n$ gives $\binom{n}{k}=\frac{n!}{k!(n-k)!}$ independent $k$-dimensional coordinate hyperplanes, so the space of $k$-forms at a point has dimension $\binom{n}{k}$.
 
@@ -935,7 +965,7 @@ $$\int_M \omega = \int_D \varphi^*\omega = \int \cdots \int_D \left( \sum_{1 \le
 
 Equivalently, in compact coordinate-free form, this is simply the $k$-form evaluated directly on the $k$ coordinate tangent vectors of the parametrization:
 
-$$\int\_M\omega=\int\cdots\int\_D\omega\_{\varphi(\mathbf{u})}\left(\frac{\partial\varphi}{\partial u^1},\frac{\partial\varphi}{\partial u^2},\dots,\frac{\partial\varphi}{\partial u^k}\right)du^1\dots du^k$$
+$$\int_M\omega=\int\cdots\int_D\omega_{\varphi(\mathbf{u})}\left(\frac{\partial\varphi}{\partial u^1},\frac{\partial\varphi}{\partial u^2},\dots,\frac{\partial\varphi}{\partial u^k}\right)du^1\dots du^k$$
 
 Note that there are two ways to compute the same pullback: wedge substitution vs. tangent vectors. The typical way is via tangent vectors, as it is in the formula, Compute the $k$ tangent vectors $\mathbf{v}_q=\frac{\partial\varphi}{\partial u^q}$ for $q=1,\dots,k$, plug them straight into $\omega_{\varphi(\mathbf{u})}(\mathbf{v}_1,\dots,\mathbf{v}_k)$, and integrate over $D$. 
 
@@ -1016,7 +1046,7 @@ Identities involving $d$. Let $\omega,\omega_1,\omega_2$ be $n$-forms, $\mu$ an 
 
 Nilpotency (Poincaré's identity, for $C^2$ forms): $d(d\omega)=0$
 
-Additivity (for two forms $\omega_1,\omega_2$ of the same degree $n$): $$d(\omega_1+\omega_2)=d\omega_1+d\omega_2$
+Additivity (for two forms $\omega_1,\omega_2$ of the same degree $n$): $d(\omega_1+\omega_2)=d\omega_1+d\omega_2$
 
 Graded Leibniz (product) rule: $d(\omega\wedge\mu)=d\omega\wedge\mu+(-1)^n\omega\wedge d\mu$
 
@@ -1024,7 +1054,7 @@ Useful corollary of the Leibniz rule and $d^2\omega=0$: $d(f\,d\omega)=df\wedge 
 
 Exterior derivative of a $0$-form on $\mathbb{R}^n$: $df=\frac{\partial f}{\partial x^1}\,dx^1+\frac{\partial f}{\partial x^2}\,dx^2+\dots+\frac{\partial f}{\partial x^n}\,dx^n$
 
-### Stoke's Theorem But More Profound!
+### Stokes' Theorem But More Profound!
 Now that we looked at derivatives, we can look at a few things that allows us to sort of "bypass" the restriction mentioned above that you only integrate a $k$-form over a $k$-dimensional surface. There are three mathematically valid operations you can perform instead:
 
 **You can take the exterior derivative $d\omega$ first, then integrate over $M$.** Applying $d$ turns the 1-form $\omega$ into a 2-form $d\omega$, which does match the dimension of the hemisphere.
@@ -1038,6 +1068,7 @@ Parameterize the upper unit hemisphere as $\phi(r,t)=(r\cos t,\,r\sin t,\,\sqrt{
 $$\int_M d\omega=\int_0^{2\pi}\int_0^1 (r\sin t)\,r\,dr\,dt=\left(\int_0^{2\pi}\sin t\,dt\right)\left(\int_0^1 r^2\,dr\right)=0$$
 
 **You can integrate $\omega$ over the 1D boundary $\partial M$ (the equator).** The boundary of the upper hemisphere is the 1D unit circle $\psi(t)=(\cos t,\sin t,0)$ for $t\in[0,2\pi]$, which matches the degree of a 1-form:
+
 $$\int_{\partial M}\omega=\int_0^{2\pi}\left(\cos^2 t(-\sin t)+(\cos t\sin t)(\cos t)\right)dt=\int_0^{2\pi}0\,dt=0$$
 
 By Stokes' theorem ($\int_M d\omega=\int_{\partial M}\omega$), the two options above produce the same result.
@@ -1058,9 +1089,114 @@ $$\frac{1}{\epsilon^2}\oint_{\partial P_\epsilon}\omega=\frac{\omega(W_{p+\epsil
     
 Thus,  $d\omega(V_p,W_p)$ is literally the boundary circulation per unit parallelogram at $p$. Generalized Stokes' Theorem ($\int_M d\omega=\int_{\partial M}\omega$) works because $d\omega$ is already defined at the infinitesimal level to equal the boundary integral around each tiny cell.
 
+Figure 12 shows this signed-boundary recipe in 1D for $df_p(V)$ and around the tiny parallelogram for $d\omega(V_p, W_p)$.
+
+![Signed endpoints of a 1D segment alongside a counterclockwise infinitesimal parallelogram whose opposite signed edges pair into the exterior derivative](figures/maths1_microscopic_stokes.png)
+
+*Figure 12. Microscopic Stokes' theorem for 0-forms and 1-forms. (a) On a 1D segment from $p$ (marked $-$) to $p + tV$ (marked $+$), evaluating a 0-form $f$ on its signed boundary gives $f(p + tV) - f(p)$, whose limit after dividing by $t$ is $df_p(V)$. (b) Walking counterclockwise around the tiny parallelogram at $p$ spanned by $\epsilon V$ and $\epsilon W$ collects four signed edge terms: $+\omega(V_p)\,\epsilon$ on the bottom, $+\omega(W_{p+\epsilon V})\,\epsilon$ on the right, $-\omega(V_{p+\epsilon W})\,\epsilon$ on the top, and $-\omega(W_p)\,\epsilon$ on the left. When we pair opposite edges of the same colour and divide by $\epsilon^2$, the blue right and left edges give $+\nabla_{V_p}\omega(W_p)$, the amber bottom and top edges give $-\nabla_{W_p}\omega(V_p)$, and their sum is $d\omega(V_p, W_p)$.*
+
 Every exterior derivative uses the exact same recipe: integrate the $k$-form over the complete boundary of an infinitesimal $(k+1)$-dimensional box, then divide by the box's scale.
 
 **You can convert the 1-form to a flux 2-form (using the 3D metric / Hodge star).** Physically, a 1-form $\omega=F_x\,dx+F_y\,dy+F_z\,dz$ represents work/circulation along a path, whereas integrating a vector field $\mathbf{F}=(x^2,xy,0)$ across a surface measures flux. To compute the flux of that same vector field through the hemisphere, you replace the 1-form with its dual 2-form $*\omega=x^2\,dy\wedge dz+xy\,dz\wedge dx$, which takes two tangent vectors and integrates cleanly over $M$.
+
+### Cells, Chains and Stokes' Theorem
+
+[The subsection above](#stokes-theorem-but-more-profound) proved Stokes' theorem on one tiny parallelogram, where $d\omega$ is the signed circulation around its four edges per unit area. Extending that to a whole curve, surface or solid takes two pieces of bookkeeping: which regions we integrate over, and how to write "the boundary" with signs so shared interior faces cancel. Cells, chains and $\partial$ provide that bookkeeping, turning the classical integral theorems into one formula and most of the [Common Identities](#common-identities) into two rules of $d$.
+
+To integrate over a curved patch or solid, we start from a flat parameter box $[a_1, b_1]\times\dots\times[a_n, b_n]$, which rescales linearly to the unit cube $I^n = [0, 1]^n$ with faces at $x_i = 0$ and $x_i = 1$. An $n$-cell $\sigma$ in $\mathbb{R}^m$ (or singular cube) is the image of a smooth map $\varphi: I^n \to \mathbb{R}^m$ with a chosen orientation, an ordering of $(x_1, \dots, x_n)$ that fixes the Jacobian's sign. A $0$-cell is a point, and $-\sigma$ reverses the orientation. For example, $\varphi(r, \theta) = (r\cos\pi\theta,\, r\sin\pi\theta)$ maps $I^2$ onto the upper unit half-disc and collapses $r = 0$ to $(0, 0)$, so discs and balls are single cells.
+
+Single cells still fall short on their own: a boundary comes in several pieces (four signed edges on a square), it is often simpler to cut a shape into easy pieces (such as a sphere into two hemisphere graphs $\sigma_1$ and $\sigma_2$), and reversed orientations enter with minus signs. An $n$-chain $C = \sum_i n_i \sigma_i$ handles all three as a formal sum of $n$-cells with integer coefficients $n_i$, meaning a list of cells with integer multiplicities rather than a sum of coordinates: $2\sigma$ traverses $\sigma$ twice, $n\sigma + m\sigma = (n + m)\sigma$, and $\sigma + (-\sigma) = \emptyset$ (the empty chain). Integrating an $n$-form $\omega$ over $C$ adds the pieces:
+
+$$\int_C \omega = \sum_i n_i \int_{\sigma_i} \omega$$
+
+Thus the unit sphere is the $2$-chain $\sigma_1 + \sigma_2$.
+
+The boundary $\partial\sigma$ of an $n$-cell is an $(n - 1)$-chain whose signs record each face's orientation. For a $1$-cell $\varphi: [0, 1] \to \mathbb{R}^m$, $\partial\sigma = \varphi(1) - \varphi(0)$, end minus start, as in the Fundamental Theorem of Calculus and [The Derivative of a Differential Form](#the-derivative-of-a-differential-form). For a $2$-cell $\varphi: [0, 1]^2 \to \mathbb{R}^m$, hold each coordinate at $1$ or $0$ while $t$ runs from $0$ to $1$:
+
+$$\partial\sigma = \varphi(1, t) - \varphi(0, t) - \varphi(t, 1) + \varphi(t, 0)$$
+
+These signs walk counterclockwise around $I^2$ (Figure 13(a)), matching the tiny parallelogram in [the subsection above](#stokes-theorem-but-more-profound). For a general $n$-cell $\varphi: I^n \to \mathbb{R}^m$, signs alternate across the $n$ coordinate pairs:
+
+$$\partial\sigma = \sum_{i=1}^n (-1)^{i+1}\left(\varphi\big|_{x_i = 1} - \varphi\big|_{x_i = 0}\right)$$
+
+On a $3$-cell, these six signs orient every face by its outward normal. Extending linearly, a chain $C = \sum_i n_i \sigma_i$ has boundary $\partial C = \sum_i n_i\,\partial\sigma_i$.
+
+Apply the $2$-cell rule to the half-disc $\varphi(r, \theta) = (r\cos\pi\theta,\, r\sin\pi\theta)$. Naming its four edge $1$-cells $\alpha(t) = (\cos\pi t,\, \sin\pi t)$ (the arc), $\beta(t) = (-t, 0)$, $\gamma(t) = (t, 0)$ and the constant map $c(t) = (0, 0)$, the boundary chain is
+
+$$\partial\sigma = \alpha - c - \beta + \gamma$$
+
+Now integrate $\omega = x\,dy$ over $\partial\sigma$. Along $\gamma$ and $-\beta$, $y = 0$ so $dy = 0$, giving $0$ on each; on the collapsed edge $c$, the tangent vector is zero so $\int_c x\,dy = 0$ too. Only $\alpha$ contributes: $\int_0^1 \cos(\pi t)\,\pi\cos(\pi t)\,dt = \frac{\pi}{2}$, the half-disc's area and a preview of Stokes' theorem ($d(x\,dy) = dx\wedge dy$).
+
+Figure 13 shows the signed edges and corner cancellations of $I^2$ alongside their image on the half-disc.
+
+![Signed edges and corner cancellations of the unit square in parameter space mapped onto the upper half-disc with collapsed radial origin edge](figures/maths1_half_disc_cell.png)
+
+*Figure 13. Boundary of the half-disc 2-cell $\varphi(r, \theta) = (r\cos\pi\theta, r\sin\pi\theta)$. (a) On the unit square $I^2$ in the $(r, \theta)$-plane, $\partial\sigma = \varphi(1, t) - \varphi(0, t) - \varphi(t, 1) + \varphi(t, 0)$ gives $+$ to the bottom and right edges and $-$ to the top and left edges, walking counterclockwise. Each corner receives one $+$ from the arriving edge and one $-$ from the departing edge, so $\partial\partial\sigma = \emptyset$. (b) Under $\varphi$, the bottom edge becomes $\gamma: (0, 0) \to (1, 0)$, the right edge becomes the arc $\alpha: (1, 0) \to (-1, 0)$, the top edge with its minus sign runs $(-1, 0) \to (0, 0)$ as $-\beta$, and the left edge $r = 0$ collapses to $c(t) = (0, 0)$. Integrating $x\,dy$ gives $\pi/2$ on the arc and $0$ on the other three pieces, for a total of $\pi/2$.*
+
+For the unit sphere $\sigma_1 + \sigma_2$, use the outward hemispheres $\varphi_1(r, \theta) = (r\cos 2\pi\theta,\, r\sin 2\pi\theta,\, \sqrt{1 - r^2})$ and $\varphi_2(r, \theta) = (-r\cos 2\pi\theta,\, r\sin 2\pi\theta,\, -\sqrt{1 - r^2})$ on $I^2$. In each cell, $\theta = 0$ and $\theta = 1$ trace the same meridian with opposite signs and $r = 0$ collapses to a pole, leaving only the equator $r = 1$: counterclockwise for $\sigma_1$ ($\int x\,dy = \pi$) and clockwise for $\sigma_2$ ($\int x\,dy = -\pi$). Their sum cancels the equators, so $\partial(\sigma_1 + \sigma_2) = \emptyset$, the two-caps argument of [Common Identities](#common-identities). In general $\partial(\partial C) = \emptyset$ for every chain $C$: each corner of a square ends two oppositely signed edges (Figure 13(a)), and each cube edge borders two oppositely oriented faces. That makes $\partial\partial = \emptyset$ the chain twin of $d^2 = 0$.
+
+Generalized Stokes' theorem says that for a smooth $(n - 1)$-form $\omega$ on $\mathbb{R}^m$ and an $n$-chain $C$ in $\mathbb{R}^m$,
+
+$$\int_{\partial C}\omega = \int_C d\omega$$
+
+Applied twice, this pairs $\partial\partial = \emptyset$ with $d^2 = 0$: $\int_{\partial(\partial C)}\omega = \int_{\partial C} d\omega = \int_C d(d\omega) = 0$. We prove the theorem in three stages: unit cube, cell, chain.
+
+On $I^3 \subset \mathbb{R}^3$, take one basis term $\omega = a(x_1, x_2, x_3)\,dx_2\wedge dx_3$, so $d\omega = \frac{\partial a}{\partial x_1}\,dx_1\wedge dx_2\wedge dx_3$, and cut $I^3$ into small boxes of side $t$:
+
+1. One box: at $p$ with edges $V^1 = t\mathbf{e}_1$, $V^2 = t\mathbf{e}_2$, $V^3 = t\mathbf{e}_3$, $\frac{\partial a}{\partial x_1} \approx \frac{a(p + t\mathbf{e}_1) - a(p)}{t}$ gives $d\omega_p(V^1, V^2, V^3) \approx \omega_{p + t\mathbf{e}_1}(V^2, V^3) - \omega_p(V^2, V^3)$, which is $\omega$ on the upper $x_1$-face minus the lower $x_1$-face.
+2. One column: summing along $x_1$ cancels shared interior faces in pairs as in Figure 2 of the [Divergence Theorem](#divergence-theorem), leaving $I^3$'s $x_1 = 1$ face minus its $x_1 = 0$ face.
+3. Side faces: on the four side faces of $I^3$, every tangent patch has an $\mathbf{e}_1$ edge where $dx_2\wedge dx_3$ vanishes, giving $0$.
+4. The limit: letting $t \to 0$ gives $\int_{I^3} d\omega = \int_{\partial I^3}\omega$. The same argument works on $I^n$, one basis term at a time.
+
+Next, for any $n$-cell $\sigma = \varphi(I^n)$, the pull-back $\varphi^*$ from [Integrating $k$-forms](#integrating-k-forms) ($\varphi^*\omega(V_1, \dots, V_k) = \omega(D\varphi(V_1), \dots, D\varphi(V_k))$) moves the integral back to $I^n$:
+
+$$\int_{\partial\sigma}\omega = \int_{\partial I^n}\varphi^*\omega = \int_{I^n} d(\varphi^*\omega) = \int_{I^n}\varphi^*(d\omega) = \int_\sigma d\omega$$
+
+Here $d(\varphi^*\omega) = \varphi^*(d\omega)$ is the multivariable chain rule ($d(f\circ\varphi) = \varphi^*(df)$ on $0$-forms), carried to higher forms by wedge algebra. For $\varphi(a, b) = (a + b,\, a - b,\, ab)$ and $\omega = y\,dx + z\,dy + x\,dz$, substituting $x, y, z$ gives $\varphi^*\omega = (a - b + 2ab + b^2)\,da + (a - b + a^2)\,db$, so $d(\varphi^*\omega) = (2 - 2b)\,da\wedge db$, matching $\varphi^*(d\omega)$ from $d\omega = dy\wedge dx + dz\wedge dy + dx\wedge dz$. Finally, for $C = \sum_i n_i\sigma_i$, both $\partial$ and $\int$ add across cells, giving $\int_{\partial C}\omega = \int_C d\omega$ (just as small loops add in Figure 4 of [Stokes' Theorem](#stokes-theorem)).
+
+#### Vector Calculus as Differential Forms
+
+In $\mathbb{R}^3$, functions $f$ and vector fields $\vec{F} = \langle F_x, F_y, F_z\rangle$ correspond to forms through three dictionary rules:
+
+$$\omega^1_{\vec{F}} = F_x\,dx + F_y\,dy + F_z\,dz, \qquad \omega^2_{\vec{F}} = F_x\,dy\wedge dz + F_y\,dz\wedge dx + F_z\,dx\wedge dy, \qquad \omega^3_f = f\,dx\wedge dy\wedge dz$$
+
+Here $\omega^1_{\vec{F}}$ is the work $1$-form, $\omega^2_{\vec{F}}$ is the flux $2$-form in cyclic order, and $\omega^3_f$ is the density $3$-form. The ladder in [The Derivative of a Differential Form](#the-derivative-of-a-differential-form) becomes $df = \omega^1_{\nabla f}$, $d\omega^1_{\vec{F}} = \omega^2_{\nabla\times\vec{F}}$ and $d\omega^2_{\vec{F}} = \omega^3_{\nabla\cdot\vec{F}}$. Converting $\omega^1_{\vec{F}}$ to $\omega^2_{\vec{F}}$ is the $*\omega$ step of [the subsection above](#stokes-theorem-but-more-profound), which uses $\mathbb{R}^3$'s metric via the Hodge star (see [Hodge & Hodge Duals](#hodge-hodge-duals)), whereas $d$ needs no metric.
+
+Specializing $\int_{\partial C}\omega = \int_C d\omega$ to $n = 1, 2, 3$ collects four integral theorems into one statement:
+
+| $n$ | Region $C$ | Differential forms | Vector calculus |
+|---|---|---|---|
+| $1$ | Curve from $p$ to $q$ | $\int_C df = f(q) - f(p)$ | Fundamental Theorem of Calculus, gradient theorem |
+| $2$ | Plane region $R \subset \mathbb{R}^2$ | $\int_{\partial R}(P\,dx + Q\,dy) = \int_R\left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right)dx\wedge dy$ | Green's theorem |
+| $2$ | Surface $S \subset \mathbb{R}^3$ | $\int_{\partial S}\omega^1_{\vec{F}} = \int_S d\omega^1_{\vec{F}}$ | [Stokes' theorem](#stokes-theorem) (curl) |
+| $3$ | Solid $V \subset \mathbb{R}^3$ | $\int_{\partial V}\omega^2_{\vec{F}} = \int_V d\omega^2_{\vec{F}}$ | [Divergence theorem](#divergence-theorem) |
+
+In the $n = 1$ row, $f(x, y) = x^2 y$ on the cusped curve $\varphi(t) = (t^2, t^3)$ for $t \in [-1, 1]$ gives $\int_C df = f(1, 1) - f(1, -1) = 2$ with no parametrizing. And $\oint_C \nabla f\cdot d\vec{r} = 0$ whenever the loop $C$ bounds a $2$-chain $D$ in the domain, since $\int_D d(df) = 0$. In the vortex domain of [Stokes' Theorem](#stokes-theorem) ($\mathbb{R}^3$ minus the $z$-axis), a loop around the axis bounds no $2$-chain in the domain, so $d\omega^1_{\vec{v}} = 0$ without forcing zero circulation (see [de Rham Cohomology](#de-rham-cohomology) and [Side Quest in Vector Calculus](#side-quest-in-vector-calculus)).
+
+Three integrals show how this works. First, integrate $\omega = (x^2 + y)\,dx + (x - y^2)\,dy$ over the upper unit semicircle $\sigma$ from $(-1, 0)$ to $(1, 0)$ (clockwise over the top, as in [Integrating 1-Forms](#integrating-1-forms)). Since $d\omega = (1 - 1)\,dx\wedge dy = 0$, pair $\sigma$ with the diameter $\tau: \varphi(t) = (t, 0)$ on $[-1, 1]$. The counterclockwise boundary of the upper half-disc $D$ is $\partial D = \tau - \sigma$, so $\int_\tau \omega - \int_\sigma \omega = \int_D d\omega = 0$. On $\tau$, $y = 0$ and $dy = 0$, leaving $\int_\sigma \omega = \int_\tau \omega = \int_{-1}^1 t^2\,dt = \frac{2}{3}$.
+
+Second, find $\oint_C \vec{F}\cdot d\vec{r}$ for $\vec{F} = \langle -x^2 y,\, xy^2,\, z^3\rangle$ around the curve $C$ where the cylinder $x^2 + y^2 = 1$ meets $z = x + 1$, oriented counterclockwise from above. Spanning $C$ with the tilted cap $\Psi(r, \theta) = (r\cos\theta,\, r\sin\theta,\, r\cos\theta + 1)$ ($0 \le r \le 1$, $0 \le \theta \le 2\pi$), Stokes' theorem gives $\oint_C \omega^1_{\vec{F}} = \int_{\text{cap}} d\omega^1_{\vec{F}}$. Since $d\omega^1_{\vec{F}} = (x^2 + y^2)\,dx\wedge dy$ has only a $dx\wedge dy$ part, only the cap's unit-disc shadow on the $xy$-plane counts ($\Psi^*(dx\wedge dy) = r\,dr\wedge d\theta$), giving $\int_0^{2\pi}\int_0^1 r^2\cdot r\,dr\,d\theta = \frac{\pi}{2}$.
+
+Figure 14 shows the tilted elliptical cap on the cylinder $x^2 + y^2 = 1$ above its unit-disc shadow on the $xy$-plane.
+
+![Tilted elliptical cap where the plane z equals x plus 1 cuts the unit cylinder above its shaded unit-disc shadow in the xy-plane](figures/maths1_cylinder_cap_shadow.png)
+
+*Figure 14. Stokes' theorem on the cylinder $x^2 + y^2 = 1$ cut by the plane $z = x + 1$ for $\vec{F} = \langle -x^2 y, xy^2, z^3\rangle$. The tilted elliptical cap $\Psi(r, \theta) = (r\cos\theta, r\sin\theta, r\cos\theta + 1)$ has boundary curve $C = (\cos\theta, \sin\theta, \cos\theta + 1)$, traversed counterclockwise seen from above. Because $d\omega^1_{\vec{F}} = (x^2 + y^2)\,dx\wedge dy$ has only a $dx\wedge dy$ part, only the cap's unit-disc shadow on the $xy$-plane counts, and the integral reduces to $\int_0^{2\pi}\!\int_0^1 r^2\cdot r\,dr\,d\theta = \pi/2$.*
+
+Third, find the outward flux of $\vec{F} = \langle xy^2,\, y^3,\, x^2 y^2\rangle$ out of the unit cube $I^3$. By the divergence row of the table, the flux $\int_{\partial I^3}\omega^2_{\vec{F}}$ equals $\int_{I^3} d\omega^2_{\vec{F}}$. Since $d\omega^2_{\vec{F}} = 4y^2\,dx\wedge dy\wedge dz$, one triple integral replaces six face integrals: $\int_{I^3} d\omega^2_{\vec{F}} = \int_0^1 4y^2\,dy = \frac{4}{3}$.
+
+Finally, combining $d^2 = 0$ and the graded Leibniz rule from [Properties of Exterior Derivatives](#properties-of-exterior-derivatives) with the wedge rules $\omega^1_{\vec{A}}\wedge\omega^1_{\vec{B}} = \omega^2_{\vec{A}\times\vec{B}}$ and $\omega^1_{\vec{A}}\wedge\omega^2_{\vec{B}} = \omega^3_{\vec{A}\cdot\vec{B}}$ gives six of the [Common Identities](#common-identities) in a line each:
+
+| # | Differential forms | Vector calculus |
+|---|---|---|
+| $1$ | $d(df) = 0$ | $\nabla\times(\nabla f) = \vec{0}$ |
+| $2$ | $d(d\omega^1_{\vec{F}}) = 0$ | $\nabla\cdot(\nabla\times\vec{F}) = 0$ |
+| $3$ | $d(fg) = f\,dg + g\,df$ | $\nabla(fg) = f\nabla g + g\nabla f$ |
+| $4$ | $d(f\omega^1_{\vec{F}}) = df\wedge\omega^1_{\vec{F}} + f\,d\omega^1_{\vec{F}}$ | $\nabla\times(f\vec{F}) = (\nabla f)\times\vec{F} + f(\nabla\times\vec{F})$ |
+| $5$ | $d(f\omega^2_{\vec{F}}) = df\wedge\omega^2_{\vec{F}} + f\,d\omega^2_{\vec{F}}$ | $\nabla\cdot(f\vec{F}) = (\nabla f)\cdot\vec{F} + f(\nabla\cdot\vec{F})$ |
+| $6$ | $d(\omega^1_{\vec{F}}\wedge\omega^1_{\vec{G}}) = d\omega^1_{\vec{F}}\wedge\omega^1_{\vec{G}} - \omega^1_{\vec{F}}\wedge d\omega^1_{\vec{G}}$ | $\nabla\cdot(\vec{F}\times\vec{G}) = \vec{G}\cdot(\nabla\times\vec{F}) - \vec{F}\cdot(\nabla\times\vec{G})$ |
+
+In row $6$, the minus sign is $(-1)^1$ from passing $d$ across the $1$-form $\omega^1_{\vec{F}}$. On $\vec{v} = f(x, y)\hat{\mathbf{y}}$ of [Common Identities](#common-identities) and Figure 3, row $4$ gives $d(f\,dy) = \frac{\partial f}{\partial x}\,dx\wedge dy$ since $\frac{\partial f}{\partial y}\,dy\wedge dy = 0$: variation along $y$ gives no curl, variation across $x$ does. Of the remaining three identities, $\nabla(\vec{F}\cdot\vec{G})$ and $\nabla\times(\vec{F}\times\vec{G})$ follow from Cartan's formula $\mathcal{L}_{\vec{G}} = d\iota_{\vec{G}} + \iota_{\vec{G}}d$ on $\omega^1_{\vec{F}}$ and $\omega^2_{\vec{F}}$ via $\iota_{\vec{G}}\omega^1_{\vec{F}} = \vec{F}\cdot\vec{G}$ and $\iota_{\vec{G}}\omega^2_{\vec{F}} = \omega^1_{\vec{F}\times\vec{G}}$ (see [The Lie Derivative](#the-lie-derivative) and [Interior Product](#interior-product)). Finally, $d^\dagger = (-1)^p \star d \star$ on $p$-forms in $\mathbb{R}^3$ gives $d^\dagger d\,\omega^1_{\vec{F}} = \omega^1_{\nabla\times(\nabla\times\vec{F})}$ and $d d^\dagger\,\omega^1_{\vec{F}} = -\omega^1_{\nabla(\nabla\cdot\vec{F})}$, so $\Delta = dd^\dagger + d^\dagger d$ computes $\Delta\omega^1_{\vec{F}} = \omega^1_{\nabla\times(\nabla\times\vec{F}) - \nabla(\nabla\cdot\vec{F})}$. Since $\Delta$ acts as $-\nabla^2$ on each Cartesian component (matching $\Delta f = -\nabla^2 f$ in [Stuff You Can Do With A Metric](#stuff-you-can-do-with-a-metric); see also [Hodge & Hodge Duals](#hodge-hodge-duals)), this is $\nabla\times(\nabla\times\vec{F}) = \nabla(\nabla\cdot\vec{F}) - \nabla^2\vec{F}$.
 
 ### Hodge & Hodge Duals
 
@@ -1862,10 +1998,12 @@ From these parameters, we define two fundamental vector fields:
 -   **The Tangent Vector ($U^\mu$):** The four-velocity of the freely falling observer, defined as $U^\mu = \frac{\partial x^\mu}{\partial \tau}$. Because it follows a geodesic, we know $\nabla_U U^\mu = 0$.
     
 -   **The Deviation Vector ($S^\mu$):** A spatial vector pointing exactly from one geodesic to its infinitesimally close neighbor, defined as $S^\mu = \frac{\partial x^\mu}{\partial s}$.
-- 
+
 Because partial derivatives commute ($\frac{\partial^2 x}{\partial \tau \partial s} = \frac{\partial^2 x}{\partial s \partial \tau}$), the Lie bracket of these two vector fields is zero ($[U, S] = 0$). In a torsion-free geometry like General Relativity:
 
-$$T(X, Y) = \nabla_X Y - \nabla_Y X - [X, Y]$, where $[X, Y]$ and $T(X, Y)$$
+$$T(X, Y) = \nabla_X Y - \nabla_Y X - [X, Y]$$
+
+where $[X, Y]$ and $T(X, Y)$ both vanish for $X = U$ and $Y = S$, so
 
 $$\implies \nabla_U S^\mu = \nabla_S U^\mu$$
 
@@ -2129,4 +2267,33 @@ $$R_{\theta\phi\theta\phi} = (1 - f^2) r^2 \sin^2\theta$$
 
 ## References
 
-- [University of Toronto Cheat Sheet](https://xueqilin.me/engsci-2t4/apm426/apm426.pdf)
+- Div, grad, curl, and all that by HM Schey
+
+- [A Geometric Approach to Differential Forms](https://faculty.washington.edu/seattle/physics544/2011-lectures/bachman.pdf) by David Bachman
+
+- The Geometry of Physics, 3rd Ed by Theodore Frankel [Sections for General Relativity: 1.1-3.3, 4.1-4.2, 8.1-8.2, 8.5-8.7, 9.1-9.6, 10.1, 11.2, 11.3a-b, 14.1a-c]
+
+- An Introduction to Manifolds, 2nd Ed by Loring W. Tu [Sections for General Relativity: 2-6, 8, 12, 14, 17-20]
+
+**Order of Reading**
+
+| Stage | Reading |
+|---|---|
+| Preliminary | Bachman Chapters 3–5, optionally 6 |
+| Foundations | Frankel 1.1–2.4; Tu §§2, 5–6, 8, 12 |
+| Exterior calculus | Tu §§3–4, 17–19; Frankel 2.5–3.3 |
+| Lie derivatives | Tu §§14, 20; Frankel 4.1–4.2 |
+| Curvature | Frankel 8.1–8.2, 8.5–8.7, 9.1–9.6 |
+| Geodesics and GR geometry | Frankel 10.1, 11.2, 11.3a–b |
+| Hodge star | Frankel 14.1a–c |
+
+**Postpone After General Relativity**
+
+| Book | Sections | Topic |
+|---|---|---|
+| Tu | §§15–16 | Lie groups and Lie algebras |
+| Tu | §§24–29 | De Rham cohomology |
+| Frankel | Chapter 6 | Integrability and Frobenius theorem |
+| Frankel | Chapters 12–13 | Global geometry and topology |
+| Frankel | §§14.2–14.3 | Harmonic forms |
+| Frankel | Chapters 15–18 | Lie groups, bundles, generalized connections |
