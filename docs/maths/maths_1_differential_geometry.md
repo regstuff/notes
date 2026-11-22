@@ -229,7 +229,7 @@ Most introductory engineering and physics textbooks treat $\delta(x)$ heuristica
 
 Suppose $\delta:\mathbb{R}\to\mathbb{R}$ were an ordinary function with $\delta(x)=0$ for every $x\neq 0$. In both Riemann and Lebesgue integration, changing (or even blowing up) a function at a single isolated point of width zero adds zero area. Thus any such function would satisfy $\int_{-\infty}^{\infty}\delta(x)\,dx=0$, contradicting $\int_{-\infty}^{\infty}\delta(x)\,dx=1$.  
 
-Instead of defining $\delta$ by its value at each point $x$, distribution theory defines it by what it does to smooth functions under an integral. A distribution $T$ is a continuous linear functional—a linear machine that takes a compactly supported smooth test function $\phi(x)$ as input and returns a single number, denoted $\langle T,\phi\rangle$.  
+Instead of defining $\delta$ by its value at each point $x$, distribution theory defines it by what it does to smooth functions under an integral. A distribution $T$ is a continuous linear functional: a linear machine that takes a compactly supported smooth test function $\phi(x)$ as input and returns a single number, denoted $\langle T,\phi\rangle$.  
 
 Any ordinary locally integrable function $h(x)$ defines a regular distribution via $\langle h,\phi\rangle=\int_{-\infty}^{\infty}h(x)\phi(x)\,dx$. The Dirac delta is the singular distribution defined directly by the rule:  $\langle\delta,\phi\rangle = \phi(0)$.  
 
@@ -261,7 +261,7 @@ since $a$ lies strictly between $b$ and $c$, so $\delta(x-a)=0$ at the endpoints
 
 Specifically, set $a=0$ and replace $f(x)$ with $x\phi(x)$ for an arbitrary test function $\phi(x)$ to get $\int_{-\infty}^{\infty}x\,\delta'(x)\phi(x)\,dx = -(x\phi)'(0) = -\phi(0)$, which gives $x\,\delta'(x) = -\delta(x)$. Intuitively, this makes sense since when $x \lt 0$ around $x=0$, the rate of change of the delta function is positive, so multiplying by $x \lt 0$ makes $x\,\delta'(x)$ negative; while when $x \gt 0$ around $x=0$, the rate of change of the delta function is negative, so multiplying by $x \gt 0$ also makes $x\,\delta'(x)$ negative. This explains the minus sign.  
 
-For the next property, see that if we were to shrink or stretch the spike function—for example, at $x=2\epsilon$, we apply the value of the delta function from $x=4\epsilon$, thus shrinking it by a factor of $2$—the area under the spike would halve. Thus, more formally,  
+For the next property, see that if we were to shrink or stretch the spike function (for example, at $x=2\epsilon$, we apply the value of the delta function from $x=4\epsilon$, thus shrinking it by a factor of $2$), the area under the spike would halve. Thus, more formally,  
 
 $$\delta(ax) = \frac{1}{\vert a \vert}\,\delta(x), \quad a \neq 0$$
 
@@ -1369,17 +1369,17 @@ Here $\mathrm{vol}$ is the [volume form](#stuff-you-can-do-with-a-metric) in coo
 
 #### Maxwell's Equations via Hodge Duality
 
-For example, all of Maxwell's equations can be written as:
+For example, in empty space (no charges or currents, and units with $c = 1$), all of Maxwell's equations can be written as:
 
 $dF=0$ and $d\star F=0$ where $F$ is given by:
 
 $$F = E_x\,dx \wedge dt + E_y\,dy \wedge dt + E_z\,dz \wedge dt + B_x\,dy \wedge dz + B_y\,dz \wedge dx + B_z\,dx \wedge dy$$
 
-$d\star F$ is given by:
+$\star F$ is given by:
 
 $$\star F = E_x\,dy \wedge dz + E_y\,dz \wedge dx + E_z\,dx \wedge dy + B_x\,dt \wedge dx + B_y\,dt \wedge dy + B_z\,dt \wedge dz$$
 
-Here we are using the Minkowski Hodge star definition $\omega \wedge (\star\omega) = \langle\omega,\omega\rangle\,\mathrm{vol}$ with volume form $\mathrm{vol} = dt \wedge dx \wedge dy \wedge dz$, we get the Hodge dual $\star\omega$ of $\omega = dx \wedge dt$ (where $\langle dx \wedge dt, dx \wedge dt\rangle = -1$) by setting
+Here we use the rule above, $\omega \wedge (\star\omega) = \langle\omega,\omega\rangle\,\mathrm{vol}$ for a basis form $\omega$, with the Minkowski volume form $\mathrm{vol} = dt \wedge dx \wedge dy \wedge dz$. For $\omega = dx \wedge dt$ we have $\langle dx \wedge dt, dx \wedge dt\rangle = -1$, so we get the Hodge dual $\star\omega$ by setting
 
 $$(dx \wedge dt) \wedge (\star\omega) = -\,dt \wedge dx \wedge dy \wedge dz = dx \wedge dy \wedge dz \wedge dt$$
 
@@ -1392,6 +1392,8 @@ $$(dy \wedge dz) \wedge (\star\omega) = +\,dt \wedge dx \wedge dy \wedge dz$$
 Taking $\star\omega = dt \wedge dx$ requires shifting $dt$ and $dx$ past $dy$ and $dz$ ($4$ swaps total, no sign change), so we get $\star(dy \wedge dz) = dt \wedge dx$. That is why we retain the same $+$ sign for $B_x$, for example, in both $F$ and $\star F$.
 
 If we instead take the dual in reverse for $dt \wedge dx$, then since $dt \wedge dx = -\,dx \wedge dt$ (or using $(dt \wedge dx) \wedge (\star\omega) = -\,dt \wedge dx \wedge dy \wedge dz$), we get $\star(dt \wedge dx) = -\,dy \wedge dz$. This minus sign is expected because in 4D Minkowski spacetime, applying the Hodge star twice to a 2-form gives $\star(\star\omega) = -\omega$.
+
+With charges and currents present, $dF = 0$ is unchanged and the second equation becomes $d\star F = \star J$, where $J$ is the current 1-form; [Hodge Duals & Electromagnetism](#hodge-duals-electromagnetism) derives this from the action.
 
 ## Mathematical Formalities
 
@@ -1931,7 +1933,7 @@ The Hodge star operator ($\star$) takes a $p$-form and mathematically maps it to
 
 $$\langle \eta, \omega \rangle = \int_M \eta \wedge \star \omega$$
 
-Note that $\eta \wedge \star \omega$ acts as a volume density. It is a field that varies from coordinate to coordinate. To get a global scalar out of the inner product, we must integrate over the manifold.
+Note that $\eta \wedge \star \omega$ acts as a volume density. It is a field that varies from coordinate to coordinate. To get a global scalar out of the inner product, we must integrate over the manifold. At each point, $\eta\wedge\star\omega$ equals the pointwise inner product of the two forms times $\mathrm{vol}$ (the rule in [Hodge & Hodge Duals](#hodge-hodge-duals) is the case $\eta = \omega$ for a basis form), so the integral adds up these pointwise values over $M$. From here on, $\langle\eta,\omega\rangle$ means this integral, not the pointwise number.
 
 This specific integral is incredibly important because it constructs the action of a field. The top-form is the Lagrangian density, and integrating it gives us the action. For example, the entire action for the electromagnetic field in curved spacetime is simply $S = -\frac{1}{2} \int F \wedge \star F$.
 
