@@ -4,8 +4,8 @@ Usage: python make_maths2_figures.py OUTPUT_DIR
 
 Writes twelve PNGs into OUTPUT_DIR. The rings-and-fields part moved to Maths 0 on 2026-11-07, so the
 figures now sit as:
-  Maths 0, Figure 2: maths2_tape_quotient_isomorphism.png
-  Maths 0, Figure 3: maths2_f9_field.png
+  Maths 0, Figure 6: maths2_tape_quotient_isomorphism.png
+  Maths 0, Figure 7: maths2_f9_field.png
   Maths 2, Figure 1: maths2_s3_cosets_normality.png
   Maths 2, Figure 2: maths2_cosets_conjugacy_s4.png
   Maths 2, Figure 3: maths2_class_equation.png

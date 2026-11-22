@@ -16,7 +16,7 @@ Groups need not be commutative because actions in space generally depend on the 
 
 Similarly, the set of units of a ring with an identity $1$, with the operation of multiplication, is a group. This is called the group of units of the ring $R$.
 
-Similarly, with a field $F$, $F \setminus \{0\}$ is a group, the multiplicative group of $F$, written as $F^*$ (or $F^\times$, as in [Figure 3 of Maths 0](maths_0_vector_calculus_linear_algebra_fields.md#figure-3); the two symbols mean the same).
+Similarly, with a field $F$, $F \setminus \{0\}$ is a group, the multiplicative group of $F$, written as $F^*$ (or $F^\times$, as in [Figure 7 of Maths 0](maths_0_vector_calculus_linear_algebra_fields.md#figure-7); the two symbols mean the same).
 
 The set of invertible $n \times n$ matrices ($\det(A) \neq 0$) over a field $F$, with the operation of matrix multiplication, is a group, the General Linear group $GL(n, F)$.
 
