@@ -688,7 +688,7 @@ Similarly, in Gauss–Jordan elimination, we also scale each pivot row so that e
 
 You might end up in situations where not all column vectors of the coefficient matrix are linearly independent. This means that some columns are in fact linear combinations of other columns, which produces free variables in the system (so a consistent system has infinitely many solutions rather than variables that can simply be dropped; redundant _equations_, by contrast, correspond to linearly dependent rows and reduce to $0 = 0$). In such cases, instead of a clean upper triangular matrix that cuts cleanly along the main diagonal, we get a stepped pattern called a row echelon form. Some of the diagonal elements (which would have been the pivots in the clean case) will be $0$. Together, all columns that contain a pivot (the pivot or basic columns) form a linearly independent set (both in the echelon form and in the original matrix). Any non-pivot column can be written as a linear combination of the pivot columns to its left (or is the zero column if there are no pivot columns to its left).
 
-Any finite sequence of elementary row operations is represented by $PA$ for a nonsingular $P$, and any finite sequence of elementary column operations is represented by $AQ$ for a nonsingular $Q$. The converse also holds. Left-multiplication by nonsingular $P$ is exact—it produces precisely the matrices reachable from $A$ by elementary row operations, and right-multiplication by nonsingular $Q$ produces precisely those reachable by elementary column operations.
+Any finite sequence of elementary row operations is represented by $PA$ for a nonsingular $P$, and any finite sequence of elementary column operations is represented by $AQ$ for a nonsingular $Q$. The converse also holds. Left-multiplication by nonsingular $P$ is exact: it produces precisely the matrices reachable from $A$ by elementary row operations, and right-multiplication by nonsingular $Q$ produces precisely those reachable by elementary column operations.
 
 ### Matrix Rank
 
@@ -746,72 +746,233 @@ which means that every rank-$r$ matrix is a sum of $r$ rank-one matrices, that i
 For a full-rank factorization $A = BC$ over $\mathbb{R}$ or $\mathbb{C}$, $(B^*B)_{r \times r}$ and $(CC^*)_{r \times r}$ are both nonsingular. This follows from the last property in the list above: $\operatorname{rank}(B^*B) = \operatorname{rank}(B) = r$ and $\operatorname{rank}(CC^*) = \operatorname{rank}(C) = r$. It is also not unexpected. Consider $C \in \mathbb{F}^{r \times n}$ with $\operatorname{rank}(C) = r$. As a system $C\mathbf{x} = \mathbf{b}$, there are $r$ independent equations and $n$ unknowns. In the composition $CC^*$, the matrix $C^*$ acts first, and $C$ acts second. Writing $\mathbf{x} = C^*\mathbf{y}$ parameterizes $\mathbf{x}$ using only $r$ variables $\mathbf{y}$, which now needs only those $r$ independent equations to be uniquely solved. Nothing is lost by this choice: if $C\mathbf{z} = \mathbf{0}$, then $\mathbf{z}^*C^*\mathbf{y} = (C\mathbf{z})^*\mathbf{y} = 0$, so every $C^*\mathbf{y}$ is orthogonal to every solution of $C\mathbf{z} = \mathbf{0}$, and $C$ can send $C^*\mathbf{y}$ to $\mathbf{0}$ only if $C^*\mathbf{y}$ is orthogonal to itself, that is, $C^*\mathbf{y} = \mathbf{0}$, which forces $\mathbf{y} = \mathbf{0}$ because the $r$ columns of $C^*$ are linearly independent. The same holds for $B^*B = B^*(B^*)^*$, with $B^*$ in the place of $C$.
 
 ### General Linear Systems
-Earlier we looked at how a square matrix can be seen as solving for a system of linear equa￾tions. The more general case is to analyze a system of the form $A_{m \times n}x_{n \times 1} = b_{m \times 1} of $m$ linear equations in $n$ unknowns. Unlike nonsingular systems, a general rectangular or singular system may have infinitely many solutions, or it may have no solution at all. So, before analyzing solutions, it must first be established that there are indeed solutions to analyze. This is the issue of consistency.
 
-Before going into this, lets take a look at something that will be handy down the road.
+Earlier we looked at how a square matrix can be seen as solving for a system of linear equations. The more general case is to analyze a system of the form $A_{m \times n}\mathbf{x}_{n \times 1} = \mathbf{b}_{m \times 1}$ of $m$ linear equations in $n$ unknowns. Unlike nonsingular systems, a general rectangular or singular system may have infinitely many solutions, or it may have no solution at all. So, before analyzing solutions, it must first be established that there are indeed solutions to analyze. This is the issue of consistency.
+
+Before going into this, let's take a look at something that will be handy down the road.
 
 #### Pseudoinverse
 
 Let $A \in \mathbb{F}^{m \times n}$ (with $\mathbb{F} = \mathbb{R}$ or $\mathbb{C}$) have $\operatorname{rank}(A_{m \times n}) = r > 0$, and let $A = B_{m \times r}C_{r \times n}$ be a full-rank factorization so that $B^*B$ and $CC^*$ are $r \times r$ nonsingular matrices. The $n \times m$ matrix
 
-  
-
 $$A^\dagger = C^*(CC^*)^{-1}(B^*B)^{-1}B^*$$
 
-is called the pseudoinverse (or alternately, the Moore–Penrose inverse) of $A$ (and for $A = 0_{m \times n}$, i.e.,  $r = 0$, the pseudoinverse is defined as $0^\dagger = 0_{n \times m}$). While $B$ and $C$ need not be unique,  $A^\dagger$ is uniquely determined by $A$.
-
-  
+is called the pseudoinverse (or alternately, the Moore–Penrose inverse) of $A$ (and for $A = 0_{m \times n}$, i.e., $r = 0$, the pseudoinverse is defined as $0^\dagger = 0_{n \times m}$). While $B$ and $C$ need not be unique, $A^\dagger$ is uniquely determined by $A$.
 
 Equivalently (for any $A \in \mathbb{F}^{m \times n}$, including $A = 0$), the pseudoinverse $A^\dagger \in \mathbb{F}^{n \times m}$ is the unique solution for $X$ in the four Penrose equations:
 
-  
-
 $$AXA = A, \quad XAX = X, \quad (AX)^* = AX, \quad (XA)^* = XA.$$
 
+#### Properties of the Pseudoinverse $A^\dagger$
 
-#### Properties of the Psuedoinverse $A^\dagger$
+Let $A \in \mathbb{C}^{m \times n}$ have rank $r > 0$ with full-rank factorization $A = BC$, so that its pseudoinverse is $A^\dagger = C^*(CC^*)^{-1}(B^*B)^{-1}B^*$. Then:
 
-Let $A \in \mathbb{C}^{m \times n}$ have rank $r > 0$ with full-rank factorization $A = BC$, so that its pseudoinverse is $A^\dagger = C^*(CC^*)^{-1}(B^*B)^{-1}B^*$. Then: 
+-   $A^\dagger = A^{-1}$ when $A$ is square and nonsingular, because we can take $B = I$ and $C = A$ to write
 
--   $A^\dagger = A^{-1}$ when $A$ is square and nonsingular because we can take $B = I$ and $C = A$ to write   
+    $$A^\dagger = A^*(AA^*)^{-1} = A^*(A^*)^{-1}A^{-1} = A^{-1}.$$
 
-$$A^\dagger = A^*(AA^*)^{-1} = A^*(A^*)^{-1}A^{-1} = A^{-1}.$$
+    Note that the reverse-order law cannot be applied to $C^*(CC^*)^{-1}$ and $(B^*B)^{-1}B^*$ when $B$ and $C$ are not square.
 
-Note that the reverse-order law cannot be applied to $C^*(CC^*)^{-1}$ and $(B^*B)^{-1}B^*$ when $B$ and $C$ are not square.
+-   $AA^\dagger \neq I_m$ and $A^\dagger A \neq I_n$ in general, but rather (for $A \neq 0$)
 
--   $AA^\dagger \neq I_m$ and $A^\dagger A \neq I_n$ in general, but rather (for $A \neq 0$)    
+    $$A^\dagger A = C^*(CC^*)^{-1}C \quad \text{and} \quad AA^\dagger = B(B^*B)^{-1}B^*.$$
 
-$$A^\dagger A = C^*(CC^*)^{-1}C, \quad \text{and} \quad AA^\dagger = B(B^*B)^{-1}B^*$$
+    These are the orthogonal projectors onto $\operatorname{col}(A^*)$ and $\operatorname{col}(A)$. For example, $AA^\dagger$ is the formula $P_W = A(A^*A)^{-1}A^*$ from [Projections](#projections) with the full-column-rank $B$ in place of $A$, and $\operatorname{col}(B) = \operatorname{col}(A)$.
 
--   $A^\dagger = C^\dagger B^\dagger$ because $B = BI_{r \times r}$ and $C = I_{r \times r}C$ are respective full-rank factorizations of $B$ and $C$, so
-    
+-   $A^\dagger = C^\dagger B^\dagger$, because $B = BI_{r \times r}$ and $C = I_{r \times r}C$ are respective full-rank factorizations of $B$ and $C$, so
 
-$$B^\dagger = (B^*B)^{-1}B^* \quad \text{and} \quad C^\dagger = C^*(CC^*)^{-1}.$$
+    $$B^\dagger = (B^*B)^{-1}B^* \quad \text{and} \quad C^\dagger = C^*(CC^*)^{-1}.$$
 
--   $B^\dagger B = I_r = CC^\dagger$ while $BB^\dagger = AA^\dagger$ and $C^\dagger C = A^\dagger A$.
-    
--   $$A^\dagger = \begin{cases} (A^*A)^{-1}A^* & \text{when } \operatorname{rank}(A_{m \times n}) = n, \\ A^*(AA^*)^{-1} & \text{when } \operatorname{rank}(A_{m \times n}) = m, \end{cases}$$
-    
+-   $B^\dagger B = I_r = CC^\dagger$, while $BB^\dagger = AA^\dagger$ and $C^\dagger C = A^\dagger A$.
+
+-   When $A$ has full column rank or full row rank, the formula simplifies:
+
+    $$A^\dagger = \begin{cases} (A^*A)^{-1}A^* & \text{when } \operatorname{rank}(A_{m \times n}) = n, \\ A^*(AA^*)^{-1} & \text{when } \operatorname{rank}(A_{m \times n}) = m, \end{cases}$$
+
     and in general (for any rank, including $A = 0$),
-    
 
-$$A^\dagger = (A^*A)^\dagger A^* = A^*(AA^*)^\dagger.$$
+    $$A^\dagger = (A^*A)^\dagger A^* = A^*(AA^*)^\dagger.$$
 
--   $\operatorname{rank}(A^\dagger) = \operatorname{rank}(A)$ because (using $A^\dagger A A^\dagger = A^\dagger$ and $A A^\dagger A = A$)
-    
+-   $\operatorname{rank}(A^\dagger) = \operatorname{rank}(A)$, because (using $A^\dagger A A^\dagger = A^\dagger$ and $A A^\dagger A = A$)
 
-$$\operatorname{rank}(A^\dagger) = \operatorname{rank}(A^\dagger A A^\dagger) \le \operatorname{rank}(A) = \operatorname{rank}(A A^\dagger A) \le \operatorname{rank}(A^\dagger).$$
+    $$\operatorname{rank}(A^\dagger) = \operatorname{rank}(A^\dagger A A^\dagger) \le \operatorname{rank}(A) = \operatorname{rank}(A A^\dagger A) \le \operatorname{rank}(A^\dagger).$$
 
--   $$A^\dagger A A^* = A^* = A^* A A^\dagger.$$
-    
-    For $A \neq 0$, this follows because $B^\dagger = (B^*B)^{-1}B^*$ and $C^\dagger = C^*(CC^*)^{-1}$ imply that $B^* B B^\dagger = B^*$ and $C^\dagger C C^* = C^*$, and since $A^\dagger A = C^\dagger C$ and $BB^\dagger = AA^\dagger$,
-    
+-   $A^\dagger A A^* = A^* = A^* A A^\dagger$. For $A \neq 0$, this follows because $B^\dagger = (B^*B)^{-1}B^*$ and $C^\dagger = C^*(CC^*)^{-1}$ imply that $B^* B B^\dagger = B^*$ and $C^\dagger C C^* = C^*$, and since $A^\dagger A = C^\dagger C$ and $BB^\dagger = AA^\dagger$,
 
-$$A^\dagger A A^* = C^\dagger C C^* B^* = C^* B^* = A^* = C^* B^* = C^* B^* B B^\dagger = A^* A A^\dagger$$ 
+    $$A^\dagger A A^* = C^\dagger C C^* B^* = C^* B^* = A^* \quad \text{and} \quad A^* A A^\dagger = C^* B^* B B^\dagger = C^* B^* = A^*.$$
 
--   $p = A^\dagger b$ is one solution to $Ax = b$ when this equation is consistent because if $b = Ax$ for some $x$ (and $A \neq 0$, while $A = 0$ forces $b = 0$ and holds trivially), then using $B^\dagger B = I_r$ and $BB^\dagger = AA^\dagger$ yields   
+-   $\mathbf{p} = A^\dagger \mathbf{b}$ is one solution to $A\mathbf{x} = \mathbf{b}$ when this equation is consistent, because if $\mathbf{b} = A\mathbf{x}$ for some $\mathbf{x}$ (and $A \neq 0$, while $A = 0$ forces $\mathbf{b} = \mathbf{0}$ and holds trivially), then using $B^\dagger B = I_r$ and $BB^\dagger = AA^\dagger$ yields
 
-$$b = Ax = BCx = B(B^\dagger B)Cx = BB^\dagger(Ax) = BB^\dagger b = AA^\dagger b = Ap.$$
+    $$\mathbf{b} = A\mathbf{x} = BC\mathbf{x} = B(B^\dagger B)C\mathbf{x} = BB^\dagger(A\mathbf{x}) = BB^\dagger \mathbf{b} = AA^\dagger \mathbf{b} = A\mathbf{p}.$$
+
+#### Consistency of Generalized Linear Systems
+
+A linear system $A\mathbf{x} = \mathbf{b}$ is consistent when it possesses at least one solution, and it is inconsistent if no solution exists. We already said in [More Matrix Multiplication Points!](#more-matrix-multiplication-points) that a linear system is consistent iff $\mathbf{b}$ is a linear combination of the columns of $A$. But we can say a few more things too.
+
+First, note that the number of columns represents the number of unknowns to solve for (not necessarily linearly independent), and the number of rows represents the number of equations (again, not necessarily linearly independent) we have at hand to solve for the unknowns.
+
+Geometrically, in $\mathbb{R}^2$, a linear equation in two variables is a line (provided not all coefficients are zero). A set of equations therefore has a solution if and only if all the lines representing the equations meet at at least one point. In $\mathbb{R}^3$, a linear equation in three variables is a plane (provided not all coefficients are zero), and a consistent system of equations requires that all planes representing the equations meet at at least one point. We can't extend this visualization beyond 3D. In general, Gaussian elimination is a better alternative to figure these things out.
+
+Consider an augmented matrix $[A \mid \mathbf{b}]$. Suppose that somewhere in the process of reducing $[A \mid \mathbf{b}]$ to $[E \mid \mathbf{c}]$ a row appears in which the only nonzero entry is on the right-hand side, i.e., the $\mathbf{b}$ (and $\mathbf{c}$) column. If this occurs in the $i$-th row, then the $i$-th equation of the associated system is
+
+$$0x_1 + 0x_2 + \cdots + 0x_n = \alpha.$$
+
+For $\alpha \neq 0$, this equation has no solution, and hence the original system must also be inconsistent. Note that if $\alpha = 0$ (a row of all zeros), this does not mean inconsistency. Another way to see consistency is to recall again that $\mathbf{b}$ must be a linear combination of the columns of $A$. This means $\mathbf{b}$ is a non-basic column of $[A \mid \mathbf{b}]$. This also means that $\operatorname{rank}([A \mid \mathbf{b}]) = \operatorname{rank}(A)$.
+
+#### Homogeneous Equations & the Kernel
+
+We now look at homogeneous equations, i.e., the special case where $\mathbf{b} = \mathbf{0}$. Consistency is never an issue here because $\mathbf{x} = \mathbf{0}$ (called the trivial solution) always satisfies $A\mathbf{x} = \mathbf{0}$.
+
+The set of all possible solutions for $A\mathbf{x} = \mathbf{0}$ is called the nullspace or kernel of $A$ and is denoted by $N(A)$ or $\ker(A)$. Note that $\mathbf{0} \in N(A)$ for all matrices $A$.
+
+How do we check if non-trivial solutions exist? Gaussian elimination is the answer. Note that when the augmented matrix $[A \mid \mathbf{0}]$ is row-reduced to an echelon form, the zero column on the right-hand side is not altered by elementary row operations, so every echelon form derived from $[A \mid \mathbf{0}]$ must have the form $[E \mid \mathbf{0}]$, where $E$ is in echelon form. The last column of zeros is excess baggage, so there is no need to carry it along from step to step. Just reduce the coefficient matrix $A$ to a row echelon form, or more specifically to the reduced row echelon form $E_A$.
+
+We can look at an example. To find all solutions to the homogeneous system
+
+$$\begin{aligned} x_1 + 2x_2 + 2x_3 + 3x_4 &= 0, \\ 2x_1 + 4x_2 + x_3 + 3x_4 &= 0, \\ 3x_1 + 6x_2 + x_3 + 4x_4 &= 0, \end{aligned}$$
+
+or equivalently, to determine the nullspace $N(A)$ of
+
+$$A = \begin{pmatrix} 1 & 2 & 2 & 3 \\ 2 & 4 & 1 & 3 \\ 3 & 6 & 1 & 4 \end{pmatrix},$$
+
+reduce $A$ to an echelon form, either reduced or unreduced. We will generally use the reduced row echelon form $E_A$:
+
+$$A = \begin{pmatrix} 1 & 2 & 2 & 3 \\ 2 & 4 & 1 & 3 \\ 3 & 6 & 1 & 4 \end{pmatrix} \longrightarrow \begin{pmatrix} 1 & 2 & 2 & 3 \\ 0 & 0 & -3 & -3 \\ 0 & 0 & -5 & -5 \end{pmatrix} \longrightarrow \begin{pmatrix} 1 & 2 & 0 & 1 \\ 0 & 0 & 1 & 1 \\ 0 & 0 & 0 & 0 \end{pmatrix} = E_A.$$
+
+Hence the original system is equivalent to the reduced system
+
+$$\begin{aligned} x_1 + 2x_2 + x_4 &= 0, \\ x_3 + x_4 &= 0. \end{aligned}$$
+
+Since there are four unknowns (or variables) but only two nonzero equations, it is impossible to extract a unique solution for each variable. The best that can be done is to solve for two of the variables in terms of the others. Rather than making an arbitrary choice of which variables to solve for, adopt the following convention.
+
+When $A$ is $m \times n$ with $\operatorname{rank}(A) = r$, solve the reduced homogeneous system $E_A \mathbf{x} = \mathbf{0}$ for the $r$ basic (or pivot) variables in terms of the $n - r$ non-basic (non-pivot) variables. The $n - r$ non-basic variables are hereafter called the free variables because their values are not determinable: they are allowed to vary "freely" over $\mathbb{F}$.
+
+Going back to our example, $x_2$ and $x_4$ are the free variables, and we write:
+
+$$\begin{aligned} x_1 &= -2x_2 - x_4, \\ x_3 &= -x_4. \end{aligned}$$
+
+As the free variables $x_2$ and $x_4$ range over all possible values, we get all possible solutions of $A\mathbf{x} = \mathbf{0}$, that is, they determine the nullspace $N(A)$ of $A$.
+
+It is more convenient to express any $\mathbf{x} \in N(A)$ as a linear combination obtained by separating the coefficients of the free variables into distinct columns as shown below:
+
+$$\mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \end{pmatrix} = \begin{pmatrix} -2x_2 - x_4 \\ x_2 \\ -x_4 \\ x_4 \end{pmatrix} = x_2 \begin{pmatrix} -2 \\ 1 \\ 0 \\ 0 \end{pmatrix} + x_4 \begin{pmatrix} -1 \\ 0 \\ -1 \\ 1 \end{pmatrix}.$$
+
+We can now see that every vector in $N(A)$ (i.e., every homogeneous solution) is a linear combination of the two particular homogeneous solutions
+
+$$\mathbf{h}_1 = \begin{pmatrix} -2 \\ 1 \\ 0 \\ 0 \end{pmatrix} \quad \text{and} \quad \mathbf{h}_2 = \begin{pmatrix} -1 \\ 0 \\ -1 \\ 1 \end{pmatrix}.$$
+
+As $x_2$ and $x_4$ vary, the vectors $\mathbf{h}_1$ and $\mathbf{h}_2$ span the whole nullspace. Since they are also linearly independent (as noted below), they form a basis of the nullspace.
+
+The formal way to represent all possible solutions to the homogeneous system $A\mathbf{x} = \mathbf{0}$ is to use set notation to write
+
+$$N(A) = \{\mathbf{x} \mid \mathbf{x} = x_2 \mathbf{h}_1 + x_4 \mathbf{h}_2, \text{ where } x_2, x_4 \in \mathbb{F}\} = \operatorname{span}\{\mathbf{h}_1, \mathbf{h}_2\}.$$
+
+Note that the spanning vectors of the nullspace constructed this way are linearly independent. Each vector has a $1$ in one particular (free-variable) component, and that particular component is $0$ for all other basis vectors. So they are always linearly independent.
+
+Over $\mathbb{R}$ (or $\mathbb{C}$), when $r < n$, this also means we can construct a basis for the nullspace of $n - r$ orthonormal vectors. Given a basis for $N(A)$, we can construct an orthonormal basis using the Gram–Schmidt process, which we will detail later. But for now, starting from a single nonzero $\mathbf{x}_1 \in N(A)$ (for real $A$; over $\mathbb{C}$, replace transposes with conjugate transposes $\mathbf{x}_k^*$), we can do something quite similar in the following way:
+
+To construct $\mathbf{x}_2$ (when $n - r \ge 2$), use $E_A = \begin{pmatrix} C \\ 0 \end{pmatrix}$, where $C_{r \times n}$ contains the $r$ nonzero rows in $E_A$, and remember that $N(A) = N(C)$, since row operations do not change the solutions of $A\mathbf{x} = \mathbf{0}$ and zero rows add no equations. Solve the $(r + 1) \times n$ system of homogeneous equations
+
+$$\begin{pmatrix} C \\ \mathbf{x}_1^T \end{pmatrix} \mathbf{x} = \mathbf{0}$$
+
+for a nonzero solution $\mathbf{x}_2$. Thus $\mathbf{x}_2 \in N(A)$, and $\mathbf{x}_2 \perp \mathbf{x}_1$ because $\langle \mathbf{x}_1 \mid \mathbf{x}_2 \rangle = \mathbf{x}_1^T \mathbf{x}_2 = 0$. The next vector in the sequence is similarly constructed by solving the $(r + 2) \times n$ system
+
+$$\begin{pmatrix} C \\ \mathbf{x}_1^T \\ \mathbf{x}_2^T \end{pmatrix} \mathbf{x} = \mathbf{0}$$
+
+for a nonzero $\mathbf{x}_3$ so that $\mathbf{x}_3 \in N(C) = N(A)$, $\mathbf{x}_3 \perp \mathbf{x}_1$, and $\mathbf{x}_3 \perp \mathbf{x}_2$. Repeat the process until an orthogonal set $\{\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_{n-r}\} \subset N(A)$ is obtained, and then normalize each vector.
+
+Note that over a finite field, this construction breaks down because nonzero isotropic vectors ($\mathbf{x}_1^T \mathbf{x}_1 = 0$) exist, allowing $\mathbf{x}_1^T$ to lie inside $\operatorname{row}(C)$ (the span of the rows of $C$) or allowing $\mathbf{x}_2 = \mathbf{x}_1$ to solve $\mathbf{x}_1^T \mathbf{x} = 0$.
+
+Ignore finite fields for now and let's focus on reals! Here's an example. If
+
+$$A = \begin{pmatrix} 1 & 2 & 2 & 3 \\ 2 & 4 & 1 & 3 \\ 3 & 6 & 1 & 4 \end{pmatrix}$$
+
+is from the example above, then $\operatorname{rank}(A) = 2$. To construct an orthonormal spanning set for $N(A)$ containing $n - r = 2$ vectors, start with $\mathbf{x}_1 = \begin{pmatrix} -2 \\ 1 \\ 0 \\ 0 \end{pmatrix}$ and
+
+$$E_A = \begin{pmatrix} 1 & 2 & 0 & 1 \\ 0 & 0 & 1 & 1 \\ 0 & 0 & 0 & 0 \end{pmatrix} = \begin{pmatrix} C \\ 0 \end{pmatrix},$$
+
+and solve
+
+$$\begin{pmatrix} C \\ \mathbf{x}_1^T \end{pmatrix} \mathbf{x} = \begin{pmatrix} 1 & 2 & 0 & 1 \\ 0 & 0 & 1 & 1 \\ -2 & 1 & 0 & 0 \end{pmatrix} \mathbf{x} = \mathbf{0}$$
+
+for
+
+$$\mathbf{x}_2 = \begin{pmatrix} -1/5 \\ -2/5 \\ -1 \\ 1 \end{pmatrix}.$$
+
+Thus $\{\mathbf{x}_1, \mathbf{x}_2\} \subset N(A)$ is an orthogonal spanning set for $N(A)$. Finish the process by normalizing each vector: $\Vert{}\mathbf{x}_1\Vert{}_2 = \sqrt{5}$ and $\Vert{}\mathbf{x}_2\Vert{}_2 = \sqrt{55}/5$, so $\frac{1}{\sqrt{5}}(-2, 1, 0, 0)^T$ and $\frac{1}{\sqrt{55}}(-1, -2, -5, 5)^T$ form an orthonormal basis of $N(A)$.
+
+Now what happens when the nullspace contains only the trivial solution $\mathbf{0}$, i.e., $N(A) = \{\mathbf{0}\}$? This means $\operatorname{rank}(A) = n$ and the columns in $A$ are linearly independent. For square matrices, this means $A$ is nonsingular (and note that over $\mathbb{R}$ or $\mathbb{C}$, $N(A) = N(A^*A)$ and $N(A^*) = N(AA^*)$ hold for _every_ matrix $A$, so when $A$ is square and nonsingular all four nullspaces equal $\{\mathbf{0}\}$).
+
+#### Nonhomogeneous Equations
+
+Now back to nonhomogeneous equations. Having dealt with homogeneous equations, the same processes hold for nonhomogeneous equations. For a consistent set of equations $A\mathbf{x} = \mathbf{b}$, the solution set is an affine space of homogeneous solutions translated by a particular solution $\mathbf{p}$ (satisfying $A\mathbf{p} = \mathbf{b}$), i.e., the solution set is
+
+$$\mathbf{p} + N(A) = \{\mathbf{x} \mid \mathbf{x} = \mathbf{p} + x_{f_1} \mathbf{h}_1 + \cdots + x_{f_{n-r}} \mathbf{h}_{n-r}, \; x_{f_i} \in \mathbb{F}\},$$
+
+where $\mathbf{p} \in \mathbb{F}^n$ is formed from the constants in $\mathbf{c}$ (that $\mathbf{b}$ reduces to after reducing $[A \mid \mathbf{b}]$ to RREF $[E_A \mid \mathbf{c}]$) placed in the pivot-variable positions, with $0$ in all free-variable positions. Equivalently, $\mathbf{p}$ is the particular solution of $A\mathbf{x} = \mathbf{b}$ produced when the free variables are all set to $0$.
+
+---
+
+**Aside:** The affine solution set $\mathbf{p} + N(A)$ is a coset in the quotient vector space $\mathbb{F}^n / N(A)$, and the linear map $A$ induces an isomorphism $\mathbb{F}^n / N(A) \xrightarrow{\sim} \operatorname{col}(A)$ sending $\mathbf{p} + N(A) \mapsto \mathbf{b}$ (First Isomorphism Theorem). Setting free variables to $0$ produces _one_ convenient particular solution $\mathbf{p}$, but any particular solution $\mathbf{p}'$ generates the exact same coset ($\mathbf{p}' + N(A) = \mathbf{p} + N(A)$ since $\mathbf{p}' - \mathbf{p} \in N(A)$). Connecting back to the [pseudoinverse](#pseudoinverse), among all points in the affine space $\mathbf{p} + N(A)$, the pseudoinverse solution $\mathbf{p}_{\min} = A^\dagger \mathbf{b}$ is the unique particular solution orthogonal to $N(A)$ (i.e., lying in $\operatorname{col}(A^*)$, which for real $A$ is the row space $\operatorname{row}(A)$), and hence the closest point in $\mathbf{p} + N(A)$ to the origin.
+
+---
+
+A consistent nonhomogeneous set of equations $A\mathbf{x} = \mathbf{b}$ has a unique solution exactly when $A\mathbf{x} = \mathbf{0}$ has only the trivial solution, which means $N(A) = \{\mathbf{0}\}$ and $\operatorname{rank}(A) = n$. When $A$ is square, a unique solution exists if and only if $A$ is nonsingular, in which case the unique solution is $\mathbf{x} = A^{-1}\mathbf{b}$.
+
+Note that when $A$ has full row rank, $A\mathbf{x} = \mathbf{b}$ is consistent for every $\mathbf{b}$, because $\operatorname{rank}([A \mid \mathbf{b}])$ cannot exceed $m = \operatorname{rank}(A)$. If moreover $n > m$, that is, there are more columns than rows, then we have more unknowns than equations to constrain them, so there are $n - m \ge 1$ free variables and, over $\mathbb{R}$ or $\mathbb{C}$, infinitely many solutions.
+
+#### Kronecker Product
+
+Also known as the Tensor Product or Direct Product, the Kronecker Product is a "different" kind of matrix multiplication, where $A_{m \times n} = [a_{ij}]$ and $B_{p \times q}$ result in the $mp \times nq$ matrix given by:
+
+$$A \otimes B = \begin{pmatrix} a_{11}B & a_{12}B & \cdots & a_{1n}B \\ a_{21}B & a_{22}B & \cdots & a_{2n}B \\ \vdots & \vdots & \ddots & \vdots \\ a_{m1}B & a_{m2}B & \cdots & a_{mn}B \end{pmatrix}.$$
+
+Here are a few properties of the Kronecker Product for conformable matrices and any scalar $\alpha$:
+
+-   $A \otimes (B \otimes C) = (A \otimes B) \otimes C$.
+-   $A \otimes (B + C) = (A \otimes B) + (A \otimes C)$.
+-   $(A + B) \otimes C = (A \otimes C) + (B \otimes C)$.
+-   $(A \otimes B)(C \otimes D) = (AC) \otimes (BD)$.
+-   $\alpha(A \otimes B) = (\alpha A) \otimes B = A \otimes (\alpha B)$.
+-   $(A \otimes B)^* = A^* \otimes B^*$.
+-   $\operatorname{rank}(A \otimes B) = [\operatorname{rank}(A)][\operatorname{rank}(B)]$.
+
+Assume $A$ is $m \times m$ and $B$ is $n \times n$ for the following:
+
+-   $(A \otimes I_n)(I_m \otimes B) = A \otimes B = (I_m \otimes B)(A \otimes I_n)$.
+-   $\operatorname{trace}(A \otimes B) = [\operatorname{trace}(A)][\operatorname{trace}(B)]$.
+-   $\det(A \otimes B) = [\det(A)]^n[\det(B)]^m$.
+-   $(A \otimes B)^{-1} = A^{-1} \otimes B^{-1}$ for nonsingular matrices $A$ and $B$.
+-   $(A \otimes B)^\dagger = A^\dagger \otimes B^\dagger$ in general (even when $A$ and $B$ are singular, and in fact even when they are rectangular).
+-   If $A$ and $B$ are unitary, then $A \otimes B$ is unitary.
+
+A related aspect is the $\operatorname{vec}$ operator, which stacks all columns of a matrix into a single column vector. For $X \in \mathbb{F}^{m \times n}$, the column vector $\operatorname{vec}(X) \in \mathbb{F}^{mn \times 1}$ is defined to be
+
+$$\operatorname{vec}(X) = \begin{pmatrix} X_{\ast 1} \\ X_{\ast 2} \\ \vdots \\ X_{\ast n} \end{pmatrix}.$$
+
+Note that some texts define $\operatorname{vec}$ as moving row-wise through a matrix and stacking the elements, in which case some of its properties need to be rearranged.
+
+For $A_{m \times m}$, $B_{n \times n}$, and $X_{m \times n}$, the following properties hold:
+
+$$\operatorname{vec}(A_{m \times m}X_{m \times n}) = (I_n \otimes A)\operatorname{vec}(X),$$
+
+$$\operatorname{vec}(X_{m \times n}B_{n \times n}) = (B^T \otimes I_m)\operatorname{vec}(X),$$
+
+$$\operatorname{vec}(AX + XB) = \bigl((I_n \otimes A) + (B^T \otimes I_m)\bigr)\operatorname{vec}(X).$$
+
+For a proof of the first one (the second follows by a similar block multiplication, and the third follows by adding the first two using the linearity of $\operatorname{vec}$), see that:
+
+$$(I_n \otimes A)\operatorname{vec}(X) = \begin{pmatrix} A & 0 & \cdots & 0 \\ 0 & A & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & A \end{pmatrix} \begin{pmatrix} X_{\ast 1} \\ X_{\ast 2} \\ \vdots \\ X_{\ast n} \end{pmatrix} = \begin{pmatrix} AX_{\ast 1} \\ AX_{\ast 2} \\ \vdots \\ AX_{\ast n} \end{pmatrix} = \begin{pmatrix} (AX)_{\ast 1} \\ (AX)_{\ast 2} \\ \vdots \\ (AX)_{\ast n} \end{pmatrix} = \operatorname{vec}(AX).$$
+
+One of the most important functions of the $\operatorname{vec}$ operator arises when we are faced with an equation like $AX + XB = C$ (a Sylvester equation), where the lack of commutativity between $X$ and $A$ or $B$ (and, when $m \neq n$, the fact that $A$ and $B$ do not even have the same dimensions) means we cannot "factor out" $X$ and so are unable to solve for it easily. But we can circumvent this by using the fact that $\operatorname{vec}(AX + XB) = \bigl((I_n \otimes A) + (B^T \otimes I_m)\bigr)\operatorname{vec}(X)$.
+
+Look at this example. To solve $AX + XB = C$ for $A = \begin{pmatrix} 1 & 1 \\ 1 & 2 \end{pmatrix}$, $B = \begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix}$, and $C = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$, convert the matrix equation into a $4 \times 4$ linear system $M\mathbf{x} = \mathbf{c}$ with $\mathbf{x} = \operatorname{vec}(X)$ and $\mathbf{c} = \operatorname{vec}(C)$, where
+
+$$M = (I_n \otimes A) + (B^T \otimes I_m) = \begin{pmatrix} 2 & 1 & 0 & 0 \\ 1 & 3 & 0 & 0 \\ 1 & 0 & 1 & 1 \\ 0 & 1 & 1 & 2 \end{pmatrix}, \quad \mathbf{x} = \begin{pmatrix} x_{11} \\ x_{21} \\ x_{12} \\ x_{22} \end{pmatrix}, \quad \text{and} \quad \mathbf{c} = \begin{pmatrix} 1 \\ 0 \\ 0 \\ 1 \end{pmatrix},$$
+
+to obtain the solution as $\mathbf{x} = \frac{1}{5}\begin{pmatrix} 3 \\ -1 \\ -12 \\ 9 \end{pmatrix}$, or equivalently $X = \frac{1}{5}\begin{pmatrix} 3 & -12 \\ -1 & 9 \end{pmatrix}$.
+
+## Matrix Analysis - More Stuff!
 
 ## Sets, Operations & Relations
 
@@ -826,7 +987,6 @@ Contradiction, where to prove that $P$ is true, we assume it is false and then s
 Contrapositive. The contrapositive of the statement ‘if $P$, then $Q$’ is the statement ‘if not $Q$, then not $P$’. They are logically equivalent. We can prove this if it is more convenient.
 
 Induction. Prove a statement $P(n)$ for $n=0$. Then show that if $P(n)$ is assumed true, $P(n+1)$ is true. A variation is the Strong Induction principle where we assume $P(m)$ is true for all $m<n$ and then show that it must hold for $P(n)$ also. For example, you could use this to prove that any natural number greater than 1 has a prime factor.
-
 
 Now for Logical Conditions. We say that $P$ is a sufficient condition for $Q$ if the truth of $P$ implies the truth of $Q$; that is, $P$ implies $Q$, which is the same as "if $P$, then $Q$", or "$Q$ if $P$".
 
