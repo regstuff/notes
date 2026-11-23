@@ -349,7 +349,7 @@ $$bk = vr \qquad \text{and} \qquad \lambda(v - 1) = r(k - 1)$$
 
 If $V'$ is a subspace of the vector space $V$ then $P(V')$ is a subspace of $P(V)$. And if $U$ be a subspace of the projective space $P(V)$, there exists a vector subspace $V'$ of $V$ such that $P(V')=U$.
 
-The line of $P(V)$ through the points $v, w$ consists of the point $w$ and the points $v + aw, (a \in \mathbf{F})$. In particular we have: if $\mathbf{F}$ is a finite field with $q$ elements, then any line of $P(V)$ has exactly $q+1$ points. In this case $P(V)$ has order $q$. This implies that for any prime power $q$ ($q = p^a$ where p is prime), and any positive integer $d>2$ there is a projective space of order $q$ and dimension $d$. (Since any prime power $q$ implies there is a [finite field](maths_0_vector_calculus_linear_algebra_fields.md#lets-build-a-field) $\mathbf{F}$ with $q$ elements.
+The line of $P(V)$ through the points $v, w$ consists of the point $w$ and the points $v + aw, (a \in \mathbf{F})$. In particular we have: if $\mathbf{F}$ is a finite field with $q$ elements, then any line of $P(V)$ has exactly $q+1$ points. In this case $P(V)$ has order $q$. This implies that for any prime power $q$ ($q = p^a$ where p is prime), and any positive integer $d>2$ there is a projective space of order $q$ and dimension $d$. (Since any prime power $q$ implies there is a [finite field](maths_0_linear_and_abstract_algebra.md#lets-build-a-field) $\mathbf{F}$ with $q$ elements.
 
 Let $H$ be a hyperplane of $\mathbf{P}(V)$. Then the homogeneous coordinates of the points of $H$ are the solutions of a homogeneous linear equation ($c_0 x_0 + c_1 x_1 + \dots + c_r x_r = 0$) with coefficients in $F$. Conversely, any homogeneous linear equation that is different from the ‘zero equation’ (where all coefficients are $0$) describes a hyperplane of $\mathbf{P}(V)$. We already saw this with a line in a projective plane.
 
@@ -2610,13 +2610,13 @@ Since $x^2 + 1$ has no roots in $\mathbb{F}_3 = \{0, 1, 2\}$ (where $2 \equiv -1
 
 $$\mathbb{F}_9 = \{ a + bi \mid a, b \in \mathbb{F}_3, \, i^2 = -1 \}$$
 
-We saw this example while [studying fields](maths_0_vector_calculus_linear_algebra_fields.md#lets-build-a-field).
+We saw this example while [studying fields](maths_0_linear_and_abstract_algebra.md#lets-build-a-field).
 
 The unique non-trivial field automorphism of order 2 ($\sigma^2 = \text{id}$, $\sigma \neq \text{id}$) is the Frobenius map $\sigma(\lambda) = \lambda^3$. Let us see what $\lambda^3$ does to an element $a + bi \in \mathbb{F}_9$ in characteristic 3:
 
 $$\sigma(a + bi) = (a + bi)^3 = a^3 + b^3 i^3 = a + b(-i) = a - bi$$
 
-By [Fermat's Little Theorem](maths_0_vector_calculus_linear_algebra_fields.md#fermats-little-theorem), for every element $a \in \mathbb{F}_p$, raising $a$ to the $p$-th power does nothing at all ($a^p = a$). So $0^3 = 0$,  $1^3 = 1$, and $2^3 = 8 \equiv 2 \pmod 3$, which means the Frobenius map $\sigma(x) = x^3$ leaves the "real" part $a \in \mathbb{F}_3$ completely fixed while flipping $i^3 = i^2 \cdot i = -i$. The Frobenius automorphism $\sigma(\lambda) = \lambda^3$ thus acts like complex conjugation $\overline{a + bi} = a - bi$.
+By [Fermat's Little Theorem](maths_0_linear_and_abstract_algebra.md#fermats-little-theorem), for every element $a \in \mathbb{F}_p$, raising $a$ to the $p$-th power does nothing at all ($a^p = a$). So $0^3 = 0$,  $1^3 = 1$, and $2^3 = 8 \equiv 2 \pmod 3$, which means the Frobenius map $\sigma(x) = x^3$ leaves the "real" part $a \in \mathbb{F}_3$ completely fixed while flipping $i^3 = i^2 \cdot i = -i$. The Frobenius automorphism $\sigma(\lambda) = \lambda^3$ thus acts like complex conjugation $\overline{a + bi} = a - bi$.
 
 Notice also what the norm $\sigma(\lambda)\lambda = \lambda^4$ looks like:
 

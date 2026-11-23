@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Draw the four Linear Algebra figures (Figures 1 to 4) for 'Maths 0 - Linear & Abstract Algebra'.
+"""Draw the five Linear Algebra figures (Figures 1 to 5) for 'Maths 0 - Linear & Abstract Algebra'.
 
 Project context:
-    These four 2D schematic figures accompany the Linear Algebra chapter of the Maths 0
+    These five 2D schematic figures accompany the Linear Algebra chapter of the Maths 0
     lecture notes (published with MkDocs Material for a physics-degree reader):
-      - Figure 4 (`maths0_projection_reflection.png`): orthogonal projection onto u and u^perp,
+      - Figure 5 (`maths0_projection_reflection.png`): orthogonal projection onto u and u^perp,
         the two-step construction of the Householder reflector H_u = I - 2 P_u, the two
         sign choices u = x -/+ ||x|| e_1 sending x to +/-||x|| e_1, and an oblique
         projector P with ||P||_2 = sqrt(2) = 1 / sin(45 deg).
@@ -13,9 +13,13 @@ Project context:
         walks from A to B among the [C^4]_{AB} = 7 walks.
       - Figure 1 (`maths0_unit_balls.png`): the nested 2D unit balls of the 1-, 2- and infinity-norms
         (||v||_1 >= ||v||_2 >= ||v||_inf) and norm equivalence ||v||_inf <= ||v||_1 <= 2||v||_inf.
-      - Figure 3 (`maths0_induced_norms.png`): geometric meaning of the induced 1-, infinity- and
+      - Figure 4 (`maths0_induced_norms.png`): geometric meaning of the induced 1-, infinity- and
         2-norms of A = (1/sqrt(3)) [[3, -1], [0, sqrt(8)]], showing the faint unit ball, its
         image under A, and the touching norm ball(s) on identical axes.
+      - Figure 3 (`maths0_two_norm_ellipse.png`): side-by-side transformation of the unit
+        circle into an ellipse under A = (1/sqrt(3)) [[3, -1], [0, sqrt(8)]], tracking eight
+        numbered unit vectors to their images and highlighting the maximum stretch ||A||_2 = 2
+        and minimum stretch 1/||A^(-1)||_2 = sqrt(2).
 
 Style (palette, DejaVu Sans with Computer Modern mathtext, 220 dpi, width <= 11 in,
 text >= 9 pt, svg.hashsalt = "maths0", deterministic PNG metadata) is copied from
@@ -310,7 +314,7 @@ def curved_node_arrow(
 
 
 # ---------------------------------------------------------------------------
-# Figure 4: projection, the Householder reflection, and an oblique projection
+# Figure 5: projection, the Householder reflection, and an oblique projection
 # ---------------------------------------------------------------------------
 def fig_projection_reflection(out_dir: Path) -> None:
     print("F1 maths0_projection_reflection.png")
@@ -423,13 +427,13 @@ def fig_projection_reflection(out_dir: Path) -> None:
 
     # Mirror u^perp: direction (2, -1)
     ax.plot([-2.65, 4.80], [1.325, -2.40], color=SLATE, lw=2.0, zorder=3)
-    ax.text(-1.50, 1.25, r"mirror $u^\perp$", color=SLATE, fontsize=9.8, ha="center", va="bottom",
+    ax.text(-1.50, 1.25, r"mirror $\mathbf{u}^\perp$", color=SLATE, fontsize=9.8, ha="center", va="bottom",
             zorder=8, bbox=white_pad(pad=0.06))
 
     # Dashed arc of radius ||x|| = sqrt(10) through x and H_u x
     th_arc = np.linspace(math.radians(-82.0), math.radians(28.0), 240)
     ax.plot(norm_xa * np.cos(th_arc), norm_xa * np.sin(th_arc), color=SLATE, lw=1.25, ls=(0, (4, 3)), zorder=2)
-    ax.text(3.26, 0.22, r"$\|x\| = \sqrt{10}$", color=SLATE, fontsize=9.5, ha="left", va="center",
+    ax.text(3.26, 0.22, r"$\|\mathbf{x}\| = \sqrt{10}$", color=SLATE, fontsize=9.5, ha="left", va="center",
             zorder=8, bbox=white_pad(pad=0.06))
 
     # Right angle at (I - P_u)x = (2, -1)
@@ -445,10 +449,10 @@ def fig_projection_reflection(out_dir: Path) -> None:
     # Two equal steps of -P_u x in one colour
     arrow(ax, x_a, proj_perp_x, color=RED, lw=2.0, ms=13, z=6, shrink=2.0)
     arrow(ax, proj_perp_x, refl_x, color=RED, lw=2.0, ms=13, z=6, shrink=2.0)
-    ax.text(2.34, 0.14, r"$-P_u x$", color=RED, fontsize=9.6, ha="right", va="center",
+    ax.text(2.34, 0.14, r"$-P_{\mathbf{u}}\mathbf{x}$", color=RED, fontsize=9.6, ha="right", va="center",
             zorder=8, bbox=white_pad(pad=0.05))
     ax.plot([1.52, 2.08], [-1.96, -2.35], color=RED, lw=0.85, zorder=7)
-    ax.text(2.14, -2.42, r"$-P_u x$", color=RED, fontsize=9.6, ha="left", va="center",
+    ax.text(2.14, -2.42, r"$-P_{\mathbf{u}}\mathbf{x}$", color=RED, fontsize=9.6, ha="left", va="center",
             zorder=8, bbox=white_pad(pad=0.05))
 
     for pt, col in (((0, 0), TEXT), (pu_x, TEAL), (x_a, NAVY), (proj_perp_x, BLUE), (refl_x, BLUE)):
@@ -456,15 +460,15 @@ def fig_projection_reflection(out_dir: Path) -> None:
 
     # Labels for u, P_u x, x, (I - P_u)x, H_u x
     ax.plot([-0.22, 0.25], [0.58, 0.50], color=NAVY, lw=0.8, zorder=7)
-    ax.text(-0.26, 0.58, r"$u$", color=NAVY, fontsize=10.5, ha="right", va="center", zorder=8, bbox=white_pad())
-    ax.text(1.02, 2.12, r"$P_u x = (1, 2)$", color=TEAL, fontsize=9.6, ha="center", va="bottom",
+    ax.text(-0.26, 0.58, r"$\mathbf{u}$", color=NAVY, fontsize=10.5, ha="right", va="center", zorder=8, bbox=white_pad())
+    ax.text(1.02, 2.12, r"$P_{\mathbf{u}}\mathbf{x} = (1, 2)$", color=TEAL, fontsize=9.6, ha="center", va="bottom",
             zorder=8, bbox=white_pad(pad=0.06))
-    ax.text(3.05, 1.14, r"$x = (3, 1)$", color=NAVY, fontsize=9.6, ha="left", va="bottom",
+    ax.text(3.05, 1.14, r"$\mathbf{x} = (3, 1)$", color=NAVY, fontsize=9.6, ha="left", va="bottom",
             zorder=8, bbox=white_pad(pad=0.06))
     ax.plot([2.52, 2.10], [-0.76, -0.96], color=BLUE, lw=0.8, zorder=7)
-    ax.text(2.56, -0.72, r"$(I - P_u\,)x = (2, -1)$", color=BLUE, fontsize=9.2, ha="left", va="center",
+    ax.text(2.56, -0.72, r"$(I - P_{\mathbf{u}}\,)\mathbf{x} = (2, -1)$", color=BLUE, fontsize=9.2, ha="left", va="center",
             zorder=8, bbox=white_pad(pad=0.06))
-    ax.text(1.08, -3.22, r"$H_u x = (1, -3)$", color=BLUE, fontsize=9.6, ha="center", va="top",
+    ax.text(1.08, -3.22, r"$H_{\mathbf{u}}\mathbf{x} = (1, -3)$", color=BLUE, fontsize=9.6, ha="center", va="top",
             zorder=8, bbox=white_pad(pad=0.06))
 
     # Required summary labels in empty Quadrant III
@@ -472,7 +476,7 @@ def fig_projection_reflection(out_dir: Path) -> None:
         ax,
         -1.38,
         -1.15,
-        "subtract $P_u x$ once:\nprojection onto $u^\\perp$",
+        "subtract $P_{\\mathbf{u}}\\mathbf{x}$ once:\nprojection onto $\\mathbf{u}^\\perp$",
         color=BLUE,
         fs=9.1,
     )
@@ -480,7 +484,7 @@ def fig_projection_reflection(out_dir: Path) -> None:
         ax,
         -1.38,
         -2.62,
-        "subtract it twice:\nreflection $H_u x$",
+        "subtract it twice:\nreflection $H_{\\mathbf{u}}\\mathbf{x}$",
         color=RED,
         fs=9.1,
     )
@@ -495,26 +499,26 @@ def fig_projection_reflection(out_dir: Path) -> None:
     # Arc of radius 5 through 5e_1, x, and -5e_1
     th_b = np.linspace(math.radians(-10.0), math.radians(190.0), 260)
     ax.plot(5.0 * np.cos(th_b), 5.0 * np.sin(th_b), color=SLATE, lw=1.2, ls=(0, (4, 3)), zorder=2)
-    ax.text(0.25, 5.18, r"$\|x\| = 5$", color=SLATE, fontsize=9.5, ha="left", va="bottom",
+    ax.text(0.25, 5.18, r"$\|\mathbf{x}\| = 5$", color=SLATE, fontsize=9.5, ha="left", va="bottom",
             zorder=8, bbox=white_pad(pad=0.06))
 
     # Second option (lighter dashed): mirror u'^perp, target -5e_1, and u' = x + 5e_1
     ax.plot([1.55, -3.20], [-3.10, 6.40], color=AMBER, lw=1.5, ls=(0, (5, 3)), alpha=0.85, zorder=3)
-    ax.text(-3.22, 6.50, r"mirror ${u'}^\perp$", color=AMBER, fontsize=9.5, ha="center", va="bottom",
+    ax.text(-3.22, 6.50, r"mirror ${\mathbf{u}'}^\perp$", color=AMBER, fontsize=9.5, ha="center", va="bottom",
             zorder=8, bbox=white_pad(pad=0.06))
     arrow(ax, (0, 0), target_neg, color=AMBER, lw=1.7, ms=12, z=4, ls=(0, (4, 3)))
     arrow(ax, target_neg, x_b, color=AMBER, lw=1.6, ms=12, z=4, ls=(0, (5, 3)), shrink=3.0)
     right_angle_mark(ax, mid_b_prime, (1.0, -2.0), (-8.0, -4.0), size=0.45, color=AMBER, lw=1.0, z=4, alpha=0.85)
     ax.plot([mid_b_prime[0]], [mid_b_prime[1]], "o", color=AMBER, ms=3.8, zorder=7)
     ax.plot([target_neg[0]], [target_neg[1]], "o", color=AMBER, ms=4.2, zorder=7)
-    ax.text(-4.95, -0.45, r"$-5e_1$", color=AMBER, fontsize=9.8, ha="center", va="top", zorder=8, bbox=white_pad(pad=0.06))
+    ax.text(-4.95, -0.45, r"$-5\mathbf{e}_1$", color=AMBER, fontsize=9.8, ha="center", va="top", zorder=8, bbox=white_pad(pad=0.06))
     ax.plot([-4.45, -2.65], [4.15, 1.25], color=AMBER, lw=0.85, zorder=7)
-    ax.text(-6.55, 4.55, r"$u' = x + \|x\|e_1$", color=AMBER, fontsize=9.4, ha="left", va="center",
+    ax.text(-6.55, 4.55, r"$\mathbf{u}' = \mathbf{x} + 5\mathbf{e}_1$", color=AMBER, fontsize=9.4, ha="left", va="center",
             zorder=8, bbox=white_pad(pad=0.06))
 
     # First option (solid): mirror u^perp, x, 5e_1, and u = x - 5e_1 with midpoint (4, 2)
     ax.plot([-5.80, 6.30], [-2.90, 3.15], color=TEAL, lw=2.1, zorder=4)
-    ax.text(-2.95, -2.42, r"mirror $u^\perp$", color=TEAL, fontsize=9.8, ha="center", va="top",
+    ax.text(-2.95, -2.42, r"mirror $\mathbf{u}^\perp$", color=TEAL, fontsize=9.8, ha="center", va="top",
             zorder=8, bbox=white_pad(pad=0.06))
     right_angle_mark(ax, mid_b, (-2.0, -1.0), (-2.0, 4.0), size=0.45, color=TEAL, lw=1.1, z=5)
 
@@ -525,18 +529,18 @@ def fig_projection_reflection(out_dir: Path) -> None:
     for pt, col in (((0, 0), TEXT), (x_b, NAVY), (target_pos, BLUE), (mid_b, TEAL)):
         ax.plot([pt[0]], [pt[1]], "o", color=col, ms=4.3, zorder=8)
 
-    ax.text(3.15, 4.28, r"$x = (3, 4)$", color=NAVY, fontsize=9.8, ha="left", va="bottom",
+    ax.text(3.15, 4.28, r"$\mathbf{x} = (3, 4)$", color=NAVY, fontsize=9.8, ha="left", va="bottom",
             zorder=8, bbox=white_pad(pad=0.06))
-    ax.text(4.95, -0.45, r"$5e_1 = (5, 0)$", color=BLUE, fontsize=9.8, ha="center", va="top",
+    ax.text(4.95, -0.45, r"$5\mathbf{e}_1 = (5, 0)$", color=BLUE, fontsize=9.8, ha="center", va="top",
             zorder=8, bbox=white_pad(pad=0.06))
     ax.plot([4.35, 3.65], [3.48, 2.70], color=RED, lw=0.85, zorder=7)
-    ax.text(3.85, 3.55, r"$u = x - \|x\|e_1$", color=RED, fontsize=9.5, ha="left", va="bottom",
+    ax.text(3.85, 3.55, r"$\mathbf{u} = \mathbf{x} - 5\mathbf{e}_1$", color=RED, fontsize=9.5, ha="left", va="bottom",
             zorder=8, bbox=white_pad(pad=0.06))
     ax.plot([3.58, 3.92], [1.46, 1.92], color=TEAL, lw=0.8, zorder=7)
     ax.text(3.55, 1.42, r"$(4, 2)$", color=TEAL, fontsize=9.2, ha="right", va="top",
             zorder=8, bbox=white_pad(pad=0.05))
 
-    ax.set_title(r"(b) Householder sends $x$ to $\|x\|e_1$", fontweight="bold", color=TEXT, pad=8)
+    ax.set_title(r"(b) Householder sends $\mathbf{x}$ to $\|\mathbf{x}\|\mathbf{e}_1$", fontweight="bold", color=TEXT, pad=8)
 
     # ---------------- Panel (c) ----------------
     ax = axes[2]
@@ -583,12 +587,12 @@ def fig_projection_reflection(out_dir: Path) -> None:
     for pt, col in (((0, 0), TEXT), (x_c, NAVY), (px_c, RED), (ipx_c, AMBER)):
         ax.plot([pt[0]], [pt[1]], "o", color=col, ms=4.2, zorder=8)
 
-    ax.text(x_c[0] + 0.04, x_c[1] + 0.08, r"$x = (\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}})$", color=NAVY,
+    ax.text(x_c[0] + 0.04, x_c[1] + 0.08, r"$\mathbf{x} = (\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}})$", color=NAVY,
             fontsize=9.6, ha="left", va="bottom", zorder=8, bbox=white_pad(pad=0.06))
     ax.plot([px_c[0] + 0.02, 1.48], [0.05, 0.25], color=RED, lw=0.85, zorder=7)
-    ax.text(1.16, 0.29, r"$Px = (\sqrt{2}, 0)$", color=RED, fontsize=9.5, ha="left", va="bottom",
+    ax.text(1.16, 0.29, r"$P\mathbf{x} = (\sqrt{2}, 0)$", color=RED, fontsize=9.5, ha="left", va="bottom",
             zorder=8, bbox=white_pad(pad=0.05))
-    ax.text(ipx_c[0] - 0.07, ipx_c[1] + 0.02, r"$(I - P\,)x$", color=AMBER, fontsize=9.6, ha="right",
+    ax.text(ipx_c[0] - 0.07, ipx_c[1] + 0.02, r"$(I - P\,)\mathbf{x}$", color=AMBER, fontsize=9.6, ha="right",
             va="bottom", zorder=8, bbox=white_pad(pad=0.06))
 
     label_box(ax, 0.22, -1.25, r"$\|P\|_2 = \sqrt{2} = 1/\sin 45^\circ$", color=RED, fs=9.5)
@@ -833,10 +837,10 @@ def fig_unit_balls(out_dir: Path) -> None:
 
     def mark_axes_touches(ax):
         pts = [
-            ((1.0, 0.0), r"$e_1$", (1.08, 0.0), "left", "center"),
-            ((-1.0, 0.0), r"$-e_1$", (-1.08, 0.0), "right", "center"),
-            ((0.0, 1.0), r"$e_2$", (0.0, 1.07), "center", "bottom"),
-            ((0.0, -1.0), r"$-e_2$", (0.0, -1.08), "center", "top"),
+            ((1.0, 0.0), r"$\mathbf{e}_1$", (1.08, 0.0), "left", "center"),
+            ((-1.0, 0.0), r"$-\mathbf{e}_1$", (-1.08, 0.0), "right", "center"),
+            ((0.0, 1.0), r"$\mathbf{e}_2$", (0.0, 1.07), "center", "bottom"),
+            ((0.0, -1.0), r"$-\mathbf{e}_2$", (0.0, -1.08), "center", "top"),
         ]
         for p, lab, tpos, ha, va in pts:
             ax.plot([p[0]], [p[1]], "o", color=TEXT, ms=4.6, zorder=7)
@@ -864,7 +868,7 @@ def fig_unit_balls(out_dir: Path) -> None:
     ax.text(
         1.67,
         1.32,
-        r"$(1/2, 1/2)$: $\|v\|_1 = 1$," + "\n" + r"$\|v\|_2 = 1/\sqrt{2} \approx 0.707$",
+        r"$(1/2, 1/2)$: $\|\mathbf{v}\|_1 = 1$," + "\n" + r"$\|\mathbf{v}\|_2 = 1/\sqrt{2} \approx 0.707$",
         color=RED,
         fontsize=9.3,
         ha="right",
@@ -875,18 +879,18 @@ def fig_unit_balls(out_dir: Path) -> None:
 
     # Shape labels in open corners with leader lines
     ax.plot([-1.0, -1.24], [0.82, 1.12], color=AMBER, lw=0.85, zorder=7)
-    ax.text(-1.67, 1.34, r"$\max(|x|, |y|) = 1$" + "\n" + r"($\|v\|_\infty = 1$)", color=AMBER, fontsize=9.3,
+    ax.text(-1.67, 1.34, r"$\max(|x|, |y|) = 1$" + "\n" + r"($\|\mathbf{v}\|_\infty = 1$)", color=AMBER, fontsize=9.3,
             ha="left", va="center", zorder=8, bbox=white_pad(pad=0.06))
 
     ax.plot([-0.707, -1.08], [-0.707, -1.16], color=NAVY, lw=0.85, zorder=7)
-    ax.text(-1.67, -1.26, r"$\|v\|_2 = 1$", color=NAVY, fontsize=9.8, ha="left", va="center",
+    ax.text(-1.67, -1.26, r"$\|\mathbf{v}\|_2 = 1$", color=NAVY, fontsize=9.8, ha="left", va="center",
             zorder=8, bbox=white_pad(pad=0.06))
 
     ax.plot([0.55, 0.88], [-0.45, -1.08], color=TEAL, lw=0.85, zorder=7)
-    ax.text(1.67, -1.26, r"$\|v\|_1 = 1$" + "\n" + r"($|x| + |y| = 1$)", color=TEAL, fontsize=9.3,
+    ax.text(1.67, -1.26, r"$\|\mathbf{v}\|_1 = 1$" + "\n" + r"($|x| + |y| = 1$)", color=TEAL, fontsize=9.3,
             ha="right", va="center", zorder=8, bbox=white_pad(pad=0.06))
 
-    label_box(ax, 0.0, -1.67, r"smaller ball = larger norm: $\|v\|_1 \geq \|v\|_2 \geq \|v\|_\infty$",
+    label_box(ax, 0.0, -1.67, r"smaller ball = larger norm: $\|\mathbf{v}\|_1 \geq \|\mathbf{v}\|_2 \geq \|\mathbf{v}\|_\infty$",
               color=TEXT, fs=9.4)
     ax.set_title("(a) The three unit balls", fontweight="bold", color=TEXT, pad=8)
 
@@ -913,18 +917,18 @@ def fig_unit_balls(out_dir: Path) -> None:
             ha="right", va="center", zorder=8, bbox=white_pad(pad=0.06))
 
     ax.plot([-1.0, -1.20], [0.85, 1.20], color=AMBER, lw=0.85, zorder=7)
-    ax.text(-1.67, 1.34, r"$\|v\|_\infty = 1$", color=AMBER, fontsize=9.8,
+    ax.text(-1.67, 1.34, r"$\|\mathbf{v}\|_\infty = 1$", color=AMBER, fontsize=9.8,
             ha="left", va="center", zorder=8, bbox=white_pad(pad=0.06))
 
     ax.plot([-0.34, -0.98], [-0.50, -1.16], color=NAVY, lw=0.85, zorder=7)
-    ax.text(-1.67, -1.26, r"$\|v\|_\infty = 1/2$", color=NAVY, fontsize=9.8,
+    ax.text(-1.67, -1.26, r"$\|\mathbf{v}\|_\infty = 1/2$", color=NAVY, fontsize=9.8,
             ha="left", va="center", zorder=8, bbox=white_pad(pad=0.06))
 
     ax.plot([0.58, 0.96], [-0.42, -1.16], color=TEAL, lw=0.85, zorder=7)
-    ax.text(1.67, -1.26, r"$\|v\|_1 = 1$", color=TEAL, fontsize=9.8,
+    ax.text(1.67, -1.26, r"$\|\mathbf{v}\|_1 = 1$", color=TEAL, fontsize=9.8,
             ha="right", va="center", zorder=8, bbox=white_pad(pad=0.06))
 
-    label_box(ax, 0.0, -1.67, r"$\|v\|_\infty \leq \|v\|_1 \leq 2\|v\|_\infty$", color=TEXT, fs=9.6)
+    label_box(ax, 0.0, -1.67, r"$\|\mathbf{v}\|_\infty \leq \|\mathbf{v}\|_1 \leq 2\|\mathbf{v}\|_\infty$", color=TEXT, fs=9.6)
     ax.set_title("(b) Equivalence of norms", fontweight="bold", color=TEXT, pad=8)
 
     fig.tight_layout(w_pad=1.3)
@@ -932,7 +936,7 @@ def fig_unit_balls(out_dir: Path) -> None:
 
 
 # ---------------------------------------------------------------------------
-# Figure 3: what the induced norms measure
+# Figure 4: what the induced norms measure
 # ---------------------------------------------------------------------------
 def fig_induced_norms(out_dir: Path) -> None:
     print("\nF4 maths0_induced_norms.png")
@@ -1030,22 +1034,22 @@ def fig_induced_norms(out_dir: Path) -> None:
         ax.plot([pt[0]], [pt[1]], "o", color=col, ms=4.5, zorder=7)
 
     ax.plot([-0.60, -1.05], [1.66, 2.26], color=RED, lw=0.85, zorder=7)
-    ax.text(-2.88, 2.52, r"$a_2 \approx (-0.577, 1.633)$", color=RED, fontsize=9.1,
+    ax.text(-2.88, 2.52, r"$\mathbf{a}_2 \approx (-0.577, 1.633)$", color=RED, fontsize=9.1,
             ha="left", va="center", zorder=8, bbox=white_pad(pad=0.06))
 
     ax.plot([0.85, 1.20], [norm_A1 - 0.85, 1.88], color=RED, lw=0.85, zorder=7)
-    ax.text(2.88, 2.12, r"$\|A\|_1 = \|a_2\|_1 \approx 2.21$", color=RED, fontsize=9.2,
+    ax.text(2.88, 2.12, r"$\|A\|_1 = \|\mathbf{a}_2\|_1 \approx 2.21$", color=RED, fontsize=9.2,
             ha="right", va="center", zorder=8, bbox=white_pad(pad=0.06))
 
     ax.plot([a1[0], 1.55], [-0.06, -1.94], color=TEAL, lw=0.85, zorder=7)
-    ax.text(2.88, -2.18, r"$a_1 \approx (1.732, 0)$", color=TEAL, fontsize=9.2,
+    ax.text(2.88, -2.18, r"$\mathbf{a}_1 \approx (1.732, 0)$", color=TEAL, fontsize=9.2,
             ha="right", va="center", zorder=8, bbox=white_pad(pad=0.06))
 
     ax.plot([-0.55, -1.25], [-0.45, -1.94], color=SLATE, lw=0.8, zorder=7)
     ax.text(-2.88, -2.18, "unit 1-ball", color=SLATE, fontsize=9.1,
             ha="left", va="center", zorder=8, bbox=white_pad(pad=0.06))
 
-    label_box(ax, 0.0, -3.08, r"all the budget in one column: $x = e_2$", color=TEXT, fs=9.1)
+    label_box(ax, 0.0, -3.08, r"all the budget in one column: $\mathbf{x} = \mathbf{e}_2$", color=TEXT, fs=9.1)
     ax.set_title("(a) The 1-norm", fontweight="bold", color=TEXT, pad=8)
 
     # ---------------- Panel (b): The infinity-norm ----------------
@@ -1088,7 +1092,7 @@ def fig_induced_norms(out_dir: Path) -> None:
     ax.text(-2.88, -2.56, r"unit $\infty$-ball", color=SLATE, fontsize=9.0,
             ha="left", va="center", zorder=8, bbox=white_pad(pad=0.05))
 
-    label_box(ax, 0.0, -3.08, r"signs matched to row 1: $x = (1, -1)$", color=TEXT, fs=9.1)
+    label_box(ax, 0.0, -3.08, r"signs matched to row 1: $\mathbf{x} = (1, -1)$", color=TEXT, fs=9.1)
     ax.set_title(r"(b) The $\infty$-norm", fontweight="bold", color=TEXT, pad=8)
 
     # ---------------- Panel (c): The 2-norm ----------------
@@ -1117,11 +1121,11 @@ def fig_induced_norms(out_dir: Path) -> None:
             ha="left", va="center", zorder=8, bbox=white_pad(pad=0.06))
 
     ax.plot([ax_long[0] + 0.04, 1.55], [ax_long[1] - 0.05, -1.96], color=RED, lw=0.85, zorder=7)
-    ax.text(2.88, -2.22, r"from $x = (1, -1)/\sqrt{2}$", color=RED, fontsize=9.0,
+    ax.text(2.88, -2.22, r"from $\mathbf{x} = (1, -1)/\sqrt{2}$", color=RED, fontsize=9.0,
             ha="right", va="center", zorder=8, bbox=white_pad(pad=0.06))
 
     ax.plot([-ax_short[0] - 0.04, -1.25], [-ax_short[1] - 0.04, -1.96], color=TEAL, lw=0.85, zorder=7)
-    ax.text(-2.88, -2.22, r"from $x = (1, 1)/\sqrt{2}$", color=TEAL, fontsize=9.0,
+    ax.text(-2.88, -2.22, r"from $\mathbf{x} = (1, 1)/\sqrt{2}$", color=TEAL, fontsize=9.0,
             ha="left", va="center", zorder=8, bbox=white_pad(pad=0.06))
 
     label_box(ax, 0.0, -3.08, r"eigenvalues of $A^T A$: $4$ and $2$", color=TEXT, fs=9.1)
@@ -1129,6 +1133,271 @@ def fig_induced_norms(out_dir: Path) -> None:
 
     fig.tight_layout(w_pad=1.0)
     save_fig(fig, out_dir, "maths0_induced_norms.png")
+
+
+# ---------------------------------------------------------------------------
+# Figure 3: unit circle stretched into an ellipse (induced 2-norm)
+# ---------------------------------------------------------------------------
+def fig_two_norm_ellipse(out_dir: Path) -> None:
+    print("\nF5 maths0_two_norm_ellipse.png")
+
+    A = (1.0 / math.sqrt(3.0)) * np.array([[3.0, -1.0], [0.0, math.sqrt(8.0)]])
+    ata = A.T @ A
+    eigvals = np.linalg.eigvalsh(ata)  # ascending: [2, 4]
+    norm_A2 = float(np.linalg.norm(A, 2))
+    min_stretch_2 = 1.0 / float(np.linalg.norm(np.linalg.inv(A), 2))
+
+    assert np.allclose(ata, [[3.0, -1.0], [-1.0, 3.0]])
+    assert np.allclose(eigvals, [2.0, 4.0])
+    assert abs(norm_A2 - 2.0) < 1e-12
+    assert abs(min_stretch_2 - math.sqrt(2.0)) < 1e-12
+
+    # 8 evenly spaced unit vectors (45 deg steps), numbered 1..8
+    angles_deg = [45 * k for k in range(8)]
+    unit_pts = np.array([[math.cos(math.radians(d)), math.sin(math.radians(d))] for d in angles_deg])
+    img_pts = (A @ unit_pts.T).T
+    img_norms = np.linalg.norm(img_pts, axis=1)
+
+    # Indices: 0->#1 (0 deg), 1->#2 (45 deg, min), 2->#3 (90 deg), 3->#4 (135 deg, max),
+    #          4->#5 (180 deg), 5->#6 (225 deg, min), 6->#7 (270 deg), 7->#8 (315 deg, max)
+    assert np.allclose(unit_pts[1], [1.0 / math.sqrt(2.0), 1.0 / math.sqrt(2.0)])
+    assert np.allclose(unit_pts[7], [1.0 / math.sqrt(2.0), -1.0 / math.sqrt(2.0)])
+    assert abs(float(img_norms[1]) - math.sqrt(2.0)) < 1e-12
+    assert abs(float(img_norms[5]) - math.sqrt(2.0)) < 1e-12
+    assert abs(float(img_norms[3]) - 2.0) < 1e-12
+    assert abs(float(img_norms[7]) - 2.0) < 1e-12
+    for idx_axis in (0, 2, 4, 6):
+        assert abs(float(img_norms[idx_axis]) - math.sqrt(3.0)) < 1e-12
+    assert abs(float(unit_pts[7] @ unit_pts[1])) < 1e-12
+    assert abs(float(img_pts[7] @ img_pts[1])) < 1e-12
+
+    ang_major_deg = math.degrees(math.atan2(float(img_pts[7, 1]), float(img_pts[7, 0])))
+    ang_minor_deg = math.degrees(math.atan2(float(img_pts[1, 1]), float(img_pts[1, 0])))
+    assert abs((ang_minor_deg - ang_major_deg) - 90.0) < 1e-12
+
+    print("  Matrix A = (1/sqrt(3)) * [[3, -1], [0, sqrt(8)]]")
+    print(f"  A^T A = [[3, -1], [-1, 3]], eigenvalues of A^T A = {eigvals[1]:g} and {eigvals[0]:g}")
+    print(
+        f"  max stretch ||A||_2 = sqrt(4) = {norm_A2:g}, reached at +/- (1, -1)/sqrt(2) (#8, #4) -> "
+        f"+/- ({img_pts[7, 0]:.3f}, {img_pts[7, 1]:.3f}), angle = {ang_major_deg:.2f} deg"
+    )
+    print(
+        f"  min stretch 1/||A^(-1)||_2 = sqrt(2) = {min_stretch_2:.6f} approx {min_stretch_2:.3f}, "
+        f"reached at +/- (1, 1)/sqrt(2) (#2, #6) -> +/- ({img_pts[1, 0]:.3f}, {img_pts[1, 1]:.3f}), "
+        f"angle = {ang_minor_deg:.2f} deg"
+    )
+    print(
+        "  cardinal unit vectors (#1, #3, #5, #7, +/-e_1 and +/-e_2): "
+        f"||A x||_2 = sqrt(3) = {math.sqrt(3.0):.6f} approx {math.sqrt(3.0):.3f}"
+    )
+    print("  8 evenly spaced unit vectors (45 deg steps) and their images under A:")
+    for i, deg in enumerate(angles_deg):
+        ux, uy = unit_pts[i]
+        vx, vy = img_pts[i]
+        ux = 0.0 if abs(ux) < 1e-12 else ux
+        uy = 0.0 if abs(uy) < 1e-12 else uy
+        vx = 0.0 if abs(vx) < 1e-12 else vx
+        vy = 0.0 if abs(vy) < 1e-12 else vy
+        print(
+            f"    #{i + 1} ({deg:3d} deg): x = ({ux:.3f}, {uy:.3f}) -> "
+            f"A x = ({vx:.3f}, {vy:.3f}), ||A x||_2 = {img_norms[i]:.3f}"
+        )
+
+    fig, axes = plt.subplots(1, 2, figsize=(10.65, 5.05))
+    fig.subplots_adjust(left=0.02, right=0.98, bottom=0.03, top=0.91, wspace=0.18)
+
+    # Identical axis limits in both panels so sizes compare 1-to-1
+    xlim = (-2.95, 2.95)
+    ylim = (-3.25, 2.85)
+    for ax in axes:
+        frame_panel(ax, xlim, ylim)
+
+    def spoke_style(idx: int):
+        if idx in (3, 7):  # #4, #8: max stretch
+            return RED, (2.45 if idx == 7 else 1.90), (13.5 if idx == 7 else 11.5), 6.2, 5.0
+        if idx in (1, 5):  # #2, #6: min stretch
+            return TEAL, (2.45 if idx == 1 else 1.90), (13.5 if idx == 1 else 11.5), 6.1, 5.0
+        return SLATE, 1.35, 10.0, 5.2, 4.2
+
+    # ---------------- Panel (a): Before (input unit circle) ----------------
+    ax = axes[0]
+    ax.add_patch(Circle((0.0, 0.0), 1.0, fc=BLUE_PALE, ec="none", alpha=0.55, zorder=2))
+    ax.add_patch(Circle((0.0, 0.0), 1.0, fc="none", ec=NAVY, lw=2.0, zorder=4))
+
+    for i in range(8):
+        col, lw, ms_arr, z_arr, ms_dot = spoke_style(i)
+        p = unit_pts[i]
+        arrow(ax, (0.0, 0.0), p, color=col, lw=lw, ms=ms_arr, z=z_arr)
+        ax.plot([p[0]], [p[1]], "o", color=col, ms=ms_dot, zorder=7)
+        r_lab = 1.23 if i in (1, 3, 5, 7) else 1.21
+        lp = r_lab * p
+        ax.text(
+            lp[0],
+            lp[1],
+            f"${i + 1}$",
+            color=col,
+            fontsize=9.4,
+            fontweight="bold" if i in (1, 3, 5, 7) else "normal",
+            ha="center",
+            va="center",
+            zorder=8,
+            bbox=white_pad(pad=0.04),
+        )
+    ax.plot([0.0], [0.0], "o", color=TEXT, ms=3.8, zorder=8)
+
+    # Descriptive labels in open outer region of Panel (a)
+    c120 = np.array([math.cos(math.radians(120.0)), math.sin(math.radians(120.0))])
+    ax.plot([c120[0], -1.35], [c120[1], 2.15], color=NAVY, lw=0.85, zorder=7)
+    ax.text(-2.82, 2.36, r"unit circle $\|\mathbf{x}\|_2 = 1$", color=NAVY, fontsize=9.6,
+            ha="left", va="center", zorder=8, bbox=white_pad(pad=0.06))
+
+    ax.plot([0.98, 1.55], [0.98, 1.92], color=TEAL, lw=0.85, zorder=7)
+    ax.text(
+        2.82,
+        2.26,
+        "min-stretch directions ($2, 6$):\n" + r"$\mathbf{x} = \pm(1, 1)/\sqrt{2}$",
+        color=TEAL,
+        fontsize=9.2,
+        ha="right",
+        va="center",
+        zorder=8,
+        bbox=white_pad(pad=0.06),
+    )
+
+    ax.plot([0.98, 1.55], [-0.98, -1.80], color=RED, lw=0.85, zorder=7)
+    ax.text(
+        2.82,
+        -2.14,
+        "max-stretch directions ($8, 4$):\n" + r"$\mathbf{x} = \pm(1, -1)/\sqrt{2}$",
+        color=RED,
+        fontsize=9.2,
+        ha="right",
+        va="center",
+        zorder=8,
+        bbox=white_pad(pad=0.06),
+    )
+
+    label_box(ax, 0.0, -2.82, r"8 unit vectors $\mathbf{x}$ spaced by $45^\circ$", color=TEXT, fs=9.2)
+    ax.set_title(r"(a) Before: unit circle $\|\mathbf{x}\|_2 = 1$", fontweight="bold", color=TEXT, pad=8)
+
+    # ---------------- Panel (b): After applying A ----------------
+    ax = axes[1]
+    tt = np.linspace(0.0, 2.0 * np.pi, 400)
+    ell_pts = A @ np.vstack([np.cos(tt), np.sin(tt)])
+
+    # Faint unit circle for comparison
+    ax.add_patch(Circle((0.0, 0.0), 1.0, fc=GREY_WALL, ec=SLATE, lw=1.2, ls=(0, (3, 2.5)), alpha=0.75, zorder=2))
+
+    # Image ellipse and touching dashed circles of radii 2 and sqrt(2)
+    ax.fill(ell_pts[0], ell_pts[1], color=BLUE_LIGHT, alpha=0.68, zorder=2.5, lw=0)
+    ax.plot(ell_pts[0], ell_pts[1], color=NAVY, lw=2.1, zorder=5)
+    ax.add_patch(Circle((0.0, 0.0), norm_A2, fc="none", ec=RED, lw=1.65, ls=(0, (5, 3)), zorder=4))
+    ax.add_patch(Circle((0.0, 0.0), min_stretch_2, fc="none", ec=TEAL, lw=1.55, ls=(0, (4, 3)), zorder=4))
+
+    for i in range(8):
+        col, lw, ms_arr, z_arr, ms_dot = spoke_style(i)
+        q = img_pts[i]
+        u_dir = q / img_norms[i]
+        arrow(ax, (0.0, 0.0), q, color=col, lw=lw, ms=ms_arr, z=z_arr)
+        ax.plot([q[0]], [q[1]], "o", color=col, ms=ms_dot, zorder=7.2)
+        if i in (3, 7):      # r = 2.000 -> place outside outer dashed circle
+            r_lab = 2.19
+        elif i in (1, 5):    # r = 1.414 -> place in wide gap inside outer circle
+            r_lab = 1.62
+        else:                # r = 1.732 -> place midway between 1.732 and 2.000
+            r_lab = 1.855
+        lp = r_lab * u_dir
+        ax.text(
+            lp[0],
+            lp[1],
+            f"${i + 1}$",
+            color=col,
+            fontsize=9.2,
+            ha="center",
+            va="center",
+            zorder=8,
+            bbox=white_pad(pad=0.03),
+        )
+    ax.plot([0.0], [0.0], "o", color=TEXT, ms=3.8, zorder=8)
+
+    # Max stretch label (pointing to outer dashed circle at 36 deg, clear of #1 and #2)
+    p_outer = norm_A2 * np.array([math.cos(math.radians(36.0)), math.sin(math.radians(36.0))])
+    ax.plot([p_outer[0], 1.88], [p_outer[1], 1.98], color=RED, lw=0.85, zorder=7)
+    ax.text(
+        2.82,
+        2.32,
+        r"max stretch $\|A\|_2 = 2$" + "\n" + r"semi-major axis ($8, 4$)",
+        color=RED,
+        fontsize=9.2,
+        ha="right",
+        va="center",
+        zorder=8,
+        bbox=white_pad(pad=0.06),
+    )
+
+    # Min stretch label (pointing to inner dashed circle at 127 deg, bisecting #3 and #4)
+    p_inner = min_stretch_2 * np.array([math.cos(math.radians(127.0)), math.sin(math.radians(127.0))])
+    ax.plot([p_inner[0], -1.24], [p_inner[1], 1.98], color=TEAL, lw=0.85, zorder=7)
+    ax.text(
+        -2.82,
+        2.32,
+        r"min stretch $1/\|A^{-1}\|_2 = \sqrt{2}$" + "\n" + r"semi-minor axis ($2, 6$)",
+        color=TEAL,
+        fontsize=9.2,
+        ha="left",
+        va="center",
+        zorder=8,
+        bbox=white_pad(pad=0.06),
+    )
+
+    # Coordinates of #8 (pointing to semi-major shaft, clear of badge #8)
+    ax.plot([1.22, 1.72], [-0.86, -1.94], color=RED, lw=0.85, zorder=7)
+    ax.text(
+        2.82,
+        -2.18,
+        r"at $8$: $A\mathbf{x} \approx (1.633, -1.155)$",
+        color=RED,
+        fontsize=9.1,
+        ha="right",
+        va="center",
+        zorder=8,
+        bbox=white_pad(pad=0.05),
+    )
+
+    # Faint unit circle callout (at 207 deg, bisecting #5 and #6)
+    p_faint = np.array([math.cos(math.radians(207.0)), math.sin(math.radians(207.0))])
+    ax.plot([p_faint[0], -1.68], [p_faint[1], -1.96], color=SLATE, lw=0.8, zorder=7)
+    ax.text(-2.82, -2.18, "unit circle (faint)", color=SLATE, fontsize=9.1,
+            ha="left", va="center", zorder=8, bbox=white_pad(pad=0.05))
+
+    label_box(ax, 0.0, -2.82, r"semi-axes $\sqrt{4} = 2$ and $\sqrt{2}$ from eigenvalues of $A^T A$",
+              color=TEXT, fs=9.1)
+    ax.set_title(r"(b) After $A$: ellipse $\{A\mathbf{x} : \|\mathbf{x}\|_2 = 1\}$",
+                 fontweight="bold", color=TEXT, pad=8)
+
+    # Inter-panel transformation arrow ->^A aligned with y = 0 in figure coordinates
+    fig.canvas.draw()
+    inv_fig = fig.transFigure.inverted()
+    x_right_a, y_zero = inv_fig.transform(axes[0].transData.transform((xlim[1], 0.0)))
+    x_left_b, _ = inv_fig.transform(axes[1].transData.transform((xlim[0], 0.0)))
+    x_mid = 0.5 * (x_right_a + x_left_b)
+    dx_arrow = 0.34 * (x_left_b - x_right_a)
+    map_arrow = FancyArrowPatch(
+        (x_mid - dx_arrow, y_zero),
+        (x_mid + dx_arrow, y_zero),
+        transform=fig.transFigure,
+        arrowstyle="-|>",
+        mutation_scale=16,
+        color=NAVY,
+        lw=2.2,
+        zorder=10,
+    )
+    fig.add_artist(map_arrow)
+    fig.text(x_mid, y_zero + 0.018, r"$A$", fontsize=12.5, color=NAVY, ha="center", va="bottom")
+    fig.text(x_mid, y_zero - 0.022, r"$\mathbf{x} \mapsto A\mathbf{x}$", fontsize=9.2, color=SLATE,
+             ha="center", va="top")
+
+    save_fig(fig, out_dir, "maths0_two_norm_ellipse.png")
 
 
 def main() -> None:
@@ -1141,6 +1410,7 @@ def main() -> None:
     fig_airline_network(out_dir)
     fig_unit_balls(out_dir)
     fig_induced_norms(out_dir)
+    fig_two_norm_ellipse(out_dir)
 
 
 if __name__ == "__main__":

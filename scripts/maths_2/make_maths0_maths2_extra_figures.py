@@ -4,7 +4,7 @@
 Usage: python make_maths0_maths2_extra_figures.py OUTPUT_DIR
 
 Writes four PNGs into OUTPUT_DIR:
-  maths0_ring_circle_ideal.png       Maths 0, Figure 5 (wrapping Z round a circle; why the glued set must be an ideal)
+  maths0_ring_circle_ideal.png       Maths 0, Figure 6 (wrapping Z round a circle; why the glued set must be an ideal)
   maths2_jordan_holder.png           Maths 2, Figure 5 (composition series of C_12, S_4 and A_5)
   maths2_goursat_chessboard.png      Maths 2, Figure 8 (Goursat couplings of S_4 x D_12 as a 6 x 6 chessboard)
   maths2_rep_induction_c3_d6.png     Maths 2, Figure 17 (inducing the irreducible C C_3-modules to C D_6)

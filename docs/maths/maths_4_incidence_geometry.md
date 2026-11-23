@@ -563,7 +563,7 @@ Beyond projective and affine spaces, three celebrated geometric and group-theore
 
 $$X_0^{q+1} + X_1^{q+1} + X_2^{q+1} = 0.$$
 
-We can verify that this is Hermitian with the [Frobenius automorphism](maths_0_vector_calculus_linear_algebra_fields.md#fermats-little-theorem) $\bar{x} = x^q$ by applying $f(X, X) = \sigma(f(X, X))$. There are two ways to check this. The first way is with the underlying two-variable sesquilinear form:
+We can verify that this is Hermitian with the [Frobenius automorphism](maths_0_linear_and_abstract_algebra.md#fermats-little-theorem) $\bar{x} = x^q$ by applying $f(X, X) = \sigma(f(X, X))$. There are two ways to check this. The first way is with the underlying two-variable sesquilinear form:
 
 $$f(X, Y) = X_0 Y_0^q + X_1 Y_1^q + X_2 Y_2^q$$
 

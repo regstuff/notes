@@ -2,7 +2,7 @@
 
 ## Groups
 
-In [ring theory](maths_0_vector_calculus_linear_algebra_fields.md#rings-fields) (Maths 0), we studied systems with two operations (addition and multiplication). A ring models environments where things can be scaled, added, and multiplied, like polynomials or numbers.
+In [ring theory](maths_0_linear_and_abstract_algebra.md#rings-fields) (Maths 0), we studied systems with two operations (addition and multiplication). A ring models environments where things can be scaled, added, and multiplied, like polynomials or numbers.
 
 Group theory strips away one operation. A group is a set with a single operation (denoted $\circ$). Why do this? Because in the physical world, the most fundamental mathematical object is not a "number," but an action or a transformation. Think of a rotation. You can do one rotation and then another. There isn't any other operation really. You cannot add two rotations and get a rotation. So we have just one operation which we call a composition: do one action, then do the next.
 
@@ -16,7 +16,7 @@ Groups need not be commutative because actions in space generally depend on the 
 
 Similarly, the set of units of a ring with an identity $1$, with the operation of multiplication, is a group. This is called the group of units of the ring $R$.
 
-Similarly, with a field $F$, $F \setminus \{0\}$ is a group, the multiplicative group of $F$, written as $F^*$ (or $F^\times$, as in [Figure 7 of Maths 0](maths_0_vector_calculus_linear_algebra_fields.md#figure-7); the two symbols mean the same).
+Similarly, with a field $F$, $F \setminus \{0\}$ is a group, the multiplicative group of $F$, written as $F^*$ (or $F^\times$, as in [Figure 8 of Maths 0](maths_0_linear_and_abstract_algebra.md#figure-8); the two symbols mean the same).
 
 The set of invertible $n \times n$ matrices ($\det(A) \neq 0$) over a field $F$, with the operation of matrix multiplication, is a group, the General Linear group $GL(n, F)$.
 
@@ -44,7 +44,7 @@ Let $R$ be a ring. An automorphism of $R$ is an isomorphism $\theta : R \to R$; 
 
 ### The Rosetta Stone: Rings vs. Groups
 
-The structural theorems we learned for [rings in Maths 0](maths_0_vector_calculus_linear_algebra_fields.md#homomorphisms-and-isomorphisms) were ported directly into group theory. Here is the exact translation dictionary between the two:
+The structural theorems we learned for [rings in Maths 0](maths_0_linear_and_abstract_algebra.md#homomorphisms-and-isomorphisms) were ported directly into group theory. Here is the exact translation dictionary between the two:
 
 | Concept | Ring Theory (Additive + Multiplicative) | Group Theory (Multiplicative Only) |
 | --- | --- | --- |
@@ -1720,7 +1720,7 @@ Over $\mathbb{C}$, every representation of a finite group is completely reducibl
 
 $$V = W_1 \oplus W_2 \oplus \dots \oplus W_k$$
 
-This means every vector $v \in V$ can be written uniquely as $v = w_1 + \dots + w_k$ with $w_i \in W_i$, and the group $G$ never mixes vectors from different subspaces $W_i$. Since $W_i$ is $G$-invariant, it is also a submodule. Note that Maschke's Theorem requires char($F$) to not be a divisor of $\vert{}G\vert{}$. The characteristic char($F$) is the smallest $p$ for which adding $1$ to itself $p$ times gives $0$ (as in $\mathbb{F}_9$ [in Maths 0](maths_0_vector_calculus_linear_algebra_fields.md#lets-build-a-field)), or $0$ if there is no such $p$; $\mathbb{C}$ has characteristic $0$. So Maschke's Theorem is not applicable when we are working with $F(2)$ (the field $\mathbb{F}_2$ with two elements, of characteristic $2$) with the group $G_2(2)$ of order 12096. 
+This means every vector $v \in V$ can be written uniquely as $v = w_1 + \dots + w_k$ with $w_i \in W_i$, and the group $G$ never mixes vectors from different subspaces $W_i$. Since $W_i$ is $G$-invariant, it is also a submodule. Note that Maschke's Theorem requires char($F$) to not be a divisor of $\vert{}G\vert{}$. The characteristic char($F$) is the smallest $p$ for which adding $1$ to itself $p$ times gives $0$ (as in $\mathbb{F}_9$ [in Maths 0](maths_0_linear_and_abstract_algebra.md#lets-build-a-field)), or $0$ if there is no such $p$; $\mathbb{C}$ has characteristic $0$. So Maschke's Theorem is not applicable when we are working with $F(2)$ (the field $\mathbb{F}_2$ with two elements, of characteristic $2$) with the group $G_2(2)$ of order 12096. 
 
 Maschke's Theorem guarantees that if we end up with a representation matrix for $V$ such that 
 
@@ -3650,7 +3650,7 @@ When a module does not split into a direct sum of irreducible submodules, how ca
 
 #### Modules over a Ring, Composition Series and the Socle and Radical Series
 
-We first extend the module language of [$FG$-modules](#fg-modules) from group algebras to an arbitrary ring $\Lambda$ with $1$. A left $\Lambda$-module $M$ is an abelian group $(M, +)$ equipped with a left action $(\lambda, m) \mapsto \lambda m$ of $\Lambda$ that is distributive in both variables, associative in the sense that $(\lambda\mu)m = \lambda(\mu m)$, and unital ($1m = m$). A **$\Lambda$-submodule** $N \le M$ is an additive subgroup closed under left multiplication by $\Lambda$, and the quotient group $M/N$ of cosets $m + N$ inherits a left $\Lambda$-module structure via $\lambda(m + N) = \lambda m + N$ ([homomorphisms and isomorphisms of rings](maths_0_vector_calculus_linear_algebra_fields.md#homomorphisms-and-isomorphisms) in Maths 0). A module $M$ is **finitely generated** if there exist elements $m_1, \dots, m_r \in M$ such that $M = \Lambda m_1 + \cdots + \Lambda m_r$.
+We first extend the module language of [$FG$-modules](#fg-modules) from group algebras to an arbitrary ring $\Lambda$ with $1$. A left $\Lambda$-module $M$ is an abelian group $(M, +)$ equipped with a left action $(\lambda, m) \mapsto \lambda m$ of $\Lambda$ that is distributive in both variables, associative in the sense that $(\lambda\mu)m = \lambda(\mu m)$, and unital ($1m = m$). A **$\Lambda$-submodule** $N \le M$ is an additive subgroup closed under left multiplication by $\Lambda$, and the quotient group $M/N$ of cosets $m + N$ inherits a left $\Lambda$-module structure via $\lambda(m + N) = \lambda m + N$ ([homomorphisms and isomorphisms of rings](maths_0_linear_and_abstract_algebra.md#homomorphisms-and-isomorphisms) in Maths 0). A module $M$ is **finitely generated** if there exist elements $m_1, \dots, m_r \in M$ such that $M = \Lambda m_1 + \cdots + \Lambda m_r$.
 
 Three families of rings anchor every construction in this chapter: the ring of integers $\Lambda = \mathbb{Z}$, where a left $\mathbb{Z}$-module is simply an abelian group; the truncated polynomial algebra $\Lambda = k[x]/(x^n)$, where a module is a $k$-vector space equipped with a linear operator $x$ satisfying $x^n = 0$; and the group algebra $\Lambda = RG$ or $kG$ ([the group algebra and the regular module](#the-group-algebra-and-the-regular-module)).
 
@@ -3720,7 +3720,7 @@ We say that a ring $\Lambda$ is a **semisimple ring** if $J(\Lambda) = 0$. Since
 
 **Invertibility of $1 - a$ (Lemma).** If $a \in J(\Lambda)$, then $1 - a$ has a left inverse in $\Lambda$.
 
-**Worked examples: $J(\mathbb{Z}) = 0$, $J(k[x]/(x^n)) = (x)$, and the Loewy layers of $\mathbb{F}_p C_p$.** In $\Lambda = \mathbb{Z}$, a maximal ideal is $p\mathbb{Z}$ for a prime number $p$ ([maximal ideals](maths_0_vector_calculus_linear_algebra_fields.md#establishing-more-mathematical-properties) in Maths 0). Because no non-zero integer is divisible by every prime $p$, the intersection is $J(\mathbb{Z}) = \bigcap_{p} p\mathbb{Z} = \{0\}$, so $\mathbb{Z}$ is semisimple in the sense $J(\mathbb{Z}) = 0$ even though $\mathbb{Z}$ is not a field and not every abelian group is a direct sum of simple groups $\mathbb{Z}/p\mathbb{Z}$.
+**Worked examples: $J(\mathbb{Z}) = 0$, $J(k[x]/(x^n)) = (x)$, and the Loewy layers of $\mathbb{F}_p C_p$.** In $\Lambda = \mathbb{Z}$, a maximal ideal is $p\mathbb{Z}$ for a prime number $p$ ([maximal ideals](maths_0_linear_and_abstract_algebra.md#establishing-more-mathematical-properties) in Maths 0). Because no non-zero integer is divisible by every prime $p$, the intersection is $J(\mathbb{Z}) = \bigcap_{p} p\mathbb{Z} = \{0\}$, so $\mathbb{Z}$ is semisimple in the sense $J(\mathbb{Z}) = 0$ even though $\mathbb{Z}$ is not a field and not every abelian group is a direct sum of simple groups $\mathbb{Z}/p\mathbb{Z}$.
 
 In $\Lambda = k[x]/(x^n)$ for $n \ge 1$, every element has the form $f(x) = c_0 + c_1 x + \cdots + c_{n-1}x^{n-1}$ with $c_i \in k$. If $c_0 \neq 0$, we can write $f(x) = c_0(1 - y)$ where $y = -c_0^{-1}(c_1 x + \cdots + c_{n-1}x^{n-1})$ satisfies $y^n = 0$, and the finite geometric series $c_0^{-1}(1 + y + y^2 + \cdots + y^{n-1})$ is a two-sided inverse for $f(x)$. Thus every element outside the ideal $(x)$ is invertible, so $(x)$ is the unique maximal ideal of $\Lambda$ and $J(k[x]/(x^n)) = (x)$. The radical and socle series of ${}_\Lambda\Lambda$ coincide in reverse order along the single chain of ideals
 

@@ -1,8 +1,6 @@
 # Maths 0 - Linear & Abstract Algebra
 
-## Linear Algebra
-
-### Norms & Inner Products
+## Vector Norms & Inner Products
 The concept of the length of a vector $\mathbf{x}$ in $\mathbb{R}^n$ or $\mathbb{C}^n$ is familiar. This is called the Euclidean norm (or $2$-norm), denoted $\|\mathbf{x}\|_2$ (we use double bars $\|\cdot\|$ to distinguish vector norms from scalar absolute values $|\cdot|$). By Pythagoras' theorem, we know that:
 
 $$\|\mathbf{x}\|_2=\sqrt{\sum_{i=1}^{n}|x_i|^2}$$
@@ -27,7 +25,7 @@ It is visually evident that the solid unit ball bounded by $S_1$ fits inside tha
 
 <a id="figure-1"></a>![Two panels: the nested diamond, circle and square unit balls of the 1-, 2- and infinity-norms; and the unit diamond sandwiched between infinity-norm squares of radius one half and one](figures/maths0_unit_balls.png)
 
-*Figure 1. Unit balls in the plane, the 2D version of the octahedron, ball and cube of $\mathbb{R}^3$. (a) The $1$-norm diamond $|x| + |y| = 1$ sits inside the $2$-norm circle, which sits inside the $\infty$-norm square $\max(|x|, |y|) = 1$; all three touch at $\pm e_1$ and $\pm e_2$. The point $v = (1/2, 1/2)$ lies on the diamond ($\|v\|_1 = 1$) but inside the circle ($\|v\|_2 = 1/\sqrt{2} \approx 0.707$): a smaller ball means a larger norm. (b) The $\infty$-norm square of radius $1/2$ fits inside the diamond, touching it at $(\pm 1/2, \pm 1/2)$, and the square of radius $1$ contains it, touching it at $\pm e_1$ and $\pm e_2$. So $\|v\|_\infty \le \|v\|_1 \le 2\|v\|_\infty$ for every $v$ in the plane, the 2D version of $\|v\|_\infty \le \|v\|_1 \le 3\|v\|_\infty$ in $\mathbb{R}^3$.*
+*Figure 1. Unit balls in the plane, the 2D version of the octahedron, ball and cube of $\mathbb{R}^3$. (a) The $1$-norm diamond $|x| + |y| = 1$ sits inside the $2$-norm circle, which sits inside the $\infty$-norm square $\max(|x|, |y|) = 1$; all three touch at $\pm \mathbf{e}_1$ and $\pm \mathbf{e}_2$. The point $\mathbf{v} = (1/2, 1/2)$ lies on the diamond ($\|\mathbf{v}\|_1 = 1$) but inside the circle ($\|\mathbf{v}\|_2 = 1/\sqrt{2} \approx 0.707$): a smaller ball means a larger norm. (b) The $\infty$-norm square of radius $1/2$ fits inside the diamond, touching it at $(\pm 1/2, \pm 1/2)$, and the square of radius $1$ contains it, touching it at $\pm \mathbf{e}_1$ and $\pm \mathbf{e}_2$. So $\|\mathbf{v}\|_\infty \le \|\mathbf{v}\|_1 \le 2\|\mathbf{v}\|_\infty$ for every $\mathbf{v}$ in the plane, the 2D version of $\|\mathbf{v}\|_\infty \le \|\mathbf{v}\|_1 \le 3\|\mathbf{v}\|_\infty$ in $\mathbb{R}^3$.*
 
 We can also see this relative ordering with a concrete example. Take the diagonal vector $\mathbf{x}=(1,1,1)$ in $\mathbb{R}^3$:
 
@@ -39,7 +37,7 @@ $$\|\mathbf{x}\|_\infty=\max(|1|,|1|,|1|)=1$$
 
 Clearly, $\|\mathbf{x}\|_1\ge\|\mathbf{x}\|_2\ge\|\mathbf{x}\|_\infty$ ($3\ge 1.732\ge 1$).
 
-#### Where $1$-Norm and $\infty$-Norm Are Used
+### Where $1$-Norm and $\infty$-Norm Are Used
 
 The $2$-norm dominates classical mechanics and quantum state vectors because it is rotationally/unitarily invariant ($SO(3)$ and $U(n)$ symmetry): physical lengths and kinetic energy $\frac{1}{2}m\|\mathbf{v}\|_2^2$ do not change when we rotate our coordinate axes.
 
@@ -47,13 +45,13 @@ The $1$-norm and $\infty$-norm appear whenever total conserved quantity, worst-c
 
 Similarly, when calculating the trace distance in quantum mechanics, pure states $|\psi\rangle$ are normalized in the $2$-norm ($\langle\psi\vert{}\psi\rangle=1$), whereas mixed states are described by density matrices $\rho$ whose eigenvalues are probabilities summing to $1$. The physical distinguishability between two mixed states $\rho$ and $\sigma$ is governed by the Schatten $1$-norm (trace distance) $\frac{1}{2}\|\rho-\sigma\|_1$, which equals half the $1$-norm of the eigenvalues of $\rho-\sigma$.
 
-And finally, on a discrete crystal lattice—such as a cubic Ising spin grid or tight-binding hopping model—the minimum number of nearest-neighbor steps between two sites is the $1$-norm of their displacement vector, not the Euclidean straight-line distance.
+And finally, on a discrete crystal lattice, such as a cubic Ising spin grid or a tight-binding hopping model, the minimum number of nearest-neighbor steps between two sites is the $1$-norm of their displacement vector, not the Euclidean straight-line distance.
 
 Similarly, the $\infty$-norm is used in structural mechanics, electromagnetism, and control systems, where failure is determined by the maximum local stress, peak electric field, or worst-case component tolerance rather than a root-mean-square average across all coordinates.
 
 Another instance in quantum mechanics is for a Hermitian operator $A$ on a finite-dimensional space (such as a Hamiltonian), where the largest possible magnitude of a measurement outcome is its spectral radius (and operator $2$-norm), which equals the $\infty$-norm $\|\boldsymbol{\lambda}\|_\infty=\max_i|\lambda_i|$ of its vector of eigenvalues.
 
-#### General Norm & Properties of Norms
+### General Norm & Properties of Norms
 Instead of restricting ourselves to $p$-norms, a more general axiomatic definition of a norm is useful. On a vector space $V$ over $\mathbb{F}$ ($\mathbb{R}$ or $\mathbb{C}$), a vector norm is a function mapping vectors to non-negative real numbers such that the following three conditions hold for all vectors $\mathbf{x},\mathbf{y}\in V$ and all scalars $\alpha\in\mathbb{F}$:
 
 Positivity (positive definiteness): $\|\mathbf{x}\|\ge 0$ for all $\mathbf{x}\in V$, and $\|\mathbf{x}\|=0\iff\mathbf{x}=\mathbf{0}$.
@@ -92,7 +90,7 @@ For any general vector norm, there is an additional useful property derived dire
 
 $$\big|\|\mathbf{x}\|-\|\mathbf{y}\|\big|\le\|\mathbf{x}-\mathbf{y}\|$$
 
-#### Convergence of Sequences
+### Convergence of Sequences
 A sequence of vectors $\{\mathbf{x}_k\}$ in $\mathbb{F}^n$ is said to converge to a limit vector $\mathbf{x}$ (written $\lim_{k\to\infty}\mathbf{x}_k=\mathbf{x}$) with respect to a norm $\|\cdot\|$ provided that for every real $\epsilon>0$ there exists an integer $K(\epsilon)\ge 0$ such that:
 
 $$k>K(\epsilon)\implies\|\mathbf{x}_k-\mathbf{x}\|<\epsilon,\quad\text{or equivalently,}\quad\lim_{k\to\infty}\|\mathbf{x}_k-\mathbf{x}\|=0$$
@@ -127,14 +125,14 @@ And the last property is coordinate-wise convergence: Let $\{\mathbf{x}_k\}$ be 
 
 $$\lim_{k\to\infty}\mathbf{x}_k=\mathbf{x}\iff\lim_{k\to\infty}[\mathbf{x}_k]_i=x_i\quad\text{for every }i=1,2,\dots,n$$
 
-#### Inner Products
+### Inner Products
 The $2$-norm arises naturally from the standard inner product (which over $\mathbb{R}^n$ is called the dot product, and is often referred to simply as the inner product). For two column vectors $\mathbf{x},\mathbf{y}\in\mathbb{C}^n$, the standard inner product is the sum of conjugate-weighted componentwise products given by:
 
 $$\langle\mathbf{x}|\mathbf{y}\rangle=\mathbf{x}^*\mathbf{y}=\sum_{i=1}^{n}\bar{x}_i y_i$$
 
-where $\mathbf{x}^*=\bar{\mathbf{x}}^T$ is the conjugate transpose; when $\mathbf{x},\mathbf{y}\in\mathbb{R}^n$ are real, this reduces to $\mathbf{x}^T\mathbf{y}=\sum_{i=1}^{n}x_i y_i$. We take the conjugate in the left-hand argument $x$ in order to ensure that vectors with complex components still give non-negative real norms.
+where $\mathbf{x}^*=\bar{\mathbf{x}}^T$ is the conjugate transpose; when $\mathbf{x},\mathbf{y}\in\mathbb{R}^n$ are real, this reduces to $\mathbf{x}^T\mathbf{y}=\sum_{i=1}^{n}x_i y_i$. We take the conjugate in the left-hand argument $\mathbf{x}$ in order to ensure that vectors with complex components still give non-negative real norms.
 
-Note that the inner product is linear in the right-hand argument $y$ but it is conjugate linear in the left-hand argument $x$ due to how we defined the inner product.
+Note that the inner product is linear in the right-hand argument $\mathbf{y}$ but it is conjugate linear in the left-hand argument $\mathbf{x}$ due to how we defined the inner product.
 
 If $\mathbf{x}=\mathbf{y}$, this inner product becomes the square of the $2$-norm, so taking its square root gives the $2$-norm:
 
@@ -160,13 +158,13 @@ This also gives us the geometric way to write the real inner product:
 
 $$\mathbf{u}^T\mathbf{v}=\|\mathbf{u}\|_2\|\mathbf{v}\|_2\cos\theta$$
 
-This matches up directly with the Cauchy-Schwarz inequality, $|\mathbf{u}^T\mathbf{v}|=\|\mathbf{u}\|_2\|\mathbf{v}\|_2|\cos\theta|\le\|\mathbf{u}\|_2\|\mathbf{v}\|_2$, where equality is achieved when the vectors are collinear—either parallel ($\theta=0$, $\cos 0=1$) or anti-parallel ($\theta=\pi$, $\cos\pi=-1$, so $|\cos\pi|=1$)—or when either vector is $\mathbf{0}$. For all other angles $\theta\in(0,\pi)$, we have $|\cos\theta|<1$, placing us in the strict inequality regime.
+This matches up directly with the Cauchy-Schwarz inequality, $|\mathbf{u}^T\mathbf{v}|=\|\mathbf{u}\|_2\|\mathbf{v}\|_2|\cos\theta|\le\|\mathbf{u}\|_2\|\mathbf{v}\|_2$, where equality is achieved when the vectors are collinear, that is, parallel ($\theta=0$, $\cos 0=1$) or anti-parallel ($\theta=\pi$, $\cos\pi=-1$, so $|\cos\pi|=1$), or when either vector is $\mathbf{0}$. For all other angles $\theta\in(0,\pi)$, we have $|\cos\theta|<1$, placing us in the strict inequality regime.
 
 To reiterate, when talking about angles and orthogonality, we are strictly working with the $2$-norm (and inner products).
 
-If a set of nonzero vectors are mutually orthogonal, they are called an orthogonal set. If they are also all unit vectors ($\Vert{}\mathbf{q}_i\Vert{}_2=1$), they are called an orthonormal set. A square complex matrix $U\in\mathbb{C}^{n\times n}$ whose columns (and equivalently rows) form an orthonormal set of vectors ($U^*U=UU^*=I$) is called a unitary matrix. If its entries are all real ($Q\in\mathbb{R}^{n\times n}$ with $Q^TQ=QQ^T=I$), it is called an orthogonal matrix, a slightly confusing historical name, since its columns are orthonormal and not merely orthogonal. The identity matrix $I$ is an orthogonal (and unitary) matrix because its columns form the standard orthonormal basis. More generally, any permutation matrix $P$ obtained by permuting the columns (or rows) of $I$ is an orthogonal matrix because reordering an orthonormal set cannot destroy orthonormality.
+If a set of nonzero vectors are mutually orthogonal, they are called an orthogonal set. If they are also all unit vectors ($\Vert{}\mathbf{q}_i\Vert{}_2=1$), they are called an orthonormal set. An orthogonal set of vectors are linearly independent. A square complex matrix $U\in\mathbb{C}^{n\times n}$ whose columns (and equivalently rows) form an orthonormal set of vectors ($U^*U=UU^*=I$) is called a unitary matrix. If its entries are all real ($Q\in\mathbb{R}^{n\times n}$ with $Q^TQ=QQ^T=I$), it is called an orthogonal matrix, a slightly confusing historical name, since its columns are orthonormal and not merely orthogonal. The identity matrix $I$ is an orthogonal (and unitary) matrix because its columns form the standard orthonormal basis. More generally, any permutation matrix, obtained by permuting the columns (or rows) of $I$, is an orthogonal matrix because reordering an orthonormal set cannot destroy orthonormality.
 
-Finally, the cosine of the angle between vectors in $\mathbb{R}^n$ is important in statistics and data analysis for determining the degree to which data in $\mathbf{x}$ is linearly related to data in $\mathbf{y}$. Specifically, while the raw cosine $\frac{\mathbf{x}^T\mathbf{y}}{\|\mathbf{x}\|_2\|\mathbf{y}\|_2}$ measures pure proportionality ($\mathbf{y}\approx\beta_0\mathbf{x}$), if we first subtract the sample means from each vector—forming the mean-centered vectors $\tilde{\mathbf{x}}=\mathbf{x}-\bar{x}\mathbf{e}$ and $\tilde{\mathbf{y}}=\mathbf{y}-\bar{y}\mathbf{e}$, where $\mathbf{e}=(1,1,\dots,1)^T$—then the cosine of the angle between $\tilde{\mathbf{x}}$ and $\tilde{\mathbf{y}}$ (Pearson's correlation coefficient) measures how close $\mathbf{y}$ is to an affine linear combination $\beta_0\mathbf{x}+\beta_1\mathbf{e}$.
+Finally, the cosine of the angle between vectors in $\mathbb{R}^n$ is important in statistics and data analysis for determining the degree to which data in $\mathbf{x}$ is linearly related to data in $\mathbf{y}$. Specifically, while the raw cosine $\frac{\mathbf{x}^T\mathbf{y}}{\|\mathbf{x}\|_2\|\mathbf{y}\|_2}$ measures pure proportionality ($\mathbf{y}\approx\beta_0\mathbf{x}$), if we first subtract the sample means from each vector, forming the mean-centered vectors $\tilde{\mathbf{x}}=\mathbf{x}-\bar{x}\mathbf{e}$ and $\tilde{\mathbf{y}}=\mathbf{y}-\bar{y}\mathbf{e}$ with $\mathbf{e}=(1,1,\dots,1)^T$, then the cosine of the angle between $\tilde{\mathbf{x}}$ and $\tilde{\mathbf{y}}$ (Pearson's correlation coefficient) measures how close $\mathbf{y}$ is to an affine linear combination $\beta_0\mathbf{x}+\beta_1\mathbf{e}$.
 
 ---
 
@@ -174,7 +172,7 @@ Finally, the cosine of the angle between vectors in $\mathbb{R}^n$ is important 
 
 ---
 
-### Matrices - First Look
+## Matrix Analysis - First Look
 Consider the system of linear equations:
 
 $$\begin{aligned}a_{11}x_1+a_{12}x_2+a_{13}x_3&=y_1\\a_{21}x_1+a_{22}x_2+a_{23}x_3&=y_2\\a_{31}x_1+a_{32}x_2+a_{33}x_3&=y_3\end{aligned}$$
@@ -229,13 +227,15 @@ Uniqueness of the solution holds if and only if the columns of $A$ are linearly 
 
 Both hold simultaneously ($A$ is invertible) only when $m=p$ and the $p$ columns form a basis for $\mathbb{F}^m$.
         
-This also gives us automatic linear dependence for wide matrices ($p>m$). Suppose $A\in\mathbb{F}^{m\times p}$ is a wide rectangular matrix—meaning it has more columns than rows ($p>m$, more unknowns than equations). Because at most $m$ vectors can be linearly independent inside the $m$-dimensional space $\mathbb{F}^{m\times 1}$ (equivalently, Gaussian elimination on $m$ rows can produce at most $m$ pivot columns, leaving at least $p-m\ge 1$ free variables), there is always a nonzero vector $\mathbf{x}\neq\mathbf{0}_p$ satisfying $A\mathbf{x}=\mathbf{0}_m$. Therefore, whenever $p>m$, the columns of $A$ are guaranteed to be linearly dependent.
+This also gives us automatic linear dependence for wide matrices ($p>m$). Suppose $A\in\mathbb{F}^{m\times p}$ is a wide rectangular matrix, meaning it has more columns than rows ($p>m$, more unknowns than equations). Because at most $m$ vectors can be linearly independent inside the $m$-dimensional space $\mathbb{F}^{m\times 1}$ (equivalently, Gaussian elimination on $m$ rows can produce at most $m$ pivot columns, leaving at least $p-m\ge 1$ free variables), there is always a nonzero vector $\mathbf{x}\neq\mathbf{0}_p$ satisfying $A\mathbf{x}=\mathbf{0}_m$. Therefore, whenever $p>m$, the columns of $A$ are guaranteed to be linearly dependent.
 
-#### More Matrix Multiplication Points!
+An important thing to note about $A^{-1}b = x$: Since $Ax = b$, it means that $b$ is the linear combination of the columns of $A$ via the coefficients of $x$. Thus, $x$ represents the vector $b$ when we use the columns of $A$ as the basis vectors. Therefore, multiplication by $A^{-1}$ is a change of basis operation. The column vector $b$ represents the coefficients of a vector in the standard $e_i$ basis, while $A^{-1}b$ gives the coefficients of the same vector in the basis of the columns of $A$.
+
+### More Matrix Multiplication Points!
 
 If $A$ and $B$ are $n \times n$ upper (lower) triangular matrices, then the product $AB$ is also upper (lower) triangular.
 
-An $m \times n$ linear system $Ax = b$ is said to be consistent when there exists at least one solution for $x$, i.e., if and only if $b$ is a linear combination of the columns in $A$.
+An $m \times n$ linear system $A\mathbf{x} = \mathbf{b}$ is said to be consistent when there exists at least one solution for $\mathbf{x}$, i.e., if and only if $\mathbf{b}$ is a linear combination of the columns in $A$.
 
 Matrix multiplication is associative and distributive over addition, but not necessarily commutative. One important caveat from the lack of commutativity (for $n \times n$ matrices $A$ and $B$):
 
@@ -263,7 +263,7 @@ Each of the following statements is equivalent to saying that $A_{n \times n}$ (
 
 * The $n$ columns in $A$ (taken as an indexed list, without deduplicating repeated columns) are linearly independent.
 * The $n$ rows in $A$ (taken as an indexed list, without deduplicating repeated rows) are linearly independent.
-* The only vector $x_{n \times 1}$ for which $Ax = 0$ is $x = 0$.
+* The only vector $\mathbf{x}_{n \times 1}$ for which $A\mathbf{x} = \mathbf{0}$ is $\mathbf{x} = \mathbf{0}$.
 * $\det(A) \neq 0$.
 
 In particular, it follows that if $A$ is nonsingular, then every subset of columns and every subset of rows is linearly independent.
@@ -274,7 +274,7 @@ $$\vert{}a_{ii}\vert{} > \sum_{\substack{j=1 \\ j \neq i}}^n \vert{}a_{ij}\vert{
 
 All strictly (row) diagonally dominant matrices are nonsingular.
 
-#### Example: Network Analysis and Powers of Connectivity (Adjacency) Matrices
+### Example: Network Analysis and Powers of Connectivity (Adjacency) Matrices
 A small airline serves five cities, $A$, $B$, $C$, $D$, and $H$, in which $H$ is the "hub city." The routes between the cities are depicted in the diagram below, which is an example of a _directed graph_. The five cities are called the _nodes_ of the graph, and the direct connections (single-flight links) between the nodes are called the _directed edges_ (or _arcs_) of the graph. Matrix powers are natural tools for analyzing such a network.
 
 [Figure 2(a)](#figure-2) shows the network. The outer routes run one way round the square, $B \to A \to C \to D \to B$, and every city has flights both to and from the hub $H$.
@@ -283,7 +283,7 @@ A small airline serves five cities, $A$, $B$, $C$, $D$, and $H$, in which $H$ is
 
 *Figure 2. The airline network of the connectivity matrix $\mathbf{C}$. (a) The outer routes run one way round the square ($B \to A \to C \to D \to B$), and the hub $H$ has flights to and from every city, $12$ directed edges in all. (b) Two of the $[\mathbf{C}^4]_{12} = 7$ four-flight walks from $A$ to $B$, with their steps numbered: $A \to C \to D \to H \to B$ visits no city twice, while $A \to H \to A \to H \to B$ flies $A \to H$ twice (steps $1$ and $3$) and so revisits both $A$ and $H$.*
 
-Traveling from city $A$ to city $B$ requires at least two flights (one connection). Flights $(A \to H)$ and $(H \to B)$ provide the minimal number of flights. However, if space on either of these two flights is not available, then a passenger has to take at least three flights. Several questions arise. How many routes from city $A$ to city $B$ require _exactly_ three flights? How many routes require _no more than_ four flights—and so forth? Since this network is small, these questions can be answered by "eyeballing" the diagram, but the eyeball method is not effective in larger networks that occur in practice. To see how matrix algebra can be applied, create a _connectivity matrix_ $\mathbf{C} = [c_{ij}]$ (also known as an _adjacency matrix_), identifying cities $A, B, C, D, H$ with indices $1, 2, 3, 4, 5$, respectively, in which
+Traveling from city $A$ to city $B$ requires at least two flights (one connection). Flights $(A \to H)$ and $(H \to B)$ provide the minimal number of flights. However, if space on either of these two flights is not available, then a passenger has to take at least three flights. Several questions arise. How many routes from city $A$ to city $B$ require _exactly_ three flights? How many routes require _no more than_ four flights, and so on? Since this network is small, these questions can be answered by "eyeballing" the diagram, but the eyeball method is not effective in larger networks that occur in practice. To see how matrix algebra can be applied, create a _connectivity matrix_ $\mathbf{C} = [c_{ij}]$ (also known as an _adjacency matrix_), identifying cities $A, B, C, D, H$ with indices $1, 2, 3, 4, 5$, respectively, in which
 
 $$c_{ij} = \begin{cases} 1 & \text{if there is a flight from city } i \text{ to city } j, \\ 0 & \text{otherwise.} \end{cases}$$
 
@@ -291,7 +291,7 @@ For our small network,
 
 $$\mathbf{C} = \begin{array}{cc} & \begin{array}{ccccc} A & B & C & D & H \end{array} \\ \begin{array}{c} A \\ B \\ C \\ D \\ H \end{array} & \begin{pmatrix} 0 & 0 & 1 & 0 & 1 \\ 1 & 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 1 & 1 \\ 0 & 1 & 0 & 0 & 1 \\ 1 & 1 & 1 & 1 & 0 \end{pmatrix} \end{array}.$$
 
-Matrix $\mathbf{C}$, together with its powers $\mathbf{C}^2, \mathbf{C}^3, \mathbf{C}^4, \dots$, provides all of the information needed to analyze the network. Entry $c_{ik}$ is the number of direct routes from city $i$ to city $k$, and $c_{kj}$ is the number of direct routes from city $k$ to city $j$, so $c_{ik}c_{kj}$ is the number of $2$-flight routes (directed walks of length $2$, which may revisit cities) from city $i$ to city $j$ that have a connection through city $k$. Consequently, the definition of matrix multiplication (see [Matrices - First Look](#matrices-first-look)) says that the $(i, j)$-entry in $\mathbf{C}^2 = \mathbf{C}\mathbf{C}$ is
+Matrix $\mathbf{C}$, together with its powers $\mathbf{C}^2, \mathbf{C}^3, \mathbf{C}^4, \dots$, provides all of the information needed to analyze the network. Entry $c_{ik}$ is the number of direct routes from city $i$ to city $k$, and $c_{kj}$ is the number of direct routes from city $k$ to city $j$, so $c_{ik}c_{kj}$ is the number of $2$-flight routes (directed walks of length $2$, which may revisit cities) from city $i$ to city $j$ that have a connection through city $k$. Consequently, the definition of matrix multiplication (see [Matrix Analysis - First Look](#matrix-analysis-first-look)) says that the $(i, j)$-entry in $\mathbf{C}^2 = \mathbf{C}\mathbf{C}$ is
 
 $$[\mathbf{C}^2]_{ij} = \sum_{k=1}^5 c_{ik}c_{kj} = \text{the total number of } 2\text{-flight routes (directed walks) from city } i \text{ to city } j.$$
 
@@ -317,31 +317,31 @@ $$\mathbf{C} + \mathbf{C}^2 + \mathbf{C}^3 + \mathbf{C}^4 = \begin{pmatrix} 11 &
 
 The number of routes (directed walks) from $A$ to $B$ requiring _exactly_ four flights is given by $[\mathbf{C}^4]_{12} = 7$, and there are $[\mathbf{C} + \mathbf{C}^2 + \mathbf{C}^3 + \mathbf{C}^4]_{12} = 11$ routes (directed walks) from $A$ to $B$ that require no more than four flights. The seven 4-flight walks are $A \to C \to D \to H \to B$, $A \to C \to H \to D \to B$, $A \to H \to C \to D \to B$, $A \to H \to A \to H \to B$, $A \to H \to B \to H \to B$, $A \to H \to C \to H \to B$ and $A \to H \to D \to H \to B$. The last four revisit a city, which is why the powers of $\mathbf{C}$ count walks rather than routes that never repeat a city. [Figure 2(b)](#figure-2) highlights one of each kind.
 
-#### Block Triangular Matrices
+### Block Triangular Matrices
 
 A square matrix $T$ that can be partitioned (for $1 \le r < n$) as
 
 $$T_{n \times n} = \begin{pmatrix} A_{r \times r} & B_{r \times (n-r)} \\ 0_{(n-r) \times r} & C_{(n-r) \times (n-r)} \end{pmatrix}$$
 
-is said to be block upper triangular (and, together with its block lower triangular counterpart having $0$ in the upper-right position, block triangular). If $T$ is the coefficient matrix for a system of linear equations $Tx = b$, and if $x$ and $b$ are conformably partitioned as $x = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}$ and $b = \begin{pmatrix} b_1 \\ b_2 \end{pmatrix}$ (where $x_1, b_1$ are $r \times 1$ and $x_2, b_2$ are $(n-r) \times 1$), then block multiplication shows that $Tx = b$ reduces to the two smaller coupled systems
+is said to be block upper triangular (and, together with its block lower triangular counterpart having $0$ in the upper-right position, block triangular). If $T$ is the coefficient matrix for a system of linear equations $T\mathbf{x} = \mathbf{b}$, and if $\mathbf{x}$ and $\mathbf{b}$ are conformably partitioned as $\mathbf{x} = \begin{pmatrix} \mathbf{x}_1 \\ \mathbf{x}_2 \end{pmatrix}$ and $\mathbf{b} = \begin{pmatrix} \mathbf{b}_1 \\ \mathbf{b}_2 \end{pmatrix}$ (where $\mathbf{x}_1, \mathbf{b}_1$ are $r \times 1$ and $\mathbf{x}_2, \mathbf{b}_2$ are $(n-r) \times 1$), then block multiplication shows that $T\mathbf{x} = \mathbf{b}$ reduces to the two smaller coupled systems
 
-$$\begin{cases} Ax_1 + Bx_2 = b_1, \\ Cx_2 = b_2. \end{cases}$$
+$$\begin{cases} A\mathbf{x}_1 + B\mathbf{x}_2 = \mathbf{b}_1, \\ C\mathbf{x}_2 = \mathbf{b}_2. \end{cases}$$
 
-If $Cx_2 = b_2$ is consistent and yields a solution $x_2$ for which $Ax_1 = b_1 - Bx_2$ is also consistent (in particular, if $A$ and $C$ are nonsingular, which guarantees a unique solution), then a solution for $x = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}$ can be obtained by back substitution, which means that $Cx_2 = b_2$ is first solved for $x_2$, and $x_2$ is then substituted "back" into $Ax_1 = b_1 - Bx_2$, which is solved for $x_1$. This is an advantage in terms of computational effort.
+If $C\mathbf{x}_2 = \mathbf{b}_2$ is consistent and yields a solution $\mathbf{x}_2$ for which $A\mathbf{x}_1 = \mathbf{b}_1 - B\mathbf{x}_2$ is also consistent (in particular, if $A$ and $C$ are nonsingular, which guarantees a unique solution), then a solution for $\mathbf{x} = \begin{pmatrix} \mathbf{x}_1 \\ \mathbf{x}_2 \end{pmatrix}$ can be obtained by back substitution, which means that $C\mathbf{x}_2 = \mathbf{b}_2$ is first solved for $\mathbf{x}_2$, and $\mathbf{x}_2$ is then substituted "back" into $A\mathbf{x}_1 = \mathbf{b}_1 - B\mathbf{x}_2$, which is solved for $\mathbf{x}_1$. This is an advantage in terms of computational effort.
 
-#### The Trace
+### The Trace
 The trace is the sum of the diagonal elements. It follows the principles of linearity. What's more, cyclic permutation of a product of matrices gives the same trace, i.e.
 
 $$\operatorname{trace}(ABC) = \operatorname{trace}(CAB) = \operatorname{trace}(BCA)$$
 
 but other reorderings in general do not. For example, with $A = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}$, $B = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}$ and $C = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}$, we get $\operatorname{trace}(ABC) = 1$ but $\operatorname{trace}(ACB) = 0$.
 
-#### Matrix Inner Product
-The standard inner product $\langle x \mid y \rangle = x^* y$ for column vectors $x, y \in \mathbb{F}^{n \times 1}$ (where $\mathbb{F} = \mathbb{R}$ or $\mathbb{C}$) has a natural generalization to matrices, called the standard matrix inner product:
+### Matrix Inner Product
+The standard inner product $\langle \mathbf{x} \mid \mathbf{y} \rangle = \mathbf{x}^* \mathbf{y}$ for column vectors $\mathbf{x}, \mathbf{y} \in \mathbb{F}^{n \times 1}$ (where $\mathbb{F} = \mathbb{R}$ or $\mathbb{C}$) has a natural generalization to matrices, called the standard matrix inner product:
 
 $$\langle A \mid B \rangle = \operatorname{trace}(A^* B)$$
 
-Just as the inner product for vectors is married to the Euclidean vector norm via $\Vert{}x\Vert{}_2 = \sqrt{\langle x \mid x \rangle} = \sqrt{x^* x}$, the matrix inner product generates an analogous matrix norm, the Frobenius matrix norm:
+Just as the inner product for vectors is married to the Euclidean vector norm via $\Vert{}\mathbf{x}\Vert{}_2 = \sqrt{\langle \mathbf{x} \mid \mathbf{x} \rangle} = \sqrt{\mathbf{x}^* \mathbf{x}}$, the matrix inner product generates an analogous matrix norm, the Frobenius matrix norm:
 
 $$\Vert{}A\Vert{}_F = \sqrt{\langle A \mid A \rangle} = \sqrt{\operatorname{trace}(A^* A)} = \sqrt{\sum_{i,j} \vert{}a_{ij}\vert{}^2}$$
 
@@ -369,25 +369,39 @@ Matrix norms inherit the properties of vector norms:
 
 $$\bigl\vert{}\Vert{}A\Vert{} - \Vert{}B\Vert{}\bigr\vert{} \le \Vert{}A - B\Vert{}.$$
 
-A matrix norm and a family of vector norms are said to be compatible when $\Vert{}Ax\Vert{}_V \le \Vert{}A\Vert{}_M \Vert{}x\Vert{}_V$ for all $A \in \mathbb{F}^{m \times n}$ and $x \in \mathbb{F}^{n \times 1}$.
+A matrix norm and a family of vector norms are said to be compatible when $\Vert{}A\mathbf{x}\Vert{}_V \le \Vert{}A\Vert{}_M \Vert{}\mathbf{x}\Vert{}_V$ for all $A \in \mathbb{F}^{m \times n}$ and $\mathbf{x} \in \mathbb{F}^{n \times 1}$.
 
 The concept of an induced matrix norm as described below is fundamental to applications where the Frobenius norm may either not be applicable or may not be the best choice for gauging the "magnitude" of a matrix.
 
 Given a vector norm that is valid on $\mathbb{F}^n$ for all finite $n$, the expression
 
-$$\max_{\Vert{}x\Vert{}=1} \Vert{}Ax\Vert{} = \Vert{}A\Vert{} \quad \text{for } A \in \mathbb{F}^{m \times n},\; x \in \mathbb{F}^{n \times 1}$$
+$$\max_{\Vert{}\mathbf{x}\Vert{}=1} \Vert{}A\mathbf{x}\Vert{} = \Vert{}A\Vert{} \quad \text{for } A \in \mathbb{F}^{m \times n},\; \mathbf{x} \in \mathbb{F}^{n \times 1}$$
 
 defines (or induces) a matrix norm on $\mathbb{F}^{m \times n}$ that is compatible with the underlying vector norm. This matrix norm is naturally called an induced matrix norm. If $A$ is square and nonsingular, then
 
-$$\min_{\Vert{}x\Vert{}=1} \Vert{}Ax\Vert{} = \frac{1}{\Vert{}A^{-1}\Vert{}}.$$
+$$\min_{\Vert{}\mathbf{x}\Vert{}=1} \Vert{}A\mathbf{x}\Vert{} = \frac{1}{\Vert{}A^{-1}\Vert{}}.$$
 
 In words, an induced norm $\Vert{}A\Vert{}$ represents the maximum extent to which vectors on the unit sphere are stretched under transformation by $A$, whereas $1/\Vert{}A^{-1}\Vert{}$ represents the minimum scaling factor of vectors on the unit sphere under transformation by a nonsingular matrix $A$ (so smaller $1/\Vert{}A^{-1}\Vert{}$ corresponds to greater shrinkage).
 
+[Figure 3](#figure-3) shows this for the $2$-norm in the plane, with the matrix $A$ of the example below: $A$ stretches the unit circle into an ellipse, whose longest semi-axis is $\Vert{}A\Vert{}_2$ and whose shortest semi-axis is $1/\Vert{}A^{-1}\Vert{}_2$.
+
+<a id="figure-3"></a>![Two panels on the same scale joined by an arrow labelled A: eight numbered unit vectors on the unit circle, and their images under A on an ellipse that touches a dashed circle of radius 2 at the ends of its long axis and a dashed circle of radius root 2 at the ends of its short axis](figures/maths0_two_norm_ellipse.png)
+
+*Figure 3. Maximum and minimum stretching in the $2$-norm, for the matrix $A = \frac{1}{\sqrt{3}}\begin{pmatrix} 3 & -1 \\ 0 & \sqrt{8} \end{pmatrix}$ of the example below. In the $2$-norm the unit ball is the circle $\|\mathbf{x}\|_2 = 1$, and its image under $A$ is an ellipse; the two panels share one scale. (a) Eight unit vectors, numbered $1$ to $8$ at $45^\circ$ steps. (b) Their images under $A$, with the same numbers, over the faint unit circle. Vectors $8$ and $4$, $\mathbf{x} = \pm(1, -1)/\sqrt{2}$ (red), are stretched the most: their images $\pm(1.633, -1.155)$ are the ends of the longest semi-axis (half the ellipse's greatest width), of length $\|A\|_2 = 2$, where the ellipse touches the outer dashed circle. Vectors $2$ and $6$, $\mathbf{x} = \pm(1, 1)/\sqrt{2}$ (teal), are stretched the least: their images $\pm(0.816, 1.155)$ are the ends of the shortest semi-axis (half its least width), of length $1/\|A^{-1}\|_2 = \sqrt{2} \approx 1.414$, where the ellipse touches the inner dashed circle. The standard basis vectors $\pm\mathbf{e}_1$ ($1$ and $5$) and $\pm\mathbf{e}_2$ ($3$ and $7$) land in between, at length $\sqrt{3} \approx 1.732$. The two semi-axes are the square roots of the eigenvalues $4$ and $2$ of $A^TA$, as worked out below.*
+
 The matrix norms induced by the vector $1$- and $\infty$-norms are as follows:
 
-$\Vert{}A\Vert{}_1 = \max_{\Vert{}x\Vert{}_1=1} \Vert{}Ax\Vert{}_1 = \max_j \sum_i \vert{}a_{ij}\vert{} = \text{the largest absolute column sum.}$
+$\Vert{}A\Vert{}_1 = \max_{\Vert{}\mathbf{x}\Vert{}_1=1} \Vert{}A\mathbf{x}\Vert{}_1 = \max_j \sum_i \vert{}a_{ij}\vert{} = \text{the largest absolute column sum.}$
     
-$\Vert{}A\Vert{}_\infty = \max_{\Vert{}x\Vert{}_\infty=1} \Vert{}Ax\Vert{}_\infty = \max_i \sum_j \vert{}a_{ij}\vert{} = \text{the largest absolute row sum.}$
+$\Vert{}A\Vert{}_\infty = \max_{\Vert{}\mathbf{x}\Vert{}_\infty=1} \Vert{}A\mathbf{x}\Vert{}_\infty = \max_i \sum_j \vert{}a_{ij}\vert{} = \text{the largest absolute row sum.}$
+
+In general, given vector norms $\Vert{}\cdot\Vert{}_{(n)}$ and $\Vert{}\cdot\Vert{}_{(m)}$, the induced matrix norm $\Vert{}A\Vert{}_{(m,n)}$ is the smallest real number $C$ for which the following inequality holds for all $x \in \mathbb{C}^n$:
+
+$$\Vert{}Ax\Vert{}_{(m)} \le C\Vert{}x\Vert{}_{(n)}.$$
+
+In other words, $\Vert{}A\Vert{}_{(m,n)}$ is the supremum of the ratios $\Vert{}Ax\Vert{}_{(m)}/\Vert{}x\Vert{}_{(n)}$ over all nonzero vectors. We say that $\Vert{}\cdot\Vert{}_{(m,n)}$ is the matrix norm induced by $\Vert{}\cdot\Vert{}_{(m)}$ and $\Vert{}\cdot\Vert{}_{(n)}$.
+
+Note that in our equations we have only bothered to look at unit vectors because of the linearity of $A$ and the absolute homogeneity of norms ($\Vert{}\alpha y\Vert{} = \vert{}\alpha\vert{}\,\Vert{}y\Vert{}$).
 
 We'll look at an example and then go a little deeper into deriving the two equations above. 
 
@@ -399,17 +413,17 @@ and
 
 $$\Vert{}A\Vert{}_\infty = \frac{4}{\sqrt{3}} \approx 2.31 \quad \text{(the largest absolute row sum)}.$$
 
-The Frobenius norm is
+The Frobenius (or Hilbert-Schmidt) norm is
 
 $$\Vert{}A\Vert{}_F = \sqrt{\operatorname{trace}(A^T A)} = \sqrt{6} \approx 2.45.$$
 
-While $\Vert{}A\Vert{}_1$,  $\Vert{}A\Vert{}_\infty$, and $\Vert{}A\Vert{}_F$ are not equal, they are nevertheless in the same ballpark. The same is true for the induced $2$-norm ($\Vert{}A\Vert{}_2 = \max_{\Vert{}x\Vert{}_2=1}\Vert{}Ax\Vert{}_2$), which here is $\Vert{}A\Vert{}_2 = 2$. Since $\Vert{}Ax\Vert{}_2^2 = x^*(A^*A)x$, and the largest value of $x^*Mx$ over unit vectors $x$ for a Hermitian matrix $M$ is its largest eigenvalue, $\Vert{}A\Vert{}_2$ is the square root of the largest eigenvalue of $A^*A$. Here $A^TA = \begin{pmatrix} 3 & -1 \\ -1 & 3 \end{pmatrix}$ has eigenvalues $4$ and $2$, and the smaller one gives the least stretching, $1/\Vert{}A^{-1}\Vert{}_2 = \sqrt{2}$. [Figure 3](#figure-3) shows all three induced norms as the images of the unit balls under $A$. That these norms stay in the same ballpark holds in general, because it can be demonstrated that for all $n \times n$ matrices and distinct norms $i \neq j$, $\Vert{}A\Vert{}_i \le \alpha_{ij} \Vert{}A\Vert{}_j$, where $\alpha_{ij}$ is the $(i, j)$-entry in the following matrix:
+While $\Vert{}A\Vert{}_1$,  $\Vert{}A\Vert{}_\infty$, and $\Vert{}A\Vert{}_F$ are not equal, they are nevertheless in the same ballpark. The same is true for the induced $2$-norm ($\Vert{}A\Vert{}_2 = \max_{\Vert{}\mathbf{x}\Vert{}_2=1}\Vert{}A\mathbf{x}\Vert{}_2$), which here is $\Vert{}A\Vert{}_2 = 2$. Since $\Vert{}A\mathbf{x}\Vert{}_2^2 = \mathbf{x}^*(A^*A)\mathbf{x}$, and the largest value of $\mathbf{x}^*M\mathbf{x}$ over unit vectors $\mathbf{x}$ for a Hermitian matrix $M$ is its largest eigenvalue, $\Vert{}A\Vert{}_2$ is the square root of the largest eigenvalue of $A^*A$. Here $A^TA = \begin{pmatrix} 3 & -1 \\ -1 & 3 \end{pmatrix}$ has eigenvalues $4$ and $2$, and the smaller one gives the least stretching, $1/\Vert{}A^{-1}\Vert{}_2 = \sqrt{2}$. [Figure 4](#figure-4) shows all three induced norms as the images of the unit balls under $A$. That these norms stay in the same ballpark holds in general, because it can be demonstrated that for all $n \times n$ matrices and distinct norms $i \neq j$, $\Vert{}A\Vert{}_i \le \alpha_{ij} \Vert{}A\Vert{}_j$, where $\alpha_{ij}$ is the $(i, j)$-entry in the following matrix:
 
 $$\begin{array}{c|cccc} & 1 & 2 & \infty & F \\ \hline 1 & \ast & \sqrt{n} & n & \sqrt{n} \\ 2 & \sqrt{n} & \ast & \sqrt{n} & 1 \\ \infty & n & \sqrt{n} & \ast & \sqrt{n} \\ F & \sqrt{n} & \sqrt{n} & \sqrt{n} & \ast \end{array}.$$
 
-<a id="figure-3"></a>![Three panels on the same scale showing a 2-by-2 matrix mapping the 1-norm diamond and the infinity-norm square to parallelograms and the unit circle to an ellipse, each just touching a dashed norm ball whose radius is the induced norm](figures/maths0_induced_norms.png)
+<a id="figure-4"></a>![Three panels on the same scale showing a 2-by-2 matrix mapping the 1-norm diamond and the infinity-norm square to parallelograms and the unit circle to an ellipse, each just touching a dashed norm ball whose radius is the induced norm](figures/maths0_induced_norms.png)
 
-*Figure 3. The induced norms of $A = \frac{1}{\sqrt{3}}\begin{pmatrix} 3 & -1 \\ 0 & \sqrt{8} \end{pmatrix}$. Each panel shows a unit ball (faint), its image under $A$, and the dashed ball of radius $\|A\|$ in the same norm, which just touches the image; the three panels share one scale. (a) The $1$-norm diamond maps to the parallelogram with vertices $\pm a_1$ and $\pm a_2$, the columns of $A$, where $a_1 \approx (1.732, 0)$ and $a_2 \approx (-0.577, 1.633)$. The image reaches furthest at $\pm a_2$, where the whole budget goes into column $2$: $\|A\|_1 = \|a_2\|_1 \approx 2.21$. (b) The $\infty$-norm square maps to the parallelogram with vertices $\pm A(1, 1) \approx \pm(1.155, 1.633)$ and $\pm A(1, -1) \approx \pm(2.309, -1.633)$. The corner $x = (1, -1)$, whose signs match row $1$, reaches $\|A\|_\infty = 4/\sqrt{3} \approx 2.31$. (c) The unit circle maps to an ellipse with semi-axes $\|A\|_2 = 2$, reached from $x = (1, -1)/\sqrt{2}$, and $1/\|A^{-1}\|_2 = \sqrt{2}$, reached from $x = (1, 1)/\sqrt{2}$; these are the square roots of the eigenvalues $4$ and $2$ of $A^TA$.*
+*Figure 4. The induced norms of $A = \frac{1}{\sqrt{3}}\begin{pmatrix} 3 & -1 \\ 0 & \sqrt{8} \end{pmatrix}$. Each panel shows a unit ball (faint), its image under $A$, and the dashed ball of radius $\|A\|$ in the same norm, which just touches the image; the three panels share one scale. (a) The $1$-norm diamond maps to the parallelogram with vertices $\pm \mathbf{a}_1$ and $\pm \mathbf{a}_2$, the columns of $A$, where $\mathbf{a}_1 \approx (1.732, 0)$ and $\mathbf{a}_2 \approx (-0.577, 1.633)$. The image reaches furthest at $\pm \mathbf{a}_2$, where the whole budget goes into column $2$: $\|A\|_1 = \|\mathbf{a}_2\|_1 \approx 2.21$. (b) The $\infty$-norm square maps to the parallelogram with vertices $\pm A(1, 1) \approx \pm(1.155, 1.633)$ and $\pm A(1, -1) \approx \pm(2.309, -1.633)$. The corner $\mathbf{x} = (1, -1)$, whose signs match row $1$, reaches $\|A\|_\infty = 4/\sqrt{3} \approx 2.31$. (c) The unit circle maps to an ellipse with semi-axes $\|A\|_2 = 2$, reached from $\mathbf{x} = (1, -1)/\sqrt{2}$, and $1/\|A^{-1}\|_2 = \sqrt{2}$, reached from $\mathbf{x} = (1, 1)/\sqrt{2}$; these are the square roots of the eigenvalues $4$ and $2$ of $A^TA$.*
 
 **Deriving the $p$-norms**.  The notation $\Vert{}A\Vert{}_p = \max_{\Vert{}\mathbf{x}\Vert{}_p=1} \Vert{}A\mathbf{x}\Vert{}_p$ means you test every input vector $\mathbf{x}$ that has unit length in the $p$-norm, multiply it by $A$, measure the $p$-norm of the output $A\mathbf{x}$, and record the largest output length you can produce. Geometrically, $\Vert{}A\Vert{}_p$ is the maximum stretching factor of $A$ in the $p$-norm.
 
@@ -435,7 +449,7 @@ $$\Vert{}A\mathbf{x}\Vert{}_1 \le \sum_{j=1}^n \vert{}x_j\vert{}\,M = M \sum_{j=
 
 Intuitively, a weighted average of the column sums cannot exceed the largest column sum.
 
-To hit $M$, put 100% of your budget into the single column that has the largest absolute sum ([Figure 3(a)](#figure-3)). If column $k$ achieves $M$, choose the standard basis vector $\mathbf{x} = \mathbf{e}_k$ (a $1$ in entry $k$ and $0$ everywhere else):
+To hit $M$, put 100% of your budget into the single column that has the largest absolute sum ([Figure 4(a)](#figure-4)). If column $k$ achieves $M$, choose the standard basis vector $\mathbf{x} = \mathbf{e}_k$ (a $1$ in entry $k$ and $0$ everywhere else):
 
 * $\Vert{}\mathbf{e}_k\Vert{}_1 = 1$ (valid unit vector).
 * $A\mathbf{e}_k = \mathbf{a}_k$, so $\Vert{}A\mathbf{e}_k\Vert{}_1 = \Vert{}\mathbf{a}_k\Vert{}_1 = M$.
@@ -462,13 +476,27 @@ $$x_j = \begin{cases} +1 & \text{if } a_{kj} \ge 0 \\ -1 & \text{if } a_{kj} \lt
 
 (If $A$ has complex entries, choose $x_j = \overline{a_{kj}}/\vert{}a_{kj}\vert{}$ whenever $a_{kj} \neq 0$, and $x_j = 1$ when $a_{kj} = 0$, so that $a_{kj}x_j = \vert{}a_{kj}\vert{}$.)
 
-This vector sits on a corner of the unit $\infty$-cube ([Figure 3(b)](#figure-3)), so $\Vert{}\mathbf{x}\Vert{}_\infty = 1$. Multiplying row $k$ by this $\mathbf{x}$ produces:
+This vector sits on a corner of the unit $\infty$-cube ([Figure 4(b)](#figure-4)), so $\Vert{}\mathbf{x}\Vert{}_\infty = 1$. Multiplying row $k$ by this $\mathbf{x}$ produces:
 
 $$\vert{}(A\mathbf{x})_k\vert{} = \left\vert{}\sum_{j=1}^n a_{kj} x_j\right\vert{} = \sum_{j=1}^n \vert{}a_{kj}\vert{} = R$$
 
 Since $\Vert{}A\mathbf{x}\Vert{}_\infty \ge \vert{}(A\mathbf{x})_k\vert{} = R$ and we already showed $\Vert{}A\mathbf{x}\Vert{}_\infty \le R$, we have $\Vert{}A\Vert{}_\infty = \max_i \sum_j \vert{}a_{ij}\vert{}$.
 
-#### Matrix Sequences
+#### Bounding the $p$-norms
+
+Computing matrix $p$-norms with $p \neq 1, \infty$ is difficult, and to approach this problem, we note that inner products can be bounded using $p$-norms and the Hölder inequality and Cauchy–Schwarz inequality.
+
+Here is an example of calculating the 2-Norm of a Row Vector. Consider a matrix $A \in \mathbb{C}^{1 \times n}$ containing a single row. This matrix can be written as $A = \mathbf{a}^*$, where $\mathbf{a} \in \mathbb{C}^n$ is a column vector. The Cauchy–Schwarz inequality allows us to obtain the induced matrix $2$-norm. For any $\mathbf{x} \in \mathbb{C}^n$, we have $\Vert{}A\mathbf{x}\Vert{}_2 = \vert{}\mathbf{a}^* \mathbf{x}\vert{} \le \Vert{}\mathbf{a}\Vert{}_2 \Vert{}\mathbf{x}\Vert{}_2$. This bound is tight: for $\mathbf{a} \neq \mathbf{0}$, observe that $\Vert{}A\mathbf{a}\Vert{}_2 = \Vert{}\mathbf{a}\Vert{}_2^2$, so $\Vert{}A\mathbf{a}\Vert{}_2 / \Vert{}\mathbf{a}\Vert{}_2 = \Vert{}\mathbf{a}\Vert{}_2$ (while if $\mathbf{a} = \mathbf{0}$, then $\Vert{}A\Vert{}_2 = 0 = \Vert{}\mathbf{a}\Vert{}_2$ trivially). Therefore, we have
+
+$$\Vert{}A\Vert{}_2 = \sup_{\mathbf{x} \neq \mathbf{0}} \{\Vert{}A\mathbf{x}\Vert{}_2 / \Vert{}\mathbf{x}\Vert{}_2\} = \Vert{}\mathbf{a}\Vert{}_2.$$
+
+Now an example of calculating the 2-Norm of an Outer Product. More generally, consider the outer product $A = \mathbf{u}\mathbf{v}^*$, where $\mathbf{u} \in \mathbb{C}^m$ is an $m$-vector and $\mathbf{v} \in \mathbb{C}^n$ is an $n$-vector (which has rank one whenever $\mathbf{u} \neq \mathbf{0}$ and $\mathbf{v} \neq \mathbf{0}$). For any $n$-vector $\mathbf{x} \in \mathbb{C}^n$, we can bound $\Vert{}A\mathbf{x}\Vert{}_2$ as follows:
+
+$$\Vert{}A\mathbf{x}\Vert{}_2 = \Vert{}\mathbf{u}\mathbf{v}^* \mathbf{x}\Vert{}_2 = \Vert{}\mathbf{u}\Vert{}_2 \vert{}\mathbf{v}^* \mathbf{x}\vert{} \le \Vert{}\mathbf{u}\Vert{}_2 \Vert{}\mathbf{v}\Vert{}_2 \Vert{}\mathbf{x}\Vert{}_2.$$
+
+Therefore $\Vert{}A\Vert{}_2 \le \Vert{}\mathbf{u}\Vert{}_2 \Vert{}\mathbf{v}\Vert{}_2$. Again, this inequality is an equality: if $\mathbf{v} \neq \mathbf{0}$, consider the case $\mathbf{x} = \mathbf{v}$, which gives $\Vert{}A\mathbf{v}\Vert{}_2 = \Vert{}\mathbf{u}\Vert{}_2 \vert{}\mathbf{v}^* \mathbf{v}\vert{} = \Vert{}\mathbf{u}\Vert{}_2 \Vert{}\mathbf{v}\Vert{}_2^2$ and hence $\Vert{}A\mathbf{v}\Vert{}_2 / \Vert{}\mathbf{v}\Vert{}_2 = \Vert{}\mathbf{u}\Vert{}_2 \Vert{}\mathbf{v}\Vert{}_2$ (and if $\mathbf{v} = \mathbf{0}$, then $\Vert{}A\Vert{}_2 = 0 = \Vert{}\mathbf{u}\Vert{}_2 \Vert{}\mathbf{v}\Vert{}_2$ trivially).
+
+### Matrix Sequences
 
 Just as we saw with vector sequences, the same principles hold for matrix sequences and convergence.
 
@@ -480,20 +508,20 @@ $\Vert{}A_k - A\Vert{} \to 0 \iff a_{ij}(k) \to a_{ij}$ as $k \to \infty$ for ea
 
 If $A$ is a square matrix such that $\Vert{}A\Vert{} < 1$ for some matrix norm, then $A^k \to 0$ as $k \to \infty$, or equivalently,  $[A^k]_{ij} \to 0$ for each $i$ and $j$.
 
-#### Unitary and Orthogonal Matrices
+### Unitary and Orthogonal Matrices
 
 For $U \in \mathbb{F}^{n \times n}$ (where $\mathbb{F} = \mathbb{R}$ or $\mathbb{C}$), the following statements are equivalent: 
 
 $U$ is unitary.
     
-$U^{-1} = U^*$ ($P^{-1} = P^T$ for real orthogonal matrices $P$).
-    
-$\Vert{}Ux\Vert{}_2 = \Vert{}x\Vert{}_2$ for all $x \in \mathbb{F}^{n \times 1}$.
-    
 The columns of $U$ constitute an orthonormal set.
     
 The rows of $U$ constitute an orthonormal set.
+
+$U^{-1} = U^* \implies UU^* = I$ ($Q^{-1} = Q^T$ for real orthogonal matrices $Q$). Note that this follows from the previous two sentences. Since they are orthonormal, every column/row dotted with any other column/row gives a 0. It gives a 1 when dotted with itself, which directly leads to $UU^* = I$. In other words, $q_i^* q_j = \delta_{ij}$. The symbol $\delta_{ij}$ is the Kronecker delta, equal to $1$ if $i = j$ and $0$ if $i \neq j$.
     
+$\Vert{}U\mathbf{x}\Vert{}_2 = \Vert{}\mathbf{x}\Vert{}_2$ for all $\mathbf{x} \in \mathbb{F}^{n \times 1}$.
+   
 Note that a product of unitary (or orthogonal) matrices of the same size is also unitary (or orthogonal).
 
 If $U_{m \times m}$ and $V_{n \times n}$ are unitary, then $\Vert{}UAV\Vert{}_F = \Vert{}A\Vert{}_F$ for all $A \in \mathbb{F}^{m \times n}$.
@@ -502,9 +530,11 @@ More generally, if the columns of $X_{s \times m}$ and the rows of $Y_{n \times 
 
 This can be summarized by saying that the Frobenius matrix norm is a unitarily invariant norm.
 
-The fact that unitary matrices $U$ have the property that $\Vert{}Ux\Vert{}_2 = \Vert{}x\Vert{}_2$ for all $x \in \mathbb{F}^{n \times 1}$ can be expressed by saying that $U$ is an isometry (a Euclidean-norm-preserving mapping) on $\mathbb{F}^n$.
+The fact that unitary matrices $U$ have the property that $\Vert{}U\mathbf{x}\Vert{}_2 = \Vert{}\mathbf{x}\Vert{}_2$ for all $\mathbf{x} \in \mathbb{F}^{n \times 1}$ can be expressed by saying that $U$ is an isometry (a Euclidean-norm-preserving mapping) on $\mathbb{F}^n$.
 
-Real orthogonal matrices represent rotations and reflections (and their compositions) of a vector—pure rotations have $\det(P) = +1$, while reflections and rotoreflections have $\det(P) = -1$. Unitary matrices are their complex generalization on $\mathbb{C}^n$, preserving lengths and complex inner products (including complex phase shifts, rotations, and reflections). Matrices for rotation in 2D can be written as a matrix of $\cos\theta$ and $\sin\theta$ with the angle of rotation $\theta$ (below is the counterclockwise rotation; flipping the signs of $\sin\theta$ gives a clockwise rotation, which is the plane-rotation convention used in the example later):
+Real orthogonal matrices represent rotations and reflections (and their compositions) of a vector: pure rotations have $\det(Q) = +1$, while reflections and rotoreflections have $\det(Q) = -1$. Unitary matrices are their complex generalization on $\mathbb{C}^n$, preserving lengths and complex inner products (including complex phase shifts, rotations, and reflections). Thus, harking back tot he change of basis note we mentioned earlier regarding $Ax = b$ and $x = A^{-1}b$, if $A$ is unitary, we have $(Ax)^*(Ay) = x^*y$, which is just a mathematical representation of the preservation of norm.
+
+Matrices for rotation in 2D can be written as a matrix of $\cos\theta$ and $\sin\theta$ with the angle of rotation $\theta$. Below is the counterclockwise rotation by $\theta$; a clockwise rotation is the same matrix with a negative angle, which flips the signs of the $\sin\theta$ entries. Every rotation in the rest of this section uses this one form:
 
 $$R(\theta) = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}.$$
 
@@ -512,134 +542,276 @@ Now if we want to extend this to 3D, we can imagine fixing an axis of rotation t
 
 $$R_{xy}(\theta) = \begin{pmatrix} \cos\theta & -\sin\theta & 0 \\ \sin\theta & \cos\theta & 0 \\ 0 & 0 & 1 \end{pmatrix}.$$
 
-Note that if we rotate by the right amount, we can align the vector such that one component, say $y$, will go to $0$. Starting with $v = \begin{pmatrix} x \\ y \\ z \end{pmatrix}$:
+Note that if we rotate by the right amount, we can align the vector such that one component, say $y$, will go to $0$. Starting with $\mathbf{v} = \begin{pmatrix} x \\ y \\ z \end{pmatrix}$:
 
 After $R_{xy}(\theta_1)$ (annihilating $y$, with $\cos\theta_1 = \frac{x}{\sqrt{x^2+y^2}}$ and $\sin\theta_1 = -\frac{y}{\sqrt{x^2+y^2}}$):
     
-$$v_1 = R_{xy}(\theta_1)v = \begin{pmatrix} \sqrt{x^2 + y^2} \\ 0 \\ z \end{pmatrix}$$
+$$\mathbf{v}_1 = R_{xy}(\theta_1)\mathbf{v} = \begin{pmatrix} \sqrt{x^2 + y^2} \\ 0 \\ z \end{pmatrix}$$
 
 The length of the vector, however, stays the same, as a $\sqrt{x^2 + y^2}$ component is introduced in the $x$-position.
+
+The second rotation turns the $xz$-plane and keeps $y$ fixed, so the same $2 \times 2$ block now sits in the rows and columns of $x$ and $z$:
+
+$$R_{xz}(\theta) = \begin{pmatrix} \cos\theta & 0 & -\sin\theta \\ 0 & 1 & 0 \\ \sin\theta & 0 & \cos\theta \end{pmatrix}.$$
     
 After $R_{xz}(\theta_2)$ (completing the alignment to the $x$-axis by annihilating $z$, with $\cos\theta_2 = \frac{\sqrt{x^2+y^2}}{\sqrt{x^2+y^2+z^2}}$ and $\sin\theta_2 = -\frac{z}{\sqrt{x^2+y^2+z^2}}$):
     
-$$v_2 = R_{xz}(\theta_2)v_1 = \begin{pmatrix} \sqrt{x^2 + y^2 + z^2} \\ 0 \\ 0 \end{pmatrix} = \Vert{}v\Vert{}_2 e_1$$
+$$\mathbf{v}_2 = R_{xz}(\theta_2)\mathbf{v}_1 = \begin{pmatrix} \sqrt{x^2 + y^2 + z^2} \\ 0 \\ 0 \end{pmatrix} = \Vert{}\mathbf{v}\Vert{}_2 \mathbf{e}_1$$
 
 Now let's pitch this up to 4D. By the same process, we rotate, let's say, the $xy$-plane, while keeping the $z$ and $w$ coordinate axes fixed. The matrix becomes:
 
 $$R_{xy}(\theta_1) = \begin{pmatrix} \cos\theta_1 & -\sin\theta_1 & 0 & 0 \\ \sin\theta_1 & \cos\theta_1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix}.$$
 
-Starting with $v = \begin{pmatrix} x \\ y \\ z \\ w \end{pmatrix}$:
+Starting with $\mathbf{v} = \begin{pmatrix} x \\ y \\ z \\ w \end{pmatrix}$:
 
 After $R_{xy}(\theta_1)$ (annihilating $y$, with $\cos\theta_1 = \frac{x}{\sqrt{x^2+y^2}}$ and $\sin\theta_1 = -\frac{y}{\sqrt{x^2+y^2}}$):
     
-$$v_1 = R_{xy}(\theta_1)v = \begin{pmatrix} \sqrt{x^2 + y^2} \\ 0 \\ z \\ w \end{pmatrix}$$
+$$\mathbf{v}_1 = R_{xy}(\theta_1)\mathbf{v} = \begin{pmatrix} \sqrt{x^2 + y^2} \\ 0 \\ z \\ w \end{pmatrix}$$
 
 Another rotation, this time in the $xw$-plane (keeping the $y$ and $z$ axes fixed), gives:
 
 $$R_{xw}(\theta_2) = \begin{pmatrix} \cos\theta_2 & 0 & 0 & -\sin\theta_2 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ \sin\theta_2 & 0 & 0 & \cos\theta_2 \end{pmatrix}.$$
 
-
 Choosing $\theta_2$ appropriately, the $x$-component increases (assuming $w \neq 0$) to $\sqrt{x^2 + y^2 + w^2}$, while the $w$-component goes to $0$.
 
 After $R_{xw}(\theta_2)$ (annihilating $w$, with $\cos\theta_2 = \frac{\sqrt{x^2+y^2}}{\sqrt{x^2+y^2+w^2}}$ and $\sin\theta_2 = -\frac{w}{\sqrt{x^2+y^2+w^2}}$):
     
-$$v_2 = R_{xw}(\theta_2)v_1 = \begin{pmatrix} \sqrt{x^2 + y^2 + w^2} \\ 0 \\ z \\ 0 \end{pmatrix}$$
+$$\mathbf{v}_2 = R_{xw}(\theta_2)\mathbf{v}_1 = \begin{pmatrix} \sqrt{x^2 + y^2 + w^2} \\ 0 \\ z \\ 0 \end{pmatrix}$$
     
 After $R_{xz}(\theta_3)$ (completing the alignment to the $x$-axis by annihilating $z$, with $\cos\theta_3 = \frac{\sqrt{x^2+y^2+w^2}}{\sqrt{x^2+y^2+z^2+w^2}}$ and $\sin\theta_3 = -\frac{z}{\sqrt{x^2+y^2+z^2+w^2}}$):
     
-$$v_3 = R_{xz}(\theta_3)v_2 = \begin{pmatrix} \sqrt{x^2 + y^2 + z^2 + w^2} \\ 0 \\ 0 \\ 0 \end{pmatrix} = \Vert{}v\Vert{}_2 e_1$$
+$$\mathbf{v}_3 = R_{xz}(\theta_3)\mathbf{v}_2 = \begin{pmatrix} \sqrt{x^2 + y^2 + z^2 + w^2} \\ 0 \\ 0 \\ 0 \end{pmatrix} = \Vert{}\mathbf{v}\Vert{}_2 \mathbf{e}_1$$
 
-By this process of composing rotations, which is equivalent to multiplying rotation matrices that represent rotations of planes, we can see that we step by step align a vector $x \in \mathbb{R}^n$ to a single coordinate axis by a sequence of $n - 1$ plane rotations. In other words, there is an orthogonal matrix $P = P_{in} \cdots P_{i,i+1}P_{i,i-1} \cdots P_{i1}$ such that $Px = \Vert{}x\Vert{}_2 e_i$. Note that the length of the vector has not changed at all in this process.
+By this process of composing rotations, which is equivalent to multiplying rotation matrices that represent rotations of planes, we can see that we step by step align a vector $\mathbf{x} \in \mathbb{R}^n$ to a single coordinate axis by a sequence of $n - 1$ plane rotations. Write $R_{ij}$ for a rotation in the plane of coordinates $i$ and $j$: the $2 \times 2$ block of $R(\theta)$ sits in rows and columns $i$ and $j$, and every other coordinate stays fixed, so $R_{xy}$ above is $R_{12}$ and $R_{xw}$ is $R_{14}$. Then there is an orthogonal matrix $R = R_{in} \cdots R_{i,i+1}R_{i,i-1} \cdots R_{i1}$ such that $R\mathbf{x} = \Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_i$. Note that the length of the vector has not changed at all in this process.
 
-We can reverse this process to construct an orthogonal matrix given a unit vector. Starting with a given vector $x_1 \in \mathbb{R}^n$ with $\Vert{}x_1\Vert{}_2 = 1$, we set the first column of the orthogonal matrix as $Q_{\ast 1} = x_1$. Since $\Vert{}x_1\Vert{}_2 = 1$, it follows that an orthogonal matrix $P = P_{1n} \cdots P_{13}P_{12}$ can be built from a sequence of plane rotations so that $Px_1 = e_1$. This means that $x_1 = P^T e_1 = [P^T]_{\ast 1}$, so setting $Q = P^T$ yields an orthogonal matrix that serves the purpose (the transpose of an orthogonal matrix is again orthogonal).
+We can reverse this process to construct an orthogonal matrix given a unit vector. Starting with a given vector $\mathbf{x}_1 \in \mathbb{R}^n$ with $\Vert{}\mathbf{x}_1\Vert{}_2 = 1$, we set the first column of the orthogonal matrix as $Q_{\ast 1} = \mathbf{x}_1$. Since $\Vert{}\mathbf{x}_1\Vert{}_2 = 1$, it follows that an orthogonal matrix $R = R_{1n} \cdots R_{13}R_{12}$ can be built from a sequence of plane rotations so that $R\mathbf{x}_1 = \mathbf{e}_1$. This means that $\mathbf{x}_1 = R^T \mathbf{e}_1 = [R^T]_{\ast 1}$, so setting $Q = R^T$ yields an orthogonal matrix that serves the purpose (the transpose of an orthogonal matrix is again orthogonal).
 
 For example, to extend
 
-$$x_1 = \frac{1}{3}\begin{pmatrix} -1 \\ 2 \\ 0 \\ -2 \end{pmatrix}$$
+$$\mathbf{x}_1 = \frac{1}{3}\begin{pmatrix} -1 \\ 2 \\ 0 \\ -2 \end{pmatrix}$$
 
-to a complete orthonormal set (an orthonormal set in $\mathbb{R}^n$ containing $n$ vectors), sequentially annihilate the second and fourth components in $x_1$ using plane rotations to produce the following results:
+to a complete orthonormal set (an orthonormal set in $\mathbb{R}^n$ containing $n$ vectors), sequentially annihilate the second and fourth components in $\mathbf{x}_1$ using plane rotations. Each one follows the recipe of the 3D and 4D examples: to zero an entry $b$ against the first entry $a$, take $\cos\theta = a/r$ and $\sin\theta = -b/r$ with $r = \sqrt{a^2 + b^2}$. For $R_{12}$, $a = -\frac{1}{3}$ and $b = \frac{2}{3}$, so $\cos\theta = -\frac{1}{\sqrt{5}}$ and $\sin\theta = -\frac{2}{\sqrt{5}}$; for $R_{14}$, $a = \frac{\sqrt{5}}{3}$ and $b = -\frac{2}{3}$, so $\cos\theta = \frac{\sqrt{5}}{3}$ and $\sin\theta = \frac{2}{3}$:
 
-$$P_{12}x_1 = \begin{pmatrix} -\frac{1}{\sqrt{5}} & \frac{2}{\sqrt{5}} & 0 & 0 \\ -\frac{2}{\sqrt{5}} & -\frac{1}{\sqrt{5}} & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix}\frac{1}{3}\begin{pmatrix} -1 \\ 2 \\ 0 \\ -2 \end{pmatrix} = \frac{1}{3}\begin{pmatrix} \sqrt{5} \\ 0 \\ 0 \\ -2 \end{pmatrix}$$
+$$R_{12}\mathbf{x}_1 = \begin{pmatrix} -\frac{1}{\sqrt{5}} & \frac{2}{\sqrt{5}} & 0 & 0 \\ -\frac{2}{\sqrt{5}} & -\frac{1}{\sqrt{5}} & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix}\frac{1}{3}\begin{pmatrix} -1 \\ 2 \\ 0 \\ -2 \end{pmatrix} = \frac{1}{3}\begin{pmatrix} \sqrt{5} \\ 0 \\ 0 \\ -2 \end{pmatrix}$$
 
-$$P_{14}\bigl(P_{12}x_1\bigr) = \begin{pmatrix} \frac{\sqrt{5}}{3} & 0 & 0 & -\frac{2}{3} \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ \frac{2}{3} & 0 & 0 & \frac{\sqrt{5}}{3} \end{pmatrix}\frac{1}{3}\begin{pmatrix} \sqrt{5} \\ 0 \\ 0 \\ -2 \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \end{pmatrix}$$
+$$R_{14}\bigl(R_{12}\mathbf{x}_1\bigr) = \begin{pmatrix} \frac{\sqrt{5}}{3} & 0 & 0 & -\frac{2}{3} \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ \frac{2}{3} & 0 & 0 & \frac{\sqrt{5}}{3} \end{pmatrix}\frac{1}{3}\begin{pmatrix} \sqrt{5} \\ 0 \\ 0 \\ -2 \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \end{pmatrix}$$
 
 Therefore, the columns of  
 
-$$Q = (P_{14}P_{12})^T = P_{12}^T P_{14}^T = \begin{pmatrix} -\frac{1}{3} & -\frac{2}{\sqrt{5}} & 0 & -\frac{2}{3\sqrt{5}} \\ \frac{2}{3} & -\frac{1}{\sqrt{5}} & 0 & \frac{4}{3\sqrt{5}} \\ 0 & 0 & 1 & 0 \\ -\frac{2}{3} & 0 & 0 & \frac{\sqrt{5}}{3} \end{pmatrix}$$
+$$Q = (R_{14}R_{12})^T = R_{12}^T R_{14}^T = \begin{pmatrix} -\frac{1}{3} & -\frac{2}{\sqrt{5}} & 0 & -\frac{2}{3\sqrt{5}} \\ \frac{2}{3} & -\frac{1}{\sqrt{5}} & 0 & \frac{4}{3\sqrt{5}} \\ 0 & 0 & 1 & 0 \\ -\frac{2}{3} & 0 & 0 & \frac{\sqrt{5}}{3} \end{pmatrix}$$
 
-constitute a complete orthonormal set containing the specified vector $x_1$.
+constitute a complete orthonormal set containing the specified vector $\mathbf{x}_1$.
 
-Extending a unit vector $x_1$ to $Q = P^T$ produces _one_ orthogonal matrix with first column $x_1$, never the only one: for $n = 2$ the second column can be either of the two unit vectors perpendicular to $x_1$, and for $n \ge 3$ there are infinitely many choices. Every orthogonal matrix with first column $x_1$ has the form
+Extending a unit vector $\mathbf{x}_1$ to $Q = R^T$ produces _one_ orthogonal matrix with first column $\mathbf{x}_1$, never the only one: for $n = 2$ the second column can be either of the two unit vectors perpendicular to $\mathbf{x}_1$, and for $n \ge 3$ there are infinitely many choices. Every orthogonal matrix with first column $\mathbf{x}_1$ has the form
     
 $$\widetilde{Q} = Q \begin{pmatrix} 1 & 0 \\ 0 & W \end{pmatrix}, \qquad W \in O(n - 1),$$
     
-reflecting the freedom to rotate or reflect the remaining $n - 1$ orthonormal basis vectors inside the orthogonal complement $x_1^\perp$. 
+reflecting the freedom to rotate or reflect the remaining $n - 1$ orthonormal basis vectors inside the orthogonal complement $\mathbf{x}_1^\perp$. 
 
-Moving from 3D to 4D reveals a geometric truth hidden in 3D: a simple rotation is defined by the 2D plane it rotates, not by a fixed axis. Only in 3D does the orthogonal complement of a 2D plane happen to be a 1D line ("axis of rotation"). In 4D, the complement of a 2D plane is another 2D plane—meaning you can compose an $xy$-plane rotation by $\theta_1$ and a commuting $zw$-plane rotation by $\theta_2$ into a double rotation that fixes no nonzero vector at all (every vector moves). 
+Moving from 3D to 4D reveals a geometric truth hidden in 3D: a simple rotation is defined by the 2D plane it rotates, not by a fixed axis. Only in 3D does the orthogonal complement of a 2D plane happen to be a 1D line ("axis of rotation"). In 4D, the complement of a 2D plane is another 2D plane, so you can compose an $xy$-plane rotation by $\theta_1$ and a commuting $zw$-plane rotation by $\theta_2$ into a double rotation that fixes no nonzero vector at all (every vector moves). 
 
-The plane rotations $P_{ij}$ used here are Givens rotations ($\det = +1$). They excel at zeroing selective entries (e.g., in sparse, banded, or Hessenberg matrices) because each $P_{ij}$ modifies only rows $i$ and $j$. Notice in the example that $P_{13}$ was skipped simply because the 3rd component of $x_1$ was already $0$.
+The plane rotations $R_{ij}$ used here are Givens rotations ($\det = +1$). They excel at zeroing selective entries (e.g., in sparse, banded, or Hessenberg matrices) because each $R_{ij}$ modifies only rows $i$ and $j$. Notice in the example that $R_{13}$ was skipped simply because the 3rd component of $\mathbf{x}_1$ was already $0$.
         
-For a dense vector, zeroing $n - 1$ components in a single step is done with a Householder reflection $H_u = I - 2\frac{uu^T}{u^T u}$ (where $u = x \mp \Vert{}x\Vert{}_2 e_1$, with $\det(H_u) = -1$), which requires half the flops of chaining $n - 1$ Givens rotations and is the workhorse of dense $QR$ factorization.
+For a dense vector, zeroing $n - 1$ components in a single step is done with a Householder reflection $H_{\mathbf{u}} = I - 2\frac{\mathbf{u}\mathbf{u}^T}{\mathbf{u}^T \mathbf{u}}$ (where $\mathbf{u} = \mathbf{x} \mp \Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_1$, with $\det(H_{\mathbf{u}}) = -1$), which requires half the flops of chaining $n - 1$ Givens rotations and is the workhorse of dense $QR$ factorization.
         
-For complex vectors  $x \in \mathbb{C}^n$, real $\cos\theta, \sin\theta$ cannot cancel complex phase differences; a complex Givens rotation uses a $2 \times 2$ block $\begin{pmatrix} c & s \\ -\bar{s} & \bar{c} \end{pmatrix} \in SU(2)$ with $\vert{}c\vert{}^2 + \vert{}s\vert{}^2 = 1$.
+For complex vectors  $\mathbf{x} \in \mathbb{C}^n$, real $\cos\theta, \sin\theta$ cannot cancel complex phase differences; a complex Givens rotation uses a $2 \times 2$ block $\begin{pmatrix} c & -\bar{s} \\ s & \bar{c} \end{pmatrix} \in SU(2)$ with $\vert{}c\vert{}^2 + \vert{}s\vert{}^2 = 1$.
 
-#### Projections
+### Projections
 
-Consider a unit vector $u \in \mathbb{R}^n$ and another arbitrary vector $x \in \mathbb{R}^n$. Let's say we want to find out how much of $x$ lies in the direction of $u$. Assume that $u$ is one of the coordinate axes, i.e.,  $e_i$. Finding out how much of $x$ lies along $u$ is just the same as figuring out the $i$-th component of $x$. We could extract the $i$-th component of $x$ if we had a matrix that had a $1$ at the $i$-th diagonal element and $0$ everywhere else. We could then multiply this matrix by $x$ to get a vector with just the $i$-th component (and zeros elsewhere). How do we construct this matrix? Well, look no further than $uu^T$! Denoting $uu^T$ by $P_i$, we call $P_i$ the projection matrix for the $i$-th component.  
+Consider a unit vector $\mathbf{u} \in \mathbb{R}^n$ and another arbitrary vector $\mathbf{x} \in \mathbb{R}^n$. Let's say we want to find out how much of $\mathbf{x}$ lies in the direction of $\mathbf{u}$. Assume that $\mathbf{u}$ is one of the standard basis vectors, i.e., $\mathbf{e}_i$. Finding out how much of $\mathbf{x}$ lies along $\mathbf{u}$ is just the same as figuring out the $i$-th component of $\mathbf{x}$. We could extract the $i$-th component of $\mathbf{x}$ if we had a matrix that had a $1$ at the $i$-th diagonal element and $0$ everywhere else. We could then multiply this matrix by $\mathbf{x}$ to get a vector with just the $i$-th component (and zeros elsewhere). How do we construct this matrix? Well, look no further than $\mathbf{u}\mathbf{u}^T$! Denoting $\mathbf{u}\mathbf{u}^T$ by $P_i$, we call $P_i$ the projection matrix for the $i$-th component.  
 
-Even if we assume that $u$ is not aligned with a coordinate axis (and is not necessarily a unit vector, as long as $u \neq 0$), we now know that we can always bring in some orthogonal matrix to rotate the coordinates to align with $u$. So whether $u$ aligns with a coordinate axis or not is really a moot point. 
+Even if we assume that $\mathbf{u}$ is not aligned with a coordinate axis (and is not necessarily a unit vector, as long as $\mathbf{u} \neq \mathbf{0}$), we now know that we can always bring in some orthogonal matrix to rotate the coordinates to align with $\mathbf{u}$. So whether $\mathbf{u}$ aligns with a coordinate axis or not is really a moot point. 
 
-To prove this, let $\hat{u} = u/\Vert{}u\Vert{}_2$, and let $Q$ be an orthogonal matrix aligning $\hat{u}$ with $e_i$, so $Q\hat{u} = e_i$ (equivalently,  $Q^T e_i = \hat{u}$). Transforming to the rotated frame, applying $P_i = e_i e_i^T$, and rotating back yields   
+To prove this, let $\hat{\mathbf{u}} = \mathbf{u}/\Vert{}\mathbf{u}\Vert{}_2$, and let $Q$ be an orthogonal matrix aligning $\hat{\mathbf{u}}$ with $\mathbf{e}_i$, so $Q\hat{\mathbf{u}} = \mathbf{e}_i$ (equivalently,  $Q^T \mathbf{e}_i = \hat{\mathbf{u}}$). Transforming to the rotated frame, applying $P_i = \mathbf{e}_i \mathbf{e}_i^T$, and rotating back yields   
 
-$$P_u = Q^T (e_i e_i^T) Q = (Q^T e_i)(Q^T e_i)^T = \hat{u}\hat{u}^T = \frac{uu^T}{u^T u}.$$
+$$P_{\mathbf{u}} = Q^T (\mathbf{e}_i \mathbf{e}_i^T) Q = (Q^T \mathbf{e}_i)(Q^T \mathbf{e}_i)^T = \hat{\mathbf{u}}\hat{\mathbf{u}}^T = \frac{\mathbf{u}\mathbf{u}^T}{\mathbf{u}^T \mathbf{u}}.$$
 
-(which reduces to $uu^T$ when $\Vert{}u\Vert{}_2 = 1$).  
+(which reduces to $\mathbf{u}\mathbf{u}^T$ when $\Vert{}\mathbf{u}\Vert{}_2 = 1$).  
 
-Note that $P_u$ is idempotent, so $P_u^2 = P_u$. This is only to be expected. Once you take a projection along $u$, taking another projection along $u$ of that projection doesn't change the vector. Also, it is symmetric:  $P_u^T = P_u$.  
+Note that $P_{\mathbf{u}}$ is idempotent, so $P_{\mathbf{u}}^2 = P_{\mathbf{u}}$. This is only to be expected. Once you take a projection along $\mathbf{u}$, taking another projection along $\mathbf{u}$ of that projection doesn't change the vector. Also, it is symmetric:  $P_{\mathbf{u}}^T = P_{\mathbf{u}}$.  
 
-Applying this projection matrix to a vector $x$ gives us $\frac{u^T x}{u^T u}u$ as the projection or "component" of $x$ along $u$. We can therefore split $x$ as 
+Applying this projection matrix to a vector $\mathbf{x}$ gives us $\frac{\mathbf{u}^T \mathbf{x}}{\mathbf{u}^T \mathbf{u}}\mathbf{u}$ as the projection or "component" of $\mathbf{x}$ along $\mathbf{u}$. We can therefore split $\mathbf{x}$ as 
 
-$$x = P_u x + (x - P_u x),$$
+$$\mathbf{x} = P_{\mathbf{u}} \mathbf{x} + (\mathbf{x} - P_{\mathbf{u}} \mathbf{x}),$$
 
-where $P_u x$ is the component along $u$ and $x - P_u x$ is the component orthogonal to $u$.  
+where $P_{\mathbf{u}} \mathbf{x}$ is the component along $\mathbf{u}$ and $\mathbf{x} - P_{\mathbf{u}} \mathbf{x}$ is the component orthogonal to $\mathbf{u}$.  
 
-We can see that $P_u x \perp (x - P_u x)$ by calculating the inner product $\langle P_u x \mid (I - P_u)x \rangle$, which works out to $x^T P_u^T(I - P_u)x$, and by applying the symmetry and idempotence of $P_u$, we get $x^T(P_u - P_u^2)x = 0$. 
+We can see that $P_{\mathbf{u}} \mathbf{x} \perp (\mathbf{x} - P_{\mathbf{u}} \mathbf{x})$ by calculating the inner product $\langle P_{\mathbf{u}} \mathbf{x} \mid (I - P_{\mathbf{u}})\mathbf{x} \rangle$, which works out to $\mathbf{x}^T P_{\mathbf{u}}^T(I - P_{\mathbf{u}})\mathbf{x}$, and by applying the symmetry and idempotence of $P_{\mathbf{u}}$, we get $\mathbf{x}^T(P_{\mathbf{u}} - P_{\mathbf{u}}^2)\mathbf{x} = 0$. 
 
 The length of this projection is  
 
-$$\Vert{}P_u x\Vert{}_2 = \left\Vert{}\frac{u^T x}{u^T u}u\right\Vert{}_2 = \frac{\vert{}u^T x\vert{}}{\Vert{}u\Vert{}_2^2}\Vert{}u\Vert{}_2 = \frac{\vert{}u^T x\vert{}}{\Vert{}u\Vert{}_2} = \frac{\vert{}\langle u \mid x \rangle\vert{}}{\Vert{}u\Vert{}_2},$$
+$$\Vert{}P_{\mathbf{u}} \mathbf{x}\Vert{}_2 = \left\Vert{}\frac{\mathbf{u}^T \mathbf{x}}{\mathbf{u}^T \mathbf{u}}\mathbf{u}\right\Vert{}_2 = \frac{\vert{}\mathbf{u}^T \mathbf{x}\vert{}}{\Vert{}\mathbf{u}\Vert{}_2^2}\Vert{}\mathbf{u}\Vert{}_2 = \frac{\vert{}\mathbf{u}^T \mathbf{x}\vert{}}{\Vert{}\mathbf{u}\Vert{}_2} = \frac{\vert{}\langle \mathbf{u} \mid \mathbf{x} \rangle\vert{}}{\Vert{}\mathbf{u}\Vert{}_2},$$
 
-which, when $u$ is a unit vector ($\Vert{}u\Vert{}_2 = 1$), simplifies to $\Vert{}uu^T x\Vert{}_2 = \vert{}u^T x\vert{}\,\Vert{}u\Vert{}_2 = \vert{}u^T x\vert{} = \vert{}\langle u \mid x \rangle\vert{}$.
+which, when $\mathbf{u}$ is a unit vector ($\Vert{}\mathbf{u}\Vert{}_2 = 1$), simplifies to $\Vert{}\mathbf{u}\mathbf{u}^T \mathbf{x}\Vert{}_2 = \vert{}\mathbf{u}^T \mathbf{x}\vert{}\,\Vert{}\mathbf{u}\Vert{}_2 = \vert{}\mathbf{u}^T \mathbf{x}\vert{} = \vert{}\langle \mathbf{u} \mid \mathbf{x} \rangle\vert{}$.
 
-The component orthogonal to the projection,  $x - P_u x$, can be seen as the projection onto the hyperplane $u^\perp$. The hyperplane $u^\perp$ is called the orthogonal complement of $u$, which is defined to be the set $u^\perp = \{v \in \mathbb{R}^n \mid \langle u \mid v \rangle = 0\}$ consisting of all vectors $v$ that are orthogonal to $u$.  
+The component orthogonal to the projection,  $\mathbf{x} - P_{\mathbf{u}} \mathbf{x}$, can be seen as the projection onto the hyperplane $\mathbf{u}^\perp$. The hyperplane $\mathbf{u}^\perp$ is called the orthogonal complement of $\mathbf{u}$, which is defined to be the set $\mathbf{u}^\perp = \{\mathbf{v} \in \mathbb{R}^n \mid \langle \mathbf{u} \mid \mathbf{v} \rangle = 0\}$ consisting of all vectors $\mathbf{v}$ that are orthogonal to $\mathbf{u}$.  
 
-Factoring $x$ out of $x - P_u x = (I - P_u)x$, we can define the orthogonal projector onto the hyperplane $u^\perp$, which is the orthogonal complement of $u$, as $I - P_u = I - \frac{uu^T}{u^T u}$ (or $I - uu^T$ when $u$ is a unit vector).
+Factoring $\mathbf{x}$ out of $\mathbf{x} - P_{\mathbf{u}} \mathbf{x} = (I - P_{\mathbf{u}})\mathbf{x}$, we can define the orthogonal projector onto the hyperplane $\mathbf{u}^\perp$, which is the orthogonal complement of $\mathbf{u}$, as $I - P_{\mathbf{u}} = I - \frac{\mathbf{u}\mathbf{u}^T}{\mathbf{u}^T \mathbf{u}}$ (or $I - \mathbf{u}\mathbf{u}^T$ when $\mathbf{u}$ is a unit vector).
 
-Note that if the projection matrix is only idempotent and not symmetric, it defines a general (possibly oblique) projector. In general, any square matrix with $P^2 = P$ is called a projector. It splits every $x$ as $x = Px + (I - P)x$, where $Px$ lies in the range of $P$ (the set of all its outputs) and $(I - P)x$ lies in its null space (the vectors it sends to $0$), so $P$ projects onto its range along its null space. It is an orthogonal projector exactly when it is also symmetric ($P^T = P$), which makes the range and the null space perpendicular. Otherwise the "complementary" component $(I - P)x$ is no longer orthogonal to the projection $Px$. For example, $P = \begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix}$ satisfies $P^2 = P$; its range is the $x$-axis and its null space is the line $y = -x$, at $45^\circ$ to it, so $P$ projects onto the $x$-axis along that line rather than perpendicularly.
+Note that if the projection matrix is only idempotent and not symmetric, it defines a general (possibly oblique) projector. In general, any square matrix with $P^2 = P$ is called a projector. It splits every $\mathbf{x}$ as $\mathbf{x} = P\mathbf{x} + (I - P)\mathbf{x}$, where $P\mathbf{x}$ lies in the range of $P$ (the set of all its outputs) and $(I - P)\mathbf{x}$ lies in its null space (the vectors it sends to $\mathbf{0}$), so $P$ projects onto its range along its null space. It is an orthogonal projector exactly when it is also symmetric ($P^T = P$), which makes the range and the null space perpendicular. Otherwise the "complementary" component $(I - P)\mathbf{x}$ is no longer orthogonal to the projection $P\mathbf{x}$. For example, $P = \begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix}$ satisfies $P^2 = P$; its range is the $x$-axis and its null space is the line $y = -x$, at $45^\circ$ to it, so $P$ projects onto the $x$-axis along that line rather than perpendicularly.
         
-Every nonzero orthogonal projector has induced $2$-norm $\Vert{}P\Vert{}_2 = 1$ (it never stretches any vector). Every genuinely oblique projector stretches some vectors: $\Vert{}P\Vert{}_2 = \frac{1}{\sin\theta} > 1$, where $\theta \in (0, \pi/2)$ is the smallest angle between its range and its null space. In the example, $\theta = 45^\circ$, so $\Vert{}P\Vert{}_2 = \sqrt{2}$: the unit vector $(1/\sqrt{2}, 1/\sqrt{2})$ is sent to $(\sqrt{2}, 0)$. For this $x$ the two pieces $Px$ and $(I - P)x$ meet at $135^\circ$, not $90^\circ$ ([Figure 4(c)](#figure-4)).
+Every nonzero orthogonal projector has induced $2$-norm $\Vert{}P\Vert{}_2 = 1$ (it never stretches any vector). Every genuinely oblique projector stretches some vectors: $\Vert{}P\Vert{}_2 = \frac{1}{\sin\theta} > 1$, where $\theta \in (0, \pi/2)$ is the smallest angle between its range and its null space. In the example, $\theta = 45^\circ$, so $\Vert{}P\Vert{}_2 = \sqrt{2}$: the unit vector $\mathbf{x} = (1/\sqrt{2}, 1/\sqrt{2})$ is sent to $P\mathbf{x} = (\sqrt{2}, 0)$. For this $\mathbf{x}$ the two pieces $P\mathbf{x}$ and $(I - P)\mathbf{x}$ meet at $135^\circ$, not $90^\circ$ ([Figure 5(c)](#figure-5)).
 
-Over $\mathbb{C}^n$, in the projection, we replace transpose with conjugate transpose and get the Hermitian rank-$1$ projector $P_u = \frac{uu^*}{u^* u}$ (which in Dirac ket-bra notation is simply $\vert{}u\rangle\langle u\vert{}$ for normalized $\vert{}u\rangle$, with $I - \vert{}u\rangle\langle u\vert{}$ projecting onto the orthogonal complement).
+Over $\mathbb{C}^n$, in the projection, we replace transpose with conjugate transpose and get the Hermitian rank-$1$ projector $P_{\mathbf{u}} = \frac{\mathbf{u}\mathbf{u}^*}{\mathbf{u}^* \mathbf{u}}$ (which in Dirac ket-bra notation is simply $\vert{}u\rangle\langle u\vert{}$ for normalized $\vert{}u\rangle$, with $I - \vert{}u\rangle\langle u\vert{}$ projecting onto the orthogonal complement).
         
-To project orthogonally onto a $k$-dimensional subspace $W \subseteq \mathbb{F}^n$: if $\{q_1, \dots, q_k\}$ is an orthonormal basis of $W$ arranged as the columns of $Q \in \mathbb{F}^{n \times k}$, then $P_W = QQ^* = \sum_{j=1}^k q_j q_j^*$ is the sum of mutually orthogonal rank-$1$ projectors ($q_i q_i^* q_j q_j^* = 0$ for $i \neq j$). If instead $W = \operatorname{col}(A)$ for an arbitrary full-column-rank matrix $A \in \mathbb{F}^{n \times k}$, then $P_W = A(A^* A)^{-1}A^*$, which directly generalizes $\frac{uu^*}{u^* u}$.
+To project orthogonally onto a $k$-dimensional subspace $W \subseteq \mathbb{F}^n$: if $\{\mathbf{q}_1, \dots, \mathbf{q}_k\}$ is an orthonormal basis of $W$ arranged as the columns of $Q \in \mathbb{F}^{n \times k}$, then $P_W = QQ^* = \sum_{j=1}^k \mathbf{q}_j \mathbf{q}_j^*$ is the sum of mutually orthogonal rank-$1$ projectors ($\mathbf{q}_i \mathbf{q}_i^* \mathbf{q}_j \mathbf{q}_j^* = 0$ for $i \neq j$). If instead $W = \operatorname{col}(A)$ for an arbitrary full-column-rank matrix $A \in \mathbb{F}^{n \times k}$, then $P_W = A(A^* A)^{-1}A^*$, which directly generalizes $\frac{\mathbf{u}\mathbf{u}^*}{\mathbf{u}^* \mathbf{u}}$.
         
-Now let's consider reflections. The step from $x$ to its projection $(I - P_u)x$ on the hyperplane $u^\perp$ is $-P_u x$: it removes the $u$-component. Taking the same step a second time carries $x$ through the hyperplane to the point just as far on the other side, its mirror image $x - 2P_u x = (I - 2P_u)x$ ([Figure 4(a)](#figure-4)). So $I - 2P_u$ reflects every vector across the hyperplane $u^\perp$, which acts as a mirror. This is the Householder reflector we mentioned earlier:
+If we combine what we have just seen about orthogonality and projections, given an orthonormal set $\{q_1, \dots, q_n\} \subset \mathbb{C}^m$ and an arbitrary vector $v \in \mathbb{C}^m$ decomposed as $v = r + \sum_{i=1}^n (q_i^* v)q_i$ (where $r = v - \sum_{i=1}^n (q_i^* v)q_i$ is the residual orthogonal to each $q_i$):If $\{q_i\}$ is a basis (hence an orthonormal basis) for $\mathbb{C}^m$, then $n$ must be equal to $m$ and $r$ must be the zero vector, so $v$ is completely decomposed into $m$ orthogonal components in the directions of the $q_i$:   
 
-$$H_u = I - 2P_u = I - 2\frac{uu^T}{u^T u}.$$
+$$v = \sum_{i=1}^m (q_i^* v)q_i = \sum_{i=1}^m (q_i q_i^*)v.$$
 
-Whereas $I - P_u$ flattens the $u$-component to $0$ (singular, projecting $x$ onto the mirror $u^\perp$),  $H_u$ reflects $x$ across $u^\perp$ by reversing its $u$-component (orthogonal, symmetric, involutory $H_u^2 = H_u^TH_u = I$, with $\det(H_u) = -1$).
+Now let's consider reflections. The step from $\mathbf{x}$ to its projection $(I - P_{\mathbf{u}})\mathbf{x}$ on the hyperplane $\mathbf{u}^\perp$ is $-P_{\mathbf{u}} \mathbf{x}$: it removes the $\mathbf{u}$-component. Taking the same step a second time carries $\mathbf{x}$ through the hyperplane to the point just as far on the other side, its mirror image $\mathbf{x} - 2P_{\mathbf{u}} \mathbf{x} = (I - 2P_{\mathbf{u}})\mathbf{x}$ ([Figure 5(a)](#figure-5)). So $I - 2P_{\mathbf{u}}$ reflects every vector across the hyperplane $\mathbf{u}^\perp$, which acts as a mirror. This is the Householder reflector we mentioned earlier:
 
-<a id="figure-4"></a>![Three panels: a vector projected onto a mirror line and then reflected across it in two equal steps; the two Householder mirrors that send a vector to plus or minus its length times e1; an oblique projector that sends a unit vector outside the unit circle](figures/maths0_projection_reflection.png)
+$$H_{\mathbf{u}} = I - 2P_{\mathbf{u}} = I - 2\frac{\mathbf{u}\mathbf{u}^T}{\mathbf{u}^T \mathbf{u}}.$$
 
-*Figure 4. Projection, reflection and an oblique projection in the plane. (a) With unit normal $u = (1, 2)/\sqrt{5}$, the vector $x = (3, 1)$ has $u$-component $P_u x = (1, 2)$. Subtracting $P_u x$ once lands on the mirror $u^\perp$ at $(I - P_u)x = (2, -1)$, at right angles; subtracting it twice crosses the mirror to $H_u x = (I - 2P_u)x = (1, -3)$, on the dashed circle of radius $\|x\|_2 = \sqrt{10}$. (b) For $x = (3, 4)$, the choice $u = x - 5e_1 = (-2, 4)$ gives a mirror along $(2, 1)$, the perpendicular bisector of $x$ and $5e_1$, so $H_u x = 5e_1$. The other sign, $u' = x + 5e_1 = (8, 4)$, gives the perpendicular mirror along $(-1, 2)$ and sends $x$ to $-5e_1$. (c) The oblique projector $P = \begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix}$ projects onto its range, the $x$-axis, along its null space, the line $y = -x$, which meets the range at $45^\circ$. It sends the unit vector $x = (1/\sqrt{2}, 1/\sqrt{2})$ to $Px = (\sqrt{2}, 0)$, outside the unit circle, whereas the orthogonal projection lands at $(1/\sqrt{2}, 0)$. The pieces $Px$ and $(I - P)x$ meet at $135^\circ$, and $\|P\|_2 = \sqrt{2} = 1/\sin 45^\circ$.*
+Whereas $I - P_{\mathbf{u}}$ flattens the $\mathbf{u}$-component to $0$ (singular, projecting $\mathbf{x}$ onto the mirror $\mathbf{u}^\perp$),  $H_{\mathbf{u}}$ reflects $\mathbf{x}$ across $\mathbf{u}^\perp$ by reversing its $\mathbf{u}$-component (orthogonal, symmetric, involutory $H_{\mathbf{u}}^2 = H_{\mathbf{u}}^TH_{\mathbf{u}} = I$, with $\det(H_{\mathbf{u}}) = -1$).
 
-Just as plane rotations can be used to rotate any nonzero $x \in \mathbb{R}^n$ onto the $i$-th coordinate axis, reflectors can also accomplish the same task. For a given $0 \neq x \in \mathbb{R}^n$, the trick is to find the correct nonzero $u$ that has the appropriate orthogonal complement $u^\perp$ so that when $x \neq \Vert{}x\Vert{}_2 e_i$ is reflected about $u^\perp$, the result is $\Vert{}x\Vert{}_2 e_i$. To find such a $u$, reverse-engineer the situation by observing that  
+<a id="figure-5"></a>![Three panels: a vector projected onto a mirror line and then reflected across it in two equal steps; the two Householder mirrors that send a vector to plus or minus its length times e1; an oblique projector that sends a unit vector outside the unit circle](figures/maths0_projection_reflection.png)
 
-$$H_u x = \left(I - 2\frac{uu^T}{u^T u}\right)x = \Vert{}x\Vert{}_2 e_i \implies x - \alpha u = \Vert{}x\Vert{}_2 e_i \implies u = \frac{x - \Vert{}x\Vert{}_2 e_i}{\alpha},$$
+*Figure 5. Projection, reflection and an oblique projection in the plane. (a) With unit normal $\mathbf{u} = (1, 2)/\sqrt{5}$, the vector $\mathbf{x} = (3, 1)$ has $\mathbf{u}$-component $P_{\mathbf{u}} \mathbf{x} = (1, 2)$. Subtracting $P_{\mathbf{u}} \mathbf{x}$ once lands on the mirror $\mathbf{u}^\perp$ at $(I - P_{\mathbf{u}})\mathbf{x} = (2, -1)$, at right angles; subtracting it twice crosses the mirror to $H_{\mathbf{u}} \mathbf{x} = (I - 2P_{\mathbf{u}})\mathbf{x} = (1, -3)$, on the dashed circle of radius $\|\mathbf{x}\|_2 = \sqrt{10}$. (b) For $\mathbf{x} = (3, 4)$, the choice $\mathbf{u} = \mathbf{x} - 5\mathbf{e}_1 = (-2, 4)$ gives a mirror along $(2, 1)$, the perpendicular bisector of $\mathbf{x}$ and $5\mathbf{e}_1$, so $H_{\mathbf{u}} \mathbf{x} = 5\mathbf{e}_1$. The other sign, $\mathbf{u}' = \mathbf{x} + 5\mathbf{e}_1 = (8, 4)$, gives the perpendicular mirror along $(-1, 2)$ and sends $\mathbf{x}$ to $-5\mathbf{e}_1$. (c) The oblique projector $P = \begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix}$ projects onto its range, the $x$-axis, along its null space, the line $y = -x$, which meets the range at $45^\circ$. It sends the unit vector $\mathbf{x} = (1/\sqrt{2}, 1/\sqrt{2})$ to $P\mathbf{x} = (\sqrt{2}, 0)$, outside the unit circle, whereas the orthogonal projection lands at $(1/\sqrt{2}, 0)$. The pieces $P\mathbf{x}$ and $(I - P)\mathbf{x}$ meet at $135^\circ$, and $\|P\|_2 = \sqrt{2} = 1/\sin 45^\circ$.*
 
-where $\alpha = 2u^T x / u^T u$ (which is nonzero because $x \neq \Vert{}x\Vert{}_2 e_i$). This means that $u \in \operatorname{span}(x - \Vert{}x\Vert{}_2 e_i)$. In fact, any nonzero vector in $\operatorname{span}(x - \Vert{}x\Vert{}_2 e_i)$ will suffice. Reflecting to $-\Vert{}x\Vert{}_2 e_i$ instead works the same way with $u = x + \Vert{}x\Vert{}_2 e_i$, whose mirror is perpendicular to the first one ([Figure 4(b)](#figure-4)); these are the two signs in $u = x \mp \Vert{}x\Vert{}_2 e_1$ mentioned earlier. In floating-point arithmetic, we pick the sign that avoids subtracting two nearly equal numbers in entry $i$, that is, $u_i = x_i + \operatorname{sign}(x_i)\Vert{}x\Vert{}_2$.
+Just as plane rotations can be used to rotate any nonzero $\mathbf{x} \in \mathbb{R}^n$ onto the $i$-th coordinate axis, reflectors can also accomplish the same task. For a given $\mathbf{0} \neq \mathbf{x} \in \mathbb{R}^n$, the trick is to find the correct nonzero $\mathbf{u}$ that has the appropriate orthogonal complement $\mathbf{u}^\perp$ so that when $\mathbf{x} \neq \Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_i$ is reflected about $\mathbf{u}^\perp$, the result is $\Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_i$. To find such a $\mathbf{u}$, reverse-engineer the situation by observing that  
 
-Note that nothing in the construction is special to $e_i$. Given _any_ two distinct vectors $x, y \in \mathbb{R}^n$ with $\Vert{}x\Vert{}_2 = \Vert{}y\Vert{}_2$, setting $u = x - y$ gives the unique Householder reflector $H_u = I - 2\frac{uu^T}{u^T u}$ satisfying $H_u x = y$ (and by involutivity $H_u^2 = I$, also $H_u y = x$). Geometrically,  $u^\perp$ is the perpendicular bisector hyperplane of $x$ and $y$.
+$$H_{\mathbf{u}} \mathbf{x} = \left(I - 2\frac{\mathbf{u}\mathbf{u}^T}{\mathbf{u}^T \mathbf{u}}\right)\mathbf{x} = \Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_i \implies \mathbf{x} - \alpha \mathbf{u} = \Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_i \implies \mathbf{u} = \frac{\mathbf{x} - \Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_i}{\alpha},$$
+
+where $\alpha = 2\mathbf{u}^T \mathbf{x} / \mathbf{u}^T \mathbf{u}$ (which is nonzero because $\mathbf{x} \neq \Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_i$). This means that $\mathbf{u} \in \operatorname{span}(\mathbf{x} - \Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_i)$. In fact, any nonzero vector in $\operatorname{span}(\mathbf{x} - \Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_i)$ will suffice. Reflecting to $-\Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_i$ instead works the same way with $\mathbf{u} = \mathbf{x} + \Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_i$, whose mirror is perpendicular to the first one ([Figure 5(b)](#figure-5)); these are the two signs in $\mathbf{u} = \mathbf{x} \mp \Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_1$ mentioned earlier. In floating-point arithmetic, we pick the sign that avoids subtracting two nearly equal numbers in entry $i$, that is, $u_i = x_i + \operatorname{sign}(x_i)\Vert{}\mathbf{x}\Vert{}_2$.
+
+Note that nothing in the construction is special to $\mathbf{e}_i$. Given _any_ two distinct vectors $\mathbf{x}, \mathbf{y} \in \mathbb{R}^n$ with $\Vert{}\mathbf{x}\Vert{}_2 = \Vert{}\mathbf{y}\Vert{}_2$, setting $\mathbf{u} = \mathbf{x} - \mathbf{y}$ gives the unique Householder reflector $H_{\mathbf{u}} = I - 2\frac{\mathbf{u}\mathbf{u}^T}{\mathbf{u}^T \mathbf{u}}$ satisfying $H_{\mathbf{u}} \mathbf{x} = \mathbf{y}$ (and by involutivity $H_{\mathbf{u}}^2 = I$, also $H_{\mathbf{u}} \mathbf{y} = \mathbf{x}$). Geometrically,  $\mathbf{u}^\perp$ is the perpendicular bisector hyperplane of $\mathbf{x}$ and $\mathbf{y}$.
+
+### Row Operations & Eliminations
+
+As we said right at the beginning of this section, matrices (specifically, augmented matrices $[A \mid b]$) can be seen as the representation of a set of linear equations. Row operations via Gaussian elimination or Gauss–Jordan elimination provide a straightforward way to find any solutions to a set of linear equations.
+
+Gaussian elimination is the process of starting from the top row and sequentially eliminating all elements of the first column below the top row, by scaling the top row and subtracting it from each of the other rows (swapping with a lower row first if the top-left entry is $0$, or moving to the next column if the entire column is $0$). More generally, in the clean case with nonzero diagonal entries, we want to take the $i$-th row and ensure all items in the $i$-th column under the element at $(i, i)$ are $0$ (using row swaps if necessary). This ensures that we end up with an upper triangular matrix (or, more generally, a row echelon form). When the system is consistent and has full column rank (no free variables), this means we will have an equation with just one variable, an equation with just this variable and another, and so on. Solving for these via back substitution gives us the full solution. Note that in row echelon form, the first nonzero entry from the left in each nonzero row is called a pivot.
+
+Similarly, in Gauss–Jordan elimination, we also scale each pivot row so that every pivot is $1$ and make all other items in each pivot column $0$ (both above and below the pivot). When the system is consistent and has full column rank (no free variables), we end up with a series of equations, each with only one (and a different) variable, which literally hands us the solution without any further back substitution (when free variables are present, each pivot variable is instead expressed directly in terms of the free variables).
+
+You might end up in situations where not all column vectors of the coefficient matrix are linearly independent. This means that some columns are in fact linear combinations of other columns, which produces free variables in the system (so a consistent system has infinitely many solutions rather than variables that can simply be dropped; redundant _equations_, by contrast, correspond to linearly dependent rows and reduce to $0 = 0$). In such cases, instead of a clean upper triangular matrix that cuts cleanly along the main diagonal, we get a stepped pattern called a row echelon form. Some of the diagonal elements (which would have been the pivots in the clean case) will be $0$. Together, all columns that contain a pivot (the pivot or basic columns) form a linearly independent set (both in the echelon form and in the original matrix). Any non-pivot column can be written as a linear combination of the pivot columns to its left (or is the zero column if there are no pivot columns to its left).
+
+Any finite sequence of elementary row operations is represented by $PA$ for a nonsingular $P$, and any finite sequence of elementary column operations is represented by $AQ$ for a nonsingular $Q$. The converse also holds. Left-multiplication by nonsingular $P$ is exact—it produces precisely the matrices reachable from $A$ by elementary row operations, and right-multiplication by nonsingular $Q$ produces precisely those reachable by elementary column operations.
+
+### Matrix Rank
+
+The rank of an $m \times n$ matrix $A$ (over a field $\mathbb{F}$) is the number of basic columns (the maximum number of linearly independent columns) of $A$, which is equal to the maximum number of linearly independent rows of $A$, which is equal to the number of nonzero rows of a row echelon form $E$ of $A$. Row operations and column operations do not change the rank. A row operation replaces $A$ by $PA$ with $P$ nonsingular, and since $P$ can be undone, the columns of $PA$ satisfy exactly the same linear relations as the columns of $A$; in the same way, a column operation keeps every linear relation among the rows.
+
+A few other properties of the rank ($r = \operatorname{rank}(A)$):
+
+-   $r \le \min(m, n)$. If $r = m$ (or $n$), the matrix is said to have full row (column) rank. In the full column rank case, since all columns are linearly independent, the only vector $\mathbf{x}$ for which $A\mathbf{x} = \mathbf{0}$ is $\mathbf{x} = \mathbf{0}$.
+-   A square matrix of dimension $n \times n$ is nonsingular iff $r = n$.
+-   Since row and column operations do not affect rank, $\operatorname{rank}(PA) = \operatorname{rank}(AQ) = \operatorname{rank}(A)$ for any conformable nonsingular matrices $P$ ($m \times m$) and $Q$ ($n \times n$). This also means if $PAQ = B$ for nonsingular $P$ and $Q$, then $\operatorname{rank}(A) = \operatorname{rank}(B)$. The converse is also true for matrices of the same size: if $A, B \in \mathbb{F}^{m \times n}$ satisfy $\operatorname{rank}(A) = \operatorname{rank}(B)$, then it is possible to find nonsingular $P$ and $Q$ such that $PAQ = B$, because row and column operations bring each of them to the same matrix $\begin{pmatrix} I_r & 0 \\ 0 & 0 \end{pmatrix}$. It may or may not be possible to find a nonsingular $Q$ such that $AQ = B$ or a nonsingular $P$ such that $PA = B$. For example, $A = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}$ and $B = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}$ both have rank $1$, and swapping the rows gives $PA = B$, but every $AQ$ has a zero second row, so $AQ = B$ is impossible.
+-   $\operatorname{rank}(A) = \operatorname{rank}(A^T) = \operatorname{rank}(A^*)$ (with $A^*$ defined for $\mathbb{F} = \mathbb{R}$ or $\mathbb{C}$).
+-   $\operatorname{rank}(AB) \le \min\{\operatorname{rank}(A), \operatorname{rank}(B)\}$ for conformable matrices $A$ and $B$, since every column of $AB$ is a combination of the columns of $A$, and every row of $AB$ is a combination of the rows of $B$.
+-   For $A \in \mathbb{F}^{m \times n}$ with $\mathbb{F} = \mathbb{R}$ or $\mathbb{C}$, $\operatorname{rank}(A^*A) = \operatorname{rank}(A) = \operatorname{rank}(AA^*)$. This means $AA^*\mathbf{x} = \mathbf{0} \iff A^*\mathbf{x} = \mathbf{0}$ (for $\mathbf{x} \in \mathbb{F}^m$), and $A^*A\mathbf{x} = \mathbf{0} \iff A\mathbf{x} = \mathbf{0}$ (for $\mathbf{x} \in \mathbb{F}^n$). Both come from one line: if $A^*A\mathbf{x} = \mathbf{0}$, then $\Vert{}A\mathbf{x}\Vert{}_2^2 = \mathbf{x}^*A^*A\mathbf{x} = 0$, so $A\mathbf{x} = \mathbf{0}$ (for $AA^*$, put $A^*$ in place of $A$). This is where $\mathbb{R}$ or $\mathbb{C}$ is needed: over the two-element field $\mathbb{F}_2$, the column $\mathbf{a} = (1, 1)^T$ has rank $1$, but $\mathbf{a}^T\mathbf{a} = 1 + 1 = 0$.
+
+For $A \neq 0$, $\operatorname{rank}(A)$ is the size of a maximal nonsingular submatrix of $A$, i.e., any $r \times r$ submatrix (where $r = \operatorname{rank}(A)$) that lies on the intersection of $r$ linearly independent rows and $r$ linearly independent columns in $A$.
+
+For example, if
+
+$$A = \begin{pmatrix} 1 & 2 & 1 \\ 2 & 4 & 1 \\ 3 & 6 & 1 \end{pmatrix},$$
+
+then $\operatorname{rank}(A) = 2$, because the second column is twice the first, and the first and third columns are not multiples of each other. This means that a maximal nonsingular submatrix is of size $2 \times 2$, and one of them lies on the intersection of two independent rows and two independent columns. It is evident that $\{A_{1\ast}, A_{2\ast}\}$ and $\{A_{\ast 1}, A_{\ast 3}\}$ are respective independent sets of rows and columns (we write $A_{i\ast}$ for row $i$ of $A$ and $A_{\ast j}$ for column $j$), so
+
+$$B = A[1, 2 \mid 1, 3] = \begin{pmatrix} 1 & 1 \\ 2 & 1 \end{pmatrix},$$
+
+the submatrix in rows $1, 2$ and columns $1, 3$ of $A$, is a maximal nonsingular submatrix of $A$ ($\det B = -1$).
+
+A corollary of this is that if $B_{k \times k} = A[i_1, i_2, \dots, i_k \mid j_1, j_2, \dots, j_k]$ is a nonsingular submatrix of $A_{m \times n}$, then the rows $\{A_{i_1\ast}, A_{i_2\ast}, \dots, A_{i_k\ast}\}$ and columns $\{A_{\ast j_1}, A_{\ast j_2}, \dots, A_{\ast j_k}\}$ are each linearly independent sets. Intuitively this makes sense: a linear relation among the full rows (or columns) would also hold among their $k$ entries inside $B$, and those are linearly independent because $B$ is nonsingular.
+
+**Full-rank factorization:** For each $A \in \mathbb{F}^{m \times n}$ with $\operatorname{rank}(A) = r > 0$, there are matrices $B_{m \times r}$ and $C_{r \times n}$ (non-unique) such that $A = BC$ and $\operatorname{rank}(B) = \operatorname{rank}(C) = r$. This is called a full-rank factorization of $A$ because $B$ has full column rank, and $C$ has full row rank.
+
+A particular full-rank factorization is obtained by taking $B$ to be the matrix containing the $r$ basic columns in $A$ and letting $C$ be the matrix composed of the $r$ nonzero rows in $E_A$, the reduced row echelon form (RREF) of $A$, which is the form Gauss–Jordan elimination produces. For the example above, the basic columns are columns $1$ and $3$, and
+
+$$E_A = \begin{pmatrix} 1 & 2 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{pmatrix},$$
+
+so
+
+$$A = \begin{pmatrix} 1 & 2 & 1 \\ 2 & 4 & 1 \\ 3 & 6 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 1 \\ 2 & 1 \\ 3 & 1 \end{pmatrix}\begin{pmatrix} 1 & 2 & 0 \\ 0 & 0 & 1 \end{pmatrix},$$
+
+where the first factor holds the basic columns of $A$ and the second the nonzero rows of $E_A$.
+
+Decomposing (or factoring) a matrix into a product of simpler matrices is fundamental for revealing aspects of the data contained in the matrix or for gaining a theoretical or computational advantage.
+
+Matrices for which $\operatorname{rank}(A_{m \times n}) = 1$ (over $\mathbb{F} = \mathbb{R}$ or $\mathbb{C}$) have simple full-rank factorizations because $E_A$ has exactly one nonzero row, call it $\mathbf{d}^*$, and $A$ has exactly one basic column, call it $\mathbf{c}$, so $A = \mathbf{c}\mathbf{d}^*$ is a full-rank factorization. In fact, $\operatorname{rank}(A) = 1$ if and only if $A = \mathbf{c}\mathbf{d}^*$, an outer product of two nonzero column vectors $\mathbf{c} \in \mathbb{F}^m$ and $\mathbf{d} \in \mathbb{F}^n$ (over a general field $\mathbb{F}$, $A = \mathbf{c}\mathbf{d}^T$).
+
+Outer products (met in [Inner Products](#inner-products)) occur frequently throughout matrix algebra because every conformable matrix product $B_{m \times p}C_{p \times n}$ can be expanded as a sum of outer products involving the columns of $B$ and the rows of $C$ by writing
+
+$$BC = \sum_{k=1}^p B_{\ast k} C_{k\ast}.$$
+
+Consequently, if $\operatorname{rank}(A_{m \times n}) = r > 0$ and $A = B_{m \times r}C_{r \times n}$ is a full-rank factorization, then
+
+$$A = \sum_{k=1}^r B_{\ast k} C_{k\ast},$$
+
+which means that every rank-$r$ matrix is a sum of $r$ rank-one matrices, that is, $r$ outer products.
+
+For a full-rank factorization $A = BC$ over $\mathbb{R}$ or $\mathbb{C}$, $(B^*B)_{r \times r}$ and $(CC^*)_{r \times r}$ are both nonsingular. This follows from the last property in the list above: $\operatorname{rank}(B^*B) = \operatorname{rank}(B) = r$ and $\operatorname{rank}(CC^*) = \operatorname{rank}(C) = r$. It is also not unexpected. Consider $C \in \mathbb{F}^{r \times n}$ with $\operatorname{rank}(C) = r$. As a system $C\mathbf{x} = \mathbf{b}$, there are $r$ independent equations and $n$ unknowns. In the composition $CC^*$, the matrix $C^*$ acts first, and $C$ acts second. Writing $\mathbf{x} = C^*\mathbf{y}$ parameterizes $\mathbf{x}$ using only $r$ variables $\mathbf{y}$, which now needs only those $r$ independent equations to be uniquely solved. Nothing is lost by this choice: if $C\mathbf{z} = \mathbf{0}$, then $\mathbf{z}^*C^*\mathbf{y} = (C\mathbf{z})^*\mathbf{y} = 0$, so every $C^*\mathbf{y}$ is orthogonal to every solution of $C\mathbf{z} = \mathbf{0}$, and $C$ can send $C^*\mathbf{y}$ to $\mathbf{0}$ only if $C^*\mathbf{y}$ is orthogonal to itself, that is, $C^*\mathbf{y} = \mathbf{0}$, which forces $\mathbf{y} = \mathbf{0}$ because the $r$ columns of $C^*$ are linearly independent. The same holds for $B^*B = B^*(B^*)^*$, with $B^*$ in the place of $C$.
+
+### General Linear Systems
+Earlier we looked at how a square matrix can be seen as solving for a system of linear equa￾tions. The more general case is to analyze a system of the form $A_{m \times n}x_{n \times 1} = b_{m \times 1} of $m$ linear equations in $n$ unknowns. Unlike nonsingular systems, a general rectangular or singular system may have infinitely many solutions, or it may have no solution at all. So, before analyzing solutions, it must first be established that there are indeed solutions to analyze. This is the issue of consistency.
+
+Before going into this, lets take a look at something that will be handy down the road.
+
+#### Pseudoinverse
+
+Let $A \in \mathbb{F}^{m \times n}$ (with $\mathbb{F} = \mathbb{R}$ or $\mathbb{C}$) have $\operatorname{rank}(A_{m \times n}) = r > 0$, and let $A = B_{m \times r}C_{r \times n}$ be a full-rank factorization so that $B^*B$ and $CC^*$ are $r \times r$ nonsingular matrices. The $n \times m$ matrix
+
+  
+
+$$A^\dagger = C^*(CC^*)^{-1}(B^*B)^{-1}B^*$$
+
+is called the pseudoinverse (or alternately, the Moore–Penrose inverse) of $A$ (and for $A = 0_{m \times n}$, i.e.,  $r = 0$, the pseudoinverse is defined as $0^\dagger = 0_{n \times m}$). While $B$ and $C$ need not be unique,  $A^\dagger$ is uniquely determined by $A$.
+
+  
+
+Equivalently (for any $A \in \mathbb{F}^{m \times n}$, including $A = 0$), the pseudoinverse $A^\dagger \in \mathbb{F}^{n \times m}$ is the unique solution for $X$ in the four Penrose equations:
+
+  
+
+$$AXA = A, \quad XAX = X, \quad (AX)^* = AX, \quad (XA)^* = XA.$$
+
+
+#### Properties of the Psuedoinverse $A^\dagger$
+
+Let $A \in \mathbb{C}^{m \times n}$ have rank $r > 0$ with full-rank factorization $A = BC$, so that its pseudoinverse is $A^\dagger = C^*(CC^*)^{-1}(B^*B)^{-1}B^*$. Then: 
+
+-   $A^\dagger = A^{-1}$ when $A$ is square and nonsingular because we can take $B = I$ and $C = A$ to write   
+
+$$A^\dagger = A^*(AA^*)^{-1} = A^*(A^*)^{-1}A^{-1} = A^{-1}.$$
+
+Note that the reverse-order law cannot be applied to $C^*(CC^*)^{-1}$ and $(B^*B)^{-1}B^*$ when $B$ and $C$ are not square.
+
+-   $AA^\dagger \neq I_m$ and $A^\dagger A \neq I_n$ in general, but rather (for $A \neq 0$)    
+
+$$A^\dagger A = C^*(CC^*)^{-1}C, \quad \text{and} \quad AA^\dagger = B(B^*B)^{-1}B^*$$
+
+-   $A^\dagger = C^\dagger B^\dagger$ because $B = BI_{r \times r}$ and $C = I_{r \times r}C$ are respective full-rank factorizations of $B$ and $C$, so
+    
+
+$$B^\dagger = (B^*B)^{-1}B^* \quad \text{and} \quad C^\dagger = C^*(CC^*)^{-1}.$$
+
+-   $B^\dagger B = I_r = CC^\dagger$ while $BB^\dagger = AA^\dagger$ and $C^\dagger C = A^\dagger A$.
+    
+-   $$A^\dagger = \begin{cases} (A^*A)^{-1}A^* & \text{when } \operatorname{rank}(A_{m \times n}) = n, \\ A^*(AA^*)^{-1} & \text{when } \operatorname{rank}(A_{m \times n}) = m, \end{cases}$$
+    
+    and in general (for any rank, including $A = 0$),
+    
+
+$$A^\dagger = (A^*A)^\dagger A^* = A^*(AA^*)^\dagger.$$
+
+-   $\operatorname{rank}(A^\dagger) = \operatorname{rank}(A)$ because (using $A^\dagger A A^\dagger = A^\dagger$ and $A A^\dagger A = A$)
+    
+
+$$\operatorname{rank}(A^\dagger) = \operatorname{rank}(A^\dagger A A^\dagger) \le \operatorname{rank}(A) = \operatorname{rank}(A A^\dagger A) \le \operatorname{rank}(A^\dagger).$$
+
+-   $$A^\dagger A A^* = A^* = A^* A A^\dagger.$$
+    
+    For $A \neq 0$, this follows because $B^\dagger = (B^*B)^{-1}B^*$ and $C^\dagger = C^*(CC^*)^{-1}$ imply that $B^* B B^\dagger = B^*$ and $C^\dagger C C^* = C^*$, and since $A^\dagger A = C^\dagger C$ and $BB^\dagger = AA^\dagger$,
+    
+
+$$A^\dagger A A^* = C^\dagger C C^* B^* = C^* B^* = A^* = C^* B^* = C^* B^* B B^\dagger = A^* A A^\dagger$$ 
+
+-   $p = A^\dagger b$ is one solution to $Ax = b$ when this equation is consistent because if $b = Ax$ for some $x$ (and $A \neq 0$, while $A = 0$ forces $b = 0$ and holds trivially), then using $B^\dagger B = I_r$ and $BB^\dagger = AA^\dagger$ yields   
+
+$$b = Ax = BCx = B(B^\dagger B)Cx = BB^\dagger(Ax) = BB^\dagger b = AA^\dagger b = Ap.$$
 
 ## Sets, Operations & Relations
 
@@ -768,11 +940,11 @@ Now, when we "glue" this subring $S$ to zero, every integer becomes zero. Now le
 
 The failure happened because an element inside our glued set ($5 \in S$), when multiplied by an element outside ($x \in \mathbb{Z}[x]$), escaped outside the glued set ($5x \notin S$). Looking back at our previous example where we multiplied integers using the glued set $4\mathbb{Z}$, we saw that the multiplication results in terms like $16kl$ and $4(xl + ky)$, which need to be "cancelled out" so that every product of the equivalence classes results in $xy$. What does cancelling out mean? It means they go to $0$ or that they should fall into the ideal.
 
-[Figure 5](#figure-5) puts the two examples side by side: on the left, the four stacks of the circle of circumference $4$, where a product lands in the same stack whichever representatives we pick; on the right, the constant polynomials glued to $0$ inside $\mathbb{Z}[x]$, where multiplying by $x$ sends $5$ out of the glued set.
+[Figure 6](#figure-6) puts the two examples side by side: on the left, the four stacks of the circle of circumference $4$, where a product lands in the same stack whichever representatives we pick; on the right, the constant polynomials glued to $0$ inside $\mathbb{Z}[x]$, where multiplying by $x$ sends $5$ out of the glued set.
 
-<a id="figure-5"></a>![Integers wrapped round a circle of circumference 4 into four coset stacks, beside the constants glued to 0 in Z[x], where 5x escapes the glued set](figures/maths0_ring_circle_ideal.png)
+<a id="figure-6"></a>![Integers wrapped round a circle of circumference 4 into four coset stacks, beside the constants glued to 0 in Z[x], where 5x escapes the glued set](figures/maths0_ring_circle_ideal.png)
 
-*Figure 5. Why the glued set must be an ideal. (a) Wrapping $\mathbb{Z}$ round a circle of circumference $4$ sorts the integers into the four stacks (cosets) of $I = 4\mathbb{Z}$; products of representatives from the stacks of $2$ and $1$, such as $2 \times 1$, $6 \times 5$ and $10 \times 9$, all land in the stack of $2$. (b) In $\mathbb{Z}[x]$, gluing the subring $S = \mathbb{Z}$ of constants to $0$ makes $0$ and $5$ equivalent, but $0 \cdot x = 0$ stays in $S$ while $5 \cdot x = 5x$ does not, so the product depends on the representative.*
+*Figure 6. Why the glued set must be an ideal. (a) Wrapping $\mathbb{Z}$ round a circle of circumference $4$ sorts the integers into the four stacks (cosets) of $I = 4\mathbb{Z}$; products of representatives from the stacks of $2$ and $1$, such as $2 \times 1$, $6 \times 5$ and $10 \times 9$, all land in the stack of $2$. (b) In $\mathbb{Z}[x]$, gluing the subring $S = \mathbb{Z}$ of constants to $0$ makes $0$ and $5$ equivalent, but $0 \cdot x = 0$ stays in $S$ while $5 \cdot x = 5x$ does not, so the product depends on the representative.*
 
 ### Algebra Redux
 
@@ -1000,11 +1172,11 @@ Now for $(R / I) \,/\, (J / I)$. First, $R/I$ gives $\{0, 1, 2, \dots, 11\}$. An
 
 Now glue the $R / I$, i.e., $\{0, 1, 2, \dots, 11\}$, together along the markers $\{0, 4, 8\}$. $0, 4, 8$ fuse into a single zero point. $1, 5, 9$ fuse together into $[1]$. $2, 6, 10$ fuse together into $[2]$. $3, 7, 11$ fuse together into $[3]$. So both sides of the isomorphism are the same.
 
-[Figure 6](#figure-6) shows the integer tape marked at $12\mathbb{Z}$ and $4\mathbb{Z}$, comparing the two-stage collapse through the 12-hour clock with the direct fold onto the 4-hour clock.
+[Figure 7](#figure-7) shows the integer tape marked at $12\mathbb{Z}$ and $4\mathbb{Z}$, comparing the two-stage collapse through the 12-hour clock with the direct fold onto the 4-hour clock.
 
-<a id="figure-6"></a>![Tape seams and the Third Isomorphism Theorem](figures/maths2_tape_quotient_isomorphism.png)
+<a id="figure-7"></a>![Tape seams and the Third Isomorphism Theorem](figures/maths2_tape_quotient_isomorphism.png)
 
-*Figure 6. Folding the integer tape $R = \mathbb{Z}$ along the nested ideals $I = 12\mathbb{Z} \subseteq J = 4\mathbb{Z}$. (a) Folding first at $12\mathbb{Z}$ gives the 12-hour clock $R/I$, where $J/I = \{[0], [4], [8]\}$ and its three cosets form four inscribed triangles that collapse to the 4-hour clock $(R/I)/(J/I)$. (b) Folding the tape directly every $4$ steps gives the same 4-hour clock $R/J$.*
+*Figure 7. Folding the integer tape $R = \mathbb{Z}$ along the nested ideals $I = 12\mathbb{Z} \subseteq J = 4\mathbb{Z}$. (a) Folding first at $12\mathbb{Z}$ gives the 12-hour clock $R/I$, where $J/I = \{[0], [4], [8]\}$ and its three cosets form four inscribed triangles that collapse to the 4-hour clock $(R/I)/(J/I)$. (b) Folding the tape directly every $4$ steps gives the same 4-hour clock $R/J$.*
 
 Note that when we talk about quotienting and we have glued together a finite number of elements like above, how do we take the remainder; which number do we divide by? The answer is: we don't divide, we shift. Shifting is what taking remainders is. You do not need two separate mental procedures: coset shifting is the geometric definition of remainder arithmetic. In any quotient ring $R/K$, the cosets are generated by taking the base zero-set $K$ and shifting it across the ring: $x + K = \{x + k \mid k \in K\}$
 
@@ -1028,11 +1200,11 @@ $$0, \quad 1, \quad 2, \quad i, \quad 1+i, \quad 2+i, \quad 2i, \quad 1+2i, \qua
 
 In this system, every single non-zero element can be divided cleanly, and because it is built over $\mathbb{F}_3$, adding anything to itself $3$ times gives $0$ ($\text{Char } \mathbb{F}_9 = 3$).
 
-[Figure 7](#figure-7) shows the nine elements of $\mathbb{F}_9$ as a $3 \times 3$ additive grid and as a single multiplicative 8-cycle of powers of $1 + i$.
+[Figure 8](#figure-8) shows the nine elements of $\mathbb{F}_9$ as a $3 \times 3$ additive grid and as a single multiplicative 8-cycle of powers of $1 + i$.
 
-<a id="figure-7"></a>![Additive grid and multiplicative 8-cycle of F_9](figures/maths2_f9_field.png)
+<a id="figure-8"></a>![Additive grid and multiplicative 8-cycle of F_9](figures/maths2_f9_field.png)
 
-*Figure 7. The finite field $\mathbb{F}_9 = \mathbb{F}_3(i)$ with $i^2 = 2$. (a) The $3 \times 3$ additive grid over the prime subfield $\mathbb{F}_3 = \{0, 1, 2\}$, where adding $1$ three times wraps back to $0$. (b) The eight non-zero elements as the powers of $\alpha = 1 + i$ (in the language of the next chapter, the multiplicative group $\mathbb{F}_9^\times$ is the cyclic group $C_8$); the adjoined root $i = \alpha^6$ reaches only the four even powers, whereas $1 + i$ cycles through all eight non-zero elements.*
+*Figure 8. The finite field $\mathbb{F}_9 = \mathbb{F}_3(i)$ with $i^2 = 2$. (a) The $3 \times 3$ additive grid over the prime subfield $\mathbb{F}_3 = \{0, 1, 2\}$, where adding $1$ three times wraps back to $0$. (b) The eight non-zero elements as the powers of $\alpha = 1 + i$ (in the language of the next chapter, the multiplicative group $\mathbb{F}_9^\times$ is the cyclic group $C_8$); the adjoined root $i = \alpha^6$ reaches only the four even powers, whereas $1 + i$ cycles through all eight non-zero elements.*
 
 ### Fermat's Little Theorem
 
@@ -1060,18 +1232,19 @@ In the language of finite fields, this says that for every element $a \in \mathb
 
 **What to study for linear algebra**
 
-Order	Book	Sections	What to study
-1	Meyer	§§1.4, 1.6, 1.10	Inner products, orthogonality, unitary matrices
-2	Meyer	§§2.4–2.5, 2.7	Rank, linear systems, Kronecker products
-3	Jeevanjee	§§2.4–2.7 + Ch. 2 Epilogue	Linear operators, dual spaces, Hermitian forms, bras and kets
-4	Meyer	§§3.1–3.4	Eigenvalues, diagonalization, matrix functions, normal operators, spectral theorem
-5	Meyer	§§3.5–3.6	SVD, positive-definite matrices, quadratic forms
-6	Meyer	§§4.1–4.3	Subspaces, kernels, images, orthogonal complements, projections
-7	Meyer	§§4.5–4.7	Coordinates, change of basis, complementary subspaces
-8	Meyer	§§5.1–5.2, 5.4	Abstract inner-product spaces, Gram–Schmidt, Fourier expansions
-9	Jeevanjee	§§3.1–3.5	Tensors, change of basis, tensor products
-10	Jeevanjee	§3.7	Tensor products in quantum physics
-11	Jeevanjee	§§3.8–3.9	Symmetric and antisymmetric tensors
+| Order | Book | Sections | What to study |
+| --- | --- | --- | --- |
+| 1 | Meyer | §§1.4, 1.6, 1.10 | Inner products, orthogonality, unitary matrices |
+| 2 | Meyer | §§2.4–2.5, 2.7 | Rank, linear systems, Kronecker products |
+| 3 | Jeevanjee | §§2.4–2.7 + Ch. 2 Epilogue | Linear operators, dual spaces, Hermitian forms, bras and kets |
+| 4 | Meyer | §§3.1–3.4 | Eigenvalues, diagonalization, matrix functions, normal operators, spectral theorem |
+| 5 | Meyer | §§3.5–3.6 | SVD, positive-definite matrices, quadratic forms |
+| 6 | Meyer | §§4.1–4.3 | Subspaces, kernels, images, orthogonal complements, projections |
+| 7 | Meyer | §§4.5–4.7 | Coordinates, change of basis, complementary subspaces |
+| 8 | Meyer | §§5.1–5.2, 5.4 | Abstract inner-product spaces, Gram–Schmidt, Fourier expansions |
+| 9 | Jeevanjee | §§3.1–3.5 | Tensors, change of basis, tensor products |
+| 10 | Jeevanjee | §3.7 | Tensor products in quantum physics |
+| 11 | Jeevanjee | §§3.8–3.9 | Symmetric and antisymmetric tensors |
 
 For Meyer Chapters 1–2, skim the unlisted sections as needed for continuity. You already know much of the elementary material.
 
@@ -1081,12 +1254,13 @@ In particular, you should understand the mathematics underlying observables, pro
 
 Next is Lie groups and representations for QM and particle physics. Continue with Jeevanjee, but don't repeat the elementary finite-group representation theory you've already studied.
 
-Order	Jeevanjee sections	Topics
-12	§4.1, §4.3	Motivation; groups appearing in physics
-13	§§4.5–4.7	Lie groups, Lie algebras, generators, commutators
-14	§5.1, §§5.4–5.5	Quantum symmetries, tensor-product representations
-15	§§5.6–5.9	Equivalence, irreducibility, representations of \(SU(2)\) and \(SO(3)\)
-16	§§6.1–6.2	Tensor operators, selection rules, Wigner–Eckart theorem
+| Order | Jeevanjee sections | Topics |
+| --- | --- | --- |
+| 12 | §4.1, §4.3 | Motivation; groups appearing in physics |
+| 13 | §§4.5–4.7 | Lie groups, Lie algebras, generators, commutators |
+| 14 | §5.1, §§5.4–5.5 | Quantum symmetries, tensor-product representations |
+| 15 | §§5.6–5.9 | Equivalence, irreducibility, representations of \(SU(2)\) and \(SO(3)\) |
+| 16 | §§6.1–6.2 | Tensor operators, selection rules, Wigner–Eckart theorem |
 
 You can skim §§5.6–5.8 where they overlap with James–Liebeck.
 
@@ -1096,12 +1270,13 @@ Postpone Jeevanjee §§5.10–5.12 and §6.3 until you study relativistic QM, QF
 
 Trefethen & Bau is optional, but worthwhile. Insert these lectures alongside the corresponding Meyer topics.
 
-Trefethen & Bau	Read after	Why
-Lectures 2–3	Meyer §1.10	Orthogonal/unitary geometry and norms
-Lectures 4–5	Meyer §3.5	A particularly illuminating geometric treatment of SVD
-Lecture 6	Meyer §4.3	Geometry of projectors
-Lecture 12	Meyer §3.6	Conditioning and sensitivity
-Lecture 24	Meyer §3.4	Further perspective on eigenvalue problems
+| Trefethen & Bau | Read after | Why |
+| --- | --- | --- |
+| Lectures 2–3 | Meyer §1.10 | Orthogonal/unitary geometry and norms |
+| Lectures 4–5 | Meyer §3.5 | A particularly illuminating geometric treatment of SVD |
+| Lecture 6 | Meyer §4.3 | Geometry of projectors |
+| Lecture 12 | Meyer §3.6 | Conditioning and sensitivity |
+| Lecture 24 | Meyer §3.4 | Further perspective on eigenvalue problems |
 
 The strongest recommendation here is Lectures 4–6. The others are useful but not essential. You can omit the extensive numerical algorithms, floating-point analysis, and iterative methods for now.
 
