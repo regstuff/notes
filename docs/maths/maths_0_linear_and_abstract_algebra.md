@@ -1,5 +1,21 @@
 # Maths 0 - Linear & Abstract Algebra
 
+## Vectors: Conceptual Overview
+
+Before we could define an abstract vector space, we needed a candidate set $V$. Initially, this set, whatever it was (a set of $n$-tuples of numbers, or matrices, or functions, etc.), had no structure at all; it was just a set with elements. This is the first level of our hierarchy. To construct a vector space, we needed to combine this set with some notion of addition (really, just some map $+: V \times V \to V$) along with some notion of scalar multiplication (really, just some map $\mathbb{F} \times V \to V$, where $\mathbb{F}$ is the scalar field, e.g., $\mathbb{R}$ or $\mathbb{C}$) that satisfied the vector space axioms. These notions are additional structure that one adds to $V$, and one calls the result a "vector space" only if those specific notions are compatible with the vector space axioms. Vector spaces are the second level of our hierarchy.
+
+That last paragraph might seem pedantic. If $V = \mathbb{R}^n$, for instance, do we really consider the notion of addition of vectors to be extra structure? What else could addition be, in this case? Is it really useful or necessary to separate the set $V$ from the obvious addition operation it carries? These questions may be reasonable for $\mathbb{R}^n$, but it's important to note that there are plenty of sets for which no useful or intuitive notion of addition exists. Consider the set
+
+$$S^2 = \{(x, y, z) \in \mathbb{R}^3 \mid x^2 + y^2 + z^2 = 1\},$$
+
+which is, of course, nothing but the 2-D surface of a unit sphere in $\mathbb{R}^3$. This is a perfectly well-defined and intuitive set, but there is no meaningful way to perform addition on this set. If you wanted to add the North Pole $N = (0, 0, 1)$ to the South Pole $S = (0, 0, -1)$, what should the resulting point of $S^2$ be? Note that we cannot simply add $N$ to $S$ as vectors in $\mathbb{R}^3$ because the resulting point, the origin $O$, is not in $S^2$.
+
+Thus not all sets are cut out to be vector spaces, and even though the operations of addition and scalar multiplication may seem trivial or obvious in familiar examples such as $\mathbb{R}^n$, they really do confer a significant amount of non-trivial structure on a space. This structure is manifest in all the constructions and definitions one then proceeds to make: linear independence, span, basis sets, linear operators, dual spaces, etc.
+
+Note that none of these notions requires an inner product; the former exist completely independently of the latter. With an inner product, though, one may then speak of orthogonality, inner-product length of vectors, and the like (while general norms can exist without an inner product, and orthogonality can be defined using more general bilinear or Hermitian forms, an inner product provides these together). Thus, inner product spaces constitute the third level of our hierarchy. To be sure, once one introduces this third level of structure, there is then interplay between the levels (for example, mutually orthogonal nonzero vectors are linearly independent), but you don't need an inner product to know what linear independence means. Furthermore, level three of the hierarchy is rich enough that for a given set $V$ with a given vector space structure, there can be multiple meaningful notions of an inner product. A good example of this is the vector space $P(\mathbb{R})$ of polynomials of one real variable, which has many different inner products, many of which have direct applications to quantum mechanics!
+
+This means that one cannot ask in general whether the polynomials $2x$ and $4x^2 - 2$ are orthogonal; the question is only meaningful once an inner product on $P(\mathbb{R})$ is specified. For example, with the integral inner products of [Nondegenerate Hermitian Forms](#nondegenerate-hermitian-forms) and weight $W(x) = 1$, they are orthogonal on the interval $[-1, 1]$, where their product is an odd function, but not on $[0, 2]$, where $\int_0^2 2x(4x^2 - 2)\,dx = 24$. Once an inner product is chosen, however, one can then speak of orthogonality, length, and (for real inner products) the angle between vectors, notions that a bare vector space or a mere set does not have. A norm alone would give lengths, but not orthogonality or angles.
+
 ## Vector Norms & Inner Products
 The concept of the length of a vector $\mathbf{x}$ in $\mathbb{R}^n$ or $\mathbb{C}^n$ is familiar. This is called the Euclidean norm (or $2$-norm), denoted $\|\mathbf{x}\|_2$ (we use double bars $\|\cdot\|$ to distinguish vector norms from scalar absolute values $|\cdot|$). By Pythagoras' theorem, we know that:
 
@@ -172,6 +188,39 @@ Finally, the cosine of the angle between vectors in $\mathbb{R}^n$ is important 
 
 ---
 
+### Nondegenerate Hermitian Forms
+An inner product (which induces a norm via $\Vert{}v\Vert{}=\sqrt{(v\vert{}v)}$) is a special case of a nondegenerate Hermitian form. A nondegenerate Hermitian form on a complex vector space $V$ is a $\mathbb{C}$-valued function which assigns to an ordered pair of vectors $v, w \in V$ a scalar, denoted $(v\vert{}w)$, having the following properties:
+
+1.  $(v\vert{}w_1 + cw_2) = (v\vert{}w_1) + c(v\vert{}w_2)$ for all $v, w_1, w_2 \in V$ and $c \in \mathbb{C}$ (linearity in the second argument).
+2.  $(v\vert{}w) = \overline{(w\vert{}v)}$ for all $v, w \in V$ (Hermiticity; the bar denotes complex conjugation).
+3.  For each $v \in V$ with $v \neq 0$, there exists $w \in V$ such that $(v\vert{}w) \neq 0$ (nondegeneracy).
+
+Condition 3 is equivalent to the property that $(v\vert{}w) = (u\vert{}w)$ for all $w \in V$ iff $v = u$. To see the forward direction, suppose Condition 3 holds and $(v\vert{}w) = (u\vert{}w)$ for all $w \in V$; then by additivity in the first argument (which follows from Properties 1 and 2), $(v - u\vert{}w) = (v\vert{}w) - (u\vert{}w) = 0$ for all $w \in V$, so Condition 3 forces $v - u = 0$, i.e., $v = u$. Conversely, suppose that Condition 3 is violated, so that there exists $v \in V$ with $v \neq 0$ such that $(v\vert{}w) = 0$ for all $w \in V$. Then for any $u \in V$, the distinct vectors $u$ and $u + v$ are indistinguishable:
+
+$$(v + u\vert{}w) = (v\vert{}w) + (u\vert{}w) = (u\vert{}w) \quad \text{for all } w \in V.$$
+
+If the Hermitian form is such that $(v\vert{}v) > 0$ for all $v \neq 0$ (note that $(v\vert{}v)$ is always real by Property 2, and this condition automatically implies Condition 3), then we say it is positive definite. Such a form is called an inner product, and a vector space with such a Hermitian form is called an inner product space.
+
+On a real vector space, the same definition applies with real scalars $c$ and real values. The bar in Property 2 then does nothing, so the form is symmetric, $(v\vert{}w) = (w\vert{}v)$, and linear in both arguments (bilinear). The Minkowski metric on $\mathbb{R}^4$ is a nondegenerate form of this kind, but it is not an inner product. For $v_1 = (x_1, y_1, z_1, t_1)$ and $v_2 = (x_2, y_2, z_2, t_2)$,
+
+$$\eta(v_1, v_2) \equiv x_1 x_2 + y_1 y_2 + z_1 z_2 - t_1 t_2.$$
+
+The form $\eta$ is clearly linear in both its arguments (i.e., it's bilinear) and symmetric, and hence satisfies conditions 1 and 2. It also satisfies condition 3: for $v = (x, y, z, t) \neq 0$, take $w = (x, y, z, -t)$, so that $\eta(v, w) = x^2 + y^2 + z^2 + t^2 > 0$. Notice that for the nonzero vector $v = (1, 0, 0, 1)$, $\eta(v, v) = 0$, so $\eta$ is not positive definite, and hence not an inner product.
+
+The Minkowski metric can be written in components as a matrix, $\eta_{ij} \equiv \eta(e_i, e_j)$, which in the standard basis is $\operatorname{diag}(1, 1, 1, -1)$.
+
+A vector space can carry more than one inner product. Consider the vector space $P(\mathbb{R})$ of polynomials of arbitrary degree with real coefficients, $f(x) = c_0 + c_1x + c_2x^2 + \dots + c_nx^n$.
+
+An obvious (ordered) basis for this space would be $\mathcal{B} = (1, x, x^2, x^3, \dots)$, but this doesn't necessarily turn out to be the most useful choice. Instead, it's more convenient to choose an orthonormal basis. This leads immediately to a conundrum, however: what inner product do we use to define orthonormality? It turns out that a very useful family of inner products is given by
+
+$$(f \mid g) \equiv \int_a^b f(x)g(x)W(x)\,dx, \qquad f, g \in P(\mathbb{R}),$$
+
+where $W(x)$ is a nonnegative weight function on an interval $(a, b)$ (or $[a, b]$, with $a < b$; $a$ may be $-\infty$ and $b$ may be $+\infty$) that is strictly positive on a set of positive measure (for instance, $W(x) > 0$ on $(a, b)$) and satisfies $\int_a^b \vert{}x\vert{}^k W(x)\,dx < \infty$ for all integers $k \ge 0$. Different choices of integration range and weight function $W(x)$ generally give different inner products and different orthonormal bases. (Not always: since $(x^j \mid x^k) = \int_a^b x^{j+k}W(x)\,dx$, two choices give the same inner product exactly when all these moments agree.) One can obtain these bases by applying the Gram–Schmidt process to the ordered basis $\mathcal{B} = (1, x, x^2, x^3, \dots)$: take $1, x, x^2, \dots$ in turn, subtract from each its components along the polynomials already found, and normalize. Amazingly, these orthonormal bases turn out to be (up to normalization) the various orthogonal polynomials (Legendre for $W(x) = 1$ on $[-1, 1]$, Hermite for $W(x) = e^{-x^2}$ on the whole real line, Laguerre for $W(x) = e^{-x}$ on $[0, \infty)$, etc.) one meets in studying the various differential equations that arise in electrostatics and quantum mechanics.
+
+As an example, let the integration range be $[-1, 1]$ and $W(x) = 1$. Applying Gram–Schmidt to the ordered set $S = (1, x, x^2, x^3) \subset \mathcal{B}$ yields (up to normalization) the first four Legendre polynomials:
+
+$$\begin{aligned} P_0(x) &= 1, \\ P_1(x) &= x, \\ P_2(x) &= \frac{1}{2}(3x^2 - 1), \\ P_3(x) &= \frac{1}{2}(5x^3 - 3x). \end{aligned}$$
+
 ## Matrix Analysis - First Look
 Consider the system of linear equations:
 
@@ -197,15 +246,7 @@ This also gives us an effortless proof of associativity $(AB)C=A(BC)$ in matrix 
 
 Once we recognize that matrix multiplication is defined to represent composition of linear maps, associativity becomes immediate with zero algebra: for any three functions $\mathbb{F}^q\xrightarrow{h}\mathbb{F}^n\xrightarrow{g}\mathbb{F}^p\xrightarrow{f}\mathbb{F}^m$ (even nonlinear ones), function composition is automatically associative because both $((f\circ g)\circ h)(\mathbf{w})$ and $(f\circ(g\circ h))(\mathbf{w})$ evaluate to $f(g(h(\mathbf{w})))$ at every input vector $\mathbf{w}$. Since the matrix of a linear map is uniquely determined by its action on the standard basis vectors $\mathbf{e}_j$, the matrices representing $(f\circ g)\circ h$ and $f\circ(g\circ h)$ must be identical: $(AB)C=A(BC)$.
 
-Our composition picture $\mathbf{y}=A(B\mathbf{u})$ also gives a clean column-wise picture. Notice what happens if we plug in the $j$-th standard basis vector $\mathbf{u}=\mathbf{e}_j$ (all zeros except a $1$ in slot $j$):
-
-First, $B\mathbf{e}_j=\mathbf{b}_j$ (extracts the $j$-th column of $B$). Next, applying $A$ gives $(AB)\mathbf{e}_j=A(B\mathbf{e}_j)=A\mathbf{b}_j$. Thus, each column of the product $AB$ is simply $A$ acting on the corresponding column of $B$:
-
-$$AB=\begin{pmatrix}A\mathbf{b}_1&A\mathbf{b}_2&\cdots&A\mathbf{b}_n\end{pmatrix}$$
-
-Because every vector $A\mathbf{b}_j$ is a linear combination of the columns of $A$, this immediately proves a fundamental rank inequality: every column of $AB$ lives inside the column space of $A$ ($\operatorname{Col}(AB)\subseteq\operatorname{Col}(A)$), and by transposing, every row of $AB$ lives inside the row space of $B$, so $\operatorname{rank}(AB)\le\min\big(\operatorname{rank}(A),\operatorname{rank}(B)\big)$.
-
-For a matrix $A\in\mathbb{F}^{m\times p}$ (whose $k$-th column we denote by $A_{*k}\in\mathbb{F}^{m\times 1}$) and a single column vector $\mathbf{x}\in\mathbb{F}^{p\times 1}$, the matrix-vector product $A\mathbf{x}$ is a concise way to represent a linear combination of the columns of $A$:
+Our composition picture $\mathbf{y}=A(B\mathbf{u})$ also gives a clean column-wise picture. Notice what happens if we plug in the $j$-th standard basis vector $\mathbf{u}=\mathbf{e}_j$ (all zeros except a $1$ in slot $j$): $B\mathbf{e}_j=\mathbf{b}_j$ is the $j$-th column of $B$, so the columns of a matrix are exactly what it does to the standard basis vectors ([Matrix Rank](#matrix-rank) uses this to find the columns of $AB$). In the other direction, for a matrix $A\in\mathbb{F}^{m\times p}$ (whose $k$-th column we denote by $A_{*k}\in\mathbb{F}^{m\times 1}$) and a single column vector $\mathbf{x}\in\mathbb{F}^{p\times 1}$, the matrix-vector product $A\mathbf{x}$ is a concise way to represent a linear combination of the columns of $A$:
 
 $$\mathbf{x}=\begin{pmatrix}x_1\\x_2\\\vdots\\x_p\end{pmatrix}\implies A\mathbf{x}=\sum_{k=1}^{p}A_{*k}x_k=A_{*1}x_1+A_{*2}x_2+\dots+A_{*p}x_p$$
 
@@ -700,7 +741,7 @@ A few other properties of the rank ($r = \operatorname{rank}(A)$):
 -   A square matrix of dimension $n \times n$ is nonsingular iff $r = n$.
 -   Since row and column operations do not affect rank, $\operatorname{rank}(PA) = \operatorname{rank}(AQ) = \operatorname{rank}(A)$ for any conformable nonsingular matrices $P$ ($m \times m$) and $Q$ ($n \times n$). This also means if $PAQ = B$ for nonsingular $P$ and $Q$, then $\operatorname{rank}(A) = \operatorname{rank}(B)$. The converse is also true for matrices of the same size: if $A, B \in \mathbb{F}^{m \times n}$ satisfy $\operatorname{rank}(A) = \operatorname{rank}(B)$, then it is possible to find nonsingular $P$ and $Q$ such that $PAQ = B$, because row and column operations bring each of them to the same matrix $\begin{pmatrix} I_r & 0 \\ 0 & 0 \end{pmatrix}$. It may or may not be possible to find a nonsingular $Q$ such that $AQ = B$ or a nonsingular $P$ such that $PA = B$. For example, $A = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}$ and $B = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}$ both have rank $1$, and swapping the rows gives $PA = B$, but every $AQ$ has a zero second row, so $AQ = B$ is impossible.
 -   $\operatorname{rank}(A) = \operatorname{rank}(A^T) = \operatorname{rank}(A^*)$ (with $A^*$ defined for $\mathbb{F} = \mathbb{R}$ or $\mathbb{C}$).
--   $\operatorname{rank}(AB) \le \min\{\operatorname{rank}(A), \operatorname{rank}(B)\}$ for conformable matrices $A$ and $B$, since every column of $AB$ is a combination of the columns of $A$, and every row of $AB$ is a combination of the rows of $B$.
+-   $\operatorname{rank}(AB) \le \min\{\operatorname{rank}(A), \operatorname{rank}(B)\}$ for conformable matrices $A$ and $B$. To see this, write $\mathbf{b}_1, \dots, \mathbf{b}_k$ for the columns of $B \in \mathbb{F}^{n \times k}$, so that $B\mathbf{e}_j = \mathbf{b}_j$ for each standard basis vector $\mathbf{e}_j$. Applying $A$ gives $(AB)\mathbf{e}_j=A(B\mathbf{e}_j)=A\mathbf{b}_j$. Thus, each column of the product $AB$ is simply $A$ acting on the corresponding column of $B$: $AB=\begin{pmatrix}A\mathbf{b}_1&A\mathbf{b}_2&\cdots&A\mathbf{b}_k\end{pmatrix}$. Because every vector $A\mathbf{b}_j$ is a linear combination of the columns of $A$, every column of $AB$ lives inside the column space of $A$ ($\operatorname{Col}(AB)\subseteq\operatorname{Col}(A)$), and by transposing, every row of $AB$ lives inside the row space of $B$, so $\operatorname{rank}(AB)\le\min\big(\operatorname{rank}(A),\operatorname{rank}(B)\big)$.
 -   For $A \in \mathbb{F}^{m \times n}$ with $\mathbb{F} = \mathbb{R}$ or $\mathbb{C}$, $\operatorname{rank}(A^*A) = \operatorname{rank}(A) = \operatorname{rank}(AA^*)$. This means $AA^*\mathbf{x} = \mathbf{0} \iff A^*\mathbf{x} = \mathbf{0}$ (for $\mathbf{x} \in \mathbb{F}^m$), and $A^*A\mathbf{x} = \mathbf{0} \iff A\mathbf{x} = \mathbf{0}$ (for $\mathbf{x} \in \mathbb{F}^n$). Both come from one line: if $A^*A\mathbf{x} = \mathbf{0}$, then $\Vert{}A\mathbf{x}\Vert{}_2^2 = \mathbf{x}^*A^*A\mathbf{x} = 0$, so $A\mathbf{x} = \mathbf{0}$ (for $AA^*$, put $A^*$ in place of $A$). This is where $\mathbb{R}$ or $\mathbb{C}$ is needed: over the two-element field $\mathbb{F}_2$, the column $\mathbf{a} = (1, 1)^T$ has rank $1$, but $\mathbf{a}^T\mathbf{a} = 1 + 1 = 0$.
 
 For $A \neq 0$, $\operatorname{rank}(A)$ is the size of a maximal nonsingular submatrix of $A$, i.e., any $r \times r$ submatrix (where $r = \operatorname{rank}(A)$) that lies on the intersection of $r$ linearly independent rows and $r$ linearly independent columns in $A$.
@@ -972,7 +1013,137 @@ $$M = (I_n \otimes A) + (B^T \otimes I_m) = \begin{pmatrix} 2 & 1 & 0 & 0 \\ 1 &
 
 to obtain the solution as $\mathbf{x} = \frac{1}{5}\begin{pmatrix} 3 \\ -1 \\ -12 \\ 9 \end{pmatrix}$, or equivalently $X = \frac{1}{5}\begin{pmatrix} 3 & -12 \\ -1 & 9 \end{pmatrix}$.
 
+### Linear Operators
+A linear operator on a vector space $V$ is a function $T$ from $V$ to itself that is linear: $T(u + w) = T(u) + T(w)$ and $T(cw) = cT(w)$ for all vectors $u, w \in V$ and all scalars $c$. We write its value at $v$ as either $T(v)$ or $Tv$.
+
+Here are a couple of examples of linear operators, on the space of infinitely differentiable complex-valued functions $f$ of a real variable $x$ (both operators send such a function to another one):
+
+$$(\hat{x}f)(x) = xf(x)$$
+
+$$(\hat{p}f)(x) = -i\frac{\partial f}{\partial x}(x)$$
+
+These are linear since, for any functions $f, g$ in their domains and any scalar $c$,
+
+$$(\hat{x}(f + g))(x) = x(f + g)(x) = xf(x) + xg(x) = (\hat{x}f)(x) + (\hat{x}g)(x)$$
+
+$$(\hat{x}(cf))(x) = x(cf(x)) = c(xf(x)) = c(\hat{x}f)(x),$$
+
+and similarly for $\hat{p}$,
+
+$$(\hat{p}(f + g))(x) = -i\frac{\partial(f + g)}{\partial x}(x) = -i\frac{\partial f}{\partial x}(x) - i\frac{\partial g}{\partial x}(x) = (\hat{p}f)(x) + (\hat{p}g)(x)$$
+
+$$(\hat{p}(cf))(x) = -i\frac{\partial(cf)}{\partial x}(x) = c\left(-i\frac{\partial f}{\partial x}(x)\right) = c(\hat{p}f)(x).$$
+
+These represent the position and momentum operators $\hat{x}$ and $\hat{p}$ in quantum mechanics, in units with $\hbar = 1$ (in general, $\hat{p} = -i\hbar\,\partial/\partial x$).
+
+Once a basis of vectors is fixed, linear operators can be represented by matrices, and changing the basis changes their matrix representations. Now let $V$ be $n$-dimensional (unlike the function space above), with an ordered basis $\mathcal{B} = (e_1, \dots, e_n)$, and write a vector as $v = \sum_{i=1}^n v^i e_i$, with its components $v^i$ labelled by upper indices (not powers). Linearity gives
+
+$$T(v) = T\left(\sum_{i=1}^n v^i e_i\right) = \sum_{i=1}^n v^i T(e_i) = \sum_{i,j=1}^n v^i T_i{}^j e_j,$$
+
+where the numbers (scalars) $T_i{}^j$, the components of $T$ with respect to $\mathcal{B}$, are defined for each $i = 1, \dots, n$ by
+
+$$T(e_i) = \sum_{j=1}^n T_i{}^j e_j.$$
+
+Note that $T_i{}^j = T(e_i)^j$, the $j$-th component of the vector $T(e_i)$ with respect to $\mathcal{B}$. In fact, writing $[v]_{\mathcal{B}} = (v^1, \dots, v^n)^T$ for the column of components of $v$, we can define the matrix of $T$ in the basis $\mathcal{B}$, denoted $[T]_{\mathcal{B}}$, as the unique $n \times n$ matrix satisfying the matrix equation
+
+$$[T(v)]_{\mathcal{B}} = [T]_{\mathcal{B}}[v]_{\mathcal{B}} \quad \text{for all } v \in V,$$
+
+where the product on the right-hand side is given by the usual matrix multiplication. We then have
+
+$$[T]_{\mathcal{B}} = \begin{pmatrix} T_1{}^1 & T_2{}^1 & \dots & T_n{}^1 \\ T_1{}^2 & T_2{}^2 & \dots & T_n{}^2 \\ \vdots & \vdots & \ddots & \vdots \\ T_1{}^n & T_2{}^n & \dots & T_n{}^n \end{pmatrix}.$$
+
+Note that the $i$-th column holds the components of the vector $Te_i$, so the entry in row $j$ and column $i$ is $T_i{}^j$: the lower index labels the column.
+
+A close relative of the linear operator is the dual vector. A dual vector on $V$ is a linear map $f: V \to \mathbb{F}$ from $V$ to the scalars (also called a linear functional, or a covector). It is not a linear operator, because its output is a scalar and not a vector in $V$. The dual vectors on $V$ form a vector space of their own, the dual space $V^*$, with the usual addition and scalar multiplication of functions. Given an ordered basis $(e_1, \dots, e_n)$ of $V$, the dual basis $(e^1, \dots, e^n)$ of $V^*$ is defined by $e^i(e_j) = \delta^i{}_j$, so $e^i(v) = v^i$ reads off the $i$-th component of $v$. The $e^i$ form a basis of $V^*$, since every $f \in V^*$ equals $\sum_i f(e_i)\,e^i$ (both sides agree on every $e_j$), so $V^*$ also has dimension $n$.
+
+We will use this opportunity to show an interesting behaviour of the dual vector, specifically the dual vector that acts on matrices (instead of on a column vector) and gives a scalar. Here, the vector space is the space of $m\times n$ matrices, $V=\mathbb{F}^{m\times n}$, whose standard basis consists of the matrix units $E_{kl}=\mathbf{e}_k\mathbf{e}_l^*$ (a $1$ in row $k$, column $l$, and $0$ elsewhere).
+
+If $f^{ij}$ is the dual basis vector corresponding to $E_{ij}$, then: $f^{ij}(E_{kl})=\delta^i_k\delta^j_l$. It acts as the $(i,j)$-coordinate extractor on the space of matrices, in the same way that $\mathbf{e}^i(\mathbf{v})=v^i$ extracts the $i$-th coordinate of a column vector.
+
+There are 3 equivalent ways to write these dual vectors. As a row-column sandwich: $f^{ij}(A)=\mathbf{e}_i^* A \mathbf{e}_j$.
+
+The row vector on the left must have $1$ in the $i$-th position and the column vector on the right must have $1$ in the $j$-th position.
+
+It can also be written in trace form, as a [Frobenius inner product](#matrix-inner-product). The sandwich $\mathbf{e}_i^* A\mathbf{e}_j$ is a $1 \times 1$ matrix, which equals its own trace, so using the cyclic property of the trace, $\operatorname{trace}(\mathbf{e}_i^* A\mathbf{e}_j)=\operatorname{trace}(\mathbf{e}_j\mathbf{e}_i^* A)$, and $E_{ij}^*=\mathbf{e}_j\mathbf{e}_i^*$, we have:
+
+$$f^{ij}(A)=\operatorname{trace}(E_{ij}^* A)=\langle E_{ij} \mid A\rangle$$
+
+The third way views $A$ as a linear map $\mathbb{F}^n\to\mathbb{F}^m$: $f^{ij}$ first feeds the basis vector $\mathbf{e}_j$ into $A$ and then applies the dual basis vector $\mathbf{e}^i$ to the output: $f^{ij}(A)=\mathbf{e}^i(A\mathbf{e}_j)$.
+
+Note that dual vectors and a [nondegenerate Hermitian form](#nondegenerate-hermitian-forms) (or, over $\mathbb{R}$, a nondegenerate symmetric bilinear form) are related. A Hermitian form with the first vector set to $v$ is equivalent to the dual vector $\tilde{v}$ such that their action on any vector $w \in V$ gives the same scalar: $(v\vert{}w) = \tilde{v}(w)$.
+
+We therefore get a map $L: V \to V^*$, $v \mapsto \tilde{v}$, from the vector space $V$ to the dual vector space $V^*$ (note that $L$ is conjugate-linear over $\mathbb{C}$, and linear over $\mathbb{R}$). The dual vector $\tilde{v}$ is called the metric dual of $v$. Nondegeneracy makes $L$ one-to-one: if $\tilde{v} = \tilde{u}$, then $(v\vert{}w) = (u\vert{}w)$ for every $w$, which forces $v = u$ (the equivalent form of Property 3 shown in [Nondegenerate Hermitian Forms](#nondegenerate-hermitian-forms)). When $V$ is finite-dimensional, $V^*$ has the same dimension as $V$, so $L$ is also onto, and therefore invertible. Note that given a basis $\{e_i\}$ of $V$, we now have two sets of dual vectors. One set is the canonical dual basis $\{e^i\}$, defined by $e^i(e_j) = \delta^i{}_j$. The other is the set of metric duals $\{\tilde{e}_i\}$, defined by $\tilde{e}_i(e_j) = (e_i\vert{}e_j)$, which might very well not be $\delta_{ij}$ depending on how we define the metric, i.e., the Hermitian-form (or inner-product) values between the basis vectors. The dual basis vectors $e^i$, by contrast, do not depend on the Hermitian form or inner product.
+
+In fact, we can derive a relationship between the components of the metric dual $\tilde{v}$ (in $\{e^i\}$) and the components of $v = \sum_j v^j e_j$ (in $\{e_i\}$) as:
+
+$$\tilde{v}_i = \tilde{v}(e_i) = (v\vert{}e_i) = \sum_j \overline{v^j}(e_j\vert{}e_i) = \sum_j \overline{v^j} g_{ji},$$
+
+where $g_{ij} = (e_i\vert{}e_j)$ is the $(i,j)$-component of the Hermitian form (metric), thus explaining why this dual vector is known as the "metric" dual. For a real symmetric metric (where $\overline{v^j} = v^j$ and $g_{ji} = g_{ij}$), this simplifies to $v_i = \tilde{v}(e_i) = \sum_j g_{ij} v^j$. This is the common formula we encounter, for example, in general relativity, while converting between vectors and dual vectors. In fact, the dual basis vector $e^i$ coincides with the metric dual $\tilde{e}_i$ of $e_i$ when the basis is orthonormal with respect to the metric, i.e., $(e_i\vert{}e_j) = \delta_{ij}$ (or plain old $e_i \cdot e_j = \delta_{ij}$ in $\mathbb{R}^n$).
+
+The components $v^i$ of $v$ and $v_i$ (or $\tilde{v}_i$) of $\tilde{v}$ are probably familiar as the contravariant components of $v$ and covariant components of $v$, respectively. The familiar process of "raising" and "lowering" indices is just the application of the map $L$ (and its inverse $L^{-1}$) in components.
+
 ## Matrix Analysis - More Stuff!
+
+## Tensors
+A tensor (specifically a covariant or Cartesian tensor in a Euclidean vector space; more generally, a map taking both vectors and covectors, the dual vectors of [Linear Operators](#linear-operators)) is a multilinear function that takes a certain number of vectors as input and outputs a scalar; multilinear means linear in each input when the other inputs are held fixed. The number of input vectors is called the rank (or order) of a tensor (not to be confused with the [rank of a matrix](#matrix-rank)). Since a tensor is multilinear, it means we can break down the output of a tensor into components, i.e., as a sum of scaled versions of what the tensor does to the basis vectors of a vector space. For example, say we have a rank-2 tensor acting on the vectors:
+
+$$v = v_x\hat{x} + v_y\hat{y} + v_z\hat{z}$$
+
+$$w = w_x\hat{x} + w_y\hat{y} + w_z\hat{z}.$$
+
+Then we have
+
+$$\begin{aligned} T(v, w) &= T(v_x\hat{x} + v_y\hat{y} + v_z\hat{z},\; w_x\hat{x} + w_y\hat{y} + w_z\hat{z}) \\ &= v_x T(\hat{x},\; w_x\hat{x} + w_y\hat{y} + w_z\hat{z}) + v_y T(\hat{y},\; w_x\hat{x} + w_y\hat{y} + w_z\hat{z}) \\ &\quad + v_z T(\hat{z},\; w_x\hat{x} + w_y\hat{y} + w_z\hat{z}) \\ &= v_x w_x T(\hat{x}, \hat{x}) + v_x w_y T(\hat{x}, \hat{y}) + v_x w_z T(\hat{x}, \hat{z}) + v_y w_x T(\hat{y}, \hat{x}) + v_y w_y T(\hat{y}, \hat{y}) \\ &\quad + v_y w_z T(\hat{y}, \hat{z}) + v_z w_x T(\hat{z}, \hat{x}) + v_z w_y T(\hat{z}, \hat{y}) + v_z w_z T(\hat{z}, \hat{z}). \end{aligned}$$
+
+We define the components of $T$ as $T_{xx} = T(\hat{x}, \hat{x})$, $T_{xy} = T(\hat{x}, \hat{y})$, $T_{yx} = T(\hat{y}, \hat{x})$, and so on. This then gives
+
+$$\begin{aligned} T(v, w) &= v_x w_x T_{xx} + v_x w_y T_{xy} + v_x w_z T_{xz} + v_y w_x T_{yx} + v_y w_y T_{yy} \\ &\quad + v_y w_z T_{yz} + v_z w_x T_{zx} + v_z w_y T_{zy} + v_z w_z T_{zz}. \end{aligned}$$
+
+Let's look at the Levi-Civita tensor as an example. This is a rank-3 tensor which takes 3 input vectors and outputs the signed volume of the parallelepiped formed by those 3 vectors, i.e., $(u \times v) \cdot w$.
+
+Due to multilinearity, we can figure out the output of the tensor on any 3 vectors if we know how it behaves with the basis vectors, which will then form the components of the tensor. Accordingly, we say the components of the tensor in a right-handed orthonormal $\{\hat{\imath}, \hat{\jmath}, \hat{k}\}$ basis are $+1$ for any ordered triples that are cyclic permutations of $(\hat{\imath}, \hat{\jmath}, \hat{k})$ such as $(\hat{k}, \hat{\imath}, \hat{\jmath})$, $-1$ for any that are cyclic permutations of $(\hat{\jmath}, \hat{\imath}, \hat{k})$ (i.e., odd/anti-cyclic permutations of $(\hat{\imath}, \hat{\jmath}, \hat{k})$), and $0$ otherwise (e.g., for $(\hat{\imath}, \hat{\imath}, \hat{\jmath})$).
+
+The $+1$, $-1$, and $0$ components are simply the signed volumes we get with the appropriate parallelepipeds, such as $(\hat{\imath} \times \hat{\jmath}) \cdot \hat{k}$, $(\hat{\jmath} \times \hat{\imath}) \cdot \hat{k}$, or $(\hat{\imath} \times \hat{\imath}) \cdot \hat{\jmath}$. Note that the tensor exists independently of any basis vectors. It evaluates any ordered triple of 3 input vectors. But the component values will depend on the basis. For the Levi-Civita tensor, every right-handed orthonormal basis gives the same values $+1$, $-1$ and $0$, because rotations preserve signed volume, but a left-handed orthonormal basis flips all their signs, and in general they are multiplied by the signed volume of the new basis vectors.
+
+We can also arrive at how the components change when a basis changes. Say we switch to a new set of basis vectors $\{\hat{x}', \hat{y}', \hat{z}'\}$ which are related to the old basis vectors by
+
+$$\begin{aligned} \hat{x}' &= A_{x'x}\hat{x} + A_{x'y}\hat{y} + A_{x'z}\hat{z}, \\ \hat{y}' &= A_{y'x}\hat{x} + A_{y'y}\hat{y} + A_{y'z}\hat{z}, \\ \hat{z}' &= A_{z'x}\hat{x} + A_{z'y}\hat{y} + A_{z'z}\hat{z}. \end{aligned}$$
+
+This does not affect the action of $T$, since $T$ exists independently of any basis, but if we'd like to compute the value of $T(v, w)$ in terms of the new components $(v_{x'}, v_{y'}, v_{z'})$ and $(w_{x'}, w_{y'}, w_{z'})$ of $v$ and $w$, then we'll need to know what the new components $\{T_{x'x'}, T_{x'y'}, T_{x'z'}, \dots\}$ look like. Computing $T_{x'x'}$, for instance, gives
+
+$$\begin{aligned} T_{x'x'} &= T(\hat{x}', \hat{x}') \\ &= T(A_{x'x}\hat{x} + A_{x'y}\hat{y} + A_{x'z}\hat{z},\; A_{x'x}\hat{x} + A_{x'y}\hat{y} + A_{x'z}\hat{z}) \\ &= A_{x'x}A_{x'x}T_{xx} + A_{x'y}A_{x'x}T_{yx} + A_{x'z}A_{x'x}T_{zx} + A_{x'x}A_{x'y}T_{xy} \\ &\quad + A_{x'y}A_{x'y}T_{yy} + A_{x'z}A_{x'y}T_{zy} + A_{x'x}A_{x'z}T_{xz} + A_{x'y}A_{x'z}T_{yz} + A_{x'z}A_{x'z}T_{zz}. \end{aligned}$$
+
+In Einstein summation notation (an index repeated once up and once down is summed over), writing the basis change as $\hat{e}_{i'} = A^k{}_{i'}\hat{e}_k$ (with $A^k{}_{i'} \equiv A_{i'k}$), this can be written as
+
+$$T_{i'j'} = A^k{}_{i'} A^l{}_{j'} T_{kl}$$
+
+A rank-2 tensor can also be written using a linear operator acting on one vector, paired via the dot product with the other vector acting as a linear functional; alternatively, fixing one input vector of a rank-2 tensor directly turns it into a linear functional on the other vector. For example, think of the dot product. This is a rank-2 tensor. If we fix one vector, then it becomes a linear functional that takes another vector as an input (the metric dual of [Linear Operators](#linear-operators)).
+
+Recall from [Linear Operators](#linear-operators) that a linear operator $R$ on $V$ takes a vector as input and outputs another vector in the same space, while preserving vector addition and scalar multiplication.
+
+To see how to convert between a rank-2 tensor and a linear operator on a real inner product space using the dot product, take a look at:
+
+$$T_R(\mathbf{v}, \mathbf{w}) = \mathbf{v} \cdot (R\mathbf{w}).$$
+
+First, $R$ transforms $\mathbf{w}$ into a new vector $R\mathbf{w}$. Then, taking the dot product with $\mathbf{v}$ extracts a scalar (if $\mathbf{v}$ is a unit vector, this scalar is literally the component of $R\mathbf{w}$ along $\mathbf{v}$). Because $R$ is linear and the dot product is linear in each argument, $T_R(\mathbf{v}, \mathbf{w})$ is linear in $\mathbf{v}$ and linear in $\mathbf{w}$ separately.
+
+In an orthonormal basis $\{\mathbf{e}_1, \mathbf{e}_2, \mathbf{e}_3\}$, both descriptions have the exact same $3 \times 3$ array of components:
+
+$$T_{ij} = T_R(\mathbf{e}_i, \mathbf{e}_j) = \mathbf{e}_i \cdot (R\mathbf{e}_j) = R_{ij},$$
+
+where $R_{ij}$, the $i$-th component of $R\mathbf{e}_j$, is the entry in row $i$ and column $j$ of the matrix of $R$ (written $R_j{}^i$ in [Linear Operators](#linear-operators)).
+
+Some concrete physics examples include the inertia tensor $I$: as a linear operator, $I$ takes the angular velocity vector $\boldsymbol{\omega}$ and outputs the angular momentum vector $\mathbf{L} = I\boldsymbol{\omega}$ (which generally differs from $\boldsymbol{\omega}$ in direction, as well as magnitude and units). As the bilinear form $T_I(\mathbf{v}, \mathbf{w}) = \mathbf{v} \cdot (I\mathbf{w})$, feeding in $\boldsymbol{\omega}$ twice gives $T_I(\boldsymbol{\omega}, \boldsymbol{\omega}) = \boldsymbol{\omega} \cdot (I\boldsymbol{\omega}) = 2K$, twice the rotational kinetic energy.
+
+Another example is the Cauchy stress tensor $\sigma$: as a linear operator, $\sigma$ takes a unit normal vector $\mathbf{n}$ to a surface inside a material and outputs the traction (force-per-area) vector $\mathbf{t} = \sigma\mathbf{n}$ acting on that surface. As a bilinear form, $T_\sigma(\mathbf{v}, \mathbf{n}) = \mathbf{v} \cdot (\sigma\mathbf{n})$ gives the component of that traction along a chosen unit direction $\mathbf{v}$.
+
+The exact same equivalence extends to rank-3 tensors, except that having three slots gives four equivalent ways to view the same object (assuming a real inner product / dot product on $V$).
+
+It could be a trilinear form that takes 3 vectors and outputs a scalar. Or it could be a bilinear map that takes in two vectors and outputs one vector, which is then dotted with the third vector to give a scalar. The Levi-Civita tensor is an example of this. As a bilinear map, it is the cross product $B(\mathbf{v}, \mathbf{w}) = \mathbf{v} \times \mathbf{w}$. Turning it into a trilinear form via the dot product gives the scalar triple product $T(\mathbf{u}, \mathbf{v}, \mathbf{w}) = \mathbf{u} \cdot (\mathbf{v} \times \mathbf{w})$.
+
+Or, the rank-3 tensor could be a linear map where you give a vector as an input, which then results in a rank-2 tensor (and not a scalar as earlier, though the rank-2 tensor can itself always take the two other vector inputs and output a scalar). Or it takes a rank-2 tensor as an input and outputs a vector (and again, not a scalar).
+
+The piezoelectric tensor ($d_{ijk}$) is an example. In a piezoelectric crystal (in an orthonormal basis), applying mechanical stress (a rank-2 tensor $\sigma_{jk}$) induces an electric polarization vector: $P_i = \sum_{j,k} d_{ijk}\sigma_{jk}$. Conversely, applying an electric field vector $E_i$ induces a rank-2 mechanical strain tensor: $\varepsilon_{jk} = \sum_i d_{ijk}E_i$. Both effects are governed by the exact same rank-3 tensor $d_{ijk}$, simply contracted with different slots.
 
 ## Sets, Operations & Relations
 
