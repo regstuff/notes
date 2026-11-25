@@ -215,7 +215,7 @@ An obvious (ordered) basis for this space would be $\mathcal{B} = (1, x, x^2, x^
 
 $$(f \mid g) \equiv \int_a^b f(x)g(x)W(x)\,dx, \qquad f, g \in P(\mathbb{R}),$$
 
-where $W(x)$ is a nonnegative weight function on an interval $(a, b)$ (or $[a, b]$, with $a < b$; $a$ may be $-\infty$ and $b$ may be $+\infty$) that is strictly positive on a set of positive measure (for instance, $W(x) > 0$ on $(a, b)$) and satisfies $\int_a^b \vert{}x\vert{}^k W(x)\,dx < \infty$ for all integers $k \ge 0$. Different choices of integration range and weight function $W(x)$ generally give different inner products and different orthonormal bases. (Not always: since $(x^j \mid x^k) = \int_a^b x^{j+k}W(x)\,dx$, two choices give the same inner product exactly when all these moments agree.) One can obtain these bases by applying the Gram–Schmidt process to the ordered basis $\mathcal{B} = (1, x, x^2, x^3, \dots)$: take $1, x, x^2, \dots$ in turn, subtract from each its components along the polynomials already found, and normalize. Amazingly, these orthonormal bases turn out to be (up to normalization) the various orthogonal polynomials (Legendre for $W(x) = 1$ on $[-1, 1]$, Hermite for $W(x) = e^{-x^2}$ on the whole real line, Laguerre for $W(x) = e^{-x}$ on $[0, \infty)$, etc.) one meets in studying the various differential equations that arise in electrostatics and quantum mechanics.
+where $W(x)$ is a nonnegative weight function on an interval $(a, b)$ (or $[a, b]$, with $a < b$; $a$ may be $-\infty$ and $b$ may be $+\infty$) that is strictly positive on a set of positive measure (for instance, $W(x) > 0$ on $(a, b)$) and satisfies $\int_a^b \vert{}x\vert{}^k W(x)\,dx < \infty$ for all integers $k \ge 0$. Different choices of integration range and weight function $W(x)$ generally give different inner products and different orthonormal bases. (Not always: since $(x^j \mid x^k) = \int_a^b x^{j+k}W(x)\,dx$, two choices give the same inner product exactly when all these moments agree.) (One can obtain these bases by applying the Gram–Schmidt process to the ordered basis $\mathcal{B} = (1, x, x^2, x^3, \dots)$: take $1, x, x^2, \dots$ in turn, subtract from each its components along the polynomials already found, and normalize. We'll cover this in more detail later.) Amazingly, these orthonormal bases turn out to be (up to normalization) the various orthogonal polynomials (Legendre for $W(x) = 1$ on $[-1, 1]$, Hermite for $W(x) = e^{-x^2}$ on the whole real line, Laguerre for $W(x) = e^{-x}$ on $[0, \infty)$, etc.) one meets in studying the various differential equations that arise in electrostatics and quantum mechanics.
 
 As an example, let the integration range be $[-1, 1]$ and $W(x) = 1$. Applying Gram–Schmidt to the ordered set $S = (1, x, x^2, x^3) \subset \mathcal{B}$ yields (up to normalization) the first four Legendre polynomials:
 
@@ -549,7 +549,8 @@ $\Vert{}A_k - A\Vert{} \to 0 \iff a_{ij}(k) \to a_{ij}$ as $k \to \infty$ for ea
 
 If $A$ is a square matrix such that $\Vert{}A\Vert{} < 1$ for some matrix norm, then $A^k \to 0$ as $k \to \infty$, or equivalently,  $[A^k]_{ij} \to 0$ for each $i$ and $j$.
 
-### Unitary and Orthogonal Matrices
+### Hermitian, Unitary and Orthogonal Matrices
+A square matrix $A$ is Hermitian if $A^* = A$, skew-Hermitian if $A^* = -A$, and unitary if $A^*A = I$. These are different classes, though they overlap ($I$ is both Hermitian and unitary), and all three belong to a broader family called normal matrices, which satisfy $A^*A = AA^*$. We'll focus on unitary matrices and their special case, orthogonal matrices, for now.
 
 For $U \in \mathbb{F}^{n \times n}$ (where $\mathbb{F} = \mathbb{R}$ or $\mathbb{C}$), the following statements are equivalent: 
 
@@ -730,6 +731,16 @@ Similarly, in Gauss–Jordan elimination, we also scale each pivot row so that e
 You might end up in situations where not all column vectors of the coefficient matrix are linearly independent. This means that some columns are in fact linear combinations of other columns, which produces free variables in the system (so a consistent system has infinitely many solutions rather than variables that can simply be dropped; redundant _equations_, by contrast, correspond to linearly dependent rows and reduce to $0 = 0$). In such cases, instead of a clean upper triangular matrix that cuts cleanly along the main diagonal, we get a stepped pattern called a row echelon form. Some of the diagonal elements (which would have been the pivots in the clean case) will be $0$. Together, all columns that contain a pivot (the pivot or basic columns) form a linearly independent set (both in the echelon form and in the original matrix). Any non-pivot column can be written as a linear combination of the pivot columns to its left (or is the zero column if there are no pivot columns to its left).
 
 Any finite sequence of elementary row operations is represented by $PA$ for a nonsingular $P$, and any finite sequence of elementary column operations is represented by $AQ$ for a nonsingular $Q$. The converse also holds. Left-multiplication by nonsingular $P$ is exact: it produces precisely the matrices reachable from $A$ by elementary row operations, and right-multiplication by nonsingular $Q$ produces precisely those reachable by elementary column operations.
+
+For a block matrix $\begin{pmatrix} A & B \\ C & D \end{pmatrix}$ with square blocks $A$ and $D$, whenever $A$ is invertible, block Gaussian elimination (subtracting $CA^{-1}$ times the first block row from the second, which clears $C$) gives the exact factorization:
+
+$$\begin{pmatrix} A & B \\ C & D \end{pmatrix} = \begin{pmatrix} I & 0 \\ CA^{-1} & I \end{pmatrix}\begin{pmatrix} A & B \\ 0 & D - CA^{-1}B \end{pmatrix}.$$
+
+When $D$ is invertible, subtracting $BD^{-1}$ times the second block row from the first clears $B$ instead and gives a similar factorization with $A - BD^{-1}C$:
+
+$$\begin{pmatrix} A & B \\ C & D \end{pmatrix} = \begin{pmatrix} I & BD^{-1} \\ 0 & I \end{pmatrix}\begin{pmatrix} A - BD^{-1}C & 0 \\ C & D \end{pmatrix}.$$
+
+The matrices $D - CA^{-1}B$ and $A - BD^{-1}C$ are the Schur complements of $A$ and of $D$.
 
 ### Matrix Rank
 
@@ -1083,37 +1094,164 @@ where $g_{ij} = (e_i\vert{}e_j)$ is the $(i,j)$-component of the Hermitian form 
 The components $v^i$ of $v$ and $v_i$ (or $\tilde{v}_i$) of $\tilde{v}$ are probably familiar as the contravariant components of $v$ and covariant components of $v$, respectively. The familiar process of "raising" and "lowering" indices is just the application of the map $L$ (and its inverse $L^{-1}$) in components.
 
 ## Matrix Analysis - More Stuff!
+### Properties of Determinants
+
+Determinants are only defined for square matrices. The formula to calculate the determinant of an $n \times n$ matrix $A = [a_{ij}]$ is given by:
+
+$$\det(A) = \sum_{p} \sigma(p)\,a_{1 p_1} a_{2 p_2} \cdots a_{n p_n},$$
+
+where $p = (p_1, \dots, p_n)$ ranges over all $n!$ permutations of the standard order $(1, 2, \dots, n)$, $\sigma(p)$ is $+1$ if the permutation can be reached from the standard order with an even number of 2-element swaps and $-1$ otherwise, and $a_{ij}$ is the $(i, j)$-th element of the matrix.
+
+This formula is the scalar coefficient produced by the wedge product of the columns (or rows) of $A$ (specifically, $A_{\ast 1} \wedge \cdots \wedge A_{\ast n} = \det(A)(\mathbf{e}_1 \wedge \cdots \wedge \mathbf{e}_n)$), and that is no coincidence, as over $\mathbb{R}$ the determinant is simply the signed volume of the parallelepiped formed by the column or row vectors of $A$. The wedge product of vectors works like the wedge product of 1-forms in [Maths 1](maths_1_differential_geometry.md#2-forms): it is linear in each factor and is $0$ when two factors are equal, so it changes sign when two factors are swapped. Writing row $i$ as $\sum_j a_{ij}\mathbf{e}_j$ and multiplying out $A_{1\ast} \wedge \cdots \wedge A_{n\ast}$, every term with a repeated $\mathbf{e}_j$ vanishes, and the term for a permutation $p$ is $a_{1p_1} \cdots a_{np_n}\,\mathbf{e}_{p_1} \wedge \cdots \wedge \mathbf{e}_{p_n} = \sigma(p)\,a_{1p_1} \cdots a_{np_n}\,\mathbf{e}_1 \wedge \cdots \wedge \mathbf{e}_n$, because each swap that sorts $(p_1, \dots, p_n)$ back into the standard order flips the sign. For the columns, the same expansion gives $\sum_p \sigma(p)\,a_{p_1 1} \cdots a_{p_n n}$, which is the same number, because a permutation and its inverse have the same sign (this is the rule $\det(A^T) = \det(A)$ below).
+
+From this, we can see that if a row is a linear combination of the other rows (or a column of the other columns), the determinant is $0$: expanding that factor of the wedge product by linearity leaves only terms with a repeated factor (over $\mathbb{R}$, the parallelepiped is flat and its volume is also $0$). Conversely, if $A$ is nonsingular, then $\det(A)\det(A^{-1}) = \det(I) = 1$ by the product rule below, so $\det(A) \neq 0$. So a square matrix (over a field) is nonsingular iff its determinant is nonzero.
+
+We also know the volume of a parallelepiped (with fixed side lengths) is maximized when all sides are mutually orthogonal, and so for $A \in \mathbb{C}^{n \times n}$ (or $\mathbb{R}^{n \times n}$) we have Hadamard's inequality for the determinant:
+
+$$\vert{}\det(A)\vert{} \le \prod_{k=1}^n \Vert{}\mathbf{x}_k\Vert{}_2 = \prod_{j=1}^n \left(\sum_{i=1}^n \vert{}a_{ij}\vert{}^2\right)^{1/2},$$
+
+where $\mathbf{x}_1, \dots, \mathbf{x}_n$ are the column vectors of $A$, and equality holds if and only if the columns are mutually orthogonal or at least one column is zero.
+
+A few more basic properties (for $n \times n$ matrices $A$ and $B$) include:
+
+-   $\det(A) = a_{11}a_{22}\cdots a_{nn}$ for upper or lower triangular matrices.
+-   $\det(A^T) = \det(A)$.
+-   $\det(AB) = \det(A)\det(B)$.
+-   For $n > 1$, the determinant function is not linear, i.e., $\det(A + B) \neq \det(A) + \det(B)$ in most cases.
+
+Interchanging two rows or two columns flips the sign of the determinant. Scaling one row/column by a scalar $\alpha$ scales the determinant by $\alpha$. Adding $\alpha$ times a row/column to another row/column does NOT change the determinant.
+
+In fact, the determinant is the unique function $D: \mathbb{F}^{n \times n} \to \mathbb{F}$ of the $n$ columns (or rows) that is:
+
+-   **Multilinear**: linear in each column separately when the other $n - 1$ columns are held fixed.
+-   **Alternating**: $D(A) = 0$ whenever two columns are equal. This forces a sign flip when two columns are swapped (expand $D$ with both columns equal to $\mathbf{u} + \mathbf{v}$). The converse fails over a field such as $\mathbb{F}_2$, where $-1 = 1$ and a sign flip changes nothing, which is why the definition asks for $0$ on equal columns rather than for sign flips.
+-   **Normalized**: $D(I_n) = 1$.
+
+To see why these pin $D$ down, expand each column as $A_{\ast j} = \sum_i a_{ij}\mathbf{e}_i$. Multilinearity turns $D(A)$ into a sum of terms $a_{i_1 1} \cdots a_{i_n n}\,D(\mathbf{e}_{i_1}, \dots, \mathbf{e}_{i_n})$. The alternating property kills every term with a repeated $\mathbf{e}_i$ and turns each of the remaining $n!$ terms into $\pm D(I_n)$, so $D(A) = \det(A)\,D(I_n) = \det(A)$.
+
+This characterization explains two facts at once:
+
+-   Why $\det(\alpha A) = \alpha^n \det(A)$ (scaling all $n$ columns pulls out $\alpha$ once per column) and why $\det(A + B)$ expands into a sum of $2^n$ mixed-column determinants rather than just $\det(A) + \det(B)$.
+-   Why $\det(A)$ is the unique eigenvalue of the induced map $\Lambda^n A$ on the $1$-dimensional top exterior power $\Lambda^n(\mathbb{F}^n)$ (the multiples of $\mathbf{e}_1 \wedge \cdots \wedge \mathbf{e}_n$; $\Lambda^n A$ sends $\mathbf{v}_1 \wedge \cdots \wedge \mathbf{v}_n$ to $A\mathbf{v}_1 \wedge \cdots \wedge A\mathbf{v}_n$, so it sends $\mathbf{e}_1 \wedge \cdots \wedge \mathbf{e}_n$ to $A_{\ast 1} \wedge \cdots \wedge A_{\ast n} = \det(A)\,\mathbf{e}_1 \wedge \cdots \wedge \mathbf{e}_n$), giving a coordinate-free proof of $\det(AB) = \det(A)\det(B)$ via $\Lambda^n(AB) = (\Lambda^n A)(\Lambda^n B)$.
+
+Gaussian elimination with row interchanges factors any nonsingular $n \times n$ matrix $A$ as $PA = LU$, where the permutation matrix $P$ records the row interchanges, $U$ is the upper triangular matrix that elimination ends with (its diagonal elements are the pivots), and $L$ is lower triangular with diagonal elements $1$ (below the diagonal it holds the multipliers used in the elimination). Thus, from the product rule for determinants and the rule for determinants of triangular matrices, we can see that:
+
+$$\det(A) = \pm u_{11}u_{22}\cdots u_{nn},$$
+
+where $u_{ii}$ are the pivots and the sign is $+1$ for an even number of row interchanges and $-1$ for an odd number.
+
+In block matrices, if $A$ and $C$ are square, then
+
+$$\det\begin{pmatrix} A & B \\ 0 & C \end{pmatrix} = \det(A)\det(C).$$
+
+From the [block factorization and Schur complements](#row-operations-eliminations) we get from Gaussian elimination, we can give the more general rule
+
+$$\det\begin{pmatrix} A & B \\ C & D \end{pmatrix} = \begin{cases} \det(A)\det(D - CA^{-1}B) & \text{when } A^{-1} \text{ exists,} \\ \det(D)\det(A - BD^{-1}C) & \text{when } D^{-1} \text{ exists.} \end{cases}$$
+
+Applying this identity, in both of its cases, to the $(n + 1) \times (n + 1)$ block matrix $\begin{pmatrix} A & \mathbf{c} \\ -\mathbf{d}^T & 1 \end{pmatrix}$, with $A$ nonsingular and $\mathbf{c}, \mathbf{d} \in \mathbb{F}^n$, gives
+
+$$\det\begin{pmatrix} A & \mathbf{c} \\ -\mathbf{d}^T & 1 \end{pmatrix} = \det(A)(1 + \mathbf{d}^T A^{-1}\mathbf{c}) = \det(1)\det(A + \mathbf{c}\mathbf{d}^T),$$
+
+so we get the formulas
+
+$$\det(I + \mathbf{c}\mathbf{d}^T) = 1 + \mathbf{d}^T\mathbf{c}, \qquad \det(A + \mathbf{c}\mathbf{d}^T) = \det(A)(1 + \mathbf{d}^T A^{-1}\mathbf{c}),$$
+
+where the first is the case $A = I$.
+
+Replacing $\mathbf{c}$ and $\mathbf{d}^T$ by rectangular $n \times k$ and $k \times n$ matrices $U$ and $V$ (and the $1$ by $I_k$) immediately yields the rank-$k$ Sylvester / Weinstein–Aronszajn determinant identity, the first formula below. Replacing $U$ by $UC$ for a nonsingular $k \times k$ matrix $C$ (with $A$ nonsingular) gives the second:
+
+$$\det(I_n + UV) = \det(I_k + VU), \qquad \det(A + UCV) = \det(A)\det(C)\det(C^{-1} + VA^{-1}U).$$
+
+The famous Cramer's Rule follows from the $A + \mathbf{c}\mathbf{d}^T$ rule: the solution for the $i$-th unknown in a nonsingular system $A_{n \times n}\mathbf{x} = \mathbf{b}$ is
+
+$$x_i = \frac{\det(A_i)}{\det(A)},$$
+
+where $A_i = [A_{\ast 1} \mid \cdots \mid A_{\ast(i-1)} \mid \mathbf{b} \mid A_{\ast(i+1)} \mid \cdots \mid A_{\ast n}]$. That is, $A_i$ is identical to $A$ except that column $A_{\ast i}$ has been replaced by $\mathbf{b}$.
+
+To prove this, note that $A_i$ comes from $A$ by subtracting $A_{\ast i}$ from column $i$ and adding $\mathbf{b}$ to it:
+
+$$A_i = A + (\mathbf{b} - A_{\ast i})\mathbf{e}_i^T,$$
+
+where $\mathbf{e}_i$ is the $i$-th standard basis (unit) vector. Then apply the determinant rule to yield
+
+$$\det(A_i) = \det(A)\bigl(1 + \mathbf{e}_i^T A^{-1}(\mathbf{b} - A_{\ast i})\bigr) = \det(A)\bigl(1 + \mathbf{e}_i^T(\mathbf{x} - \mathbf{e}_i)\bigr) = \det(A)(1 + x_i - 1) = \det(A)x_i.$$
+
+Thus $x_i = \det(A_i)/\det(A)$.
+
+#### Minors & Cofactors
+A $k \times k$ minor determinant (or simply a minor) of $A_{m \times n}$ is the determinant of any $k \times k$ submatrix of $A$. A $k \times k$ principal minor of a square matrix $A$ is a minor lying on the intersection of $k$ rows (say the $p$-th, $q$-th, etc.) and their matching columns (the $p$-th, $q$-th, etc.). The $k \times k$ leading principal minor is the principal minor lying on the intersection of the first $k$ rows and columns.
+
+As we have seen [earlier](#matrix-rank), the rank of $A$ is equal to the size of a largest nonsingular square submatrix, which means the rank is equal to the size of a largest nonzero minor (with $\operatorname{rank}(0) = 0$ when no nonzero minor exists).
+
+While $A_{n \times n}$ has minor determinants of various sizes, the $(n - 1) \times (n - 1)$ minors (for $n \ge 2$) are especially significant. For each position $(i, j)$ in $A_{n \times n}$, the $(i, j)$-cofactor is defined to be
+
+$$\mathring{A}_{ij} = (-1)^{i+j} M_{ij},$$
+
+where $M_{ij}$ is the $(n - 1) \times (n - 1)$ minor obtained by deleting the $i$-th row and $j$-th column of $A$ (with the convention $\mathring{A}_{11} = 1$ for $n = 1$). The matrix of cofactors is denoted by $\mathring{A}$.
+
+The cofactors of a square matrix $A$ appear naturally in the definition of $\det(A)$. For example, the determinant of a general $3 \times 3$ matrix is, by definition,
+
+$$\begin{aligned} \begin{vmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23} \\ a_{31} & a_{32} & a_{33} \end{vmatrix} &= a_{11}a_{22}a_{33} + a_{12}a_{23}a_{31} + a_{13}a_{21}a_{32} - a_{11}a_{23}a_{32} - a_{12}a_{21}a_{33} - a_{13}a_{22}a_{31} \\ &= a_{11}(a_{22}a_{33} - a_{23}a_{32}) + a_{12}(a_{23}a_{31} - a_{21}a_{33}) + a_{13}(a_{21}a_{32} - a_{22}a_{31}) \\ &= a_{11}\mathring{A}_{11} + a_{12}\mathring{A}_{12} + a_{13}\mathring{A}_{13}. \end{aligned}$$
+
+Because this expression is in terms of the entries of the first row along with the corresponding cofactors, it is called the cofactor expansion of $\det(A)$ in terms of the first row. Notice that over $\mathbb{R}$, this expansion simply amounts to the inner product of the first row of $A$ with the cofactors for the first row (over $\mathbb{C}$, it is the unconjugated sum of products $\sum_j a_{1j}\mathring{A}_{1j}$, not the Hermitian inner product). It should be clear that there is nothing special about the first row of $A$. That is, it's just as easy to write an expression similar to this in which entries from any other row or column appear: for any row $i$ and any column $j$,
+
+$$\det(A) = \sum_{k=1}^n a_{ik}\mathring{A}_{ik} = \sum_{k=1}^n a_{kj}\mathring{A}_{kj}.$$
+
+This is useful to calculate determinants when one particular row (or column) has several $0$s, in which case the cofactor expansion along that row (or column) can be used.
+
+$\mathring{A}^T$, the transpose of the matrix of cofactors, is more useful than $\mathring{A}$ itself. It is called the adjugate.
+
+If $A$ is nonsingular, then $A^{-1} = \dfrac{\mathring{A}^T}{\det(A)}$, and thus $(A^{-1})_{ij} = \dfrac{\mathring{A}_{ji}}{\det(A)}$.
+
+We also have the more general rule
+
+$$A\mathring{A}^T = \mathring{A}^T A = \det(A)I_n,$$
+
+which holds for every square matrix, even singular ones.
+
+#### Determinants of Hermitian & Unitary Matrices
+Over $\mathbb{C}$, $\det(A^*) = \overline{\det(A)}$, so Hermitian matrices always have real determinants ($\det(A) = \det(A^*) = \overline{\det(A)}$), and unitary matrices satisfy $\vert{}\det(U)\vert{} = 1$ (since $\vert{}\det(U)\vert{}^2 = \overline{\det(U)}\det(U) = \det(U^*U) = \det(I) = 1$). For any square matrix, $\det(A) = \prod_{i=1}^n \lambda_i$ (the product of all eigenvalues counting algebraic multiplicity).
+
+**Sylvester's Criterion**: A Hermitian matrix $A \in \mathbb{C}^{n \times n}$ is positive definite (that is, $\mathbf{x}^*A\mathbf{x} > 0$ for every nonzero $\mathbf{x} \in \mathbb{C}^n$) if and only if all $n$ of its leading principal minors are strictly positive.
+
+#### Jacobi's Formula (The Derivative of $\det$)
+
+Differentiating $\det(A)$ with respect to entry $a_{ij}$ via the $i$-th row cofactor expansion $\det(A) = \sum_k a_{ik}\mathring{A}_{ik}$ gives $\frac{\partial \det(A)}{\partial a_{ij}} = \mathring{A}_{ij}$, because the cofactors $\mathring{A}_{ik}$ are built from the other rows and do not involve $a_{ij}$. This means the cofactor matrix $\mathring{A}$ is literally the matrix gradient of $\det$! By the chain rule, for any smooth matrix path $A(t)$,
+
+$$\frac{d}{dt}\det(A(t)) = \operatorname{trace}\!\left(\mathring{A}(t)^T \frac{dA}{dt}\right) = \det(A(t))\operatorname{trace}\!\left(A(t)^{-1}\frac{dA}{dt}\right)$$
+
+(with the second equality when $A(t)$ is nonsingular, using $\mathring{A}^T = \det(A)A^{-1}$). Setting $A(t) = e^{tX}$, the matrix exponential $e^{tX} = \sum_{k \ge 0} t^kX^k/k!$, for which $dA/dt = Xe^{tX}$ and $A(t)^{-1} = e^{-tX}$, gives $\frac{d}{dt}\det(e^{tX}) = \det(e^{tX})\operatorname{trace}(e^{-tX}Xe^{tX}) = \operatorname{trace}(X)\det(e^{tX})$ by the cyclic property of the trace. Since $e^{0X} = I$ has determinant $1$, this means $\det(e^{tX}) = e^{t\operatorname{trace}(X)}$, and $t = 1$ gives $\det(e^X) = e^{\operatorname{trace}(X)}$. In General Relativity, let $g = \det(g_{\mu\nu})$ be the determinant of the spacetime metric (it is negative), let $g^{\mu\nu}$ be the inverse metric, and sum over repeated indices. Jacobi's formula gives $\delta g = g\,g^{\mu\nu}\delta g_{\mu\nu}$, so $\delta\sqrt{-g} = -\delta g/(2\sqrt{-g}) = \frac{1}{2}\sqrt{-g}\,g^{\mu\nu}\delta g_{\mu\nu}$, the metric-volume variation used to derive Einstein's field equations from the Einstein–Hilbert action.
 
 ## Tensors
 A tensor (specifically a covariant or Cartesian tensor in a Euclidean vector space; more generally, a map taking both vectors and covectors, the dual vectors of [Linear Operators](#linear-operators)) is a multilinear function that takes a certain number of vectors as input and outputs a scalar; multilinear means linear in each input when the other inputs are held fixed. The number of input vectors is called the rank (or order) of a tensor (not to be confused with the [rank of a matrix](#matrix-rank)). Since a tensor is multilinear, it means we can break down the output of a tensor into components, i.e., as a sum of scaled versions of what the tensor does to the basis vectors of a vector space. For example, say we have a rank-2 tensor acting on the vectors:
 
-$$v = v_x\hat{x} + v_y\hat{y} + v_z\hat{z}$$
+$$\mathbf{v} = v_x\hat{\mathbf{x}} + v_y\hat{\mathbf{y}} + v_z\hat{\mathbf{z}}$$
 
-$$w = w_x\hat{x} + w_y\hat{y} + w_z\hat{z}.$$
+$$\mathbf{w} = w_x\hat{\mathbf{x}} + w_y\hat{\mathbf{y}} + w_z\hat{\mathbf{z}}.$$
 
 Then we have
 
-$$\begin{aligned} T(v, w) &= T(v_x\hat{x} + v_y\hat{y} + v_z\hat{z},\; w_x\hat{x} + w_y\hat{y} + w_z\hat{z}) \\ &= v_x T(\hat{x},\; w_x\hat{x} + w_y\hat{y} + w_z\hat{z}) + v_y T(\hat{y},\; w_x\hat{x} + w_y\hat{y} + w_z\hat{z}) \\ &\quad + v_z T(\hat{z},\; w_x\hat{x} + w_y\hat{y} + w_z\hat{z}) \\ &= v_x w_x T(\hat{x}, \hat{x}) + v_x w_y T(\hat{x}, \hat{y}) + v_x w_z T(\hat{x}, \hat{z}) + v_y w_x T(\hat{y}, \hat{x}) + v_y w_y T(\hat{y}, \hat{y}) \\ &\quad + v_y w_z T(\hat{y}, \hat{z}) + v_z w_x T(\hat{z}, \hat{x}) + v_z w_y T(\hat{z}, \hat{y}) + v_z w_z T(\hat{z}, \hat{z}). \end{aligned}$$
+$$\begin{aligned} T(\mathbf{v}, \mathbf{w}) &= T(v_x\hat{\mathbf{x}} + v_y\hat{\mathbf{y}} + v_z\hat{\mathbf{z}},\; w_x\hat{\mathbf{x}} + w_y\hat{\mathbf{y}} + w_z\hat{\mathbf{z}}) \\ &= v_x T(\hat{\mathbf{x}},\; w_x\hat{\mathbf{x}} + w_y\hat{\mathbf{y}} + w_z\hat{\mathbf{z}}) + v_y T(\hat{\mathbf{y}},\; w_x\hat{\mathbf{x}} + w_y\hat{\mathbf{y}} + w_z\hat{\mathbf{z}}) \\ &\quad + v_z T(\hat{\mathbf{z}},\; w_x\hat{\mathbf{x}} + w_y\hat{\mathbf{y}} + w_z\hat{\mathbf{z}}) \\ &= v_x w_x T(\hat{\mathbf{x}}, \hat{\mathbf{x}}) + v_x w_y T(\hat{\mathbf{x}}, \hat{\mathbf{y}}) + v_x w_z T(\hat{\mathbf{x}}, \hat{\mathbf{z}}) + v_y w_x T(\hat{\mathbf{y}}, \hat{\mathbf{x}}) + v_y w_y T(\hat{\mathbf{y}}, \hat{\mathbf{y}}) \\ &\quad + v_y w_z T(\hat{\mathbf{y}}, \hat{\mathbf{z}}) + v_z w_x T(\hat{\mathbf{z}}, \hat{\mathbf{x}}) + v_z w_y T(\hat{\mathbf{z}}, \hat{\mathbf{y}}) + v_z w_z T(\hat{\mathbf{z}}, \hat{\mathbf{z}}). \end{aligned}$$
 
-We define the components of $T$ as $T_{xx} = T(\hat{x}, \hat{x})$, $T_{xy} = T(\hat{x}, \hat{y})$, $T_{yx} = T(\hat{y}, \hat{x})$, and so on. This then gives
+We define the components of $T$ as $T_{xx} = T(\hat{\mathbf{x}}, \hat{\mathbf{x}})$, $T_{xy} = T(\hat{\mathbf{x}}, \hat{\mathbf{y}})$, $T_{yx} = T(\hat{\mathbf{y}}, \hat{\mathbf{x}})$, and so on. This then gives
 
-$$\begin{aligned} T(v, w) &= v_x w_x T_{xx} + v_x w_y T_{xy} + v_x w_z T_{xz} + v_y w_x T_{yx} + v_y w_y T_{yy} \\ &\quad + v_y w_z T_{yz} + v_z w_x T_{zx} + v_z w_y T_{zy} + v_z w_z T_{zz}. \end{aligned}$$
+$$\begin{aligned} T(\mathbf{v}, \mathbf{w}) &= v_x w_x T_{xx} + v_x w_y T_{xy} + v_x w_z T_{xz} + v_y w_x T_{yx} + v_y w_y T_{yy} \\ &\quad + v_y w_z T_{yz} + v_z w_x T_{zx} + v_z w_y T_{zy} + v_z w_z T_{zz}. \end{aligned}$$
 
-Let's look at the Levi-Civita tensor as an example. This is a rank-3 tensor which takes 3 input vectors and outputs the signed volume of the parallelepiped formed by those 3 vectors, i.e., $(u \times v) \cdot w$.
+Let's look at the Levi-Civita tensor as an example. This is a rank-3 tensor which takes 3 input vectors and outputs the signed volume of the parallelepiped formed by those 3 vectors, i.e., $(\mathbf{u} \times \mathbf{v}) \cdot \mathbf{w}$.
 
-Due to multilinearity, we can figure out the output of the tensor on any 3 vectors if we know how it behaves with the basis vectors, which will then form the components of the tensor. Accordingly, we say the components of the tensor in a right-handed orthonormal $\{\hat{\imath}, \hat{\jmath}, \hat{k}\}$ basis are $+1$ for any ordered triples that are cyclic permutations of $(\hat{\imath}, \hat{\jmath}, \hat{k})$ such as $(\hat{k}, \hat{\imath}, \hat{\jmath})$, $-1$ for any that are cyclic permutations of $(\hat{\jmath}, \hat{\imath}, \hat{k})$ (i.e., odd/anti-cyclic permutations of $(\hat{\imath}, \hat{\jmath}, \hat{k})$), and $0$ otherwise (e.g., for $(\hat{\imath}, \hat{\imath}, \hat{\jmath})$).
+Due to multilinearity, we can figure out the output of the tensor on any 3 vectors if we know how it behaves with the basis vectors, which will then form the components of the tensor. Accordingly, we say the components of the tensor in a right-handed orthonormal $\{\hat{\mathbf{i}}, \hat{\mathbf{j}}, \hat{\mathbf{k}}\}$ basis are $+1$ for any ordered triples that are cyclic permutations of $(\hat{\mathbf{i}}, \hat{\mathbf{j}}, \hat{\mathbf{k}})$ such as $(\hat{\mathbf{k}}, \hat{\mathbf{i}}, \hat{\mathbf{j}})$, $-1$ for any that are cyclic permutations of $(\hat{\mathbf{j}}, \hat{\mathbf{i}}, \hat{\mathbf{k}})$ (i.e., odd/anti-cyclic permutations of $(\hat{\mathbf{i}}, \hat{\mathbf{j}}, \hat{\mathbf{k}})$), and $0$ otherwise (e.g., for $(\hat{\mathbf{i}}, \hat{\mathbf{i}}, \hat{\mathbf{j}})$).
 
-The $+1$, $-1$, and $0$ components are simply the signed volumes we get with the appropriate parallelepipeds, such as $(\hat{\imath} \times \hat{\jmath}) \cdot \hat{k}$, $(\hat{\jmath} \times \hat{\imath}) \cdot \hat{k}$, or $(\hat{\imath} \times \hat{\imath}) \cdot \hat{\jmath}$. Note that the tensor exists independently of any basis vectors. It evaluates any ordered triple of 3 input vectors. But the component values will depend on the basis. For the Levi-Civita tensor, every right-handed orthonormal basis gives the same values $+1$, $-1$ and $0$, because rotations preserve signed volume, but a left-handed orthonormal basis flips all their signs, and in general they are multiplied by the signed volume of the new basis vectors.
+The $+1$, $-1$, and $0$ components are simply the signed volumes we get with the appropriate parallelepipeds, such as $(\hat{\mathbf{i}} \times \hat{\mathbf{j}}) \cdot \hat{\mathbf{k}}$, $(\hat{\mathbf{j}} \times \hat{\mathbf{i}}) \cdot \hat{\mathbf{k}}$, or $(\hat{\mathbf{i}} \times \hat{\mathbf{i}}) \cdot \hat{\mathbf{j}}$. Note that the tensor exists independently of any basis vectors. It evaluates any ordered triple of 3 input vectors. But the component values will depend on the basis. For the Levi-Civita tensor, every right-handed orthonormal basis gives the same values $+1$, $-1$ and $0$, because rotations preserve signed volume, but a left-handed orthonormal basis flips all their signs, and in general they are multiplied by the signed volume of the new basis vectors.
 
-We can also arrive at how the components change when a basis changes. Say we switch to a new set of basis vectors $\{\hat{x}', \hat{y}', \hat{z}'\}$ which are related to the old basis vectors by
+We can also arrive at how the components change when a basis changes. Say we switch to a new set of basis vectors $\{\hat{\mathbf{x}}', \hat{\mathbf{y}}', \hat{\mathbf{z}}'\}$ which are related to the old basis vectors by
 
-$$\begin{aligned} \hat{x}' &= A_{x'x}\hat{x} + A_{x'y}\hat{y} + A_{x'z}\hat{z}, \\ \hat{y}' &= A_{y'x}\hat{x} + A_{y'y}\hat{y} + A_{y'z}\hat{z}, \\ \hat{z}' &= A_{z'x}\hat{x} + A_{z'y}\hat{y} + A_{z'z}\hat{z}. \end{aligned}$$
+$$\begin{aligned} \hat{\mathbf{x}}' &= A_{x'x}\hat{\mathbf{x}} + A_{x'y}\hat{\mathbf{y}} + A_{x'z}\hat{\mathbf{z}}, \\ \hat{\mathbf{y}}' &= A_{y'x}\hat{\mathbf{x}} + A_{y'y}\hat{\mathbf{y}} + A_{y'z}\hat{\mathbf{z}}, \\ \hat{\mathbf{z}}' &= A_{z'x}\hat{\mathbf{x}} + A_{z'y}\hat{\mathbf{y}} + A_{z'z}\hat{\mathbf{z}}. \end{aligned}$$
 
-This does not affect the action of $T$, since $T$ exists independently of any basis, but if we'd like to compute the value of $T(v, w)$ in terms of the new components $(v_{x'}, v_{y'}, v_{z'})$ and $(w_{x'}, w_{y'}, w_{z'})$ of $v$ and $w$, then we'll need to know what the new components $\{T_{x'x'}, T_{x'y'}, T_{x'z'}, \dots\}$ look like. Computing $T_{x'x'}$, for instance, gives
+This does not affect the action of $T$, since $T$ exists independently of any basis, but if we'd like to compute the value of $T(\mathbf{v}, \mathbf{w})$ in terms of the new components $(v_{x'}, v_{y'}, v_{z'})$ and $(w_{x'}, w_{y'}, w_{z'})$ of $\mathbf{v}$ and $\mathbf{w}$, then we'll need to know what the new components $\{T_{x'x'}, T_{x'y'}, T_{x'z'}, \dots\}$ look like. Computing $T_{x'x'}$, for instance, gives
 
-$$\begin{aligned} T_{x'x'} &= T(\hat{x}', \hat{x}') \\ &= T(A_{x'x}\hat{x} + A_{x'y}\hat{y} + A_{x'z}\hat{z},\; A_{x'x}\hat{x} + A_{x'y}\hat{y} + A_{x'z}\hat{z}) \\ &= A_{x'x}A_{x'x}T_{xx} + A_{x'y}A_{x'x}T_{yx} + A_{x'z}A_{x'x}T_{zx} + A_{x'x}A_{x'y}T_{xy} \\ &\quad + A_{x'y}A_{x'y}T_{yy} + A_{x'z}A_{x'y}T_{zy} + A_{x'x}A_{x'z}T_{xz} + A_{x'y}A_{x'z}T_{yz} + A_{x'z}A_{x'z}T_{zz}. \end{aligned}$$
+$$\begin{aligned} T_{x'x'} &= T(\hat{\mathbf{x}}', \hat{\mathbf{x}}') \\ &= T(A_{x'x}\hat{\mathbf{x}} + A_{x'y}\hat{\mathbf{y}} + A_{x'z}\hat{\mathbf{z}},\; A_{x'x}\hat{\mathbf{x}} + A_{x'y}\hat{\mathbf{y}} + A_{x'z}\hat{\mathbf{z}}) \\ &= A_{x'x}A_{x'x}T_{xx} + A_{x'y}A_{x'x}T_{yx} + A_{x'z}A_{x'x}T_{zx} + A_{x'x}A_{x'y}T_{xy} \\ &\quad + A_{x'y}A_{x'y}T_{yy} + A_{x'z}A_{x'y}T_{zy} + A_{x'x}A_{x'z}T_{xz} + A_{x'y}A_{x'z}T_{yz} + A_{x'z}A_{x'z}T_{zz}. \end{aligned}$$
 
-In Einstein summation notation (an index repeated once up and once down is summed over), writing the basis change as $\hat{e}_{i'} = A^k{}_{i'}\hat{e}_k$ (with $A^k{}_{i'} \equiv A_{i'k}$), this can be written as
+In Einstein summation notation (an index repeated once up and once down is summed over), writing the basis change as $\hat{\mathbf{e}}_{i'} = A^k{}_{i'}\hat{\mathbf{e}}_k$ (with $A^k{}_{i'} \equiv A_{i'k}$), this can be written as
 
 $$T_{i'j'} = A^k{}_{i'} A^l{}_{j'} T_{kl}$$
 
