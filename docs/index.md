@@ -1,20 +1,20 @@
 ## Maths
 
-Vector Calculus, Linear Algebra, Rings & Fields
+[Linear Algebra and Abstract Algebra](maths/maths_0_linear_and_abstract_algebra.md)
 
-Differential Geometry
+[Differential Geometry](maths/maths_1_differential_geometry.md)
 
-Group Theory
+[Group Theory](maths/maths_2_group_theory.md)
 
-Projective Geometry
+[Projective Geometry](maths/maths_3_projective_geometry.md)
 
-Incidence Geometry
+[Incidence Geometry](maths/maths_4_incidence_geometry.md)
 
 ## General Physics
 
-Special Relativity & Classical Field Theory
- 
-Statistical Mechanics
+[Special Relativity & Classical Field Theory](physics/physics_2_special_relativity_classical_field_theory.md)
+
+[Statistical Mechanics](physics/physics_1_statistical_mechanics.md)
 
 [TODO] General Relativity
 
@@ -22,16 +22,16 @@ Statistical Mechanics
 
 ## Quantum Theory
 
-Quantum Physics
+[Quantum Physics](quantum/quantum_1_quantum_physics.md)
 
-Quantum Information Theory
+[Quantum Information Theory](quantum/quantum_2_quantum_information_theory.md)
 
 [TODO] Quantum Field Theory
 
 ## Astrophysics
 
-Stellar Astrophysics
+[Stellar Astrophysics](astrophysics/astrophysics_1_stellar_astrophysics.md)
 
-[TODO] Cosmology
+[TODO] [Cosmology](astrophysics/astrophysics_2_cosmology.md)
 
 [TODO] Blackholes & Thermodynamics

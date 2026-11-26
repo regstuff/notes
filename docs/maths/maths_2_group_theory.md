@@ -2228,7 +2228,7 @@ For an association scheme on $n$ vertices, the algebra formed by the association
 
 The Bose-Mesner algebra has two distinguished dual bases. Here "dual" does not mean a basis of the dual space: both bases lie in the algebra itself, and they trade the roles of the two products, since the $A_i$ are idempotent and mutually orthogonal under the entrywise product $\circ$, while the $E_i$ are idempotent and mutually orthogonal under the ordinary product:
 
-The geometric basis: $\{A_0, A_1, \dots, A_d\}$, where $d = r - 1$ is the number of non-identity relations, under ordinary and [Schur-Hadamard multiplication](maths_4_incidence_geometry.md#rank-determinants-and-gram-matrices) (the entrywise product, $(A \circ B)_{\alpha\beta} = A_{\alpha\beta} B_{\alpha\beta}$):
+The geometric basis: $\{A_0, A_1, \dots, A_d\}$, where $d = r - 1$ is the number of non-identity relations, under ordinary and [Schur-Hadamard multiplication](maths_0_linear_and_abstract_algebra.md#hadamard-or-schur-product) (the entrywise product, $(A \circ B)_{\alpha\beta} = A_{\alpha\beta} B_{\alpha\beta}$):
 
 $$A_i A_j = \sum_{k=0}^d p_{ij}^k A_k, \qquad A_i \circ A_j = \delta_{ij} A_i$$
 

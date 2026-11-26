@@ -222,7 +222,8 @@ As an example, let the integration range be $[-1, 1]$ and $W(x) = 1$. Applying G
 $$\begin{aligned} P_0(x) &= 1, \\ P_1(x) &= x, \\ P_2(x) &= \frac{1}{2}(3x^2 - 1), \\ P_3(x) &= \frac{1}{2}(5x^3 - 3x). \end{aligned}$$
 
 ## Matrix Analysis - First Look
-In general, the discussions here are for the Real and Complex fields. We do not consider finite fields unless explicitly stated.
+In general, the discussions here are for the real and complex fields. We do not consider finite fields unless explicitly stated.
+
 Consider the system of linear equations:
 
 $$\begin{aligned}a_{11}x_1+a_{12}x_2+a_{13}x_3&=y_1\\a_{21}x_1+a_{22}x_2+a_{23}x_3&=y_2\\a_{31}x_1+a_{32}x_2+a_{33}x_3&=y_3\end{aligned}$$
@@ -556,7 +557,7 @@ Consider a unit vector $\mathbf{u} \in \mathbb{R}^n$ and another arbitrary vecto
 
 Even if we assume that $\mathbf{u}$ is not aligned with a coordinate axis (and is not necessarily a unit vector, as long as $\mathbf{u} \neq \mathbf{0}$), we now know that we can always bring in some orthogonal matrix to rotate the coordinates to align with $\mathbf{u}$. So whether $\mathbf{u}$ aligns with a coordinate axis or not is really a moot point. 
 
-To prove this, let $\hat{\mathbf{u}} = \mathbf{u}/\Vert{}\mathbf{u}\Vert{}_2$, and let $Q$ be an orthogonal matrix aligning $\hat{\mathbf{u}}$ with $\mathbf{e}_i$, so $Q\hat{\mathbf{u}} = \mathbf{e}_i$ (equivalently,  $Q^T \mathbf{e}_i = \hat{\mathbf{u}}$). Transforming to the rotated frame, applying $P_i = \mathbf{e}_i \mathbf{e}_i^T$, and rotating back yields   
+To prove this, let $\hat{\mathbf{u}} = \mathbf{u}/\Vert{}\mathbf{u}\Vert{}_2$, and let $Q$ be an [orthogonal matrix](#unitary-matrices) ($Q^TQ = I$) aligning $\hat{\mathbf{u}}$ with $\mathbf{e}_i$, so $Q\hat{\mathbf{u}} = \mathbf{e}_i$ (equivalently,  $Q^T \mathbf{e}_i = \hat{\mathbf{u}}$). Transforming to the rotated frame, applying $P_i = \mathbf{e}_i \mathbf{e}_i^T$, and rotating back yields   
 
 $$P_{\mathbf{u}} = Q^T (\mathbf{e}_i \mathbf{e}_i^T) Q = (Q^T \mathbf{e}_i)(Q^T \mathbf{e}_i)^T = \hat{\mathbf{u}}\hat{\mathbf{u}}^T = \frac{\mathbf{u}\mathbf{u}^T}{\mathbf{u}^T \mathbf{u}}.$$
 
@@ -888,7 +889,7 @@ Assume $A$ is $m \times m$ and $B$ is $n \times n$ for the following:
 -   $\det(A \otimes B) = [\det(A)]^n[\det(B)]^m$.
 -   $(A \otimes B)^{-1} = A^{-1} \otimes B^{-1}$ for nonsingular matrices $A$ and $B$.
 -   $(A \otimes B)^\dagger = A^\dagger \otimes B^\dagger$ in general (even when $A$ and $B$ are singular, and in fact even when they are rectangular).
--   If $A$ and $B$ are unitary, then $A \otimes B$ is unitary.
+-   If $A$ and $B$ are [unitary](#unitary-matrices), then $A \otimes B$ is unitary.
 
 A related aspect is the $\operatorname{vec}$ operator, which stacks all columns of a matrix into a single column vector. For $X \in \mathbb{F}^{m \times n}$, the column vector $\operatorname{vec}(X) \in \mathbb{F}^{mn \times 1}$ is defined to be
 
@@ -1102,7 +1103,7 @@ $$A\mathring{A}^T = \mathring{A}^T A = \det(A)I_n,$$
 which holds for every square matrix, even singular ones.
 
 #### Determinants of Hermitian & Unitary Matrices
-Over $\mathbb{C}$, $\det(A^*) = \overline{\det(A)}$, so Hermitian matrices always have real determinants ($\det(A) = \det(A^*) = \overline{\det(A)}$), and unitary matrices satisfy $\vert{}\det(U)\vert{} = 1$ (since $\vert{}\det(U)\vert{}^2 = \overline{\det(U)}\det(U) = \det(U^*U) = \det(I) = 1$). For any square matrix, $\det(A) = \prod_{i=1}^n \lambda_i$ (the product of all eigenvalues counting algebraic multiplicity).
+Over $\mathbb{C}$, $\det(A^*) = \overline{\det(A)}$, so [Hermitian](#hermitian-unitary-and-orthogonal-matrices) matrices ($A^* = A$) always have real determinants ($\det(A) = \det(A^*) = \overline{\det(A)}$), and unitary matrices ($U^*U = I$) satisfy $\vert{}\det(U)\vert{} = 1$ (since $\vert{}\det(U)\vert{}^2 = \overline{\det(U)}\det(U) = \det(U^*U) = \det(I) = 1$). For any square matrix, $\det(A) = \prod_{i=1}^n \lambda_i$ (the product of all eigenvalues counting algebraic multiplicity).
 
 **Sylvester's Criterion**: A Hermitian matrix $A \in \mathbb{C}^{n \times n}$ is positive definite (that is, $\mathbf{x}^*A\mathbf{x} > 0$ for every nonzero $\mathbf{x} \in \mathbb{C}^n$) if and only if all $n$ of its leading principal minors are strictly positive.
 
@@ -1118,168 +1119,135 @@ $$\frac{d}{dt}\det(A(t)) = \operatorname{trace}\!\left(\mathring{A}(t)^T \frac{d
 
 We've seen general linear systems and how matrices can help in finding their solutions. Now let's look at linear differential equations. For example:
 
-  
-
 $$\begin{aligned} u_1' &= \frac{du_1}{dt} = 7u_1 - 4u_2, \\ u_2' &= \frac{du_2}{dt} = 5u_1 - 2u_2. \end{aligned}$$
 
 These can be written as:
 
-  
+$$\mathbf{u}' = A\mathbf{u},$$
 
-$$u' = Au,$$
-
-where $u = \begin{pmatrix} u_1 \\ u_2 \end{pmatrix}$ and $A = \begin{pmatrix} 7 & -4 \\ 5 & -2 \end{pmatrix}$.
-
-  
+where $\mathbf{u} = \begin{pmatrix} u_1 \\ u_2 \end{pmatrix}$ and $A = \begin{pmatrix} 7 & -4 \\ 5 & -2 \end{pmatrix}$.
 
 Because solutions of a single equation $u' = \lambda u$ have the form $u = \alpha e^{\lambda t}$, it is natural to seek solutions to the system of equations above that also have the form $u_1 = \alpha_1 e^{\lambda t}$ and $u_2 = \alpha_2 e^{\lambda t}$. Substituting these into the system of equations above and dividing out $e^{\lambda t} \neq 0$, we have:
 
-  
-
 $$\begin{aligned} \alpha_1 \lambda e^{\lambda t} &= 7\alpha_1 e^{\lambda t} - 4\alpha_2 e^{\lambda t} \\ \alpha_2 \lambda e^{\lambda t} &= 5\alpha_1 e^{\lambda t} - 2\alpha_2 e^{\lambda t} \end{aligned} \implies \begin{aligned} \alpha_1 \lambda &= 7\alpha_1 - 4\alpha_2 \\ \alpha_2 \lambda &= 5\alpha_1 - 2\alpha_2 \end{aligned} \implies \begin{pmatrix} 7 & -4 \\ 5 & -2 \end{pmatrix}\begin{pmatrix} \alpha_1 \\ \alpha_2 \end{pmatrix} = \lambda\begin{pmatrix} \alpha_1 \\ \alpha_2 \end{pmatrix}.$$
 
-We write this as $Ax = \lambda x$, where $x = \begin{pmatrix} \alpha_1 \\ \alpha_2 \end{pmatrix}$.
+We write this as $A\mathbf{x} = \lambda \mathbf{x}$, where $\mathbf{x} = \begin{pmatrix} \alpha_1 \\ \alpha_2 \end{pmatrix}$.
 
-  
+We'd like to find the $\lambda$ and $\mathbf{x}$ that solve this (apart from the trivial $\mathbf{x} = \mathbf{0}$). Thus we need nonzero vectors in the kernel (nullspace) of $A - \lambda I$, and these exist iff $A - \lambda I$ is singular, that is, iff its [determinant](#properties-of-determinants) is $0$.
 
-We'd like to see what $x$ and $\lambda$ are solutions for this (apart from the trivial $x = 0$). Thus we need to find nonzero vectors sitting in the kernel or nullspace of $A - \lambda I$, and obviously these will exist iff $A - \lambda I$ is singular and its determinant is $0$.
+The scalar $\lambda$ and a corresponding nonzero vector $\mathbf{x}$ are called an eigenvalue and an eigenvector, respectively, and together $(\lambda, \mathbf{x})$ is called an eigenpair. The set of all distinct eigenvalues is called the spectrum of $A$, denoted $\sigma(A)$. The space spanned by all eigenvectors associated with $\lambda$, i.e., $N(A - \lambda I)$, is called the eigenspace of $A$ associated with $\lambda$; its dimension is $n - r$ (so it contains at most $n - r$ linearly independent eigenvectors, and any basis of it has exactly $n - r$), where $r = \operatorname{rank}(A - \lambda I)$.
 
-  
+Nonzero vectors $\mathbf{y}$ satisfying $\mathbf{y}^T(A - \lambda I) = \mathbf{0}^T$ (or $\mathbf{y}^*(A - \lambda I) = \mathbf{0}^T$ over $\mathbb{C}$) are called left-hand eigenvectors of $A$. If $A\mathbf{x} = \lambda \mathbf{x}$ and $\mathbf{y}^* A = \mu \mathbf{y}^*$ with $\lambda \neq \mu$, then
 
-The scalar $\lambda$ and a corresponding nonzero vector $x$ are called an eigenvalue and an eigenvector, respectively, and together $(\lambda, x)$ is called an eigenpair. The set of all distinct eigenvalues is called the spectrum of $A$, denoted $\sigma(A)$. The space spanned by all eigenvectors associated with $\lambda$, i.e.,  $N(A - \lambda I)$, is called the eigenspace of $A$ associated with $\lambda$; its dimension is $n - r$ (so it contains at most—and a basis of exactly—$n - r$ linearly independent eigenvectors), where $r = \operatorname{rank}(A - \lambda I)$. 
+$$\mu(\mathbf{y}^* \mathbf{x}) = (\mathbf{y}^* A)\mathbf{x} = \mathbf{y}^*(A\mathbf{x}) = \lambda(\mathbf{y}^* \mathbf{x}) \implies (\mu - \lambda)(\mathbf{y}^* \mathbf{x}) = 0 \implies \mathbf{y}^* \mathbf{x} = 0.$$
 
-Nonzero vectors $y$ satisfying $y^T(A - \lambda I) = 0$ (or $y^*(A - \lambda I) = 0$ over $\mathbb{C}$) are called left-hand eigenvectors of $A$. If $Ax = \lambda x$ and $y^* A = \mu y^*$ with $\lambda \neq \mu$, then
+Thus left and right eigenvectors corresponding to distinct eigenvalues are automatically orthogonal.
 
-$$\mu(y^* x) = (y^* A)x = y^*(Ax) = \lambda(y^* x) \implies (\mu - \lambda)(y^* x) = 0 \implies y^* x = 0.$$
-    
-Thus left and right eigenvectors corresponding to distinct eigenvalues are automatically orthogonal.   
-
-Geometrically (for real eigenvalues), eigenvectors stay along the same line under transformation by $A$—they only stretch or shrink by $\vert{}\lambda\vert{}$ (preserving orientation if $\lambda > 0$, reversing orientation if $\lambda < 0$, or collapsing to $0$ if $\lambda = 0$). Finding the eigenvalues comes down to writing out the determinant of $A - \lambda I$ as a polynomial in $\lambda$. This polynomial $p(\lambda)$ is called the characteristic polynomial of $A$. Setting this to $0$ gives the characteristic equation. Solve this equation to find all eigenvalues, and then plug each of those into $Ax = \lambda x$ to find the corresponding eigenvectors.
-
-  
+Geometrically (for real $A$ and real eigenvalues), eigenvectors stay along the same line under transformation by $A$: they only stretch or shrink by $\vert{}\lambda\vert{}$ (keeping their direction if $\lambda > 0$, reversing it if $\lambda < 0$, or collapsing to $\mathbf{0}$ if $\lambda = 0$). Finding the eigenvalues comes down to writing out the determinant of $A - \lambda I$ as a polynomial in $\lambda$. This polynomial $p(\lambda)$ is called the characteristic polynomial of $A$. Setting this to $0$ gives the characteristic equation. Solve this equation to find all eigenvalues, and then plug each of those into $A\mathbf{x} = \lambda \mathbf{x}$ to find the corresponding eigenvectors.
 
 Solving for our example above:
-
-  
 
 $$p(\lambda) = \det(A - \lambda I) = \begin{vmatrix} 7 - \lambda & -4 \\ 5 & -2 - \lambda \end{vmatrix} = \lambda^2 - 5\lambda + 6 = (\lambda - 2)(\lambda - 3).$$
 
 For $\lambda = 2$:
 
-  
-
-$$A - 2I = \begin{pmatrix} 5 & -4 \\ 5 & -4 \end{pmatrix} \longrightarrow \begin{pmatrix} 1 & -4/5 \\ 0 & 0 \end{pmatrix} \implies \begin{cases} x_1 = (4/5)x_2 \\ x_2 \text{ is free} \end{cases} \implies N(A - 2I) = \left\{x \;\middle\vert{}\; x = \alpha\begin{pmatrix} 4/5 \\ 1 \end{pmatrix},\; \alpha \in \mathbb{F}\right\}.$$
+$$A - 2I = \begin{pmatrix} 5 & -4 \\ 5 & -4 \end{pmatrix} \longrightarrow \begin{pmatrix} 1 & -4/5 \\ 0 & 0 \end{pmatrix} \implies \begin{cases} x_1 = (4/5)x_2 \\ x_2 \text{ is free} \end{cases} \implies N(A - 2I) = \left\{\mathbf{x} \;\middle\vert{}\; \mathbf{x} = \alpha\begin{pmatrix} 4/5 \\ 1 \end{pmatrix},\; \alpha \in \mathbb{F}\right\}.$$
 
 For $\lambda = 3$:
 
-  
+$$A - 3I = \begin{pmatrix} 4 & -4 \\ 5 & -5 \end{pmatrix} \longrightarrow \begin{pmatrix} 1 & -1 \\ 0 & 0 \end{pmatrix} \implies \begin{cases} x_1 = x_2 \\ x_2 \text{ is free} \end{cases} \implies N(A - 3I) = \left\{\mathbf{x} \;\middle\vert{}\; \mathbf{x} = \beta\begin{pmatrix} 1 \\ 1 \end{pmatrix},\; \beta \in \mathbb{F}\right\}.$$
 
-$$A - 3I = \begin{pmatrix} 4 & -4 \\ 5 & -5 \end{pmatrix} \longrightarrow \begin{pmatrix} 1 & -1 \\ 0 & 0 \end{pmatrix} \implies \begin{cases} x_1 = x_2 \\ x_2 \text{ is free} \end{cases} \implies N(A - 3I) = \left\{x \;\middle\vert{}\; x = \beta\begin{pmatrix} 1 \\ 1 \end{pmatrix},\; \beta \in \mathbb{F}\right\}.$$
-
-In other words, the eigenvectors of $A$ associated with $\lambda = 2$ are all nonzero multiples of $x = \begin{pmatrix} 4/5 \\ 1 \end{pmatrix}$, and the eigenvectors associated with $\lambda = 3$ are all nonzero multiples of $y = \begin{pmatrix} 1 \\ 1 \end{pmatrix}$.
-
-  
+In other words, the eigenvectors of $A$ associated with $\lambda = 2$ are all nonzero multiples of $\mathbf{x} = \begin{pmatrix} 4/5 \\ 1 \end{pmatrix}$, and the eigenvectors associated with $\lambda = 3$ are all nonzero multiples of $\mathbf{y} = \begin{pmatrix} 1 \\ 1 \end{pmatrix}$.
 
 Note that we did not find one unique eigenvector for each eigenvalue, but rather every nonzero multiple of the chosen basis vector is an eigenvector. You could thus normalize the eigenvectors for convenience, such as to get an orthonormal basis in certain situations, which we will explore shortly.
 
-  
-
 Two fundamental solutions to the system of differential equations are thus given by:
 
-  
-
-$$\mathbf{u}^{(1)}(t) = e^{\lambda_1 t}x = e^{2t}\begin{pmatrix} 4/5 \\ 1 \end{pmatrix} \quad \text{and} \quad \mathbf{u}^{(2)}(t) = e^{\lambda_2 t}y = e^{3t}\begin{pmatrix} 1 \\ 1 \end{pmatrix}.$$
+$$\mathbf{u}^{(1)}(t) = e^{\lambda_1 t}\mathbf{x} = e^{2t}\begin{pmatrix} 4/5 \\ 1 \end{pmatrix} \quad \text{and} \quad \mathbf{u}^{(2)}(t) = e^{\lambda_2 t}\mathbf{y} = e^{3t}\begin{pmatrix} 1 \\ 1 \end{pmatrix}.$$
 
 It turns out that all other solutions are linear combinations of these two.
 
-  
-
-The characteristic equation of an $n \times n$ matrix will be of degree $n$. Over $\mathbb{C}$, there are $n$ roots (counted with multiplicity) and thus $n$ eigenvalues, which could repeat. Interestingly enough, the Cayley–Hamilton theorem states that the matrix $A$ itself satisfies its characteristic equation, i.e.,  $p(A) = 0$. For nonsingular $A$ (so that $a_0 = p(0) = \det(A) \neq 0$), this means that $A^{-1}$ can be written as a polynomial in $A$ because
-
-  
+The characteristic equation of an $n \times n$ matrix will be of degree $n$. Over $\mathbb{C}$, there are $n$ roots (counted with multiplicity) and thus $n$ eigenvalues, which could repeat. Interestingly enough, the Cayley–Hamilton theorem states that the matrix $A$ itself satisfies its characteristic equation, i.e., $p(A) = 0$. Writing $p(\lambda) = a_n\lambda^n + \cdots + a_1\lambda + a_0$, for nonsingular $A$ (so that $a_0 = p(0) = \det(A) \neq 0$) this means that $A^{-1}$ can be written as a polynomial in $A$ because
 
 $$\begin{aligned} a_n A^n + \cdots + a_1 A + a_0 I = 0 &\implies a_n A^n + \cdots + a_1 A = -a_0 I \\ &\implies a_n A^{n-1} + \cdots + a_1 I = -a_0 A^{-1} \\ &\implies A^{-1} = -\frac{1}{a_0}(a_n A^{n-1} + \cdots + a_1 I). \end{aligned}$$
 
 Solving higher-order polynomials can be a real pain, but sometimes a standard result from elementary algebra helps: it states that if the coefficients $\alpha_i$ in $\lambda^n + \alpha_{n-1}\lambda^{n-1} + \cdots + \alpha_1\lambda + \alpha_0 = 0$ are integers (with $\alpha_0 \neq 0$), then every integer solution (in fact, every rational solution) is a factor of $\alpha_0$. So for $\lambda^3 - 4\lambda^2 - 3\lambda + 18 = 0$, this means that all integer eigenvalues must be contained in the set $S = \{\pm 1, \pm 2, \pm 3, \pm 6, \pm 9, \pm 18\}$. Very often, in problems such as in graph theory, we may already know in advance that the eigenvalues must be integers, and this mechanism can then be used to test and arrive at the eigenvalues and eigenvectors.
 
-  
+The number of times an eigenvalue $\lambda$ repeats as a root of the characteristic polynomial is called its algebraic multiplicity, denoted $\operatorname{alg\,mult}_A(\lambda)$. The maximal number of linearly independent eigenvectors associated with $\lambda$, i.e., $\dim N(A - \lambda I)$, is called its geometric multiplicity, denoted $\operatorname{geo\,mult}_A(\lambda)$. An eigenvalue $\lambda$ is called a simple eigenvalue whenever $\operatorname{alg\,mult}_A(\lambda) = 1$. It is called semisimple when $\operatorname{alg\,mult}_A(\lambda) = \operatorname{geo\,mult}_A(\lambda)$.
 
-The number of times an eigenvalue $\lambda$ repeats as a root of the characteristic polynomial is called its algebraic multiplicity, denoted $\operatorname{alg\,mult}_A(\lambda)$. The maximal number of linearly independent eigenvectors associated with $\lambda$—i.e.,  $\dim N(A - \lambda I)$—is called its geometric multiplicity, denoted $\operatorname{geo\,mult}_A(\lambda)$. An eigenvalue $\lambda$ is called a simple eigenvalue whenever $\operatorname{alg\,mult}_A(\lambda) = 1$. It is called semisimple when $\operatorname{alg\,mult}_A(\lambda) = \operatorname{geo\,mult}_A(\lambda)$.
+The spectral radius of $A \in \mathbb{F}^{n \times n}$ is defined to be the number $\rho(A) = \max_{\lambda \in \sigma(A)} \vert{}\lambda\vert{}$, i.e., the radius of the smallest circle centered at the origin in the complex plane that contains all of the eigenvalues of $A$. An obvious upper bound to the spectral radius and thus every eigenvalue is $\vert{}\lambda\vert{} \le \Vert{}A\Vert{}_\star$ for every induced (or submultiplicative) matrix norm $\Vert{}\cdot\Vert{}_\star$. For any matrix norm induced by a vector norm $\Vert{}\cdot\Vert{}_\star$ (and any eigenvector $\mathbf{x} \neq \mathbf{0}$, so $\Vert{}\mathbf{x}\Vert{}_\star > 0$), this holds because:
 
-  
+$$\lambda \mathbf{x} = A\mathbf{x} \implies \vert{}\lambda\vert{}\,\Vert{}\mathbf{x}\Vert{}_\star = \Vert{}\lambda \mathbf{x}\Vert{}_\star = \Vert{}A\mathbf{x}\Vert{}_\star \le \Vert{}A\Vert{}_\star \Vert{}\mathbf{x}\Vert{}_\star \implies \vert{}\lambda\vert{} \le \Vert{}A\Vert{}_\star.$$
 
-The spectral radius of $A \in \mathbb{F}^{n \times n}$ is defined to be the number $\rho(A) = \max_{\lambda \in \sigma(A)} \vert{}\lambda\vert{}$, i.e., the radius of the smallest circle centered at the origin in the complex plane that contains all of the eigenvalues of $A$. An obvious upper bound to the spectral radius and thus every eigenvalue is $\vert{}\lambda\vert{} \le \Vert{}A\Vert{}_\star$ for every induced (or submultiplicative) matrix norm $\Vert{}\cdot\Vert{}_\star$. For any matrix norm induced by a vector norm $\Vert{}\cdot\Vert{}_\star$ (and any eigenvector $x \neq 0$, so $\Vert{}x\Vert{}_\star > 0$), this holds because:
+Gelfand's formula makes this exact in the limit, for every matrix norm:
 
-  
+$$\rho(A) = \lim_{k \to \infty} \|A^k\|^{1/k}.$$
 
-$$\lambda x = Ax \implies \vert{}\lambda\vert{}\,\Vert{}x\Vert{}_\star = \Vert{}\lambda x\Vert{}_\star = \Vert{}Ax\Vert{}_\star \le \Vert{}A\Vert{}_\star \Vert{}x\Vert{}_\star \implies \vert{}\lambda\vert{} \le \Vert{}A\Vert{}_\star.$$
+Separately, $\rho(A)$ is the infimum of $\|A\|$ over all induced matrix norms: no induced norm of $A$ is below $\rho(A)$, and some come arbitrarily close to it.
 
-A more exact formula is Gelfand's formula, which gives an exact asymptotic equality valid for every matrix norm:
-    
-$$\rho(A) = \lim_{k \to \infty} \|A^k\|^{1/k}, \qquad \text{and} \qquad \rho(A) = \inf_{\|\cdot\| \text{ induced}} \|A\|.$$
-    
-Consequently,  $A^k \to 0$ as $k \to \infty$ if and only if $\rho(A) < 1$. 
+Consequently, $A^k \to 0$ as $k \to \infty$ if and only if $\rho(A) < 1$.
 
 #### Some Properties of Eigenvalues
 
-Note that we have only been talking about square matrices here. Rectangular matrices do not have eigenvalues. They have singular values, which will be looked into later.
-
-  
+Note that we have only been talking about square matrices here. Rectangular matrices do not have eigenvalues. They have [singular values](#singular-value-decomposition), which we look at later.
 
 For an $n \times n$ matrix $A$ with eigenvalues $\lambda_1, \dots, \lambda_n \in \mathbb{C}$ (counted with algebraic multiplicity):
 
-  
-
 -   $\operatorname{trace}(A) = \lambda_1 + \lambda_2 + \cdots + \lambda_n$.
-    
 -   $\det(A) = \lambda_1 \lambda_2 \cdots \lambda_n$.
-    
 -   Eigenvalues could be complex even if all elements of the matrix are real. But when $A$ is real, non-real eigenvalues occur in complex conjugate pairs (with equal multiplicities).
-    
--   Nonsingular matrices cannot have $0$ as an eigenvalue. Thus,  $A$ is singular if and only if $A$ has a zero eigenvalue.
-    
+-   Nonsingular matrices cannot have $0$ as an eigenvalue. Thus, $A$ is singular if and only if $A$ has a zero eigenvalue.
 -   The eigenvalues of triangular and diagonal matrices are simply the diagonal entries.
-    
--   If $A$ is real and symmetric or complex and Hermitian, all eigenvalues must be real numbers. We have not looked at Hermitian matrices yet, but we will shortly.
-    
+-   If $A$ is real and symmetric or complex and Hermitian, all eigenvalues must be real numbers. We look at [Hermitian matrices](#hermitian-matrices) shortly.
 -   $1 \le \operatorname{geo\,mult}_A(\lambda) \le \operatorname{alg\,mult}_A(\lambda)$ for every $\lambda \in \sigma(A)$.
-    
+-   The eigenvalues of a [projector](#projections) can only be $0$ and $1$: vectors in its image are fixed, and vectors in its kernel are sent to $\mathbf{0}$ (for an orthogonal projector, the kernel is the orthogonal complement of the image). So the trace of a projector, the sum of its eigenvalues, equals its rank, the dimension of its image.
+-   Let $\mathbf{j}$ be the column vector with every entry $1$, and $J = \mathbf{j}\mathbf{j}^T$ the square matrix with every entry $1$. For any $\mathbf{x}$, $J\mathbf{x} = (x_1 + \dots + x_n)\mathbf{j}$, so $J$ has eigenvalue $n$ on $\mathbf{j}$, and eigenvalue $0$ on the $(n-1)$-dimensional space $\mathbf{j}^\perp$ of vectors whose entries sum to zero. Note that $J^2 = nJ$.
+-   Matrices of the form $aI + bJ$ come up constantly, in [incidence geometry](maths_4_incidence_geometry.md) for instance, and their eigenvalues can be read off: $a + nb$ once for the eigenvector $\mathbf{j}$ (which is also an eigenvector of $I$), and $a$ with multiplicity $n - 1$, for $\mathbf{j}^\perp$. Hence $\det(aI + bJ) = (a + nb)\,a^{n-1}$.
+-   Related to $J$ are the permutation matrices. A permutation matrix $P$ has exactly one $1$ in each row and each column, and $0$ elsewhere. It is orthogonal, meaning $P^T = P^{-1}$, and $PJ = JP = J$. Renumbering the rows and columns of $A$ by the same permutation replaces $A$ by the similar matrix $P^TAP$, with the same eigenvalues. $P$ commutes with $A$ exactly when $P^TAP = A$.
 
 #### Similarity & Diagonalization
 
 In many physical problems, reducing a square matrix $A$ to the simplest possible form, especially a diagonal form, by what is called a similarity transformation can greatly simplify the process of solving or understanding the equations.
 
-  
-
 Two $n \times n$ matrices $A$ and $B$ are said to be similar whenever there exists a nonsingular matrix $P$ such that $P^{-1}AP = B$. The product $P^{-1}AP$ is called a similarity transformation of $A$. A matrix is said to be diagonalizable when it is similar to some diagonal matrix $D$.
-
-  
 
 Eigenvalues (together with their algebraic and geometric multiplicities), and thus the trace and determinant, are invariant under similarity, i.e., they are the same for $A$ and $B$ above.
 
-When $A = PDP^{-1}$ is diagonalizable, the columns of $P$ are the right eigenvectors of $A$, and the rows of $P^{-1}$ are the corresponding left eigenvectors ($P^{-1}A = DP^{-1}$), forming the biorthogonal dual basis satisfying $y_i^* x_j = \delta_{ij}$. Biorthogonality is a property of two sets of vectors where each vector in one set is orthogonal to every vector in the other set except its matching partner.
-
-  
+When $A = PDP^{-1}$ is diagonalizable, the columns $\mathbf{x}_1, \dots, \mathbf{x}_n$ of $P$ are right eigenvectors of $A$ ($AP = PD$), and the rows $\mathbf{y}_1^*, \dots, \mathbf{y}_n^*$ of $P^{-1}$ are the corresponding left eigenvectors ($P^{-1}A = DP^{-1}$). Because $P^{-1}P = I$, they satisfy $\mathbf{y}_i^* \mathbf{x}_j = \delta_{ij}$: the two sets form biorthogonal dual bases. Biorthogonality is a property of two sets of vectors where each vector in one set is orthogonal to every vector in the other set except its matching partner.
 
 #### Which Matrices Are Diagonalizable
 
-Not all square matrices are diagonalizable. An $n \times n$ matrix $A$ is diagonalizable iff it has a linearly independent set of $n$ eigenvectors, in which case we say that $A$ has a _complete_ linearly independent set of eigenvectors. Over $\mathbb{C}$ (or whenever all eigenvalues of $A$ lie in $\mathbb{F}$), this holds iff $\operatorname{alg\,mult}_A(\lambda) = \operatorname{geo\,mult}_A(\lambda)$ for each $\lambda \in \sigma(A)$, because otherwise there aren't a sufficient number of independent eigenvectors to form a complete basis. Alternately, we can say all eigenvalues (in $\mathbb{C}$) must be semisimple for $A$ to be diagonalizable over $\mathbb{C}$.
+Not all square matrices are diagonalizable. An $n \times n$ matrix $A$ is diagonalizable iff it has a linearly independent set of $n$ eigenvectors, in which case we say that $A$ has a _complete_ linearly independent set of eigenvectors. Over $\mathbb{C}$ (or whenever all eigenvalues of $A$ lie in $\mathbb{F}$), this holds iff $\operatorname{alg\,mult}_A(\lambda) = \operatorname{geo\,mult}_A(\lambda)$ for each $\lambda \in \sigma(A)$, because otherwise there aren't a sufficient number of independent eigenvectors to form a complete basis. Alternatively, we can say all eigenvalues (in $\mathbb{C}$) must be semisimple for $A$ to be diagonalizable over $\mathbb{C}$.
 
-The unique monic polynomial (a single-variable polynomial whose leading coefficient or the number in front of the highest-power term, equals 1) $m_A(\lambda)$ of smallest degree such that $m_A(A) = 0$ divides $p(\lambda)$ and shares the exact same distinct roots as $p(\lambda)$. It characterizes diagonalizability cleanly over any field $\mathbb{F}$:  $A$ is diagonalizable over $\mathbb{F}$ if and only if $m_A(\lambda)$ splits into distinct linear factors over $\mathbb{F}$.
-        
-Nonzero nilpotent matrices form a significant class of non-diagonalizable matrices. Nilpotent matrices ($N$) are square matrices that satisfy $N^k = 0$ for some positive integer $k$; the smallest such positive integer $k$ (so $N^k = 0$ and $N^{k-1} \neq 0$ for $k \ge 2$, or $k = 1$ for $N = 0$) is called the nilpotent index. Some common nilpotent matrices are strictly upper (or lower) triangular matrices (i.e., their diagonal elements are $0$); for such $n \times n$ matrices,  $N^n = 0$ (so their nilpotent index is at most $n$). That nilpotent matrices are not diagonalizable (except for the trivial $0$ matrix) can be easily seen by contradiction. Suppose $N \neq 0$ and for some nonsingular $P$, we have $P^{-1}NP = D$ with $D$ diagonal. Then:
+There is a polynomial in $A$ that gives a clean condition for diagonalizability. First, evaluating a polynomial $q(\lambda) = c_0 + c_1\lambda + \dots + c_m\lambda^m$ at a square matrix gives $q(A) = c_0 I + c_1 A + \dots + c_m A^m$. If $A\mathbf{v} = \lambda\mathbf{v}$, then $A^k\mathbf{v} = \lambda^k\mathbf{v}$ for every $k$, so $q(A)\mathbf{v} = q(\lambda)\mathbf{v}$: $q(A)$ has the eigenvalues $q(\lambda)$ on the same eigenvectors as $A$.
 
-  
+The minimal polynomial of $A$ is the monic polynomial $m_A$ (leading coefficient $1$) of least degree with $m_A(A) = 0$. It divides every polynomial that sends $A$ to $0$, including the characteristic polynomial (by Cayley–Hamilton). Its roots are exactly the eigenvalues: if $A\mathbf{v} = \lambda\mathbf{v}$ with $\mathbf{v} \neq \mathbf{0}$, then $\mathbf{0} = m_A(A)\mathbf{v} = m_A(\lambda)\mathbf{v}$, so $m_A(\lambda) = 0$; conversely, every root of $m_A$ is a root of the characteristic polynomial, which $m_A$ divides.
+
+As an example, take
+
+$$A = \begin{pmatrix} 0 & 1 & 1 \\ 1 & 0 & 1 \\ 1 & 1 & 0 \end{pmatrix}.$$
+
+To find the minimal polynomial, note that since $A$ is not a multiple of $I$, no polynomial of degree $1$ sends $A$ to $0$. Let's look at degree $2$. $A^2$ has diagonal entries $2$ and off-diagonal entries $1$, so $A^2 = A + 2I$, and $m_A(\lambda) = \lambda^2 - \lambda - 2 = (\lambda - 2)(\lambda + 1)$.
+
+The minimal polynomial has degree $2$, though $A$ is $3 \times 3$ and its characteristic polynomial $\det(A - \lambda I) = -(\lambda - 2)(\lambda + 1)^2$ has degree $3$.
+
+The minimal polynomial characterizes diagonalizability cleanly over any field $\mathbb{F}$: $A$ is diagonalizable over $\mathbb{F}$ if and only if $m_A(\lambda)$ splits into distinct linear factors over $\mathbb{F}$ (as was the case in this example). The reason, when $m_A$ has distinct roots $\lambda_1, \dots, \lambda_s$ in $\mathbb{F}$, is a set of projectors built from $A$:
+
+$$E_i = \prod_{l \neq i} \frac{A - \lambda_l I}{\lambda_i - \lambda_l},$$
+
+the Lagrange polynomial that is $1$ at $\lambda_i$ and $0$ at the other roots, evaluated at $A$. These add up to $I$, as the polynomials add up to $1$, and $(A - \lambda_i I)E_i$ is a multiple of $m_A(A) = 0$, so each $E_i$ maps into the eigenspace of $\lambda_i$; since the $E_i$ add up to $I$, the eigenspaces fill the space. A repeated root signals failure: $M = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$ has $m_M(\lambda) = (\lambda - 1)^2$, since $(M - I)^2 = 0 \neq M - I$, and its only eigenvectors are the multiples of $(1, 0)^T$. So does a missing root: over $\mathbb{R}$, the rotation by $90^\circ$ has minimal polynomial $\lambda^2 + 1$, with no real roots. For a real symmetric matrix, $m_A(\lambda) = \prod_i (\lambda - \lambda_i)$ over its distinct eigenvalues, so the degree of $m_A$ is the number of distinct eigenvalues, and the $E_i$ are exactly the orthogonal projectors onto the eigenspaces. In the example, $E_2 = (A + I)/3$ and $E_{-1} = (2I - A)/3$.
+
+Nonzero nilpotent matrices form a significant class of non-diagonalizable matrices. Nilpotent matrices ($N$) are square matrices that satisfy $N^k = 0$ for some positive integer $k$; the smallest such positive integer $k$ (so $N^k = 0$ and $N^{k-1} \neq 0$ for $k \ge 2$, or $k = 1$ for $N = 0$) is called the nilpotent index. Some common nilpotent matrices are strictly upper (or lower) triangular matrices (i.e., their diagonal elements are $0$); for such $n \times n$ matrices, $N^n = 0$ (so their nilpotent index is at most $n$). That nilpotent matrices are not diagonalizable (except for the trivial $0$ matrix) can be easily seen by contradiction. Suppose $N \neq 0$ and for some nonsingular $P$, we have $P^{-1}NP = D$ with $D$ diagonal. Then:
 
 $$D^k = (P^{-1}NP)^k = (P^{-1}NP)(P^{-1}NP)\cdots(P^{-1}NP) = P^{-1}N^k P = 0.$$
 
 Since $D$ is diagonal, every diagonal entry satisfies $d_i^k = 0$, so $D = 0$ and hence $N = PDP^{-1} = 0$, a contradiction.
 
-Note that all square matrices over $\mathbb{C}$ can be triangularized by a similarity transformation, and importantly by a similarity transformation using a unitary matrix, i.e., a matrix $U$ that satisfies $UU^* = I$ (so $U^{-1} = U^*$). Formally, for each square matrix $A \in \mathbb{C}^{n \times n}$, there exists a unitary matrix $U$ such that $U^* A U = T$ is upper triangular. The matrices $U$ and $T$ are not unique, but the diagonal entries of $T$ must be the eigenvalues of $A$. This follows from the property that a triangular matrix's eigenvalues are its diagonal elements, and that similarity transformations preserve eigenvalues.
+Note that all square matrices over $\mathbb{C}$ can be triangularized by a similarity transformation, and importantly by a similarity transformation using a [unitary matrix](#unitary-matrices), i.e., a matrix $U$ that satisfies $UU^* = I$ (so $U^{-1} = U^*$). Formally, for each square matrix $A \in \mathbb{C}^{n \times n}$, there exists a unitary matrix $U$ such that $U^* A U = T$ is upper triangular (Schur's triangularization theorem; written as $A = UTU^*$, it is called the Schur decomposition). The matrices $U$ and $T$ are not unique, but the diagonal entries of $T$ must be the eigenvalues of $A$. This follows from the property that a triangular matrix's eigenvalues are its diagonal elements, and that similarity transformations preserve eigenvalues.
 
-An interesting way to decompose any matrix is as follows. Every $A \in \mathbb{C}^{n \times n}$ is uniquely expressible as $A = S + P$, where $S$ is diagonalizable, $P$ is nilpotent, and $SP = PS$ (called the Jordan–Chevalley decomposition). Thus diagonalizable and nilpotent matrices are not merely two examples—they are the exact two commuting building blocks of every linear operator over $\mathbb{C}$.
+An interesting way to decompose any matrix is as follows. Every $A \in \mathbb{C}^{n \times n}$ is uniquely expressible as $A = S + P$, where $S$ is diagonalizable, $P$ is nilpotent, and $SP = PS$ (called the Jordan–Chevalley decomposition). Thus diagonalizable and nilpotent matrices are not merely two examples: they are the two commuting building blocks of every linear operator over $\mathbb{C}$.
 
-Seperately, using the Schur decomposition we have $A = UTU^*$ where $U$ is unitary and $T = D + N$ is upper triangular, with $D$ diagonal and $N$ strictly upper triangular. Since the Frobenius norm is unitarily invariant and $D$ and $N$ occupy disjoint entries (so they are orthogonal in the Frobenius inner product, $\operatorname{trace}(D^*N) = 0$), we have
+Separately, using the Schur decomposition we have $A = UTU^*$ where $U$ is unitary and $T = D + N$ is upper triangular, with $D$ diagonal and $N$ strictly upper triangular. Since the Frobenius norm is unitarily invariant and $D$ and $N$ occupy disjoint entries (so they are orthogonal in the Frobenius inner product, $\operatorname{trace}(D^*N) = 0$), we have
 
 $$\Vert{}A\Vert{}_F^2 = \Vert{}UTU^*\Vert{}_F^2 = \Vert{}D + N\Vert{}_F^2 = \Vert{}D\Vert{}_F^2 + \Vert{}N\Vert{}_F^2.$$
 
@@ -1287,164 +1255,207 @@ Note that unlike the Jordan–Chevalley decomposition, the Schur split $A = UDU^
 
 #### Functions of Diagonalizable Matrices
 
-As we saw,  $A$ satisfies its characteristic equation. Since many functions can be written as infinite series expansions in terms of powers of the variable, we can look at how some of these functions, such as $e^A$,  $\sin A$, or $\ln A$, can be expressed with the matrix $A$ as a variable.
+As we saw, $A$ satisfies its characteristic equation, so every power $A^k$ with $k \ge n$ is a combination of $I, A, \dots, A^{n-1}$. Since many functions can be written as infinite series expansions in terms of powers of the variable, we can look at how some of these functions, such as $e^A$, $\sin A$, or $\ln A$, can be expressed with the matrix $A$ as a variable.
 
-  
-
-Note that we do not simply replace the elements of $A$ with, for example,  $\sin(a_{ij})$ to get $\sin A$. If we did this, the familiar properties such as $\sin^2 A + \cos^2 A = I$ would not hold. Instead, as we indicated above, we express them as infinite series expansions.
-
-  
+Note that we do not simply replace the elements of $A$ with, for example, $\sin(a_{ij})$ to get $\sin A$. If we did this, the familiar properties such as $\sin^2 A + \cos^2 A = I$ would not hold. Instead, as we indicated above, we express them as infinite series expansions.
 
 For example, consider the exponential function
-
-  
 
 $$e^z = \sum_{k=0}^\infty \frac{z^k}{k!} = 1 + z + \frac{z^2}{2!} + \frac{z^3}{3!} + \cdots.$$
 
 Formally replacing the scalar argument $z$ by a square matrix $A$ ($z^0 = 1$ is replaced with $A^0 = I$) results in the infinite series of matrices
 
-  
-
 $$e^A = I + A + \frac{A^2}{2!} + \frac{A^3}{3!} + \cdots,$$
 
 called the matrix exponential.
 
-  
-
 This is an infinite series, and so we have to consider whether it converges and what the entries converge to when we sum infinitely many terms. But if $A$ is diagonalizable, we can do something like this:
-
-  
 
 $$A = PDP^{-1} = P\operatorname{diag}(\lambda_1, \dots, \lambda_n)P^{-1},$$
 
 and
 
-  
-
 $$A^k = PD^k P^{-1} = P\operatorname{diag}(\lambda_1^k, \dots, \lambda_n^k)P^{-1},$$
 
 so (by continuity of left and right multiplication by $P$ and $P^{-1}$, since the scalar series for each $e^{\lambda_i}$ converges)
-
-  
 
 $$e^A = \sum_{k=0}^\infty \frac{A^k}{k!} = \sum_{k=0}^\infty \frac{PD^k P^{-1}}{k!} = P\left(\sum_{k=0}^\infty \frac{D^k}{k!}\right)P^{-1} = P\operatorname{diag}(e^{\lambda_1}, \dots, e^{\lambda_n})P^{-1}.$$
 
 So if $A$ is diagonalizable, the infinite series is not needed to define $e^A$. Instead, define $e^D = \operatorname{diag}(e^{\lambda_1}, e^{\lambda_2}, \dots, e^{\lambda_n})$, and set
 
-  
-
 $$e^A = Pe^D P^{-1} = P\operatorname{diag}(e^{\lambda_1}, e^{\lambda_2}, \dots, e^{\lambda_n})P^{-1}.$$
 
-Thus we have the general solution to $u' = Au$ with initial condition $u(0) = u_0$ is $u(t) = e^{At}u_0$. When $A$ is diagonalizable as $A = PDP^{-1}$ (with $P = [v_1 \mid \cdots \mid v_n]$ holding the eigenvectors), substituting $u(t) = P y(t)$ transforms the coupled system $u' = Au$ into $n$ completely decoupled scalar equations:
-    
-$$y' = Dy \implies y_j'(t) = \lambda_j y_j(t) \implies u(t) = P e^{Dt} P^{-1} u_0 = \sum_{j=1}^n c_j e^{\lambda_j t} v_j.$$
-    
-When $A$ is not diagonalizable (defective), a nontrivial nilpotent part $N$ appears alongside the diagonal part: because $e^{Nt} = I + Nt + \frac{t^2}{2!}N^2 + \cdots + \frac{t^{k-1}}{(k-1)!}N^{k-1}$ terminates as a polynomial in $t$, the missing eigenvectors are replaced by secular polynomial-exponential solutions of the form $t^m e^{\lambda t}$.
+This gives the solution of the system $\mathbf{u}' = A\mathbf{u}$ we started with: with initial condition $\mathbf{u}(0) = \mathbf{u}_0$, it is $\mathbf{u}(t) = e^{At}\mathbf{u}_0$ (because $\frac{d}{dt}e^{At} = Ae^{At}$, as listed below). When $A$ is diagonalizable as $A = PDP^{-1}$ (with $P = [\mathbf{v}_1 \mid \cdots \mid \mathbf{v}_n]$ holding the eigenvectors), substituting $\mathbf{u}(t) = P\mathbf{y}(t)$ transforms the coupled system $\mathbf{u}' = A\mathbf{u}$ into $n$ completely decoupled scalar equations:
 
-We can also get clues to the stability of the solution i.e. as $t \to \infty$, does the solution converge to some stable value, or blow up to infinity or does it oscillate over time.
+$$\mathbf{y}' = D\mathbf{y} \implies y_j'(t) = \lambda_j y_j(t) \implies \mathbf{u}(t) = P e^{Dt} P^{-1} \mathbf{u}_0 = \sum_{j=1}^n c_j e^{\lambda_j t} \mathbf{v}_j,$$
 
-If $Re (\lambda_i) \lt 0$ for all $i$, then $e^{At} = 0$ and $u(t) = 0$ as $t \to \infty$. This is a stable system and $A$ is called a stable matrix.
+where $c_1, \dots, c_n$ are the components of $P^{-1}\mathbf{u}_0$, the initial vector written in the eigenvector basis.
 
-If $Re (\lambda_i) \lt 0$ for any $i$, then components of $u(t) = 0$ can become unbounded, and the system and $A$ are said to be unstable.
+When $A$ is not diagonalizable (such a matrix is called defective), its Jordan–Chevalley decomposition has a nonzero nilpotent part $N$ (written $P$ in that section; $P$ here is the eigenvector matrix) alongside the diagonalizable part $S$, so $A = S + N$. Because $S$ and $N$ commute, $e^{At} = e^{St}e^{Nt}$, and $e^{Nt} = I + Nt + \frac{t^2}{2!}N^2 + \cdots + \frac{t^{k-1}}{(k-1)!}N^{k-1}$ (with $k$ the nilpotent index of $N$) stops after finitely many terms, so it is a polynomial in $t$. In place of the missing eigenvectors, the solution therefore picks up terms of the form $t^m e^{\lambda t}$ with $m < k$, called secular terms, which grow like a power of $t$ on top of the exponential.
 
-If $Re (\lambda_i) \le 0$ for each $i$, then components of $u(t)$ remain finite but some components can oscillate indefinitely if some $|lambda_i = 0$. This is called a semi-stable situation.
+The eigenvalues also tell us about the stability of the solution: as $t \to \infty$, does it converge, blow up, or keep oscillating? For diagonalizable $A$:
 
+-   If $\operatorname{Re}(\lambda_i) < 0$ for all $i$, then $e^{At} \to 0$ and $\mathbf{u}(t) \to \mathbf{0}$ as $t \to \infty$. This is a stable system, and $A$ is called a stable matrix.
+-   If $\operatorname{Re}(\lambda_i) > 0$ for some $i$, then components of $\mathbf{u}(t)$ can become unbounded, and the system and $A$ are said to be unstable.
+-   If $\operatorname{Re}(\lambda_i) \le 0$ for each $i$, then the components of $\mathbf{u}(t)$ remain bounded, but some can oscillate indefinitely when an eigenvalue has $\operatorname{Re}(\lambda_i) = 0$ and $\operatorname{Im}(\lambda_i) \neq 0$. This is called a semistable situation.
 
 This idea that we applied to exponents generalizes to any (single-valued) function $f(z)$ that is defined on the eigenvalues of $A$ by setting
-
-  
 
 $$f(A) = Pf(D)P^{-1} = P\operatorname{diag}(f(\lambda_1), f(\lambda_2), \dots, f(\lambda_n))P^{-1}.$$
 
 Note that though $P$ is not unique, $f(A)$ is in fact completely independent of the choice of $P$. We can now apply the same logic to any function that has a power series expansion.
 
-  
-
-If $f(z) = \sum_{m=0}^\infty c_m(z - z_0)^m$ converges when $\vert{}z - z_0\vert{} < r$, and if $\vert{}\lambda_i - z_0\vert{} < r$ for each eigenvalue $\lambda_i$ of a diagonalizable matrix $A$—where $\lambda_1, \dots, \lambda_k$ are the distinct eigenvalues of $A$ with multiplicities $m_1, \dots, m_k$, grouped in $D = \operatorname{diag}(\lambda_1 I_{m_1}, \dots, \lambda_k I_{m_k})$ so that $A = PDP^{-1}$—then
-
-  
+Let $\lambda_1, \dots, \lambda_k$ be the distinct eigenvalues of a diagonalizable matrix $A$, with multiplicities $m_1, \dots, m_k$, grouped in $D = \operatorname{diag}(\lambda_1 I_{m_1}, \dots, \lambda_k I_{m_k})$ so that $A = PDP^{-1}$. If $f(z) = \sum_{m=0}^\infty c_m(z - z_0)^m$ converges when $\vert{}z - z_0\vert{} < r$, and $\vert{}\lambda_i - z_0\vert{} < r$ for each $i$, then
 
 $$\sum_{m=0}^\infty c_m(A - z_0 I)^m = f(A) = P\begin{pmatrix} f(\lambda_1)I_{m_1} & 0 & \cdots & 0 \\ 0 & f(\lambda_2)I_{m_2} & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & f(\lambda_k)I_{m_k} \end{pmatrix}P^{-1}.$$
 
-**Which scalar identities of functions survive for matrices—and which break**:
-    
-**Single-matrix identities always survive**: Because all powers of a single matrix $A$ commute, identities like $\sin^2 A + \cos^2 A = I$,  $e^{sA}e^{tA} = e^{(s+t)A}$,  $(e^A)^{-1} = e^{-A}$, and $\frac{d}{dt}e^{tA} = Ae^{tA} = e^{tA}A$ hold for every square matrix $A$ (giving $u(t) = e^{tA}u(0)$ as the exact general solution to $u' = Au$).
-        
-**Determinant–trace identity**:  $\det(e^A) = e^{\operatorname{trace}(A)}$ holds for all $A \in \mathbb{C}^{n \times n}$ (visible directly from $e^A = P\operatorname{diag}(e^{\lambda_1}, \dots, e^{\lambda_n})P^{-1}$ for diagonalizable $A$, and via Schur triangularization in general). In particular,  $e^A$ is _always_ nonsingular.
-        
-**Two-matrix identities fail without commutativity**: In general,  $e^{A + B} \neq e^A e^B$ whenever $AB \neq BA$.
-        
-**Matrix logarithm ($\ln A$)**: Because $0$ is a branch point of $\ln z$, a matrix $A \in \mathbb{C}^{n \times n}$ has a complex logarithm ($e^X = A$) iff $A$ is nonsingular; it has a unique principal logarithm (with eigenvalues having imaginary parts in $(-\pi, \pi)$) when $A$ has no eigenvalues on $(-\infty, 0]$.
+Which scalar identities of functions survive for matrices, and which break?
+
+-   **Single-matrix identities always survive**: Because all powers of a single matrix $A$ commute, identities like $\sin^2 A + \cos^2 A = I$, $e^{sA}e^{tA} = e^{(s+t)A}$, $(e^A)^{-1} = e^{-A}$, and $\frac{d}{dt}e^{tA} = Ae^{tA} = e^{tA}A$ hold for every square matrix $A$ (giving $\mathbf{u}(t) = e^{tA}\mathbf{u}(0)$ as the exact general solution to $\mathbf{u}' = A\mathbf{u}$).
+-   **Determinant–trace identity**: $\det(e^A) = e^{\operatorname{trace}(A)}$ holds for all $A \in \mathbb{C}^{n \times n}$ (visible directly from $e^A = P\operatorname{diag}(e^{\lambda_1}, \dots, e^{\lambda_n})P^{-1}$ for diagonalizable $A$, and via Schur triangularization in general). In particular, $e^A$ is _always_ nonsingular.
+-   **Two-matrix identities need commutativity**: $e^{A + B} = e^A e^B$ holds when $AB = BA$, but can fail when $AB \neq BA$.
+-   **Matrix logarithm ($\ln A$)**: A matrix $A \in \mathbb{C}^{n \times n}$ has a complex logarithm (a matrix $X$ with $e^X = A$) iff $A$ is nonsingular: $e^X$ is always nonsingular, as above, and every nonsingular $A$ has a logarithm; it has a unique principal logarithm (with eigenvalues having imaginary parts in $(-\pi, \pi)$) when $A$ has no eigenvalues on $(-\infty, 0]$.
+
+**Example 1:** Suppose that the population migration between two geographical regions, say the North and the South, is as follows. Each year, $50\%$ of the population in the North migrates to the South, while only $25\%$ of the population in the South moves to the North. If this migration pattern continues, will the population in the North continually shrink until the entire population is eventually in the South, and if so, how long will this take? Or will the population distribution somehow stabilize before the North is completely deserted?
+
+Let $n_0$ and $s_0$ be the respective initial proportions of the population in the North and South (with $n_0, s_0 \ge 0$ and $n_0 + s_0 = 1$), and let $n_k$ and $s_k$ denote the respective proportions of the total population in the North and South at the end of year $k$. Assuming a closed population (no external migration or net population change), $n_k + s_k = 1$ holds for every $k \ge 0$. The migration pattern dictates that the fractions of the population in each region at the end of year $k + 1$ are governed by a system of two difference equations,
+
+$$\begin{aligned} n_{k+1} &= n_k(0.5) + s_k(0.25), \\ s_{k+1} &= n_k(0.5) + s_k(0.75), \end{aligned}$$
+
+that can be written in matrix form as
+
+$$\begin{pmatrix} n_{k+1} & s_{k+1} \end{pmatrix} = \begin{pmatrix} n_k & s_k \end{pmatrix}\begin{pmatrix} 0.5 & 0.5 \\ 0.25 & 0.75 \end{pmatrix} \iff \mathbf{p}_{k+1}^T = \mathbf{p}_k^T T.$$
+
+The row vector $\mathbf{p}_0^T = \begin{pmatrix} n_0 & s_0 \end{pmatrix}$ is the initial population distribution, and the vectors $\mathbf{p}_k^T = \begin{pmatrix} n_k & s_k \end{pmatrix}$ and $\mathbf{p}_{k+1}^T = \begin{pmatrix} n_{k+1} & s_{k+1} \end{pmatrix}$ are the respective population distributions at the end of years $k$ and $k + 1$. The matrix
+
+$$T = \begin{pmatrix} 0.5 & 0.5 \\ 0.25 & 0.75 \end{pmatrix}$$
+
+(with rows and columns corresponding to North ($N$) and South ($S$), so that entry $t_{ij}$ is the fraction moving from region $i$ to region $j$) is called the transition matrix. Starting with $\mathbf{p}_0^T$ and iteratively applying $\mathbf{p}_{k+1}^T = \mathbf{p}_k^T T$ produces the infinite sequence
+
+$$\mathbf{p}_1^T = \mathbf{p}_0^T T, \quad \mathbf{p}_2^T = \mathbf{p}_1^T T = \mathbf{p}_0^T T^2, \quad \mathbf{p}_3^T = \mathbf{p}_2^T T = \mathbf{p}_0^T T^3, \quad \dots, \quad \mathbf{p}_k^T = \mathbf{p}_0^T T^k, \quad \dots$$
+
+This shows that the powers of $T$ determine how the two populations evolve. The long-run (or limiting) population distribution is $\mathbf{p}_\infty^T = \lim_{k\to\infty} \mathbf{p}_k^T$. Provided $\lim_{k\to\infty} T^k$ exists, we write
+
+$$\mathbf{p}_\infty^T = \lim_{k\to\infty} \mathbf{p}_k^T = \lim_{k\to\infty} \mathbf{p}_0^T T^k = \mathbf{p}_0^T \left(\lim_{k\to\infty} T^k\right).$$
+
+For $T = \begin{pmatrix} 1/2 & 1/2 \\ 1/4 & 3/4 \end{pmatrix}$, direct computation yields $\sigma(T) = \{1, 1/4\}$, so $\rho(T) = 1$, and $\lambda = 1$ is the only eigenvalue on the unit circle (and is simple, hence semisimple). Therefore, by the criterion stated after this example, $\lim_{k\to\infty} T^k$ must exist. We evaluate the limit by computing respective right eigenvectors for $\lambda_1 = 1$ and $\lambda_2 = 1/4$ as $\mathbf{x}_1 = \begin{pmatrix} 1 \\ 1 \end{pmatrix}$ and $\mathbf{x}_2 = \begin{pmatrix} -2 \\ 1 \end{pmatrix}$, and setting $P = [\mathbf{x}_1 \mid \mathbf{x}_2] = \begin{pmatrix} 1 & -2 \\ 1 & 1 \end{pmatrix}$. This ensures that $T = P\begin{pmatrix} 1 & 0 \\ 0 & 1/4 \end{pmatrix}P^{-1}$ and $T^k = P\begin{pmatrix} 1^k & 0 \\ 0 & (1/4)^k \end{pmatrix}P^{-1}$. Therefore,
+
+$$\begin{aligned} \lim_{k\to\infty} T^k &= \lim_{k\to\infty} P\begin{pmatrix} 1^k & 0 \\ 0 & (1/4)^k \end{pmatrix}P^{-1} = P\begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}P^{-1} \\ &= \begin{pmatrix} 1 & -2 \\ 1 & 1 \end{pmatrix}\begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}\begin{pmatrix} 1/3 & 2/3 \\ -1/3 & 1/3 \end{pmatrix} = \begin{pmatrix} 1/3 & 2/3 \\ 1/3 & 2/3 \end{pmatrix}. \end{aligned}$$
+
+Substituting this limit back into the expression for $\mathbf{p}_\infty^T$ and using $n_0 + s_0 = 1$ gives
+
+$$\mathbf{p}_\infty^T = \mathbf{p}_0^T \left(\lim_{k\to\infty} T^k\right) = \begin{pmatrix} n_0 & s_0 \end{pmatrix}\begin{pmatrix} 1/3 & 2/3 \\ 1/3 & 2/3 \end{pmatrix} = \begin{pmatrix} \dfrac{n_0 + s_0}{3} & \dfrac{2(n_0 + s_0)}{3} \end{pmatrix} = \begin{pmatrix} 1/3 & 2/3 \end{pmatrix}.$$
+
+Thus, regardless of the initial population distribution, the North is never deserted; instead, the distribution stabilizes with $1/3$ of the population in the North and $2/3$ in the South.
+
+For any square matrix $T \in \mathbb{C}^{n \times n}$, the limit $\lim_{k\to\infty} T^k$ exists if and only if one of the following holds:
+
+-   **Convergent to zero**: $\rho(T) < 1$ (in which case $\lim_{k\to\infty} T^k = 0$).
+-   **Semiconvergent**: $\rho(T) = 1$, $\lambda = 1$ is the only eigenvalue on the unit circle ($\vert{}\lambda\vert{} = 1 \implies \lambda = 1$), and $\lambda = 1$ is semisimple.
+
+**Example 2:** Consider two cells (each of unit volume) that are both devoid of a particular compound. A unit amount of the compound is injected into the first cell at time $t = 0$, and as time proceeds, the compound diffuses according to the following assumption.
+
+At each moment of time, the rate (amount per second) of diffusion from one cell to the other is proportional to the concentration (amount per unit volume) of the compound in the cell giving up the compound: say the rate of diffusion from cell $1$ to cell $2$ is $\alpha$ times the concentration in cell $1$, and the rate of diffusion from cell $2$ to cell $1$ is $\beta$ times the concentration in cell $2$. Assume $\alpha, \beta > 0$.
+
+**Question.** What is the concentration of the compound in each cell at any given time $t$, and, in the long run, what are the steady-state concentrations?
+
+**Answer.** If $u_k = u_k(t)$ denotes the concentration of the compound in cell $k$ at time $t$ (which numerically equals the amount in cell $k$, since each cell has unit volume), then the statements in the above assumption are translated as follows:
+
+$$\begin{aligned} \frac{du_1}{dt} &= \text{rate in} - \text{rate out} = \beta u_2 - \alpha u_1, \quad \text{where } u_1(0) = 1, \\ \frac{du_2}{dt} &= \text{rate in} - \text{rate out} = \alpha u_1 - \beta u_2, \quad \text{where } u_2(0) = 0. \end{aligned}$$
+
+In matrix notation, this system is $\mathbf{u}' = A\mathbf{u}$ with $\mathbf{u}(0) = \mathbf{c}$, where
+
+$$A = \begin{pmatrix} -\alpha & \beta \\ \alpha & -\beta \end{pmatrix}, \qquad \mathbf{u} = \begin{pmatrix} u_1 \\ u_2 \end{pmatrix}, \qquad \text{and} \qquad \mathbf{c} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}.$$
+
+To determine the matrix exponential $e^{At}$ (using $f(z) = e^{zt}$ for fixed $t$), we compute eigenpairs $(\lambda_1, \mathbf{x}_1)$ and $(\lambda_2, \mathbf{x}_2)$ of $A$, and then set $P = [\mathbf{x}_1 \mid \mathbf{x}_2]$ to compute
+
+$$e^{At} = P\begin{pmatrix} f(\lambda_1) & 0 \\ 0 & f(\lambda_2) \end{pmatrix}P^{-1} = P\begin{pmatrix} e^{\lambda_1 t} & 0 \\ 0 & e^{\lambda_2 t} \end{pmatrix}P^{-1}.$$
+
+The characteristic equation for $A$ is $\lambda^2 + (\alpha + \beta)\lambda = 0$, so the eigenvalues are $\lambda_1 = 0$ and $\lambda_2 = -(\alpha + \beta)$. Because $\alpha, \beta > 0$, these two eigenvalues are distinct, so $A$ is diagonalizable. Computing eigenvectors by solving $(A - \lambda_1 I)\mathbf{x}_1 = \mathbf{0}$ and $(A - \lambda_2 I)\mathbf{x}_2 = \mathbf{0}$ yields $\mathbf{x}_1 = \begin{pmatrix} \beta/\alpha \\ 1 \end{pmatrix}$ and $\mathbf{x}_2 = \begin{pmatrix} -1 \\ 1 \end{pmatrix}$. Consequently, $P = \begin{pmatrix} \beta/\alpha & -1 \\ 1 & 1 \end{pmatrix}$ and $P^{-1} = (1 + \beta/\alpha)^{-1}\begin{pmatrix} 1 & 1 \\ -1 & \beta/\alpha \end{pmatrix}$, so that
+
+$$\begin{aligned} e^{At} &= P\begin{pmatrix} e^{\lambda_1 t} & 0 \\ 0 & e^{\lambda_2 t} \end{pmatrix}P^{-1} = \frac{\alpha}{\alpha + \beta}\begin{pmatrix} \beta/\alpha & -1 \\ 1 & 1 \end{pmatrix}\begin{pmatrix} 1 & 0 \\ 0 & e^{-(\alpha + \beta)t} \end{pmatrix}\begin{pmatrix} 1 & 1 \\ -1 & \beta/\alpha \end{pmatrix} \\ &= \frac{1}{\alpha + \beta}\left[\begin{pmatrix} \beta & \beta \\ \alpha & \alpha \end{pmatrix} + e^{-(\alpha + \beta)t}\begin{pmatrix} \alpha & -\beta \\ -\alpha & \beta \end{pmatrix}\right]. \end{aligned}$$
+
+Since $\sum_{k=0}^\infty z^k/k!$ converges to $e^z$ for all $z \in \mathbb{C}$ (and in particular all $z \in \mathbb{R}$), it follows that
+
+$$\sum_{k=0}^\infty \frac{(At)^k}{k!} \quad \text{converges to} \quad e^{At} = \frac{1}{\alpha + \beta}\left[\begin{pmatrix} \beta & \beta \\ \alpha & \alpha \end{pmatrix} + e^{-(\alpha + \beta)t}\begin{pmatrix} \alpha & -\beta \\ -\alpha & \beta \end{pmatrix}\right].$$
+
+Therefore, the unique solution to $\mathbf{u}' = A\mathbf{u}$ with $\mathbf{u}(0) = \mathbf{c}$ is
+
+$$\mathbf{u}(t) = e^{At}\mathbf{c} = \frac{1}{\alpha + \beta}\left[\begin{pmatrix} \beta & \beta \\ \alpha & \alpha \end{pmatrix} + e^{-(\alpha + \beta)t}\begin{pmatrix} \alpha & -\beta \\ -\alpha & \beta \end{pmatrix}\right]\begin{pmatrix} 1 \\ 0 \end{pmatrix},$$
+
+so that
+
+$$u_1(t) = \frac{\beta}{\alpha + \beta} + \frac{\alpha}{\alpha + \beta}e^{-(\alpha + \beta)t} \qquad \text{and} \qquad u_2(t) = \frac{\alpha}{\alpha + \beta}\left(1 - e^{-(\alpha + \beta)t}\right).$$
+
+In the long run, since $\alpha + \beta > 0$ implies $e^{-(\alpha + \beta)t} \to 0$ as $t \to \infty$, the concentration in each cell stabilizes:
+
+$$\lim_{t\to\infty} u_1(t) = \frac{\beta}{\alpha + \beta} \qquad \text{and} \qquad \lim_{t\to\infty} u_2(t) = \frac{\alpha}{\alpha + \beta}.$$
 
 ### Hermitian, Unitary and Orthogonal Matrices
 We've got a whole section for these kinds of matrices because they are quite important in quantum information theory and quantum mechanics.
 
-A square matrix $A$ is Hermitian if $A^* = A$, skew-Hermitian if $A^* = -A$, and unitary if $A^*A = I$. These are different classes, though they overlap ($I$ is both Hermitian and unitary), and all three belong to a broader family called normal matrices, which satisfy $A^*A = AA^*$. We'll focus on unitary matrices and their special case, orthogonal matrices, for now.
+A square matrix $A$ is Hermitian if $A^* = A$, skew-Hermitian if $A^* = -A$, and unitary if $A^*A = I$. These are different classes, though they overlap ($I$ is both Hermitian and unitary), and all three belong to a broader family called normal matrices, which satisfy $A^*A = AA^*$. We start with normal matrices in general, then look at Hermitian, unitary (and their real special case, orthogonal) and positive definite matrices.
 
 #### Normal Matrices in General
-A matrix is normal if and only if it has a complete set of orthonormal eigenvectors. Note that orthognality is not the same as being linearly independent. This tranlates to $A^*A = AA^*$. It also means the matrix unitarily similar to a diagonal matrix:  $U^*AU = D$, where $U$ is unitary and $D$ is diagonal with the eigenvalues of $A$ as its diagonal elements. The columns $u_1, \dots, u_n$ of $U$ are orthonormal eigenvectors of $A$. Since each $u_r$ is normalized ($\Vert{}u_r\Vert{}_2 = 1$),  $u_r u_r^*$ is the orthogonal projector onto $\operatorname{span}\{u_r\}$.  
+A matrix is normal ($A^*A = AA^*$) if and only if it has a complete set of orthonormal eigenvectors (this is the spectral theorem, proved under [Hermitian Matrices](#hermitian-matrices) below). Note that orthonormality is stronger than linear independence: every diagonalizable matrix has $n$ linearly independent eigenvectors, but only a normal one has $n$ orthonormal ones. Equivalently, a normal matrix is unitarily similar to a diagonal matrix: $U^*AU = D$, where $U$ is unitary and $D$ is diagonal with the eigenvalues of $A$ as its diagonal elements. The columns $\mathbf{u}_1, \dots, \mathbf{u}_n$ of $U$ are orthonormal eigenvectors of $A$. Since each $\mathbf{u}_r$ is normalized ($\Vert{}\mathbf{u}_r\Vert{}_2 = 1$), $\mathbf{u}_r \mathbf{u}_r^*$ is the [orthogonal projector](#projections) onto $\operatorname{span}\{\mathbf{u}_r\}$.
 
-The spread of eigenvalues is bounded by $\max_{i,j}\vert{}a_{ii}-a_{jj}\vert{}\le\max_{i,j}\vert{}\lambda_i-\lambda_j\vert{}$.
+The eigenvalues of a normal matrix are at least as spread out as its diagonal entries: $\max_{i,j}\vert{}a_{ii}-a_{jj}\vert{}\le\max_{i,j}\vert{}\lambda_i-\lambda_j\vert{}$. This is because each diagonal entry $a_{ii} = \sum_j \vert{}u_{ij}\vert{}^2\lambda_j$ is a weighted average of the eigenvalues (the weights are the squared magnitudes of row $i$ of $U$, which sum to $1$), and two weighted averages are never farther apart than the two farthest eigenvalues.
 
-Grouping the orthonormal eigenvectors according to the $k$ distinct eigenvalues $\lambda_1, \dots, \lambda_k$ of $A$, we can write:  
+Grouping the orthonormal eigenvectors according to the $k$ distinct eigenvalues $\lambda_1, \dots, \lambda_k$ of $A$, we can write:
 
 $$A = \sum_{i=1}^k \lambda_i G_i,$$
 
-where $G_i = U_i U_i^*$, with $U_i$ being the matrix whose columns are the orthonormal eigenvectors in $U$ corresponding to $\lambda_i$ (so $G_i$ is the orthogonal projector onto the eigenspace $N(A - \lambda_i I)$). Each $G_i$ is called a spectral projector and satisfies $G_i^2 = G_i$ (as with any projector, it is idempotent),  $G_i^* = G_i$ (it is Hermitian, hence an orthogonal projector),  $G_i G_j = 0$ (due to orthogonality of distinct eigenspaces) for $i \neq j$, and $\sum_{i=1}^k G_i = I$. This is the completely coordinate-free spectral decomposition, and for $k \ge 2$,  
+where $G_i = U_i U_i^*$, with $U_i$ being the matrix whose columns are the orthonormal eigenvectors in $U$ corresponding to $\lambda_i$ (so $G_i$ is the orthogonal projector onto the eigenspace $N(A - \lambda_i I)$). Each $G_i$ is called a spectral projector and satisfies $G_i^2 = G_i$ (as with any projector, it is idempotent), $G_i^* = G_i$ (it is Hermitian, hence an orthogonal projector), $G_i G_j = 0$ (due to orthogonality of distinct eigenspaces) for $i \neq j$, and $\sum_{i=1}^k G_i = I$. This is the completely coordinate-free spectral decomposition, and for $k \ge 2$ the $G_i$ are the Lagrange projectors we saw under [Which Matrices Are Diagonalizable](#which-matrices-are-diagonalizable):
 
 $$G_i = \prod_{j \neq i}\frac{A - \lambda_j I}{\lambda_i - \lambda_j}$$
 
-(with $G_1 = I$ when $k = 1$).  
+(with $G_1 = I$ when $k = 1$).
 
 Every (single-valued) function $f$ defined on the spectrum $\sigma(A)$ reduces to a finite polynomial $p(A)$ of degree $< k$ and can be written as
 
 $$f(A) = \sum_{i=1}^k f(\lambda_i)G_i.$$
 
-If $A$ is normal and $AB = BA$ (even if $B$ is _not_ normal), then automatically $A^*B = BA^*$.
+If $A$ is normal and $AB = BA$ (even if $B$ is _not_ normal), then automatically $A^*B = BA^*$ (Fuglede's theorem). Here is why: by the formula above with $f(z) = \bar{z}$, $A^* = \sum_{i=1}^k \bar{\lambda}_i G_i$, and each $G_i$ is a polynomial in $A$, so $A^*$ is a polynomial in $A$ and commutes with every matrix that commutes with $A$.
 
 A matrix $A$ with eigenvalues $\lambda_1, \lambda_2, \dots, \lambda_n$ (counted with algebraic multiplicity) is normal if and only if $\Vert{}A\Vert{}_F^2 = \sum_{i=1}^n \vert{}\lambda_i\vert{}^2$. The forward direction of the proof follows from unitary diagonalizability ($A = UDU^*$), since the Frobenius norm is unitarily invariant and the squared Frobenius norm of a diagonal matrix is simply the sum of the squared magnitudes of its diagonal elements. Conversely, writing the Schur decomposition $A = U(D + N)U^*$ gives $\Vert{}A\Vert{}_F^2 = \Vert{}D\Vert{}_F^2 + \Vert{}N\Vert{}_F^2 = \sum_{i=1}^n \vert{}\lambda_i\vert{}^2 + \Vert{}N\Vert{}_F^2$, so $\Vert{}A\Vert{}_F^2 = \sum_{i=1}^n \vert{}\lambda_i\vert{}^2$ forces $\Vert{}N\Vert{}_F = 0$, hence $N = 0$ and $A = UDU^*$ is normal.
 
-If $A$ and $B$ are normal and $AB = BA$, then $B$ leaves every eigenspace $E_i = N(A - \lambda_i I)$ of $A$ invariant i.e. if $v$ is in the eigenspace of an eigenvalue, applying $B$ i.e. $Bv$ will remain in the eigenspace. This is because $Av = \lambda_i v \implies A(Bv) = B(Av) = \lambda_i (Bv)$. 
+If $AB = BA$ (normality is not needed for this), then $B$ leaves every eigenspace $E_i = N(A - \lambda_i I)$ of $A$ invariant: if $\mathbf{v}$ is in $E_i$, then so is $B\mathbf{v}$, because $A\mathbf{v} = \lambda_i \mathbf{v} \implies A(B\mathbf{v}) = B(A\mathbf{v}) = \lambda_i (B\mathbf{v})$.
 
 Normal matrices $A, B \in \mathbb{C}^{n \times n}$ can be simultaneously diagonalized by the same unitary matrix $W$ if and only if $AB = BA$, i.e., they commute.
 
-In such a case, the eigenvalues of $A$ and $B$ need not be the same. However, if an eigenvector (say of A) is simple, then as we saw above, any vector in the eigenspace of an eigenvalue of $A$, then applying $B$ on it leves it invariant. If the dimension of the eigenspace is $1$ i.e. it is simple, then $B$ has no choice but to simply scale that eigenvector because it cannot move it out of that 1D space. This means the vector is also an eigenvector of B. Thus any simple eigenvectors are shared between $A$ and $B$. If all eigenvectors are simple, then all of them are shared between the two matrices. 
+In such a case, the eigenvalues of $A$ and $B$ need not be the same, but their eigenvectors are tied together. Suppose $\lambda_i$ is a simple eigenvalue of $A$, so its eigenspace $E_i$ is $1$-dimensional. As we saw above, $B$ maps $E_i$ into itself, and the only way to do that to a $1$-dimensional space is to scale its vectors. So the eigenvector of $A$ spanning $E_i$ is also an eigenvector of $B$. Thus the eigenvectors of the simple eigenvalues of $A$ are shared with $B$, and if all eigenvalues of $A$ are simple, $A$ and $B$ share all their eigenvectors.
 
-Furthermore, each basis vector $\mathbf{u}_k$ assigns a definite eigenvalue pair  $(\lambda_k,\mu_k)$. Consequently, for any two-variable polynomial $p(x,y)$:
+Furthermore, each column $\mathbf{u}_k$ of $W$ is an eigenvector of both matrices, with a definite eigenvalue pair: $A\mathbf{u}_k = \lambda_k\mathbf{u}_k$ and $B\mathbf{u}_k = \mu_k\mathbf{u}_k$. Consequently, for any two-variable polynomial $p(x,y)$:
 
 $$p(A,B)\mathbf{u}_k=p(\lambda_k,\mu_k)\mathbf{u}_k$$
 
 In particular, the eigenvalues of $A+B$ are $\lambda_k+\mu_k$ and the eigenvalues of $AB$ are $\lambda_k\mu_k$ (matching index $k$ to index $k$). For non-commuting matrices, the eigenvalues of $A+B$ and $AB$ generally cannot be computed from the eigenvalues of $A$ and $B$ alone.
 
-
 #### Hermitian Matrices
-If A is real and symmetric or complex and hermitian, all eigenvalues must
-be real numbers. We can arrive at this via the Spectral Theorem and Schur Triangularization. This is the crown jewel of finite-dimensional linear algebra. 
+If $A$ is real and symmetric or complex and Hermitian, all eigenvalues must be real numbers. We can arrive at this via the spectral theorem, which we prove from Schur triangularization. The spectral theorem is the crown jewel of finite-dimensional linear algebra.
 
-Since $A^* A = A A^*$ and if the corresponding triangular matrix is $T = U^* A U$, then: $T^* T = U^* A^* UU^* A U = U^* A^* A U = U^* A A^* U= U^* A U U^* A^* U = TT^*$. So $T$ is also normal.
+Let $A$ be normal ($A^* A = A A^*$), and let $T = U^* A U$ be its Schur triangular form. Then $T^* T = U^* A^* UU^* A U = U^* A^* A U = U^* A A^* U= U^* A U U^* A^* U = TT^*$. So $T$ is also normal.
 
-Comparing the $(1, 1)$ diagonal entry of $T^* T$ and $T T^*$ gives $|t_{11}|^2 = |t_{11}|^2 + \sum_{j=2}^n |t_{1j}|^2$, forcing $t_{1j} = 0$ for all $j \ge 2$. Inducting down the rows forces every off-diagonal entry of $T$ to vanish, so $T$ is diagonal. 
+Comparing the $(1, 1)$ diagonal entry of $T^* T$ and $T T^*$ gives $|t_{11}|^2 = |t_{11}|^2 + \sum_{j=2}^n |t_{1j}|^2$, forcing $t_{1j} = 0$ for all $j \ge 2$. Inducting down the rows forces every off-diagonal entry of $T$ to vanish, so $T$ is diagonal.
 
-Thus $A \in \mathbb{C}^{n \times n}$ is unitarily diagonalizable and admits an orthonormal basis of eigenvectors if and only if $A$ is normal ($A^* A = A A^*$). In particular, for Hermitian $A$, $T^* = T$ immediately forces every diagonal entry (eigenvalue) to be real.
+Thus $A \in \mathbb{C}^{n \times n}$ is unitarily diagonalizable and admits an orthonormal basis of eigenvectors if and only if $A$ is normal ($A^* A = A A^*$); the converse direction is direct, since $A = UDU^*$ gives $A^*A = UD^*DU^* = UDD^*U^* = AA^*$. In particular, for Hermitian $A$, $T^* = T$ immediately forces every diagonal entry (eigenvalue) to be real.
 
-Real skew-symmetric and skew-hermitian matrices are normal and have pure imaginary eigenvalues.
+Geometrically, the spectral theorem says that every real symmetric linear transformation is just a pure stretch or shrink (with a flip for a negative eigenvalue) along a set of perpendicular axes. There is no hidden shearing or rotation.
+
+Note that real skew-symmetric and skew-Hermitian matrices are normal and have pure imaginary eigenvalues.
 
 Hermitian matrices $A, B \in \mathbb{C}^{n \times n}$ can be simultaneously diagonalized by the same unitary matrix if and only if the product $AB$ is also Hermitian. Indeed, because $A^* = A$ and $B^* = B$, we have $(AB)^* = B^*A^* = BA$, so $AB$ is Hermitian ($(AB)^* = AB$) if and only if $AB = BA$. Thus they can be simultaneously unitarily diagonalized if and only if they commute and, equivalently, if and only if $AB$ is Hermitian.
 
 #### Unitary Matrices
 
-For $U \in \mathbb{F}^{n \times n}$ (where $\mathbb{F} = \mathbb{R}$ or $\mathbb{C}$), the following statements are equivalent: 
+For $U \in \mathbb{F}^{n \times n}$ (where $\mathbb{F} = \mathbb{R}$ or $\mathbb{C}$), the following statements are equivalent:
 
-$U$ is unitary.
-    
-The columns of $U$ constitute an orthonormal set.
-    
-The rows of $U$ constitute an orthonormal set.
+-   $U$ is unitary.
+-   The columns of $U$ constitute an orthonormal set.
+-   The rows of $U$ constitute an orthonormal set.
+-   $U^{-1} = U^* \implies UU^* = I$ ($Q^{-1} = Q^T$ for real orthogonal matrices $Q$). Note that this follows from the previous two sentences. Since they are orthonormal, every column/row dotted with any other column/row gives a 0. It gives a 1 when dotted with itself, which directly leads to $UU^* = I$. In other words, $\mathbf{q}_i^* \mathbf{q}_j = \delta_{ij}$. The symbol $\delta_{ij}$ is the Kronecker delta, equal to $1$ if $i = j$ and $0$ if $i \neq j$.
+-   $\Vert{}U\mathbf{x}\Vert{}_2 = \Vert{}\mathbf{x}\Vert{}_2$ for all $\mathbf{x} \in \mathbb{F}^{n \times 1}$.
 
-$U^{-1} = U^* \implies UU^* = I$ ($Q^{-1} = Q^T$ for real orthogonal matrices $Q$). Note that this follows from the previous two sentences. Since they are orthonormal, every column/row dotted with any other column/row gives a 0. It gives a 1 when dotted with itself, which directly leads to $UU^* = I$. In other words, $q_i^* q_j = \delta_{ij}$. The symbol $\delta_{ij}$ is the Kronecker delta, equal to $1$ if $i = j$ and $0$ if $i \neq j$.
-    
-$\Vert{}U\mathbf{x}\Vert{}_2 = \Vert{}\mathbf{x}\Vert{}_2$ for all $\mathbf{x} \in \mathbb{F}^{n \times 1}$.
-   
 Note that a product of unitary (or orthogonal) matrices of the same size is also unitary (or orthogonal).
 
 If $U_{m \times m}$ and $V_{n \times n}$ are unitary, then $\Vert{}UAV\Vert{}_F = \Vert{}A\Vert{}_F$ for all $A \in \mathbb{F}^{m \times n}$.
@@ -1455,7 +1466,7 @@ This can be summarized by saying that the Frobenius matrix norm is a unitarily i
 
 The fact that unitary matrices $U$ have the property that $\Vert{}U\mathbf{x}\Vert{}_2 = \Vert{}\mathbf{x}\Vert{}_2$ for all $\mathbf{x} \in \mathbb{F}^{n \times 1}$ can be expressed by saying that $U$ is an isometry (a Euclidean-norm-preserving mapping) on $\mathbb{F}^n$.
 
-Real orthogonal matrices represent rotations and reflections (and their compositions) of a vector: pure rotations have $\det(Q) = +1$, while reflections and rotoreflections have $\det(Q) = -1$. Unitary matrices are their complex generalization on $\mathbb{C}^n$, preserving lengths and complex inner products (including complex phase shifts, rotations, and reflections). Thus, harking back tot he change of basis note we mentioned earlier regarding $Ax = b$ and $x = A^{-1}b$, if $A$ is unitary, we have $(Ax)^*(Ay) = x^*y$, which is just a mathematical representation of the preservation of norm.
+Real orthogonal matrices represent rotations and reflections (and their compositions) of a vector: pure rotations have $\det(Q) = +1$, while reflections and rotoreflections have $\det(Q) = -1$. Unitary matrices are their complex generalization on $\mathbb{C}^n$, preserving lengths and complex inner products (including complex phase shifts, rotations, and reflections). Thus, harking back to the change of basis note we mentioned earlier regarding $A\mathbf{x} = \mathbf{b}$ and $\mathbf{x} = A^{-1}\mathbf{b}$, if $A$ is unitary, we have $(A\mathbf{x})^*(A\mathbf{y}) = \mathbf{x}^*\mathbf{y}$, which is just a mathematical representation of the preservation of inner products (and hence of norms).
 
 Matrices for rotation in 2D can be written as a matrix of $\cos\theta$ and $\sin\theta$ with the angle of rotation $\theta$. Below is the counterclockwise rotation by $\theta$; a clockwise rotation is the same matrix with a negative angle, which flips the signs of the $\sin\theta$ entries. Every rotation in the rest of this section uses this one form:
 
@@ -1468,7 +1479,7 @@ $$R_{xy}(\theta) = \begin{pmatrix} \cos\theta & -\sin\theta & 0 \\ \sin\theta & 
 Note that if we rotate by the right amount, we can align the vector such that one component, say $y$, will go to $0$. Starting with $\mathbf{v} = \begin{pmatrix} x \\ y \\ z \end{pmatrix}$:
 
 After $R_{xy}(\theta_1)$ (annihilating $y$, with $\cos\theta_1 = \frac{x}{\sqrt{x^2+y^2}}$ and $\sin\theta_1 = -\frac{y}{\sqrt{x^2+y^2}}$):
-    
+
 $$\mathbf{v}_1 = R_{xy}(\theta_1)\mathbf{v} = \begin{pmatrix} \sqrt{x^2 + y^2} \\ 0 \\ z \end{pmatrix}$$
 
 The length of the vector, however, stays the same, as a $\sqrt{x^2 + y^2}$ component is introduced in the $x$-position.
@@ -1476,9 +1487,9 @@ The length of the vector, however, stays the same, as a $\sqrt{x^2 + y^2}$ compo
 The second rotation turns the $xz$-plane and keeps $y$ fixed, so the same $2 \times 2$ block now sits in the rows and columns of $x$ and $z$:
 
 $$R_{xz}(\theta) = \begin{pmatrix} \cos\theta & 0 & -\sin\theta \\ 0 & 1 & 0 \\ \sin\theta & 0 & \cos\theta \end{pmatrix}.$$
-    
+
 After $R_{xz}(\theta_2)$ (completing the alignment to the $x$-axis by annihilating $z$, with $\cos\theta_2 = \frac{\sqrt{x^2+y^2}}{\sqrt{x^2+y^2+z^2}}$ and $\sin\theta_2 = -\frac{z}{\sqrt{x^2+y^2+z^2}}$):
-    
+
 $$\mathbf{v}_2 = R_{xz}(\theta_2)\mathbf{v}_1 = \begin{pmatrix} \sqrt{x^2 + y^2 + z^2} \\ 0 \\ 0 \end{pmatrix} = \Vert{}\mathbf{v}\Vert{}_2 \mathbf{e}_1$$
 
 Now let's pitch this up to 4D. By the same process, we rotate, let's say, the $xy$-plane, while keeping the $z$ and $w$ coordinate axes fixed. The matrix becomes:
@@ -1488,7 +1499,7 @@ $$R_{xy}(\theta_1) = \begin{pmatrix} \cos\theta_1 & -\sin\theta_1 & 0 & 0 \\ \si
 Starting with $\mathbf{v} = \begin{pmatrix} x \\ y \\ z \\ w \end{pmatrix}$:
 
 After $R_{xy}(\theta_1)$ (annihilating $y$, with $\cos\theta_1 = \frac{x}{\sqrt{x^2+y^2}}$ and $\sin\theta_1 = -\frac{y}{\sqrt{x^2+y^2}}$):
-    
+
 $$\mathbf{v}_1 = R_{xy}(\theta_1)\mathbf{v} = \begin{pmatrix} \sqrt{x^2 + y^2} \\ 0 \\ z \\ w \end{pmatrix}$$
 
 Another rotation, this time in the $xw$-plane (keeping the $y$ and $z$ axes fixed), gives:
@@ -1498,11 +1509,11 @@ $$R_{xw}(\theta_2) = \begin{pmatrix} \cos\theta_2 & 0 & 0 & -\sin\theta_2 \\ 0 &
 Choosing $\theta_2$ appropriately, the $x$-component increases (assuming $w \neq 0$) to $\sqrt{x^2 + y^2 + w^2}$, while the $w$-component goes to $0$.
 
 After $R_{xw}(\theta_2)$ (annihilating $w$, with $\cos\theta_2 = \frac{\sqrt{x^2+y^2}}{\sqrt{x^2+y^2+w^2}}$ and $\sin\theta_2 = -\frac{w}{\sqrt{x^2+y^2+w^2}}$):
-    
+
 $$\mathbf{v}_2 = R_{xw}(\theta_2)\mathbf{v}_1 = \begin{pmatrix} \sqrt{x^2 + y^2 + w^2} \\ 0 \\ z \\ 0 \end{pmatrix}$$
-    
+
 After $R_{xz}(\theta_3)$ (completing the alignment to the $x$-axis by annihilating $z$, with $\cos\theta_3 = \frac{\sqrt{x^2+y^2+w^2}}{\sqrt{x^2+y^2+z^2+w^2}}$ and $\sin\theta_3 = -\frac{z}{\sqrt{x^2+y^2+z^2+w^2}}$):
-    
+
 $$\mathbf{v}_3 = R_{xz}(\theta_3)\mathbf{v}_2 = \begin{pmatrix} \sqrt{x^2 + y^2 + z^2 + w^2} \\ 0 \\ 0 \\ 0 \end{pmatrix} = \Vert{}\mathbf{v}\Vert{}_2 \mathbf{e}_1$$
 
 By this process of composing rotations, which is equivalent to multiplying rotation matrices that represent rotations of planes, we can see that we step by step align a vector $\mathbf{x} \in \mathbb{R}^n$ to a single coordinate axis by a sequence of $n - 1$ plane rotations. Write $R_{ij}$ for a rotation in the plane of coordinates $i$ and $j$: the $2 \times 2$ block of $R(\theta)$ sits in rows and columns $i$ and $j$, and every other coordinate stays fixed, so $R_{xy}$ above is $R_{12}$ and $R_{xw}$ is $R_{14}$. Then there is an orthogonal matrix $R = R_{in} \cdots R_{i,i+1}R_{i,i-1} \cdots R_{i1}$ such that $R\mathbf{x} = \Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_i$. Note that the length of the vector has not changed at all in this process.
@@ -1519,205 +1530,246 @@ $$R_{12}\mathbf{x}_1 = \begin{pmatrix} -\frac{1}{\sqrt{5}} & \frac{2}{\sqrt{5}} 
 
 $$R_{14}\bigl(R_{12}\mathbf{x}_1\bigr) = \begin{pmatrix} \frac{\sqrt{5}}{3} & 0 & 0 & -\frac{2}{3} \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ \frac{2}{3} & 0 & 0 & \frac{\sqrt{5}}{3} \end{pmatrix}\frac{1}{3}\begin{pmatrix} \sqrt{5} \\ 0 \\ 0 \\ -2 \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \end{pmatrix}$$
 
-Therefore, the columns of  
+Therefore, the columns of
 
 $$Q = (R_{14}R_{12})^T = R_{12}^T R_{14}^T = \begin{pmatrix} -\frac{1}{3} & -\frac{2}{\sqrt{5}} & 0 & -\frac{2}{3\sqrt{5}} \\ \frac{2}{3} & -\frac{1}{\sqrt{5}} & 0 & \frac{4}{3\sqrt{5}} \\ 0 & 0 & 1 & 0 \\ -\frac{2}{3} & 0 & 0 & \frac{\sqrt{5}}{3} \end{pmatrix}$$
 
 constitute a complete orthonormal set containing the specified vector $\mathbf{x}_1$.
 
 Extending a unit vector $\mathbf{x}_1$ to $Q = R^T$ produces _one_ orthogonal matrix with first column $\mathbf{x}_1$, never the only one: for $n = 2$ the second column can be either of the two unit vectors perpendicular to $\mathbf{x}_1$, and for $n \ge 3$ there are infinitely many choices. Every orthogonal matrix with first column $\mathbf{x}_1$ has the form
-    
-$$\widetilde{Q} = Q \begin{pmatrix} 1 & 0 \\ 0 & W \end{pmatrix}, \qquad W \in O(n - 1),$$
-    
-reflecting the freedom to rotate or reflect the remaining $n - 1$ orthonormal basis vectors inside the orthogonal complement $\mathbf{x}_1^\perp$. 
 
-Moving from 3D to 4D reveals a geometric truth hidden in 3D: a simple rotation is defined by the 2D plane it rotates, not by a fixed axis. Only in 3D does the orthogonal complement of a 2D plane happen to be a 1D line ("axis of rotation"). In 4D, the complement of a 2D plane is another 2D plane, so you can compose an $xy$-plane rotation by $\theta_1$ and a commuting $zw$-plane rotation by $\theta_2$ into a double rotation that fixes no nonzero vector at all (every vector moves). 
+$$\widetilde{Q} = Q \begin{pmatrix} 1 & 0 \\ 0 & W \end{pmatrix}, \qquad W \in O(n - 1),$$
+
+reflecting the freedom to rotate or reflect the remaining $n - 1$ orthonormal basis vectors inside the orthogonal complement $\mathbf{x}_1^\perp$.
+
+Moving from 3D to 4D reveals a geometric truth hidden in 3D: a simple rotation is defined by the 2D plane it rotates, not by a fixed axis. Only in 3D does the orthogonal complement of a 2D plane happen to be a 1D line ("axis of rotation"). In 4D, the complement of a 2D plane is another 2D plane, so you can compose an $xy$-plane rotation by $\theta_1$ and a commuting $zw$-plane rotation by $\theta_2$ into a double rotation that fixes no nonzero vector at all (every vector moves).
 
 The plane rotations $R_{ij}$ used here are Givens rotations ($\det = +1$). They excel at zeroing selective entries (e.g., in sparse, banded, or Hessenberg matrices) because each $R_{ij}$ modifies only rows $i$ and $j$. Notice in the example that $R_{13}$ was skipped simply because the 3rd component of $\mathbf{x}_1$ was already $0$.
-        
+
 For a dense vector, zeroing $n - 1$ components in a single step is done with a Householder reflection $H_{\mathbf{u}} = I - 2\frac{\mathbf{u}\mathbf{u}^T}{\mathbf{u}^T \mathbf{u}}$ (where $\mathbf{u} = \mathbf{x} \mp \Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_1$, with $\det(H_{\mathbf{u}}) = -1$), which requires half the flops of chaining $n - 1$ Givens rotations and is the workhorse of dense $QR$ factorization.
-        
-For complex vectors  $\mathbf{x} \in \mathbb{C}^n$, real $\cos\theta, \sin\theta$ cannot cancel complex phase differences; a complex Givens rotation uses a $2 \times 2$ block $\begin{pmatrix} c & -\bar{s} \\ s & \bar{c} \end{pmatrix} \in SU(2)$ with $\vert{}c\vert{}^2 + \vert{}s\vert{}^2 = 1$.
+
+For complex vectors $\mathbf{x} \in \mathbb{C}^n$, real $\cos\theta, \sin\theta$ cannot cancel complex phase differences; a complex Givens rotation uses a $2 \times 2$ block $\begin{pmatrix} c & -\bar{s} \\ s & \bar{c} \end{pmatrix} \in SU(2)$ with $\vert{}c\vert{}^2 + \vert{}s\vert{}^2 = 1$.
+
+#### Positive Definite Matrices
+
+Let $A$ be an $n \times n$ square matrix that is real and symmetric or complex and Hermitian. Each of the following statements is equivalent to saying that $A$ is positive definite:
+
+-   $\mathbf{x}^*A\mathbf{x} > 0$ for every nonzero vector $\mathbf{x} \in \mathbb{C}^n$ (or $\mathbf{x} \in \mathbb{R}^n$ when $A$ is real symmetric).
+-   All eigenvalues of $A$ are positive. ($A$ is positive semidefinite when $\mathbf{x}^*A\mathbf{x} \ge 0$ for every $\mathbf{x}$; its eigenvalues are nonnegative.)
+-   $A$ has an $LU$ factorization (without row interchanges, with $L$ unit lower triangular) and an $LDU$ (specifically $LDL^*$) factorization where all pivots are positive.
+-   $A = B^*B$ for some nonsingular $n \times n$ matrix $B$ (or, more generally, some $m \times n$ matrix $B$ with full column rank $n$). (If $A$ is positive semidefinite, $A = B^*B$ for some matrix $B$, which automatically satisfies $\operatorname{rank}(B) = \operatorname{rank}(A)$.)
+-   Every principal submatrix of $A$ is positive definite; equivalently, all principal minors of $A$ are positive; equivalently, all leading principal minors of $A$ are positive ([Sylvester's criterion](#determinants-of-hermitian-unitary-matrices)). (For positive semidefinite matrices, all principal minors are nonnegative; note that nonnegativity of the leading principal minors alone is not sufficient.)
+
+Furthermore, if $A$ is positive definite (respectively, positive semidefinite), then it has a unique positive definite (respectively, positive semidefinite) square root $B$ such that $B^2 = A$. (Conversely, if $A = B^2$ for a positive definite matrix $B$, then $A$ is positive definite.)
+
+A matrix $A$ is called negative definite (respectively, negative semidefinite) when $A$ is real and symmetric or complex and Hermitian and $-A$ is positive definite (respectively, positive semidefinite). If a symmetric or Hermitian matrix $A$ is neither positive semidefinite nor negative semidefinite (i.e., $\mathbf{x}^*A\mathbf{x}$ takes both strictly positive and strictly negative values, or equivalently $A$ has at least one positive and at least one negative eigenvalue), it is called an indefinite matrix.
+
+Two matrices $A, B \in \mathbb{R}^{n \times n}$ are said to be congruent to each other when $C^T A C = B$ for some nonsingular $C \in \mathbb{R}^{n \times n}$. We write $A \cong B$ to denote congruence.
+
+The inertia of a real and symmetric matrix $A$ is defined to be the triple $(p, q, z)$ in which $p$, $q$, and $z$ are the respective numbers of its positive, negative, and zero eigenvalues, counting algebraic multiplicities. When $A, B \in \mathbb{R}^{n \times n}$ are symmetric, $A \cong B$ if and only if $A$ and $B$ have the same inertia. This is called Sylvester's Law of Inertia.
+
+If $A, B \in \mathbb{R}^{n \times n}$ are symmetric matrices such that $A$ is positive definite, then they are simultaneously diagonalizable by the same congruence matrix, i.e., there is a nonsingular matrix $C \in \mathbb{R}^{n \times n}$ such that $C^T A C$ and $C^T B C$ are both diagonal (in fact, $C$ can be chosen so that $C^T A C = I$ and $C^T B C$ is diagonal, though the two diagonals are not necessarily equal).
+
+Orthogonal projectors are an example of positive semidefinite matrices: since $E = E^T = E^2$, we have $\mathbf{x}^T E \mathbf{x} = \mathbf{x}^T E^T E \mathbf{x} = \Vert{}E\mathbf{x}\Vert{}_2^2 \ge 0$.
 
 #### Comparing Different Types of Normal Matrices
 Because $A = UDU^*$, every major subclass of normal matrices is characterized purely by where its eigenvalues lie in $\mathbb{C}$:
-    
+
 | Subclass of Normal Matrices | Algebraic Condition | Spectrum Location in $\mathbb{C}$ |
 | --- | --- | --- |
 | Hermitian | $A^* = A$ | Real axis $\mathbb{R}$ |
-| Positive semidefinite / definite | $A^* = A$, $x^*Ax \ge 0$ (or $> 0$) | $[0, \infty)$ or $(0, \infty)$ |
+| Positive semidefinite / definite | $A^* = A$, $\mathbf{x}^*A\mathbf{x} \ge 0$ (or $> 0$) | $[0, \infty)$ or $(0, \infty)$ |
 | Skew-Hermitian | $A^* = -A$ | Imaginary axis $i\mathbb{R}$ |
 | Unitary | $A^*A = I$ | Unit circle $\{z \in \mathbb{C} : \vert{}z\vert{} = 1\}$ |
 | Orthogonal projector | $A^2 = A = A^*$ | $\{0, 1\}$ |
 | Hermitian involution (reflector) | $A^2 = I, \; A^* = A$ | $\{-1, 1\}$ |
 
-When trying to decide what's true about normal matrices and what's not, it helps to think in terms of the following associations: 
+When trying to decide what's true about normal matrices and what's not, it helps to think in terms of the following associations:
 
-Conjugate transpose $\longleftrightarrow$ complex conjugation ($\bar{z}$).
+-   Conjugate transpose $\longleftrightarrow$ complex conjugation ($\bar{z}$).
+-   Hermitian matrices $\longleftrightarrow$ Real numbers ($z = \bar{z}$).
+-   Skew-Hermitian matrices $\longleftrightarrow$ Purely imaginary numbers ($z = -\bar{z}$).
+-   Unitary matrices $\longleftrightarrow$ Points on the unit circle ($z = e^{i\theta}$ for $\theta \in \mathbb{R}$, i.e., $\vert{}z\vert{} = 1$).
+-   Positive semidefinite / definite matrices $\longleftrightarrow$ Nonnegative / strictly positive reals ($z \ge 0$ / $z > 0$).
 
-Hermitian matrices $\longleftrightarrow$ Real numbers ($z = \bar{z}$).
-    
-Skew-Hermitian matrices $\longleftrightarrow$ Purely imaginary numbers ($z = -\bar{z}$).
-    
-Unitary matrices $\longleftrightarrow$ Points on the unit circle ($z = e^{i\theta}$ for $\theta \in \mathbb{R}$, i.e.,  $\vert{}z\vert{} = 1$).
-
-Positive semidefinite / definite matrices  $\longleftrightarrow$  Nonnegative / strictly positive reals ($z \ge 0$ / $z > 0$). 
-
-Under this dictionary, the polar decomposition  $A = UP$ ($U$ unitary,  $P = (A^*A)^{1/2}$ positive semidefinite) is the exact matrix counterpart of scalar polar form $z = e^{i\theta}r$.
+Under this dictionary, the polar decomposition $A = UP$ ($U$ unitary, $P = (A^*A)^{1/2}$ positive semidefinite) is the exact matrix counterpart of scalar polar form $z = e^{i\theta}r$.
 
 The Hermitian/skew-Hermitian split $A = \frac{A + A^*}{2} + \frac{A - A^*}{2}$ mirrors $z = \operatorname{Re}(z) + i\operatorname{Im}(z)$.
-    
-For example, the complex function $f(z) = (1 - z)(1 + z)^{-1}$ maps the imaginary axis in the complex plane to points on the unit circle because $\vert{}f(z)\vert{}^2 = 1$ whenever $z = -\bar{z}$ (and $1 + z \neq 0$ on the imaginary axis). It is therefore not surprising to find that if $A \in \mathbb{C}^{n \times n}$ is skew-Hermitian (or $A \in \mathbb{R}^{n \times n}$ is real skew-symmetric), then $I + A$ is nonsingular and $f(A) = (I - A)(I + A)^{-1} = (I + A)^{-1}(I - A)$ is unitary or real orthogonal, respectively (since unitary matrices map to the unit circle: $\vert{}f(\lambda)\vert{}^2 = 1$).
 
-We can also characterize the largest and smallest eigenvalues variationally (equivalently, giving sharp upper and lower bounds on the Rayleigh quotient $x^*Ax / x^*x$). If $A \in \mathbb{C}^{n \times n}$ is Hermitian (or $A \in \mathbb{R}^{n \times n}$ is real symmetric) with eigenvalues $\lambda_1 \ge \lambda_2 \ge \cdots \ge \lambda_n$, then $\lambda_1 = \max_{\Vert{}x\Vert{}_2=1} x^*Ax$ and $\lambda_n = \min_{\Vert{}x\Vert{}_2=1} x^*Ax$. This can also be written as  
+For example, the complex function $f(z) = (1 - z)(1 + z)^{-1}$ maps the imaginary axis in the complex plane to points on the unit circle because $\vert{}f(z)\vert{}^2 = 1$ whenever $z = -\bar{z}$ (and $1 + z \neq 0$ on the imaginary axis). It is therefore not surprising to find that if $A \in \mathbb{C}^{n \times n}$ is skew-Hermitian (or $A \in \mathbb{R}^{n \times n}$ is real skew-symmetric), then $I + A$ is nonsingular and $f(A) = (I - A)(I + A)^{-1} = (I + A)^{-1}(I - A)$ is unitary or real orthogonal, respectively (this is the Cayley transform: $f(A) = Uf(D)U^*$ is normal, and its eigenvalues $f(\lambda_i)$ lie on the unit circle, so it is unitary).
 
-$$\lambda_1 = \max_{x \neq 0} \frac{x^*Ax}{x^*x} \quad \text{and} \quad \lambda_n = \min_{x \neq 0} \frac{x^*Ax}{x^*x}.$$
+We can also characterize the largest and smallest eigenvalues variationally (equivalently, giving sharp upper and lower bounds on the Rayleigh quotient $\mathbf{x}^*A\mathbf{x} / \mathbf{x}^*\mathbf{x}$). If $A \in \mathbb{C}^{n \times n}$ is Hermitian (or $A \in \mathbb{R}^{n \times n}$ is real symmetric) with eigenvalues $\lambda_1 \ge \lambda_2 \ge \cdots \ge \lambda_n$, then $\lambda_1 = \max_{\Vert{}\mathbf{x}\Vert{}_2=1} \mathbf{x}^*A\mathbf{x}$ and $\lambda_n = \min_{\Vert{}\mathbf{x}\Vert{}_2=1} \mathbf{x}^*A\mathbf{x}$. This can also be written as
 
-Geometrically, for a unit vector $x$,  $x^*Ax$ is the signed component of $Ax$ along $x$, so $\lambda_1$ and $\lambda_n$ are its extreme signed radial stretches. When $A$ is positive definite, the image $\{Ax : \Vert{}x\Vert{}_2 = 1\}$ of the unit sphere is a hyperellipsoid whose $n$ principal semi-axes have lengths $\lambda_1, \dots, \lambda_n$; for a general Hermitian matrix with possibly negative eigenvalues, the semi-axis lengths of $\{Ax : \Vert{}x\Vert{}_2 = 1\}$ are instead the magnitudes $\vert{}\lambda_i\vert{}$.
+$$\lambda_1 = \max_{\mathbf{x} \neq \mathbf{0}} \frac{\mathbf{x}^*A\mathbf{x}}{\mathbf{x}^*\mathbf{x}} \quad \text{and} \quad \lambda_n = \min_{\mathbf{x} \neq \mathbf{0}} \frac{\mathbf{x}^*A\mathbf{x}}{\mathbf{x}^*\mathbf{x}}.$$
+
+Geometrically, for a unit vector $\mathbf{x}$, $\mathbf{x}^*A\mathbf{x}$ is the signed component of $A\mathbf{x}$ along $\mathbf{x}$, so $\lambda_1$ and $\lambda_n$ are its extreme signed radial stretches. When $A$ is positive definite, the image $\{A\mathbf{x} : \Vert{}\mathbf{x}\Vert{}_2 = 1\}$ of the unit sphere is a hyperellipsoid whose $n$ principal semi-axes have lengths $\lambda_1, \dots, \lambda_n$; for a general Hermitian matrix with possibly negative eigenvalues, the semi-axis lengths of $\{A\mathbf{x} : \Vert{}\mathbf{x}\Vert{}_2 = 1\}$ are instead the magnitudes $\vert{}\lambda_i\vert{}$.
 
 In the quantum mechanics variational principle, for a Hermitian Hamiltonian $\hat{H}$, the Rayleigh quotient $\frac{\langle\psi\vert{}\hat{H}\vert{}\psi\rangle}{\langle\psi\vert{}\psi\rangle}$ is the energy expectation value, so $\lambda_{\min} = \min_{\psi \neq 0} \frac{\langle\psi\vert{}\hat{H}\vert{}\psi\rangle}{\langle\psi\vert{}\psi\rangle}$ guarantees that any trial state gives an upper bound on the exact ground-state energy $E_0$.
 
 ### Singular Value Decomposition
 
-The singular value decomposition (SVD) is a form of matrix factorization. Many problems of linear algebra can be better understood if we first ask the question: what if we take the SVD?  
+The singular value decomposition (SVD) is a form of matrix factorization. Many problems of linear algebra can be better understood if we first ask the question: what if we take the SVD?
 
 #### A Geometric Observation
 
-The SVD is motivated by the following geometric fact: the image of the unit sphere $S = \{x \in \mathbb{R}^n : \Vert{}x\Vert{}_2 = 1\}$ when transformed by any $m \times n$ real matrix $A$ is a hyperellipse (more precisely, a hyperellipsoid surface when $A$ has full column rank $n$, and a filled/degenerate $r$-dimensional hyperellipsoid when $\operatorname{rank}(A) = r < n$) $AS \subset \mathbb{R}^m$. The SVD is applicable to both real and complex matrices. However, in describing the geometric interpretation, we assume the matrix is real (and for the initial development below, we assume $m \ge n$).
+The SVD is motivated by the following geometric fact: the image of the unit sphere $S = \{\mathbf{x} \in \mathbb{R}^n : \Vert{}\mathbf{x}\Vert{}_2 = 1\}$ when transformed by any $m \times n$ real matrix $A$ is a hyperellipse (more precisely, a hyperellipsoid surface when $A$ has full column rank $n$, and a filled/degenerate $r$-dimensional hyperellipsoid when $\operatorname{rank}(A) = r < n$) $AS \subset \mathbb{R}^m$. The SVD is applicable to both real and complex matrices. However, in describing the geometric interpretation, we assume the matrix is real (and for the initial development below, we assume $m \ge n$).
 
-The term "hyperellipse" is just the $m$-dimensional generalization of an ellipse. We may define a hyperellipse in $\mathbb{R}^m$ as the image obtained by stretching the unit sphere in $\mathbb{R}^m$ by some nonnegative factors $\sigma_1, \dots, \sigma_m \ge 0$ (possibly zero) in some mutually orthogonal directions $u_1, \dots, u_m \in \mathbb{R}^m$. For convenience, let us take the $u_i$ to be unit vectors. The vectors $\{\sigma_i u_i\}$ are the principal semiaxes of the hyperellipse, with lengths $\sigma_i$. If $A$ has rank $r$, exactly $r$ of the lengths will turn out to be nonzero; in general $r \le \min(m, n)$, and in particular, if $m \ge n$, at most $n$ of them will be nonzero. The unit vectors $u_i$ are called the left singular vectors of $A$. Under the assumption $m \ge n$, the $n$ lengths $\sigma_1, \dots, \sigma_n$ (more generally, the $\min(m, n)$ lengths) are called the singular values of $A$, conventionally ordered in non-increasing order ($\sigma_1 \ge \sigma_2 \ge \cdots \ge \sigma_n \ge 0$). Thus the vector $\sigma_i u_i$ is the $i$-th largest principal semiaxis of $AS$.  
+The term "hyperellipse" is just the $m$-dimensional generalization of an ellipse. We may define a hyperellipse in $\mathbb{R}^m$ as the image obtained by stretching the unit sphere in $\mathbb{R}^m$ by some nonnegative factors $\sigma_1, \dots, \sigma_m \ge 0$ (possibly zero) in some mutually orthogonal directions $\mathbf{u}_1, \dots, \mathbf{u}_m \in \mathbb{R}^m$. For convenience, let us take the $\mathbf{u}_i$ to be unit vectors. The vectors $\{\sigma_i \mathbf{u}_i\}$ are the principal semiaxes of the hyperellipse, with lengths $\sigma_i$. If $A$ has rank $r$, exactly $r$ of the lengths will turn out to be nonzero; in general $r \le \min(m, n)$, and in particular, if $m \ge n$, at most $n$ of them will be nonzero. The unit vectors $\mathbf{u}_i$ are called the left singular vectors of $A$. Under the assumption $m \ge n$, the $n$ lengths $\sigma_1, \dots, \sigma_n$ (more generally, the $\min(m, n)$ lengths) are called the singular values of $A$, conventionally ordered in non-increasing order ($\sigma_1 \ge \sigma_2 \ge \cdots \ge \sigma_n \ge 0$). Thus the vector $\sigma_i \mathbf{u}_i$ is the $i$-th largest principal semiaxis of $AS$.
 
-Now assume $A \in \mathbb{C}^{m \times n}$ ($m \ge n$) has full column rank ($r = n$), so all $n$ singular values $\sigma_1, \dots, \sigma_n$ are strictly positive. We define the $n$ right singular vectors of $A$. These are the unit vectors $\{v_1, v_2, \dots, v_n\} \subset S$ (which turn out to be mutually orthogonal) that are the preimages of the principal semiaxes of $AS$, numbered and sign-matched so that $Av_i = \sigma_i u_i$.  
+Now assume $A \in \mathbb{C}^{m \times n}$ ($m \ge n$) has full column rank ($r = n$), so all $n$ singular values $\sigma_1, \dots, \sigma_n$ are strictly positive. We define the $n$ right singular vectors of $A$. These are the unit vectors $\{\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_n\} \subset S$ (which turn out to be mutually orthogonal) that are the preimages of the principal semiaxes of $AS$, numbered and sign-matched so that $A\mathbf{v}_i = \sigma_i \mathbf{u}_i$.
 
-This collection of vector equations can be expressed as a matrix equation,  $AV = U\Sigma$, where $\Sigma$ is an $n \times n$ diagonal matrix with positive real diagonal entries $\sigma_1, \dots, \sigma_n$,  $U$ is an $m \times n$ matrix with orthonormal columns $u_1, \dots, u_n$, and $V$ is an $n \times n$ matrix with orthonormal columns $v_1, \dots, v_n$. (We haven't proven that $v_i$ are orthonormal, and we will do so shortly). Thus $V$ is unitary, and we can multiply on the right by its inverse $V^*$ to obtain:  
+This collection of vector equations can be expressed as a matrix equation, $AV = U\Sigma$, where $\Sigma$ is an $n \times n$ diagonal matrix with positive real diagonal entries $\sigma_1, \dots, \sigma_n$, $U$ is an $m \times n$ matrix with orthonormal columns $\mathbf{u}_1, \dots, \mathbf{u}_n$, and $V$ is an $n \times n$ matrix with orthonormal columns $\mathbf{v}_1, \dots, \mathbf{v}_n$. (We haven't proven that the $\mathbf{v}_i$ are orthonormal; we will do so shortly.) Thus $V$ is unitary, and we can multiply on the right by its inverse $V^*$ to obtain:
 
 $$A = U\Sigma V^*.$$
 
-This factorization of $A$ is called a reduced singular value decomposition, or reduced SVD of $A$.  
+This factorization of $A$ is called a reduced singular value decomposition, or reduced SVD of $A$.
 
 #### Full SVD
 
-In most applications, the SVD is used in exactly the form just described. However, for completeness, let's look at the full SVD (continuing with $m \ge n$). The idea is as follows. The columns of $U$ are $n$ orthonormal vectors in the $m$-dimensional space $\mathbb{C}^m$. Unless $m = n$, they do not form a basis of $\mathbb{C}^m$, nor is $U$ a unitary matrix. However, by adjoining an additional $m - n$ orthonormal columns that are orthogonal to the columns of $U$ (i.e., an orthonormal basis for $\operatorname{col}(U)^\perp$), $U$ can be extended to a unitary matrix. Let us do this in an arbitrary fashion, and call the result $\hat{U}$.  
+In most applications, the SVD is used in exactly the form just described. However, for completeness, let's look at the full SVD (continuing with $m \ge n$). The idea is as follows. The columns of $U$ are $n$ orthonormal vectors in the $m$-dimensional space $\mathbb{C}^m$. Unless $m = n$, they do not form a basis of $\mathbb{C}^m$, nor is $U$ a unitary matrix. However, by adjoining an additional $m - n$ orthonormal columns that are orthogonal to the columns of $U$ (i.e., an orthonormal basis for $\operatorname{col}(U)^\perp$), $U$ can be extended to a unitary matrix. Let us do this in an arbitrary fashion, and call the result $\hat{U}$.
 
-If $U$ is replaced by $\hat{U}$, then $\Sigma$ will have to change too. For the product to remain unaltered, the last $m - n$ columns of $\hat{U}$ should be multiplied by zero. Accordingly, append $m - n$ rows of zeros below $\Sigma$ to form $\hat{\Sigma}$. We now have a new factorization, the full SVD of $A$.  
+If $U$ is replaced by $\hat{U}$, then $\Sigma$ will have to change too. For the product to remain unaltered, the last $m - n$ columns of $\hat{U}$ should be multiplied by zero. Accordingly, append $m - n$ rows of zeros below $\Sigma$ to form $\hat{\Sigma}$. We now have a new factorization, the full SVD of $A$.
 
 $$A = \hat{U}\hat{\Sigma}V^*.$$
 
-Here $\hat{U}$ is $m \times m$ and unitary,  $V$ is $n \times n$ and unitary, and $\hat{\Sigma}$ is $m \times n$ and diagonal ($\hat{\Sigma}_{ij} = 0$ for $i \neq j$) with nonnegative real entries on its main diagonal (strictly positive in the full column rank case, with the appended $m - n$ rows all zero). (When $m < n$, the roles reverse symmetrically: there are $m$ singular values,  $\hat{\Sigma}$ is padded on the right with $n - m$ columns of zeros, and $V$ is extended by $n - m$ orthonormal columns.)  
+Here $\hat{U}$ is $m \times m$ and unitary, $V$ is $n \times n$ and unitary, and $\hat{\Sigma}$ is $m \times n$ and diagonal ($\hat{\Sigma}_{ij} = 0$ for $i \neq j$) with nonnegative real entries on its main diagonal (strictly positive in the full column rank case, with the appended $m - n$ rows all zero). (When $m < n$, the roles reverse symmetrically: there are $m$ singular values, $\hat{\Sigma}$ is padded on the right with $n - m$ columns of zeros, and $V$ is extended by $n - m$ orthonormal columns.)
 
-We can now discard the simplifying assumption that $A$ has full column rank. If $A$ is rank-deficient ($\operatorname{rank}(A) = r < \min(m, n)$), the factorization is still valid. All that changes is that now only $r$ of the left singular vectors (and $r$ of the right singular vectors) of $A$ are determined by the geometry of the hyperellipse. To construct the unitary matrix $\hat{U}$, we introduce $m - r$ instead of just $m - n$ additional orthonormal columns (forming an orthonormal basis of $\operatorname{col}(A)^\perp$). The matrix $V$ will also need $n - r$ additional orthonormal columns (forming an orthonormal basis of $N(A)$) to extend the $r$ columns determined by the geometry. The matrix $\hat{\Sigma}$ will now have $r$ positive diagonal entries, with the remaining $\min(m, n) - r$ (equal to $n - r$ when $m \ge n$) diagonal entries equal to zero. By the same token, the reduced SVD also makes sense for matrices $A$ of less than full rank.  
+We can now discard the simplifying assumption that $A$ has full column rank. If $A$ is rank-deficient ($\operatorname{rank}(A) = r < \min(m, n)$), the factorization is still valid. All that changes is that now only $r$ of the left singular vectors (and $r$ of the right singular vectors) of $A$ are determined by the geometry of the hyperellipse. To construct the unitary matrix $\hat{U}$, we introduce $m - r$ instead of just $m - n$ additional orthonormal columns (forming an orthonormal basis of $\operatorname{col}(A)^\perp$). The matrix $V$ will also need $n - r$ additional orthonormal columns (forming an orthonormal basis of $N(A)$) to extend the $r$ columns determined by the geometry. The matrix $\hat{\Sigma}$ will now have $r$ positive diagonal entries, with the remaining $\min(m, n) - r$ (equal to $n - r$ when $m \ge n$) diagonal entries equal to zero. By the same token, the reduced SVD also makes sense for matrices $A$ of less than full rank.
 
-Note that in the full SVD $A = \hat{U}\hat{\Sigma}V^*$, the diagonal matrix $\hat{\Sigma}$ has the same shape as $A$ even when $A$ is not square, whereas $\hat{U}$ and $V$ are always square unitary matrices. It wil have the block form 
+Note that in the full SVD $A = \hat{U}\hat{\Sigma}V^*$, the diagonal matrix $\hat{\Sigma}$ has the same shape as $A$ even when $A$ is not square, whereas $\hat{U}$ and $V$ are always square unitary matrices. It has the block form
 
-Geometrically (over $\mathbb{R}$; more generally, with unitary isometries over $\mathbb{C}$), the unitary map $V^*$ preserves the unit sphere (as expected for a unitary matrix), the diagonal matrix $\hat{\Sigma}$ maps and stretches the sphere into a hyperellipse aligned with the canonical basis $\{e_1, e_2, \dots, e_m\}$ of $\mathbb{R}^m$ (along the first $\min(m, n)$ axes), and the final unitary map $\hat{U}$ rotates or reflects the hyperellipse without changing its shape.  
+$$\hat{\Sigma} = \begin{pmatrix} \Sigma_r & 0 \\ 0 & 0 \end{pmatrix}, \qquad \Sigma_r = \operatorname{diag}(\sigma_1, \dots, \sigma_r),$$
+
+where the zero blocks fill out the $m \times n$ shape (some of them are empty when $r = m$ or $r = n$).
+
+Geometrically (over $\mathbb{R}$; more generally, with unitary isometries over $\mathbb{C}$), the unitary map $V^*$ preserves the unit sphere (as expected for a unitary matrix), the diagonal matrix $\hat{\Sigma}$ maps and stretches the sphere into a hyperellipse aligned with the canonical basis $\{\mathbf{e}_1, \mathbf{e}_2, \dots, \mathbf{e}_m\}$ of $\mathbb{R}^m$ (along the first $\min(m, n)$ axes), and the final unitary map $\hat{U}$ rotates or reflects the hyperellipse without changing its shape.
 
 #### Properties of SVD
-Every matrix $A \in \mathbb{C}^{m \times n}$ has a singular value decomposition. 
+Every matrix $A \in \mathbb{C}^{m \times n}$ has a singular value decomposition.
 
-The singular values $\sigma_1 \ge \sigma_2 \ge \cdots \ge \sigma_{\min(m,n)} \ge 0$ (counted with multiplicity) are uniquely determined, and if $A$ is square and the $\sigma_i$ are distinct, the left and right singular vectors $u_i$ and $v_i$ are uniquely determined up to complex signs. What does "determined up to complex signs" mean? For each nonzero $\sigma_i > 0$, any singular vectors $k_i$ and $l_i$ are simply scaled versions of each other by $e^{i\theta_i}$.
+The singular values $\sigma_1 \ge \sigma_2 \ge \cdots \ge \sigma_{\min(m,n)} \ge 0$ (counted with multiplicity) are uniquely determined, and if $A$ is square and the $\sigma_i$ are distinct, the left and right singular vectors $\mathbf{u}_i$ and $\mathbf{v}_i$ are uniquely determined up to complex signs. "Up to complex signs" means up to a factor $e^{i\theta_i}$ of absolute value $1$ (over $\mathbb{R}$, a sign $\pm 1$): for $\sigma_i > 0$, any other choice of the pair is $(e^{i\theta_i}\mathbf{u}_i, e^{i\theta_i}\mathbf{v}_i)$, with the same factor on both, so that $A\mathbf{v}_i = \sigma_i\mathbf{u}_i$ still holds.
 
 Multiplying $A = \hat{U}\hat{\Sigma}V^*$ on the left or right by $A^* = V\hat{\Sigma}^*\hat{U}^*$ yields the eigendecompositions of two Hermitian positive semidefinite matrices:
-    
+
 $$A^*A = V(\hat{\Sigma}^*\hat{\Sigma})V^*, \qquad AA^* = \hat{U}(\hat{\Sigma}\hat{\Sigma}^*)\hat{U}^*.$$
-    
-Since $\hat{\Sigma}^*\hat{\Sigma}$ is diagonal and $A^*A$ is normal, $V$ must be unitary. By the same logic $U$ is also unitary, and we already know this since we defined {\u_i$} to be orthonormal. This proves immediately that the right singular vectors $v_1, \dots, v_n$ are orthonormal and they are orthonormal eigenvectors of Hermitian $A^*A$, and the left singular vectors $u_1, \dots, u_m$ are orthonormal eigenvectors of $AA^*$. From this we also see that the eigenvalues of $\hat{\Sigma}^*\hat{\Sigma}$ are the norm squared of nonzero singular values are $\sigma_i = \sqrt{\lambda_i(A^*A)} = \sqrt{\lambda_i(AA^*)}$. This means the singular values can be extracted by calculating the eigenvalues of $A^*A, AA^*$, then compute their eigenvectors and normalize them. These form the columns of $U$ and $V$.
+
+These are eigendecompositions. In the first, $V$ is unitary and $\hat{\Sigma}^*\hat{\Sigma}$ is the $n \times n$ diagonal matrix with diagonal entries $\sigma_1^2, \sigma_2^2, \dots$ (padded with zeros when $m < n$), so the right singular vectors $\mathbf{v}_1, \dots, \mathbf{v}_n$ are orthonormal eigenvectors of the Hermitian matrix $A^*A$, with eigenvalues $\sigma_i^2$. In the same way, the left singular vectors $\mathbf{u}_1, \dots, \mathbf{u}_m$ are orthonormal eigenvectors of $AA^*$. So the singular values are $\sigma_i = \sqrt{\lambda_i(A^*A)}$, and the nonzero ones are also $\sqrt{\lambda_i(AA^*)}$.
+
+This also keeps the promise to show that the $\mathbf{v}_i$ can be taken orthonormal (we cannot simply assume it, since that is what made $V$ unitary above), and it gives a way to compute an SVD. Take orthonormal eigenvectors $\mathbf{v}_1, \dots, \mathbf{v}_n$ of $A^*A$, which exist because $A^*A$ is Hermitian (by the spectral theorem), with eigenvalues $\lambda_1 \ge \cdots \ge \lambda_n \ge 0$. Set $\sigma_i = \sqrt{\lambda_i}$, and for each $\sigma_i > 0$ set $\mathbf{u}_i = A\mathbf{v}_i/\sigma_i$. These $\mathbf{u}_i$ are orthonormal, because $\mathbf{u}_i^*\mathbf{u}_j = \mathbf{v}_i^*A^*A\mathbf{v}_j/(\sigma_i\sigma_j) = \lambda_j\mathbf{v}_i^*\mathbf{v}_j/(\sigma_i\sigma_j) = \delta_{ij}$, and $A\mathbf{v}_i = \sigma_i\mathbf{u}_i$ holds by construction; extend them to an orthonormal basis of $\mathbb{C}^m$ to get $\hat{U}$. Computing the $\mathbf{u}_i$ separately, as eigenvectors of $AA^*$, does not work in general: each is fixed only up to a factor $e^{i\theta}$, and those factors must match $A\mathbf{v}_i = \sigma_i\mathbf{u}_i$.
 
 For $A \in \mathbb{C}^{m \times n}$ (or $\mathbb{R}^{m \times n}$),
 
 $$\operatorname{rank}(A^*A) = \operatorname{rank}(AA^*) = \operatorname{rank}(A) = r.$$
 
 Both $A^*A$ and $AA^*$ have real, nonnegative eigenvalues and the exact same positive eigenvalues (with the same algebraic multiplicities). The number of zero eigenvalues differs if $m \neq n$ ($A^*A$ has $n - r$ zero eigenvalues, while $AA^*$ has $m - r$).
-   
-If $A \in \mathbb{C}^{n \times n}$ is normal ($A = Q\Lambda Q^*$), then $\sigma_i = \vert{}\lambda_i\vert{}$ (converting $Q\Lambda Q^*$ into an SVD by absorbing the complex phase $\lambda_i/\vert{}\lambda_i\vert{}$ into the columns of $U$). For non-normal matrices, singular values and eigenvalue magnitudes can be completely different:  $A = \begin{pmatrix}0 & 100 \\ 0 & 0\end{pmatrix}$ has $\lambda_1 = \lambda_2 = 0$, yet $\sigma_1 = 100, \sigma_2 = 0$.
-        
+
+If $A \in \mathbb{C}^{n \times n}$ is normal ($A = Q\Lambda Q^*$), then $\sigma_i = \vert{}\lambda_i\vert{}$ (converting $Q\Lambda Q^*$ into an SVD by absorbing the complex phase $\lambda_i/\vert{}\lambda_i\vert{}$ into the columns of $U$). For non-normal matrices, singular values and eigenvalue magnitudes can be completely different: $A = \begin{pmatrix}0 & 100 \\ 0 & 0\end{pmatrix}$ has $\lambda_1 = \lambda_2 = 0$, yet $\sigma_1 = 100, \sigma_2 = 0$.
+
 For any $A \in \mathbb{C}^{m \times n}$ of rank $r$ with full SVD $A = \hat{U}\hat{\Sigma}V^*$, the columns of $\hat{U}$ and $V$ partition cleanly into orthonormal bases for all four fundamental subspaces:
 
 | Subspace | Ambient Space | Dimension | Orthonormal Basis from SVD |
 | --- | --- | --- | --- |
-| Column space $\operatorname{col}(A)$ | $\mathbb{C}^m$ | $r$ | $\{u_1, \dots, u_r\}$ |
-| Left nullspace $N(A^*) = \operatorname{col}(A)^\perp$ | $\mathbb{C}^m$ | $m - r$ | $\{u_{r+1}, \dots, u_m\}$ |
-| Row space $\operatorname{row}(A) = \operatorname{col}(A^*)$ | $\mathbb{C}^n$ | $r$ | $\{v_1, \dots, v_r\}$ |
-| Nullspace $N(A) = \operatorname{row}(A)^\perp$ | $\mathbb{C}^n$ | $n - r$ | $\{v_{r+1}, \dots, v_n\}$ |
+| Column space $\operatorname{col}(A)$ | $\mathbb{C}^m$ | $r$ | $\{\mathbf{u}_1, \dots, \mathbf{u}_r\}$ |
+| Left nullspace $N(A^*) = \operatorname{col}(A)^\perp$ | $\mathbb{C}^m$ | $m - r$ | $\{\mathbf{u}_{r+1}, \dots, \mathbf{u}_m\}$ |
+| Row space $\operatorname{row}(A) = \operatorname{col}(A^*)$ | $\mathbb{C}^n$ | $r$ | $\{\mathbf{v}_1, \dots, \mathbf{v}_r\}$ |
+| Nullspace $N(A) = \operatorname{row}(A)^\perp$ | $\mathbb{C}^n$ | $n - r$ | $\{\mathbf{v}_{r+1}, \dots, \mathbf{v}_n\}$ |
 
-Expanding the compact SVD expresses $A$ as a sum of $r$ mutually orthogonal rank-$1$ outer products:
-    
-$$A = \sum_{i=1}^r \sigma_i u_i v_i^*.$$
+Expanding the compact SVD (the reduced SVD keeping only the $r$ columns with $\sigma_i > 0$) expresses $A$ as a sum of $r$ mutually orthogonal rank-$1$ outer products:
 
-Truncating after $k < r$ terms to $A_k = \sum_{i=1}^k \sigma_i u_i v_i^*$ produces the best rank-$k$ approximation to $A$ in every unitarily invariant norm (the Eckart–Young–Mirsky theorem), with exact errors:
+$$A = \sum_{i=1}^r \sigma_i \mathbf{u}_i \mathbf{v}_i^*.$$
+
+Truncating after $k < r$ terms to $A_k = \sum_{i=1}^k \sigma_i \mathbf{u}_i \mathbf{v}_i^*$ produces the best rank-$k$ approximation to $A$ in every unitarily invariant norm (the Eckart–Young–Mirsky theorem), with exact errors:
 
 $$\min_{\operatorname{rank}(B) \le k}\Vert{}A - B\Vert{}_2 = \Vert{}A - A_k\Vert{}_2 = \sigma_{k+1}, \qquad \min_{\operatorname{rank}(B) \le k}\Vert{}A - B\Vert{}_F = \Vert{}A - A_k\Vert{}_F = \sqrt{\sum_{i=k+1}^r \sigma_i^2}.$$
 
-This has a geometric meaning. Going back to our hyperellipsoid,  what is the best approximation of a hyperellipsoid by a line segment? Take the line segment to be the longest axis. What is the best approximation by a two-dimensional ellipsoid? Take the ellipsoid spanned by the longest and the second-longest axis. Continuing in this fashion, at each step we improve the approximation by adding into our approximation the largest axis of the hyperellipsoid not yet included. After $r$ steps, we have captured all of A. 
-      
+This has a geometric meaning. Going back to our hyperellipsoid, what is the best approximation of a hyperellipsoid by a line segment? Take the line segment to be the longest axis. What is the best approximation by a two-dimensional ellipsoid? Take the ellipsoid spanned by the longest and the second-longest axis. Continuing in this fashion, at each step we improve the approximation by adding into our approximation the largest axis of the hyperellipsoid not yet included. After $r$ steps, we have captured all of $A$.
+
 From the same decomposition, all standard spectral norms and conditioning quantities read off directly:
 
-$\Vert{}A\Vert{}_2 = \sigma_1$,  $\Vert{}A\Vert{}_F = \sqrt{\sum_{i=1}^r \sigma_i^2}$, and nuclear (trace) norm $\Vert{}A\Vert{}_* = \sum_{i=1}^r \sigma_i$.
-        
-For square $A$:  $\vert{}\det(A)\vert{} = \prod_{i=1}^n \sigma_i$; if $A$ is nonsingular,  $\Vert{}A^{-1}\Vert{}_2 = 1/\sigma_n$, the $2$-norm condition number is $\kappa_2(A) = \sigma_1/\sigma_n$, and $\sigma_n$ equals the exact $2$-norm distance from $A$ to the nearest singular matrix.
-        
-The SVD of the the Moore–Penrose Pseudoinverse of a matrix $S$ is:  $A^\dagger = V\hat{\Sigma}^\dagger\hat{U}^* = \sum_{i=1}^r \sigma_i^{-1} v_i u_i^*$ (inverting each nonzero $\sigma_i$ and transposing $\hat{\Sigma}$).
-        
-For $A \in \mathbb{C}^{m \times n}$ ($m \ge n$) with reduced SVD $A = U\Sigma V^*$, inserting $V^*V = I_n$ gives $A = (UV^*)(V\Sigma V^*) = QP$, where $Q = UV^*$ has orthonormal columns (unitary when $m = n$) and $P = V\Sigma V^* = (A^*A)^{1/2}$ is Hermitian positive semidefinite—the exact matrix generalization of polar form $z = e^{i\theta}r$.
+-   $\Vert{}A\Vert{}_2 = \sigma_1$, $\Vert{}A\Vert{}_F = \sqrt{\sum_{i=1}^r \sigma_i^2}$, and nuclear (trace) norm $\Vert{}A\Vert{}_* = \sum_{i=1}^r \sigma_i$.
+-   For square $A$: $\vert{}\det(A)\vert{} = \prod_{i=1}^n \sigma_i$; if $A$ is nonsingular, $\Vert{}A^{-1}\Vert{}_2 = 1/\sigma_n$, the $2$-norm condition number is $\kappa_2(A) = \sigma_1/\sigma_n$, and $\sigma_n$ equals the exact $2$-norm distance from $A$ to the nearest singular matrix.
+-   The SVD of the [Moore–Penrose pseudoinverse](#pseudoinverse) of $A$ is: $A^\dagger = V\hat{\Sigma}^\dagger\hat{U}^* = \sum_{i=1}^r \sigma_i^{-1} \mathbf{v}_i \mathbf{u}_i^*$ (inverting each nonzero $\sigma_i$ and transposing $\hat{\Sigma}$).
+-   For $A \in \mathbb{C}^{m \times n}$ ($m \ge n$) with reduced SVD $A = U\Sigma V^*$, inserting $V^*V = I_n$ gives $A = (UV^*)(V\Sigma V^*) = QP$, where $Q = UV^*$ has orthonormal columns (unitary when $m = n$) and $P = V\Sigma V^* = (A^*A)^{1/2}$ is Hermitian positive semidefinite. This is the polar decomposition we saw under [Comparing Different Types of Normal Matrices](#comparing-different-types-of-normal-matrices) (written $A = UP$ there), the matrix counterpart of the polar form $z = e^{i\theta}r$, now read off from the SVD. If $A$ is nonsingular, then $P$ is positive definite and the polar decomposition is unique. For square $A$, $A$ is normal if and only if $PQ = QP$.
 
 #### Errors & Perturbations
 Just as we found the largest and smallest eigenvalues of a Hermitian matrix via the Rayleigh quotient, we can also find expressions for the extremal singular values:
 
 If $\sigma_1$ is the largest singular value of $A \in \mathbb{C}^{m \times n}$, then
 
-$$\sigma_1^2 = \max_{\Vert{}x\Vert{}_2=1} x^*A^*Ax = \max_{\Vert{}x\Vert{}_2=1} \Vert{}Ax\Vert{}_2^2,$$
+$$\sigma_1^2 = \max_{\Vert{}\mathbf{x}\Vert{}_2=1} \mathbf{x}^*A^*A\mathbf{x} = \max_{\Vert{}\mathbf{x}\Vert{}_2=1} \Vert{}A\mathbf{x}\Vert{}_2^2,$$
 
-or equivalently (for any $m \times n$ matrix, where $v_1$ is the first right singular vector of $A$),
+or equivalently (for any $m \times n$ matrix, where $\mathbf{v}_1$ is the first right singular vector of $A$, and with $\sigma_1 = \Vert{}A\Vert{}_2$ as we saw in [Properties of SVD](#properties-of-svd)),
 
-$$\sigma_1 = \max_{\Vert{}x\Vert{}_2=1} \Vert{}Ax\Vert{}_2 = \Vert{}Av_1\Vert{}_2 = \Vert{}A\Vert{}_2.$$
+$$\sigma_1 = \max_{\Vert{}\mathbf{x}\Vert{}_2=1} \Vert{}A\mathbf{x}\Vert{}_2 = \Vert{}A\mathbf{v}_1\Vert{}_2 = \Vert{}A\Vert{}_2.$$
 
-Similarly, for the smallest singular value (assuming $m \ge n$, with $v_n$ the $n$-th right singular vector of $A$), we have
+Similarly, for the smallest singular value (assuming $m \ge n$, with $\mathbf{v}_n$ the $n$-th right singular vector of $A$), we have
 
-$$\sigma_n = \min_{\Vert{}x\Vert{}_2=1} \Vert{}Ax\Vert{}_2 = \Vert{}Av_n\Vert{}_2,$$
+$$\sigma_n = \min_{\Vert{}\mathbf{x}\Vert{}_2=1} \Vert{}A\mathbf{x}\Vert{}_2 = \Vert{}A\mathbf{v}_n\Vert{}_2,$$
 
 and when $A$ is square and nonsingular,
 
-$$\sigma_n = \min_{\Vert{}x\Vert{}_2=1} \Vert{}Ax\Vert{}_2 = \Vert{}Av_n\Vert{}_2 = \frac{1}{\Vert{}A^{-1}\Vert{}_2}.$$
+$$\sigma_n = \min_{\Vert{}\mathbf{x}\Vert{}_2=1} \Vert{}A\mathbf{x}\Vert{}_2 = \Vert{}A\mathbf{v}_n\Vert{}_2 = \frac{1}{\Vert{}A^{-1}\Vert{}_2}.$$
 
-Going back to our hyperellipsoid geometric picture, for a square nonsingular matrix $A \in \mathbb{C}^{n \times n}$, the degree of distortion of the unit sphere under transformation by $A$ is measured by the $2$-norm condition number, defined to be
+Going back to our hyperellipsoid geometric picture, for a square nonsingular matrix $A \in \mathbb{C}^{n \times n}$, the degree of distortion of the unit sphere under transformation by $A$ is measured by the $2$-norm condition number which, as we saw in [Properties of SVD](#properties-of-svd), is
 
 $$\kappa_2(A) = \Vert{}A\Vert{}_2\Vert{}A^{-1}\Vert{}_2 = \frac{\sigma_1}{\sigma_n} \ge 1.$$
 
 We have $\kappa_2(A) = 1$ if and only if $A$ is a nonzero scalar multiple of a unitary matrix (i.e., $A = cU$ with $c \neq 0$ and $U$ unitary, so all singular values are equal and positive: $\sigma_1 = \cdots = \sigma_n = \vert{}c\vert{} > 0$).
 
-The condition number plays a role in perturbations and errors. If a nonsingular system $Ax = b$ (with $b \neq 0$, hence $x \neq 0$) is perturbed to become $A\tilde{x} = b - e = \tilde{b}$ (where $e$ is the error in the measurement for example). Subtracting $A\tilde{x} = b - e$ from $Ax = b$ gives $A(x - \tilde{x}) = e$, so $x - \tilde{x} = A^{-1}e$. 
+The condition number controls how errors propagate. Suppose the right-hand side of a nonsingular system $A\mathbf{x} = \mathbf{b}$ (with $\mathbf{b} \neq \mathbf{0}$, hence $\mathbf{x} \neq \mathbf{0}$) is perturbed, for example by a measurement error $\mathbf{e}$, so that we solve $A\tilde{\mathbf{x}} = \mathbf{b} - \mathbf{e} = \tilde{\mathbf{b}}$ instead. Subtracting $A\tilde{\mathbf{x}} = \mathbf{b} - \mathbf{e}$ from $A\mathbf{x} = \mathbf{b}$ gives $A(\mathbf{x} - \tilde{\mathbf{x}}) = \mathbf{e}$, so $\mathbf{x} - \tilde{\mathbf{x}} = A^{-1}\mathbf{e}$.
 
 Applying submultiplicativity to both equations yields
 
-$$\Vert{}x - \tilde{x}\Vert{} \le \Vert{}A^{-1}\Vert{}\Vert{}e\Vert{}, \quad \Vert{}b\Vert{} \le \Vert{}A\Vert{}\Vert{}x\Vert{} \implies \frac{\Vert{}x - \tilde{x}\Vert{}}{\Vert{}x\Vert{}} \le \Vert{}A\Vert{}\Vert{}A^{-1}\Vert{}\frac{\Vert{}e\Vert{}}{\Vert{}b\Vert{}},$$
+$$\Vert{}\mathbf{x} - \tilde{\mathbf{x}}\Vert{} \le \Vert{}A^{-1}\Vert{}\Vert{}\mathbf{e}\Vert{}, \quad \Vert{}\mathbf{b}\Vert{} \le \Vert{}A\Vert{}\Vert{}\mathbf{x}\Vert{} \implies \frac{\Vert{}\mathbf{x} - \tilde{\mathbf{x}}\Vert{}}{\Vert{}\mathbf{x}\Vert{}} \le \Vert{}A\Vert{}\Vert{}A^{-1}\Vert{}\frac{\Vert{}\mathbf{e}\Vert{}}{\Vert{}\mathbf{b}\Vert{}},$$
 
-and symmetrically $\Vert{}e\Vert{} \le \Vert{}A\Vert{}\Vert{}x - \tilde{x}\Vert{}$, $\Vert{}x\Vert{} \le \Vert{}A^{-1}\Vert{}\Vert{}b\Vert{}$ gives the lower bound. 
+and symmetrically $\Vert{}\mathbf{e}\Vert{} \le \Vert{}A\Vert{}\Vert{}\mathbf{x} - \tilde{\mathbf{x}}\Vert{}$, $\Vert{}\mathbf{x}\Vert{} \le \Vert{}A^{-1}\Vert{}\Vert{}\mathbf{b}\Vert{}$ gives the lower bound.
 
 Thus the relative change in the solution is bounded above and below as:
 
-$$\kappa_2^{-1}\frac{\Vert{}e\Vert{}_2}{\Vert{}b\Vert{}_2} \le \frac{\Vert{}x - \tilde{x}\Vert{}_2}{\Vert{}x\Vert{}_2} \le \kappa_2\frac{\Vert{}e\Vert{}_2}{\Vert{}b\Vert{}_2}.$$
+$$\kappa_2^{-1}\frac{\Vert{}\mathbf{e}\Vert{}_2}{\Vert{}\mathbf{b}\Vert{}_2} \le \frac{\Vert{}\mathbf{x} - \tilde{\mathbf{x}}\Vert{}_2}{\Vert{}\mathbf{x}\Vert{}_2} \le \kappa_2\frac{\Vert{}\mathbf{e}\Vert{}_2}{\Vert{}\mathbf{b}\Vert{}_2}.$$
 
 Notice two important facts:
 
-This proof works for every induced matrix norm $\Vert{}\cdot\Vert{}$, defining the general condition number $\kappa(A) = \Vert{}A\Vert{}\Vert{}A^{-1}\Vert{}$.
+-   This proof works for every induced matrix norm $\Vert{}\cdot\Vert{}$, defining the general condition number $\kappa(A) = \Vert{}A\Vert{}\Vert{}A^{-1}\Vert{}$.
+-   In the $2$-norm, both bounds are sharp: using the SVD $A = U\Sigma V^*$, the upper bound $\kappa_2\frac{\Vert{}\mathbf{e}\Vert{}_2}{\Vert{}\mathbf{b}\Vert{}_2}$ is attained precisely when $\mathbf{b}$ aligns with $\mathbf{u}_1$ (so $\mathbf{x} = A^{-1}\mathbf{b}$ is compressed by $1/\sigma_1$) while $\mathbf{e}$ aligns with $\mathbf{u}_n$ (so $A^{-1}\mathbf{e}$ is magnified by $1/\sigma_n$). Swapping the alignments ($\mathbf{b} \parallel \mathbf{u}_n$, $\mathbf{e} \parallel \mathbf{u}_1$) attains the lower bound $\kappa_2^{-1}\frac{\Vert{}\mathbf{e}\Vert{}_2}{\Vert{}\mathbf{b}\Vert{}_2}$.
 
-In the $2$-norm, both bounds are sharp: using the SVD $A = U\Sigma V^*$, the upper bound $\kappa_2\frac{\Vert{}e\Vert{}_2}{\Vert{}b\Vert{}_2}$ is attained precisely when $b$ aligns with $u_1$ (so $x = A^{-1}b$ is compressed by $1/\sigma_1$) while $e$ aligns with $u_n$ (so $A^{-1}e$ is magnified by $1/\sigma_n$). Swapping the alignments ($b \parallel u_n$, $e \parallel u_1$) attains the lower bound $\kappa_2^{-1}\frac{\Vert{}e\Vert{}_2}{\Vert{}b\Vert{}_2}$.
+In practice, $A$ itself is also rounded or measured with an error $E$, so we solve $(A + E)\tilde{\mathbf{x}} = \mathbf{b}$ instead. Subtracting this from $A\mathbf{x} = \mathbf{b}$ gives $A(\mathbf{x} - \tilde{\mathbf{x}}) = E\tilde{\mathbf{x}}$, so $\mathbf{x} - \tilde{\mathbf{x}} = A^{-1}E\tilde{\mathbf{x}}$, and taking norms gives the exact bound
 
-In practice, $A$ itself is also rounded or measured with error $E$. Writing $A(x - \tilde{x}) = E\tilde{x}$ immediately gives the exact bound
+$$\frac{\Vert{}\mathbf{x} - \tilde{\mathbf{x}}\Vert{}_2}{\Vert{}\tilde{\mathbf{x}}\Vert{}_2} \le \kappa_2(A)\frac{\Vert{}E\Vert{}_2}{\Vert{}A\Vert{}_2}$$
 
-$$\frac{\Vert{}x - \tilde{x}\Vert{}_2}{\Vert{}\tilde{x}\Vert{}_2} \le \kappa_2(A)\frac{\Vert{}E\Vert{}_2}{\Vert{}A\Vert{}_2}$$
+whenever $A + E$ is nonsingular. If the perturbation is small enough that $\kappa_2(A)\frac{\Vert{}E\Vert{}_2}{\Vert{}A\Vert{}_2} < 1$, then $A + E$ is guaranteed to be nonsingular and the relative error with respect to the exact solution $\mathbf{x}$ satisfies
 
-whenever $A + E$ is nonsingular. If the perturbation is small enough that $\kappa_2(A)\frac{\Vert{}E\Vert{}_2}{\Vert{}A\Vert{}_2} < 1$, then $A + E$ is guaranteed to be nonsingular and the relative error with respect to the exact solution $x$ satisfies
-
-$$\frac{\Vert{}x - \tilde{x}\Vert{}_2}{\Vert{}x\Vert{}_2} \le \frac{\kappa_2(A)}{1 - \kappa_2(A)\frac{\Vert{}E\Vert{}_2}{\Vert{}A\Vert{}_2}}\frac{\Vert{}E\Vert{}_2}{\Vert{}A\Vert{}_2}.$$
+$$\frac{\Vert{}\mathbf{x} - \tilde{\mathbf{x}}\Vert{}_2}{\Vert{}\mathbf{x}\Vert{}_2} \le \frac{\kappa_2(A)}{1 - \kappa_2(A)\frac{\Vert{}E\Vert{}_2}{\Vert{}A\Vert{}_2}}\frac{\Vert{}E\Vert{}_2}{\Vert{}A\Vert{}_2}.$$
 
 When $A \in \mathbb{C}^{m \times n}$ is rectangular (or rank-deficient, with $r = \operatorname{rank}(A) > 0$), replacing $A^{-1}$ with the Moore–Penrose pseudoinverse $A^\dagger$ yields the generalized $2$-norm condition number
 
 $$\kappa_2(A) = \Vert{}A\Vert{}_2\Vert{}A^\dagger\Vert{}_2 = \frac{\sigma_1}{\sigma_r} \ge 1,$$
 
-which governs the sensitivity of the minimum-norm least-squares problem $\min_x \Vert{}Ax - b\Vert{}_2$.
+which governs the sensitivity of the minimum-norm least-squares problem $\min_{\mathbf{x}} \Vert{}A\mathbf{x} - \mathbf{b}\Vert{}_2$.
 
-#### Quantum physics & Entanglement      
-In quantum physics, the SVD tells us how to go about the Schmidt decomposition of entangled states: A pure state of a bipartite quantum system $\vert{}\psi\rangle = \sum_{i=1}^m \sum_{j=1}^n c_{ij}\vert{}i\rangle_A \otimes \vert{}j\rangle_B \in \mathcal{H}_A \otimes \mathcal{H}_B$ is encoded by its coefficient matrix $C = [c_{ij}] \in \mathbb{C}^{m \times n}$. Taking the SVD $C = \hat{U}\hat{\Sigma}V^*$ yields the Schmidt decomposition  $\vert{}\psi\rangle = \sum_{k=1}^r \sigma_k \vert{}\tilde{u}_k\rangle_A \otimes \vert{}\tilde{v}_k\rangle_B$: the state is separable (unentangled) if and only if $r = \operatorname{rank}(C) = 1$, and the squared singular values $\sigma_k^2$ (summing to $1$ for a normalized state) are the eigenvalues of the reduced density matrices $\rho_A = CC^*$ and $\rho_B = C^T\overline{C}$, determining the entanglement entropy $S = -\sum_{k=1}^r \sigma_k^2 \ln(\sigma_k^2)$.
+#### Quantum physics & Entanglement
+In quantum physics, the SVD tells us how to go about the Schmidt decomposition of entangled states: A pure state of a bipartite quantum system $\vert{}\psi\rangle = \sum_{i=1}^m \sum_{j=1}^n c_{ij}\vert{}i\rangle_A \otimes \vert{}j\rangle_B \in \mathcal{H}_A \otimes \mathcal{H}_B$ is encoded by its coefficient matrix $C = [c_{ij}] \in \mathbb{C}^{m \times n}$. Taking the SVD $C = \hat{U}\hat{\Sigma}V^*$ yields the Schmidt decomposition $\vert{}\psi\rangle = \sum_{k=1}^r \sigma_k \vert{}\tilde{u}_k\rangle_A \otimes \vert{}\tilde{v}_k\rangle_B$, where $\vert{}\tilde{u}_k\rangle_A = \sum_i \hat{U}_{ik}\vert{}i\rangle_A$ and $\vert{}\tilde{v}_k\rangle_B = \sum_j \overline{V_{jk}}\vert{}j\rangle_B$ are built from the $k$-th columns of $\hat{U}$ and $V$ (so each family is orthonormal): the state is separable (unentangled) if and only if $r = \operatorname{rank}(C) = 1$, and the squared singular values $\sigma_k^2$ (summing to $1$ for a normalized state) are the eigenvalues of the reduced density matrices $\rho_A = CC^*$ and $\rho_B = C^T\overline{C}$, determining the entanglement entropy $S = -\sum_{k=1}^r \sigma_k^2 \ln(\sigma_k^2)$.
+
+### Odds & Ends
+#### The Gram matrix
+The Gram matrix of vectors $\mathbf{v}_1, \dots, \mathbf{v}_m$ in $\mathbb{R}^n$ is the $m \times m$ matrix $G$ with $G_{il} = \langle \mathbf{v}_i, \mathbf{v}_l \rangle = \mathbf{v}_i^T\mathbf{v}_l$. If the $\mathbf{v}_i$ are the columns of a matrix $V$, then $G = V^TV$. So $G$ is symmetric, positive semidefinite ($\mathbf{x}^TG\mathbf{x} = \Vert{}V\mathbf{x}\Vert{}_2^2$), and of rank equal to the dimension of the span of the $\mathbf{v}_i$. It records the vectors up to rotation: their lengths and angles, nothing else.
+
+Conversely, every positive semidefinite matrix $M$ of rank $r$ is a Gram matrix of vectors in $\mathbb{R}^r$. Write $M = \sum_i \lambda_i \mathbf{u}_i\mathbf{u}_i^T$ over an orthonormal basis of eigenvectors $\mathbf{u}_i$ (the spectral theorem), with exactly $r$ of the $\lambda_i$ positive and the rest $0$. Stack the $r$ rows $\sqrt{\lambda_i}\, \mathbf{u}_i^T$ with $\lambda_i > 0$ into a matrix $B$; then $M = B^TB$, the Gram matrix of the columns of $B$.
+
+For example, three unit vectors in the plane at $120^\circ$ to each other have inner products $1$ and $\cos 120^\circ = -\tfrac12$, so their Gram matrix is
+
+$$\begin{pmatrix} 1 & -\tfrac12 & -\tfrac12 \\ -\tfrac12 & 1 & -\tfrac12 \\ -\tfrac12 & -\tfrac12 & 1 \end{pmatrix} = \tfrac32\, E_{-1},$$
+
+of rank $2$, as it must be for vectors in a plane. Here $E_{-1} = (2I - A)/3$ is the projector from the [minimal polynomial example](#which-matrices-are-diagonalizable), with diagonal entries $2/3$ and off-diagonal entries $-1/3$.
+
+Read backwards, the projector $E_{-1}$ is a configuration of three vectors at $120^\circ$. Project the three standard basis vectors $\mathbf{e}_i$ onto the plane $x_1 + x_2 + x_3 = 0$: the Gram matrix of the projections is $E_{-1}$ itself, because, writing $E = E_{-1}$, $\langle E\mathbf{e}_i, E\mathbf{e}_l\rangle = (E^TE)_{il} = E_{il}$. This is the idea behind the absolute bound for [strongly regular graphs](maths_4_incidence_geometry.md#the-adjacency-matrix-of-a-strongly-regular-graph). A small eigenspace must hold one vector per vertex with only a few different angles between them, and there is a limit: $\mathbb{R}^m$ holds at most $m(m+3)/2$ unit vectors with only two different angles between them.
+
+#### Hadamard or Schur Product
+The entrywise product of two matrices of the same shape multiplies them entry by entry: $(B \circ C)_{il} = B_{il} C_{il}$. It is also called the Hadamard or Schur product. The Schur product theorem says that the entrywise product of two positive semidefinite matrices is positive semidefinite. We use Gram matrices to prove this: write $B$ as the Gram matrix of vectors $\mathbf{u}_i$ and $C$ as the Gram matrix of vectors $\mathbf{w}_i$; then $B \circ C$ is the Gram matrix of the [tensor (Kronecker) products](#kronecker-product) $\mathbf{u}_i \otimes \mathbf{w}_i$, because
+
+$$\langle \mathbf{u} \otimes \mathbf{w},\, \mathbf{u}' \otimes \mathbf{w}' \rangle = \langle \mathbf{u}, \mathbf{u}' \rangle \langle \mathbf{w}, \mathbf{w}' \rangle,$$
+
+and a Gram matrix is positive semidefinite. For instance, $E_{-1} \circ E_{-1}$ has diagonal entries $4/9$ and off-diagonal entries $1/9$, so it equals $\tfrac13 I + \tfrac19 J$, with eigenvalues $\tfrac13 + \tfrac39 = \tfrac23$ once and $\tfrac13$ twice, both positive, as the theorem promises. For symmetric $B$ and $C$, the sum of all the entries of $B \circ C$ is $\operatorname{trace}(BC)$. For $E_{-1} \circ E_{-1}$ both sides equal $2$.
 
 ## Tensors
 A tensor (specifically a covariant or Cartesian tensor in a Euclidean vector space; more generally, a map taking both vectors and covectors, the dual vectors of [Linear Operators](#linear-operators)) is a multilinear function that takes a certain number of vectors as input and outputs a scalar; multilinear means linear in each input when the other inputs are held fixed. The number of input vectors is called the rank (or order) of a tensor (not to be confused with the [rank of a matrix](#matrix-rank)). Since a tensor is multilinear, it means we can break down the output of a tensor into components, i.e., as a sum of scaled versions of what the tensor does to the basis vectors of a vector space. For example, say we have a rank-2 tensor acting on the vectors:

@@ -1,140 +1,15 @@
 # Maths 4 - Incidence Geometry
 
-A convention used here: Vector spaces are right vector spaces, with scalars written on the right and coordinates as column vectors, whereas the earlier projective geometry notes used left vector spaces. The prologue explains why this changes nothing over a field ([right vector spaces](#linear-algebra-over-finite-fields)).
-
-## Prologue: The Linear Algebra We Need
+A convention used here: Vector spaces are right vector spaces, with scalars written on the right and coordinates as column vectors, whereas the earlier projective geometry notes used left vector spaces. The prologue explains why this changes nothing over a field ([right vector spaces](#prologue-linear-algebra-over-finite-fields)).
 
 Incidence geometry is concerned with point-line geometries, which is a fancy way of saying "how points connect to each other with lines." One important aspect is to figure out what sort of point-line geometries (or connections between points via lines) are allowed and not allowed over various fields and within various constraints. Surprisingly, some pretty simple matrices which contain just $1$s and $0$s can tell us a lot when we apply the tools of linear algebra on them.
 
-Here's a brief tour of the linear algebra we'll need. One example runs throughout:
+## Prologue: Linear Algebra Over Finite Fields
+Here's a brief tour of the linear algebra we'll need for finite fields, over and above what we've already learnt about the real and complex fields in [Maths 0](maths_0_linear_and_abstract_algebra.md#eigenvalues-eigenvectors): eigenvalues, the spectral theorem, minimal polynomials, the all-ones matrix, Gram matrices and the Schur product. One matrix from there recurs in these notes:
 
 $$A = \begin{pmatrix} 0 & 1 & 1 \\ 1 & 0 & 1 \\ 1 & 1 & 0 \end{pmatrix}.$$
 
-Label the corners of a triangle $1, 2, 3$, and put a $1$ in row $x$, column $y$ when corners $x$ and $y$ are joined by an edge, and $0$ otherwise. The result is $A$, which the next chapter calls [the adjacency matrix](#the-adjacency-matrix-and-its-eigenvalues) of the triangle.
-
-### Eigenvalues and eigenspaces
-
-A number $\theta$ is an eigenvalue of a square matrix $A$ when $Av = \theta v$ for some nonzero vector $v$. The eigenvectors for $\theta$, together with $0$, form the eigenspace $V_\theta = \ker(A - \theta I)$. Two numbers measure how much of $\theta$ there is. The *algebraic multiplicity* is its multiplicity as a root of the characteristic polynomial $\det(XI - A)$. The *geometric multiplicity* is $\dim V_\theta$. The second is never larger than the first, and $A$ is diagonalizable exactly when the two agree for every eigenvalue.
-
-For the running example, $\det(XI - A) = (X-2)(X+1)^2$. The eigenvalue $2$ has the eigenvector $j = (1,1,1)^T$, because every row of $A$ sums to $2$. For $\theta = -1$, note that $(Ax)_i = (x_1 + x_2 + x_3) - x_i$. Since $Av = \theta v$, we have $(x_1 + x_2 + x_3) - x_i = -1\cdot x_i$ and cancelling the $x_i$ on both side, we see every vector in the plane $x_1 + x_2 + x_3 = 0$ is an eigenvector. That plane has dimension $2$, equal to the algebraic multiplicity. Compare
-
-$$N = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix},$$
-
-whose characteristic polynomial is $(X-1)^2$ but whose only eigenvectors are the multiples of $(1,0)^T$. Its two multiplicities are $2$ and $1$, and it cannot be diagonalized.
-
-Similar matrices $P^{-1}AP$ (where $P$ represents a change of basis and is invertible) have the same characteristic polynomial, so they have the same eigenvalues with the same multiplicities.
-
-**Where it is used.** The next chapter shows that the eigenvalues of a graph do not depend on how its vertices are labelled ([the adjacency matrix and its eigenvalues](#the-adjacency-matrix-and-its-eigenvalues)). In the chapter on [strongly regular graphs](#the-adjacency-matrix-of-a-strongly-regular-graph), the decisive test is that a multiplicity, being the dimension of an eigenspace, must be a whole number.
-
-### Real symmetric matrices and the spectral theorem
-
-Almost every matrix we'll deal with here is real and symmetric, and such matrices are as well behaved as matrices get. Their eigenvalues are real. Eigenvectors for different eigenvalues are orthogonal: if $Au = \theta u$ and $Av = \tau v$, then
-
-$$\theta \langle u, v\rangle = \langle Au, v\rangle = \langle u, Av\rangle = \tau \langle u, v\rangle,$$
-
-so $\langle u, v\rangle = 0$ when $\theta \neq \tau$. And there is an orthonormal basis of eigenvectors, so the two multiplicities always agree and we can simply say "multiplicity".
-
-The spectral theorem packages all this. Let $E_\theta$ be the [orthogonal projector](#projectors-trace-and-positive-semidefinite-matrices) onto $V_\theta$. Then
-
-$$A = \sum_\theta \theta E_\theta, \qquad \sum_\theta E_\theta = I, \qquad E_\theta E_\tau = 0 \ \text{ for } \theta \neq \tau.$$
-
-This is the decomposition of an observable in quantum mechanics, with $E_\theta = \sum |v\rangle\langle v|$ over an orthonormal basis of $V_\theta$.
-
-In the running example, the projector onto the line through $j$ is $E_2 = jj^T/3$, with every entry $1/3$, and the projector onto the plane is $E_{-1} = I - E_2$, with diagonal entries $2/3$ and off-diagonal entries $-1/3$. Then $2E_2 - E_{-1}$ has diagonal entries $0$ and off-diagonal entries $2/3 + 1/3 = 1$: it is $A$.
-
-**Where it is used.** Adjacency matrices are real and symmetric, which is why a graph's eigenvalues are real ([the adjacency matrix and its eigenvalues](#the-adjacency-matrix-and-its-eigenvalues)). The decomposition $A = \sum_\theta \theta E_\theta$ is the backbone of [distance-regular graphs](#distance-regular-graphs), where $E_\theta$ is also called a [minimal idempotent](#minimal-idempotents-of-the-bose-mesner-algebra).
-
-### Projectors, trace and positive semidefinite matrices
-
-An **orthogonal projector** of a subspace $U$ is a matrix $E$ which takes a vector and returns the portion of the vector inside the subspace. Here's how it works. Every subspace $U \subseteq \mathbb{R}^n$ splits the entire space into two mutually perpendicular pieces: the target subspace $U$ (the image of $E$) and its orthogonal complement $U^\perp$ (the kernel of $E$), so that $\mathbb{R}^n = U \oplus U^\perp$. Every vector $v \in \mathbb{R}^n$ can be uniquely written as the sum of two perpendicular vectors: $v = v_\parallel + v_\perp$, where $v_\parallel \in U$ lies completely inside the subspace, and $v_\perp \in U^\perp$ is perpendicular to every vector in $U$.
-
-When you multiply $v$ by the matrix $E$, it acts as a linear filter on those two components:
-
-$$Ev = E(v_\parallel + v_\perp) = Ev_\parallel + Ev_\perp = 1\cdot v_\parallel + 0\cdot v_\perp = v_\parallel$$
-
-It leaves the in-plane part $v_\parallel$ untouched (eigenvalue $1$). It annihilates the perpendicular part $v_\perp$ (eigenvalue $0$).
-
-It's properties are $E^2 = E$ (doing it twice is the same as doing it once) and $E^T = E$ (it projects at right angles). Its eigenvalues are $0$ and $1$ as we saw: vectors in its image are fixed, and vectors orthogonal to the image are sent to $0$.
-
-The trace, the sum of the diagonal entries, equals the sum of the eigenvalues counted with multiplicity, and $\operatorname{tr}(BC) = \operatorname{tr}(CB)$. For a projector the trace counts the eigenvalues equal to $1$, so $\operatorname{tr} E = \operatorname{rank} E$, the dimension of the image. In the running example $\operatorname{tr} E_2 = 3 \cdot \tfrac13 = 1$ and $\operatorname{tr} E_{-1} = 3 \cdot \tfrac23 = 2$, the dimensions of the two eigenspaces.
-
-Trace equations pin down multiplicities. In the running example $\operatorname{tr} A = 0 = 2 + 2\cdot(-1)$, and $\operatorname{tr} A^2 = \sum_{i,l} A_{il}^2$, which for a symmetric matrix of zeros and ones counts its ones, is $6 = 2^2 + 2\cdot(-1)^2$. Knowing only the eigenvalues $2$ and $-1$ and that their multiplicities add up to $3$, either equation tells us how often each occurs.
-
-A symmetric matrix $M$ is **positive semidefinite** when $x^T M x \geq 0$ for every vector $x$; equivalently, all its eigenvalues are $\geq 0$. Density matrices are the familiar case. Projectors are positive semidefinite, since $x^T E x = x^T E^T E x = |Ex|^2$.
-
-**Where it is used.** In the chapter on [strongly regular graphs](#the-adjacency-matrix-of-a-strongly-regular-graph), the equation $\operatorname{tr} A = 0$ turns the eigenvalues into multiplicities. Positive semidefiniteness drives two inequalities proved there and in [distance-regular graphs](#distance-regular-graphs), the absolute bound and the Krein conditions.
-
-### Polynomials in a matrix and the minimal polynomial
-
-A polynomial $p(X) = c_0 + c_1 X + \dots + c_m X^m$ can be evaluated at a square matrix: $p(A) = c_0 I + c_1 A + \dots + c_m A^m$. Polynomials in the same matrix commute, and if $Av = \theta v$ then $p(A)v = p(\theta)v$: $p(A)$ has the eigenvalues $p(\theta)$ on the same eigenvectors.
-
-The **minimal polynomial** of $A$ is the monic polynomial $m_A$ (leading coefficient $1$) of least degree with $m_A(A) = 0$; any nonzero scalar multiple of it is also called a minimal polynomial. It divides every polynomial that sends $A$ to $0$, including the characteristic polynomial (Cayley–Hamilton). Its roots are exactly the eigenvalues: if $Av = \theta v$ then $0 = m_A(A)v = m_A(\theta)v$, so $m_A(\theta) = 0$.
-
-In the running example, $A^2$ has diagonal entries $2$ and off-diagonal entries $1$, so $A^2 = A + 2I$. Since $A$ is not a multiple of $I$, no polynomial of degree $1$ works, and
-
-$$m_A(X) = X^2 - X - 2 = (X-2)(X+1).$$
-
-It has degree $2$, although $A$ is $3 \times 3$ and its characteristic polynomial $(X-2)(X+1)^2$ has degree $3$.
-
-You know minimal polynomials from field theory, where the minimal polynomial of an element $\alpha$ over a field $K$ is always irreducible. Here $m_A$ factors, and the difference is zero divisors. In a field, $g(\alpha)h(\alpha) = 0$ forces $g(\alpha) = 0$ or $h(\alpha) = 0$, so a factorization would produce a smaller polynomial. Matrices can multiply to zero without either being zero: $(A - 2I)(A + I) = 0$ here. For a matrix, "minimal" means least degree and nothing more.
-
-The factorization carries information: a real matrix is diagonalizable over $\mathbb{R}$ exactly when its minimal polynomial has distinct real roots $\theta_1, \dots, \theta_s$. The reason is a set of projectors built from $A$:
-
-$$E_i = \prod_{l \neq i} \frac{A - \theta_l I}{\theta_i - \theta_l},$$
-
-the Lagrange polynomial that is $1$ at $\theta_i$ and $0$ at the other roots, evaluated at $A$. These add up to $I$, as the polynomials add up to $1$, and $(A - \theta_i I)E_i$ is a multiple of $m_A(A) = 0$, so each $E_i$ maps into the eigenspace of $\theta_i$; the eigenspaces fill the space. A repeated root signals failure ($N$ above has $m_N = (X-1)^2$, since $(N - I)^2 = 0 \neq N - I$), and so does a missing real root (a rotation by $90^\circ$ has $X^2 + 1$). For a real symmetric matrix, $m_A = \prod (X - \theta)$ over its distinct eigenvalues, so the degree of $m_A$ is the number of distinct eigenvalues, and the $E_i$ are exactly the orthogonal projectors onto the eigenspaces. In the example, $E_2 = (A + I)/3$ and $E_{-1} = (2I - A)/3$.
-
-**Where it is used.** For [strongly regular graphs](#the-adjacency-matrix-of-a-strongly-regular-graph), a quadratic equation holds for the adjacency matrix on the vectors orthogonal to the all-ones vector, giving two eigenvalues there and, with one more on the all-ones vector, three in all. For [distance-regular graphs](#distance-regular-graphs), the degree of the minimal polynomial counts the eigenvalues. Projectors written as polynomials in $A$ appear in both.
-
-### The all-ones matrix and commuting matrices
-
-Write $j$ for the column vector with every entry $1$, and $J = jj^T$ for the square matrix with every entry $1$. The earlier projective geometry notes used $J$ for the matrix of a symplectic form; in these notes $J$ is always the all-ones matrix. For any $x$, $Jx = (x_1 + \dots + x_n)\,j$. So the $n \times n$ matrix $J$ has eigenvalue $n$ on $j$, and eigenvalue $0$ on the $(n-1)$-dimensional space $j^\perp$ of vectors whose entries sum to zero. Also $J^2 = nJ$.
-
-Matrices of the form $aI + bJ$ come up constantly, and their eigenvalues can be read off: $a + nb$ once for eigenvector $j$, and $a$ with multiplicity $n - 1$, for $j^\perp$. Hence
-
-$$\det(aI + bJ) = (a + nb)\,a^{n-1}.$$
-
-The running example $A = J - I$ has eigenvalues $2$ once and $-1$ twice, as found above. In the next chapter the $7 \times 7$ matrix $2I + J$ appears; its eigenvalues are $9$ once and $2$ six times, and its determinant is $9 \cdot 2^6 = 576$, which is not zero.
-
-Commuting symmetric matrices can be diagonalized together: if $AB = BA$ and $Av = \theta v$, then $A(Bv) = \theta\, Bv$, so $B$ maps each eigenspace of $A$ into itself and can be diagonalized inside it. The typical case: if every row and column of $A$ sums to $k$, then $AJ = JA = kJ$, so we may take $j$ as one eigenvector and all the others in $j^\perp$, where $J$ acts as $0$. On $j^\perp$, any equation in $A$, $I$ and $J$ loses its $J$ terms.
-
-**Permutation matrices.** A permutation matrix $P$ has exactly one $1$ in each row and each column, and $0$ elsewhere. It is orthogonal, $P^T = P^{-1}$, and $PJ = JP = J$. Renumbering the rows and columns of $A$ by the same permutation replaces $A$ by the similar matrix $P^TAP$, with the same eigenvalues. And $P$ commutes with $A$ exactly when $P^TAP = A$, as every permutation of three indices does for the running example.
-
-**Where it is used.** Relabelling a graph is conjugation by a permutation matrix ([the adjacency matrix and its eigenvalues](#the-adjacency-matrix-and-its-eigenvalues)). The matrix $2I + J$ counts incidences in the Fano plane ([point-line geometries](#point-line-geometries)), and a relative of it gives [Fisher's inequality](#the-incidence-matrix-and-fishers-inequality). Dropping $J$ on $j^\perp$ is the first step for [strongly regular graphs](#the-adjacency-matrix-of-a-strongly-regular-graph). The permutation matrices commuting with $A$ are the symmetries of a graph, and the matrices commuting with all of them form the [commutant you know from group theory](maths_2_group_theory.md#the-centralizer-algebra-of-a-representation-operatornameend_mathbbcgv), which returns in [distance-regular graphs](#distance-regular-graphs).
-
-### Rank, determinants and Gram matrices
-
-The rank of a matrix is the dimension of its column space; for a symmetric matrix it is the number of nonzero eigenvalues, counted with multiplicity. The determinant is the product of the eigenvalues, so a square matrix is invertible exactly when its determinant is nonzero.
-
-For a real matrix $M$,
-
-$$\operatorname{rank}(MM^T) = \operatorname{rank} M.$$
-
-The reason: if $MM^Tx = 0$, then $0 = x^TMM^Tx = |M^Tx|^2$, so $M^Tx = 0$; thus $MM^T$ and $M^T$ have the same kernel, hence the same rank. So if $M$ has $n$ rows and $MM^T$ is invertible, $M$ has at least $n$ columns. The step $|M^Tx|^2 = 0 \Rightarrow M^Tx = 0$ fails over $\mathbb{F}_2$: for $M = (1 \;\; 1)$, $MM^T = (2) = (0)$ although $M$ has rank $1$. This is one reason why the zero-one matrices of a geometry are taken over $\mathbb{R}$.
-
-The **Gram matrix** of vectors $v_1, \dots, v_m$ in $\mathbb{R}^n$ is the $m \times m$ matrix $G$ with $G_{il} = \langle v_i, v_l \rangle$. If the $v_i$ are the columns of a matrix $V$, then $G = V^TV$. So $G$ is symmetric, positive semidefinite ($x^TGx = |Vx|^2$), and of rank equal to the dimension of the span of the $v_i$. It records the vectors up to rotation: their lengths and angles, nothing else.
-
-Conversely, every positive semidefinite matrix $M$ of rank $r$ is a Gram matrix of vectors in $\mathbb{R}^r$. Write $M = \sum \theta\, uu^T$ over an orthonormal basis of eigenvectors $u$, with exactly $r$ of the $\theta$ positive. Stack the $r$ rows $\sqrt{\theta}\, u^T$ into a matrix $B$; then $M = B^TB$, the Gram matrix of the columns of $B$.
-
-For example, three unit vectors in the plane at $120^\circ$ to each other have inner products $1$ and $\cos 120^\circ = -\tfrac12$, so their Gram matrix is
-
-$$\begin{pmatrix} 1 & -\tfrac12 & -\tfrac12 \\ -\tfrac12 & 1 & -\tfrac12 \\ -\tfrac12 & -\tfrac12 & 1 \end{pmatrix} = \tfrac32\, E_{-1},$$
-
-of rank $2$, as it must be for vectors in a plane. Read backwards, the projector $E_{-1}$ of the running example *is* a configuration of three vectors at $120^\circ$. Project the three standard basis vectors $e_i$ onto the plane $x_1 + x_2 + x_3 = 0$: the Gram matrix of the projections is $E_{-1}$ itself, because $\langle Ee_i, Ee_l\rangle = (E^TE)_{il} = E_{il}$. This is the idea behind the absolute bound for strongly regular graphs. A small eigenspace must hold one vector per vertex with only a few different angles between them, and there is a limit: $\mathbb{R}^m$ holds at most $m(m+3)/2$ unit vectors with only two different angles between them.
-
-The **entrywise product** of two matrices of the same shape multiplies them entry by entry: $(B \circ C)_{il} = B_{il} C_{il}$. It is also called the Hadamard or Schur product. The **Schur product theorem** says that the entrywise product of two positive semidefinite matrices is positive semidefinite. With Gram matrices the proof is one line. Write $B$ as the Gram matrix of vectors $u_i$ and $C$ as the Gram matrix of vectors $w_i$; then $B \circ C$ is the Gram matrix of the tensor products $u_i \otimes w_i$, because
-
-$$\langle u \otimes w,\, u' \otimes w' \rangle = \langle u, u' \rangle \langle w, w' \rangle,$$
-
-the rule for the inner product of two product states of a pair of qubits. For instance, $E_{-1} \circ E_{-1}$ has diagonal entries $4/9$ and off-diagonal entries $1/9$, so it equals $\tfrac13 I + \tfrac19 J$, with eigenvalues $\tfrac13 + \tfrac39 = \tfrac23$ once and $\tfrac13$ twice: positive, as promised.
-
-One more identity is needed only for the Krein conditions in [distance-regular graphs](#distance-regular-graphs): for symmetric $B$ and $C$, the sum of all the entries of $B \circ C$ is $\operatorname{tr}(BC)$. For $E_{-1} \circ E_{-1}$ both sides equal $2$.
-
-**Where it is used.** The rank argument is [Fisher's inequality](#the-incidence-matrix-and-fishers-inequality). Gram matrices give the absolute bound for [strongly regular graphs](#the-adjacency-matrix-of-a-strongly-regular-graph), and the Schur product theorem gives the Krein conditions for [distance-regular graphs](#distance-regular-graphs).
-
-### Linear algebra over finite fields
-
-This section is used only from [the chapter on hyperplanes and projective embeddings](#hyperplanes-and-projective-embeddings-of-point-line-geometries) onwards and can be skipped until then. It sharpens two tools from the earlier notes' construction of $PG(n, q)$ from $\mathbb{F}_q^{n+1}$, hyperplanes as kernels and quotient spaces, after a convention.
+Label the corners of a triangle $1, 2, 3$, and put a $1$ in row $x$, column $y$ when corners $x$ and $y$ are joined by an edge, and $0$ otherwise. The result is $A$, which the next chapter calls [the adjacency matrix](#the-adjacency-matrix-and-its-eigenvalues) of the triangle. Maths 0 finds its eigenvalues, $2$ once and $-1$ twice, and its minimal polynomial $(\lambda - 2)(\lambda + 1)$ ([the minimal polynomial example](maths_0_linear_and_abstract_algebra.md#which-matrices-are-diagonalizable)).
 
 **Right vector spaces.** In these notes, scalars multiply vectors on the right, $v\lambda$, and coordinates are column vectors, so a matrix acts by $v \mapsto Mv$. The earlier projective geometry notes used left vector spaces and row vectors. Over a field the two conventions describe the same objects, and every finite skew field is a field (Wedderburn's theorem). The choice matters only over a genuine skew field such as the quaternions, in [polar spaces from sesquilinear forms](maths_3_projective_geometry.md#polar-spaces-polarity).
 
@@ -144,13 +19,9 @@ This section is used only from [the chapter on hyperplanes and projective embedd
 
 For example, take $V = \mathbb{F}_2^4$ and $U = \langle c \rangle$ with $c = (1,1,1,0)^T$; any nonzero $c$ would do, and this one returns as the projection centre in [the 3-vane fan example](#the-3-vane-fan-universal-embedding-in-pg3-2-and-fano-quotient-in-pg2-2). Then $V/U \cong \mathbb{F}_2^3$. A point of the quotient is a line of $PG(3, 2)$ through the point $\langle c \rangle$. Each such line holds two points $p$ and $p + c$ besides $c$, so the $14$ other points fall into $7$ pairs, the $7$ points of a Fano plane. This is projection from $c$: each pair looks like one point when seen from $c$.
 
-**Where it is used.** A hyperplane of $PG(n, q)$, the kernel of a single functional, cuts out a hyperplane of any geometry sitting inside $PG(n, q)$, and projection from a point is a quotient (see [full and quotient projective embeddings](#full-and-quotient-projective-embeddings) and [hyperplanes arising from an embedding](#hyperplanes-arising-from-an-embedding)). Quotients also build quotient polar spaces, the [residues of points](maths_3_projective_geometry.md#residues-give-local-to-global-classification-and-induction) of the earlier projective geometry notes.
-
 ### Bilinear and sesquilinear forms in coordinates
 
-This section is used only from the chapter on [polar spaces](#polar-spaces) onwards and can be skipped until then. It handles the forms behind the earlier notes' polar spaces through their matrices.
-
-Fix a basis $e_0, \dots, e_n$ of $V$. A bilinear form $f$ is determined by its Gram matrix $G$, with $G_{il} = f(e_i, e_l)$: the same idea as before, all pairings of the basis vectors. For coordinate vectors $x$ and $y$,
+Fix a basis $e_0, \dots, e_n$ of $V$. A bilinear form $f$ is determined by its Gram matrix $G$, with $G_{il} = f(e_i, e_l)$: the same idea as the [Gram matrix of vectors](maths_0_linear_and_abstract_algebra.md#the-gram-matrix) in Maths 0, all pairings of the basis vectors. For coordinate vectors $x$ and $y$,
 
 $$f(x, y) = x^T G y.$$
 
@@ -177,15 +48,9 @@ just as Dirac's $\langle v | w \rangle$ is antilinear in the bra. The earlier pr
 
 In coordinates, $f(x, y) = (x^\sigma)^T G y$, where $x^\sigma$ applies $\sigma$ to each entry, and a change of basis gives $G' = (P^\sigma)^T G P$. The form is Hermitian when $f(w, v) = f(v, w)^\sigma$ for all $v, w$. For example, let $\mathbb{F}_4 = \{0, 1, \omega, \omega^2\}$ with $\omega^2 = \omega + 1$, and let $\sigma(a) = a^2$, which swaps $\omega$ and $\omega^2$ and fixes $0$ and $1$. The form $f(x, y) = x_0^2 y_0 + x_1^2 y_1$ on $\mathbb{F}_4^2$ has $G = I$ and is Hermitian. A vector is isotropic when $f(x, x) = x_0^3 + x_1^3 = 0$. Every nonzero element of $\mathbb{F}_4$ has cube $1$ (the multiplicative group has order $3$), so $x_0^3 + x_1^3$ is $1 + 1 = 0$ when both coordinates are nonzero and $1$ otherwise. Of the $5$ points of $PG(1, 4)$, the $3$ points $\langle (1, a)^T \rangle$ with $a \neq 0$ are isotropic.
 
-**Where it is used.** Forms in coordinates are the language of [polar spaces from sesquilinear forms](maths_3_projective_geometry.md#polar-spaces-polarity) and [the classical polar spaces](maths_3_projective_geometry.md#polar-spaces-polarity), and the radical of a polar form is the nucleus used in [the polar spaces chapter](#isomorphism-between-parabolic-and-symplectic-polar-spaces).
-
-<!-- terms checked: positive semidefinite; minimal polynomial; entrywise product -->
-
 ## Graphs and Point-Line Geometries
 
-<!-- terms checked: degree; automorphism; geometry; points; subspace; hyperplane; opposite -->
-
-How can linear algebra prove that a finite geometry does not exist? The bridge goes through graphs. Every [point-line geometry](#point-line-geometries) gives rise to two natural graphs (one recording which points share a line, the other recording which points lie on which lines). Once we encode a graph in a real symmetric $0/1$ matrix, those local counts turn into polynomial equations for its [eigenvalues](#eigenvalues-and-eigenspaces), whose multiplicities are the dimensions of the corresponding eigenspaces and whose non-vanishing counts give the matrix rank. Because a vector space cannot have a fractional dimension, any hypothetical geometry whose counts force a non-integer eigenspace dimension cannot exist: that single integrality test will rule out impossible quadrangles in [Strongly Regular and Distance-Regular Graphs](#strongly-regular-and-distance-regular-graphs) and restrict finite [generalized polygons](#the-theorem-of-feit-and-higman) (with at least three points per line and three lines per point) to $3$-, $4$-, $6$- and $8$-gons in [The Feit–Higman theorem](#the-feithigman-theorem-and-order-bounds), while a two-line rank check on [the incidence matrix](#collinearity-graphs-incidence-graphs) will bound block counts in [Designs](#the-incidence-matrix-and-fishers-inequality). First we build the graph language, then the geometry language that feeds into it.
+How can linear algebra prove that a finite geometry does not exist? The bridge goes through graphs. Every [point-line geometry](#point-line-geometries) gives rise to two natural graphs (one recording which points share a line, the other recording which points lie on which lines). Once we encode a graph in a real symmetric $0/1$ matrix, those local counts turn into polynomial equations for its [eigenvalues](maths_0_linear_and_abstract_algebra.md#eigenvalues-eigenvectors), whose multiplicities are the dimensions of the corresponding eigenspaces and whose non-vanishing counts give the matrix rank. Because a vector space cannot have a fractional dimension, any hypothetical geometry whose counts force a non-integer eigenspace dimension cannot exist: that single integrality test will rule out impossible quadrangles in [Strongly Regular and Distance-Regular Graphs](#strongly-regular-and-distance-regular-graphs) and restrict finite [generalized polygons](#the-theorem-of-feit-and-higman) (with at least three points per line and three lines per point) to $3$-, $4$-, $6$- and $8$-gons in [The Feit–Higman theorem](#the-feithigman-theorem-and-order-bounds), while a two-line rank check on [the incidence matrix](#collinearity-graphs-incidence-graphs) will bound block counts in [Designs](#the-incidence-matrix-and-fishers-inequality). First we build the graph language, then the geometry language that feeds into it.
 
 ### Graphs
 
@@ -271,13 +136,13 @@ This is the fundamental of what we will call [Generalized Polygons](#generalized
 
 #### The adjacency matrix and its eigenvalues
 
-Order the $v$ vertices of a finite graph $\Gamma$ as $(p_1, \dots, p_v)$ and form its $v \times v$ **adjacency matrix** $A$ over $\mathbb{R}$ (never over $\mathbb{F}_2$, since we want real path counts without mod-$2$ cancellation), setting $A_{ij} = 1$ if $p_i \sim p_j$ and $0$ otherwise. Because $A$ is real symmetric with zero diagonal, [the spectral theorem](#real-symmetric-matrices-and-the-spectral-theorem) guarantees real eigenvalues and diagonalizability.
+Order the $v$ vertices of a finite graph $\Gamma$ as $(p_1, \dots, p_v)$ and form its $v \times v$ **adjacency matrix** $A$ over $\mathbb{R}$ (never over $\mathbb{F}_2$, since we want real path counts without mod-$2$ cancellation), setting $A_{ij} = 1$ if $p_i \sim p_j$ and $0$ otherwise. Because $A$ is real symmetric with zero diagonal, [the spectral theorem](maths_0_linear_and_abstract_algebra.md#hermitian-matrices) guarantees real eigenvalues and diagonalizability.
 
-Writing $A$ down needs an order for the vertices. But let's say you changed the order. You can do this by using $P^TAP$ as the adjacency matrix, where $P$ is a permutation matrix on the vertices. The new madjacency matrix will still have the same eigenvalues and multiplicities ([permutation matrices](#the-all-ones-matrix-and-commuting-matrices)). These eigenvalues are therefore the eigenvalues of $\Gamma$ itself. The list of eigenvalues is sometimes called the spectrum of $\Gamma$. In eigenvalue lists, exponents mark multiplicity: $1^2$ means eigenvalue $1$ twice.
+Writing $A$ down needs an order for the vertices. But let's say you changed the order. You can do this by using $P^TAP$ as the adjacency matrix, where $P$ is a permutation matrix on the vertices. The new adjacency matrix will still have the same eigenvalues and multiplicities ([permutation matrices](maths_0_linear_and_abstract_algebra.md#some-properties-of-eigenvalues)). These eigenvalues are therefore the eigenvalues of $\Gamma$ itself. The list of eigenvalues is sometimes called the spectrum of $\Gamma$. In eigenvalue lists, exponents mark multiplicity: $1^2$ means eigenvalue $1$ twice.
 
 Compare our two $6$-vertex valency-$2$ graphs from [Figure 1](#figure-1):
 
-- **Two triangles $2 K_3$:** The $2K_3$ adjacency matrix contains two triangle matrices arranged along the diagonal with zeroes everywhere else. Since $A_{K_3} = J_3 - I_3$ had eigenvalues $2, (-1)^2$ in [the prologue](#real-symmetric-matrices-and-the-spectral-theorem). Doubling the block gives $2^2, (-1)^4$.
+- **Two triangles $2 K_3$:** The $2K_3$ adjacency matrix contains two triangle matrices arranged along the diagonal with zeroes everywhere else. Since $A_{K_3} = J_3 - I_3$ had eigenvalues $2, (-1)^2$ in [the prologue](#prologue-linear-algebra-over-finite-fields). Doubling the block gives $2^2, (-1)^4$.
 - **Hexagon $C_6$:** Around the $6$-cycle, $(A w)_i = w_{i-1} + w_{i+1}$. Constant $(1, 1, 1, 1, 1, 1)^T$ gives $\theta = 2$; alternating $(1, -1, 1, -1, 1, -1)^T$ gives $\theta = -2$; $(1, 1, 0, -1, -1, 0)^T$ and its shift $(0, 1, 1, 0, -1, -1)^T$ give $\theta = 1$ twice; and $(1, -1, 0, 1, -1, 0)^T$ and $(0, 1, -1, 0, 1, -1)^T$ give $\theta = -1$ twice. Thus $C_6$ has eigenvalues $2, 1^2, (-1)^2, -2$.
 
 Where do these eigenvalues come from without guessing the vectors?
@@ -288,7 +153,7 @@ Where do these eigenvalues come from without guessing the vectors?
 
 Two differences jump out between $2^2, (-1)^4$ and $2, 1^2, (-1)^2, -2$: the multiplicity of $2$, and the appearance of $-2$ because the hexagon is bipartite.
 
-We can put a few conditions on the eiegenvalues. The valency $k$ is always an eigenvalue of the graph because every row has $k$ ones, so the all-ones vector $j$ satisfies $Aj = kj$.
+We can put a few conditions on the eigenvalues. The valency $k$ is always an eigenvalue of the graph because every row has $k$ ones, so the all-ones vector $j$ satisfies $Aj = kj$.
 
 No eigenvalue $\theta$ can ever exceed $k$ in absolute value ($\vert{}\theta\vert{} \le k$). To see why, assume that the eigenvector $w$ has a maximum component $w_i$. The $i^{th}$ component of $Aw = \theta w$ will be a maximum of $kw_i$. But this should equal $\theta w_i$, which means $\theta w_i \le kw_i$ which gives us the limit.
 
@@ -864,7 +729,7 @@ If a graph is connected, regular, and has 3 distinct eigenvalues, it is guarante
 
 If we forget the regular condition however, a non-regular graph can have 3 distinct eigenvalues without being an SRG. For example, the complete bipartite graph $K_{1, 3}$ (a star with 1 hub and 3 leaves) has the three eigenvalues $\sqrt{3}, 0, -\sqrt{3}$, yet it is not an SRG because it is not regular: the hub has degree $3$ and the leaves have degree $1$, so $\mathbf{j}$ is not even an eigenvector.
 
-First recall the eigenvalues of the all-ones matrix $J$ from [the all-ones matrix and commuting matrices](#the-all-ones-matrix-and-commuting-matrices): the $v \times v$ matrix $J$ has eigenvalue $v$ with multiplicity $1$, on $\mathbf{j}$, and eigenvalue $0$ with multiplicity $v - 1$, on the vectors whose coordinates add up to $0$.
+First recall the eigenvalues of the all-ones matrix $J$ from [Maths 0](maths_0_linear_and_abstract_algebra.md#some-properties-of-eigenvalues): the $v \times v$ matrix $J$ has eigenvalue $v$ with multiplicity $1$, on $\mathbf{j}$, and eigenvalue $0$ with multiplicity $v - 1$, on the vectors whose coordinates add up to $0$.
 
 Next, look at what happens when we square the adjacency matrix $A$. For any $i, j \in \{1, \dots, v\}$, the $(i, j)$-entry of $A^2$ is $(A^2)_{ij} = \sum_{l=1}^v A_{il} A_{lj}$. A product $A_{il} A_{lj}$ equals $1$ when $p_l$ is adjacent to both $p_i$ and $p_j$, and $0$ otherwise, so $(A^2)_{ij}$ simply counts the vertices adjacent to both $p_i$ and $p_j$. It is the number of 2-step walks between any two vertices.
 
@@ -957,7 +822,7 @@ Compare two small conference graphs to see both cases happen. At $\mu = 1$, the 
 
 Even when $R_1$ and $R_2$ are integers and $M_1$ and $M_2$ are positive integers, a proposed set of SRG parameters can still fail geometrically if $v$ vertices are too many to fit into an $M_i$-dimensional eigenspace.
 
-The tool that turns an eigenspace into Euclidean geometry is the Gram matrix from [rank, determinants and Gram matrices](#rank-determinants-and-gram-matrices). For vectors $\bar{v}_1, \dots, \bar{v}_m$ in $\mathbb{R}^n$ with the standard dot product $(\bar{x}, \bar{y})$, we write $\operatorname{Gr}(\bar{v}_1, \dots, \bar{v}_m)$ for their Gram matrix, the $m \times m$ matrix whose $(i, j)$-entry is $(\bar{v}_i, \bar{v}_j)$. It is symmetric and positive semidefinite, with rank equal to the dimension of the span $\langle \bar{v}_1, \dots, \bar{v}_m \rangle$, and conversely every symmetric positive semidefinite matrix of rank at most $n$ is the Gram matrix of some vectors in $\mathbb{R}^n$.
+The tool that turns an eigenspace into Euclidean geometry is the [Gram matrix](maths_0_linear_and_abstract_algebra.md#the-gram-matrix) from Maths 0. For vectors $\bar{v}_1, \dots, \bar{v}_m$ in $\mathbb{R}^n$ with the standard dot product $(\bar{x}, \bar{y})$, we write $\operatorname{Gr}(\bar{v}_1, \dots, \bar{v}_m)$ for their Gram matrix, the $m \times m$ matrix whose $(i, j)$-entry is $(\bar{v}_i, \bar{v}_j)$. It is symmetric and positive semidefinite, with rank equal to the dimension of the span $\langle \bar{v}_1, \dots, \bar{v}_m \rangle$, and conversely every symmetric positive semidefinite matrix of rank at most $n$ is the Gram matrix of some vectors in $\mathbb{R}^n$.
 
 **Absolute bounds for primitive strongly regular graphs.** If $\Gamma$ is a primitive strongly regular graph with parameters $(v, k, \lambda, \mu)$ and eigenvalue multiplicities $M_1$ and $M_2$, then
 
@@ -1233,7 +1098,7 @@ Continuing this induction, we will see that we multiply each previous $A_i$ by $
 
 $$p_{i+1}(X) = \frac{1}{c_{i+1}}\Bigl((X - a_i)p_i(X) - b_{i-1} p_{i-1}(X)\Bigr).$$
 
-Summing $J = A_0 + \dots + A_d$ gives a unique degree-$d$ polynomial $p^*(X) = p_0(X) + p_1(X) + \dots + p_d(X)$ with $J = p^*(A)$. Moreover, the [minimal polynomial](#polynomials-in-a-matrix-and-the-minimal-polynomial) of $A$ has degree $d + 1$ and is proportional to both $(X - b_0)p^*(X)$ and $(X - a_d)p_d(X) - b_{d-1} p_{d-1}(X)$. Consequently, $\Gamma$ has precisely $d + 1$ distinct eigenvalues, the largest of which is $b_0$ with multiplicity $1$.
+Summing $J = A_0 + \dots + A_d$ gives a unique degree-$d$ polynomial $p^*(X) = p_0(X) + p_1(X) + \dots + p_d(X)$ with $J = p^*(A)$. Moreover, the [minimal polynomial](maths_0_linear_and_abstract_algebra.md#which-matrices-are-diagonalizable) of $A$ has degree $d + 1$ and is proportional to both $(X - b_0)p^*(X)$ and $(X - a_d)p_d(X) - b_{d-1} p_{d-1}(X)$. Consequently, $\Gamma$ has precisely $d + 1$ distinct eigenvalues, the largest of which is $b_0$ with multiplicity $1$.
 
 Let us check the degree and uniqueness step in that theorem. The $d + 1$ matrices $A_0, A_1, \dots, A_d$ have $1$'s in nonempty, mutually disjoint positions, so they are linearly independent in the space of all $v \times v$ real matrices. Since each $A_i$ is a degree-$i$ polynomial in $A$, the powers $A^0, A^1, \dots, A^d$ must also be linearly independent, meaning no nonzero polynomial of degree $d$ or less can annihilate $A$. That forces the minimal polynomial of $A$ to have degree at least $d + 1$ (and makes each $p_i(X)$ and $p^*(X)$ unique).
 
@@ -1245,7 +1110,7 @@ $$\mathcal{A} = \langle I, A, A^2, \dots, A^d \rangle = \langle A_0, A_1, \dots,
 
 together with standard matrix multiplication, is closed under multiplication (and commutative, since every element is a polynomial in $A$). It is called the **Bose-Mesner algebra** of the distance-regular graph $\Gamma$, and both $\{I, A, \dots, A^d\}$ and $\{A_0, A_1, \dots, A_d\}$ are bases of $\mathcal{A}$.
 
-Just as important, $\mathcal{A}$ carries a second multiplication, the [entrywise (Hadamard or Schur) product](#rank-determinants-and-gram-matrices) $(M \circ N)_{jk} = M_{jk} N_{jk}$ of two $v \times v$ matrices $M$ and $N$. Because $A_0, A_1, \dots, A_d$ are $0$-$1$ matrices with disjoint supports, multiplying them entrywise gives
+Just as important, $\mathcal{A}$ carries a second multiplication, the [entrywise (Hadamard or Schur) product](maths_0_linear_and_abstract_algebra.md#hadamard-or-schur-product) $(M \circ N)_{jk} = M_{jk} N_{jk}$ of two $v \times v$ matrices $M$ and $N$. Because $A_0, A_1, \dots, A_d$ are $0$-$1$ matrices with disjoint supports, multiplying them entrywise gives
 
 $$A_i \circ A_j = \delta_{ij} A_i$$
 
@@ -1436,7 +1301,7 @@ The numbers $q_{ij}^k$ are called the **Krein parameters** of the distance-regul
 
 These are the exact dual of the intersection numbers $p_{ij}^k$ in the Bose-Mesner algebra. While intersection numbers govern what happens when you multiply the combinatorial basis $A_i$ under standard matrix multiplication, the Krein parameters $q_{ij}^k$ govern what happens when you multiply the spectral basis $E_i$ under entrywise (Hadamard) multiplication.
 
-For the combinatorial numbers $p_{ij}^k$, nonnegativity ($p_{ij}^k \ge 0$) is trivial because you can't have a negative number of vertices. Why must $q_{ij}^k$ also be nonnegative? Because from a matrix viewpoint, $E_i$ and $E_j$ are positive semidefinite projection matrices, so the [Schur product theorem](#rank-determinants-and-gram-matrices) says their Hadamard product $E_i \circ E_j$ is also positive semidefinite, which forces all of its eigenvalues $\frac{1}{v} q_{ij}^k$ to be $\ge 0$.
+For the combinatorial numbers $p_{ij}^k$, nonnegativity ($p_{ij}^k \ge 0$) is trivial because you can't have a negative number of vertices. Why must $q_{ij}^k$ also be nonnegative? Because from a matrix viewpoint, $E_i$ and $E_j$ are positive semidefinite projection matrices, so the [Schur product theorem](maths_0_linear_and_abstract_algebra.md#hadamard-or-schur-product) says their Hadamard product $E_i \circ E_j$ is also positive semidefinite, which forces all of its eigenvalues $\frac{1}{v} q_{ij}^k$ to be $\ge 0$.
 
 So if even one $q_{ij}^k$ comes out negative, no such graph can exist. Next, we will look at how to calculate the Krein parameters.
 
@@ -1673,7 +1538,7 @@ A [hyperplane](#partial-linear-spaces) of $\mathcal{S}$ was defined earlier as a
 
 We also need to be exact about what counts as an ambient target space $\Sigma$. Earlier, a [projective space](#projective-spaces-of-arbitrary-dimension-and-the-veblenyoung-axiom) (a linear space satisfying the Veblen–Young axiom) was called *irreducible* when every line is thick, with at least $3$ points. For projective planes, nondegenerate was already another word for irreducible, and we use it the same way in every dimension: a **nondegenerate projective space** $\Sigma$ is an irreducible one, so every line of $\Sigma$ has at least $3$ points. A single point or a single thick line still counts. What the word rules out is the degenerate kind with thin lines, such as a [near-pencil](#classes-of-point-line-geometries), which no vector space produces.
 
-We do *not* require $\Sigma$ to have finite dimension. Using our [right-vector-space convention over a skew field $\mathbb{F}$](#linear-algebra-over-finite-fields) (a division ring, whose multiplication need not commute), if $V$ is a right vector space over $\mathbb{F}$ of any dimension at least $2$, possibly infinite, its $1$-dimensional and $2$-dimensional vector subspaces form a nondegenerate projective space $\mathrm{PG}(V)$, whose lines have $\lvert \mathbb{F} \rvert + 1 \ge 3$ points. By [Veblen and Young's classification](#projective-spaces-of-arbitrary-dimension-and-the-veblenyoung-axiom), every nondegenerate projective space of dimension at least $3$ arises as $\mathrm{PG}(V)$ in this way, while dimension $2$ consists of all nondegenerate projective planes, whether [Desarguesian (of the form $\mathrm{PG}(V)$) or non-Desarguesian](#projective-planes-degenerate-vs-nondegenerate).
+We do *not* require $\Sigma$ to have finite dimension. Using our [right-vector-space convention over a skew field $\mathbb{F}$](#prologue-linear-algebra-over-finite-fields) (a division ring, whose multiplication need not commute), if $V$ is a right vector space over $\mathbb{F}$ of any dimension at least $2$, possibly infinite, its $1$-dimensional and $2$-dimensional vector subspaces form a nondegenerate projective space $\mathrm{PG}(V)$, whose lines have $\lvert \mathbb{F} \rvert + 1 \ge 3$ points. By [Veblen and Young's classification](#projective-spaces-of-arbitrary-dimension-and-the-veblenyoung-axiom), every nondegenerate projective space of dimension at least $3$ arises as $\mathrm{PG}(V)$ in this way, while dimension $2$ consists of all nondegenerate projective planes, whether [Desarguesian (of the form $\mathrm{PG}(V)$) or non-Desarguesian](#projective-planes-degenerate-vs-nondegenerate).
 
 ### Full and quotient projective embeddings
 
@@ -1727,7 +1592,7 @@ How many different dimensions $n$ can this exact same $7$-point, $3$-line fan li
 
 Once we have one full projective embedding $\epsilon : \mathcal{S} \to \Sigma$, we can try to build smaller embeddings of $\mathcal{S}$ by projecting from a point like we did in the intuitive picture, or more generally from a subspace $\alpha$ of $\Sigma$, as drawn in [Figure 13](#figure-13) and panel (a) of [Figure 15](#figure-15).
 
-Let $\alpha$ be a subspace of $\Sigma$. In [our earlier quotient-space language](#linear-algebra-over-finite-fields), the **quotient projective space** $\Sigma_\alpha$ (also written $\Sigma / \alpha$) is the projective space whose points are the subspaces of $\Sigma$ that contain $\alpha$ as a hyperplane, and whose lines are the subspaces $\beta$ of $\Sigma$ containing $\alpha$ such that $\alpha$ is a hyperplane of a hyperplane of $\beta$, with inclusion as incidence. Now suppose $\alpha$ is disjoint from $\epsilon(\mathcal{P})$, and send each point $p \in \mathcal{P}$ to the point $\langle \alpha, \epsilon(p) \rangle_\Sigma$ of $\Sigma_\alpha$ (which contains $\alpha$ as a hyperplane because $\epsilon(p) \notin \alpha$):
+Let $\alpha$ be a subspace of $\Sigma$. In [our earlier quotient-space language](#prologue-linear-algebra-over-finite-fields), the **quotient projective space** $\Sigma_\alpha$ (also written $\Sigma / \alpha$) is the projective space whose points are the subspaces of $\Sigma$ that contain $\alpha$ as a hyperplane, and whose lines are the subspaces $\beta$ of $\Sigma$ containing $\alpha$ such that $\alpha$ is a hyperplane of a hyperplane of $\beta$, with inclusion as incidence. Now suppose $\alpha$ is disjoint from $\epsilon(\mathcal{P})$, and send each point $p \in \mathcal{P}$ to the point $\langle \alpha, \epsilon(p) \rangle_\Sigma$ of $\Sigma_\alpha$ (which contains $\alpha$ as a hyperplane because $\epsilon(p) \notin \alpha$):
 
 $$\epsilon / \alpha : \mathcal{S} \to \Sigma_\alpha, \quad p \mapsto \langle \alpha, \epsilon(p) \rangle_\Sigma$$
 
@@ -1873,7 +1738,7 @@ We can write $\tilde{\epsilon} : \mathcal{S} \to \mathrm{PG}(3, 2)$ explicitly i
 
 $$\begin{aligned} \tilde{\epsilon}(p_0) &= \langle(0, 0, 0, 1)\rangle, \\ \tilde{\epsilon}(p_1) &= \langle(1, 0, 0, 0)\rangle, \quad \tilde{\epsilon}(p_2) = \langle(1, 0, 0, 1)\rangle, \\ \tilde{\epsilon}(p_3) &= \langle(0, 1, 0, 0)\rangle, \quad \tilde{\epsilon}(p_4) = \langle(0, 1, 0, 1)\rangle, \\ \tilde{\epsilon}(p_5) &= \langle(0, 0, 1, 0)\rangle, \quad \tilde{\epsilon}(p_6) = \langle(0, 0, 1, 1)\rangle. \end{aligned}$$
 
-These $7$ vectors are distinct and span $\mathbb{F}_2^4$, so $\tilde{\epsilon}$ is a full projective embedding into $\mathrm{PG}(3, 2)$. As noted [in the prologue](#linear-algebra-over-finite-fields), $\mathrm{PG}(3, 2)$ has $2^4 - 1 = 15$ planes $a_0 x_0 + a_1 x_1 + a_2 x_2 + a_3 x_3 = 0$, one for each nonzero functional $(a_0, a_1, a_2, a_3) \in \mathbb{F}_2^4$, and each plane cuts out a different hyperplane of $\mathcal{S}$ ([Figure 14](#figure-14)): for example, $x_0 + x_1 + x_2 = 0$ cuts out the singleton $\{p_0\}$, while $x_2 = 0$ cuts out the two-vane union $L_1 \cup L_2 = \{p_0, p_1, p_2, p_3, p_4\}$. Thus $\lvert \mathcal{H}_{\tilde{\epsilon}} \rvert = 15$.
+These $7$ vectors are distinct and span $\mathbb{F}_2^4$, so $\tilde{\epsilon}$ is a full projective embedding into $\mathrm{PG}(3, 2)$. As noted [in the prologue](#prologue-linear-algebra-over-finite-fields), $\mathrm{PG}(3, 2)$ has $2^4 - 1 = 15$ planes $a_0 x_0 + a_1 x_1 + a_2 x_2 + a_3 x_3 = 0$, one for each nonzero functional $(a_0, a_1, a_2, a_3) \in \mathbb{F}_2^4$, and each plane cuts out a different hyperplane of $\mathcal{S}$ ([Figure 14](#figure-14)): for example, $x_0 + x_1 + x_2 = 0$ cuts out the singleton $\{p_0\}$, while $x_2 = 0$ cuts out the two-vane union $L_1 \cup L_2 = \{p_0, p_1, p_2, p_3, p_4\}$. Thus $\lvert \mathcal{H}_{\tilde{\epsilon}} \rvert = 15$.
 
 <a id="figure-14"></a>![All 15 hyperplanes of the 3-vane fan in PG(3,2), classified into 7 surviving and 8 killed under projection from alpha=(1,1,1,0)](figures/maths4_embeddings_fan_hyperplanes.png)
 
@@ -2479,7 +2344,7 @@ Fourth, disjoint maximal singular subspaces always exist and force all generator
 
 #### Skew fields, anti-automorphisms, and rescaling sesquilinear forms
 
-Why we work with right vector spaces $V$ over a skew field $\mathbb{F}$ and how Wedderburn's theorem makes every finite skew field commutative are explained in [linear algebra over finite fields](#linear-algebra-over-finite-fields). Coordinate Gram matrices $G$, congruence $P^T G P$, and the radical $\operatorname{rad}(f)$ are introduced in [bilinear and sesquilinear forms in coordinates](#bilinear-and-sesquilinear-forms-in-coordinates) and [forms and orthogonality](maths_3_projective_geometry.md#forms-orthogonality) in the earlier projective geometry notes. Here we develop the general skew-field algebra that explains why only $(\sigma, \epsilon)$-Hermitian forms can produce polar spaces.
+Why we work with right vector spaces $V$ over a skew field $\mathbb{F}$ and how Wedderburn's theorem makes every finite skew field commutative are explained in [linear algebra over finite fields](#prologue-linear-algebra-over-finite-fields). Coordinate Gram matrices $G$, congruence $P^T G P$, and the radical $\operatorname{rad}(f)$ are introduced in [bilinear and sesquilinear forms in coordinates](#bilinear-and-sesquilinear-forms-in-coordinates) and [forms and orthogonality](maths_3_projective_geometry.md#forms-orthogonality) in the earlier projective geometry notes. Here we develop the general skew-field algebra that explains why only $(\sigma, \epsilon)$-Hermitian forms can produce polar spaces.
 
 When $\mathbb{F}$ is a skew field (division ring) whose multiplication is not necessarily commutative, we need three algebraic notions. The **opposite skew field** $\mathbb{F}^\circ$ has the same additive group as $\mathbb{F}$ but reverses the order of multiplication: $x \cdot_{\mathbb{F}^\circ} y := yx$. The **centre** of $\mathbb{F}$ is the commutative subfield $Z(\mathbb{F}) := \{x \in \mathbb{F} \mid xy = yx \text{ for all } y \in \mathbb{F}\}$ (so $Z(\mathbb{F}) = \mathbb{F}$ whenever $\mathbb{F}$ is a field). An **anti-automorphism** of $\mathbb{F}$ is a bijection $\sigma : \mathbb{F} \to \mathbb{F}$ (equivalently, an isomorphism $\mathbb{F} \to \mathbb{F}^\circ$) satisfying
 
@@ -2860,15 +2725,15 @@ The proof takes three steps:
 
 $r > \lambda$: Every point lies in strictly more than $\lambda$ blocks. Why? Pick a block $B$ containing $x$. Since $v > k$, there is a point $y \notin B$. The pair $\{x, y\}$ lies in $\lambda$ blocks, none of which can be $B$ because $y \notin B$. Together with $B$, that gives at least $\lambda + 1$ blocks through $x$, so $r \ge \lambda + 1 > \lambda$.
 
-$\operatorname{rank}(M) = v$: First, the [Gram matrix](#rank-determinants-and-gram-matrices) $M M^T$ is given by
+$\operatorname{rank}(M) = v$: First, the [Gram matrix](maths_0_linear_and_abstract_algebra.md#the-gram-matrix) $M M^T$ is given by
 
 $$M M^T = (r - \lambda)I + \lambda J \qquad \text{and} \qquad \det(M M^T) = \bigl(r + (v - 1)\lambda\bigr)(r - \lambda)^{v - 1}$$
 
 Why is $M M^T = (r - \lambda)I + \lambda J$? Entry $(i, j)$ of $M M^T$ is the dot product of row $p_i$ and row $p_j$, which counts how many mutual neighbours they have i.e. how many blocks contain both $p_i$ and $p_j$. On the diagonal ($p_i = p_j$), a single point lies in $r$ blocks. Off the diagonal ($p_i \neq p_j$), two distinct points lie in $\lambda$ blocks.
 
-There is also an intuition behind the determinant from [the all-ones matrix and commuting matrices](#the-all-ones-matrix-and-commuting-matrices) in the prologue. The all-ones matrix $J = jj^T$ has eigenvalue $v$ (multiplicity $1$, on the all-ones vector $j$) and eigenvalue $0$ (multiplicity $v - 1$, on vectors in $j^\perp$ orthogonal to $j$), so $\lambda J$ has eigenvalues $\lambda v$ (multiplicity $1$) and $0$ (multiplicity $v - 1$). Adding $(r - \lambda)I$ shifts those eigenvalues by $r - \lambda$, giving $r - \lambda + v\lambda = r + (v - 1)\lambda$ (multiplicity $1$) and $r - \lambda$ (multiplicity $v - 1$). Multiplying the eigenvalues gives $\det(M M^T) = \bigl(r + (v - 1)\lambda\bigr)(r - \lambda)^{v-1}$. For the Fano plane ($r = 3$, $\lambda = 1$), this is the matrix $M M^T = 2I + J$ met in the prologue.
+There is also an intuition behind the determinant from [the all-ones matrix in Maths 0](maths_0_linear_and_abstract_algebra.md#some-properties-of-eigenvalues). The all-ones matrix $J = jj^T$ has eigenvalue $v$ (multiplicity $1$, on the all-ones vector $j$) and eigenvalue $0$ (multiplicity $v - 1$, on vectors in $j^\perp$ orthogonal to $j$), so $\lambda J$ has eigenvalues $\lambda v$ (multiplicity $1$) and $0$ (multiplicity $v - 1$). Adding $(r - \lambda)I$ shifts those eigenvalues by $r - \lambda$, giving $r - \lambda + v\lambda = r + (v - 1)\lambda$ (multiplicity $1$) and $r - \lambda$ (multiplicity $v - 1$). Multiplying the eigenvalues gives $\det(M M^T) = \bigl(r + (v - 1)\lambda\bigr)(r - \lambda)^{v-1}$. For the Fano plane ($r = 3$, $\lambda = 1$), this is the matrix $M M^T = 2I + J$ met in the prologue.
 
-Because $r > \lambda$, our determinant $\det(M M^T) = \bigl(r + (v - 1)\lambda\bigr)(r - \lambda)^{v-1}$ is strictly positive ($\neq 0$). Thus the $v \times v$ matrix $M M^T$ is invertible and has full rank $v$; since $\operatorname{rank}(M M^T) \le \operatorname{rank}(M) \le v$ (in fact $\operatorname{rank}(M M^T) = \operatorname{rank}(M)$ over $\mathbb{R}$, as shown in [rank, determinants and Gram matrices](#rank-determinants-and-gram-matrices)), this forces $\operatorname{rank}(M) = v$.
+Because $r > \lambda$, our determinant $\det(M M^T) = \bigl(r + (v - 1)\lambda\bigr)(r - \lambda)^{v-1}$ is strictly positive ($\neq 0$). Thus the $v \times v$ matrix $M M^T$ is invertible and has full rank $v$; since $\operatorname{rank}(M M^T) \le \operatorname{rank}(M) \le v$ (in fact $\operatorname{rank}(M M^T) = \operatorname{rank}(M)$ over $\mathbb{R}$, as shown in [Matrix Rank in Maths 0](maths_0_linear_and_abstract_algebra.md#matrix-rank)), this forces $\operatorname{rank}(M) = v$.
 
 Fisher's Inequality ($b \ge v$): Since $M$ is a $v \times b$ matrix of rank $v$, and the rank of a matrix cannot exceed its number of columns $b$, we must have $b \ge \operatorname{rank}(M) = v$. [Figure 25](#figure-25) illustrates this rank argument on $\mathrm{AG}(2, 3) = S(2, 3, 9)$, where $M$ is $9 \times 12$ and $M M^T = 3I + J$ has full rank $9 \le 12 = b$.
 
