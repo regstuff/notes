@@ -1,6 +1,7 @@
-/* Main reading text: Material's default size, 0.8rem. Set it here to make it bigger or smaller. */
+/* Main reading text. Material's default is 0.8rem; 0.95rem was too big (2026-10-31).
+   Set it here to make it bigger or smaller: equations, code and tables follow it. */
 .md-typeset {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
 }
 
 /* Inline and block code, relative to the text (Material's default is 0.85em) */
