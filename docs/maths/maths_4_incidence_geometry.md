@@ -1520,6 +1520,78 @@ Look at why the hypothesis $s \neq 1$ is genuinely needed in Higman's inequality
 
 Note that a generalized $n$-gon with $n \ge 5$ is never a partial geometry, and for $n \ge 6$ its collinearity graph has diameter at least $3$, so it is not a strongly regular graph. (For $n = 5$ the only finite examples with an order are the ordinary pentagons, and their collinearity graph $C_5$ is strongly regular.) Instead, the collinearity graph of a generalized $n$-gon of order $(s, t)$ is a distance-regular graph of diameter $d = \lfloor n/2 \rfloor$, which means you apply the exact same Krein parameter machinery ($q_{ij}^k \ge 0$) inside the larger $(d + 1)$-dimensional Bose-Mesner algebra to get the generalized polygon bounds. We will look at this later.
 
+### Some Algebraic Graph Theory
+
+Consider a simple graph $G$ (no self-loops and no multiple edges between the same pair of nodes) with $m$ nodes $N_1, \dots, N_m$ and $n$ edges $E_1, \dots, E_n$. The degree of a node $N_i$ is the number of edges that touch $N_i$, and the degree matrix of the graph is the $m \times m$ diagonal matrix $D$ in which $d_{ii}$ is the degree of node $N_i$. For a 5-node, 6-edge example graph (consisting of two triangles $\{N_1, N_2, N_3\}$ and $\{N_2, N_4, N_5\}$ joined at $N_2$), the respective adjacency and degree matrices are  
+
+$$A = \begin{pmatrix} 0 & 1 & 1 & 0 & 0 \\ 1 & 0 & 1 & 1 & 1 \\ 1 & 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 & 1 \\ 0 & 1 & 0 & 1 & 0 \end{pmatrix} \qquad \text{and} \qquad D = \begin{pmatrix} 2 & 0 & 0 & 0 & 0 \\ 0 & 4 & 0 & 0 & 0 \\ 0 & 0 & 2 & 0 & 0 \\ 0 & 0 & 0 & 2 & 0 \\ 0 & 0 & 0 & 0 & 2 \end{pmatrix}.$$
+
+The graph Laplacian matrix is defined to be $L = D - A$. In this example,  
+
+$$L = D - A = \begin{pmatrix} 2 & -1 & -1 & 0 & 0 \\ -1 & 4 & -1 & -1 & -1 \\ -1 & -1 & 2 & 0 & 0 \\ 0 & -1 & 0 & 2 & -1 \\ 0 & -1 & 0 & -1 & 2 \end{pmatrix}.$$
+
+When directions are assigned to the edges, an additional matrix called the incidence matrix is defined to be the $m \times n$ matrix $E$ whose $(i, k)$-entry is  
+
+$$e_{ik} = \begin{cases} 1 & \text{if edge } E_k \text{ is directed toward node } N_i, \\ -1 & \text{if edge } E_k \text{ is directed away from node } N_i, \\ 0 & \text{if edge } E_k \text{ neither begins nor ends at node } N_i. \end{cases}$$
+
+For example, assigning edge orientations to the 5-node, 6-edge graph above (with rows indexed by $N_1, \dots, N_5$ and columns indexed by $E_1, \dots, E_6$) gives the incidence matrix 
+
+$$E = \begin{pmatrix} -1 & 0 & 1 & 0 & 0 & 0 \\ 1 & -1 & 0 & -1 & 0 & 1 \\ 0 & 1 & -1 & 0 & 0 & 0 \\ 0 & 0 & 0 & 1 & -1 & 0 \\ 0 & 0 & 0 & 0 & 1 & -1 \end{pmatrix}.$$
+
+To see how all the above matrices are related, notice that $e_{ik}^2 = 1$ if $E_k$ touches $N_i$, and otherwise $e_{ik}^2 = 0$, so  
+
+$$(EE^T)_{ii} = \sum_{k=1}^n e_{ik}^2 = (\text{number of edges touching } N_i) = \deg(N_i) = d_{ii}.$$
+
+Furthermore, for each pair of distinct nodes $N_i$ and $N_j$ ($i \neq j$) and each edge $E_k$,  
+
+$$e_{ik}e_{jk} = \begin{cases} -1 & \text{when } N_i \text{ and } N_j \text{ are directly connected by } E_k, \\ 0 & \text{otherwise.} \end{cases}$$
+
+Because the graph is simple (at most one edge connects $N_i$ and $N_j$), this means that for $i \neq j$,  
+
+$$(EE^T)_{ij} = \sum_{k=1}^n e_{ik}e_{jk} = \begin{cases} -1 & \text{when } N_i \text{ and } N_j \text{ are directly connected,} \\ 0 & \text{otherwise.} \end{cases}$$
+
+In other words,  $(EE^T)_{ij} = -a_{ij}$ for $i \neq j$, so this together with $(EE^T)_{ii} = d_{ii}$ shows that  
+
+$$EE^T = D - A = L.$$
+
+Notice that because each term $(x_i - x_j)^2$ is nonnegative and symmetric in $i$ and $j$,  $L$ is symmetric positive semidefinite and unaffected by flipping any edge orientation. So $L$ depends only on the underlying undirected graph and is completely independent of how edge directions are chosen. We can also see this via the Laplacian quadratic form. For any vector $x \in \mathbb{R}^m$, the factorization $L = EE^T$ immediately gives the quadratic form    
+
+$$x^T L x = x^T E E^T x = \Vert{}E^T x\Vert{}_2^2 = \sum_{\{i,j\} \in \mathcal{E}} (x_i - x_j)^2 \ge 0.$$
+
+Each edge in a directed graph without self-loops is associated with two distinct nodes, the head (nose) and the tail of the edge, so each column in $E$ contains exactly two nonzero entries—a $+1$ and a $-1$. Consequently, all column sums are zero, so $\mathbf{e}^T E = 0$, where $\mathbf{e}^T = (1, 1, \dots, 1) \in \mathbb{R}^{1 \times m}$, and hence $\mathbf{e} \in N(E^T)$. The rank–nullity theorem together with the fact that 
+
+$$\operatorname{rank}(EE^T) = \operatorname{rank}(E) = \operatorname{rank}(E^T)$$
+
+produces the observation that  
+
+$$\operatorname{rank}(L) = \operatorname{rank}(E) = m - \dim N(E^T) \le m - 1.$$
+
+This holds regardless of the connectivity of the associated graph, but, as the next theorem shows, equality is attained if and only if the graph is connected.
+
+Let $G$ be a simple graph containing $m$ nodes, and let $L = D - A$ be the graph Laplacian matrix. If $G$ is undirected, arbitrarily assign directions to the edges to make $G$ directed, and let $E$ be the associated incidence matrix. Then $G$ is connected (weakly connected if $G$ is directed) if and only if $\operatorname{rank}(L) = \operatorname{rank}(E) = m - 1$.  
+
+The maximal connected subgraphs of a disconnected graph $G$ are called the connected components of $G$. If $G$ is connected, then $G$ is a maximal connected subgraph of itself and thus it is the only connected component. A corollary extends the theorem to count the exact number of connected components in any graph:
+
+A graph $G$ with $m$ nodes has exactly $k$ connected components if and only if $\operatorname{rank}(E) = \operatorname{rank}(L) = m - k$. Equivalently,  $L$ has $0$ as an eigenvalue of multiplicity $k$ (i.e.,  $L$ has exactly $k$ zero eigenvalues, counted with multiplicity).
+
+Given a connected graph $G$ (with $m \ge 2$ nodes), it is natural to wonder, "Just how connected is $G$?" This question motivated Miroslav Fiedler to introduce the algebraic connectivity of $G$, defined to be the second-smallest eigenvalue $\lambda_{m-1}$ of $L$ (which is $0$ if $G$ is disconnected and equals the smallest nonzero eigenvalue of $L$ when $G$ is connected; this is also called the Fiedler eigenvalue). Since $L = EE^T$ is real symmetric and positive semidefinite, the eigenvalues $\lambda_1, \lambda_2, \dots, \lambda_m$ of $L$ (counted with multiplicity) are real and nonnegative, so if $G$ is connected, the eigenvalues of $L$ can be ordered as  
+
+$$\lambda_1 \ge \lambda_2 \ge \cdots \ge \lambda_{m-1} > \lambda_m = 0,$$
+
+where $\lambda_{m-1}$ is the algebraic connectivity (or Fiedler value). Adding an edge to $G$ cannot decrease $\lambda_{m-1}$ (it increases or remains unchanged), and removing an edge cannot increase $\lambda_{m-1}$ (it decreases or remains unchanged, reaching $0$ once the graph becomes disconnected).  
+
+In addition to the prominent role of the Fiedler eigenvalue $\lambda_{m-1}$ of $L$, an associated eigenvector $x_{m-1}$ (generally called a Fiedler vector) partitions a connected graph $G$. The algebraic signs of the entries in $x_{m-1}$ indicate a natural bisection of $G$ by grouping nodes corresponding to negative values in $x_{m-1}$ into one cluster $C^-$ and nodes associated with nonnegative (positive or zero) values of $x_{m-1}$ into another cluster $C^+$. Fiedler proved in 1975 that the subgraph of $G$ induced by $C^+ = \{i : (x_{m-1})_i \ge 0\}$ is always connected (and symmetrically,  $\{i : (x_{m-1})_i \le 0\}$ is always connected), and if $x_{m-1}$ has no zero entries, then $C^- = \{i : (x_{m-1})_i < 0\}$ is also connected (so both clusters are connected). This technique is the basis for what is often called spectral graph partitioning or spectral clustering.
+
+A Fiedler vector $x_{m-1}$ assigns real coordinates to the nodes (centered at mean $0$) that minimize squared differences across edges, placing densely linked nodes close together on the real line—this is the continuous relaxation of the NP-hard RatioCut graph partitioning problem.
+
+#### Discrete Hodge Decomposition, and Graph Diffusion
+
+While $EE^T = L$ acts on the $m$-dimensional node space, the $n \times n$ matrix $E^T E$ acts on the edge space and shares the exact same nonzero eigenvalues as $L$ (as in the $A^*A$ vs.  $AA^*$ property).
+        
+The fundamental subspaces of $E$ and $E^T$ split the edge space $\mathbb{R}^n = \operatorname{col}(E^T) \oplus N(E)$ into two orthogonal subspaces: the cut space  $\operatorname{col}(E^T)$ (discrete gradients, dimension $m - k$) and the cycle space  $N(E)$ (circulations obeying Kirchhoff's current law $Ef = 0$, dimension $n - m + k$, the graph's cyclomatic number).
+        
+Interpreting $E^T$ as the discrete gradient and $-E$ as the discrete divergence,  $L = EE^T = -\operatorname{div}\circ\operatorname{grad}$ is the discrete analog of $-\nabla^2$ in vector calculus. Consequently, the linear ODE $u' = -Lu$ models diffusion (consensus dynamics) across a network—generalizing the 2-cell diffusion system from the previous example (with $\alpha = \beta = 1$) to arbitrary graphs, where the component along $x_{m-1}$ is the slowest-decaying mode ($e^{-\lambda_{m-1}t}$).
+
 ## Hyperplanes and Projective Embeddings of Point-Line Geometries
 
 ### Intuition

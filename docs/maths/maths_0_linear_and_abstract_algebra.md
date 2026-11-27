@@ -690,6 +690,113 @@ which means that every rank-$r$ matrix is a sum of $r$ rank-one matrices, that i
 
 For a full-rank factorization $A = BC$ over $\mathbb{R}$ or $\mathbb{C}$, $(B^*B)_{r \times r}$ and $(CC^*)_{r \times r}$ are both nonsingular. This follows from the last property in the list above: $\operatorname{rank}(B^*B) = \operatorname{rank}(B) = r$ and $\operatorname{rank}(CC^*) = \operatorname{rank}(C) = r$. It is also not unexpected. Consider $C \in \mathbb{F}^{r \times n}$ with $\operatorname{rank}(C) = r$. As a system $C\mathbf{x} = \mathbf{b}$, there are $r$ independent equations and $n$ unknowns. In the composition $CC^*$, the matrix $C^*$ acts first, and $C$ acts second. Writing $\mathbf{x} = C^*\mathbf{y}$ parameterizes $\mathbf{x}$ using only $r$ variables $\mathbf{y}$, which now needs only those $r$ independent equations to be uniquely solved. Nothing is lost by this choice: if $C\mathbf{z} = \mathbf{0}$, then $\mathbf{z}^*C^*\mathbf{y} = (C\mathbf{z})^*\mathbf{y} = 0$, so every $C^*\mathbf{y}$ is orthogonal to every solution of $C\mathbf{z} = \mathbf{0}$, and $C$ can send $C^*\mathbf{y}$ to $\mathbf{0}$ only if $C^*\mathbf{y}$ is orthogonal to itself, that is, $C^*\mathbf{y} = \mathbf{0}$, which forces $\mathbf{y} = \mathbf{0}$ because the $r$ columns of $C^*$ are linearly independent. The same holds for $B^*B = B^*(B^*)^*$, with $B^*$ in the place of $C$.
 
+### Rank, Nullity & Range
+
+For vector spaces $N$ and $M$ over a field $\mathbb{F}$,  $f: N \to M$ is a linear function (or a linear mapping) when $f(x + y) = f(x) + f(y)$ for all $x, y \in N$ and $f(\alpha x) = \alpha f(x)$ for all $x \in N$ and $\alpha \in \mathbb{F}$.  
+
+The range of $f$ is $R(f) = \{f(x) \mid x \in N\} \subseteq M$, the subspace of all "images" as $x$ varies freely over $N$.
+    
+The nullspace of $f$ is $N(f) = \{x \in N \mid f(x) = 0\} \subseteq N$, the subspace of all vectors that map to $0 \in M$.
+    
+If $\dim N$ is finite, then $\dim R(f) + \dim N(f) = \dim N.$
+
+Thus rank plus nullity is the dimension of the domain of $f$. In loose terms, this "rank-plus-nullity" theorem is analogous to a conservation law in the sense that it says there is only a limited amount of "stuff" to go around, and a balance must always be maintained. The more "stuff" packed into $R(f)$, the less there can be in $N(f)$, and vice versa.  
+
+If $g: N \to P$ and $f: P \to M$ are linear, then the composition $fg: N \to M$ defined by $(fg)(x) = f(g(x))$ is also linear. $R(fg) \subseteq R(f)$. Combined with the rank-plus-nullity theorem (applied to the restriction of $f$ to $R(g)$, when dimensions are finite) is that the rank of a composition cannot exceed the rank of either function:  $\operatorname{rank}(fg) \le \min\{\operatorname{rank}(f), \operatorname{rank}(g)\}$.  
+
+#### Rank, Nullity & Range For Matrices
+Among the most fundamental linear functions $f: \mathbb{F}^n \to \mathbb{F}^m$ are those defined by a given matrix $A \in \mathbb{F}^{m \times n}$ via the mapping $f(x) = Ax$. This therefore means that $A$ generates a subspace of $\mathbb{F}^m$ by means of its range $R(f) = R(A)$, which is the space spanned by the columns of $A$.  
+
+We have already encountered the nullspace of the linear function $f(x) = A_{m \times n}x$, which is the nullspace of $A$, defined by $N(A) = \{x \in \mathbb{F}^n \mid Ax = 0\}$ (i.e., all homogeneous solutions). When $r = \operatorname{rank}(A) < n$, this space has basis $\{h_1, h_2, \dots, h_{n-r}\}$, where the $h_i$'s are the vectors in the general solution of $Ax = 0$ obtained by row-reducing $A$ to reduced row echelon form and solving for the $r$ basic variables in terms of the $n - r$ free variables (when $r = n$,  $N(A) = \{0\}$).  
+
+If we include the range and nullspace of $A^*$ (over $\mathbb{F} = \mathbb{R}$ or $\mathbb{C}$), we end up with the four fundamental subspaces:  $R(A)$,  $N(A)$,  $R(A^*)$, and $N(A^*)$.  $R(A)$ is also called the column space of $A$ because it is the space spanned by the columns of $A$. Similarly,  $R(A^T)$ is called the row space of $A$ (its elements are the rows of $A$ written as column vectors in $\mathbb{F}^n$). The nullspace of $A^T$ is called the left-hand nullspace because $A^T y = 0 \iff y^T A = 0$ (left-hand homogeneous solutions). 
+
+Note that for complex matrices,  $R(A^*) = \overline{R(A^T)}$ (the bar on top means we take the complex conjugate of every element) and $N(A^*) = \overline{N(A^T)}$, so $R(A^T) = R(B^T)$ iff $R(A^*) = R(B^*)$, and similarly $N(A^T) = N(B^T)$ iff $N(A^*) = N(B^*)$. Under the standard Euclidean/Hermitian inner product,  $R(A^*)$ is orthogonal to $N(A)$ (in fact,  $R(A^*) = N(A)^\perp$) and $R(A)$ is orthogonal to $N(A^*)$ (in fact,  $R(A) = N(A^*)^\perp$).
+
+#### Properties of Rank & Range in Matrices
+
+Let $E_A$ denote the unique reduced row echelon form (RREF) of $A$, write $A \stackrel{\text{row}}{\sim} B$ when $A$ and $B$ are row equivalent ($B = PA$ for some nonsingular $P$), and write $A \stackrel{\text{col}}{\sim} B$ when $A$ and $B$ are column equivalent ($B = AQ$ for some nonsingular $Q$). For matrices $A, B \in \mathbb{F}^{m \times n}$ ($\mathbb{F} = \mathbb{R}$ or $\mathbb{C}$),  
+
+$$R(A) = R(B) \iff N(A^*) = N(B^*) \iff A \stackrel{\text{col}}{\sim} B \iff E_{A^T} = E_{B^T}.$$
+
+Respectively replacing $A$ and $B$ by $A^*$ and $B^*$ (and using that $E_{\bar{A}} = \overline{E_A}$) yields  
+
+$$R(A^*) = R(B^*) \iff N(A) = N(B) \iff A \stackrel{\text{row}}{\sim} B \iff E_A = E_B.$$
+
+This also gives us: two sets of rows $\{a_1, a_2, \dots, a_r\}$ and $\{b_1, b_2, \dots, b_s\}$ in $\mathbb{F}^{1 \times n}$ span the same subspace if and only if the nonzero rows of $E_A$ agree with the nonzero rows of $E_B$, where $A \in \mathbb{F}^{r \times n}$ and $B \in \mathbb{F}^{s \times n}$ are the matrices containing the $a_i$'s and $b_i$'s as rows. Thus: 
+
+$$\dim R(A) = \operatorname{rank}(A) = \dim R(A^T) = \dim R(A^*).$$
+
+**Rank-plus-nullity for Matrices:** For $A \in \mathbb{F}^{m \times n}$,  $\dim R(A) + \dim N(A) = n$.
+
+For all matrices $A_{m \times n}$ and $B_{n \times p}$, an elementary but useful observation is that
+
+$$R(AB) \subseteq R(A) \qquad \text{and} \qquad N(AB) \supseteq N(B).$$
+
+The following statements are true for all $A \in \mathbb{F}^{m \times n}$ over $\mathbb{F} = \mathbb{R}$ or $\mathbb{C}$:  
+
+$$R(A^*A) = R(A^*), \quad R(AA^*) = R(A), \quad N(A^*A) = N(A), \quad \text{and} \quad N(AA^*) = N(A^*).$$
+
+Essentially,  $A^*$ never annihilates any nonzero vector that lies in $R(A)$ (since $R(A) \cap N(A^*) = \{0\}$), so $A^*Ax = 0$ can happen only when $Ax = 0$ already; symmetrically,  $A$ never annihilates any nonzero vector in $R(A^*)$, so $AA^*y = 0 \iff A^*y = 0$. 
+
+Note that the above theorem on the nullspace may not hold for finite fields. Over $\mathbb{R}$ or $\mathbb{C}$, the proof uses positive definiteness of the standard inner product: $A^*Ax = 0 \implies x^*A^*Ax = \|Ax\|_2^2 = 0 \implies Ax = 0.$ Over a finite field (or over $\mathbb{C}$ using the unconjugated transpose $A^T$ instead of $A^*$), nonzero isotropic (self-orthogonal) vectors exist and break the identity completely. For example, over $\mathbb{C}$,  $A = \begin{pmatrix} 1 & i \end{pmatrix}$ has $\operatorname{rank}(A) = 1$ yet $AA^T = (0)$ has rank $0$; over $\mathbb{F}_2$,  $A = \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}$ has $\operatorname{rank}(A) = 1$ yet $A^T A = 0$.
+
+For $A \in \mathbb{F}^{m \times n}$ and $B \in \mathbb{F}^{n \times p}$, 
+
+$$\operatorname{rank}(AB) = \operatorname{rank}(B) - \dim\bigl(N(A) \cap R(B)\bigr).$$
+
+Intuitively, this makes sense. The quantity $\operatorname{rank}(B)$ is the dimension of the image $R(B)$ of $B$. Now transform vectors $Bx \in R(B)$ using $A$ (i.e., consider the restriction $A|_{R(B)}: R(B) \to R(AB)$). Any vector $Bx \in R(B)$ that lies in the nullspace of $A$ is mapped to $0$ and drops out of the range of $AB$, and such vectors form precisely the subspace $N(A) \cap R(B)$. Applying rank-plus-nullity to $A|_{R(B)}$ yields the rank formula above.
+
+From this we also get: let $A \in \mathbb{F}^{m \times n}$ and $B \in \mathbb{F}^{n \times p}$.
+
+If $\operatorname{rank}(B_{n \times p}) = n$, then $R(AB) = R(A)$ (and $\operatorname{rank}(AB) = \operatorname{rank}(A)$).
+
+If $\operatorname{rank}(A_{m \times n}) = n$, then $N(AB) = N(B)$ (and $\operatorname{rank}(AB) = \operatorname{rank}(B)$).
+    
+Indeed, if $\operatorname{rank}(B_{n \times p}) = n$, then $B$ has full row rank so $R(B) = \mathbb{F}^n$, giving $R(AB) = A(R(B)) = A(\mathbb{F}^n) = R(A)$. If $\operatorname{rank}(A_{m \times n}) = n$, then $N(A) = \{0\}$, so $N(A) \cap R(B) = \{0\}$ and $ABx = 0 \iff Bx = 0$, giving $N(AB) = N(B)$.
+
+This also lets us establish a lower bound on the rank of $AB$ (Sylvester's rank inequality) to complement the upper bound $\min\{\operatorname{rank}(A), \operatorname{rank}(B)\}$:
+
+$$\operatorname{rank}(AB) \ge \operatorname{rank}(A) + \operatorname{rank}(B) - n.$$
+
+This is a special case of the sharper Frobenius rank inequality for any conformable product $ABC$:
+
+$$\operatorname{rank}(ABC) \ge \operatorname{rank}(AB) + \operatorname{rank}(BC) - \operatorname{rank}(B).$$
+    
+The proof uses the nullity formula $\operatorname{rank}(XY) = \operatorname{rank}(Y) - \dim(N(X) \cap R(Y))$: replacing $X = A$ with $Y = BC$ vs.  $Y = B$, notice $R(BC) \subseteq R(B)$, so $N(A) \cap R(BC) \subseteq N(A) \cap R(B)$, giving
+    
+$$\operatorname{rank}(BC) - \operatorname{rank}(ABC) = \dim\bigl(N(A) \cap R(BC)\bigr) \le \dim\bigl(N(A) \cap R(B)\bigr) = \operatorname{rank}(B) - \operatorname{rank}(AB).$$
+    
+Setting $B = I_n$ recovers Sylvester's inequality immediately.
+
+In a complementary fashion, we can get bounds and formulas for the nullity. The rank-plus-nullity theorem expresses the nullity of $AB$ in terms of $\operatorname{rank}(AB)$. The next theorem presents another formula for the nullity of $AB$ along with bounds on the nullity of a product. 
+
+For $A \in \mathbb{F}^{m \times n}$ and $B \in \mathbb{F}^{n \times p}$, if $\nu(X) = \dim N(X)$ denotes nullity, then  
+
+$$\nu(AB) = \nu(B) + \dim\bigl(N(A) \cap R(B)\bigr).$$
+
+If $A$ and $B$ are both $n \times n$, then 
+
+$$\max\{\nu(A), \nu(B)\} \le \nu(AB) \le \nu(A) + \nu(B).$$
+
+Unlike for products, there is no convenient general formula for the rank of a sum. Each of the following is true for every $A, B \in \mathbb{F}^{m \times n}$: 
+
+-   $R(A + B) \subseteq R(A) + R(B)$,
+    
+-   $\operatorname{rank}(A + B) \le \operatorname{rank}(A) + \operatorname{rank}(B)$,
+    
+-   $|\operatorname{rank}(A) - \operatorname{rank}(B)| \le \operatorname{rank}(A \pm B)$,
+    
+-   If $\operatorname{rank}(A) = r$ and $\operatorname{rank}(B) = k$, then $|r - k| \le \operatorname{rank}(A + B) \le r + k$.
+    
+Now we come to rank-one updates $A + cd^*$, which arise when an existing $m \times n$ matrix $A$ is modified by a rank-one matrix $cd^*$ (for instance, when new data alters a single row, column, or entry of a system, or a matrix is updated from a single new outer product). 
+
+For $A \in \mathbb{F}^{m \times n}$ ($\mathbb{F} = \mathbb{R}$ or $\mathbb{C}$) with $\operatorname{rank}(A) = r$ and column vectors $c \in \mathbb{F}^{m \times 1}$ and $d \in \mathbb{F}^{n \times 1}$,  
+
+$$\operatorname{rank}(A + cd^*) = \begin{cases} r + 1 & \iff c \notin R(A) \text{ and } d \notin R(A^*), \\ r & \iff \bigl(c \in R(A) \text{ xor } d \in R(A^*)\bigr) \text{ or } \bigl(c \in R(A),\, d \in R(A^*), \text{ and } \alpha \neq 0\bigr), \\ r - 1 & \iff c \in R(A),\, d \in R(A^*), \text{ and } \alpha = 0, \end{cases}$$
+
+where $\alpha = 1 + d^* A^\dagger c$ (in which $A^\dagger$ is the Moore–Penrose pseudoinverse of $A$) and "xor" denotes exclusive or (exactly one of the two conditions holds).
+
 ### General Linear Systems
 
 Earlier we looked at how a square matrix can be seen as solving for a system of linear equations. The more general case is to analyze a system of the form $A_{m \times n}\mathbf{x}_{n \times 1} = \mathbf{b}_{m \times 1}$ of $m$ linear equations in $n$ unknowns. Unlike nonsingular systems, a general rectangular or singular system may have infinitely many solutions, or it may have no solution at all. So, before analyzing solutions, it must first be established that there are indeed solutions to analyze. This is the issue of consistency.
@@ -1684,15 +1791,72 @@ $$\min_{\operatorname{rank}(B) \le k}\Vert{}A - B\Vert{}_2 = \Vert{}A - A_k\Vert
 
 This has a geometric meaning. Going back to our hyperellipsoid, what is the best approximation of a hyperellipsoid by a line segment? Take the line segment to be the longest axis. What is the best approximation by a two-dimensional ellipsoid? Take the ellipsoid spanned by the longest and the second-longest axis. Continuing in this fashion, at each step we improve the approximation by adding into our approximation the largest axis of the hyperellipsoid not yet included. After $r$ steps, we have captured all of $A$.
 
-From the same decomposition, all standard spectral norms and conditioning quantities read off directly:
+#### Conditioning Number & Errors
+We can view a problem as a function $f: X \to Y$ from a normed vector space $X$ of data to a normed vector space $Y$ of solutions. This function $f$ is usually nonlinear (even in linear algebra), but most of the time it is at least continuous. Typically, we shall be concerned with the behavior of a problem $f$ at a particular data point $x \in X$ (the behavior may vary greatly from one point to another).  
 
--   $\Vert{}A\Vert{}_2 = \sigma_1$, $\Vert{}A\Vert{}_F = \sqrt{\sum_{i=1}^r \sigma_i^2}$, and nuclear (trace) norm $\Vert{}A\Vert{}_* = \sum_{i=1}^r \sigma_i$.
--   For square $A$: $\vert{}\det(A)\vert{} = \prod_{i=1}^n \sigma_i$; if $A$ is nonsingular, $\Vert{}A^{-1}\Vert{}_2 = 1/\sigma_n$, the $2$-norm condition number is $\kappa_2(A) = \sigma_1/\sigma_n$, and $\sigma_n$ equals the exact $2$-norm distance from $A$ to the nearest singular matrix.
--   The SVD of the [Moore–Penrose pseudoinverse](#pseudoinverse) of $A$ is: $A^\dagger = V\hat{\Sigma}^\dagger\hat{U}^* = \sum_{i=1}^r \sigma_i^{-1} \mathbf{v}_i \mathbf{u}_i^*$ (inverting each nonzero $\sigma_i$ and transposing $\hat{\Sigma}$).
--   For $A \in \mathbb{C}^{m \times n}$ ($m \ge n$) with reduced SVD $A = U\Sigma V^*$, inserting $V^*V = I_n$ gives $A = (UV^*)(V\Sigma V^*) = QP$, where $Q = UV^*$ has orthonormal columns (unitary when $m = n$) and $P = V\Sigma V^* = (A^*A)^{1/2}$ is Hermitian positive semidefinite. This is the polar decomposition we saw under [Comparing Different Types of Normal Matrices](#comparing-different-types-of-normal-matrices) (written $A = UP$ there), the matrix counterpart of the polar form $z = e^{i\theta}r$, now read off from the SVD. If $A$ is nonsingular, then $P$ is positive definite and the polar decomposition is unique. For square $A$, $A$ is normal if and only if $PQ = QP$.
+A well-conditioned problem is one with the property that all small perturbations of $x$ lead to only small changes in $f(x)$ (at least around the data point of interest). An ill-conditioned problem is one with the property that some small perturbation of $x$ leads to a large change in $f(x)$.  
 
-#### Errors & Perturbations
-Just as we found the largest and smallest eigenvalues of a Hermitian matrix via the Rayleigh quotient, we can also find expressions for the extremal singular values:
+The meaning of "small" and "large" in these statements depends on the application. In particular, sometimes it is most appropriate to measure perturbations on an absolute scale, and sometimes it is most appropriate to measure them relative to the norm of the object being perturbed.
+
+Let $\delta x$ denote a small perturbation of $x$, and write $\delta f = f(x + \delta x) - f(x)$. The absolute condition number $\hat{\kappa} = \hat{\kappa}(x)$ of the problem $f$ at $x$ is defined as  
+
+$$\hat{\kappa} = \sup_{\delta x} \frac{\Vert{}\delta f\Vert{}}{\Vert{}\delta x\Vert{}},$$
+
+with the understanding that $\delta x$ and $\delta f$ are infinitesimal ($\delta x \neq 0$).  
+
+If $f$ is differentiable (between finite-dimensional spaces $X = \mathbb{F}^n$ and $Y = \mathbb{F}^m$, where $\mathbb{F} = \mathbb{R}$ or $\mathbb{C}$), we can evaluate the condition number by means of the derivative of $f$. Let $J(x)$ be the $m \times n$ matrix whose $(i, j)$-entry is the partial derivative $\partial f_i / \partial x_j$ evaluated at $x$, known as the Jacobian of $f$ at $x$. The definition of the derivative gives us, to first order, $\delta f \approx J(x)\delta x$, in the sense that $\Vert{}\delta f - J(x)\delta x\Vert{}/\Vert{}\delta x\Vert{} \to 0$ as $\Vert{}\delta x\Vert{} \to 0$. The absolute condition number becomes 
+
+$$\hat{\kappa} = \Vert{}J(x)\Vert{},$$
+
+where $\Vert{}J(x)\Vert{}$ represents the operator norm of $J(x)$ induced by the norms on $X$ and $Y$.
+
+When we are concerned with relative changes, we need the notion of relative condition. For $x \neq 0$ and $f(x) \neq 0$, the relative condition number $\kappa = \kappa(x)$ is defined by 
+
+$$\kappa = \sup_{\delta x} \left(\frac{\Vert{}\delta f\Vert{}}{\Vert{}f(x)\Vert{}} \Big/ \frac{\Vert{}\delta x\Vert{}}{\Vert{}x\Vert{}}\right).$$
+
+If $f$ is differentiable (with $x \neq 0$ and $f(x) \neq 0$), we can express this quantity in terms of the Jacobian: 
+
+$$\kappa = \frac{\Vert{}J(x)\Vert{}}{\Vert{}f(x)\Vert{}/\Vert{}x\Vert{}} = \frac{\Vert{}J(x)\Vert{}\,\Vert{}x\Vert{}}{\Vert{}f(x)\Vert{}}.$$
+
+**Example 1.** Consider the problem of computing $f(x) = \sqrt{x}$ for $x > 0$. The Jacobian of $f: x \mapsto \sqrt{x}$ is the derivative $J(x) = f'(x) = 1/(2\sqrt{x})$, so we have the relative condition number: 
+
+$$\kappa = \frac{\Vert{}J(x)\Vert{}}{\Vert{}f(x)\Vert{}/\Vert{}x\Vert{}} = \frac{1/(2\sqrt{x})}{\sqrt{x}/x} = \frac{1}{2}.$$
+
+This is a well-conditioned problem.  
+
+**Example 2.** Consider the problem of obtaining the scalar $f(x) = x_1 - x_2$ from the vector $x = (x_1, x_2)^T \in \mathbb{C}^2$ (assuming $x_1 \neq x_2$ so that $f(x) \neq 0$ and $x \neq 0$). For simplicity, we use the $\infty$-norm on the data space $\mathbb{C}^2$ (and the modulus $\vert{}\cdot\vert{}$ on $\mathbb{C}$). The Jacobian of $f$ is  
+
+$$J = \begin{bmatrix} \dfrac{\partial f}{\partial x_1} & \dfrac{\partial f}{\partial x_2} \end{bmatrix} = \begin{bmatrix} 1 & -1 \end{bmatrix},$$
+
+with induced operator norm $\Vert{}J\Vert{}_\infty = \vert{}1\vert{} + \vert{}-1\vert{} = 2$. The relative condition number is thus  
+
+$$\kappa = \frac{\Vert{}J\Vert{}_\infty}{\vert{}f(x)\vert{}/\Vert{}x\Vert{}_\infty} = \frac{2}{\vert{}x_1 - x_2\vert{}/\max\{\vert{}x_1\vert{}, \vert{}x_2\vert{}\}} = \frac{2\max\{\vert{}x_1\vert{}, \vert{}x_2\vert{}\}}{\vert{}x_1 - x_2\vert{}}.$$
+
+This quantity is large when $\vert{}x_1 - x_2\vert{} \ll \max\{\vert{}x_1\vert{}, \vert{}x_2\vert{}\}$. This makes sense. If for example, $x_1=10$ and $x_2=10.01$, if $x_2$ shifts from 10.01 to 10.02, it is a small relative change in input, but the output $x_1 - x_2$ doubles.
+
+Ironically, the problem of computing the eigenvalues of a non-normal (in particular, nonsymmetric) matrix is often ill-conditioned. One can see this by comparing the two matrices  
+
+$$\begin{bmatrix} 1 & 1000 \\ 0 & 1 \end{bmatrix} \qquad \text{and} \qquad \begin{bmatrix} 1 & 1000 \\ 0.001 & 1 \end{bmatrix},$$
+
+whose eigenvalues are $1, 1$ (multiplicity $2$) and $0, 2$, respectively—a relative perturbation of order $10^{-6}$ in the matrix shifts the eigenvalues by $1$. On the other hand, if a matrix $A$ is real symmetric or complex Hermitian (more generally, if it is normal), then its eigenvalues are well-conditioned in the absolute sense (specifically,  $\vert{}\delta\lambda\vert{} \le \Vert{}\delta A\Vert{}_2$ in the $2$-norm, and small relative to $\Vert{}A\Vert{}_2$, though individual eigenvalues with $\vert{}\lambda\vert{} \ll \Vert{}A\Vert{}_2$ can still have large relative sensitivity).  
+
+Fix $A \in \mathbb{C}^{m \times n}$ and consider the problem of computing $Ax$ from input $x \in \mathbb{C}^n$ (with $x \neq 0$ and $Ax \neq 0$); that is, we are going to determine a relative condition number corresponding to perturbations of $x$ but not $A$. Working directly from the definition of $\kappa$, with $\Vert{}\cdot\Vert{}$ denoting an arbitrary vector norm (on $\mathbb{C}^n$ and $\mathbb{C}^m$) and the corresponding induced matrix norm, we find  
+
+$$\kappa = \sup_{\delta x \neq 0} \left(\frac{\Vert{}A(x + \delta x) - Ax\Vert{}}{\Vert{}Ax\Vert{}} \Big/ \frac{\Vert{}\delta x\Vert{}}{\Vert{}x\Vert{}}\right) = \sup_{\delta x \neq 0} \left(\frac{\Vert{}A\,\delta x\Vert{}}{\Vert{}\delta x\Vert{}} \cdot \frac{\Vert{}x\Vert{}}{\Vert{}Ax\Vert{}}\right),$$
+
+that is,  
+
+$$\kappa = \Vert{}A\Vert{}\frac{\Vert{}x\Vert{}}{\Vert{}Ax\Vert{}}$$
+
+(a special case of the Jacobian formula $\kappa = \frac{\Vert{}J(x)\Vert{}\Vert{}x\Vert{}}{\Vert{}f(x)\Vert{}}$, since $J(x) = A$ and $f(x) = Ax$). This is an exact formula for $\kappa$, dependent on both $A$ and $x$.  
+
+Suppose in the above calculation that $A$ happens to be square and nonsingular. Then we can use the fact that $\Vert{}x\Vert{}/\Vert{}Ax\Vert{} = \Vert{}A^{-1}(Ax)\Vert{}/\Vert{}Ax\Vert{} \le \Vert{}A^{-1}\Vert{}$ to loosen this formula to a bound independent of $x$:  
+
+$$\kappa \le \Vert{}A\Vert{}\Vert{}A^{-1}\Vert{},$$
+
+with equality attained for any nonzero $x$ such that $y = Ax$ maximizes $\Vert{}A^{-1}y\Vert{}/\Vert{}y\Vert{}$. Specifically, we will be interested here in the $2$-norm and when the equality holds for that.
+
+The condition number is tied to the extremal singular values. Just as we found the largest and smallest eigenvalues of a Hermitian matrix via the Rayleigh quotient, we can also find expressions for the extremal singular values:
 
 If $\sigma_1$ is the largest singular value of $A \in \mathbb{C}^{m \times n}$, then
 
@@ -1710,7 +1874,7 @@ and when $A$ is square and nonsingular,
 
 $$\sigma_n = \min_{\Vert{}\mathbf{x}\Vert{}_2=1} \Vert{}A\mathbf{x}\Vert{}_2 = \Vert{}A\mathbf{v}_n\Vert{}_2 = \frac{1}{\Vert{}A^{-1}\Vert{}_2}.$$
 
-Going back to our hyperellipsoid geometric picture, for a square nonsingular matrix $A \in \mathbb{C}^{n \times n}$, the degree of distortion of the unit sphere under transformation by $A$ is measured by the $2$-norm condition number which, as we saw in [Properties of SVD](#properties-of-svd), is
+Going back to our hyperellipsoid geometric picture, for a square nonsingular matrix $A \in \mathbb{C}^{n \times n}$, the degree of distortion of the unit sphere under transformation by $A$ is measured by the $2$-norm condition number which is
 
 $$\kappa_2(A) = \Vert{}A\Vert{}_2\Vert{}A^{-1}\Vert{}_2 = \frac{\sigma_1}{\sigma_n} \ge 1.$$
 
@@ -1746,6 +1910,14 @@ When $A \in \mathbb{C}^{m \times n}$ is rectangular (or rank-deficient, with $r 
 $$\kappa_2(A) = \Vert{}A\Vert{}_2\Vert{}A^\dagger\Vert{}_2 = \frac{\sigma_1}{\sigma_r} \ge 1,$$
 
 which governs the sensitivity of the minimum-norm least-squares problem $\min_{\mathbf{x}} \Vert{}A\mathbf{x} - \mathbf{b}\Vert{}_2$.
+
+Using SVD, all standard spectral norms and conditioning quantities read off directly:
+
+-   $\Vert{}A\Vert{}_2 = \sigma_1$, $\Vert{}A\Vert{}_F = \sqrt{\sum_{i=1}^r \sigma_i^2}$, and nuclear (trace) norm $\Vert{}A\Vert{}_* = \sum_{i=1}^r \sigma_i$.
+-   For square $A$: $\vert{}\det(A)\vert{} = \prod_{i=1}^n \sigma_i$; if $A$ is nonsingular, $\Vert{}A^{-1}\Vert{}_2 = 1/\sigma_n$, the $2$-norm condition number is $\kappa_2(A) = \sigma_1/\sigma_n$, and $\sigma_n$ equals the exact $2$-norm distance from $A$ to the nearest singular matrix.
+-   The SVD of the [Moore–Penrose pseudoinverse](#pseudoinverse) of $A$ is: $A^\dagger = V\hat{\Sigma}^\dagger\hat{U}^* = \sum_{i=1}^r \sigma_i^{-1} \mathbf{v}_i \mathbf{u}_i^*$ (inverting each nonzero $\sigma_i$ and transposing $\hat{\Sigma}$).
+-   For $A \in \mathbb{C}^{m \times n}$ ($m \ge n$) with reduced SVD $A = U\Sigma V^*$, inserting $V^*V = I_n$ gives $A = (UV^*)(V\Sigma V^*) = QP$, where $Q = UV^*$ has orthonormal columns (unitary when $m = n$) and $P = V\Sigma V^* = (A^*A)^{1/2}$ is Hermitian positive semidefinite. This is the polar decomposition we saw under [Comparing Different Types of Normal Matrices](#comparing-different-types-of-normal-matrices) (written $A = UP$ there), the matrix counterpart of the polar form $z = e^{i\theta}r$, now read off from the SVD. If $A$ is nonsingular, then $P$ is positive definite and the polar decomposition is unique. For square $A$, $A$ is normal if and only if $PQ = QP$.
+
 
 #### Quantum physics & Entanglement
 In quantum physics, the SVD tells us how to go about the Schmidt decomposition of entangled states: A pure state of a bipartite quantum system $\vert{}\psi\rangle = \sum_{i=1}^m \sum_{j=1}^n c_{ij}\vert{}i\rangle_A \otimes \vert{}j\rangle_B \in \mathcal{H}_A \otimes \mathcal{H}_B$ is encoded by its coefficient matrix $C = [c_{ij}] \in \mathbb{C}^{m \times n}$. Taking the SVD $C = \hat{U}\hat{\Sigma}V^*$ yields the Schmidt decomposition $\vert{}\psi\rangle = \sum_{k=1}^r \sigma_k \vert{}\tilde{u}_k\rangle_A \otimes \vert{}\tilde{v}_k\rangle_B$, where $\vert{}\tilde{u}_k\rangle_A = \sum_i \hat{U}_{ik}\vert{}i\rangle_A$ and $\vert{}\tilde{v}_k\rangle_B = \sum_j \overline{V_{jk}}\vert{}j\rangle_B$ are built from the $k$-th columns of $\hat{U}$ and $V$ (so each family is orthonormal): the state is separable (unentangled) if and only if $r = \operatorname{rank}(C) = 1$, and the squared singular values $\sigma_k^2$ (summing to $1$ for a normalized state) are the eigenvalues of the reduced density matrices $\rho_A = CC^*$ and $\rho_B = C^T\overline{C}$, determining the entanglement entropy $S = -\sum_{k=1}^r \sigma_k^2 \ln(\sigma_k^2)$.

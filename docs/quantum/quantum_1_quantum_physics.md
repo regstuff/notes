@@ -927,7 +927,7 @@ $$\Psi(x,t) = \frac{1}{\sqrt{2\pi\hbar}} \int_{-\infty}^{\infty} \phi(p) e^{\fra
 The term $\frac{1}{\sqrt{2\pi\hbar}}$ is exactly the constant $A$ from the individual momentum eigenstate.
 
 ## Useful Formulas
-From R Shankar's Book, Ch 01)
+From R Shankar's Book, Ch 01
 
 * **Inner Product Symmetry:** $\langle V \vert{} W \rangle = \langle W \vert{} V \rangle^*$
 * **Linearity (Ket):** $\langle V \vert{} aW_1 + bW_2 \rangle = a\langle V \vert{} W_1 \rangle + b\langle V \vert{} W_2 \rangle$
@@ -957,6 +957,74 @@ Eigenvectors corresponding to distinct eigenvalues are orthogonal.
 * **Derivative of Delta Function:** $\int f(x)\delta'(x-a) dx = -f'(a)$ (Integrating by parts shifts the derivative to the function $f(x)$).
 
 ## References
-- Quantum Mechanics: The Theoretical Minimum by Leonard Susskind
-- [Quantum Physics 2, MIT 8.05 PLaylist](https://www.youtube.com/playlist?list=PLUl4u3cNGP60QlYNsy52fctVBOlk-4lYx)
+- Quantum Mechanics: The Theoretical Minimum by Leonard Susskind (Only primer. Skip if you want serious depth)
+
 - Mastering Quantum Mechanics by Barton Zwiebach
+
+- Quantum Mechanics: A Modern Development by Ballentine (1998 ed.)
+
+- Principles of Quantum Mechanics by R. Shankar (2nd ed.)
+
+**Reading Order**
+
+Use Zwiebach as the primary textbook and Ballentine to deepen the theoretical foundations once you have encountered the relevant physical problems.
+
+**Notation:** Z = Zwiebach, B = Ballentine, S = Shankar.
+
+**Phase I — Physical and mathematical foundations**
+
+| Order | Primary reading | Supplementary reading | Purpose |
+|---|---|---|---|
+| 1 | Z 1–2 | — | Physical origins of QM and wave-particle duality |
+| 2 | Z 3–5 | B 1.3–1.4 | Wave functions, probability currents, momentum space and infinite-dimensional operators |
+| 3 | — | **B 2–3** | Motivate quantum dynamics through postulates and spacetime symmetries |
+| 4 | Z 6–8 | B 4.3, 4.5 | Bound states, potentials, tunnelling and elementary scattering |
+| 5 | **Z 9** | B 6, if needed | Harmonic oscillator |
+| 6 | Z 10–12 | — | Three-dimensional systems, hydrogen and spin |
+
+Ballentine Chapter 3 is particularly important for motivated exposition. Reading it after encountering the Schrödinger equation allows you to understand why the theory has its particular dynamical structure.
+
+**Phase II — General structure of quantum mechanics**
+
+| Order | Primary reading | Supplementary reading | Purpose |
+|---|---|---|---|
+| 7 | Z 13–17 | B 2–3 as reference | General formalism, quantum dynamics and composite systems |
+| 8 | Z 18–20 | B 7.5–7.8 | Rotations, angular momentum and tensor operators |
+| 9 | — | **B 13** | Parity and time reversal |
+| 10 | Z 21 | **B 17** | Identical particles and second quantization |
+| 11 | Z 22 | B 8–9, selectively | Mixed states, measurement and decoherence |
+| 12 | — | B 14–15 | Classical limit and phase-space formulations |
+
+This phase is particularly relevant to particle physics, black hole entropy and the quantum-to-classical transition of cosmological perturbations.
+
+**Phase III — Physical applications and computational techniques**
+
+| Order | Primary reading | Supplementary reading | Purpose |
+|---|---|---|---|
+| 13 | Z 24 | B 11.4 | Electromagnetic interactions and gauge potentials |
+| 14 | Z 25 | B 10.6 | Perturbation theory and variational techniques |
+| 15 | Z 26 | B 14 as reference | WKB, tunnelling and semiclassical physics |
+| 16 | Z 27–28 | B 12.2–12.3, 12.6–12.7 | Transitions, decay, radiation and adiabatic evolution |
+| 17 | Z 29 | B 16.3–16.6 | Advanced scattering theory |
+
+This phase is indispensable for astrophysics. In particular, WKB, radiative transitions and scattering will recur in stellar structure, nuclear astrophysics and radiative transfer.
+
+**Phase IV — Bridge to QFT and advanced astrophysics**
+
+| Order | Reading | Purpose |
+|---|---|---|
+| 18 | **B 18** | Many-fermion systems, correlations and BCS pairing |
+| 19 | **B 19.1–19.5, 19.7–19.8** | Electromagnetic field quantization, vacuum fluctuations, coherent and squeezed states, spontaneous emission |
+| 20 | **S 8** | Introduction to path integrals |
+| 21 | **S 20** | Relativistic QM and the Dirac equation |
+| 22 | **S 21**, selectively | Advanced path integral methods |
+
+These are the most important additions beyond Zwiebach.
+
+**What you can skip or defer**
+
+- **Zwiebach Chapter 23:** Quantum computation.
+- **Ballentine Chapters 20–21:** Bell's theorem and quantum information, unless interested in his particular interpretation.
+- **Ballentine Chapters 4–6 and 10–12 in full:** Much of this overlaps with Zwiebach; only the selected sections above are necessary.
+- **Most of Shankar:** Zwiebach and Ballentine already cover the material.
+- **Advanced portions of Shankar Chapter 21:** You can revisit these while studying QFT.
