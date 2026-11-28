@@ -551,68 +551,6 @@ $\Vert{}A_k - A\Vert{} \to 0 \iff a_{ij}(k) \to a_{ij}$ as $k \to \infty$ for ea
 
 If $A$ is a square matrix such that $\Vert{}A\Vert{} < 1$ for some matrix norm, then $A^k \to 0$ as $k \to \infty$, or equivalently,  $[A^k]_{ij} \to 0$ for each $i$ and $j$.
 
-### Projections
-
-Consider a unit vector $\mathbf{u} \in \mathbb{R}^n$ and another arbitrary vector $\mathbf{x} \in \mathbb{R}^n$. Let's say we want to find out how much of $\mathbf{x}$ lies in the direction of $\mathbf{u}$. Assume that $\mathbf{u}$ is one of the standard basis vectors, i.e., $\mathbf{e}_i$. Finding out how much of $\mathbf{x}$ lies along $\mathbf{u}$ is just the same as figuring out the $i$-th component of $\mathbf{x}$. We could extract the $i$-th component of $\mathbf{x}$ if we had a matrix that had a $1$ at the $i$-th diagonal element and $0$ everywhere else. We could then multiply this matrix by $\mathbf{x}$ to get a vector with just the $i$-th component (and zeros elsewhere). How do we construct this matrix? Well, look no further than $\mathbf{u}\mathbf{u}^T$! Denoting $\mathbf{u}\mathbf{u}^T$ by $P_i$, we call $P_i$ the projection matrix for the $i$-th component.  
-
-Even if we assume that $\mathbf{u}$ is not aligned with a coordinate axis (and is not necessarily a unit vector, as long as $\mathbf{u} \neq \mathbf{0}$), we now know that we can always bring in some orthogonal matrix to rotate the coordinates to align with $\mathbf{u}$. So whether $\mathbf{u}$ aligns with a coordinate axis or not is really a moot point. 
-
-To prove this, let $\hat{\mathbf{u}} = \mathbf{u}/\Vert{}\mathbf{u}\Vert{}_2$, and let $Q$ be an [orthogonal matrix](#unitary-matrices) ($Q^TQ = I$) aligning $\hat{\mathbf{u}}$ with $\mathbf{e}_i$, so $Q\hat{\mathbf{u}} = \mathbf{e}_i$ (equivalently,  $Q^T \mathbf{e}_i = \hat{\mathbf{u}}$). Transforming to the rotated frame, applying $P_i = \mathbf{e}_i \mathbf{e}_i^T$, and rotating back yields   
-
-$$P_{\mathbf{u}} = Q^T (\mathbf{e}_i \mathbf{e}_i^T) Q = (Q^T \mathbf{e}_i)(Q^T \mathbf{e}_i)^T = \hat{\mathbf{u}}\hat{\mathbf{u}}^T = \frac{\mathbf{u}\mathbf{u}^T}{\mathbf{u}^T \mathbf{u}}.$$
-
-(which reduces to $\mathbf{u}\mathbf{u}^T$ when $\Vert{}\mathbf{u}\Vert{}_2 = 1$).  
-
-Note that $P_{\mathbf{u}}$ is idempotent, so $P_{\mathbf{u}}^2 = P_{\mathbf{u}}$. This is only to be expected. Once you take a projection along $\mathbf{u}$, taking another projection along $\mathbf{u}$ of that projection doesn't change the vector. Also, it is symmetric:  $P_{\mathbf{u}}^T = P_{\mathbf{u}}$.  
-
-Applying this projection matrix to a vector $\mathbf{x}$ gives us $\frac{\mathbf{u}^T \mathbf{x}}{\mathbf{u}^T \mathbf{u}}\mathbf{u}$ as the projection or "component" of $\mathbf{x}$ along $\mathbf{u}$. We can therefore split $\mathbf{x}$ as 
-
-$$\mathbf{x} = P_{\mathbf{u}} \mathbf{x} + (\mathbf{x} - P_{\mathbf{u}} \mathbf{x}),$$
-
-where $P_{\mathbf{u}} \mathbf{x}$ is the component along $\mathbf{u}$ and $\mathbf{x} - P_{\mathbf{u}} \mathbf{x}$ is the component orthogonal to $\mathbf{u}$.  
-
-We can see that $P_{\mathbf{u}} \mathbf{x} \perp (\mathbf{x} - P_{\mathbf{u}} \mathbf{x})$ by calculating the inner product $\langle P_{\mathbf{u}} \mathbf{x} \mid (I - P_{\mathbf{u}})\mathbf{x} \rangle$, which works out to $\mathbf{x}^T P_{\mathbf{u}}^T(I - P_{\mathbf{u}})\mathbf{x}$, and by applying the symmetry and idempotence of $P_{\mathbf{u}}$, we get $\mathbf{x}^T(P_{\mathbf{u}} - P_{\mathbf{u}}^2)\mathbf{x} = 0$. 
-
-The length of this projection is  
-
-$$\Vert{}P_{\mathbf{u}} \mathbf{x}\Vert{}_2 = \left\Vert{}\frac{\mathbf{u}^T \mathbf{x}}{\mathbf{u}^T \mathbf{u}}\mathbf{u}\right\Vert{}_2 = \frac{\vert{}\mathbf{u}^T \mathbf{x}\vert{}}{\Vert{}\mathbf{u}\Vert{}_2^2}\Vert{}\mathbf{u}\Vert{}_2 = \frac{\vert{}\mathbf{u}^T \mathbf{x}\vert{}}{\Vert{}\mathbf{u}\Vert{}_2} = \frac{\vert{}\langle \mathbf{u} \mid \mathbf{x} \rangle\vert{}}{\Vert{}\mathbf{u}\Vert{}_2},$$
-
-which, when $\mathbf{u}$ is a unit vector ($\Vert{}\mathbf{u}\Vert{}_2 = 1$), simplifies to $\Vert{}\mathbf{u}\mathbf{u}^T \mathbf{x}\Vert{}_2 = \vert{}\mathbf{u}^T \mathbf{x}\vert{}\,\Vert{}\mathbf{u}\Vert{}_2 = \vert{}\mathbf{u}^T \mathbf{x}\vert{} = \vert{}\langle \mathbf{u} \mid \mathbf{x} \rangle\vert{}$.
-
-The component orthogonal to the projection,  $\mathbf{x} - P_{\mathbf{u}} \mathbf{x}$, can be seen as the projection onto the hyperplane $\mathbf{u}^\perp$. The hyperplane $\mathbf{u}^\perp$ is called the orthogonal complement of $\mathbf{u}$, which is defined to be the set $\mathbf{u}^\perp = \{\mathbf{v} \in \mathbb{R}^n \mid \langle \mathbf{u} \mid \mathbf{v} \rangle = 0\}$ consisting of all vectors $\mathbf{v}$ that are orthogonal to $\mathbf{u}$.  
-
-Factoring $\mathbf{x}$ out of $\mathbf{x} - P_{\mathbf{u}} \mathbf{x} = (I - P_{\mathbf{u}})\mathbf{x}$, we can define the orthogonal projector onto the hyperplane $\mathbf{u}^\perp$, which is the orthogonal complement of $\mathbf{u}$, as $I - P_{\mathbf{u}} = I - \frac{\mathbf{u}\mathbf{u}^T}{\mathbf{u}^T \mathbf{u}}$ (or $I - \mathbf{u}\mathbf{u}^T$ when $\mathbf{u}$ is a unit vector).
-
-Note that if the projection matrix is only idempotent and not symmetric, it defines a general (possibly oblique) projector. In general, any square matrix with $P^2 = P$ is called a projector. It splits every $\mathbf{x}$ as $\mathbf{x} = P\mathbf{x} + (I - P)\mathbf{x}$, where $P\mathbf{x}$ lies in the range of $P$ (the set of all its outputs) and $(I - P)\mathbf{x}$ lies in its null space (the vectors it sends to $\mathbf{0}$), so $P$ projects onto its range along its null space. It is an orthogonal projector exactly when it is also symmetric ($P^T = P$), which makes the range and the null space perpendicular. Otherwise the "complementary" component $(I - P)\mathbf{x}$ is no longer orthogonal to the projection $P\mathbf{x}$. For example, $P = \begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix}$ satisfies $P^2 = P$; its range is the $x$-axis and its null space is the line $y = -x$, at $45^\circ$ to it, so $P$ projects onto the $x$-axis along that line rather than perpendicularly.
-        
-Every nonzero orthogonal projector has induced $2$-norm $\Vert{}P\Vert{}_2 = 1$ (it never stretches any vector). Every genuinely oblique projector stretches some vectors: $\Vert{}P\Vert{}_2 = \frac{1}{\sin\theta} > 1$, where $\theta \in (0, \pi/2)$ is the smallest angle between its range and its null space. In the example, $\theta = 45^\circ$, so $\Vert{}P\Vert{}_2 = \sqrt{2}$: the unit vector $\mathbf{x} = (1/\sqrt{2}, 1/\sqrt{2})$ is sent to $P\mathbf{x} = (\sqrt{2}, 0)$. For this $\mathbf{x}$ the two pieces $P\mathbf{x}$ and $(I - P)\mathbf{x}$ meet at $135^\circ$, not $90^\circ$ ([Figure 5(c)](#figure-5)).
-
-Over $\mathbb{C}^n$, in the projection, we replace transpose with conjugate transpose and get the Hermitian rank-$1$ projector $P_{\mathbf{u}} = \frac{\mathbf{u}\mathbf{u}^*}{\mathbf{u}^* \mathbf{u}}$ (which in Dirac ket-bra notation is simply $\vert{}u\rangle\langle u\vert{}$ for normalized $\vert{}u\rangle$, with $I - \vert{}u\rangle\langle u\vert{}$ projecting onto the orthogonal complement).
-        
-To project orthogonally onto a $k$-dimensional subspace $W \subseteq \mathbb{F}^n$: if $\{\mathbf{q}_1, \dots, \mathbf{q}_k\}$ is an orthonormal basis of $W$ arranged as the columns of $Q \in \mathbb{F}^{n \times k}$, then $P_W = QQ^* = \sum_{j=1}^k \mathbf{q}_j \mathbf{q}_j^*$ is the sum of mutually orthogonal rank-$1$ projectors ($\mathbf{q}_i \mathbf{q}_i^* \mathbf{q}_j \mathbf{q}_j^* = 0$ for $i \neq j$). If instead $W = \operatorname{col}(A)$ for an arbitrary full-column-rank matrix $A \in \mathbb{F}^{n \times k}$, then $P_W = A(A^* A)^{-1}A^*$, which directly generalizes $\frac{\mathbf{u}\mathbf{u}^*}{\mathbf{u}^* \mathbf{u}}$.
-        
-If we combine what we have just seen about orthogonality and projections, given an orthonormal set $\{q_1, \dots, q_n\} \subset \mathbb{C}^m$ and an arbitrary vector $v \in \mathbb{C}^m$ decomposed as $v = r + \sum_{i=1}^n (q_i^* v)q_i$ (where $r = v - \sum_{i=1}^n (q_i^* v)q_i$ is the residual orthogonal to each $q_i$):If $\{q_i\}$ is a basis (hence an orthonormal basis) for $\mathbb{C}^m$, then $n$ must be equal to $m$ and $r$ must be the zero vector, so $v$ is completely decomposed into $m$ orthogonal components in the directions of the $q_i$:   
-
-$$v = \sum_{i=1}^m (q_i^* v)q_i = \sum_{i=1}^m (q_i q_i^*)v.$$
-
-Now let's consider reflections. The step from $\mathbf{x}$ to its projection $(I - P_{\mathbf{u}})\mathbf{x}$ on the hyperplane $\mathbf{u}^\perp$ is $-P_{\mathbf{u}} \mathbf{x}$: it removes the $\mathbf{u}$-component. Taking the same step a second time carries $\mathbf{x}$ through the hyperplane to the point just as far on the other side, its mirror image $\mathbf{x} - 2P_{\mathbf{u}} \mathbf{x} = (I - 2P_{\mathbf{u}})\mathbf{x}$ ([Figure 5(a)](#figure-5)). So $I - 2P_{\mathbf{u}}$ reflects every vector across the hyperplane $\mathbf{u}^\perp$, which acts as a mirror. This is the Householder reflector we mentioned earlier:
-
-$$H_{\mathbf{u}} = I - 2P_{\mathbf{u}} = I - 2\frac{\mathbf{u}\mathbf{u}^T}{\mathbf{u}^T \mathbf{u}}.$$
-
-Whereas $I - P_{\mathbf{u}}$ flattens the $\mathbf{u}$-component to $0$ (singular, projecting $\mathbf{x}$ onto the mirror $\mathbf{u}^\perp$),  $H_{\mathbf{u}}$ reflects $\mathbf{x}$ across $\mathbf{u}^\perp$ by reversing its $\mathbf{u}$-component (orthogonal, symmetric, involutory $H_{\mathbf{u}}^2 = H_{\mathbf{u}}^TH_{\mathbf{u}} = I$, with $\det(H_{\mathbf{u}}) = -1$).
-
-<a id="figure-5"></a>![Three panels: a vector projected onto a mirror line and then reflected across it in two equal steps; the two Householder mirrors that send a vector to plus or minus its length times e1; an oblique projector that sends a unit vector outside the unit circle](figures/maths0_projection_reflection.png)
-
-*Figure 5. Projection, reflection and an oblique projection in the plane. (a) With unit normal $\mathbf{u} = (1, 2)/\sqrt{5}$, the vector $\mathbf{x} = (3, 1)$ has $\mathbf{u}$-component $P_{\mathbf{u}} \mathbf{x} = (1, 2)$. Subtracting $P_{\mathbf{u}} \mathbf{x}$ once lands on the mirror $\mathbf{u}^\perp$ at $(I - P_{\mathbf{u}})\mathbf{x} = (2, -1)$, at right angles; subtracting it twice crosses the mirror to $H_{\mathbf{u}} \mathbf{x} = (I - 2P_{\mathbf{u}})\mathbf{x} = (1, -3)$, on the dashed circle of radius $\|\mathbf{x}\|_2 = \sqrt{10}$. (b) For $\mathbf{x} = (3, 4)$, the choice $\mathbf{u} = \mathbf{x} - 5\mathbf{e}_1 = (-2, 4)$ gives a mirror along $(2, 1)$, the perpendicular bisector of $\mathbf{x}$ and $5\mathbf{e}_1$, so $H_{\mathbf{u}} \mathbf{x} = 5\mathbf{e}_1$. The other sign, $\mathbf{u}' = \mathbf{x} + 5\mathbf{e}_1 = (8, 4)$, gives the perpendicular mirror along $(-1, 2)$ and sends $\mathbf{x}$ to $-5\mathbf{e}_1$. (c) The oblique projector $P = \begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix}$ projects onto its range, the $x$-axis, along its null space, the line $y = -x$, which meets the range at $45^\circ$. It sends the unit vector $\mathbf{x} = (1/\sqrt{2}, 1/\sqrt{2})$ to $P\mathbf{x} = (\sqrt{2}, 0)$, outside the unit circle, whereas the orthogonal projection lands at $(1/\sqrt{2}, 0)$. The pieces $P\mathbf{x}$ and $(I - P)\mathbf{x}$ meet at $135^\circ$, and $\|P\|_2 = \sqrt{2} = 1/\sin 45^\circ$.*
-
-Just as plane rotations can be used to rotate any nonzero $\mathbf{x} \in \mathbb{R}^n$ onto the $i$-th coordinate axis, reflectors can also accomplish the same task. For a given $\mathbf{0} \neq \mathbf{x} \in \mathbb{R}^n$, the trick is to find the correct nonzero $\mathbf{u}$ that has the appropriate orthogonal complement $\mathbf{u}^\perp$ so that when $\mathbf{x} \neq \Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_i$ is reflected about $\mathbf{u}^\perp$, the result is $\Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_i$. To find such a $\mathbf{u}$, reverse-engineer the situation by observing that  
-
-$$H_{\mathbf{u}} \mathbf{x} = \left(I - 2\frac{\mathbf{u}\mathbf{u}^T}{\mathbf{u}^T \mathbf{u}}\right)\mathbf{x} = \Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_i \implies \mathbf{x} - \alpha \mathbf{u} = \Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_i \implies \mathbf{u} = \frac{\mathbf{x} - \Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_i}{\alpha},$$
-
-where $\alpha = 2\mathbf{u}^T \mathbf{x} / \mathbf{u}^T \mathbf{u}$ (which is nonzero because $\mathbf{x} \neq \Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_i$). This means that $\mathbf{u} \in \operatorname{span}(\mathbf{x} - \Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_i)$. In fact, any nonzero vector in $\operatorname{span}(\mathbf{x} - \Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_i)$ will suffice. Reflecting to $-\Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_i$ instead works the same way with $\mathbf{u} = \mathbf{x} + \Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_i$, whose mirror is perpendicular to the first one ([Figure 5(b)](#figure-5)); these are the two signs in $\mathbf{u} = \mathbf{x} \mp \Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_1$ mentioned earlier. In floating-point arithmetic, we pick the sign that avoids subtracting two nearly equal numbers in entry $i$, that is, $u_i = x_i + \operatorname{sign}(x_i)\Vert{}\mathbf{x}\Vert{}_2$.
-
-Note that nothing in the construction is special to $\mathbf{e}_i$. Given _any_ two distinct vectors $\mathbf{x}, \mathbf{y} \in \mathbb{R}^n$ with $\Vert{}\mathbf{x}\Vert{}_2 = \Vert{}\mathbf{y}\Vert{}_2$, setting $\mathbf{u} = \mathbf{x} - \mathbf{y}$ gives the unique Householder reflector $H_{\mathbf{u}} = I - 2\frac{\mathbf{u}\mathbf{u}^T}{\mathbf{u}^T \mathbf{u}}$ satisfying $H_{\mathbf{u}} \mathbf{x} = \mathbf{y}$ (and by involutivity $H_{\mathbf{u}}^2 = I$, also $H_{\mathbf{u}} \mathbf{y} = \mathbf{x}$). Geometrically,  $\mathbf{u}^\perp$ is the perpendicular bisector hyperplane of $\mathbf{x}$ and $\mathbf{y}$.
-
 ### Row Operations & Eliminations
 
 As we said right at the beginning of this section, matrices (specifically, augmented matrices $[A \mid b]$) can be seen as the representation of a set of linear equations. Row operations via Gaussian elimination or Gauss–Jordan elimination provide a straightforward way to find any solutions to a set of linear equations.
@@ -793,6 +731,306 @@ For $A \in \mathbb{F}^{m \times n}$ ($\mathbb{F} = \mathbb{R}$ or $\mathbb{C}$) 
 $$\operatorname{rank}(A + \mathbf{c}\mathbf{d}^*) = \begin{cases} r + 1 & \iff \mathbf{c} \notin R(A) \text{ and } \mathbf{d} \notin R(A^*), \\ r & \iff \bigl(\mathbf{c} \in R(A) \text{ xor } \mathbf{d} \in R(A^*)\bigr) \text{ or } \bigl(\mathbf{c} \in R(A),\, \mathbf{d} \in R(A^*), \text{ and } \alpha \neq 0\bigr), \\ r - 1 & \iff \mathbf{c} \in R(A),\, \mathbf{d} \in R(A^*), \text{ and } \alpha = 0, \end{cases}$$
 
 where $\alpha = 1 + \mathbf{d}^* A^\dagger \mathbf{c}$ (in which $A^\dagger$ is the [Moore–Penrose pseudoinverse](#pseudoinverse) of $A$) and "xor" denotes exclusive or (exactly one of the two conditions holds).
+
+### Projections
+
+Consider a unit vector $\mathbf{u} \in \mathbb{R}^n$ and another arbitrary vector $\mathbf{x} \in \mathbb{R}^n$. Let's say we want to find out how much of $\mathbf{x}$ lies in the direction of $\mathbf{u}$. Assume that $\mathbf{u}$ is one of the standard basis vectors, i.e., $\mathbf{e}_i$. Finding out how much of $\mathbf{x}$ lies along $\mathbf{u}$ is just the same as figuring out the $i$-th component of $\mathbf{x}$. We could extract the $i$-th component of $\mathbf{x}$ if we had a matrix that had a $1$ at the $i$-th diagonal element and $0$ everywhere else. We could then multiply this matrix by $\mathbf{x}$ to get a vector with just the $i$-th component (and zeros elsewhere). How do we construct this matrix? Well, look no further than $\mathbf{u}\mathbf{u}^T$! Denoting $\mathbf{u}\mathbf{u}^T$ by $P_i$, we call $P_i$ the projection matrix for the $i$-th component.  
+
+Even if we assume that $\mathbf{u}$ is not aligned with a coordinate axis (and is not necessarily a unit vector, as long as $\mathbf{u} \neq \mathbf{0}$), we now know that we can always bring in some orthogonal matrix to rotate the coordinates to align with $\mathbf{u}$. So whether $\mathbf{u}$ aligns with a coordinate axis or not is really a moot point. 
+
+To prove this, let $\hat{\mathbf{u}} = \mathbf{u}/\Vert{}\mathbf{u}\Vert{}_2$, and let $Q$ be an [orthogonal matrix](#unitary-matrices) ($Q^TQ = I$) aligning $\hat{\mathbf{u}}$ with $\mathbf{e}_i$, so $Q\hat{\mathbf{u}} = \mathbf{e}_i$ (equivalently,  $Q^T \mathbf{e}_i = \hat{\mathbf{u}}$). Transforming to the rotated frame, applying $P_i = \mathbf{e}_i \mathbf{e}_i^T$, and rotating back yields   
+
+$$P_{\mathbf{u}} = Q^T (\mathbf{e}_i \mathbf{e}_i^T) Q = (Q^T \mathbf{e}_i)(Q^T \mathbf{e}_i)^T = \hat{\mathbf{u}}\hat{\mathbf{u}}^T = \frac{\mathbf{u}\mathbf{u}^T}{\mathbf{u}^T \mathbf{u}}.$$
+
+(which reduces to $\mathbf{u}\mathbf{u}^T$ when $\Vert{}\mathbf{u}\Vert{}_2 = 1$).  
+
+Note that $P_{\mathbf{u}}$ is idempotent, so $P_{\mathbf{u}}^2 = P_{\mathbf{u}}$. This is only to be expected. Once you take a projection along $\mathbf{u}$, taking another projection along $\mathbf{u}$ of that projection doesn't change the vector. Also, it is symmetric:  $P_{\mathbf{u}}^T = P_{\mathbf{u}}$.  
+
+Applying this projection matrix to a vector $\mathbf{x}$ gives us $\frac{\mathbf{u}^T \mathbf{x}}{\mathbf{u}^T \mathbf{u}}\mathbf{u}$ as the projection or "component" of $\mathbf{x}$ along $\mathbf{u}$. We can therefore split $\mathbf{x}$ as 
+
+$$\mathbf{x} = P_{\mathbf{u}} \mathbf{x} + (\mathbf{x} - P_{\mathbf{u}} \mathbf{x}),$$
+
+where $P_{\mathbf{u}} \mathbf{x}$ is the component along $\mathbf{u}$ and $\mathbf{x} - P_{\mathbf{u}} \mathbf{x}$ is the component orthogonal to $\mathbf{u}$.  
+
+We can see that $P_{\mathbf{u}} \mathbf{x} \perp (\mathbf{x} - P_{\mathbf{u}} \mathbf{x})$ by calculating the inner product $\langle P_{\mathbf{u}} \mathbf{x} \mid (I - P_{\mathbf{u}})\mathbf{x} \rangle$, which works out to $\mathbf{x}^T P_{\mathbf{u}}^T(I - P_{\mathbf{u}})\mathbf{x}$, and by applying the symmetry and idempotence of $P_{\mathbf{u}}$, we get $\mathbf{x}^T(P_{\mathbf{u}} - P_{\mathbf{u}}^2)\mathbf{x} = 0$. 
+
+The length of this projection is  
+
+$$\Vert{}P_{\mathbf{u}} \mathbf{x}\Vert{}_2 = \left\Vert{}\frac{\mathbf{u}^T \mathbf{x}}{\mathbf{u}^T \mathbf{u}}\mathbf{u}\right\Vert{}_2 = \frac{\vert{}\mathbf{u}^T \mathbf{x}\vert{}}{\Vert{}\mathbf{u}\Vert{}_2^2}\Vert{}\mathbf{u}\Vert{}_2 = \frac{\vert{}\mathbf{u}^T \mathbf{x}\vert{}}{\Vert{}\mathbf{u}\Vert{}_2} = \frac{\vert{}\langle \mathbf{u} \mid \mathbf{x} \rangle\vert{}}{\Vert{}\mathbf{u}\Vert{}_2},$$
+
+which, when $\mathbf{u}$ is a unit vector ($\Vert{}\mathbf{u}\Vert{}_2 = 1$), simplifies to $\Vert{}\mathbf{u}\mathbf{u}^T \mathbf{x}\Vert{}_2 = \vert{}\mathbf{u}^T \mathbf{x}\vert{}\,\Vert{}\mathbf{u}\Vert{}_2 = \vert{}\mathbf{u}^T \mathbf{x}\vert{} = \vert{}\langle \mathbf{u} \mid \mathbf{x} \rangle\vert{}$.
+
+The component orthogonal to the projection,  $\mathbf{x} - P_{\mathbf{u}} \mathbf{x}$, can be seen as the projection onto the hyperplane $\mathbf{u}^\perp$. The hyperplane $\mathbf{u}^\perp$ is called the orthogonal complement of $\mathbf{u}$, which is defined to be the set $\mathbf{u}^\perp = \{\mathbf{v} \in \mathbb{R}^n \mid \langle \mathbf{u} \mid \mathbf{v} \rangle = 0\}$ consisting of all vectors $\mathbf{v}$ that are orthogonal to $\mathbf{u}$.  
+
+Factoring $\mathbf{x}$ out of $\mathbf{x} - P_{\mathbf{u}} \mathbf{x} = (I - P_{\mathbf{u}})\mathbf{x}$, we can define the orthogonal projector onto the hyperplane $\mathbf{u}^\perp$, which is the orthogonal complement of $\mathbf{u}$, as $I - P_{\mathbf{u}} = I - \frac{\mathbf{u}\mathbf{u}^T}{\mathbf{u}^T \mathbf{u}}$ (or $I - \mathbf{u}\mathbf{u}^T$ when $\mathbf{u}$ is a unit vector).
+
+Note that if the projection matrix is only idempotent and not symmetric, it defines a general (possibly oblique) projector. In general, any square matrix with $P^2 = P$ is called a projector. It splits every $\mathbf{x}$ as $\mathbf{x} = P\mathbf{x} + (I - P)\mathbf{x}$, where $P\mathbf{x}$ lies in the range of $P$ (the set of all its outputs) and $(I - P)\mathbf{x}$ lies in its null space (the vectors it sends to $\mathbf{0}$), so $P$ projects onto its range along its null space. It is an orthogonal projector exactly when it is also symmetric ($P^T = P$), which makes the range and the null space perpendicular. Otherwise the "complementary" component $(I - P)\mathbf{x}$ is no longer orthogonal to the projection $P\mathbf{x}$. For example, $P = \begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix}$ satisfies $P^2 = P$; its range is the $x$-axis and its null space is the line $y = -x$, at $45^\circ$ to it, so $P$ projects onto the $x$-axis along that line rather than perpendicularly.
+
+You should notice that if $P$ is a projector, $I — P$ is also a projector, called the complementary projector projecting onto the null space of $P$
+        
+Every nonzero orthogonal projector has induced $2$-norm $\Vert{}P\Vert{}_2 = 1$ (it never stretches any vector). Every genuinely oblique projector stretches some vectors: $\Vert{}P\Vert{}_2 = \frac{1}{\sin\theta} > 1$, where $\theta \in (0, \pi/2)$ is the smallest angle between its range and its null space. In the example, $\theta = 45^\circ$, so $\Vert{}P\Vert{}_2 = \sqrt{2}$: the unit vector $\mathbf{x} = (1/\sqrt{2}, 1/\sqrt{2})$ is sent to $P\mathbf{x} = (\sqrt{2}, 0)$. For this $\mathbf{x}$ the two pieces $P\mathbf{x}$ and $(I - P)\mathbf{x}$ meet at $135^\circ$, not $90^\circ$ ([Figure 5(c)](#figure-5)).
+
+Over $\mathbb{C}^n$, in the projection, we replace transpose with conjugate transpose and get the Hermitian rank-$1$ projector $P_{\mathbf{u}} = \frac{\mathbf{u}\mathbf{u}^*}{\mathbf{u}^* \mathbf{u}}$ (which in Dirac ket-bra notation is simply $\vert{}u\rangle\langle u\vert{}$ for normalized $\vert{}u\rangle$, with $I - \vert{}u\rangle\langle u\vert{}$ projecting onto the orthogonal complement).
+        
+To project orthogonally onto a $k$-dimensional subspace $W \subseteq \mathbb{F}^n$: if $\{\mathbf{q}_1, \dots, \mathbf{q}_k\}$ is an orthonormal basis of $W$ arranged as the columns of $Q \in \mathbb{F}^{n \times k}$, then $P_W = QQ^* = \sum_{j=1}^k \mathbf{q}_j \mathbf{q}_j^*$ is the sum of mutually orthogonal rank-$1$ projectors ($\mathbf{q}_i \mathbf{q}_i^* \mathbf{q}_j \mathbf{q}_j^* = 0$ for $i \neq j$). If instead $W = \operatorname{col}(A)$ for an arbitrary full-column-rank matrix $A \in \mathbb{F}^{n \times k}$, then $P_W = A(A^* A)^{-1}A^*$, which directly generalizes $\frac{\mathbf{u}\mathbf{u}^*}{\mathbf{u}^* \mathbf{u}}$.
+        
+If we combine what we have just seen about orthogonality and projections, given an orthonormal set $\{q_1, \dots, q_n\} \subset \mathbb{C}^m$ and an arbitrary vector $v \in \mathbb{C}^m$ decomposed as $v = r + \sum_{i=1}^n (q_i^* v)q_i$ (where $r = v - \sum_{i=1}^n (q_i^* v)q_i$ is the residual orthogonal to each $q_i$):If $\{q_i\}$ is a basis (hence an orthonormal basis) for $\mathbb{C}^m$, then $n$ must be equal to $m$ and $r$ must be the zero vector, so $v$ is completely decomposed into $m$ orthogonal components in the directions of the $q_i$:   
+
+$$v = \sum_{i=1}^m (q_i^* v)q_i = \sum_{i=1}^m (q_i q_i^*)v.$$
+
+#### Complementary Subspaces
+A projector $P \in \mathbb{C}^{m \times m}$ separates $\mathbb{C}^m$ into two complementary subspaces:  $\operatorname{range}(P)$ and $\operatorname{null}(P)$. Conversely, let $S_1$ and $S_2$ be two subspaces of $\mathbb{C}^m$ such that $S_1 \cap S_2 = \{0\}$ and $S_1 + S_2 = \mathbb{C}^m$, where $S_1 + S_2$ denotes the sum (span) of $S_1$ and $S_2$, that is, the set of vectors $s_1 + s_2$ with $s_1 \in S_1$ and $s_2 \in S_2$. (Such subspaces are said to be complementary subspaces.) Then there is a unique projector $P$ such that $\operatorname{range}(P) = S_1$ and $\operatorname{null}(P) = S_2$. We say that $P$ is the projector onto $S_1$ along $S_2$. This projector and its complement $I - P$ provide the unique solution to the following problem:
+
+  
+
+Given $v \in \mathbb{C}^m$, find vectors $v_1 \in S_1$ and $v_2 \in S_2$ such that $v_1 + v_2 = v$.
+
+  
+
+The projection $Pv$ gives $v_1$, and the complementary projection $(I - P)v$ gives $v_2$. These vectors are unique because any other solution $(v_1, v_2)$ can be written (setting $v_3 = v_1 - Pv$) in the form
+
+  
+
+$$(Pv + v_3) + \bigl((I - P)v - v_3\bigr) = v,$$
+
+where $v_3 = v_1 - Pv \in S_1$ and $v_3 = (I - P)v - v_2 \in S_2$, so $v_3 \in S_1 \cap S_2 = \{0\}$, i.e.,  $v_3 = 0$.
+
+  
+
+If $M$ is a subspace of $\mathbb{F}^n$ ($\mathbb{F} = \mathbb{R}$ or $\mathbb{C}$, with the standard inner product), then $M + M^\perp = \mathbb{F}^n$ and $M \cap M^\perp = \{0\}$. This realization is denoted by writing
+
+  
+
+$$\mathbb{F}^n = M \oplus M^\perp,$$
+
+in which case $\mathbb{F}^n$ is said to be the orthogonal direct sum of $M$ and $M^\perp$.
+
+  
+
+A projector $P$ onto $S_1$ along $S_2$ is an orthogonal projector (meaning $S_2 = S_1^\perp$) if and only if $P = P^*$ (i.e.,  $P$ is Hermitian). A unitary eigendecomposition—which is simultaneously a full SVD—of such a projector can be constructed as follows. Let $\{q_1, q_2, \dots, q_m\}$ be an orthonormal basis for $\mathbb{C}^m$, where $\{q_1, \dots, q_n\}$ is an orthonormal basis for $S_1$ and $\{q_{n+1}, \dots, q_m\}$ is an orthonormal basis for $S_2 = S_1^\perp$. For $1 \le j \le n$, we have $Pq_j = q_j$, and for $n < j \le m$, we have $Pq_j = 0$. Now let $Q$ be the $m \times m$ unitary matrix whose $j$-th column is $q_j$. We then have
+
+  
+
+$$PQ = \begin{bmatrix} q_1 & \cdots & q_n & 0 & \cdots & 0 \end{bmatrix},$$
+
+so that
+
+  
+
+$$Q^*PQ = \begin{pmatrix} I_n & 0 \\ 0 & 0 \end{pmatrix} = \Sigma,$$
+
+a diagonal matrix with ones in the first $n$ diagonal entries and zeros everywhere else (giving $P = Q\Sigma Q^*$).
+
+  
+
+Since an orthogonal projector has some singular values equal to zero (except in the trivial case $P = I_m$), it is natural to drop the last $m - n$ ("silent") columns of $Q$ and use the reduced rather than the full SVD. Letting $\hat{Q} = [q_1 \mid \cdots \mid q_n] \in \mathbb{C}^{m \times n}$ denote the matrix formed by the first $n$ orthonormal columns (for $n \ge 1$; if $n = 0$,  $P = 0$), we obtain as we saw
+
+  
+
+$$P = \hat{Q}\hat{Q}^*,$$
+
+where the columns of $\hat{Q}$ are orthonormal.
+
+  
+
+An orthogonal projector onto a nonzero subspace $S_1 \subseteq \mathbb{C}^m$ can also be constructed beginning with an arbitrary basis, not necessarily orthogonal. Let $A \in \mathbb{C}^{m \times n}$ be the matrix whose columns form a basis for $S_1$ (so the columns of $A$ are linearly independent and $A^*A$ is nonsingular). Then
+
+  
+
+$$P = A(A^*A)^{-1}A^*$$
+
+is the orthogonal projector onto $S_1 = R(A)$.
+
+If $M$ is an $r$-dimensional subspace of $\mathbb{F}^n$ ($\mathbb{F} = \mathbb{R}$ or $\mathbb{C}$,  $r \ge 1$), and if the columns of $W_{n \times r}$ form an orthonormal basis for $M$, then the orthogonal projector $P_M = WW^*$ is unique (independent of the choice of orthonormal basis; for $r = 0$,  $P_{\{0\}} = 0$). Moreover, each $v \in \mathbb{F}^n$ has a unique resolution into orthogonal components $v = m + w$, where $m = P_M v \in M$ and $w = (I - P_M)v \in M^\perp$.
+
+  
+
+The following properties hold for subspaces $M, N \subseteq \mathbb{F}^n$ ($\mathbb{F} = \mathbb{R}$ or $\mathbb{C}$):
+
+  
+
+-   $\dim M^\perp = n - \dim M$,
+    
+-   $(M^\perp)^\perp = M$,
+    
+-   $M \subseteq N \implies N^\perp \subseteq M^\perp$,
+    
+-   $(M + N)^\perp = M^\perp \cap N^\perp$,
+    
+-   $(M \cap N)^\perp = M^\perp + N^\perp$.
+    
+
+The range of a matrix and the nullspace of its conjugate transpose offer a straightforward orthogonal decomposition. For every $A \in \mathbb{F}^{m \times n}$ ($\mathbb{F} = \mathbb{R}$ or $\mathbb{C}$),
+
+  
+
+$$R(A)^\perp = N(A^*) \qquad \text{and} \qquad R(A^*)^\perp = N(A).$$
+
+By virtue of the orthogonal direct-sum decomposition $\mathbb{F}^k = M \oplus M^\perp$, this means that
+
+  
+
+$$\mathbb{F}^m = R(A) \oplus N(A^*) \qquad \text{and} \qquad \mathbb{F}^n = R(A^*) \oplus N(A).$$
+
+#### URV Factorization
+Vector space decompositions via direct sums of subspaces are generally tied to matrix factorizations. Let us see what happens for orthogonal decompositions.
+
+  
+
+Let $A \in \mathbb{F}^{m \times n}$ ($\mathbb{F} = \mathbb{R}$ or $\mathbb{C}$). If $\operatorname{rank}(A) = r$, and if
+
+  
+
+$$\begin{aligned} B_{R(A)} &= \{u_1, u_2, \dots, u_r\}, & B_{N(A^*)} &= \{u_{r+1}, u_{r+2}, \dots, u_m\}, \\ B_{R(A^*)} &= \{v_1, v_2, \dots, v_r\}, & B_{N(A)} &= \{v_{r+1}, v_{r+2}, \dots, v_n\} \end{aligned}$$
+
+are respective orthonormal bases for $R(A)$,  $N(A^*)$,  $R(A^*)$, and $N(A)$, then
+
+  
+
+$$B_M = B_{R(A)} \cup B_{N(A^*)} = \{u_1, u_2, \dots, u_m\}$$
+
+and
+
+  
+
+$$B_N = B_{R(A^*)} \cup B_{N(A)} = \{v_1, v_2, \dots, v_n\}$$
+
+are orthonormal bases for $\mathbb{F}^m$ and $\mathbb{F}^n$, respectively. Forming the unitary (or real orthogonal) matrices
+
+  
+
+$$U_{m \times m} = \begin{bmatrix} u_1 & u_2 & \cdots & u_m \end{bmatrix} \qquad \text{and} \qquad V_{n \times n} = \begin{bmatrix} v_1 & v_2 & \cdots & v_n \end{bmatrix},$$
+
+we obtain (since $u_i^* A v_j = 0$ whenever $i > r$, as $u_i \in N(A^*) = R(A)^\perp$, or whenever $j > r$, as $v_j \in N(A)$):
+
+  
+
+$$A = URV^* = U\begin{pmatrix} C_{r \times r} & 0 \\ 0 & 0 \end{pmatrix}V^*,$$
+
+where $c_{ij} = u_i^* A v_j$ for $1 \le i, j \le r$ (with the corresponding zero blocks absent if $r = m$ or $r = n$, and $A = 0$ if $r = 0$). Note that $C$ is nonsingular because it is $r \times r$ and
+
+  
+
+$$\operatorname{rank}(C) = \operatorname{rank}\begin{pmatrix} C & 0 \\ 0 & 0 \end{pmatrix} = \operatorname{rank}(U^*AV) = \operatorname{rank}(A) = r.$$
+
+This is called a URV factorization of $A$.
+
+  
+
+The first $r$ columns of $U$ are an orthonormal basis for $R(A)$. The last $m - r$ columns of $U$ are an orthonormal basis for $N(A^*)$. The first $r$ columns of $V$ are an orthonormal basis for $R(A^*)$. The last $n - r$ columns of $V$ are an orthonormal basis for $N(A)$.
+
+  
+
+Every collection of orthonormal bases for the four fundamental subspaces of $A$ produces a URV factorization. The singular value decomposition
+
+  
+
+$$A = U\begin{pmatrix} D_{r \times r} & 0 \\ 0 & 0 \end{pmatrix}V^*, \qquad \text{where } r = \operatorname{rank}(A),$$
+
+is a special URV factorization in which $C = D = \operatorname{diag}(\sigma_1, \dots, \sigma_r)$ is the diagonal matrix of nonzero singular values, and $U$ and $V$ are unitary matrices whose columns are singular vectors. Recall that the first $r$ left singular vectors $\{u_1, u_2, \dots, u_r\}$ form an orthonormal basis for $R(A)$, while $\{u_{r+1}, u_{r+2}, \dots, u_m\}$ form an orthonormal basis for $N(A^*)$. Similarly, the first $r$ right singular vectors $\{v_1, v_2, \dots, v_r\}$ form an orthonormal basis for $R(A^*)$, and $\{v_{r+1}, v_{r+2}, \dots, v_n\}$ form an orthonormal basis for $N(A)$.
+
+  
+
+The singular-vector bases forming $U$ and $V$ are not just any orthonormal bases for the respective fundamental subspaces. The development of the SVD shows that they are "special" in the following sense:
+
+  
+
+-   $B_{R(A^*)} = \{v_1, v_2, \dots, v_r\}$ is an orthonormal set of eigenvectors for $A^*A$ associated with the $r$ nonzero (strictly positive) eigenvalues $\sigma_1^2, \dots, \sigma_r^2$ of $A^*A$.
+    
+-   $B_{N(A)} = \{v_{r+1}, v_{r+2}, \dots, v_n\}$ can be any orthonormal basis for $N(A)$.
+    
+-   $B_{R(A)} = \{u_1, u_2, \dots, u_r\}$ is an orthonormal basis for $R(A)$ determined by $u_i = Av_i / \|Av_i\|_2 = Av_i / \sigma_i$ for $1 \le i \le r$.
+    
+-   $B_{N(A^*)} = \{u_{r+1}, u_{r+2}, \dots, u_m\}$ can be any orthonormal basis for $N(A^*)$.
+    
+
+Using the Moore–Penrose pseudoinverse $A^\dagger \in \mathbb{F}^{n \times m}$ of $A \in \mathbb{F}^{m \times n}$, the orthogonal projectors onto the four fundamental subspaces are given by
+
+  
+
+$$P_{R(A)} = AA^\dagger, \qquad P_{N(A^*)} = I_m - AA^\dagger, \qquad P_{R(A^*)} = A^\dagger A, \qquad P_{N(A)} = I_n - A^\dagger A,$$
+
+and $R(A^\dagger) = R(A^*)$.
+
+  
+
+In particular, if $\operatorname{rank}(A_{m \times n}) = n$ (full column rank), then $A^\dagger = (A^*A)^{-1}A^*$, in which case the orthogonal projector onto $R(A)$ becomes
+
+  
+
+$$P_{R(A)} = A(A^*A)^{-1}A^*.$$
+
+Moreover, if $\operatorname{rank}(A_{m \times n}) = r > 0$, and if $B_{m \times r}$ is the matrix containing the $r$ basic (linearly independent pivot) columns of $A$, then $P_{R(A)} = P_{R(B)} = BB^\dagger = B(B^*B)^{-1}B^*$.
+
+  
+
+The URV factorization can turn out to be a unitary similarity transformation ($A = URU^*$) when $U = V$ and $A$ is square. For a square matrix $A \in \mathbb{F}^{n \times n}$ ($\mathbb{F} = \mathbb{R}$ or $\mathbb{C}$) with $\operatorname{rank}(A) = r$, the following statements are equivalent:
+
+  
+
+-   $A = U\begin{pmatrix} C_{r \times r} & 0 \\ 0 & 0 \end{pmatrix}U^*$, with $U$ unitary and $\operatorname{rank}(C) = r$ (i.e.,  $C$ nonsingular).
+    
+-   $R(A) \perp N(A)$.
+    
+-   $R(A) = R(A^*)$.
+    
+-   $N(A) = N(A^*)$.
+    
+-   $AA^\dagger = A^\dagger A$.
+    
+
+A square matrix $A$ satisfying any of these equivalent conditions is called an $\mathrm{EP}_r$ matrix (or EP matrix for short). Alternately,  $A$ can be called an RPN matrix, which is short for "range perpendicular to nullspace."
+
+Every normal matrix ($A^*A = AA^*$) is an EP matrix (since $N(A) = N(A^*)$ for any normal matrix, as $\Vert{}Ax\Vert{}_2 = \Vert{}A^*x\Vert{}_2$), and every nonsingular matrix is trivially EP ($R(A) = R(A^*) = \mathbb{F}^n$). However, EP is strictly more general than normal: any $A = U\begin{pmatrix} C & 0 \\ 0 & 0 \end{pmatrix}U^*$ with $C$ nonsingular and **non-normal** is EP without being normal. Notice how compactly the five conditions tie together:
+
+$$AA^\dagger = A^\dagger A \iff P_{R(A)} = P_{R(A^*)} \iff R(A) = R(A^*) \iff N(A^*) = N(A) \iff R(A) \perp N(A)$$
+
+(the last equivalence uses $R(A) \perp N(A) \iff R(A) \subseteq N(A)^\perp = R(A^*)$ together with $\dim R(A) = \dim R(A^*) = r$).
+
+From any URV factorization $A = U\begin{pmatrix} C & 0 \\ 0 & 0 \end{pmatrix}V^*$ with $C_{r \times r}$ nonsingular, the unique Moore–Penrose pseudoinverse is immediately
+    
+$$A^\dagger = V\begin{pmatrix} C^{-1} & 0 \\ 0 & 0 \end{pmatrix}U^*,$$
+    
+and in the SVD ($C = D = \operatorname{diag}(\sigma_1, \dots, \sigma_r)$),  $A^\dagger = V\begin{pmatrix} D^{-1} & 0 \\ 0 & 0 \end{pmatrix}U^*$. Multiplying out $AA^\dagger = U\begin{pmatrix} I_r & 0 \\ 0 & 0 \end{pmatrix}U^*$ and $A^\dagger A = V\begin{pmatrix} I_r & 0 \\ 0 & 0 \end{pmatrix}V^*$ gives an immediate proof of all four projector formulas ($P_{R(A)}, P_{N(A^*)}, P_{R(A^*)}, P_{N(A)}$) and $R(A^\dagger) = R(A^*)$.
+    
+ #### Alternate Projections
+If $M, N \subseteq \mathbb{F}^n$ ($\mathbb{F} = \mathbb{R}$ or $\mathbb{C}$) are subspaces, and if $P = P_M$ and $Q = P_N$ are the respective orthogonal projectors onto $M$ and $N$, then the orthogonal projector onto $M \cap N$ is given by
+
+  
+
+$$P_{M \cap N} = \lim_{k\to\infty} (PQ)^k.$$
+
+This limit result generalizes to any finite number $s$ of subspaces $M_1, \dots, M_s$:  $P_{M_1 \cap \cdots \cap M_s} = \lim_{k\to\infty}(P_1 P_2 \cdots P_s)^k$.
+
+  
+
+For two orthogonal projectors $P$ and $Q$, the product $PQ$ is similar to a diagonal matrix, and $PQ$ has real eigenvalues $0 \le \lambda_i \le 1$ for $i = 1, 2, \dots, n$. Moreover,
+
+$$N(I - PQ) = R(P) \cap R(Q) = N(I - QP).$$
+
+When $P = P_M$ and $Q = P_N$ commute,  $PQ$ is itself Hermitian and idempotent ($(PQ)^2 = P^2 Q^2 = PQ$,  $(PQ)^* = QP = PQ$), so the limit collapses at step $k = 1$: $P_{M \cap N} = PQ.$
+
+Equivalently,  $PQ = QP$ iff all nonzero principal angles between $M$ and $N$ equal $\pi/2$ (meaning $(M \cap (M \cap N)^\perp) \perp (N \cap (M \cap N)^\perp)$). In that case,  $P + Q - PQ = P_{M + N}$ is also the orthogonal projector onto $M + N$.
+
+#### Reflections
+
+Now let's consider reflections. The step from $\mathbf{x}$ to its projection $(I - P_{\mathbf{u}})\mathbf{x}$ on the hyperplane $\mathbf{u}^\perp$ is $-P_{\mathbf{u}} \mathbf{x}$: it removes the $\mathbf{u}$-component. Taking the same step a second time carries $\mathbf{x}$ through the hyperplane to the point just as far on the other side, its mirror image $\mathbf{x} - 2P_{\mathbf{u}} \mathbf{x} = (I - 2P_{\mathbf{u}})\mathbf{x}$ ([Figure 5(a)](#figure-5)). So $I - 2P_{\mathbf{u}}$ reflects every vector across the hyperplane $\mathbf{u}^\perp$, which acts as a mirror. This is the Householder reflector we mentioned earlier:
+
+$$H_{\mathbf{u}} = I - 2P_{\mathbf{u}} = I - 2\frac{\mathbf{u}\mathbf{u}^T}{\mathbf{u}^T \mathbf{u}}.$$
+
+Whereas $I - P_{\mathbf{u}}$ flattens the $\mathbf{u}$-component to $0$ (singular, projecting $\mathbf{x}$ onto the mirror $\mathbf{u}^\perp$),  $H_{\mathbf{u}}$ reflects $\mathbf{x}$ across $\mathbf{u}^\perp$ by reversing its $\mathbf{u}$-component (orthogonal, symmetric, involutory $H_{\mathbf{u}}^2 = H_{\mathbf{u}}^TH_{\mathbf{u}} = I$, with $\det(H_{\mathbf{u}}) = -1$).
+
+<a id="figure-5"></a>![Three panels: a vector projected onto a mirror line and then reflected across it in two equal steps; the two Householder mirrors that send a vector to plus or minus its length times e1; an oblique projector that sends a unit vector outside the unit circle](figures/maths0_projection_reflection.png)
+
+*Figure 5. Projection, reflection and an oblique projection in the plane. (a) With unit normal $\mathbf{u} = (1, 2)/\sqrt{5}$, the vector $\mathbf{x} = (3, 1)$ has $\mathbf{u}$-component $P_{\mathbf{u}} \mathbf{x} = (1, 2)$. Subtracting $P_{\mathbf{u}} \mathbf{x}$ once lands on the mirror $\mathbf{u}^\perp$ at $(I - P_{\mathbf{u}})\mathbf{x} = (2, -1)$, at right angles; subtracting it twice crosses the mirror to $H_{\mathbf{u}} \mathbf{x} = (I - 2P_{\mathbf{u}})\mathbf{x} = (1, -3)$, on the dashed circle of radius $\|\mathbf{x}\|_2 = \sqrt{10}$. (b) For $\mathbf{x} = (3, 4)$, the choice $\mathbf{u} = \mathbf{x} - 5\mathbf{e}_1 = (-2, 4)$ gives a mirror along $(2, 1)$, the perpendicular bisector of $\mathbf{x}$ and $5\mathbf{e}_1$, so $H_{\mathbf{u}} \mathbf{x} = 5\mathbf{e}_1$. The other sign, $\mathbf{u}' = \mathbf{x} + 5\mathbf{e}_1 = (8, 4)$, gives the perpendicular mirror along $(-1, 2)$ and sends $\mathbf{x}$ to $-5\mathbf{e}_1$. (c) The oblique projector $P = \begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix}$ projects onto its range, the $x$-axis, along its null space, the line $y = -x$, which meets the range at $45^\circ$. It sends the unit vector $\mathbf{x} = (1/\sqrt{2}, 1/\sqrt{2})$ to $P\mathbf{x} = (\sqrt{2}, 0)$, outside the unit circle, whereas the orthogonal projection lands at $(1/\sqrt{2}, 0)$. The pieces $P\mathbf{x}$ and $(I - P)\mathbf{x}$ meet at $135^\circ$, and $\|P\|_2 = \sqrt{2} = 1/\sin 45^\circ$.*
+
+Just as plane rotations can be used to rotate any nonzero $\mathbf{x} \in \mathbb{R}^n$ onto the $i$-th coordinate axis, reflectors can also accomplish the same task. For a given $\mathbf{0} \neq \mathbf{x} \in \mathbb{R}^n$, the trick is to find the correct nonzero $\mathbf{u}$ that has the appropriate orthogonal complement $\mathbf{u}^\perp$ so that when $\mathbf{x} \neq \Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_i$ is reflected about $\mathbf{u}^\perp$, the result is $\Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_i$. To find such a $\mathbf{u}$, reverse-engineer the situation by observing that  
+
+$$H_{\mathbf{u}} \mathbf{x} = \left(I - 2\frac{\mathbf{u}\mathbf{u}^T}{\mathbf{u}^T \mathbf{u}}\right)\mathbf{x} = \Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_i \implies \mathbf{x} - \alpha \mathbf{u} = \Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_i \implies \mathbf{u} = \frac{\mathbf{x} - \Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_i}{\alpha},$$
+
+where $\alpha = 2\mathbf{u}^T \mathbf{x} / \mathbf{u}^T \mathbf{u}$ (which is nonzero because $\mathbf{x} \neq \Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_i$). This means that $\mathbf{u} \in \operatorname{span}(\mathbf{x} - \Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_i)$. In fact, any nonzero vector in $\operatorname{span}(\mathbf{x} - \Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_i)$ will suffice. Reflecting to $-\Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_i$ instead works the same way with $\mathbf{u} = \mathbf{x} + \Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_i$, whose mirror is perpendicular to the first one ([Figure 5(b)](#figure-5)); these are the two signs in $\mathbf{u} = \mathbf{x} \mp \Vert{}\mathbf{x}\Vert{}_2 \mathbf{e}_1$ mentioned earlier. In floating-point arithmetic, we pick the sign that avoids subtracting two nearly equal numbers in entry $i$, that is, $u_i = x_i + \operatorname{sign}(x_i)\Vert{}\mathbf{x}\Vert{}_2$.
+
+Note that nothing in the construction is special to $\mathbf{e}_i$. Given _any_ two distinct vectors $\mathbf{x}, \mathbf{y} \in \mathbb{R}^n$ with $\Vert{}\mathbf{x}\Vert{}_2 = \Vert{}\mathbf{y}\Vert{}_2$, setting $\mathbf{u} = \mathbf{x} - \mathbf{y}$ gives the unique Householder reflector $H_{\mathbf{u}} = I - 2\frac{\mathbf{u}\mathbf{u}^T}{\mathbf{u}^T \mathbf{u}}$ satisfying $H_{\mathbf{u}} \mathbf{x} = \mathbf{y}$ (and by involutivity $H_{\mathbf{u}}^2 = I$, also $H_{\mathbf{u}} \mathbf{y} = \mathbf{x}$). Geometrically,  $\mathbf{u}^\perp$ is the perpendicular bisector hyperplane of $\mathbf{x}$ and $\mathbf{y}$.
 
 ### General Linear Systems
 
